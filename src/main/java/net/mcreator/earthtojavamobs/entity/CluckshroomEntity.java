@@ -61,13 +61,9 @@ public class CluckshroomEntity extends EarthtojavamobsModElements.ModElement {
     public void init(FMLCommonSetupEvent event) {
         for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
             boolean biomeCriteria = false;
-            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("forest")))
+            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("mushroom_fields")))
                 biomeCriteria = true;
-            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("wooded_hills")))
-                biomeCriteria = true;
-            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("birch_forest")))
-                biomeCriteria = true;
-            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("birch_forest_hills")))
+            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("mushroom_field_shore")))
                 biomeCriteria = true;
             if (!biomeCriteria)
                 continue;
