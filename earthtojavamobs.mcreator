@@ -93,12 +93,22 @@
       "locked_code": true,
       "ids": {},
       "registry_name": "amber_chicken"
+    },
+    {
+      "name": "StormyChicken",
+      "type": "mob",
+      "sortid": 12,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {},
+      "registry_name": "stormy_chicken"
     }
   ],
   "variable_elements": [],
   "sound_elements": [],
   "language_map": {
     "it_it": {
+      "entity.earthtojavamobs.stormy_chicken": "Stormy Chicken",
       "entity.earthtojavamobs.glow_squid": "Glow Squid",
       "entity.earthtojavamobs.moobloom": "Fior di Bovino",
       "item.earthtojavamobs.amber_chicken": "Amber Chicken Spawn Egg",
@@ -110,9 +120,11 @@
       "item.earthtojavamobs.moobloom": "Uovo di Fior di Bovino",
       "item.earthtojavamobs.wooly_cow": "Uovo di Mucca Lanosa",
       "item.earthtojavamobs.glow_squid": "Glow Squid Spawn Egg",
-      "entity.earthtojavamobs.wooly_cow": "Mucca Lanosa"
+      "entity.earthtojavamobs.wooly_cow": "Mucca Lanosa",
+      "item.earthtojavamobs.stormy_chicken": "Stormy Chicken Spawn Egg"
     },
     "en_us": {
+      "entity.earthtojavamobs.stormy_chicken": "Stormy Chicken",
       "entity.earthtojavamobs.glow_squid": "Glow Squid",
       "entity.earthtojavamobs.moobloom": "Moobloom",
       "item.earthtojavamobs.amber_chicken": "Amber Chicken Spawn Egg",
@@ -124,7 +136,8 @@
       "item.earthtojavamobs.moobloom": "Moobloom Spawn Egg",
       "item.earthtojavamobs.wooly_cow": "Wooly Cow Spawn Egg",
       "item.earthtojavamobs.glow_squid": "Glow Squid Spawn Egg",
-      "entity.earthtojavamobs.wooly_cow": "Wooly Cow"
+      "entity.earthtojavamobs.wooly_cow": "Wooly Cow",
+      "item.earthtojavamobs.stormy_chicken": "Stormy Chicken Spawn Egg"
     }
   },
   "workspaceSettings": {

@@ -1,14 +1,16 @@
 {
+  "entity.earthtojavamobs.stormy_chicken": "Stormy Chicken",
   "entity.earthtojavamobs.glow_squid": "Glow Squid",
-  "entity.earthtojavamobs.moobloom": "Moobloom",
+  "entity.earthtojavamobs.moobloom": "Fior di Bovino",
   "item.earthtojavamobs.amber_chicken": "Amber Chicken Spawn Egg",
   "item.earthtojavamobs.midnight_chicken": "Midnight Chicken Spawn Egg",
   "entity.earthtojavamobs.midnight_chicken": "Midnight Chicken",
   "entity.earthtojavamobs.amber_chicken": "Amber Chicken",
   "item.earthtojavamobs.cluckshroom": "Cluckshroom Spawn Egg",
   "entity.earthtojavamobs.cluckshroom": "Cluckshroom",
-  "item.earthtojavamobs.moobloom": "Moobloom Spawn Egg",
+  "item.earthtojavamobs.moobloom": "Uovo di Fior di Bovino",
   "item.earthtojavamobs.wooly_cow": "Uovo di Mucca Lanosa",
   "item.earthtojavamobs.glow_squid": "Glow Squid Spawn Egg",
-  "entity.earthtojavamobs.wooly_cow": "Mucca Lanosa"
+  "entity.earthtojavamobs.wooly_cow": "Mucca Lanosa",
+  "item.earthtojavamobs.stormy_chicken": "Stormy Chicken Spawn Egg"
 }

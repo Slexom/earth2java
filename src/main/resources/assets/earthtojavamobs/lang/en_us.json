@@ -1,4 +1,5 @@
 {
+  "entity.earthtojavamobs.stormy_chicken": "Stormy Chicken",
   "entity.earthtojavamobs.glow_squid": "Glow Squid",
   "entity.earthtojavamobs.moobloom": "Moobloom",
   "item.earthtojavamobs.amber_chicken": "Amber Chicken Spawn Egg",
@@ -10,5 +11,6 @@
   "item.earthtojavamobs.moobloom": "Moobloom Spawn Egg",
   "item.earthtojavamobs.wooly_cow": "Wooly Cow Spawn Egg",
   "item.earthtojavamobs.glow_squid": "Glow Squid Spawn Egg",
-  "entity.earthtojavamobs.wooly_cow": "Wooly Cow"
+  "entity.earthtojavamobs.wooly_cow": "Wooly Cow",
+  "item.earthtojavamobs.stormy_chicken": "Stormy Chicken Spawn Egg"
 }
