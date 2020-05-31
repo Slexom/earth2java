@@ -146,7 +146,7 @@ public class MoobloomEntity extends EarthtojavamobsModElements.ModElement {
             }
 
             public boolean canPlace(IWorldReader world, BlockState target, BlockPos targetPos, BlockState downTarget, BlockPos downTargetPos) {
-                return target.isAir(world, targetPos) && !downTarget.isAir(world, downTargetPos);
+                return !downTarget.isAir(world, downTargetPos) && downTarget.isCollisionShapeOpaque(world, downTargetPos) && target.isValidPosition(world, targetPos);
             }
 
             public void tick() {
