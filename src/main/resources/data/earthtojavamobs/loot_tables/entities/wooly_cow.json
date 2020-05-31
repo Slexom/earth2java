@@ -10,7 +10,23 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:beef",
-          "weight": 50
+          "weight": 50,
+          "functions": [
+            {
+              "function": "minecraft:furnace_smelt",
+              "conditions": [
+                {
+                  "condition": "minecraft:entity_properties",
+                  "entity": "this",
+                  "predicate": {
+                    "flags": {
+                      "is_on_fire": true
+                    }
+                  }
+                }
+              ]
+            }
+          ]
         },
         {
           "type": "minecraft:item",
