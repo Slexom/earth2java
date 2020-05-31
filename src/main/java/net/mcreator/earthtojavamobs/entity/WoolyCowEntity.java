@@ -5,14 +5,13 @@ import net.mcreator.earthtojavamobs.EarthtojavamobsModElements;
 import net.mcreator.earthtojavamobs.client.renderer.entity.WoolyCowRenderer;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.goal.EatGrassGoal;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.CowEntity;
-import net.minecraft.entity.passive.SheepEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.*;
-import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.SpawnEggItem;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -91,7 +90,7 @@ public class WoolyCowEntity extends EarthtojavamobsModElements.ModElement {
     }
 
     public static class CustomEntity extends CowEntity implements net.minecraftforge.common.IShearable {
-        private static final DataParameter<Boolean> isSheared = EntityDataManager.createKey(SheepEntity.class, DataSerializers.BOOLEAN);
+        private static final DataParameter<Byte> isSheared = EntityDataManager.createKey(WoolyCowEntity.CustomEntity.class, DataSerializers.BYTE);
 
         private int shearTimer;
         private EatGrassGoal eatGrassGoal;
@@ -110,16 +109,7 @@ public class WoolyCowEntity extends EarthtojavamobsModElements.ModElement {
         protected void registerGoals() {
             super.registerGoals();
             this.eatGrassGoal = new EatGrassGoal(this);
-
-            this.goalSelector.addGoal(1, new TemptGoal(this, 1, Ingredient.fromItems(new ItemStack(Items.WHEAT, (int) (1)).getItem()), false));
-            this.goalSelector.addGoal(2, new PanicGoal(this, 1.2));
-            this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, (float) 8));
-            this.goalSelector.addGoal(4, new LookAtGoal(this, ServerPlayerEntity.class, (float) 8));
             this.goalSelector.addGoal(5, this.eatGrassGoal);
-            this.goalSelector.addGoal(6, new RandomWalkingGoal(this, 1));
-            this.goalSelector.addGoal(7, new SwimGoal(this));
-            this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
-
         }
 
         protected void updateAITasks() {
@@ -148,7 +138,7 @@ public class WoolyCowEntity extends EarthtojavamobsModElements.ModElement {
 
         protected void registerData() {
             super.registerData();
-            this.dataManager.register(isSheared, false);
+            this.dataManager.register(isSheared, (byte) 0);
         }
 
         @Override
@@ -158,21 +148,6 @@ public class WoolyCowEntity extends EarthtojavamobsModElements.ModElement {
 
         protected void dropSpecialItems(DamageSource source, int looting, boolean recentlyHitIn) {
             super.dropSpecialItems(source, looting, recentlyHitIn);
-        }
-
-        @Override
-        public net.minecraft.util.SoundEvent getAmbientSound() {
-            return (net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.cow.ambient"));
-        }
-
-        @Override
-        public net.minecraft.util.SoundEvent getHurtSound(DamageSource ds) {
-            return (net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.cow.hurt"));
-        }
-
-        @Override
-        public net.minecraft.util.SoundEvent getDeathSound() {
-            return (net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.cow.death"));
         }
 
         @Override
@@ -188,19 +163,26 @@ public class WoolyCowEntity extends EarthtojavamobsModElements.ModElement {
          * returns true if a sheeps wool has been sheared
          */
         public boolean getSheared() {
-            return (this.dataManager.get(isSheared));
+            return (this.dataManager.get(isSheared) & 16) != 0;
         }
 
         /**
          * make a sheep sheared if set to true
          */
         public void setSheared(boolean sheared) {
-            boolean b0 = this.dataManager.get(isSheared);
-            this.dataManager.set(isSheared, sheared);
+            byte b0 = this.dataManager.get(isSheared);
+            if (sheared) {
+                this.dataManager.set(isSheared, (byte) (b0 | 16));
+            } else {
+                this.dataManager.set(isSheared, (byte) (b0 & -17));
+            }
         }
 
         public void eatGrassBonus() {
             this.setSheared(false);
+            if (this.isChild()) {
+                this.addGrowth(30);
+            }
         }
 
         @Override
@@ -222,6 +204,10 @@ public class WoolyCowEntity extends EarthtojavamobsModElements.ModElement {
             return ret;
         }
 
+        @Override
+        public CowEntity createChild(AgeableEntity ageable) {
+            return (CustomEntity) entity.create(this.world);
+        }
 
     }
 }

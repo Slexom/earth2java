@@ -10,18 +10,14 @@ public class WoolyCowRenderer extends MobRenderer<WoolyCowEntity.CustomEntity, C
 
     public WoolyCowRenderer(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, new CowModel<>(), 0.7F);
-        //todo: fix wool mode
+        //todo: fix wool model
 //        this.addLayer(new WoolyCowLayer(this));
     }
 
-    /**
-     * Returns the location of an entity's texture.
-     */
     public ResourceLocation getEntityTexture(WoolyCowEntity.CustomEntity entity) {
         if (entity.getSheared()) {
             return new ResourceLocation("earthtojavamobs:textures/texture_wooly_cow_sheared.png");
         } else {
-
             return new ResourceLocation("earthtojavamobs:textures/texture_wooly_cow.png");
         }
     }
