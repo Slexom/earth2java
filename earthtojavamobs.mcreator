@@ -1,0 +1,125 @@
+{
+  "id_map": {},
+  "mod_elements": [
+    {
+      "name": "WoolyCow",
+      "type": "mob",
+      "sortid": 2,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {},
+      "registry_name": "wooly_cow"
+    },
+    {
+      "name": "WoolyCowRightClickedOnEntity",
+      "type": "procedure",
+      "sortid": 4,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {},
+      "registry_name": "wooly_cow_right_clicked_on_entity",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ]
+      }
+    },
+    {
+      "name": "WoolyCowLootTable",
+      "type": "loottable",
+      "sortid": 5,
+      "compiles": true,
+      "locked_code": false,
+      "ids": {},
+      "registry_name": "wooly_cow_loot_table"
+    },
+    {
+      "name": "MidnightChicken",
+      "type": "mob",
+      "sortid": 6,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {},
+      "registry_name": "midnight_chicken"
+    },
+    {
+      "name": "GlowSquid",
+      "type": "mob",
+      "sortid": 7,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {},
+      "registry_name": "glow_squid"
+    },
+    {
+      "name": "Cluckshroom",
+      "type": "mob",
+      "sortid": 8,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {},
+      "registry_name": "cluckshroom"
+    },
+    {
+      "name": "Moobloom",
+      "type": "mob",
+      "sortid": 9,
+      "compiles": true,
+      "locked_code": true,
+      "ids": {},
+      "registry_name": "moobloom"
+    }
+  ],
+  "variable_elements": [],
+  "sound_elements": [],
+  "language_map": {
+    "it_it": {
+      "entity.earthtojavamobs.glow_squid": "Glow Squid",
+      "entity.earthtojavamobs.moobloom": "Moobloom",
+      "item.earthtojavamobs.wooly_cow": "Uovo di Mucca Lanosa",
+      "item.earthtojavamobs.midnight_chicken": "Midnight Chicken Spawn Egg",
+      "entity.earthtojavamobs.midnight_chicken": "Midnight Chicken",
+      "item.earthtojavamobs.glow_squid": "Glow Squid Spawn Egg",
+      "item.earthtojavamobs.cluckshroom": "Cluckshroom Spawn Egg",
+      "entity.earthtojavamobs.cluckshroom": "Cluckshroom",
+      "entity.earthtojavamobs.wooly_cow": "Mucca Lanosa",
+      "item.earthtojavamobs.moobloom": "Moobloom Spawn Egg"
+    },
+    "en_us": {
+      "entity.earthtojavamobs.glow_squid": "Glow Squid",
+      "entity.earthtojavamobs.moobloom": "Moobloom",
+      "item.earthtojavamobs.wooly_cow": "Wooly Cow Spawn Egg",
+      "item.earthtojavamobs.midnight_chicken": "Midnight Chicken Spawn Egg",
+      "entity.earthtojavamobs.midnight_chicken": "Midnight Chicken",
+      "item.earthtojavamobs.glow_squid": "Glow Squid Spawn Egg",
+      "item.earthtojavamobs.cluckshroom": "Cluckshroom Spawn Egg",
+      "entity.earthtojavamobs.cluckshroom": "Cluckshroom",
+      "entity.earthtojavamobs.wooly_cow": "Wooly Cow",
+      "item.earthtojavamobs.moobloom": "Moobloom Spawn Egg"
+    }
+  },
+  "workspaceSettings": {
+    "modid": "earthtojavamobs",
+    "modName": "Earth2JavaMobs",
+    "version": "1.0.0",
+    "author": "bcarm, MCreator",
+    "websiteURL": "https://mcreator.net",
+    "disableForgeVersionCheck": true,
+    "serverSideOnly": false,
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [],
+    "currentGenerator": "forge-1.15.2",
+    "modElementsPackage": "net.mcreator.earthtojavamobs",
+    "lockBaseModFiles": false
+  },
+  "mcreatorVersion": 202000322116
+}
