@@ -12,5 +12,7 @@
   "item.earthtojavamobs.wooly_cow": "Uovo di Mucca Lanosa",
   "item.earthtojavamobs.glow_squid": "Glow Squid Spawn Egg",
   "entity.earthtojavamobs.wooly_cow": "Mucca Lanosa",
-  "item.earthtojavamobs.stormy_chicken": "Stormy Chicken Spawn Egg"
+  "item.earthtojavamobs.stormy_chicken": "Stormy Chicken Spawn Egg",
+  "entity.earthtojavamobs.sunset_cow": "Sunset Cow",
+  "item.earthtojavamobs.sunset_cow": "Sunset Cow Spawn Egg"
 }
