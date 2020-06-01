@@ -3,7 +3,6 @@ package net.slexom.earthtojavamobs.entity;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
-import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.IEntityRenderer;
@@ -29,8 +28,6 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.Heightmap;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
@@ -39,6 +36,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
 
 @EarthtojavamobsModElements.ModElement.Tag
 public class GlowSquidEntity extends EarthtojavamobsModElements.ModElement {
@@ -82,13 +80,12 @@ public class GlowSquidEntity extends EarthtojavamobsModElements.ModElement {
     }
 
     @SubscribeEvent
-    @OnlyIn(Dist.CLIENT)
     public void registerModels(ModelRegistryEvent event) {
         RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> {
             SquidRenderer customRender = new SquidRenderer(renderManager) {
                 @Override
                 public ResourceLocation getEntityTexture(SquidEntity entity) {
-                    return new ResourceLocation("earthtojavamobs:textures/texture_glow_squid.png");
+                    return new ResourceLocation("earthtojavamobs:textures/mobs/squid/glow_squid/glow_squid.png");
                 }
             };
             customRender.addLayer(new GlowingLayer<>(customRender));
@@ -186,7 +183,6 @@ public class GlowSquidEntity extends EarthtojavamobsModElements.ModElement {
         }
     }
 
-    @OnlyIn(Dist.CLIENT)
     private static class GlowingLayer<T extends Entity, M extends EntityModel<T>> extends LayerRenderer<T, M> {
         public GlowingLayer(IEntityRenderer<T, M> er) {
             super(er);
@@ -195,7 +191,7 @@ public class GlowSquidEntity extends EarthtojavamobsModElements.ModElement {
         public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, T entitylivingbaseIn, float limbSwing,
                            float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
             IVertexBuilder ivertexbuilder = bufferIn
-                    .getBuffer(RenderType.getEyes(new ResourceLocation("earthtojavamobs:textures/texture_glow_squid_glow_layer.png")));
+                    .getBuffer(RenderType.getEyes(new ResourceLocation("earthtojavamobs:textures/mobs/squid/glow_squid/glow_squid_glow_layer.png")));
             this.getEntityModel().render(matrixStackIn, ivertexbuilder, 15728640, OverlayTexture.NO_OVERLAY, 1, 1, 1, 1);
         }
     }
