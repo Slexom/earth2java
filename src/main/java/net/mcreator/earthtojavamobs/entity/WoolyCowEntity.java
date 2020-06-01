@@ -12,6 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SpawnEggItem;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -22,8 +23,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.Heightmap;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -82,7 +81,6 @@ public class WoolyCowEntity extends EarthtojavamobsModElements.ModElement {
     }
 
     @SubscribeEvent
-    @OnlyIn(Dist.CLIENT)
     public void registerModels(ModelRegistryEvent event) {
         RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> new WoolyCowRenderer(renderManager) {
 
@@ -127,7 +125,6 @@ public class WoolyCowEntity extends EarthtojavamobsModElements.ModElement {
         /**
          * Handler for {@link World#setEntityState}
          */
-        @OnlyIn(Dist.CLIENT)
         public void handleStatusUpdate(byte id) {
             if (id == 10) {
                 this.shearTimer = 40;
@@ -155,20 +152,10 @@ public class WoolyCowEntity extends EarthtojavamobsModElements.ModElement {
             return 1.0F;
         }
 
-//        public void setSheared(boolean sheared) {
-//            nbt.putBoolean("sheared", sheared);
-//        }
-
-        /**
-         * returns true if a sheeps wool has been sheared
-         */
         public boolean getSheared() {
             return (this.dataManager.get(isSheared) & 16) != 0;
         }
 
-        /**
-         * make a sheep sheared if set to true
-         */
         public void setSheared(boolean sheared) {
             byte b0 = this.dataManager.get(isSheared);
             if (sheared) {
@@ -207,6 +194,16 @@ public class WoolyCowEntity extends EarthtojavamobsModElements.ModElement {
         @Override
         public CowEntity createChild(AgeableEntity ageable) {
             return (CustomEntity) entity.create(this.world);
+        }
+
+        public void writeAdditional(CompoundNBT compound) {
+            super.writeAdditional(compound);
+            compound.putBoolean("Sheared", this.getSheared());
+        }
+
+        public void readAdditional(CompoundNBT compound) {
+            super.readAdditional(compound);
+            this.setSheared(compound.getBoolean("Sheared"));
         }
 
     }
