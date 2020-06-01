@@ -25,6 +25,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -52,32 +53,37 @@ public class WoolyCowEntity extends EarthtojavamobsModElements.ModElement {
 
     @Override
     public void init(FMLCommonSetupEvent event) {
-        for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
-            boolean biomeCriteria = false;
-            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("taiga")))
-                biomeCriteria = true;
-            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("taiga_hills")))
-                biomeCriteria = true;
-            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("snowy_taiga")))
-                biomeCriteria = true;
-            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("snowy_taiga_hills")))
-                biomeCriteria = true;
-            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("giant_tree_taiga")))
-                biomeCriteria = true;
-            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("giant_tree_taiga_hills")))
-                biomeCriteria = true;
-            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("taiga_mountains")))
-                biomeCriteria = true;
-            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("giant_spruce_taiga")))
-                biomeCriteria = true;
-            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("giant_spruce_taiga_hills")))
-                biomeCriteria = true;
-            if (!biomeCriteria)
-                continue;
-            biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 5, 1, 3));
-        }
-        EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
-                AnimalEntity::canAnimalSpawn);
+        DeferredWorkQueue.runLater(new Runnable() {
+            @Override
+            public void run() {
+                for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
+                    boolean biomeCriteria = false;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("taiga")))
+                        biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("taiga_hills")))
+                        biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("snowy_taiga")))
+                        biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("snowy_taiga_hills")))
+                        biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("giant_tree_taiga")))
+                        biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("giant_tree_taiga_hills")))
+                        biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("taiga_mountains")))
+                        biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("giant_spruce_taiga")))
+                        biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("giant_spruce_taiga_hills")))
+                        biomeCriteria = true;
+                    if (!biomeCriteria)
+                        continue;
+                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 5, 1, 3));
+                }
+                EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+                        AnimalEntity::canAnimalSpawn);
+            }
+        });
     }
 
     @SubscribeEvent

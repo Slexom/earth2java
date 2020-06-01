@@ -10,16 +10,14 @@ import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.goal.FleeSunGoal;
+import net.minecraft.entity.ai.goal.Goal;
+import net.minecraft.entity.ai.goal.RestrictSunGoal;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.ChickenEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.Items;
 import net.minecraft.item.SpawnEggItem;
-import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -33,6 +31,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -59,18 +58,23 @@ public class CluckshroomEntity extends EarthtojavamobsModElements.ModElement {
 
     @Override
     public void init(FMLCommonSetupEvent event) {
-        for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
-            boolean biomeCriteria = false;
-            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("mushroom_fields")))
-                biomeCriteria = true;
-            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("mushroom_field_shore")))
-                biomeCriteria = true;
-            if (!biomeCriteria)
-                continue;
-            biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 5, 1, 2));
-        }
-        EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
-                AnimalEntity::canAnimalSpawn);
+        DeferredWorkQueue.runLater(new Runnable() {
+            @Override
+            public void run() {
+                for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
+                    boolean biomeCriteria = false;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("mushroom_fields")))
+                        biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("mushroom_field_shore")))
+                        biomeCriteria = true;
+                    if (!biomeCriteria)
+                        continue;
+                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 5, 1, 2));
+                }
+                EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+                        AnimalEntity::canAnimalSpawn);
+            }
+        });
     }
 
     @SubscribeEvent
@@ -81,7 +85,6 @@ public class CluckshroomEntity extends EarthtojavamobsModElements.ModElement {
     }
 
     public static class CustomEntity extends ChickenEntity {
-        private static final Ingredient TEMPTATION_ITEMS = Ingredient.fromItems(Items.WHEAT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.BEETROOT_SEEDS);
 
         public CustomEntity(FMLPlayMessages.SpawnEntity packet, World world) {
             this(entity, world);
@@ -143,7 +146,7 @@ public class CluckshroomEntity extends EarthtojavamobsModElements.ModElement {
             }
 
             public boolean canPlace(IWorldReader world, BlockState target, BlockPos targetPos, BlockState downTarget, BlockPos downTargetPos) {
-                return !downTarget.isAir(world, downTargetPos) && downTarget.isCollisionShapeOpaque(world, downTargetPos) && target.isValidPosition(world, targetPos) ;
+                return !downTarget.isAir(world, downTargetPos) && downTarget.isCollisionShapeOpaque(world, downTargetPos) && target.isValidPosition(world, targetPos);
             }
 
             public void tick() {

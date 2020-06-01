@@ -18,6 +18,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -45,20 +46,25 @@ public class StormyChickenEntity extends EarthtojavamobsModElements.ModElement {
 
     @Override
     public void init(FMLCommonSetupEvent event) {
-        for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
-            boolean biomeCriteria = false;
-            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("plains")))
-                biomeCriteria = true;
-            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("mountains")))
-                biomeCriteria = true;
-            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("river")))
-                biomeCriteria = true;
-            if (!biomeCriteria)
-                continue;
-            biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 10, 1, 4));
-        }
-        EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
-                AnimalEntity::canAnimalSpawn);
+        DeferredWorkQueue.runLater(new Runnable() {
+            @Override
+            public void run() {
+                for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
+                    boolean biomeCriteria = false;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("plains")))
+                        biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("mountains")))
+                        biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("river")))
+                        biomeCriteria = true;
+                    if (!biomeCriteria)
+                        continue;
+                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 10, 1, 4));
+                }
+                EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+                        AnimalEntity::canAnimalSpawn);
+            }
+        });
     }
 
     @SubscribeEvent

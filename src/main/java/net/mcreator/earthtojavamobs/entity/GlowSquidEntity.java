@@ -33,6 +33,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -60,18 +61,24 @@ public class GlowSquidEntity extends EarthtojavamobsModElements.ModElement {
 
     @Override
     public void init(FMLCommonSetupEvent event) {
-        for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
-            boolean biomeCriteria = false;
-            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("ocean")))
-                biomeCriteria = true;
-            if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("swamp")))
-                biomeCriteria = true;
-            if (!biomeCriteria)
-                continue;
-            biome.getSpawns(EntityClassification.WATER_CREATURE).add(new Biome.SpawnListEntry(entity, 10, 2, 6));
-        }
-        EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
-                SquidEntity::func_223365_b);
+        DeferredWorkQueue.runLater(new Runnable() {
+            @Override
+            public void run() {
+                for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
+                    boolean biomeCriteria = false;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("ocean")))
+                        biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("swamp")))
+                        biomeCriteria = true;
+                    if (!biomeCriteria)
+                        continue;
+                    biome.getSpawns(EntityClassification.WATER_CREATURE).add(new Biome.SpawnListEntry(entity, 10, 2, 6));
+                }
+                EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+                        SquidEntity::func_223365_b);
+            }
+        });
+
     }
 
     @SubscribeEvent
