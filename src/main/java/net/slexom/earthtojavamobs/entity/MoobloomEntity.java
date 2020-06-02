@@ -51,7 +51,7 @@ public class MoobloomEntity extends EarthtojavamobsModElements.ModElement {
                 .setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).size(0.9f, 1.4f)).build("moobloom")
                 .setRegistryName("moobloom");
         elements.entities.add(() -> entity);
-        elements.items.add(() -> new SpawnEggItem(entity, -13056, -76, new Item.Properties().group(ItemGroup.MISC)).setRegistryName("moobloom"));
+        elements.items.add(() -> new SpawnEggItem(entity, 0xfaca00, 0xf7edc1, new Item.Properties().group(ItemGroup.MISC)).setRegistryName("moobloom"));
     }
 
     @Override
