@@ -6,7 +6,6 @@ import com.mojang.blaze3d.vertex.IVertexBuilder;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.IEntityRenderer;
-import net.minecraft.client.renderer.entity.SquidRenderer;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.texture.OverlayTexture;
@@ -37,6 +36,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
+import net.slexom.earthtojavamobs.client.renderer.entity.GlowSquidRenderer;
 
 @EarthtojavamobsModElements.ModElement.Tag
 public class GlowSquidEntity extends EarthtojavamobsModElements.ModElement {
@@ -82,18 +82,15 @@ public class GlowSquidEntity extends EarthtojavamobsModElements.ModElement {
     @SubscribeEvent
     public void registerModels(ModelRegistryEvent event) {
         RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> {
-            SquidRenderer customRender = new SquidRenderer(renderManager) {
-                @Override
-                public ResourceLocation getEntityTexture(SquidEntity entity) {
-                    return new ResourceLocation("earthtojavamobs:textures/mobs/squid/glow_squid/glow_squid.png");
-                }
-            };
+            GlowSquidRenderer customRender = new GlowSquidRenderer(renderManager);
             customRender.addLayer(new GlowingLayer<>(customRender));
             return customRender;
         });
     }
 
     public static class CustomEntity extends SquidEntity {
+        private int lifeTicks = 22;
+
         public CustomEntity(FMLPlayMessages.SpawnEntity packet, World world) {
             this(entity, world);
         }
@@ -181,7 +178,9 @@ public class GlowSquidEntity extends EarthtojavamobsModElements.ModElement {
         public boolean isPushedByWater() {
             return false;
         }
+
     }
+
 
     private static class GlowingLayer<T extends Entity, M extends EntityModel<T>> extends LayerRenderer<T, M> {
         public GlowingLayer(IEntityRenderer<T, M> er) {
