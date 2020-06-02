@@ -86,3 +86,14 @@ Please, report any bug you found and tell me if you have any suggestion.
 **Biomes**: Beach
 
 **Notes**: This entity have an animated texture
+
+
+####Squids
+ 
+**Glow Squid**
+
+**AI**: Same AI behavior as normal squid
+
+**Biomes**: Ocean + variants
+
+**Notes**: Has glowing layer
