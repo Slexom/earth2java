@@ -7,6 +7,7 @@ version="1.0.0"
 displayName="Earth2JavaMobs"
 credits="Slexom"
 authors="Slexom"
+logoFile="logo.png"
 
 [[dependencies.earthtojavamobs]]
     modId="minecraft"
