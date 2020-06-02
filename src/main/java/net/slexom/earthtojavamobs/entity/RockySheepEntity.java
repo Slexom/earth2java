@@ -80,7 +80,7 @@ public class RockySheepEntity extends EarthtojavamobsModElements.ModElement {
     }
 
     public static class CustomEntity extends AnimalEntity implements net.minecraftforge.common.IShearable {
-        private static final DataParameter<Byte> isSheared = EntityDataManager.createKey(WoolyCowEntity.CustomEntity.class, DataSerializers.BYTE);
+        private static final DataParameter<Byte> isSheared = EntityDataManager.createKey(RockySheepEntity.CustomEntity.class, DataSerializers.BYTE);
 
         private int sheepTimer;
         private EatGrassGoal eatGrassGoal;
