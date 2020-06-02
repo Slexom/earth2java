@@ -18,5 +18,7 @@
   "entity.earthtojavamobs.ashen_cow": "Ashen Cow",
   "item.earthtojavamobs.ashen_cow": "Ashen Cow Spawn Egg",
   "entity.earthtojavamobs.rocky_sheep": "Rocky Sheep",
-  "item.earthtojavamobs.rocky_sheep": "Rocky Sheep Spawn Egg"
+  "item.earthtojavamobs.rocky_sheep": "Rocky Sheep Spawn Egg",
+  "entity.earthtojavamobs.tropical_slime": "Tropical Slime",
+  "item.earthtojavamobs.tropical_slime": "Tropical Slime Spawn Egg"
 }
