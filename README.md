@@ -1,16 +1,16 @@
 ## Earth2Java - MOBS
-
-###Description
+### Description
 This mod aims to bring mobs from Minecraft Earth to Minecraft Java Edition. Is not intented as a simple retexture of some chicken, but want to brings also AI, loot and special mechanics they have in MCE, if any.
 Most of the mobs have a generic Plains biome in MCE, I set entities in some more specific biome to diversify.
 More mobs will come with future update of this mods. 
 Please, report any bug you found and tell me if you have any suggestion.
 
 ---
-###Mobs currently in the mod
+
+### Mobs currently in the mod
 
 
-####Chickens
+#### Chickens
 **Stormy Chicken**
 
 **AI**: Same AI behavior as normal chicken
@@ -37,7 +37,7 @@ Please, report any bug you found and tell me if you have any suggestion.
 
 ---
 
-####Cows
+#### Cows
 
 **Ashen Cow**
 
@@ -67,7 +67,7 @@ Please, report any bug you found and tell me if you have any suggestion.
 
 ---
 
-####Sheeps
+#### Sheeps
 
 **Rocky Sheep**
 
@@ -77,7 +77,7 @@ Please, report any bug you found and tell me if you have any suggestion.
 
 ---
 
-####Slimes
+#### Slimes
 
 **Tropical Slime**
 
@@ -87,8 +87,9 @@ Please, report any bug you found and tell me if you have any suggestion.
 
 **Notes**: This entity have an animated texture
 
+---
 
-####Squids
+#### Squids
  
 **Glow Squid**
 
