@@ -3,7 +3,7 @@
   "pools": [
     {
       "rolls": {
-        "min": 0,
+        "min": 1,
         "max": 2
       },
       "entries": [
@@ -27,7 +27,12 @@
               ]
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
         {
           "type": "minecraft:item",
           "name": "minecraft:gray_wool",

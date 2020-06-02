@@ -1,7 +1,6 @@
 
 package net.slexom.earthtojavamobs.entity;
 
-import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
 import net.minecraft.client.renderer.entity.ChickenRenderer;
 import net.minecraft.entity.*;
 import net.minecraft.entity.passive.AnimalEntity;
@@ -22,6 +21,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
 
 @EarthtojavamobsModElements.ModElement.Tag
 public class AmberChickenEntity extends EarthtojavamobsModElements.ModElement {
@@ -53,9 +53,19 @@ public class AmberChickenEntity extends EarthtojavamobsModElements.ModElement {
                         biomeCriteria = true;
                     if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("desert_hills")))
                         biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("desert_lakes")))
+                        biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("savanna")))
+                        biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("savanna_plateau")))
+                        biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("shattered_savanna")))
+                        biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("shattered_savanna_plateau")))
+                        biomeCriteria = true;
                     if (!biomeCriteria)
                         continue;
-                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 10, 2, 4));
+                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 12, 1, 4));
                 }
                 EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
                         AnimalEntity::canAnimalSpawn);
@@ -81,7 +91,7 @@ public class AmberChickenEntity extends EarthtojavamobsModElements.ModElement {
 
         public CustomEntity(EntityType<CustomEntity> type, World world) {
             super(type, world);
-            experienceValue = 0;
+            experienceValue = (int) Math.ceil(Math.random() * 3);
             setNoAI(false);
         }
 

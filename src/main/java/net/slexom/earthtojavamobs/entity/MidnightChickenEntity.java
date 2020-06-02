@@ -54,11 +54,15 @@ public class MidnightChickenEntity extends EarthtojavamobsModElements.ModElement
             public void run() {
                 for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
                     boolean biomeCriteria = false;
-                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("plains")))
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("forest")))
+                        biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("dark_forest")))
+                        biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("dark_forest_hills")))
                         biomeCriteria = true;
                     if (!biomeCriteria)
                         continue;
-                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 10, 1, 2));
+                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 11, 1, 4));
                 }
                 EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
                         AnimalEntity::canAnimalSpawn);
@@ -85,7 +89,7 @@ public class MidnightChickenEntity extends EarthtojavamobsModElements.ModElement
 
         public CustomEntity(EntityType<CustomEntity> type, World world) {
             super(type, world);
-            experienceValue = 1;
+            experienceValue = (int) Math.ceil(Math.random() * 3);
             setNoAI(false);
         }
 

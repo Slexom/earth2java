@@ -48,11 +48,15 @@ public class AshenCowEntity extends EarthtojavamobsModElements.ModElement {
             public void run() {
                 for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
                     boolean biomeCriteria = false;
-                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("plains")))
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("mountains")))
+                        biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("wooded_mountains")))
+                        biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("gravelly_mountains")))
                         biomeCriteria = true;
                     if (!biomeCriteria)
                         continue;
-                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 20, 4, 4));
+                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 12, 2, 3));
                 }
                 EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
                         AnimalEntity::canAnimalSpawn);
@@ -77,7 +81,7 @@ public class AshenCowEntity extends EarthtojavamobsModElements.ModElement {
 
         public CustomEntity(EntityType<CustomEntity> type, World world) {
             super(type, world);
-            experienceValue = 0;
+            experienceValue = (int) Math.ceil(Math.random() * 3);
             setNoAI(false);
         }
 

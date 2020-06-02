@@ -63,9 +63,11 @@ public class RockySheepEntity extends EarthtojavamobsModElements.ModElement {
                         biomeCriteria = true;
                     if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("mountains")))
                         biomeCriteria = true;
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("wooded_mountains")))
+                        biomeCriteria = true;
                     if (!biomeCriteria)
                         continue;
-                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 10, 2, 4));
+                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 10, 1, 4));
                 }
                 EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
                         AnimalEntity::canAnimalSpawn);
@@ -91,7 +93,7 @@ public class RockySheepEntity extends EarthtojavamobsModElements.ModElement {
 
         public CustomEntity(EntityType<? extends CustomEntity> type, World world) {
             super(type, world);
-            experienceValue = 0;
+            experienceValue = 2;
             setNoAI(false);
         }
 

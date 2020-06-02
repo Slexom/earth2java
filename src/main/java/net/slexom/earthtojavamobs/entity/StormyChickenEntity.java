@@ -82,7 +82,7 @@ public class StormyChickenEntity extends EarthtojavamobsModElements.ModElement {
 
         public CustomEntity(EntityType<CustomEntity> type, World world) {
             super(type, world);
-            experienceValue = 0;
+            experienceValue = (int) Math.ceil(Math.random() * 3);
             setNoAI(false);
         }
 

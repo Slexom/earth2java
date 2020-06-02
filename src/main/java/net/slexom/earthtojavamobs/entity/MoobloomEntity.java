@@ -1,8 +1,6 @@
 
 package net.slexom.earthtojavamobs.entity;
 
-import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
-import net.slexom.earthtojavamobs.client.renderer.entity.MoobloomRenderer;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -35,6 +33,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
+import net.slexom.earthtojavamobs.client.renderer.entity.MoobloomRenderer;
 
 @EarthtojavamobsModElements.ModElement.Tag
 public class MoobloomEntity extends EarthtojavamobsModElements.ModElement {
@@ -61,11 +61,11 @@ public class MoobloomEntity extends EarthtojavamobsModElements.ModElement {
             public void run() {
                 for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
                     boolean biomeCriteria = false;
-                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("plains")))
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("flower_forest")))
                         biomeCriteria = true;
                     if (!biomeCriteria)
                         continue;
-                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 20, 4, 4));
+                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 9, 2, 3));
                 }
                 EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
                         AnimalEntity::canAnimalSpawn);
@@ -88,7 +88,7 @@ public class MoobloomEntity extends EarthtojavamobsModElements.ModElement {
 
         public CustomEntity(EntityType<CustomEntity> type, World world) {
             super(type, world);
-            experienceValue = 0;
+            experienceValue = (int) Math.ceil(Math.random() * 3);
             setNoAI(false);
         }
 
@@ -160,9 +160,9 @@ public class MoobloomEntity extends EarthtojavamobsModElements.ModElement {
                 int i = MathHelper.floor(this.moobloom.getPosX());
                 int j = MathHelper.floor(this.moobloom.getPosY());
                 int k = MathHelper.floor(this.moobloom.getPosZ());
-                Block dandelion = Blocks.DANDELION;
+                Block flower = Math.random() > 0.8 ? Blocks.SUNFLOWER : Blocks.DANDELION;
                 BlockPos blockPos = new BlockPos(i, j, k);
-                BlockState blockState = dandelion.getDefaultState();
+                BlockState blockState = flower.getDefaultState();
                 BlockPos blockDownPos = blockPos.down();
                 BlockState blockDownState = iworld.getBlockState(blockDownPos);
                 if (canPlace(iworld, blockState, blockPos, blockDownState, blockDownPos) && !net.minecraftforge.event.ForgeEventFactory.onBlockPlace(moobloom, new net.minecraftforge.common.util.BlockSnapshot(iworld, blockPos, blockDownState), net.minecraft.util.Direction.UP)) {

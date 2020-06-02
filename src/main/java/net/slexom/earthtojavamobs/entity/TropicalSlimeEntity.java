@@ -2,22 +2,21 @@
 package net.slexom.earthtojavamobs.entity;
 
 import net.minecraft.client.renderer.entity.SlimeRenderer;
-import net.minecraft.entity.CreatureAttribute;
-import net.minecraft.entity.EntityClassification;
-import net.minecraft.entity.EntitySpawnPlacementRegistry;
-import net.minecraft.entity.EntityType;
+import net.minecraft.entity.*;
 import net.minecraft.entity.monster.SlimeEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvents;
+import net.minecraft.util.*;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
+import net.minecraft.world.Difficulty;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -29,6 +28,8 @@ import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
 import net.slexom.earthtojavamobs.client.renderer.entity.TropicalSlimeRenderer;
+
+import java.util.Random;
 
 @EarthtojavamobsModElements.ModElement.Tag
 public class TropicalSlimeEntity extends EarthtojavamobsModElements.ModElement {
@@ -60,7 +61,7 @@ public class TropicalSlimeEntity extends EarthtojavamobsModElements.ModElement {
                         biomeCriteria = true;
                     if (!biomeCriteria)
                         continue;
-                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 10, 1, 4));
+                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 6, 1, 4));
                 }
                 EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
                         AnimalEntity::canAnimalSpawn);
@@ -80,7 +81,7 @@ public class TropicalSlimeEntity extends EarthtojavamobsModElements.ModElement {
 
         public CustomEntity(EntityType<CustomEntity> type, World world) {
             super(type, world);
-            experienceValue = 0;
+            experienceValue = 3;
             setNoAI(false);
         }
 
@@ -128,6 +129,21 @@ public class TropicalSlimeEntity extends EarthtojavamobsModElements.ModElement {
 
         protected IParticleData getSquishParticle() {
             return ParticleTypes.DRIPPING_WATER;
+        }
+
+        public static boolean func_223366_c(EntityType<SlimeEntity> p_223366_0_, IWorld p_223366_1_, SpawnReason reason, BlockPos p_223366_3_, Random randomIn) {
+            if (p_223366_1_.getWorldInfo().getGenerator().handleSlimeSpawnReduction(randomIn, p_223366_1_) && randomIn.nextInt(4) != 1) {
+                return false;
+            } else {
+                if (p_223366_1_.getDifficulty() != Difficulty.PEACEFUL) {
+                    Biome biome = p_223366_1_.getBiome(p_223366_3_);
+                    if (biome == Biomes.BEACH && p_223366_3_.getY() > 60 && p_223366_3_.getY() < 80 && randomIn.nextFloat() < 0.5F && randomIn.nextFloat() < p_223366_1_.getCurrentMoonPhaseFactor() && p_223366_1_.getLight(p_223366_3_) <= randomIn.nextInt(8)) {
+                        return canSpawnOn(p_223366_0_, p_223366_1_, reason, p_223366_3_, randomIn);
+                    }
+                }
+
+                return false;
+            }
         }
 
     }

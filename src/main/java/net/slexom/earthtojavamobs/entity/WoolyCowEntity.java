@@ -1,8 +1,6 @@
 
 package net.slexom.earthtojavamobs.entity;
 
-import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
-import net.slexom.earthtojavamobs.client.renderer.entity.WoolyCowRenderer;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.EatGrassGoal;
@@ -31,6 +29,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
+import net.slexom.earthtojavamobs.client.renderer.entity.WoolyCowRenderer;
 
 @EarthtojavamobsModElements.ModElement.Tag
 public class WoolyCowEntity extends EarthtojavamobsModElements.ModElement {
@@ -78,7 +78,7 @@ public class WoolyCowEntity extends EarthtojavamobsModElements.ModElement {
                         biomeCriteria = true;
                     if (!biomeCriteria)
                         continue;
-                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 5, 1, 3));
+                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 7, 2, 3));
                 }
                 EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
                         AnimalEntity::canAnimalSpawn);
@@ -105,7 +105,7 @@ public class WoolyCowEntity extends EarthtojavamobsModElements.ModElement {
 
         public CustomEntity(EntityType<CustomEntity> type, World world) {
             super(type, world);
-            experienceValue = 5;
+            experienceValue = (int) Math.ceil(Math.random() * 3);
             setNoAI(false);
         }
 
