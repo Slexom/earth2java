@@ -3,6 +3,7 @@ package net.slexom.earthtojavamobs.entity;
 
 import net.minecraft.client.renderer.entity.SlimeRenderer;
 import net.minecraft.entity.*;
+import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.monster.SlimeEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -42,8 +43,8 @@ public class TropicalSlimeEntity extends EarthtojavamobsModElements.ModElement {
 
     @Override
     public void initElements() {
-        entity = (EntityType.Builder.<CustomEntity>create(CustomEntity::new, EntityClassification.CREATURE).setShouldReceiveVelocityUpdates(true)
-                .setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).size(0.4f, 0.7f)).build("tropical_slime")
+        entity = (EntityType.Builder.<CustomEntity>create(CustomEntity::new, EntityClassification.MONSTER).setShouldReceiveVelocityUpdates(true)
+                .setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).size(1.0f, 1.0f)).build("tropical_slime")
                 .setRegistryName("tropical_slime");
         elements.entities.add(() -> entity);
         elements.items.add(
@@ -61,10 +62,10 @@ public class TropicalSlimeEntity extends EarthtojavamobsModElements.ModElement {
                         biomeCriteria = true;
                     if (!biomeCriteria)
                         continue;
-                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 6, 1, 4));
+                    biome.getSpawns(EntityClassification.MONSTER).add(new Biome.SpawnListEntry(entity, 10, 1, 4));
                 }
                 EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
-                        AnimalEntity::canAnimalSpawn);
+                        MonsterEntity::canMonsterSpawn);
             }
         });
     }
@@ -141,7 +142,6 @@ public class TropicalSlimeEntity extends EarthtojavamobsModElements.ModElement {
                         return canSpawnOn(p_223366_0_, p_223366_1_, reason, p_223366_3_, randomIn);
                     }
                 }
-
                 return false;
             }
         }

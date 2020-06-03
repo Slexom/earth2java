@@ -6,13 +6,13 @@ import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.layers.SlimeGelLayer;
 import net.minecraft.client.renderer.entity.model.SlimeModel;
-import net.minecraft.entity.monster.SlimeEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
+import net.slexom.earthtojavamobs.entity.TropicalSlimeEntity;
 
 import java.text.MessageFormat;
 
-public class TropicalSlimeRenderer extends MobRenderer<SlimeEntity, SlimeModel<SlimeEntity>> {
+public class TropicalSlimeRenderer extends MobRenderer<TropicalSlimeEntity.CustomEntity, SlimeModel<TropicalSlimeEntity.CustomEntity>> {
     private static final int ANIMATION_FRAMES = 48;
     private static final float ANIMATION_TIME = 12.0F;
     private int currentFrame = 0;
@@ -22,13 +22,13 @@ public class TropicalSlimeRenderer extends MobRenderer<SlimeEntity, SlimeModel<S
         this.addLayer(new SlimeGelLayer<>(this));
     }
 
-    public void render(SlimeEntity entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
+    public void render(TropicalSlimeEntity.CustomEntity entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
         this.shadowSize = 0.25F * (float) entityIn.getSlimeSize();
         this.currentFrame = (int) (Math.floor(entityIn.ticksExisted / ANIMATION_TIME) % ANIMATION_FRAMES);
         super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
     }
 
-    protected void preRenderCallback(SlimeEntity entitylivingbaseIn, MatrixStack matrixStackIn, float partialTickTime) {
+    protected void preRenderCallback(TropicalSlimeEntity.CustomEntity entitylivingbaseIn, MatrixStack matrixStackIn, float partialTickTime) {
         float f = 0.999F;
         matrixStackIn.scale(0.999F, 0.999F, 0.999F);
         matrixStackIn.translate(0.0D, (double) 0.001F, 0.0D);
@@ -38,12 +38,8 @@ public class TropicalSlimeRenderer extends MobRenderer<SlimeEntity, SlimeModel<S
         matrixStackIn.scale(f3 * f1, 1.0F / f3 * f1, f3 * f1);
     }
 
-    /**
-     * Returns the location of an entity's texture.
-     */
-    public ResourceLocation getEntityTexture(SlimeEntity entity){
-    String frameLocation = MessageFormat.format("earthtojavamobs:textures/mobs/slime/tropical_slime/tropical_slime_anim_{0}.png", (currentFrame + 1));
-    ResourceLocation textureFrame = new ResourceLocation(frameLocation);
-        return textureFrame;
+    public ResourceLocation getEntityTexture(TropicalSlimeEntity.CustomEntity entity) {
+        String frameLocation = MessageFormat.format("earthtojavamobs:textures/mobs/slime/tropical_slime/tropical_slime_anim_{0}.png", (currentFrame + 1));
+        return new ResourceLocation(frameLocation);
     }
 }
