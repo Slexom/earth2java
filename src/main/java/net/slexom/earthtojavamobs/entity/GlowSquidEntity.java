@@ -38,12 +38,16 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
 import net.slexom.earthtojavamobs.client.renderer.entity.GlowSquidRenderer;
 
+import java.text.MessageFormat;
+
 @EarthtojavamobsModElements.ModElement.Tag
 public class GlowSquidEntity extends EarthtojavamobsModElements.ModElement {
     public static EntityType entity = null;
+    private static final String registryNameEntity = "glow_squid";
+    private static final String registryNameSpawnEgg = MessageFormat.format("{0}_spawn_egg", registryNameEntity);
 
     public GlowSquidEntity(EarthtojavamobsModElements instance) {
-        super(instance, 7);
+        super(instance, 121);
         FMLJavaModLoadingContext.get().getModEventBus().register(this);
     }
 
@@ -51,10 +55,10 @@ public class GlowSquidEntity extends EarthtojavamobsModElements.ModElement {
     public void initElements() {
         entity = (EntityType.Builder.<CustomEntity>create(CustomEntity::new, EntityClassification.WATER_CREATURE)
                 .setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new)
-                .size(0.6f, 1.8f)).build("glow_squid").setRegistryName("glow_squid");
+                .size(0.6f, 1.8f)).build(registryNameEntity).setRegistryName(registryNameEntity);
         elements.entities.add(() -> entity);
         elements.items
-                .add(() -> new SpawnEggItem(entity, -16165290, -8323136, new Item.Properties().group(ItemGroup.MISC)).setRegistryName("glow_squid"));
+                .add(() -> new SpawnEggItem(entity, -16165290, -8323136, new Item.Properties().group(ItemGroup.MISC)).setRegistryName(registryNameSpawnEgg));
     }
 
     @Override
@@ -109,7 +113,6 @@ public class GlowSquidEntity extends EarthtojavamobsModElements.ModElement {
     }
 
     public static class CustomEntity extends SquidEntity {
-        private int lifeTicks = 22;
 
         public CustomEntity(FMLPlayMessages.SpawnEntity packet, World world) {
             this(entity, world);

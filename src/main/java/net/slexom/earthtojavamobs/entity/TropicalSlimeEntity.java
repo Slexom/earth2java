@@ -30,25 +30,28 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
 import net.slexom.earthtojavamobs.client.renderer.entity.TropicalSlimeRenderer;
 
+import java.text.MessageFormat;
 import java.util.Random;
 
 @EarthtojavamobsModElements.ModElement.Tag
 public class TropicalSlimeEntity extends EarthtojavamobsModElements.ModElement {
     public static EntityType entity = null;
+    private static final String registryNameEntity = "tropical_slime";
+    private static final String registryNameSpawnEgg = MessageFormat.format("{0}_spawn_egg", registryNameEntity);
 
     public TropicalSlimeEntity(EarthtojavamobsModElements instance) {
-        super(instance, 12);
+        super(instance, 181);
         FMLJavaModLoadingContext.get().getModEventBus().register(this);
     }
 
     @Override
     public void initElements() {
         entity = (EntityType.Builder.<CustomEntity>create(CustomEntity::new, EntityClassification.MONSTER).setShouldReceiveVelocityUpdates(true)
-                .setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).size(1.0f, 1.0f)).build("tropical_slime")
-                .setRegistryName("tropical_slime");
+                .setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).size(1.0f, 1.0f)).build(registryNameEntity)
+                .setRegistryName(registryNameEntity);
         elements.entities.add(() -> entity);
         elements.items.add(
-                () -> new SpawnEggItem(entity, 0x0e496e, 0x8ed3ff, new Item.Properties().group(ItemGroup.MISC)).setRegistryName("tropical_slime"));
+                () -> new SpawnEggItem(entity, 0x0e496e, 0x8ed3ff, new Item.Properties().group(ItemGroup.MISC)).setRegistryName(registryNameSpawnEgg));
     }
 
     @Override

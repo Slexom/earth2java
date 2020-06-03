@@ -32,23 +32,27 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
 import net.slexom.earthtojavamobs.client.renderer.entity.WoolyCowRenderer;
 
+import java.text.MessageFormat;
+
 @EarthtojavamobsModElements.ModElement.Tag
 public class WoolyCowEntity extends EarthtojavamobsModElements.ModElement {
     public static EntityType entity = null;
+    private static final String registryNameEntity = "wooly_cow";
+    private static final String registryNameSpawnEgg = MessageFormat.format("{0}_spawn_egg", registryNameEntity);
 
     public WoolyCowEntity(EarthtojavamobsModElements instance) {
-        super(instance, 2);
+        super(instance, 23);
         FMLJavaModLoadingContext.get().getModEventBus().register(this);
     }
 
     @Override
     public void initElements() {
         entity = (EntityType.Builder.<CustomEntity>create(CustomEntity::new, EntityClassification.CREATURE).setShouldReceiveVelocityUpdates(true)
-                .setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).size(0.9f, 1.4f)).build("wooly_cow")
-                .setRegistryName("wooly_cow");
+                .setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).size(0.9f, 1.4f)).build(registryNameEntity)
+                .setRegistryName(registryNameEntity);
         elements.entities.add(() -> entity);
         elements.items
-                .add(() -> new SpawnEggItem(entity, -3394816, -26317, new Item.Properties().group(ItemGroup.MISC)).setRegistryName("wooly_cow"));
+                .add(() -> new SpawnEggItem(entity, -3394816, -26317, new Item.Properties().group(ItemGroup.MISC)).setRegistryName(registryNameSpawnEgg));
     }
 
     @Override

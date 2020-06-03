@@ -23,23 +23,27 @@ import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
 
+import java.text.MessageFormat;
+
 @EarthtojavamobsModElements.ModElement.Tag
 public class StormyChickenEntity extends EarthtojavamobsModElements.ModElement {
     public static EntityType entity = null;
+    private static final String registryNameEntity = "stormy_chicken";
+    private static final String registryNameSpawnEgg = MessageFormat.format("{0}_spawn_egg", registryNameEntity);
 
     public StormyChickenEntity(EarthtojavamobsModElements instance) {
-        super(instance, 12);
+        super(instance, 11);
         FMLJavaModLoadingContext.get().getModEventBus().register(this);
     }
 
     @Override
     public void initElements() {
         entity = (EntityType.Builder.<CustomEntity>create(CustomEntity::new, EntityClassification.CREATURE).setShouldReceiveVelocityUpdates(true)
-                .setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).size(0.4f, 0.7f)).build("stormy_chicken")
-                .setRegistryName("stormy_chicken");
+                .setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).size(0.4f, 0.7f)).build(registryNameEntity)
+                .setRegistryName(registryNameEntity);
         elements.entities.add(() -> entity);
         elements.items.add(
-                () -> new SpawnEggItem(entity, -12704475, -4144960, new Item.Properties().group(ItemGroup.MISC)).setRegistryName("stormy_chicken"));
+                () -> new SpawnEggItem(entity, -12704475, -4144960, new Item.Properties().group(ItemGroup.MISC)).setRegistryName(registryNameSpawnEgg));
     }
 
     @Override

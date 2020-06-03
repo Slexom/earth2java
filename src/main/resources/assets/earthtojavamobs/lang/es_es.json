@@ -1,0 +1,35 @@
+{
+  "entity.earthtojavamobs.stormy_chicken": "Gallina tormentosa",
+  "item.earthtojavamobs.stormy_chicken_spawn_egg": "Generar gallina tormentosa",
+  "entity.earthtojavamobs.midnight_chicken": "Gallina de medianoche",
+  "item.earthtojavamobs.midnight_chicken_spawn_egg": "Generar gallina de medianoche",
+  "entity.earthtojavamobs.amber_chicken": "Gallina Ámbar",
+  "item.earthtojavamobs.amber_chicken_spawn_egg": "Generar gallina ámbar",
+  "entity.earthtojavamobs.cluckshroom": "Champillina",
+  "item.earthtojavamobs.cluckshroom_spawn_egg": "Generar champillina",
+
+  "entity.earthtojavamobs.sunset_cow": "Vaca del ocaso",
+  "item.earthtojavamobs.sunset_cow_spawn_egg": "Generar vaca del ocaso",
+  "entity.earthtojavamobs.ashen_cow": "Vaca cenicienta",
+  "item.earthtojavamobs.ashen_cow_spawn_egg": "Generar vaca cenicienta",
+  "entity.earthtojavamobs.wooly_cow": "Vaca lanuda",
+  "item.earthtojavamobs.wooly_cow_spawn_egg": "Generar vaca lanuda",
+  "entity.earthtojavamobs.moobloom": "Vacaflor",
+  "item.earthtojavamobs.moobloom_spawn_egg": "Generar vacaflor",
+
+  "entity.earthtojavamobs.spotted_pig": "Cerdo moteado",
+  "item.earthtojavamobs.spotted_pig_spawn_egg": "Generar cerdo moteado",
+  "entity.earthtojavamobs.piebald_pig": "Cerdo veteado",
+  "item.earthtojavamobs.piebald_pig_spawn_egg": "Generar cerdo veteado",
+  "entity.earthtojavamobs.pale_pig": "Cerdo pálido",
+  "item.earthtojavamobs.pale_pig_spawn_egg": "Generar cerdo pálido",
+
+  "entity.earthtojavamobs.rocky_sheep": "Oveja rocosa",
+  "item.earthtojavamobs.rocky_sheep_spawn_egg": "Generar ojeva rocosa",
+
+  "entity.earthtojavamobs.glow_squid": "Calamar brillante",
+  "item.earthtojavamobs.glow_squid_spawn_egg": "Generar calamar brillante",
+
+  "entity.earthtojavamobs.tropical_slime": "Limo tropical",
+  "item.earthtojavamobs.tropical_slime_spawn_egg": "Generar limo tropical"
+}

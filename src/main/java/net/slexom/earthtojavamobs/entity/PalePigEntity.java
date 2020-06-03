@@ -1,10 +1,10 @@
-
 package net.slexom.earthtojavamobs.entity;
 
-import net.minecraft.client.renderer.entity.ChickenRenderer;
+import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.renderer.entity.model.PigModel;
 import net.minecraft.entity.*;
 import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.entity.passive.ChickenEntity;
+import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.SpawnEggItem;
@@ -13,6 +13,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.Heightmap;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
@@ -25,25 +27,25 @@ import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
 
 import java.text.MessageFormat;
 
+
 @EarthtojavamobsModElements.ModElement.Tag
-public class AmberChickenEntity extends EarthtojavamobsModElements.ModElement {
+public class PalePigEntity extends EarthtojavamobsModElements.ModElement {
     public static EntityType entity = null;
-    private static final String registryNameEntity = "amber_chicken";
+    private static final String registryNameEntity = "pale_pig";
     private static final String registryNameSpawnEgg = MessageFormat.format("{0}_spawn_egg", registryNameEntity);
 
-    public AmberChickenEntity(EarthtojavamobsModElements instance) {
-        super(instance, 13);
+    public PalePigEntity(EarthtojavamobsModElements instance) {
+        super(instance, 43);
         FMLJavaModLoadingContext.get().getModEventBus().register(this);
     }
 
     @Override
     public void initElements() {
         entity = (EntityType.Builder.<CustomEntity>create(CustomEntity::new, EntityClassification.CREATURE).setShouldReceiveVelocityUpdates(true)
-                .setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).size(0.4f, 0.7f)).build(registryNameEntity)
+                .setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).size(0.9f, 0.9f)).build(registryNameEntity)
                 .setRegistryName(registryNameEntity);
         elements.entities.add(() -> entity);
-        elements.items.add(
-                () -> new SpawnEggItem(entity, -3066087, -1865173, new Item.Properties().group(ItemGroup.MISC)).setRegistryName(registryNameSpawnEgg));
+        elements.items.add(() -> new SpawnEggItem(entity, 0xd3a0a0, 0xead3d3, new Item.Properties().group(ItemGroup.MISC)).setRegistryName(registryNameSpawnEgg));
     }
 
     @Override
@@ -53,49 +55,39 @@ public class AmberChickenEntity extends EarthtojavamobsModElements.ModElement {
             public void run() {
                 for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
                     boolean biomeCriteria = false;
-                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("desert")))
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("snowy_tundra")))
                         biomeCriteria = true;
-                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("desert_hills")))
-                        biomeCriteria = true;
-                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("desert_lakes")))
-                        biomeCriteria = true;
-                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("savanna")))
-                        biomeCriteria = true;
-                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("savanna_plateau")))
-                        biomeCriteria = true;
-                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("shattered_savanna")))
-                        biomeCriteria = true;
-                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("shattered_savanna_plateau")))
+                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("snowy_mountains")))
                         biomeCriteria = true;
                     if (!biomeCriteria)
                         continue;
-                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 12, 1, 4));
+                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 20, 4, 4));
                 }
                 EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
                         AnimalEntity::canAnimalSpawn);
             }
         });
-
     }
 
     @SubscribeEvent
+    @OnlyIn(Dist.CLIENT)
     public void registerModels(ModelRegistryEvent event) {
-        RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> new ChickenRenderer(renderManager) {
+        RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> new MobRenderer(renderManager, new PigModel(), 0.5f) {
             @Override
-            public ResourceLocation getEntityTexture(ChickenEntity entity) {
-                return new ResourceLocation("earthtojavamobs:textures/mobs/chicken/amber_chicken/amber_chicken.png");
+            public ResourceLocation getEntityTexture(Entity entity) {
+                return new ResourceLocation("earthtojavamobs:textures/mobs/pig/pale_pig/pale_pig.png");
             }
         });
     }
 
-    public static class CustomEntity extends ChickenEntity {
+    public static class CustomEntity extends PigEntity {
         public CustomEntity(FMLPlayMessages.SpawnEntity packet, World world) {
             this(entity, world);
         }
 
         public CustomEntity(EntityType<CustomEntity> type, World world) {
             super(type, world);
-            experienceValue = (int) Math.ceil(Math.random() * 3);
+            experienceValue = 0;
             setNoAI(false);
         }
 
@@ -114,17 +106,12 @@ public class AmberChickenEntity extends EarthtojavamobsModElements.ModElement {
         }
 
         @Override
-        protected float getSoundVolume() {
-            return 1.0F;
-        }
-
-        @Override
         protected void registerAttributes() {
             super.registerAttributes();
         }
 
         @Override
-        public ChickenEntity createChild(AgeableEntity ageable) {
+        public PigEntity createChild(AgeableEntity ageable) {
             return (CustomEntity) entity.create(this.world);
         }
     }

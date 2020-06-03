@@ -1,0 +1,35 @@
+{
+  "entity.earthtojavamobs.stormy_chicken": "Poulet orageux",
+  "item.earthtojavamobs.stormy_chicken_spawn_egg": "Oeuf d'apparition de poulet orageux",
+  "entity.earthtojavamobs.midnight_chicken": "Poulet de minuit",
+  "item.earthtojavamobs.midnight_chicken_spawn_egg": "Oeuf d'apparition de poulet de minuit",
+  "entity.earthtojavamobs.amber_chicken": "Poulet ambrè",
+  "item.earthtojavamobs.amber_chicken_spawn_egg": "Oeuf d'apparition de poulet ambrè",
+  "entity.earthtojavamobs.cluckshroom": "Champipoule",
+  "item.earthtojavamobs.cluckshroom_spawn_egg": "Oeuf d'apparition de champipoule",
+
+  "entity.earthtojavamobs.sunset_cow": "Vache du crépuscule",
+  "item.earthtojavamobs.sunset_cow_spawn_egg": "Oeuf d'apparition de vache du crépuscule",
+  "entity.earthtojavamobs.ashen_cow": "Vache cendrée",
+  "item.earthtojavamobs.ashen_cow_spawn_egg": "Oeuf d'apparition de vache cendrée",
+  "entity.earthtojavamobs.wooly_cow": "Vache laineuse",
+  "item.earthtojavamobs.wooly_cow_spawn_egg": "Oeuf d'apparition de vache laineuse",
+  "entity.earthtojavamobs.moobloom": "Moobloom",
+  "item.earthtojavamobs.moobloom_spawn_egg": "Oeuf d'apparition de moobloom",
+
+  "entity.earthtojavamobs.spotted_pig": "Cochon tachetè",
+  "item.earthtojavamobs.spotted_pig_spawn_egg": "Oeuf d'apparition de cochon tachetè",
+  "entity.earthtojavamobs.piebald_pig": "Cochon pie",
+  "item.earthtojavamobs.piebald_pig_spawn_egg": "Oeuf d'apparition de cochon pie",
+  "entity.earthtojavamobs.pale_pig": "Ccochon pâle",
+  "item.earthtojavamobs.pale_pig_spawn_egg": "Oeuf d'apparition de cochon pâle",
+
+  "entity.earthtojavamobs.rocky_sheep": "Mouton rocheux",
+  "item.earthtojavamobs.rocky_sheep_spawn_egg": "Oeuf d'apparition de mouton rocheux",
+
+  "entity.earthtojavamobs.glow_squid": "Pieuvre luisante",
+  "item.earthtojavamobs.glow_squid_spawn_egg": "Oeuf d'apparition de pieuvre luisante",
+
+  "entity.earthtojavamobs.tropical_slime": "Slime tropical",
+  "item.earthtojavamobs.tropical_slime_spawn_egg": "Oeuf d'apparition de slime tropical"
+}

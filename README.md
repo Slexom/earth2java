@@ -67,6 +67,28 @@ Please, report any bug you found and tell me if you have any suggestion.
 
 ---
 
+#### Pigs
+
+**Spotted Pig**
+
+**AI**: Same AI behavior as normal pig
+
+**Biomes**: Swamp + variants
+
+**Piebald Pig**
+
+**AI**: Same AI behavior as normal pig
+
+**Biomes**: Plains, Wooded Hills
+
+**Pale Pig**
+
+**AI**: Same AI behavior as normal pig
+
+**Biomes**: Snowy Tundra, Snowy Mountains
+
+---
+
 #### Sheeps
 
 **Rocky Sheep**
