@@ -11,12 +11,13 @@ import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.client.renderer.entity.model.PigModel;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.util.ResourceLocation;
+import net.slexom.earthtojavamobs.client.renderer.entity.model.MuddyPigModel;
 import net.slexom.earthtojavamobs.entity.MuddyPigEntity;
 
-public class MuddyPigRenderer extends MobRenderer<MuddyPigEntity.CustomEntity, PigModel<MuddyPigEntity.CustomEntity>> {
+public class MuddyPigRenderer extends MobRenderer<MuddyPigEntity.CustomEntity, MuddyPigModel<MuddyPigEntity.CustomEntity>> {
 
     public MuddyPigRenderer(EntityRendererManager renderManagerIn) {
-        super(renderManagerIn, new PigModel<>(), 0.7F);
+        super(renderManagerIn, new MuddyPigModel<>(), 0.7F);
         this.addLayer(new SaddleLayer(this));
     }
 
@@ -26,11 +27,11 @@ public class MuddyPigRenderer extends MobRenderer<MuddyPigEntity.CustomEntity, P
         return entity.getInMud() ? texture : textureDried;
     }
 
-    public static class SaddleLayer extends LayerRenderer<MuddyPigEntity.CustomEntity, PigModel<MuddyPigEntity.CustomEntity>> {
+    public static class SaddleLayer extends LayerRenderer<MuddyPigEntity.CustomEntity, MuddyPigModel<MuddyPigEntity.CustomEntity>> {
         private final ResourceLocation TEXTURE = new ResourceLocation("textures/entity/pig/pig_saddle.png");
         private final PigModel<MuddyPigEntity.CustomEntity> pigModel = new PigModel<>(0.5F);
 
-        public SaddleLayer(IEntityRenderer<MuddyPigEntity.CustomEntity, PigModel<MuddyPigEntity.CustomEntity>> p_i50927_1_) {
+        public SaddleLayer(IEntityRenderer<MuddyPigEntity.CustomEntity, MuddyPigModel<MuddyPigEntity.CustomEntity>> p_i50927_1_) {
             super(p_i50927_1_);
         }
 

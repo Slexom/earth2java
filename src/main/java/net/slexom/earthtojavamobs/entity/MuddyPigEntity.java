@@ -89,6 +89,7 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
     public static class CustomEntity extends PigEntity {
         private static final DataParameter<Boolean> isInMud = EntityDataManager.createKey(CustomEntity.class, DataSerializers.BOOLEAN);
         private static final Ingredient TEMPTATION_ITEMS = Ingredient.fromItems(Items.CARROT, Items.POTATO, Items.BEETROOT);
+        private double outOfMud = 0.0D;
 
         public CustomEntity(FMLPlayMessages.SpawnEntity packet, World world) {
             this(entity, world);
@@ -130,7 +131,18 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
             int k = MathHelper.floor(this.getPosZ());
             BlockPos blockPos = new BlockPos(i, j, k);
             boolean condition = this.world.getFluidState(blockPos).getBlockState().getBlock().getRegistryName().equals(new ResourceLocation("earthtojavamobs:mud_fluid"));
-            setInMud(condition);
+
+            if (condition) {
+                setInMud(true);
+            } else {
+                if (getInMud()) {
+                    outOfMud++;
+                    if (outOfMud > 60) {
+                        setInMud(false);
+                        outOfMud = 0.0D;
+                    }
+                }
+            }
         }
 
         @Override
