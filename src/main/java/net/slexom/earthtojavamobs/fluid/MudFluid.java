@@ -23,8 +23,6 @@ import net.minecraft.world.gen.feature.BlockStateFeatureConfig;
 import net.minecraft.world.gen.feature.LakesFeature;
 import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.Placement;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidAttributes;
@@ -61,11 +59,11 @@ public class MudFluid extends EarthtojavamobsModElements.ModElement {
     }
 
     @Override
-    @OnlyIn(Dist.CLIENT)
     public void clientLoad(FMLClientSetupEvent event) {
         RenderTypeLookup.setRenderLayer(still, RenderType.getTranslucent());
         RenderTypeLookup.setRenderLayer(flowing, RenderType.getTranslucent());
     }
+
 
     @Override
     public void initElements() {
@@ -73,17 +71,17 @@ public class MudFluid extends EarthtojavamobsModElements.ModElement {
                 () -> still,
                 () -> flowing,
                 FluidAttributes.builder(
-                        new ResourceLocation("earthtojavamobs", "/fluids/water_still"),
-                        new ResourceLocation("earthtojavamobs", "/fluids/water_flow")
+                        new ResourceLocation("earthtojavamobs", "/fluids/mud_still"),
+                        new ResourceLocation("earthtojavamobs", "/fluids/mud_flow")
                 )
                         .luminosity(0)
-                        .density(1000)
-                        .viscosity(2000)
-                //.color(0x2e1006)
+                        .density(1800)
+                        .viscosity(20000)
+                        .overlay(new ResourceLocation("earthtojavamobs", "/fluids/mud_overlay.png"))
         )
                 .bucket(() -> bucket)
                 .block(() -> block);
-        still = (FlowingFluid) new ForgeFlowingFluid.Source(fluidproperties).setRegistryName("mud_fluid");
+        still = (FlowingFluid) new MudFluidSource(fluidproperties).setRegistryName("mud_fluid");
         flowing = (FlowingFluid) new ForgeFlowingFluid.Flowing(fluidproperties).setRegistryName("mud_fluid_flowing");
         elements.blocks.add(() -> new FlowingFluidBlock(still, Block.Properties.create(Material.WATER)) {
         }.setRegistryName("mud_fluid"));
@@ -114,4 +112,6 @@ public class MudFluid extends EarthtojavamobsModElements.ModElement {
             }
         });
     }
+
+
 }
