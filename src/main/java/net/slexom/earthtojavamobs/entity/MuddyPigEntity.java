@@ -1,9 +1,5 @@
 package net.slexom.earthtojavamobs.entity;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.entity.model.PigModel;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.passive.AnimalEntity;
@@ -15,7 +11,6 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
@@ -24,8 +19,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.Heightmap;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
@@ -38,7 +31,6 @@ import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
 import net.slexom.earthtojavamobs.client.renderer.entity.MuddyPigRenderer;
 
 import java.text.MessageFormat;
-import java.util.Objects;
 
 
 @EarthtojavamobsModElements.ModElement.Tag
@@ -48,7 +40,7 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
     private static final String registryNameSpawnEgg = MessageFormat.format("{0}_spawn_egg", registryNameEntity);
 
     public MuddyPigEntity(EarthtojavamobsModElements instance) {
-        super(instance, 43);
+        super(instance, 44);
         FMLJavaModLoadingContext.get().getModEventBus().register(this);
     }
 
@@ -58,7 +50,7 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
                 .setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).size(0.9f, 0.9f)).build(registryNameEntity)
                 .setRegistryName(registryNameEntity);
         elements.entities.add(() -> entity);
-        elements.items.add(() -> new SpawnEggItem(entity, 0xd3a0a0, 0xead3d3, new Item.Properties().group(ItemGroup.MISC)).setRegistryName(registryNameSpawnEgg));
+        elements.items.add(() -> new SpawnEggItem(entity, 0xe6918b, 0x573621, new Item.Properties().group(ItemGroup.MISC)).setRegistryName(registryNameSpawnEgg));
     }
 
     @Override
@@ -81,7 +73,6 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
     }
 
     @SubscribeEvent
-    @OnlyIn(Dist.CLIENT)
     public void registerModels(ModelRegistryEvent event) {
         RenderingRegistry.registerEntityRenderingHandler(entity, MuddyPigRenderer::new);
     }
@@ -97,7 +88,7 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
 
         public CustomEntity(EntityType<CustomEntity> type, World world) {
             super(type, world);
-            experienceValue = 0;
+            experienceValue = (int) Math.ceil(Math.random() * 3);
             setNoAI(false);
         }
 
@@ -225,7 +216,6 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
                 double posZ = this.muddy_pig.getPosZ();
                 for (BlockPos blockpos1 : BlockPos.getAllInBoxMutable(MathHelper.floor(posX - 4.0D), MathHelper.floor(posY - 1.0D), MathHelper.floor(posZ - 4.0D), MathHelper.floor(posX + 4.0D), MathHelper.floor(posY), MathHelper.floor(posZ + 4.0D))) {
                     boolean condition = this.muddy_pig.world.getFluidState(blockpos1).getBlockState().getBlock().getRegistryName().equals(new ResourceLocation("earthtojavamobs:mud_fluid"));
-                    System.out.println(condition);
                     if (condition) {
                         blockpos = blockpos1;
                         break;

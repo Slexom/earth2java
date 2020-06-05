@@ -47,7 +47,7 @@ public class TropicalSlimeEntity extends EarthtojavamobsModElements.ModElement {
     @Override
     public void initElements() {
         entity = (EntityType.Builder.<CustomEntity>create(CustomEntity::new, EntityClassification.MONSTER).setShouldReceiveVelocityUpdates(true)
-                .setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).size(1.0f, 1.0f)).build(registryNameEntity)
+                .setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).size(0.51f, 0.51f)).build(registryNameEntity)
                 .setRegistryName(registryNameEntity);
         elements.entities.add(() -> entity);
         elements.items.add(

@@ -15,7 +15,7 @@ public class MuddyPigModel<T extends Entity> extends QuadrupedModel<T> {
         float mudBoxY = -5.0F;
         float mudBoxZ = -7.0F;
         this.headModel.setTextureOffset(24, 0).addBox(mudBoxX, mudBoxY, mudBoxZ, 4.0F, 1.0F, 4.0F, scale);
-        this.headModel.setTextureOffset(36, 0).addBox(mudBoxX, mudBoxY - 6.0F, mudBoxZ + 2.0F, 4.0F, 6.0F, 0.0F, scale);
+        this.headModel.setTextureOffset(40, 0).addBox(mudBoxX, mudBoxY - 6.0F, mudBoxZ + 2.0F, 4.0F, 6.0F, 1.0F, scale);
         this.headModel.setTextureOffset(16, 16).addBox(-2.0F, 0.0F, -9.0F, 4.0F, 3.0F, 1.0F, scale);
     }
 }

@@ -49,7 +49,7 @@ public class RockySheepEntity extends EarthtojavamobsModElements.ModElement {
     @Override
     public void initElements() {
         entity = (EntityType.Builder.<CustomEntity>create(CustomEntity::new, EntityClassification.CREATURE).setShouldReceiveVelocityUpdates(true)
-                .setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).size(0.4f, 0.7f)).build(registryNameEntity)
+                .setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).size(0.9f, 1.3f)).build(registryNameEntity)
                 .setRegistryName(registryNameEntity);
         elements.entities.add(() -> entity);
         elements.items.add(

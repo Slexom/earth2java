@@ -60,8 +60,8 @@ public class MudFluid extends EarthtojavamobsModElements.ModElement {
 
     @Override
     public void clientLoad(FMLClientSetupEvent event) {
-        RenderTypeLookup.setRenderLayer(still, RenderType.getTranslucent());
-        RenderTypeLookup.setRenderLayer(flowing, RenderType.getTranslucent());
+        RenderTypeLookup.setRenderLayer(still, RenderType.getSolid());
+        RenderTypeLookup.setRenderLayer(flowing, RenderType.getSolid());
     }
 
 
@@ -76,9 +76,9 @@ public class MudFluid extends EarthtojavamobsModElements.ModElement {
                 )
                         .luminosity(0)
                         .density(1800)
-                        .viscosity(20000)
-                        .overlay(new ResourceLocation("earthtojavamobs", "/fluids/mud_overlay.png"))
+                        .overlay(new ResourceLocation("earthtojavamobs", "/fluids/mud_overlay"))
         )
+                .tickRate(20)
                 .bucket(() -> bucket)
                 .block(() -> block);
         still = (FlowingFluid) new MudFluidSource(fluidproperties).setRegistryName("mud_fluid");
