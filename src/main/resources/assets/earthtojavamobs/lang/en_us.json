@@ -7,7 +7,6 @@
   "item.earthtojavamobs.amber_chicken_spawn_egg": "Amber Chicken Spawn Egg",
   "entity.earthtojavamobs.cluckshroom": "Cluckshroom",
   "item.earthtojavamobs.cluckshroom_spawn_egg": "Cluckshroom Spawn Egg",
-
   "entity.earthtojavamobs.sunset_cow": "Sunset Cow",
   "item.earthtojavamobs.sunset_cow_spawn_egg": "Sunset Cow Spawn Egg",
   "entity.earthtojavamobs.ashen_cow": "Ashen Cow",
@@ -16,20 +15,21 @@
   "item.earthtojavamobs.wooly_cow_spawn_egg": "Wooly Cow Spawn Egg",
   "entity.earthtojavamobs.moobloom": "Moobloom",
   "item.earthtojavamobs.moobloom_spawn_egg": "Moobloom Spawn Egg",
-
   "entity.earthtojavamobs.rocky_sheep": "Rocky Sheep",
   "item.earthtojavamobs.rocky_sheep_spawn_egg": "Rocky Sheep Spawn Egg",
-
+  "entity.earthtojavamobs.horned_sheep": "Horned Sheep",
+  "item.earthtojavamobs.horned_sheep_spawn_egg": "Horned Sheep Spawn Egg",
   "entity.earthtojavamobs.spotted_pig": "Spotted Pig",
   "item.earthtojavamobs.spotted_pig_spawn_egg": "Spotted Pig Spawn Egg",
   "entity.earthtojavamobs.piebald_pig": "Piebald Pig",
   "item.earthtojavamobs.piebald_pig_spawn_egg": "Piebald Pig Spawn Egg",
   "entity.earthtojavamobs.pale_pig": "Pale Pig",
   "item.earthtojavamobs.pale_pig_spawn_egg": "Pale Pig Spawn Egg",
-
+  "entity.earthtojavamobs.muddy_pig": "Muddy Pig",
+  "item.earthtojavamobs.muddy_pig_spawn_egg": "Muddy Pig Spawn Egg",
   "entity.earthtojavamobs.glow_squid": "Glow Squid",
   "item.earthtojavamobs.glow_squid_spawn_egg": "Glow Squid Spawn Egg",
-
   "entity.earthtojavamobs.tropical_slime": "Tropical Slime",
-  "item.earthtojavamobs.tropical_slime_spawn_egg": "Tropical Slime Spawn Egg"
+  "item.earthtojavamobs.tropical_slime_spawn_egg": "Tropical Slime Spawn Egg",
+  "item.earthtojavamobs.mud_fluid_bucket": "Bucket of Mud"
 }

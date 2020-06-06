@@ -7,6 +7,7 @@ import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.Items;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
@@ -20,6 +21,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.Heightmap;
+import net.minecraft.world.storage.loot.LootTable;
+import net.minecraft.world.storage.loot.LootTables;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
@@ -93,7 +96,8 @@ public class HornedSheepEntity extends EarthtojavamobsModElements.ModElement {
 
         public CustomEntity(EntityType<? extends CustomEntity> type, World world) {
             super(type, world);
-            experienceValue = (int) Math.ceil(Math.random() * 3);;
+            experienceValue = (int) Math.ceil(Math.random() * 3);
+            ;
             setNoAI(false);
         }
 
@@ -106,10 +110,10 @@ public class HornedSheepEntity extends EarthtojavamobsModElements.ModElement {
         protected void registerGoals() {
             this.eatGrassGoal = new EatGrassGoal(this);
             this.goalSelector.addGoal(0, new CustomEntity.ChargeGoal(this, (double) 1.4F, true));
+            this.goalSelector.addGoal(1, new SwimGoal(this));
             this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
-            this.goalSelector.addGoal(3, new TemptGoal(this, 1.25D, Ingredient.fromTag(ItemTags.FLOWERS), false));
+            this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, Ingredient.fromItems(Items.WHEAT), false));
             this.goalSelector.addGoal(5, new FollowParentGoal(this, 1.25D));
-            this.goalSelector.addGoal(9, new SwimGoal(this));
             this.goalSelector.addGoal(5, this.eatGrassGoal);
             this.goalSelector.addGoal(6, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
             this.goalSelector.addGoal(7, new LookAtGoal(this, PlayerEntity.class, 6.0F));
@@ -155,7 +159,6 @@ public class HornedSheepEntity extends EarthtojavamobsModElements.ModElement {
             if (livingBase != null) {
                 this.lastHurtBy = livingBase.getUniqueID();
             }
-
         }
 
         protected void updateAITasks() {
@@ -190,18 +193,18 @@ public class HornedSheepEntity extends EarthtojavamobsModElements.ModElement {
         }
 
         private boolean isNearTarget() {
-            return this.getBeeFlag();
+            return this.getSheepFlag();
         }
 
         private void setNearTarget(boolean p_226452_1_) {
-            this.setBeeFlag(p_226452_1_);
+            this.setSheepFlag(p_226452_1_);
         }
 
         private boolean isTooFar(BlockPos pos) {
             return !this.isWithinDistance(pos);
         }
 
-        private void setBeeFlag(boolean p_226404_2_) {
+        private void setSheepFlag(boolean p_226404_2_) {
             if (p_226404_2_) {
                 this.dataManager.set(DATA_FLAGS_ID, (byte) (this.dataManager.get(DATA_FLAGS_ID) | 2));
             } else {
@@ -209,7 +212,7 @@ public class HornedSheepEntity extends EarthtojavamobsModElements.ModElement {
             }
         }
 
-        private boolean getBeeFlag() {
+        private boolean getSheepFlag() {
             return (this.dataManager.get(DATA_FLAGS_ID) & 2) != 0;
         }
 
@@ -218,6 +221,49 @@ public class HornedSheepEntity extends EarthtojavamobsModElements.ModElement {
             this.getAttributes().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2.0D);
             this.getAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(48.0D);
         }
+
+        public ResourceLocation getLootTable() {
+            if (this.getSheared()) {
+                return this.getType().getLootTable();
+            } else {
+                switch (this.getFleeceColor()) {
+                    case WHITE:
+                    default:
+                        return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/white");
+                    case ORANGE:
+                        return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/orange");
+                    case MAGENTA:
+                        return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/magenta");
+                    case LIGHT_BLUE:
+                        return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/light_blue");
+                    case YELLOW:
+                        return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/yellow");
+                    case LIME:
+                        return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/lime");
+                    case PINK:
+                        return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/pink");
+                    case GRAY:
+                        return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/gray");
+                    case LIGHT_GRAY:
+                        return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/light_gray");
+                    case CYAN:
+                        return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/cyan");
+                    case PURPLE:
+                        return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/purple");
+                    case BLUE:
+                        return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/blue");
+                    case BROWN:
+                        return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/brown");
+                    case GREEN:
+                        return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/green");
+                    case RED:
+                        return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/red");
+                    case BLACK:
+                        return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/black");
+                }
+            }
+        }
+
 
         @Override
         public CustomEntity createChild(AgeableEntity ageable) {

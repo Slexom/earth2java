@@ -17,14 +17,19 @@
   "item.earthtojavamobs.moobloom_spawn_egg": "Uovo generatore di fior di bovino",
   "entity.earthtojavamobs.rocky_sheep": "Pecora rocciosa",
   "item.earthtojavamobs.rocky_sheep_spawn_egg": "Uovo generatore di pecora rocciosa",
+  "entity.earthtojavamobs.horned_sheep": "Pecora cornuta",
+  "item.earthtojavamobs.horned_sheep_spawn_egg": "Uovo generatore di pecora cornuta",
   "entity.earthtojavamobs.spotted_pig": "Maiale maculato",
   "item.earthtojavamobs.spotted_pig_spawn_egg": "Uovo generatore di maiale maculato",
   "entity.earthtojavamobs.piebald_pig": "Maiale pezzato",
   "item.earthtojavamobs.piebald_pig_spawn_egg": "Uovo generatore di maiale pezzato",
   "entity.earthtojavamobs.pale_pig": "Maiale pallido",
   "item.earthtojavamobs.pale_pig_spawn_egg": "Uovo generatore di maiale pallido",
+  "entity.earthtojavamobs.muddy_pig": "Maialino fangoso",
+  "item.earthtojavamobs.muddy_pig_spawn_egg": "Uovo generatore di maialino fangoso",
   "entity.earthtojavamobs.glow_squid": "Calamaro brillante",
   "item.earthtojavamobs.glow_squid_spawn_egg": "Uovo generatore di calamaro brillante",
   "entity.earthtojavamobs.tropical_slime": "Gelatina tropicale",
-  "item.earthtojavamobs.tropical_slime_spawn_egg": "Uovo generatore di gelatina tropicale"
+  "item.earthtojavamobs.tropical_slime_spawn_egg": "Uovo generatore di gelatina tropicale",
+  "item.earthtojavamobs.mud_fluid_bucket": "Secchio di fango"
 }

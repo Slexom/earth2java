@@ -7,7 +7,6 @@
   "item.earthtojavamobs.amber_chicken_spawn_egg": "Oeuf d'apparition de poulet ambrè",
   "entity.earthtojavamobs.cluckshroom": "Champipoule",
   "item.earthtojavamobs.cluckshroom_spawn_egg": "Oeuf d'apparition de champipoule",
-
   "entity.earthtojavamobs.sunset_cow": "Vache du crépuscule",
   "item.earthtojavamobs.sunset_cow_spawn_egg": "Oeuf d'apparition de vache du crépuscule",
   "entity.earthtojavamobs.ashen_cow": "Vache cendrée",
@@ -16,20 +15,21 @@
   "item.earthtojavamobs.wooly_cow_spawn_egg": "Oeuf d'apparition de vache laineuse",
   "entity.earthtojavamobs.moobloom": "Moobloom",
   "item.earthtojavamobs.moobloom_spawn_egg": "Oeuf d'apparition de moobloom",
-
   "entity.earthtojavamobs.spotted_pig": "Cochon tachetè",
   "item.earthtojavamobs.spotted_pig_spawn_egg": "Oeuf d'apparition de cochon tachetè",
   "entity.earthtojavamobs.piebald_pig": "Cochon pie",
   "item.earthtojavamobs.piebald_pig_spawn_egg": "Oeuf d'apparition de cochon pie",
   "entity.earthtojavamobs.pale_pig": "Ccochon pâle",
   "item.earthtojavamobs.pale_pig_spawn_egg": "Oeuf d'apparition de cochon pâle",
-
   "entity.earthtojavamobs.rocky_sheep": "Mouton rocheux",
   "item.earthtojavamobs.rocky_sheep_spawn_egg": "Oeuf d'apparition de mouton rocheux",
-
   "entity.earthtojavamobs.glow_squid": "Pieuvre luisante",
   "item.earthtojavamobs.glow_squid_spawn_egg": "Oeuf d'apparition de pieuvre luisante",
-
   "entity.earthtojavamobs.tropical_slime": "Slime tropical",
-  "item.earthtojavamobs.tropical_slime_spawn_egg": "Oeuf d'apparition de slime tropical"
+  "item.earthtojavamobs.tropical_slime_spawn_egg": "Oeuf d'apparition de slime tropical",
+  "entity.earthtojavamobs.horned_sheep": "Mouton à cornes",
+  "item.earthtojavamobs.horned_sheep_spawn_egg": "Oeuf d'apparition de mouton à cornes",
+  "item.earthtojavamobs.muddy_pig_spawn_egg": "Oeuf d'apparition de cochon boueux",
+  "entity.earthtojavamobs.muddy_pig": "Cochon boueux",
+  "item.earthtojavamobs.mud_fluid_bucket": "Seau de boue"
 }

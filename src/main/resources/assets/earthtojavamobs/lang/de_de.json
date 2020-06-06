@@ -7,7 +7,6 @@
   "item.earthtojavamobs.amber_chicken_spawn_egg": "Bernstein-Huhn-Spawn-Ei",
   "entity.earthtojavamobs.cluckshroom": "Pilzhuhn",
   "item.earthtojavamobs.cluckshroom_spawn_egg": "Pilzhuhn-Spawn-Ei",
-
   "entity.earthtojavamobs.sunset_cow": "Abendrot-Kuh",
   "item.earthtojavamobs.sunset_cow_spawn_egg": "Abendrot-Kuh-Spawn-Ei",
   "entity.earthtojavamobs.ashen_cow": "Aschgraue Kuh",
@@ -16,20 +15,21 @@
   "item.earthtojavamobs.wooly_cow_spawn_egg": "Zottelkuh-Spawn-Ei",
   "entity.earthtojavamobs.moobloom": "Blumenkuh",
   "item.earthtojavamobs.moobloom_spawn_egg": "Blumenkuh-Spawn-Ei",
-
   "entity.earthtojavamobs.spotted_pig": "Geflecktes schwein",
   "item.earthtojavamobs.spotted_pig_spawn_egg": "Geflecktes schwein-Spawn-Ei",
   "entity.earthtojavamobs.piebald_pig": "Scheckiges schwein",
   "item.earthtojavamobs.piebald_pig_spawn_egg": "Scheckiges schwein-Spawn-Ei",
   "entity.earthtojavamobs.pale_pig": "Blasses schwein",
   "item.earthtojavamobs.pale_pig_spawn_egg": "Blasses schwein-Spawn-Ei",
-
   "entity.earthtojavamobs.rocky_sheep": "Felsiges Schaf",
   "item.earthtojavamobs.rocky_sheep_spawn_egg": "Felsiges Schaf-Spawn-Ei",
-
   "entity.earthtojavamobs.glow_squid": "Leuchttintenfisch",
   "item.earthtojavamobs.glow_squid_spawn_egg": "Leuchttintenfisch-Spawn-Ei",
-
   "entity.earthtojavamobs.tropical_slime": " Tropenschleim",
-  "item.earthtojavamobs.tropical_slime_spawn_egg": "Tropenschleim-Spawn-Ei"
+  "item.earthtojavamobs.tropical_slime_spawn_egg": "Tropenschleim-Spawn-Ei",
+  "entity.earthtojavamobs.horned_sheep": "Dickhornshaf",
+  "item.earthtojavamobs.horned_sheep_spawn_egg": "Dickhornshaf-Spawn-Ei",
+  "item.earthtojavamobs.muddy_pig_spawn_egg": "Schlammschwein-Spawn-Ei",
+  "entity.earthtojavamobs.muddy_pig": "Schlammschwein",
+  "item.earthtojavamobs.mud_fluid_bucket": "Eimer voll Schlamm"
 }

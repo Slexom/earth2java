@@ -20,9 +20,20 @@ public class HornedSheepModel<T extends HornedSheepEntity.CustomEntity> extends 
         ///////
 
         //this.headModel.setTextureOffset(0, 32).addBox(6.0F, 0.0F, 0.0F, 4.0F, 8.0F, 6.0F);
-        this.headModel.setTextureOffset(0, 32)
-                .addBox(-15.0F, 0.0F, 0.0F, 4.0F, 8.0F, 6.0F)
-                .addBox(-15.0F, 5.0F, -4.0F, 4.0F, 3.0F, 3.0F);
+        float hornX = -7.0F;
+        float hornY = -5.0F;
+        float hornZ = -4.0F;
+        this.headModel
+                .setTextureOffset(0, 32)
+                .addBox(hornX, hornY, hornZ, 4.0F, 7.0F, 6.0F)
+                .setTextureOffset(20, 32)
+                .addBox(hornX, hornY + 4.0F, hornZ - 3.0F, 4.0F, 3.0F, 3.0F);
+
+        this.headModel
+                .setTextureOffset(0, 32)
+                .addBox(hornX + 10.0F, hornY, hornZ, 4.0F, 7.0F, 6.0F, true)
+                .setTextureOffset(20, 32)
+                .addBox(hornX + 10.0F, hornY + 4.0F, hornZ - 3.0F, 4.0F, 3.0F, 3.0F, true);
 
         ///////
         this.body = new ModelRenderer(this, 28, 8).setTextureSize(64, 64);
@@ -30,26 +41,20 @@ public class HornedSheepModel<T extends HornedSheepEntity.CustomEntity> extends 
         this.body.setRotationPoint(0.0F, 5.0F, 2.0F);
 
 
-
-
-        this.legBackRight = new ModelRenderer(this, 0, 16).setTextureSize(64,64);
+        this.legBackRight = new ModelRenderer(this, 0, 16).setTextureSize(64, 64);
         this.legBackRight.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F);
         this.legBackRight.setRotationPoint(-3.0F, 24 - 12.0F, 7.0F);
-        this.legBackLeft = new ModelRenderer(this, 0, 16).setTextureSize(64,64);
-        this.legBackLeft.addBox(-2.0F, 0.0F, -2.0F, 4.0F,  12.0F, 4.0F, 0.0F);
-        this.legBackLeft.setRotationPoint(3.0F,  (24 - 12.0F), 7.0F);
-        this.legFrontRight = new ModelRenderer(this, 0, 16).setTextureSize(64,64);
-        this.legFrontRight.addBox(-2.0F, 0.0F, -2.0F, 4.0F,  12.0F, 4.0F, 0.0F);
-        this.legFrontRight.setRotationPoint(-3.0F,  (24 - 12.0F), -5.0F);
-        this.legFrontLeft = new ModelRenderer(this, 0, 16).setTextureSize(64,64);
-        this.legFrontLeft.addBox(-2.0F, 0.0F, -2.0F, 4.0F,  12.0F, 4.0F, 0.0F);
-        this.legFrontLeft.setRotationPoint(3.0F,  (24 - 12.0F), -5.0F);
-        
-        
-        
-        
-        
-        
+        this.legBackLeft = new ModelRenderer(this, 0, 16).setTextureSize(64, 64);
+        this.legBackLeft.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F);
+        this.legBackLeft.setRotationPoint(3.0F, (24 - 12.0F), 7.0F);
+        this.legFrontRight = new ModelRenderer(this, 0, 16).setTextureSize(64, 64);
+        this.legFrontRight.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F);
+        this.legFrontRight.setRotationPoint(-3.0F, (24 - 12.0F), -5.0F);
+        this.legFrontLeft = new ModelRenderer(this, 0, 16).setTextureSize(64, 64);
+        this.legFrontLeft.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F);
+        this.legFrontLeft.setRotationPoint(3.0F, (24 - 12.0F), -5.0F);
+
+
     }
 
     public void setLivingAnimations(T entityIn, float limbSwing, float limbSwingAmount, float partialTick) {

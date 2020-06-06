@@ -7,7 +7,6 @@
   "item.earthtojavamobs.amber_chicken_spawn_egg": "Generar gallina ámbar",
   "entity.earthtojavamobs.cluckshroom": "Champillina",
   "item.earthtojavamobs.cluckshroom_spawn_egg": "Generar champillina",
-
   "entity.earthtojavamobs.sunset_cow": "Vaca del ocaso",
   "item.earthtojavamobs.sunset_cow_spawn_egg": "Generar vaca del ocaso",
   "entity.earthtojavamobs.ashen_cow": "Vaca cenicienta",
@@ -16,20 +15,21 @@
   "item.earthtojavamobs.wooly_cow_spawn_egg": "Generar vaca lanuda",
   "entity.earthtojavamobs.moobloom": "Vacaflor",
   "item.earthtojavamobs.moobloom_spawn_egg": "Generar vacaflor",
-
   "entity.earthtojavamobs.spotted_pig": "Cerdo moteado",
   "item.earthtojavamobs.spotted_pig_spawn_egg": "Generar cerdo moteado",
   "entity.earthtojavamobs.piebald_pig": "Cerdo veteado",
   "item.earthtojavamobs.piebald_pig_spawn_egg": "Generar cerdo veteado",
   "entity.earthtojavamobs.pale_pig": "Cerdo pálido",
   "item.earthtojavamobs.pale_pig_spawn_egg": "Generar cerdo pálido",
-
   "entity.earthtojavamobs.rocky_sheep": "Oveja rocosa",
   "item.earthtojavamobs.rocky_sheep_spawn_egg": "Generar ojeva rocosa",
-
   "entity.earthtojavamobs.glow_squid": "Calamar brillante",
   "item.earthtojavamobs.glow_squid_spawn_egg": "Generar calamar brillante",
-
   "entity.earthtojavamobs.tropical_slime": "Limo tropical",
-  "item.earthtojavamobs.tropical_slime_spawn_egg": "Generar limo tropical"
+  "item.earthtojavamobs.tropical_slime_spawn_egg": "Generar limo tropical",
+  "entity.earthtojavamobs.horned_sheep": "Carnero",
+  "entity.earthtojavamobs.muddy_pig": "Cerdo fangoso",
+  "item.earthtojavamobs.horned_sheep_spawn_egg": "Generar carnero",
+  "item.earthtojavamobs.muddy_pig_spawn_egg": "Generar cerdo fangoso",
+  "item.earthtojavamobs.mud_fluid_bucket": "Cubo con barro"
 }
