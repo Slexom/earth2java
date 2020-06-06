@@ -14,15 +14,12 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.Heightmap;
-import net.minecraft.world.storage.loot.LootTable;
-import net.minecraft.world.storage.loot.LootTables;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
@@ -56,7 +53,7 @@ public class HornedSheepEntity extends EarthtojavamobsModElements.ModElement {
                 .setRegistryName(registryNameEntity);
         elements.entities.add(() -> entity);
         elements.items.add(
-                () -> new SpawnEggItem(entity, 0xd6d1cc, 0x453d3b, new Item.Properties().group(ItemGroup.MISC)).setRegistryName(registryNameSpawnEgg));
+                () -> new SpawnEggItem(entity, 0xececec, 0x291811, new Item.Properties().group(ItemGroup.MISC)).setRegistryName(registryNameSpawnEgg));
     }
 
     @Override
