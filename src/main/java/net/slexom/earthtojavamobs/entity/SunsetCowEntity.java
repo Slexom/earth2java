@@ -73,9 +73,13 @@ public class SunsetCowEntity extends EarthtojavamobsModElements.ModElement {
     @SubscribeEvent
     public void registerModels(ModelRegistryEvent event) {
         RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> new CowRenderer(renderManager) {
+            private final ResourceLocation texture = new ResourceLocation("earthtojavamobs:textures/mobs/cow/sunset_cow/sunset_cow.png");
+            private final ResourceLocation textureBlink = new ResourceLocation("earthtojavamobs:textures/mobs/cow/sunset_cow/sunset_cow_blink.png");
+            private final int blinkTime = 150;
+
             @Override
             public ResourceLocation getEntityTexture(CowEntity entity) {
-                return new ResourceLocation("earthtojavamobs:textures/mobs/cow/sunset_cow/sunset_cow.png");
+                return (entity.ticksExisted % blinkTime) == 0 || (entity.ticksExisted % blinkTime) == 1 || (entity.ticksExisted % blinkTime) == 2 || (entity.ticksExisted % blinkTime) == 3 ? textureBlink : texture;
             }
         });
     }

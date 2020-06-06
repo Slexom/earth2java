@@ -31,5 +31,6 @@
   "item.earthtojavamobs.horned_sheep_spawn_egg": "Oeuf d'apparition de mouton à cornes",
   "item.earthtojavamobs.muddy_pig_spawn_egg": "Oeuf d'apparition de cochon boueux",
   "entity.earthtojavamobs.muddy_pig": "Cochon boueux",
-  "item.earthtojavamobs.mud_fluid_bucket": "Seau de boue"
+  "item.earthtojavamobs.mud_fluid_bucket": "Seau de boue",
+  "item.earthtojavamobs.horn": "Corne"
 }

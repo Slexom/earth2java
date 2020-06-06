@@ -16,8 +16,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.Heightmap;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
@@ -75,12 +73,15 @@ public class MidnightChickenEntity extends EarthtojavamobsModElements.ModElement
     }
 
     @SubscribeEvent
-    @OnlyIn(Dist.CLIENT)
     public void registerModels(ModelRegistryEvent event) {
         RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> new ChickenRenderer(renderManager) {
+            private final ResourceLocation texture = new ResourceLocation("earthtojavamobs:textures/mobs/chicken/midnight_chicken/midnight_chicken.png");
+            private final ResourceLocation textureBlink = new ResourceLocation("earthtojavamobs:textures/mobs/chicken/midnight_chicken/midnight_chicken_blink.png");
+            private final int blinkTime = 100;
+
             @Override
             public ResourceLocation getEntityTexture(ChickenEntity entity) {
-                return new ResourceLocation("earthtojavamobs:textures/mobs/chicken/midnight_chicken/midnight_chicken.png");
+                return (entity.ticksExisted % blinkTime) == 0 || (entity.ticksExisted % blinkTime) == 1 ? textureBlink : texture;
             }
         });
     }

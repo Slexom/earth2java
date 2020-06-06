@@ -31,5 +31,6 @@
   "item.earthtojavamobs.horned_sheep_spawn_egg": "Dickhornshaf-Spawn-Ei",
   "item.earthtojavamobs.muddy_pig_spawn_egg": "Schlammschwein-Spawn-Ei",
   "entity.earthtojavamobs.muddy_pig": "Schlammschwein",
-  "item.earthtojavamobs.mud_fluid_bucket": "Eimer voll Schlamm"
+  "item.earthtojavamobs.mud_fluid_bucket": "Eimer voll Schlamm",
+  "item.earthtojavamobs.horn": "Horn"
 }

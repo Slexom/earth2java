@@ -1,7 +1,6 @@
 package net.slexom.earthtojavamobs.entity;
 
-import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.entity.model.PigModel;
+import net.minecraft.client.renderer.entity.PigRenderer;
 import net.minecraft.entity.*;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PigEntity;
@@ -72,10 +71,14 @@ public class SpottedPigEntity extends EarthtojavamobsModElements.ModElement {
     @SubscribeEvent
     @OnlyIn(Dist.CLIENT)
     public void registerModels(ModelRegistryEvent event) {
-        RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> new MobRenderer(renderManager, new PigModel(), 0.5f) {
+        RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> new PigRenderer(renderManager) {
+            private final ResourceLocation texture = new ResourceLocation("earthtojavamobs:textures/mobs/pig/spotted_pig/spotted_pig.png");
+            private final ResourceLocation textureBlink = new ResourceLocation("earthtojavamobs:textures/mobs/pig/spotted_pig/spotted_pig_blink.png");
+            private final int blinkTime = 200;
+
             @Override
-            public ResourceLocation getEntityTexture(Entity entity) {
-                return new ResourceLocation("earthtojavamobs:textures/mobs/pig/spotted_pig/spotted_pig.png");
+            public ResourceLocation getEntityTexture(PigEntity entity) {
+                return (entity.ticksExisted % blinkTime) == 0 || (entity.ticksExisted % blinkTime) == 1 ? textureBlink : texture;
             }
         });
     }

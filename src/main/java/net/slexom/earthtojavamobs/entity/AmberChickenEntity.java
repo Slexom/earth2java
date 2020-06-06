@@ -81,9 +81,13 @@ public class AmberChickenEntity extends EarthtojavamobsModElements.ModElement {
     @SubscribeEvent
     public void registerModels(ModelRegistryEvent event) {
         RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> new ChickenRenderer(renderManager) {
+            private final ResourceLocation texture = new ResourceLocation("earthtojavamobs:textures/mobs/chicken/amber_chicken/amber_chicken.png");
+            private final ResourceLocation textureBlink = new ResourceLocation("earthtojavamobs:textures/mobs/chicken/amber_chicken/amber_chicken_blink.png");
+            private final int blinkTime = 100;
+
             @Override
             public ResourceLocation getEntityTexture(ChickenEntity entity) {
-                return new ResourceLocation("earthtojavamobs:textures/mobs/chicken/amber_chicken/amber_chicken.png");
+                return (entity.ticksExisted % blinkTime) == 0 || (entity.ticksExisted % blinkTime) == 1 ? textureBlink : texture;
             }
         });
     }

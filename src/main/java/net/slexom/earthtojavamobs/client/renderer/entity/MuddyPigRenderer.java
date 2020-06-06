@@ -15,6 +15,11 @@ import net.slexom.earthtojavamobs.client.renderer.entity.model.MuddyPigModel;
 import net.slexom.earthtojavamobs.entity.MuddyPigEntity;
 
 public class MuddyPigRenderer extends MobRenderer<MuddyPigEntity.CustomEntity, MuddyPigModel<MuddyPigEntity.CustomEntity>> {
+    private static final ResourceLocation texture = new ResourceLocation("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig.png");
+    private static final ResourceLocation textureBlink = new ResourceLocation("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_blink.png");
+    private static final ResourceLocation textureDried = new ResourceLocation("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_dried.png");
+    private static final ResourceLocation textureDriedBlink = new ResourceLocation("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_dried_blink.png");
+    private static final int blinkTime = 200;
 
     public MuddyPigRenderer(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, new MuddyPigModel<>(), 0.7F);
@@ -22,9 +27,8 @@ public class MuddyPigRenderer extends MobRenderer<MuddyPigEntity.CustomEntity, M
     }
 
     public ResourceLocation getEntityTexture(MuddyPigEntity.CustomEntity entity) {
-        ResourceLocation texture = new ResourceLocation("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig.png");
-        ResourceLocation textureDried = new ResourceLocation("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_dried.png");
-        return entity.getInMud() ? texture : textureDried;
+        boolean blink = (entity.ticksExisted % blinkTime) == 0 || (entity.ticksExisted % blinkTime) == 1 || (entity.ticksExisted % blinkTime) == 2 || (entity.ticksExisted % blinkTime) == 3;
+        return entity.getInMud() ? blink ? textureBlink : texture : blink ? textureDriedBlink : textureDried;
     }
 
     public static class SaddleLayer extends LayerRenderer<MuddyPigEntity.CustomEntity, MuddyPigModel<MuddyPigEntity.CustomEntity>> {
