@@ -81,6 +81,7 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
         private static final DataParameter<Boolean> isInMud = EntityDataManager.createKey(CustomEntity.class, DataSerializers.BOOLEAN);
         private static final Ingredient TEMPTATION_ITEMS = Ingredient.fromItems(Items.CARROT, Items.POTATO, Items.BEETROOT);
         private double outOfMud = 0.0D;
+        private double finallyInMud = 0.0D;
 
         public CustomEntity(FMLPlayMessages.SpawnEntity packet, World world) {
             this(entity, world);
@@ -100,9 +101,9 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
             this.goalSelector.addGoal(4, new TemptGoal(this, 1.2D, Ingredient.fromItems(Items.CARROT_ON_A_STICK), false));
             this.goalSelector.addGoal(4, new TemptGoal(this, 1.2D, false, TEMPTATION_ITEMS));
             this.goalSelector.addGoal(5, new FollowParentGoal(this, 1.1D));
-            this.goalSelector.addGoal(6, new RandomWalkingGoal(this, 1.0D));
             this.goalSelector.addGoal(7, new LookAtGoal(this, PlayerEntity.class, 6.0F));
             this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
+            this.goalSelector.addGoal(9, new RandomWalkingGoal(this, 1.0D));
         }
 
         @Override
@@ -122,15 +123,20 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
             int k = MathHelper.floor(this.getPosZ());
             BlockPos blockPos = new BlockPos(i, j, k);
             boolean condition = this.world.getFluidState(blockPos).getBlockState().getBlock().getRegistryName().equals(new ResourceLocation("earthtojavamobs:mud_fluid"));
-
             if (condition) {
-                setInMud(true);
+                if (!getInMud()) {
+                    finallyInMud++;
+                    if (finallyInMud > 60) {
+                        finallyInMud = 0.0D;
+                        setInMud(true);
+                    }
+                }
             } else {
                 if (getInMud()) {
                     outOfMud++;
                     if (outOfMud > 60) {
-                        setInMud(false);
                         outOfMud = 0.0D;
+                        setInMud(false);
                     }
                 }
             }
@@ -196,25 +202,20 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
 
             public FindMudGoal(CustomEntity entity) {
                 this.muddy_pig = entity;
+                entity.getNavigator().setCanSwim(true);
             }
 
-            /**
-             * Returns whether execution should begin. You can also read and cache any state necessary for execution in this
-             * method as well.
-             */
             public boolean shouldExecute() {
-                return this.muddy_pig.onGround && !this.muddy_pig.getInMud();
+                return !this.muddy_pig.getInMud();
             }
 
-            /**
-             * Execute a one shot task or start executing a continuous task
-             */
             public void startExecuting() {
                 BlockPos blockpos = null;
                 double posX = this.muddy_pig.getPosX();
                 double posY = this.muddy_pig.getPosY();
                 double posZ = this.muddy_pig.getPosZ();
-                for (BlockPos blockpos1 : BlockPos.getAllInBoxMutable(MathHelper.floor(posX - 4.0D), MathHelper.floor(posY - 1.0D), MathHelper.floor(posZ - 4.0D), MathHelper.floor(posX + 4.0D), MathHelper.floor(posY), MathHelper.floor(posZ + 4.0D))) {
+                double dist = 16.0D;
+                for (BlockPos blockpos1 : BlockPos.getAllInBoxMutable(MathHelper.floor(posX - dist), MathHelper.floor(posY - dist), MathHelper.floor(posZ - dist), MathHelper.floor(posX + dist), MathHelper.floor(posY + dist), MathHelper.floor(posZ + dist))) {
                     boolean condition = this.muddy_pig.world.getFluidState(blockpos1).getBlockState().getBlock().getRegistryName().equals(new ResourceLocation("earthtojavamobs:mud_fluid"));
                     if (condition) {
                         blockpos = blockpos1;
@@ -222,9 +223,8 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
                     }
                 }
                 if (blockpos != null) {
-                    this.muddy_pig.getMoveHelper().setMoveTo((double) blockpos.getX(), (double) blockpos.getY(), (double) blockpos.getZ(), 1.0D);
+                    this.muddy_pig.getMoveHelper().setMoveTo((double) blockpos.getX(), (double) blockpos.getY(), (double) blockpos.getZ(), 1.2D);
                 }
-
             }
         }
     }

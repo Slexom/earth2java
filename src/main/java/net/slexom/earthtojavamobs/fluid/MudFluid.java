@@ -76,14 +76,16 @@ public class MudFluid extends EarthtojavamobsModElements.ModElement {
                 )
                         .luminosity(0)
                         .density(1800)
-                        .overlay(new ResourceLocation("earthtojavamobs", "/fluids/mud_overlay"))
+                        //.overlay(new ResourceLocation("earthtojavamobs", "/fluids/mud_overlay"))
         )
+                .slopeFindDistance(4)
+                .explosionResistance(100.F)
                 .tickRate(20)
                 .bucket(() -> bucket)
                 .block(() -> block);
-        still = (FlowingFluid) new MudFluidSource(fluidproperties).setRegistryName("mud_fluid");
+        still = (FlowingFluid) new ForgeFlowingFluid.Source(fluidproperties).setRegistryName("mud_fluid");
         flowing = (FlowingFluid) new ForgeFlowingFluid.Flowing(fluidproperties).setRegistryName("mud_fluid_flowing");
-        elements.blocks.add(() -> new FlowingFluidBlock(still, Block.Properties.create(Material.WATER)) {
+        elements.blocks.add(() -> new MudFlowingFluidBlock(still, Block.Properties.create(Material.WATER).doesNotBlockMovement().hardnessAndResistance(100.0F).noDrops()) {
         }.setRegistryName("mud_fluid"));
         elements.items.add(() -> new BucketItem(still, new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ItemGroup.MISC))
                 .setRegistryName("mud_fluid_bucket"));
