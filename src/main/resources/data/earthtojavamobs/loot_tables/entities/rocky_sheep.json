@@ -47,7 +47,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:gray_wool",
-          "weight": 50
+          "weight": 1
         }
       ]
     }

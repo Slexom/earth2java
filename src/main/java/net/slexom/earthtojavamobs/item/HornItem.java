@@ -21,6 +21,7 @@ public class HornItem extends EarthtojavamobsModElements.ModElement {
     public void initElements() {
         elements.items.add(ItemCustom::new);
     }
+
     public static class ItemCustom extends Item {
         public ItemCustom() {
             super(new Item.Properties().group(ItemGroup.MISC).maxStackSize(64));

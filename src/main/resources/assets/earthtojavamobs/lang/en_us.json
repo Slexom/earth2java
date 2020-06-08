@@ -32,5 +32,7 @@
   "entity.earthtojavamobs.tropical_slime": "Tropical Slime",
   "item.earthtojavamobs.tropical_slime_spawn_egg": "Tropical Slime Spawn Egg",
   "item.earthtojavamobs.mud_fluid_bucket": "Bucket of Mud",
-  "item.earthtojavamobs.horn": "Horn"
+  "item.earthtojavamobs.horn": "Horn",
+  "entity.earthtojavamobs.skeleton_wolf": "Skeleton Wolf",
+  "item.earthtojavamobs.skeleton_wolf_spawn_egg": "Skeleton Wolf Spawn Egg"
 }

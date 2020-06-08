@@ -261,7 +261,6 @@ public class HornedSheepEntity extends EarthtojavamobsModElements.ModElement {
             }
         }
 
-
         @Override
         public CustomEntity createChild(AgeableEntity ageable) {
             return (CustomEntity) entity.create(this.world);
@@ -281,7 +280,6 @@ public class HornedSheepEntity extends EarthtojavamobsModElements.ModElement {
             } else {
                 Entity entity = source.getTrueSource();
                 if (!this.world.isRemote && entity instanceof PlayerEntity && !((PlayerEntity) entity).isCreative() && this.canEntityBeSeen(entity) && !this.isAIDisabled()) {
-
                     this.setSheepAttacker(entity);
                 }
                 return super.attackEntityFrom(source, amount);

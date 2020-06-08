@@ -32,5 +32,7 @@
   "item.earthtojavamobs.muddy_pig_spawn_egg": "Oeuf d'apparition de cochon boueux",
   "entity.earthtojavamobs.muddy_pig": "Cochon boueux",
   "item.earthtojavamobs.mud_fluid_bucket": "Seau de boue",
-  "item.earthtojavamobs.horn": "Corne"
+  "item.earthtojavamobs.horn": "Corne",
+  "entity.earthtojavamobs.skeleton_wolf": "Loup-squelette",
+  "item.earthtojavamobs.skeleton_wolf_spawn_egg": "Oeuf d'apparition de loup-squelette"
 }

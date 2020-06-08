@@ -32,5 +32,7 @@
   "item.earthtojavamobs.horned_sheep_spawn_egg": "Generar carnero",
   "item.earthtojavamobs.muddy_pig_spawn_egg": "Generar cerdo fangoso",
   "item.earthtojavamobs.mud_fluid_bucket": "Cubo con barro",
-  "item.earthtojavamobs.horn": "Cuerno"
+  "item.earthtojavamobs.horn": "Cuerno",
+  "entity.earthtojavamobs.skeleton_wolf": "Lobo esqueleto",
+  "item.earthtojavamobs.skeleton_wolf_spawn_egg": "Generar lobo esqueleto"
 }

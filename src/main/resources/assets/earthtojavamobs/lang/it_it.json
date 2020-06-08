@@ -17,8 +17,8 @@
   "item.earthtojavamobs.moobloom_spawn_egg": "Uovo generatore di fior di bovino",
   "entity.earthtojavamobs.rocky_sheep": "Pecora rocciosa",
   "item.earthtojavamobs.rocky_sheep_spawn_egg": "Uovo generatore di pecora rocciosa",
-  "entity.earthtojavamobs.horned_sheep": "Pecora cornuta",
-  "item.earthtojavamobs.horned_sheep_spawn_egg": "Uovo generatore di pecora cornuta",
+  "entity.earthtojavamobs.horned_sheep": "Pecora con corna",
+  "item.earthtojavamobs.horned_sheep_spawn_egg": "Uovo generatore di pecora con corna",
   "entity.earthtojavamobs.spotted_pig": "Maiale maculato",
   "item.earthtojavamobs.spotted_pig_spawn_egg": "Uovo generatore di maiale maculato",
   "entity.earthtojavamobs.piebald_pig": "Maiale pezzato",
@@ -32,5 +32,7 @@
   "entity.earthtojavamobs.tropical_slime": "Gelatina tropicale",
   "item.earthtojavamobs.tropical_slime_spawn_egg": "Uovo generatore di gelatina tropicale",
   "item.earthtojavamobs.mud_fluid_bucket": "Secchio di fango",
-  "item.earthtojavamobs.horn": "Corno"
+  "item.earthtojavamobs.horn": "Corno",
+  "entity.earthtojavamobs.skeleton_wolf": "Lupo scheletrico",
+  "item.earthtojavamobs.skeleton_wolf_spawn_egg": "Uovo generatore di lupo scheletrico"
 }

@@ -32,5 +32,7 @@
   "item.earthtojavamobs.muddy_pig_spawn_egg": "Schlammschwein-Spawn-Ei",
   "entity.earthtojavamobs.muddy_pig": "Schlammschwein",
   "item.earthtojavamobs.mud_fluid_bucket": "Eimer voll Schlamm",
-  "item.earthtojavamobs.horn": "Horn"
+  "item.earthtojavamobs.horn": "Horn",
+  "entity.earthtojavamobs.skeleton_wolf": "Skelettwolf",
+  "item.earthtojavamobs.skeleton_wolf_spawn_egg": "Skelettwolf-Spawn-Ei"
 }
