@@ -1,6 +1,5 @@
 package net.slexom.earthtojavamobs.entity;
 
-import net.minecraft.client.renderer.entity.PigRenderer;
 import net.minecraft.entity.*;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PigEntity;
@@ -23,6 +22,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
+import net.slexom.earthtojavamobs.client.renderer.entity.E2JPigRenderer;
 
 import java.text.MessageFormat;
 
@@ -71,16 +71,7 @@ public class PalePigEntity extends EarthtojavamobsModElements.ModElement {
     @SubscribeEvent
     @OnlyIn(Dist.CLIENT)
     public void registerModels(ModelRegistryEvent event) {
-        RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> new PigRenderer(renderManager) {
-            private final ResourceLocation texture = new ResourceLocation("earthtojavamobs:textures/mobs/pig/pale_pig/pale_pig.png");
-            private final ResourceLocation textureBlink = new ResourceLocation("earthtojavamobs:textures/mobs/pig/pale_pig/pale_pig_blink.png");
-            private final int blinkTime = 200;
-
-            @Override
-            public ResourceLocation getEntityTexture(PigEntity entity) {
-                return (entity.ticksExisted % blinkTime) == 0 || (entity.ticksExisted % blinkTime) == 1 ? textureBlink : texture;
-            }
-        });
+        RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> new E2JPigRenderer(renderManager, registryNameEntity));
     }
 
     public static class CustomEntity extends PigEntity {

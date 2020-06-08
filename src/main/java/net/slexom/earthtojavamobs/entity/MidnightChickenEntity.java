@@ -1,7 +1,6 @@
 
 package net.slexom.earthtojavamobs.entity;
 
-import net.minecraft.client.renderer.entity.ChickenRenderer;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntitySpawnPlacementRegistry;
@@ -25,6 +24,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
+import net.slexom.earthtojavamobs.client.renderer.entity.E2JChickenRenderer;
 
 import java.text.MessageFormat;
 
@@ -74,16 +74,7 @@ public class MidnightChickenEntity extends EarthtojavamobsModElements.ModElement
 
     @SubscribeEvent
     public void registerModels(ModelRegistryEvent event) {
-        RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> new ChickenRenderer(renderManager) {
-            private final ResourceLocation texture = new ResourceLocation("earthtojavamobs:textures/mobs/chicken/midnight_chicken/midnight_chicken.png");
-            private final ResourceLocation textureBlink = new ResourceLocation("earthtojavamobs:textures/mobs/chicken/midnight_chicken/midnight_chicken_blink.png");
-            private final int blinkTime = 100;
-
-            @Override
-            public ResourceLocation getEntityTexture(ChickenEntity entity) {
-                return (entity.ticksExisted % blinkTime) == 0 || (entity.ticksExisted % blinkTime) == 1 ? textureBlink : texture;
-            }
-        });
+        RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> new E2JChickenRenderer(renderManager, registryNameEntity));
     }
 
     public static class CustomEntity extends ChickenEntity {
