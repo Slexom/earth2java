@@ -23,6 +23,6 @@ public class E2JPigRenderer extends PigRenderer {
         ResourceLocation texture = new ResourceLocation(resourceTexture);
         ResourceLocation textureBlink = new ResourceLocation(resourceTextureBlink);
         int blinkTime = 175;
-        return (entity.ticksExisted % blinkTime) == 0 || (entity.ticksExisted % blinkTime) == 1 ? textureBlink : texture;
+        return (entity.ticksExisted % blinkTime) == 0 || (entity.ticksExisted % blinkTime) == 1  || (entity.ticksExisted % blinkTime) == 2 ? textureBlink : texture;
     }
 }

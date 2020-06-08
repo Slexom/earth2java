@@ -23,7 +23,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -37,6 +36,7 @@ import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
 import net.slexom.earthtojavamobs.client.renderer.entity.CluckshroomRenderer;
+import net.slexom.earthtojavamobs.utils.BiomeSpawnHelper;
 
 import java.text.MessageFormat;
 
@@ -65,16 +65,8 @@ public class CluckshroomEntity extends EarthtojavamobsModElements.ModElement {
         DeferredWorkQueue.runLater(new Runnable() {
             @Override
             public void run() {
-                for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
-                    boolean biomeCriteria = false;
-                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("mushroom_fields")))
-                        biomeCriteria = true;
-                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("mushroom_field_shore")))
-                        biomeCriteria = true;
-                    if (!biomeCriteria)
-                        continue;
-                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 7, 1, 2));
-                }
+                String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.MUSHROOM_FIELDS);
+                BiomeSpawnHelper.setCreatureSpawnBiomes(entity, spawnBiomes, 8, 2, 4);
                 EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
                         AnimalEntity::canAnimalSpawn);
             }

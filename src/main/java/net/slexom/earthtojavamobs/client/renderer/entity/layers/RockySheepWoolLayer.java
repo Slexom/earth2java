@@ -6,14 +6,14 @@ import net.minecraft.client.renderer.entity.IEntityRenderer;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.RockySheepModel;
-import net.slexom.earthtojavamobs.client.renderer.entity.model.RockySheepRockModel;
+import net.slexom.earthtojavamobs.client.renderer.entity.model.RockySheepWoolModel;
 import net.slexom.earthtojavamobs.entity.RockySheepEntity;
 
-public class RockySheepRockLayer extends LayerRenderer<RockySheepEntity.CustomEntity, RockySheepModel<RockySheepEntity.CustomEntity>> {
+public class RockySheepWoolLayer extends LayerRenderer<RockySheepEntity.CustomEntity, RockySheepModel<RockySheepEntity.CustomEntity>> {
     private static final ResourceLocation TEXTURE = new ResourceLocation("earthtojavamobs:textures/mobs/sheep/rocky_sheep/rocky_sheep_fur.png");
-    private final RockySheepRockModel<RockySheepEntity.CustomEntity> sheepModel = new RockySheepRockModel<>();
+    private final RockySheepWoolModel<RockySheepEntity.CustomEntity> sheepModel = new RockySheepWoolModel<>();
 
-    public RockySheepRockLayer(IEntityRenderer<RockySheepEntity.CustomEntity, RockySheepModel<RockySheepEntity.CustomEntity>> rendererIn) {
+    public RockySheepWoolLayer(IEntityRenderer<RockySheepEntity.CustomEntity, RockySheepModel<RockySheepEntity.CustomEntity>> rendererIn) {
         super(rendererIn);
     }
 

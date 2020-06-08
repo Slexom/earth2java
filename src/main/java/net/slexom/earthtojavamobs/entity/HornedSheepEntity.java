@@ -30,9 +30,11 @@ import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
 import net.slexom.earthtojavamobs.client.renderer.entity.HornedSheepRenderer;
+import net.slexom.earthtojavamobs.utils.BiomeSpawnHelper;
 
 import javax.annotation.Nullable;
 import java.text.MessageFormat;
+import java.util.Arrays;
 import java.util.UUID;
 
 @EarthtojavamobsModElements.ModElement.Tag
@@ -59,18 +61,8 @@ public class HornedSheepEntity extends EarthtojavamobsModElements.ModElement {
     @Override
     public void init(FMLCommonSetupEvent event) {
         DeferredWorkQueue.runLater(() -> {
-            for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
-                boolean biomeCriteria = false;
-                if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("plains")))
-                    biomeCriteria = true;
-                if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("mountains")))
-                    biomeCriteria = true;
-                if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("wooded_mountains")))
-                    biomeCriteria = true;
-                if (!biomeCriteria)
-                    continue;
-                biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 10, 1, 4));
-            }
+            String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS, BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.GRAVELLY_MOUNTAINS);
+            BiomeSpawnHelper.setCreatureSpawnBiomes(entity, spawnBiomes, 12, 2, 4);
             EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::canAnimalSpawn);
         });
     }

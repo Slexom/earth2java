@@ -17,7 +17,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -26,9 +25,9 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.network.FMLPlayMessages;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
 import net.slexom.earthtojavamobs.client.renderer.entity.MuddyPigRenderer;
+import net.slexom.earthtojavamobs.utils.BiomeSpawnHelper;
 
 import java.text.MessageFormat;
 
@@ -58,14 +57,8 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
         DeferredWorkQueue.runLater(new Runnable() {
             @Override
             public void run() {
-                for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
-                    boolean biomeCriteria = false;
-                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("plains")))
-                        biomeCriteria = true;
-                    if (!biomeCriteria)
-                        continue;
-                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 20, 4, 4));
-                }
+                String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS, BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.RIVER);
+                BiomeSpawnHelper.setCreatureSpawnBiomes(entity, spawnBiomes, 10, 2, 4);
                 EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
                         AnimalEntity::canAnimalSpawn);
             }

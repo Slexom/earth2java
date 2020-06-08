@@ -13,7 +13,6 @@ import net.minecraft.item.SpawnEggItem;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -25,6 +24,7 @@ import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
 import net.slexom.earthtojavamobs.client.renderer.entity.E2JChickenRenderer;
+import net.slexom.earthtojavamobs.utils.BiomeSpawnHelper;
 
 import java.text.MessageFormat;
 
@@ -54,18 +54,8 @@ public class MidnightChickenEntity extends EarthtojavamobsModElements.ModElement
         DeferredWorkQueue.runLater(new Runnable() {
             @Override
             public void run() {
-                for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
-                    boolean biomeCriteria = false;
-                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("forest")))
-                        biomeCriteria = true;
-                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("dark_forest")))
-                        biomeCriteria = true;
-                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("dark_forest_hills")))
-                        biomeCriteria = true;
-                    if (!biomeCriteria)
-                        continue;
-                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 11, 1, 4));
-                }
+                String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.FOREST, BiomeSpawnHelper.DARK_FOREST, BiomeSpawnHelper.JUNGLE, BiomeSpawnHelper.BIRCH_FOREST);
+                BiomeSpawnHelper.setCreatureSpawnBiomes(entity, spawnBiomes, 10, 2, 4);
                 EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
                         AnimalEntity::canAnimalSpawn);
             }

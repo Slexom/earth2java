@@ -29,6 +29,7 @@ import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
 import net.slexom.earthtojavamobs.client.renderer.entity.TropicalSlimeRenderer;
+import net.slexom.earthtojavamobs.utils.BiomeSpawnHelper;
 
 import java.text.MessageFormat;
 import java.util.EnumSet;
@@ -59,14 +60,8 @@ public class TropicalSlimeEntity extends EarthtojavamobsModElements.ModElement {
         DeferredWorkQueue.runLater(new Runnable() {
             @Override
             public void run() {
-                for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
-                    boolean biomeCriteria = false;
-                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("beach")))
-                        biomeCriteria = true;
-                    if (!biomeCriteria)
-                        continue;
-                    biome.getSpawns(EntityClassification.MONSTER).add(new Biome.SpawnListEntry(entity, 10, 1, 4));
-                }
+                String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.BEACH);
+                BiomeSpawnHelper.setCreatureSpawnBiomes(entity, spawnBiomes, 7, 1, 3);
                 EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
                         MonsterEntity::canMonsterSpawn);
             }

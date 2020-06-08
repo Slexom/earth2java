@@ -7,9 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -20,9 +18,9 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.network.FMLPlayMessages;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
 import net.slexom.earthtojavamobs.client.renderer.entity.E2JPigRenderer;
+import net.slexom.earthtojavamobs.utils.BiomeSpawnHelper;
 
 import java.text.MessageFormat;
 
@@ -52,16 +50,8 @@ public class PalePigEntity extends EarthtojavamobsModElements.ModElement {
         DeferredWorkQueue.runLater(new Runnable() {
             @Override
             public void run() {
-                for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
-                    boolean biomeCriteria = false;
-                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("snowy_tundra")))
-                        biomeCriteria = true;
-                    if (ForgeRegistries.BIOMES.getKey(biome).equals(new ResourceLocation("snowy_mountains")))
-                        biomeCriteria = true;
-                    if (!biomeCriteria)
-                        continue;
-                    biome.getSpawns(EntityClassification.CREATURE).add(new Biome.SpawnListEntry(entity, 20, 4, 4));
-                }
+                String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.SNOWY_TUNDRA, BiomeSpawnHelper.SNOWY_TAIGA);
+                BiomeSpawnHelper.setCreatureSpawnBiomes(entity, spawnBiomes, 10, 2, 4);
                 EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
                         AnimalEntity::canAnimalSpawn);
             }

@@ -7,6 +7,7 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
@@ -28,19 +29,19 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
-import net.slexom.earthtojavamobs.client.renderer.entity.RockySheepRenderer;
+import net.slexom.earthtojavamobs.client.renderer.entity.InkySheepRenderer;
 import net.slexom.earthtojavamobs.utils.BiomeSpawnHelper;
 
 import java.text.MessageFormat;
 
 @EarthtojavamobsModElements.ModElement.Tag
-public class RockySheepEntity extends EarthtojavamobsModElements.ModElement {
+public class InkySheepEntity extends EarthtojavamobsModElements.ModElement {
     public static EntityType entity = null;
-    private static final String registryNameEntity = "rocky_sheep";
+    private static final String registryNameEntity = "inky_sheep";
     private static final String registryNameSpawnEgg = MessageFormat.format("{0}_spawn_egg", registryNameEntity);
 
-    public RockySheepEntity(EarthtojavamobsModElements instance) {
-        super(instance, 32);
+    public InkySheepEntity(EarthtojavamobsModElements instance) {
+        super(instance, 31);
         FMLJavaModLoadingContext.get().getModEventBus().register(this);
     }
 
@@ -51,7 +52,7 @@ public class RockySheepEntity extends EarthtojavamobsModElements.ModElement {
                 .setRegistryName(registryNameEntity);
         elements.entities.add(() -> entity);
         elements.items.add(
-                () -> new SpawnEggItem(entity, 0xd6d1cc, 0x453d3b, new Item.Properties().group(ItemGroup.MISC)).setRegistryName(registryNameSpawnEgg));
+                () -> new SpawnEggItem(entity, 0xf3e4d8, 0x1f1f1f, new Item.Properties().group(ItemGroup.MISC)).setRegistryName(registryNameSpawnEgg));
     }
 
     @Override
@@ -59,7 +60,7 @@ public class RockySheepEntity extends EarthtojavamobsModElements.ModElement {
         DeferredWorkQueue.runLater(new Runnable() {
             @Override
             public void run() {
-                String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.FOREST, BiomeSpawnHelper.DARK_FOREST);
+                String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS, BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.TAIGA, BiomeSpawnHelper.GRAVELLY_MOUNTAINS, BiomeSpawnHelper.BIRCH_FOREST, BiomeSpawnHelper.DARK_FOREST);
                 BiomeSpawnHelper.setCreatureSpawnBiomes(entity, spawnBiomes, 12, 2, 4);
                 EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
                         AnimalEntity::canAnimalSpawn);
@@ -69,12 +70,11 @@ public class RockySheepEntity extends EarthtojavamobsModElements.ModElement {
 
     @SubscribeEvent
     public void registerModels(ModelRegistryEvent event) {
-        RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> new RockySheepRenderer(renderManager) {
-        });
+        RenderingRegistry.registerEntityRenderingHandler(entity, InkySheepRenderer::new);
     }
 
     public static class CustomEntity extends AnimalEntity implements net.minecraftforge.common.IShearable {
-        private static final DataParameter<Byte> isSheared = EntityDataManager.createKey(RockySheepEntity.CustomEntity.class, DataSerializers.BYTE);
+        private static final DataParameter<Byte> isSheared = EntityDataManager.createKey(CustomEntity.class, DataSerializers.BYTE);
 
         private int sheepTimer;
         private EatGrassGoal eatGrassGoal;
@@ -99,6 +99,7 @@ public class RockySheepEntity extends EarthtojavamobsModElements.ModElement {
             this.goalSelector.addGoal(5, this.eatGrassGoal);
             this.goalSelector.addGoal(6, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
             this.goalSelector.addGoal(7, new LookAtGoal(this, PlayerEntity.class, 6.0F));
+            this.goalSelector.addGoal(7, new LookAtGoal(this, ServerPlayerEntity.class, 6.0F));
             this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
         }
 
@@ -151,10 +152,9 @@ public class RockySheepEntity extends EarthtojavamobsModElements.ModElement {
             this.dataManager.register(isSheared, (byte) 0);
         }
 
-
         @Override
-        public RockySheepEntity.CustomEntity createChild(AgeableEntity ageable) {
-            return (RockySheepEntity.CustomEntity) entity.create(this.world);
+        public CustomEntity createChild(AgeableEntity ageable) {
+            return (CustomEntity) entity.create(this.world);
         }
 
         public boolean getSheared() {
@@ -187,15 +187,14 @@ public class RockySheepEntity extends EarthtojavamobsModElements.ModElement {
             java.util.List<ItemStack> ret = new java.util.ArrayList<>();
             if (!this.world.isRemote) {
                 this.setSheared(true);
-                int i = 1 + this.rand.nextInt(3);
+                int i = 1 + this.rand.nextInt(2);
                 for (int j = 0; j < i; ++j) {
-                    ret.add(new ItemStack(Blocks.GRAY_WOOL));
+                    ret.add(new ItemStack(Blocks.BLACK_WOOL));
                 }
             }
             this.playSound(SoundEvents.ENTITY_SHEEP_SHEAR, 1.0F, 1.0F);
             return ret;
         }
-
 
         public void writeAdditional(CompoundNBT compound) {
             super.writeAdditional(compound);
@@ -206,7 +205,6 @@ public class RockySheepEntity extends EarthtojavamobsModElements.ModElement {
             super.readAdditional(compound);
             this.setSheared(compound.getBoolean("Sheared"));
         }
-
 
         public float getHeadRotationPointY(float p_70894_1_) {
             if (this.sheepTimer <= 0) {
