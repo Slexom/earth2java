@@ -34,5 +34,9 @@
   "item.earthtojavamobs.mud_fluid_bucket": "Bucket of Mud",
   "item.earthtojavamobs.horn": "Horn",
   "entity.earthtojavamobs.skeleton_wolf": "Skeleton Wolf",
-  "item.earthtojavamobs.skeleton_wolf_spawn_egg": "Skeleton Wolf Spawn Egg"
+  "item.earthtojavamobs.skeleton_wolf_spawn_egg": "Skeleton Wolf Spawn Egg",
+  "entity.earthtojavamobs.inky_sheep": "Inky Sheep",
+  "entity.earthtojavamobs.flecked_sheep": "Flecked Sheep",
+  "item.earthtojavamobs.flecked_sheep_spawn_egg": "Flecked Sheep Spawn Egg",
+  "item.earthtojavamobs.inky_sheep_spawn_egg": "Inky Sheep Spawn Egg"
 }

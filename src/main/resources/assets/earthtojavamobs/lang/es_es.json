@@ -34,5 +34,9 @@
   "item.earthtojavamobs.mud_fluid_bucket": "Cubo con barro",
   "item.earthtojavamobs.horn": "Cuerno",
   "entity.earthtojavamobs.skeleton_wolf": "Lobo esqueleto",
-  "item.earthtojavamobs.skeleton_wolf_spawn_egg": "Generar lobo esqueleto"
+  "item.earthtojavamobs.skeleton_wolf_spawn_egg": "Generar lobo esqueleto",
+  "entity.earthtojavamobs.inky_sheep": "Oveja entintada",
+  "entity.earthtojavamobs.flecked_sheep": "Oveja jasperda",
+  "item.earthtojavamobs.flecked_sheep_spawn_egg": "Generar oveja jasperda",
+  "item.earthtojavamobs.inky_sheep_spawn_egg": "Generar oveja entintada"
 }

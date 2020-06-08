@@ -51,7 +51,7 @@ public class RockySheepEntity extends EarthtojavamobsModElements.ModElement {
                 .setRegistryName(registryNameEntity);
         elements.entities.add(() -> entity);
         elements.items.add(
-                () -> new SpawnEggItem(entity, 0xd6d1cc, 0x453d3b, new Item.Properties().group(ItemGroup.MISC)).setRegistryName(registryNameSpawnEgg));
+                () -> new SpawnEggItem(entity, 0xa69f9b, 0xe9d0bd, new Item.Properties().group(ItemGroup.MISC)).setRegistryName(registryNameSpawnEgg));
     }
 
     @Override

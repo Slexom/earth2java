@@ -29,19 +29,19 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.network.FMLPlayMessages;
 import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
-import net.slexom.earthtojavamobs.client.renderer.entity.InkySheepRenderer;
+import net.slexom.earthtojavamobs.client.renderer.entity.FleckedSheepRenderer;
 import net.slexom.earthtojavamobs.utils.BiomeSpawnHelper;
 
 import java.text.MessageFormat;
 
 @EarthtojavamobsModElements.ModElement.Tag
-public class InkySheepEntity extends EarthtojavamobsModElements.ModElement {
+public class FleckedSheepEntity extends EarthtojavamobsModElements.ModElement {
     public static EntityType entity = null;
-    private static final String registryNameEntity = "inky_sheep";
+    private static final String registryNameEntity = "flecked_sheep";
     private static final String registryNameSpawnEgg = MessageFormat.format("{0}_spawn_egg", registryNameEntity);
 
-    public InkySheepEntity(EarthtojavamobsModElements instance) {
-        super(instance, 31);
+    public FleckedSheepEntity(EarthtojavamobsModElements instance) {
+        super(instance, 33);
         FMLJavaModLoadingContext.get().getModEventBus().register(this);
     }
 
@@ -52,7 +52,7 @@ public class InkySheepEntity extends EarthtojavamobsModElements.ModElement {
                 .setRegistryName(registryNameEntity);
         elements.entities.add(() -> entity);
         elements.items.add(
-                () -> new SpawnEggItem(entity, 0x181716, 0x8a7564, new Item.Properties().group(ItemGroup.MISC)).setRegistryName(registryNameSpawnEgg));
+                () -> new SpawnEggItem(entity, 0x2c1e17, 0x907666, new Item.Properties().group(ItemGroup.MISC)).setRegistryName(registryNameSpawnEgg));
     }
 
     @Override
@@ -60,7 +60,7 @@ public class InkySheepEntity extends EarthtojavamobsModElements.ModElement {
         DeferredWorkQueue.runLater(new Runnable() {
             @Override
             public void run() {
-                String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS, BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.TAIGA, BiomeSpawnHelper.GRAVELLY_MOUNTAINS, BiomeSpawnHelper.BIRCH_FOREST, BiomeSpawnHelper.DARK_FOREST);
+                String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS, BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.TAIGA, BiomeSpawnHelper.GRAVELLY_MOUNTAINS, BiomeSpawnHelper.FOREST);
                 BiomeSpawnHelper.setCreatureSpawnBiomes(entity, spawnBiomes, 12, 2, 4);
                 EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
                         AnimalEntity::canAnimalSpawn);
@@ -70,7 +70,7 @@ public class InkySheepEntity extends EarthtojavamobsModElements.ModElement {
 
     @SubscribeEvent
     public void registerModels(ModelRegistryEvent event) {
-        RenderingRegistry.registerEntityRenderingHandler(entity, InkySheepRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(entity, FleckedSheepRenderer::new);
     }
 
     public static class CustomEntity extends AnimalEntity implements net.minecraftforge.common.IShearable {
@@ -189,7 +189,7 @@ public class InkySheepEntity extends EarthtojavamobsModElements.ModElement {
                 this.setSheared(true);
                 int i = 1 + this.rand.nextInt(2);
                 for (int j = 0; j < i; ++j) {
-                    ret.add(new ItemStack(Blocks.BLACK_WOOL));
+                    ret.add(new ItemStack(Blocks.BROWN_WOOL));
                 }
             }
             this.playSound(SoundEvents.ENTITY_SHEEP_SHEAR, 1.0F, 1.0F);
