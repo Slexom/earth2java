@@ -11,9 +11,12 @@ import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.client.renderer.entity.model.PigModel;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.MuddyPigModel;
 import net.slexom.earthtojavamobs.entity.MuddyPigEntity;
 
+@OnlyIn(Dist.CLIENT)
 public class MuddyPigRenderer extends MobRenderer<MuddyPigEntity.CustomEntity, MuddyPigModel<MuddyPigEntity.CustomEntity>> {
     private static final ResourceLocation texture = new ResourceLocation("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig.png");
     private static final ResourceLocation textureBlink = new ResourceLocation("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_blink.png");
@@ -28,7 +31,7 @@ public class MuddyPigRenderer extends MobRenderer<MuddyPigEntity.CustomEntity, M
 
     public ResourceLocation getEntityTexture(MuddyPigEntity.CustomEntity entity) {
         boolean blink = (entity.ticksExisted % blinkTime) == 0 || (entity.ticksExisted % blinkTime) == 1 || (entity.ticksExisted % blinkTime) == 2 || (entity.ticksExisted % blinkTime) == 3;
-        return entity.getInMud() ? blink ? textureBlink : texture : blink ? textureDriedBlink : textureDried;
+        return entity.isInMud() ? blink ? textureBlink : texture : blink ? textureDriedBlink : textureDried;
     }
 
     public static class SaddleLayer extends LayerRenderer<MuddyPigEntity.CustomEntity, MuddyPigModel<MuddyPigEntity.CustomEntity>> {

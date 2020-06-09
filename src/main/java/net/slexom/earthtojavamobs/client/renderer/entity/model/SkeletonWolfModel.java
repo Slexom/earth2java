@@ -4,8 +4,11 @@ import com.google.common.collect.ImmutableList;
 import net.minecraft.client.renderer.entity.model.TintedAgeableModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.entity.SkeletonWolfEntity;
 
+@OnlyIn(Dist.CLIENT)
 public class SkeletonWolfModel<T extends SkeletonWolfEntity.CustomEntity> extends TintedAgeableModel<T> {
     private final ModelRenderer head;
     private final ModelRenderer headChild;

@@ -8,10 +8,13 @@ import net.minecraft.client.renderer.entity.layers.SlimeGelLayer;
 import net.minecraft.client.renderer.entity.model.SlimeModel;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.entity.TropicalSlimeEntity;
 
 import java.text.MessageFormat;
 
+@OnlyIn(Dist.CLIENT)
 public class TropicalSlimeRenderer extends MobRenderer<TropicalSlimeEntity.CustomEntity, SlimeModel<TropicalSlimeEntity.CustomEntity>> {
     private static final int ANIMATION_FRAMES = 48;
     private static final float ANIMATION_TIME = 12.0F;

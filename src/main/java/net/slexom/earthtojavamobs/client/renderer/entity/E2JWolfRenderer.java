@@ -5,9 +5,12 @@ import net.minecraft.client.renderer.entity.WolfRenderer;
 import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.text.MessageFormat;
 
+@OnlyIn(Dist.CLIENT)
 public class E2JWolfRenderer extends WolfRenderer {
     private final String registryName;
 

@@ -3,10 +3,13 @@ package net.slexom.earthtojavamobs.client.renderer.entity;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.client.renderer.entity.layers.HornedSheepWoolLayer;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.HornedSheepModel;
 import net.slexom.earthtojavamobs.entity.HornedSheepEntity;
 
+@OnlyIn(Dist.CLIENT)
 public class HornedSheepRenderer extends MobRenderer<HornedSheepEntity.CustomEntity, HornedSheepModel<HornedSheepEntity.CustomEntity>> {
     private static final ResourceLocation SHEARED_SHEEP_TEXTURES = new ResourceLocation("earthtojavamobs:textures/mobs/sheep/horned_sheep/horned_sheep.png");
     private static final ResourceLocation SHEARED_SHEEP_BLINK_TEXTURES = new ResourceLocation("earthtojavamobs:textures/mobs/sheep/horned_sheep/horned_sheep_blink.png");

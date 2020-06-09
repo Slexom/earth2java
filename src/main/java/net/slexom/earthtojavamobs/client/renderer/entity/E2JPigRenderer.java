@@ -4,9 +4,12 @@ import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.PigRenderer;
 import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.text.MessageFormat;
 
+@OnlyIn(Dist.CLIENT)
 public class E2JPigRenderer extends PigRenderer {
 
     private final String registryName;

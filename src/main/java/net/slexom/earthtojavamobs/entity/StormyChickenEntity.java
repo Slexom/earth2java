@@ -10,6 +10,8 @@ import net.minecraft.item.SpawnEggItem;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.Heightmap;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
@@ -57,6 +59,7 @@ public class StormyChickenEntity extends EarthtojavamobsModElements.ModElement {
     }
 
     @SubscribeEvent
+    @OnlyIn(Dist.CLIENT)
     public void registerModels(ModelRegistryEvent event) {
         RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> new E2JChickenRenderer(renderManager, registryNameEntity));
     }

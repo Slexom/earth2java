@@ -4,6 +4,7 @@ package net.slexom.earthtojavamobs.fluid;
 import net.minecraft.block.Block;
 import net.minecraft.block.FlowingFluidBlock;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.fluid.FlowingFluid;
@@ -23,6 +24,8 @@ import net.minecraft.world.gen.feature.BlockStateFeatureConfig;
 import net.minecraft.world.gen.feature.LakesFeature;
 import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.Placement;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidAttributes;
@@ -59,6 +62,7 @@ public class MudFluid extends EarthtojavamobsModElements.ModElement {
     }
 
     @Override
+    @OnlyIn(Dist.CLIENT)
     public void clientLoad(FMLClientSetupEvent event) {
         RenderTypeLookup.setRenderLayer(still, RenderType.getSolid());
         RenderTypeLookup.setRenderLayer(flowing, RenderType.getSolid());
@@ -85,7 +89,7 @@ public class MudFluid extends EarthtojavamobsModElements.ModElement {
                 .block(() -> block);
         still = (FlowingFluid) new ForgeFlowingFluid.Source(fluidproperties).setRegistryName("mud_fluid");
         flowing = (FlowingFluid) new ForgeFlowingFluid.Flowing(fluidproperties).setRegistryName("mud_fluid_flowing");
-        elements.blocks.add(() -> new MudFlowingFluidBlock(still, Block.Properties.create(Material.WATER).doesNotBlockMovement().hardnessAndResistance(100.0F).noDrops()) {
+        elements.blocks.add(() -> new MudFlowingFluidBlock(still, Block.Properties.create(Material.WATER, MaterialColor.BROWN).doesNotBlockMovement().hardnessAndResistance(100.0F).noDrops()) {
         }.setRegistryName("mud_fluid"));
         elements.items.add(() -> new BucketItem(still, new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(ItemGroup.MISC))
                 .setRegistryName("mud_fluid_bucket"));

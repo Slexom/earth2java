@@ -1,11 +1,14 @@
 package net.slexom.earthtojavamobs.client.renderer.entity;
 
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.entity.WoolyCowEntity;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.model.CowModel;
 import net.minecraft.util.ResourceLocation;
 
+@OnlyIn(Dist.CLIENT)
 public class WoolyCowRenderer extends MobRenderer<WoolyCowEntity.CustomEntity, CowModel<WoolyCowEntity.CustomEntity>> {
     private static final ResourceLocation texture = new ResourceLocation("earthtojavamobs:textures/mobs/cow/wooly_cow/wooly_cow.png");
     private static final ResourceLocation textureBlink = new ResourceLocation("earthtojavamobs:textures/mobs/cow/wooly_cow/wooly_cow_blink.png");

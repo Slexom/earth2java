@@ -4,9 +4,12 @@ import net.minecraft.client.renderer.entity.ChickenRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.text.MessageFormat;
 
+@OnlyIn(Dist.CLIENT)
 public class E2JChickenRenderer extends ChickenRenderer {
 
     private final String registryName;

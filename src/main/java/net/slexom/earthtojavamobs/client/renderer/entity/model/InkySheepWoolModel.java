@@ -2,9 +2,12 @@ package net.slexom.earthtojavamobs.client.renderer.entity.model;
 
 import net.minecraft.client.renderer.entity.model.QuadrupedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.entity.InkySheepEntity;
 import net.slexom.earthtojavamobs.entity.RockySheepEntity;
 
+@OnlyIn(Dist.CLIENT)
 public class InkySheepWoolModel<T extends InkySheepEntity.CustomEntity> extends QuadrupedModel<T> {
     private float headRotationAngleX;
 

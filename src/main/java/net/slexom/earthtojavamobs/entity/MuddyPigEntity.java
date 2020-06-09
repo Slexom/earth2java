@@ -11,6 +11,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
@@ -18,6 +19,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.Heightmap;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
@@ -25,6 +28,7 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.network.FMLPlayMessages;
+import net.slexom.earthtojavamobs.EarthtojavamobsMod;
 import net.slexom.earthtojavamobs.EarthtojavamobsModElements;
 import net.slexom.earthtojavamobs.client.renderer.entity.MuddyPigRenderer;
 import net.slexom.earthtojavamobs.utils.BiomeSpawnHelper;
@@ -66,12 +70,13 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
     }
 
     @SubscribeEvent
+    @OnlyIn(Dist.CLIENT)
     public void registerModels(ModelRegistryEvent event) {
         RenderingRegistry.registerEntityRenderingHandler(entity, MuddyPigRenderer::new);
     }
 
     public static class CustomEntity extends PigEntity {
-        private static final DataParameter<Boolean> isInMud = EntityDataManager.createKey(CustomEntity.class, DataSerializers.BOOLEAN);
+        private static final DataParameter<Boolean> IS_IN_MUD = EntityDataManager.createKey(CustomEntity.class, DataSerializers.BOOLEAN);
         private static final Ingredient TEMPTATION_ITEMS = Ingredient.fromItems(Items.CARROT, Items.POTATO, Items.BEETROOT);
         private double outOfMud = 0.0D;
         private double finallyInMud = 0.0D;
@@ -117,7 +122,7 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
             BlockPos blockPos = new BlockPos(i, j, k);
             boolean condition = this.world.getFluidState(blockPos).getBlockState().getBlock().getRegistryName().equals(new ResourceLocation("earthtojavamobs:mud_fluid"));
             if (condition) {
-                if (!getInMud()) {
+                if (!isInMud()) {
                     finallyInMud++;
                     if (finallyInMud > 60) {
                         finallyInMud = 0.0D;
@@ -125,7 +130,7 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
                     }
                 }
             } else {
-                if (getInMud()) {
+                if (isInMud()) {
                     outOfMud++;
                     if (outOfMud > 60) {
                         outOfMud = 0.0D;
@@ -142,7 +147,7 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
 
         protected void registerData() {
             super.registerData();
-            this.dataManager.register(isInMud, false);
+            this.dataManager.register(IS_IN_MUD, false);
         }
 
         public boolean processInteract(PlayerEntity player, Hand hand) {
@@ -167,17 +172,17 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
             }
         }
 
-        public boolean getInMud() {
-            return this.dataManager.get(isInMud);
+        public boolean isInMud() {
+            return this.dataManager.get(IS_IN_MUD);
         }
 
         public void setInMud(boolean inMud) {
-            this.dataManager.set(isInMud, inMud);
+            this.dataManager.set(IS_IN_MUD, inMud);
         }
 
         public void writeAdditional(CompoundNBT compound) {
             super.writeAdditional(compound);
-            compound.putBoolean("IsInMud", this.getInMud());
+            compound.putBoolean("IsInMud", this.isInMud());
         }
 
         public void readAdditional(CompoundNBT compound) {
@@ -199,7 +204,7 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
             }
 
             public boolean shouldExecute() {
-                return !this.muddy_pig.getInMud();
+                return !this.muddy_pig.isInMud();
             }
 
             public void startExecuting() {
@@ -220,5 +225,29 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
                 }
             }
         }
+
+        private boolean eyesInMud() {
+            ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");
+            return this.areEyesInFluid(FluidTags.getCollection().get(mudTag), true);
+        }
+
+        public void baseTick() {
+            super.baseTick();
+            updateSwimming();
+        }
+
+        public void updateSwimming() {
+            if (this.isSwimming()) {
+                this.setSwimming(this.isSprinting() && (this.isInWater() || this.isInMud()) && !this.isPassenger());
+            } else {
+                this.setSwimming(this.isSprinting() && this.canSwim() && !this.isPassenger());
+            }
+
+        }
+
+        public boolean canSwim() {
+            return (this.eyesInWater && this.isInWater()) || (this.isInMud());
+        }
+
     }
 }

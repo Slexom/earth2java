@@ -3,10 +3,13 @@ package net.slexom.earthtojavamobs.client.renderer.entity;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.client.renderer.entity.layers.FleckedSheepWoolLayer;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.FleckedSheepModel;
 import net.slexom.earthtojavamobs.entity.FleckedSheepEntity;
 
+@OnlyIn(Dist.CLIENT)
 public class FleckedSheepRenderer extends MobRenderer<FleckedSheepEntity.CustomEntity, FleckedSheepModel<FleckedSheepEntity.CustomEntity>> {
 
     public FleckedSheepRenderer(EntityRendererManager renderManagerIn) {

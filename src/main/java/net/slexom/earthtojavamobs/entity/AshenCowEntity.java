@@ -10,6 +10,8 @@ import net.minecraft.item.SpawnEggItem;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.Heightmap;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
@@ -45,18 +47,16 @@ public class AshenCowEntity extends EarthtojavamobsModElements.ModElement {
 
     @Override
     public void init(FMLCommonSetupEvent event) {
-        DeferredWorkQueue.runLater(new Runnable() {
-            @Override
-            public void run() {
-                String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.GRAVELLY_MOUNTAINS);
-                BiomeSpawnHelper.setCreatureSpawnBiomes(entity, spawnBiomes, 8, 2, 4);
-                EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
-                        AnimalEntity::canAnimalSpawn);
-            }
+        DeferredWorkQueue.runLater(() -> {
+            String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.GRAVELLY_MOUNTAINS);
+            BiomeSpawnHelper.setCreatureSpawnBiomes(entity, spawnBiomes, 8, 2, 4);
+            EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+                    AnimalEntity::canAnimalSpawn);
         });
     }
 
     @SubscribeEvent
+    @OnlyIn(Dist.CLIENT)
     public void registerModels(ModelRegistryEvent event) {
         RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> new E2JCowRenderer(renderManager, registryNameEntity));
     }

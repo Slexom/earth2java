@@ -4,10 +4,13 @@ import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.client.renderer.entity.layers.CluckshroomLayer;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.CluckshroomModel;
 import net.slexom.earthtojavamobs.entity.CluckshroomEntity;
 
+@OnlyIn(Dist.CLIENT)
 public class CluckshroomRenderer extends MobRenderer<CluckshroomEntity.CustomEntity, CluckshroomModel<CluckshroomEntity.CustomEntity>> {
     private static final ResourceLocation texture = new ResourceLocation("earthtojavamobs:textures/mobs/chicken/cluck_shroom/cluck_shroom.png");
     private static final ResourceLocation textureBlink = new ResourceLocation("earthtojavamobs:textures/mobs/chicken/cluck_shroom/cluck_shroom_blink.png");

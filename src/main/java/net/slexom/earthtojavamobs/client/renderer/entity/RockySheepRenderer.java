@@ -3,10 +3,13 @@ package net.slexom.earthtojavamobs.client.renderer.entity;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.client.renderer.entity.layers.RockySheepWoolLayer;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.RockySheepModel;
 import net.slexom.earthtojavamobs.entity.RockySheepEntity;
 
+@OnlyIn(Dist.CLIENT)
 public class RockySheepRenderer extends MobRenderer<RockySheepEntity.CustomEntity, RockySheepModel<RockySheepEntity.CustomEntity>> {
     private static final ResourceLocation texture = new ResourceLocation("earthtojavamobs:textures/mobs/sheep/rocky_sheep/rocky_sheep.png");
     private static final ResourceLocation textureBlink = new ResourceLocation("earthtojavamobs:textures/mobs/sheep/rocky_sheep/rocky_sheep_blink.png");

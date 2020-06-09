@@ -8,6 +8,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -17,6 +19,7 @@ import net.slexom.earthtojavamobs.EarthtojavamobsMod;
 public class MudFogHandler {
 
     @SubscribeEvent
+    @OnlyIn(Dist.CLIENT)
     public static void onFogColor(EntityViewRenderEvent.FogColors event) {
         if (event.getInfo().getRenderViewEntity() instanceof PlayerEntity) {
             ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");

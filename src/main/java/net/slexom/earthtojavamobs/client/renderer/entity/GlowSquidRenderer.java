@@ -8,10 +8,13 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.model.SquidModel;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.entity.GlowSquidEntity;
 
 import java.text.MessageFormat;
 
+@OnlyIn(Dist.CLIENT)
 public class GlowSquidRenderer extends MobRenderer<GlowSquidEntity.CustomEntity, SquidModel<GlowSquidEntity.CustomEntity>> {
     private static final int ANIMATION_FRAMES = 22;
     private static final float ANIMATION_TIME = 12.0F;

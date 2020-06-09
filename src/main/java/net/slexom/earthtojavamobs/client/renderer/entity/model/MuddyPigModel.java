@@ -2,7 +2,10 @@ package net.slexom.earthtojavamobs.client.renderer.entity.model;
 
 import net.minecraft.client.renderer.entity.model.QuadrupedModel;
 import net.minecraft.entity.Entity;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
+@OnlyIn(Dist.CLIENT)
 public class MuddyPigModel<T extends Entity> extends QuadrupedModel<T> {
 
     public MuddyPigModel() {

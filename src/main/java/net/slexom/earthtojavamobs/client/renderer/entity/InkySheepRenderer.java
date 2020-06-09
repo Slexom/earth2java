@@ -3,10 +3,13 @@ package net.slexom.earthtojavamobs.client.renderer.entity;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.client.renderer.entity.layers.InkySheepWoolLayer;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.InkySheepModel;
 import net.slexom.earthtojavamobs.entity.InkySheepEntity;
 
+@OnlyIn(Dist.CLIENT)
 public class InkySheepRenderer extends MobRenderer<InkySheepEntity.CustomEntity, InkySheepModel<InkySheepEntity.CustomEntity>> {
 
     public InkySheepRenderer(EntityRendererManager renderManagerIn) {

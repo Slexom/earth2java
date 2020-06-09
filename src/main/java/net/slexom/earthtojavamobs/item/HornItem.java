@@ -1,5 +1,6 @@
 package net.slexom.earthtojavamobs.item;
 
+import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.registries.ObjectHolder;
 
 import net.minecraft.item.ItemStack;
@@ -19,7 +20,7 @@ public class HornItem extends EarthtojavamobsModElements.ModElement {
 
     @Override
     public void initElements() {
-        elements.items.add(ItemCustom::new);
+        DeferredWorkQueue.runLater(() -> elements.items.add(ItemCustom::new));
     }
 
     public static class ItemCustom extends Item {
