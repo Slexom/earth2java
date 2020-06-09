@@ -1,0 +1,16 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "minecraft:bucket"
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "earthtojavamobs:mud_bucket"
+    ]
+  }
+}
