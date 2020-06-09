@@ -1,6 +1,7 @@
 package net.slexom.earthtojavamobs.fluid;
 
 import com.google.common.collect.Lists;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FlowingFluidBlock;
@@ -26,7 +27,7 @@ public class MudFlowingFluidBlock extends FlowingFluidBlock {
 
     private boolean fluidStateCacheInitialized = false;
 
-    public MudFlowingFluidBlock(FlowingFluid fluidIn, Properties builder) {
+    public MudFlowingFluidBlock(FlowingFluid fluidIn, Block.Properties builder) {
         super(fluidIn, builder);
         this.fluid = fluidIn;
         this.field_212565_c = Lists.newArrayList();
@@ -39,14 +40,19 @@ public class MudFlowingFluidBlock extends FlowingFluidBlock {
         fluidStateCacheInitialized = true;
         supplier = fluidIn.delegate;
     }
-
-    public MudFlowingFluidBlock(Supplier<? extends FlowingFluid> supplier, Properties p_i48368_1_) {
+    public MudFlowingFluidBlock(Supplier<? extends FlowingFluid> supplier, Block.Properties p_i48368_1_) {
         super(supplier, p_i48368_1_);
         this.fluid = null;
         this.field_212565_c = Lists.newArrayList();
         this.setDefaultState(this.stateContainer.getBaseState().with(LEVEL, Integer.valueOf(0)));
         this.supplier = supplier;
     }
+
+    @Override
+    public float getSpeedFactor() {
+        return 0.3F;
+    }
+
 
     private void triggerMixEffects(IWorld worldIn, BlockPos pos) {
         worldIn.playEvent(1501, pos, 0);

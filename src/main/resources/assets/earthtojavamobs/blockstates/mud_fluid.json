@@ -1,9 +1,6 @@
+
 {
-  "forge_marker": 1,
   "variants": {
-    "fluid": {
-      "model": "forge:fluid",
-      "custom": { "fluid": "mud_fluid" }
-    }
+    "": { "model": "earthtojavamobs:block/mud" }
   }
 }

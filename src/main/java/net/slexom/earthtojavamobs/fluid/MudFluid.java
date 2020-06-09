@@ -76,7 +76,7 @@ public class MudFluid extends EarthtojavamobsModElements.ModElement {
                 )
                         .luminosity(0)
                         .density(1800)
-                        //.overlay(new ResourceLocation("earthtojavamobs", "/fluids/mud_overlay"))
+                //.overlay(new ResourceLocation("earthtojavamobs", "/fluids/mud_overlay"))
         )
                 .slopeFindDistance(4)
                 .explosionResistance(100.F)

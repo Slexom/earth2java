@@ -11,6 +11,7 @@ authors="Slexom"
 logoFile="logo.png"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/earth2java-mobs"
 description='''Bring mobs from Minecraft Earth to Minecraft Java Edition.'''
+updateJSONURL="https://raw.githubusercontent.com/Slexom/earth2java/1.2.1/update.json"
 
 [[dependencies.earthtojavamobs]]
     modId="minecraft"
