@@ -1,0 +1,10 @@
+{
+  "homepage": "https://www.curseforge.com/minecraft/mc-mods/earth2java-mobs",
+  "promos": {
+    "1.15.2-latest": "1.2.1",
+    "1.15.2-recommended": "1.2.1"
+  },
+  "1.15.2": {
+    "1.2.1": "Integrated Update Checker"
+  }
+}
