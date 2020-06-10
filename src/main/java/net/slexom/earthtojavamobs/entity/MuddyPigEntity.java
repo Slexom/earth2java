@@ -228,7 +228,11 @@ public class MuddyPigEntity extends EarthtojavamobsModElements.ModElement {
 
         private boolean eyesInMud() {
             ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");
-            return this.areEyesInFluid(FluidTags.getCollection().get(mudTag), true);
+            if(FluidTags.getCollection().get(mudTag) != null) {
+                return this.areEyesInFluid(FluidTags.getCollection().get(mudTag), true);
+            } else {
+                return false;
+            }
         }
 
         public void baseTick() {

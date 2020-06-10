@@ -29,10 +29,12 @@ public class MudFogHandler {
             int y = MathHelper.floor(player.getPosYEye());
             int z = MathHelper.floor(player.getPosZ());
             IFluidState blockStateAtEyes = world.getFluidState(new BlockPos(x, y, z));
-            if (blockStateAtEyes.getFluid().isIn(FluidTags.getCollection().get(mudTag))) {
-                event.setRed(87.0F / 255.0F);
-                event.setGreen(54.0F / 255.0F);
-                event.setBlue(35.0F / 255.0F);
+            if (FluidTags.getCollection().get(mudTag) != null) {
+                if (blockStateAtEyes.getFluid().isIn(FluidTags.getCollection().get(mudTag))) {
+                    event.setRed(87.0F / 255.0F);
+                    event.setGreen(54.0F / 255.0F);
+                    event.setBlue(35.0F / 255.0F);
+                }
             }
         }
     }

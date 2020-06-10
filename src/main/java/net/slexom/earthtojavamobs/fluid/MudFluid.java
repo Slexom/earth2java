@@ -68,7 +68,6 @@ public class MudFluid extends EarthtojavamobsModElements.ModElement {
         RenderTypeLookup.setRenderLayer(flowing, RenderType.getSolid());
     }
 
-
     @Override
     public void initElements() {
         fluidproperties = new ForgeFlowingFluid.Properties(
@@ -80,7 +79,6 @@ public class MudFluid extends EarthtojavamobsModElements.ModElement {
                 )
                         .luminosity(0)
                         .density(1800)
-                //.overlay(new ResourceLocation("earthtojavamobs", "/fluids/mud_overlay"))
         )
                 .slopeFindDistance(4)
                 .explosionResistance(100.F)
@@ -113,7 +111,7 @@ public class MudFluid extends EarthtojavamobsModElements.ModElement {
                                 return false;
                             return super.place(world, generator, rand, pos, config);
                         }
-                    }.withConfiguration(new BlockStateFeatureConfig(block.getDefaultState())).withPlacement(Placement.WATER_LAKE.configure(new ChanceConfig(5))));
+                    }.withConfiguration(new BlockStateFeatureConfig(block.getDefaultState())).withPlacement(Placement.WATER_LAKE.configure(new ChanceConfig(40))));
                 }
             }
         });

@@ -62,18 +62,20 @@ public class MudFlowingFluidBlock extends FlowingFluidBlock {
     public boolean reactWithNeighbors(World worldIn, BlockPos pos, BlockState state) {
 
         ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");
-        if (this.fluid.isIn(FluidTags.getCollection().get(mudTag))) {
-            boolean flagForMud = false;
-            for (Direction direction : Direction.values()) {
-                if (worldIn.getFluidState(pos.offset(direction)).isTagged(FluidTags.LAVA)) {
-                    flagForMud = true;
-                    break;
+        if(FluidTags.getCollection().get(mudTag) != null) {
+            if (this.fluid.isIn(FluidTags.getCollection().get(mudTag))) {
+                boolean flagForMud = false;
+                for (Direction direction : Direction.values()) {
+                    if (worldIn.getFluidState(pos.offset(direction)).isTagged(FluidTags.LAVA)) {
+                        flagForMud = true;
+                        break;
+                    }
                 }
-            }
-            if (flagForMud) {
-                worldIn.setBlockState(pos, net.minecraftforge.event.ForgeEventFactory.fireFluidPlaceBlockEvent(worldIn, pos, pos, Blocks.DIRT.getDefaultState()));
-                this.triggerMixEffects(worldIn, pos);
-                return false;
+                if (flagForMud) {
+                    worldIn.setBlockState(pos, net.minecraftforge.event.ForgeEventFactory.fireFluidPlaceBlockEvent(worldIn, pos, pos, Blocks.DIRT.getDefaultState()));
+                    this.triggerMixEffects(worldIn, pos);
+                    return false;
+                }
             }
         }
         if (this.fluid.isIn(FluidTags.LAVA)) {
