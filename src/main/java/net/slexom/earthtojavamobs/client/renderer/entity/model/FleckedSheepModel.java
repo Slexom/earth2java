@@ -7,7 +7,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.entity.FleckedSheepEntity;
 
 @OnlyIn(Dist.CLIENT)
-public class FleckedSheepModel<T extends FleckedSheepEntity.CustomEntity> extends QuadrupedModel<T> {
+public class FleckedSheepModel<T extends FleckedSheepEntity> extends QuadrupedModel<T> {
     private float headRotationAngleX;
 
     public FleckedSheepModel() {

@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class MoobloomLayer<T extends MoobloomEntity.CustomEntity> extends LayerRenderer<T, CowModel<T>> {
+public class MoobloomLayer<T extends MoobloomEntity> extends LayerRenderer<T, CowModel<T>> {
 
     public MoobloomLayer(IEntityRenderer<T, CowModel<T>> rendererIn) {
         super(rendererIn);

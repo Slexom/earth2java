@@ -9,15 +9,15 @@ import net.slexom.earthtojavamobs.client.renderer.entity.model.RockySheepModel;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.RockySheepWoolModel;
 import net.slexom.earthtojavamobs.entity.RockySheepEntity;
 
-public class RockySheepWoolLayer extends LayerRenderer<RockySheepEntity.CustomEntity, RockySheepModel<RockySheepEntity.CustomEntity>> {
+public class RockySheepWoolLayer extends LayerRenderer<RockySheepEntity, RockySheepModel<RockySheepEntity>> {
     private static final ResourceLocation TEXTURE = new ResourceLocation("earthtojavamobs:textures/mobs/sheep/rocky_sheep/rocky_sheep_fur.png");
-    private final RockySheepWoolModel<RockySheepEntity.CustomEntity> sheepModel = new RockySheepWoolModel<>();
+    private final RockySheepWoolModel<RockySheepEntity> sheepModel = new RockySheepWoolModel<>();
 
-    public RockySheepWoolLayer(IEntityRenderer<RockySheepEntity.CustomEntity, RockySheepModel<RockySheepEntity.CustomEntity>> rendererIn) {
+    public RockySheepWoolLayer(IEntityRenderer<RockySheepEntity, RockySheepModel<RockySheepEntity>> rendererIn) {
         super(rendererIn);
     }
 
-    public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, RockySheepEntity.CustomEntity entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, RockySheepEntity entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
         if (!entitylivingbaseIn.getSheared() && !entitylivingbaseIn.isInvisible()) {
             float f = 0.9019608F;
             float f1 = 0.9019608F;

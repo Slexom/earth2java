@@ -10,7 +10,7 @@ import net.slexom.earthtojavamobs.client.renderer.entity.model.FleckedSheepModel
 import net.slexom.earthtojavamobs.entity.FleckedSheepEntity;
 
 @OnlyIn(Dist.CLIENT)
-public class FleckedSheepRenderer extends MobRenderer<FleckedSheepEntity.CustomEntity, FleckedSheepModel<FleckedSheepEntity.CustomEntity>> {
+public class FleckedSheepRenderer extends MobRenderer<FleckedSheepEntity, FleckedSheepModel<FleckedSheepEntity>> {
 
     public FleckedSheepRenderer(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, new FleckedSheepModel<>(), 0.7F);
@@ -18,7 +18,7 @@ public class FleckedSheepRenderer extends MobRenderer<FleckedSheepEntity.CustomE
 
     }
 
-    public ResourceLocation getEntityTexture(FleckedSheepEntity.CustomEntity entity) {
+    public ResourceLocation getEntityTexture(FleckedSheepEntity entity) {
         ResourceLocation texture = new ResourceLocation("earthtojavamobs:textures/mobs/sheep/flecked_sheep/flecked_sheep.png");
         ResourceLocation textureBlink = new ResourceLocation("earthtojavamobs:textures/mobs/sheep/flecked_sheep/flecked_sheep_blink.png");
         int blinkTime = 150;

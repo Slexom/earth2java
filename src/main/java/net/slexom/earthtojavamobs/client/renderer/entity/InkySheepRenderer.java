@@ -10,7 +10,7 @@ import net.slexom.earthtojavamobs.client.renderer.entity.model.InkySheepModel;
 import net.slexom.earthtojavamobs.entity.InkySheepEntity;
 
 @OnlyIn(Dist.CLIENT)
-public class InkySheepRenderer extends MobRenderer<InkySheepEntity.CustomEntity, InkySheepModel<InkySheepEntity.CustomEntity>> {
+public class InkySheepRenderer extends MobRenderer<InkySheepEntity, InkySheepModel<InkySheepEntity>> {
 
     public InkySheepRenderer(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, new InkySheepModel<>(), 0.7F);
@@ -18,7 +18,7 @@ public class InkySheepRenderer extends MobRenderer<InkySheepEntity.CustomEntity,
 
     }
 
-    public ResourceLocation getEntityTexture(InkySheepEntity.CustomEntity entity) {
+    public ResourceLocation getEntityTexture(InkySheepEntity entity) {
         ResourceLocation texture = new ResourceLocation("earthtojavamobs:textures/mobs/sheep/inky_sheep/inky_sheep.png");
         ResourceLocation textureBlink = new ResourceLocation("earthtojavamobs:textures/mobs/sheep/inky_sheep/inky_sheep_blink.png");
         int blinkTime = 150;

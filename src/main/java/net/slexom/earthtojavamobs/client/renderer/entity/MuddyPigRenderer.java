@@ -17,7 +17,7 @@ import net.slexom.earthtojavamobs.client.renderer.entity.model.MuddyPigModel;
 import net.slexom.earthtojavamobs.entity.MuddyPigEntity;
 
 @OnlyIn(Dist.CLIENT)
-public class MuddyPigRenderer extends MobRenderer<MuddyPigEntity.CustomEntity, MuddyPigModel<MuddyPigEntity.CustomEntity>> {
+public class MuddyPigRenderer extends MobRenderer<MuddyPigEntity, MuddyPigModel<MuddyPigEntity>> {
     private static final ResourceLocation texture = new ResourceLocation("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig.png");
     private static final ResourceLocation textureBlink = new ResourceLocation("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_blink.png");
     private static final ResourceLocation textureDried = new ResourceLocation("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_dried.png");
@@ -29,20 +29,20 @@ public class MuddyPigRenderer extends MobRenderer<MuddyPigEntity.CustomEntity, M
         this.addLayer(new SaddleLayer(this));
     }
 
-    public ResourceLocation getEntityTexture(MuddyPigEntity.CustomEntity entity) {
+    public ResourceLocation getEntityTexture(MuddyPigEntity entity) {
         boolean blink = (entity.ticksExisted % blinkTime) == 0 || (entity.ticksExisted % blinkTime) == 1 || (entity.ticksExisted % blinkTime) == 2 || (entity.ticksExisted % blinkTime) == 3;
         return entity.isInMud() ? blink ? textureBlink : texture : blink ? textureDriedBlink : textureDried;
     }
 
-    public static class SaddleLayer extends LayerRenderer<MuddyPigEntity.CustomEntity, MuddyPigModel<MuddyPigEntity.CustomEntity>> {
+    public static class SaddleLayer extends LayerRenderer<MuddyPigEntity, MuddyPigModel<MuddyPigEntity>> {
         private final ResourceLocation TEXTURE = new ResourceLocation("textures/entity/pig/pig_saddle.png");
-        private final PigModel<MuddyPigEntity.CustomEntity> pigModel = new PigModel<>(0.5F);
+        private final PigModel<MuddyPigEntity> pigModel = new PigModel<>(0.5F);
 
-        public SaddleLayer(IEntityRenderer<MuddyPigEntity.CustomEntity, MuddyPigModel<MuddyPigEntity.CustomEntity>> p_i50927_1_) {
+        public SaddleLayer(IEntityRenderer<MuddyPigEntity, MuddyPigModel<MuddyPigEntity>> p_i50927_1_) {
             super(p_i50927_1_);
         }
 
-        public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, MuddyPigEntity.CustomEntity entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
+        public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, MuddyPigEntity entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
             if (entitylivingbaseIn.getSaddled()) {
                 this.getEntityModel().copyModelAttributesTo(this.pigModel);
                 this.pigModel.setLivingAnimations(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks);

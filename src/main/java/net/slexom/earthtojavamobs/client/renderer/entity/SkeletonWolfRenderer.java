@@ -9,7 +9,7 @@ import net.slexom.earthtojavamobs.client.renderer.entity.model.SkeletonWolfModel
 import net.slexom.earthtojavamobs.entity.SkeletonWolfEntity;
 
 @OnlyIn(Dist.CLIENT)
-public class SkeletonWolfRenderer extends MobRenderer<SkeletonWolfEntity.CustomEntity, SkeletonWolfModel<SkeletonWolfEntity.CustomEntity>> {
+public class SkeletonWolfRenderer extends MobRenderer<SkeletonWolfEntity, SkeletonWolfModel<SkeletonWolfEntity>> {
 
     public SkeletonWolfRenderer(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, new SkeletonWolfModel<>(), 0.5F);
@@ -19,11 +19,11 @@ public class SkeletonWolfRenderer extends MobRenderer<SkeletonWolfEntity.CustomE
     /**
      * Defines what float the third param in setRotationAngles of ModelBase is
      */
-    protected float handleRotationFloat(SkeletonWolfEntity.CustomEntity livingBase, float partialTicks) {
+    protected float handleRotationFloat(SkeletonWolfEntity livingBase, float partialTicks) {
         return livingBase.getTailRotation();
     }
 
-    public ResourceLocation getEntityTexture(SkeletonWolfEntity.CustomEntity entity) {
+    public ResourceLocation getEntityTexture(SkeletonWolfEntity entity) {
         ResourceLocation texture = new ResourceLocation("earthtojavamobs:textures/mobs/wolf/skeleton_wolf/skeleton_wolf.png");
         ResourceLocation textureAngry = new ResourceLocation("earthtojavamobs:textures/mobs/wolf/skeleton_wolf/skeleton_wolf_angry.png");
         return entity.isAngry() ? textureAngry : texture;

@@ -9,7 +9,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.entity.SkeletonWolfEntity;
 
 @OnlyIn(Dist.CLIENT)
-public class SkeletonWolfModel<T extends SkeletonWolfEntity.CustomEntity> extends TintedAgeableModel<T> {
+public class SkeletonWolfModel<T extends SkeletonWolfEntity> extends TintedAgeableModel<T> {
     private final ModelRenderer head;
     private final ModelRenderer headChild;
     private final ModelRenderer body;

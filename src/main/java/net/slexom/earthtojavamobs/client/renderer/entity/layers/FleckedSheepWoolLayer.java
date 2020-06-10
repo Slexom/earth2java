@@ -9,15 +9,15 @@ import net.slexom.earthtojavamobs.client.renderer.entity.model.FleckedSheepModel
 import net.slexom.earthtojavamobs.client.renderer.entity.model.FleckedSheepWoolModel;
 import net.slexom.earthtojavamobs.entity.FleckedSheepEntity;
 
-public class FleckedSheepWoolLayer extends LayerRenderer<FleckedSheepEntity.CustomEntity, FleckedSheepModel<FleckedSheepEntity.CustomEntity>> {
+public class FleckedSheepWoolLayer extends LayerRenderer<FleckedSheepEntity, FleckedSheepModel<FleckedSheepEntity>> {
     private static final ResourceLocation TEXTURE = new ResourceLocation("earthtojavamobs:textures/mobs/sheep/flecked_sheep/flecked_sheep_fur.png");
-    private final FleckedSheepWoolModel<FleckedSheepEntity.CustomEntity> sheepModel = new FleckedSheepWoolModel<>();
+    private final FleckedSheepWoolModel<FleckedSheepEntity> sheepModel = new FleckedSheepWoolModel<>();
 
-    public FleckedSheepWoolLayer(IEntityRenderer<FleckedSheepEntity.CustomEntity, FleckedSheepModel<FleckedSheepEntity.CustomEntity>> rendererIn) {
+    public FleckedSheepWoolLayer(IEntityRenderer<FleckedSheepEntity, FleckedSheepModel<FleckedSheepEntity>> rendererIn) {
         super(rendererIn);
     }
 
-    public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, FleckedSheepEntity.CustomEntity entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, FleckedSheepEntity entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
         if (!entitylivingbaseIn.getSheared() && !entitylivingbaseIn.isInvisible()) {
             float f = 0.9019608F;
             float f1 = 0.9019608F;

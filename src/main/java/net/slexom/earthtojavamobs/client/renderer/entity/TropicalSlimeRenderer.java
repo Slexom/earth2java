@@ -15,7 +15,7 @@ import net.slexom.earthtojavamobs.entity.TropicalSlimeEntity;
 import java.text.MessageFormat;
 
 @OnlyIn(Dist.CLIENT)
-public class TropicalSlimeRenderer extends MobRenderer<TropicalSlimeEntity.CustomEntity, SlimeModel<TropicalSlimeEntity.CustomEntity>> {
+public class TropicalSlimeRenderer extends MobRenderer<TropicalSlimeEntity, SlimeModel<TropicalSlimeEntity>> {
     private static final int ANIMATION_FRAMES = 48;
     private static final float ANIMATION_TIME = 12.0F;
     private int currentFrame = 0;
@@ -25,13 +25,13 @@ public class TropicalSlimeRenderer extends MobRenderer<TropicalSlimeEntity.Custo
         this.addLayer(new SlimeGelLayer<>(this));
     }
 
-    public void render(TropicalSlimeEntity.CustomEntity entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
+    public void render(TropicalSlimeEntity entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
         this.shadowSize = 1.0F;
         this.currentFrame = (int) (Math.floor(entityIn.ticksExisted / ANIMATION_TIME) % ANIMATION_FRAMES);
         super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
     }
 
-    protected void preRenderCallback(TropicalSlimeEntity.CustomEntity entitylivingbaseIn, MatrixStack matrixStackIn, float partialTickTime) {
+    protected void preRenderCallback(TropicalSlimeEntity entitylivingbaseIn, MatrixStack matrixStackIn, float partialTickTime) {
         float f = 0.999F;
         matrixStackIn.scale(0.999F, 0.999F, 0.999F);
         matrixStackIn.translate(0.0D, (double) 0.001F, 0.0D);
@@ -41,7 +41,7 @@ public class TropicalSlimeRenderer extends MobRenderer<TropicalSlimeEntity.Custo
         matrixStackIn.scale(f3 * f1, 1.0F / f3 * f1, f3 * f1);
     }
 
-    public ResourceLocation getEntityTexture(TropicalSlimeEntity.CustomEntity entity) {
+    public ResourceLocation getEntityTexture(TropicalSlimeEntity entity) {
         String frameLocation = MessageFormat.format("earthtojavamobs:textures/mobs/slime/tropical_slime/tropical_slime_anim_{0}.png", (currentFrame + 1));
         return new ResourceLocation(frameLocation);
     }

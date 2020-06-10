@@ -40,11 +40,12 @@ public class MudFlowingFluidBlock extends FlowingFluidBlock {
         fluidStateCacheInitialized = true;
         supplier = fluidIn.delegate;
     }
+
     public MudFlowingFluidBlock(Supplier<? extends FlowingFluid> supplier, Block.Properties p_i48368_1_) {
         super(supplier, p_i48368_1_);
         this.fluid = null;
         this.field_212565_c = Lists.newArrayList();
-        this.setDefaultState(this.stateContainer.getBaseState().with(LEVEL, Integer.valueOf(0)));
+        this.setDefaultState(this.stateContainer.getBaseState().with(LEVEL, 0));
         this.supplier = supplier;
     }
 
@@ -62,18 +63,21 @@ public class MudFlowingFluidBlock extends FlowingFluidBlock {
     public boolean reactWithNeighbors(World worldIn, BlockPos pos, BlockState state) {
 
         ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");
-        if (this.fluid.isIn(FluidTags.getCollection().get(mudTag))) {
-            boolean flagForMud = false;
-            for (Direction direction : Direction.values()) {
-                if (worldIn.getFluidState(pos.offset(direction)).isTagged(FluidTags.LAVA)) {
-                    flagForMud = true;
-                    break;
+
+        if (FluidTags.getCollection().get(mudTag) != null) {
+            if (this.fluid.isIn(FluidTags.getCollection().get(mudTag))) {
+                boolean flagForMud = false;
+                for (Direction direction : Direction.values()) {
+                    if (worldIn.getFluidState(pos.offset(direction)).isTagged(FluidTags.LAVA)) {
+                        flagForMud = true;
+                        break;
+                    }
                 }
-            }
-            if (flagForMud) {
-                worldIn.setBlockState(pos, net.minecraftforge.event.ForgeEventFactory.fireFluidPlaceBlockEvent(worldIn, pos, pos, Blocks.DIRT.getDefaultState()));
-                this.triggerMixEffects(worldIn, pos);
-                return false;
+                if (flagForMud) {
+                    worldIn.setBlockState(pos, net.minecraftforge.event.ForgeEventFactory.fireFluidPlaceBlockEvent(worldIn, pos, pos, Blocks.DIRT.getDefaultState()));
+                    this.triggerMixEffects(worldIn, pos);
+                    return false;
+                }
             }
         }
         if (this.fluid.isIn(FluidTags.LAVA)) {

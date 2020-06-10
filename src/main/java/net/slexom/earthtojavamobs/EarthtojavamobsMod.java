@@ -17,78 +17,59 @@
  */
 package net.slexom.earthtojavamobs;
 
-import net.minecraft.block.Block;
+import net.minecraft.entity.EntitySpawnPlacementRegistry;
 import net.minecraft.entity.EntityType;
-import net.minecraft.item.Item;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.entity.monster.MonsterEntity;
+import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraft.world.dimension.DimensionType;
+import net.minecraft.world.gen.ChunkGenerator;
+import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.Heightmap;
+import net.minecraft.world.gen.feature.BlockStateFeatureConfig;
+import net.minecraft.world.gen.feature.LakesFeature;
+import net.minecraft.world.gen.placement.ChanceConfig;
+import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DeferredWorkQueue;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.network.NetworkRegistry;
-import net.minecraftforge.fml.network.simple.SimpleChannel;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.slexom.earthtojavamobs.entity.GlowSquidEntity;
+import net.slexom.earthtojavamobs.init.BlockInit;
+import net.slexom.earthtojavamobs.init.EntityTypesInit;
+import net.slexom.earthtojavamobs.init.FluidInit;
+import net.slexom.earthtojavamobs.init.ItemInit;
+import net.slexom.earthtojavamobs.utils.BiomeSpawnHelper;
 
-import java.util.function.Supplier;
+import java.util.Random;
+import java.util.logging.Logger;
 
-@Mod("earthtojavamobs")
+@Mod(EarthtojavamobsMod.MOD_ID)
 public class EarthtojavamobsMod {
-    private static final String PROTOCOL_VERSION = "1";
+
     public static final String MOD_ID = "earthtojavamobs";
-    public static final SimpleChannel PACKET_HANDLER = NetworkRegistry.newSimpleChannel(new ResourceLocation(MOD_ID, MOD_ID),
-            () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
-    public EarthtojavamobsModElements elements;
 
     public EarthtojavamobsMod() {
-        elements = new EarthtojavamobsModElements();
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::init);
-        FMLJavaModLoadingContext.get().getModEventBus().register(this);
-        MinecraftForge.EVENT_BUS.register(this);
+        final ModLoadingContext modLoadingContext = ModLoadingContext.get();
+        final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        ItemInit.ITEMS.register(modEventBus);
+        FluidInit.FLUIDS.register(modEventBus);
+        BlockInit.BLOCKS.register(modEventBus);
+        EntityTypesInit.ENTITY_TYPES.register(modEventBus);
+        modEventBus.register(this);
+
+
+//        modLoadingContext.registerConfig(ModConfig.Type.CLIENT, ConfigHolder.CLIENT_SPEC);
+//        modLoadingContext.registerConfig(ModConfig.Type.SERVER, ConfigHolder.SERVER_SPEC);
+
     }
 
-    private void init(FMLCommonSetupEvent event) {
-        elements.getElements().forEach(element -> element.init(event));
-    }
 
-    @SubscribeEvent
-    public void serverLoad(FMLServerStartingEvent event) {
-        elements.getElements().forEach(element -> element.serverLoad(event));
-    }
 
-    @SubscribeEvent
-    @OnlyIn(Dist.CLIENT)
-    public void clientLoad(FMLClientSetupEvent event) {
-        elements.getElements().forEach(element -> element.clientLoad(event));
-    }
-
-    @SubscribeEvent
-    public void registerBlocks(RegistryEvent.Register<Block> event) {
-        event.getRegistry().registerAll(elements.getBlocks().stream().map(Supplier::get).toArray(Block[]::new));
-    }
-
-    @SubscribeEvent
-    public void registerItems(RegistryEvent.Register<Item> event) {
-        event.getRegistry().registerAll(elements.getItems().stream().map(Supplier::get).toArray(Item[]::new));
-    }
-
-    @SubscribeEvent
-    public void registerBiomes(RegistryEvent.Register<Biome> event) {
-        event.getRegistry().registerAll(elements.getBiomes().stream().map(Supplier::get).toArray(Biome[]::new));
-    }
-
-    @SubscribeEvent
-    public void registerEntities(RegistryEvent.Register<EntityType<?>> event) {
-        event.getRegistry().registerAll(elements.getEntities().stream().map(Supplier::get).toArray(EntityType[]::new));
-    }
-
-    @SubscribeEvent
-    public void registerSounds(RegistryEvent.Register<net.minecraft.util.SoundEvent> event) {
-        elements.registerSounds(event);
-    }
 }

@@ -16,7 +16,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class CluckshroomLayer<T extends CluckshroomEntity.CustomEntity> extends LayerRenderer<T, CluckshroomModel<T>> {
+public class CluckshroomLayer<T extends CluckshroomEntity> extends LayerRenderer<T, CluckshroomModel<T>> {
     public CluckshroomLayer(IEntityRenderer<T, CluckshroomModel<T>> rendererIn) {
         super(rendererIn);
     }

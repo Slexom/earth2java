@@ -13,15 +13,15 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class WoolyCowLayer extends LayerRenderer<WoolyCowEntity.CustomEntity, CowModel<WoolyCowEntity.CustomEntity>> {
+public class WoolyCowLayer extends LayerRenderer<WoolyCowEntity, CowModel<WoolyCowEntity>> {
     private static final ResourceLocation TEXTURE = new ResourceLocation("earthtojavamobs:textures/texture_wooly_cow.png");
-    private final WoolyCowWoolModel<WoolyCowEntity.CustomEntity> woolyCowModel = new WoolyCowWoolModel<>();
+    private final WoolyCowWoolModel<WoolyCowEntity> woolyCowModel = new WoolyCowWoolModel<>();
 
-    public WoolyCowLayer(IEntityRenderer<WoolyCowEntity.CustomEntity, CowModel<WoolyCowEntity.CustomEntity>> rendererIn) {
+    public WoolyCowLayer(IEntityRenderer<WoolyCowEntity, CowModel<WoolyCowEntity>> rendererIn) {
         super(rendererIn);
     }
 
-    public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, WoolyCowEntity.CustomEntity entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, WoolyCowEntity entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
         if (!entitylivingbaseIn.getSheared() && !entitylivingbaseIn.isInvisible()) {
             float f = 0.9019608F;
             float f1 = 0.9019608F;
