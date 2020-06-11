@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import net.minecraft.inventory.CraftingInventory;
+import net.minecraft.item.BucketItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.IRecipeSerializer;
@@ -29,7 +30,7 @@ public class MudBucketRecipe extends ShapelessRecipe {
         final NonNullList<ItemStack> remainingItems = NonNullList.withSize(inv.getSizeInventory(), ItemStack.EMPTY);
         for (int i = 0; i < remainingItems.size(); ++i) {
             ItemStack itemstack = inv.getStackInSlot(i);
-            if (itemstack.hasContainerItem() && itemstack.getItem() != Items.BUCKET) {
+            if (itemstack.hasContainerItem() && !(itemstack.getItem() instanceof BucketItem)) {
                 remainingItems.set(i, itemstack.getContainerItem());
             }
         }
