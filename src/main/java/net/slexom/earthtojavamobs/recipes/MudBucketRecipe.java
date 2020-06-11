@@ -1,6 +1,8 @@
-package net.slexom.earthtojavamobs.crafting.recipe;
+package net.slexom.earthtojavamobs.recipes;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -13,7 +15,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.registries.ForgeRegistryEntry;
-import net.slexom.earthtojavamobs.init.CraftingInit;
+import net.slexom.earthtojavamobs.init.RecipesInit;
 
 public class MudBucketRecipe extends ShapelessRecipe {
 
@@ -23,37 +25,31 @@ public class MudBucketRecipe extends ShapelessRecipe {
 
     @Override
     public NonNullList<ItemStack> getRemainingItems(final CraftingInventory inv) {
+        System.out.println("HERE");
         final NonNullList<ItemStack> remainingItems = NonNullList.withSize(inv.getSizeInventory(), ItemStack.EMPTY);
-        System.out.println("################################################");
-        System.out.println("################################################");
-        System.out.println("################################################");
-        System.out.println("################################################");
-        System.out.println(remainingItems);
-        System.out.println("################################################");
-        System.out.println("################################################");
-        System.out.println("################################################");
-        System.out.println("################################################");
         for (int i = 0; i < remainingItems.size(); ++i) {
-            final ItemStack itemstack = inv.getStackInSlot(i);
-            if (!itemstack.isEmpty() && itemstack.getItem() == Items.BUCKET) {
-                remainingItems.remove(i);
+            ItemStack itemstack = inv.getStackInSlot(i);
+            if (itemstack.hasContainerItem() && itemstack.getItem() != Items.BUCKET) {
+                remainingItems.set(i, itemstack.getContainerItem());
             }
         }
         return remainingItems;
     }
-
-    @Override
     public IRecipeSerializer<?> getSerializer() {
-        return CraftingInit.Recipes.MUD_BUCKET_RECIPE_SERIALIZER;
+        return RecipesInit.MUD_BUCKET_RECIPE.get();
     }
 
     public static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<MudBucketRecipe> {
         @Override
         public MudBucketRecipe read(final ResourceLocation recipeID, final JsonObject json) {
-            System.out.println(recipeID);
-            System.out.println(json);
             final String group = JSONUtils.getString(json, "group", "");
-            final NonNullList<Ingredient> ingredients = RecipeUtil.parseShapeless(json);
+            final NonNullList<Ingredient> ingredients = NonNullList.create();
+            for (final JsonElement element : JSONUtils.getJsonArray(json, "ingredients")) {
+                ingredients.add(CraftingHelper.getIngredient(element));
+            }
+            if (ingredients.isEmpty()) {
+                throw new JsonParseException("No ingredients for shapeless recipe");
+            }
             final ItemStack result = CraftingHelper.getItemStack(JSONUtils.getJsonObject(json, "result"), true);
             return new MudBucketRecipe(recipeID, group, result, ingredients);
         }
