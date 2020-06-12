@@ -1,12 +1,13 @@
 package net.slexom.earthtojavamobs.entity;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.nbt.CompoundNBT;
@@ -16,54 +17,19 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.Hand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 import net.slexom.earthtojavamobs.EarthtojavamobsMod;
+import net.slexom.earthtojavamobs.init.FluidInit;
 
-import java.text.MessageFormat;
+import java.util.EnumSet;
 
 
 public class MuddyPigEntity extends PigEntity {
-
-    private static final String registryNameEntity = "muddy_pig";
-    private static final String registryNameSpawnEgg = MessageFormat.format("{0}_spawn_egg", registryNameEntity);
-
-//    public MuddyPigEntity(EarthtojavamobsModElements instance) {
-//        super(instance, 44);
-//        FMLJavaModLoadingContext.get().getModEventBus().register(this);
-//    }
-//
-//    @Override
-//    public void initElements() {
-//        entity = (EntityType.Builder.<MuddyPigEntity>create(MuddyPigEntity::new, EntityClassification.CREATURE).setShouldReceiveVelocityUpdates(true)
-//                .setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(MuddyPigEntity::new).size(0.9f, 0.9f)).build(registryNameEntity)
-//                .setRegistryName(registryNameEntity);
-//        elements.entities.add(() -> entity);
-//        elements.items.add(() -> new SpawnEggItem(entity, 0xe6918b, 0x573621, new Item.Properties().group(ItemGroup.MISC)).setRegistryName(registryNameSpawnEgg));
-//    }
-//
-//    @Override
-//    public void init(FMLCommonSetupEvent event) {
-//        DeferredWorkQueue.runLater(new Runnable() {
-//            @Override
-//            public void run() {
-//                String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS, BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.RIVER);
-//                BiomeSpawnHelper.setCreatureSpawnBiomes(entity, spawnBiomes, 10, 2, 4);
-//                EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
-//                        AnimalEntity::canAnimalSpawn);
-//            }
-//        });
-//    }
-
-//    @SubscribeEvent
-//    @OnlyIn(Dist.CLIENT)
-//    public void registerModels(ModelRegistryEvent event) {
-//        RenderingRegistry.registerEntityRenderingHandler(entity, MuddyPigRenderer::new);
-//    }
 
     private static final DataParameter<Boolean> IS_IN_MUD = EntityDataManager.createKey(MuddyPigEntity.class, DataSerializers.BOOLEAN);
     private static final Ingredient TEMPTATION_ITEMS = Ingredient.fromItems(Items.CARROT, Items.POTATO, Items.BEETROOT);
@@ -78,16 +44,16 @@ public class MuddyPigEntity extends PigEntity {
     }
 
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new SwimGoal(this));
-        this.goalSelector.addGoal(1, new FindMudGoal(this));
+        this.goalSelector.addGoal(0, new MuddyPigEntity.SwimGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
         this.goalSelector.addGoal(3, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(4, new TemptGoal(this, 1.2D, Ingredient.fromItems(Items.CARROT_ON_A_STICK), false));
         this.goalSelector.addGoal(4, new TemptGoal(this, 1.2D, false, TEMPTATION_ITEMS));
         this.goalSelector.addGoal(5, new FollowParentGoal(this, 1.1D));
+        this.goalSelector.addGoal(6, new MuddyPigEntity.GoToMudGoal(this, 1.0D));
         this.goalSelector.addGoal(7, new LookAtGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
-        this.goalSelector.addGoal(9, new RandomWalkingGoal(this, 1.0D));
+        this.goalSelector.addGoal(9, new MuddyPigEntity.WanderGoal(this, 1.0D, 100));
     }
 
     @Override
@@ -106,7 +72,7 @@ public class MuddyPigEntity extends PigEntity {
         int j = MathHelper.floor(this.getPosY());
         int k = MathHelper.floor(this.getPosZ());
         BlockPos blockPos = new BlockPos(i, j, k);
-        boolean condition = this.world.getFluidState(blockPos).getBlockState().getBlock().getRegistryName().equals(new ResourceLocation("earthtojavamobs:mud_fluid"));
+        boolean condition = this.world.getFluidState(blockPos).getBlockState().getBlock().equals(FluidInit.MUD_BLOCK.get());
         if (condition) {
             if (!isInMud()) {
                 finallyInMud++;
@@ -136,27 +102,27 @@ public class MuddyPigEntity extends PigEntity {
         this.dataManager.register(IS_IN_MUD, false);
     }
 
-    public boolean processInteract(PlayerEntity player, Hand hand) {
-        if (super.processInteract(player, hand)) {
-            return true;
-        } else {
-            ItemStack itemstack = player.getHeldItem(hand);
-            if (itemstack.getItem() == Items.NAME_TAG) {
-                itemstack.interactWithEntity(player, this, hand);
-                return true;
-            } /*else if (this.getSaddled() && !this.isBeingRidden()) {
-                    if (!this.world.isRemote) {
-                        player.startRiding(this);
-                    }
-
-                    return true;
-                } else {
-                    return itemstack.getItem() == Items.SADDLE && itemstack.interactWithEntity(player, this, hand);
-                }*/
-
-            return false;
-        }
-    }
+//    public boolean processInteract(PlayerEntity player, Hand hand) {
+//        if (super.processInteract(player, hand)) {
+//            return true;
+//        } else {
+//            ItemStack itemstack = player.getHeldItem(hand);
+//            if (itemstack.getItem() == Items.NAME_TAG) {
+//                itemstack.interactWithEntity(player, this, hand);
+//                return true;
+//            }  else if (this.getSaddled() && !this.isBeingRidden()) {
+//                    if (!this.world.isRemote) {
+//                        player.startRiding(this);
+//                    }
+//
+//                    return true;
+//                } else {
+//                    return itemstack.getItem() == Items.SADDLE && itemstack.interactWithEntity(player, this, hand);
+//                }
+//
+//
+//        }
+//    }
 
     public boolean isInMud() {
         return this.dataManager.get(IS_IN_MUD);
@@ -181,58 +147,85 @@ public class MuddyPigEntity extends PigEntity {
         return (MuddyPigEntity) getType().create(this.world);
     }
 
-    public class FindMudGoal extends Goal {
+    public boolean handleWaterMovement() {
+        ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");
+        if (this.getRidingEntity() instanceof BoatEntity) {
+            this.inWater = false;
+        } else if (this.handleFluidAcceleration(FluidTags.WATER) || this.handleFluidAcceleration(FluidTags.getCollection().getOrCreate(mudTag))) {
+            if (!this.inWater && !this.firstUpdate) {
+                this.doWaterSplashEffect();
+            }
+            this.fallDistance = 0.0F;
+            this.inWater = true;
+            this.extinguish();
+        } else {
+            this.inWater = false;
+        }
+        return this.inWater;
+    }
+
+    public static class GoToMudGoal extends MoveToBlockGoal {
         private final MuddyPigEntity muddy_pig;
 
-        public FindMudGoal(MuddyPigEntity entity) {
+        public GoToMudGoal(MuddyPigEntity entity, double speedIn) {
+            super(entity, speedIn, 24);
             this.muddy_pig = entity;
-            entity.getNavigator().setCanSwim(true);
+            this.field_203112_e = -1;
         }
 
         public boolean shouldExecute() {
-            return !this.muddy_pig.isInMud();
+            return !this.muddy_pig.isInMud() && super.shouldExecute();
         }
 
-        public void startExecuting() {
-            BlockPos blockpos = null;
-            double posX = this.muddy_pig.getPosX();
-            double posY = this.muddy_pig.getPosY();
-            double posZ = this.muddy_pig.getPosZ();
-            double dist = 16.0D;
-            for (BlockPos blockpos1 : BlockPos.getAllInBoxMutable(MathHelper.floor(posX - dist), MathHelper.floor(posY - dist), MathHelper.floor(posZ - dist), MathHelper.floor(posX + dist), MathHelper.floor(posY + dist), MathHelper.floor(posZ + dist))) {
-                boolean condition = this.muddy_pig.world.getFluidState(blockpos1).getBlockState().getBlock().getRegistryName().equals(new ResourceLocation("earthtojavamobs:mud_fluid"));
-                if (condition) {
-                    blockpos = blockpos1;
-                    break;
-                }
+        public boolean shouldMove() {
+            return this.timeoutCounter % 120 == 0;
+        }
+
+        public boolean shouldContinueExecuting() {
+            return !this.muddy_pig.isInMud() && this.timeoutCounter <= 600 && this.shouldMoveTo(this.muddy_pig.world, this.destinationBlock);
+        }
+
+        @Override
+        protected boolean shouldMoveTo(IWorldReader worldIn, BlockPos pos) {
+            Block block = worldIn.getBlockState(pos).getBlock();
+            return block == FluidInit.MUD_BLOCK.get();
+        }
+    }
+
+    public static class SwimGoal extends Goal {
+        private final MuddyPigEntity entity;
+
+        public SwimGoal(MuddyPigEntity entityIn) {
+            this.entity = entityIn;
+            this.setMutexFlags(EnumSet.of(Goal.Flag.JUMP));
+            entityIn.getNavigator().setCanSwim(true);
+
+        }
+
+        public boolean shouldExecute() {
+            double d0 = (double) this.entity.getEyeHeight() < 0.4D ? 0.2D : 0.4D;
+            return (this.entity.isInWater() || this.entity.isInMud()) && this.entity.getSubmergedHeight() > d0 || this.entity.isInLava();
+        }
+
+        public void tick() {
+            if (this.entity.getRNG().nextFloat() < 0.8F) {
+                this.entity.getJumpController().setJumping();
             }
-            if (blockpos != null) {
-                this.muddy_pig.getMoveHelper().setMoveTo((double) blockpos.getX(), (double) blockpos.getY(), (double) blockpos.getZ(), 1.2D);
-            }
         }
     }
 
-    private boolean eyesInMud() {
-        ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");
-        return this.areEyesInFluid(FluidTags.getCollection().get(mudTag), true);
-    }
 
-    public void baseTick() {
-        super.baseTick();
-        updateSwimming();
-    }
+    public static class WanderGoal extends RandomWalkingGoal {
+        private final MuddyPigEntity muddyPig;
 
-    public void updateSwimming() {
-        if (this.isSwimming()) {
-            this.setSwimming(this.isSprinting() && (this.isInWater() || this.isInMud()) && !this.isPassenger());
-        } else {
-            this.setSwimming(this.isSprinting() && this.canSwim() && !this.isPassenger());
+        private WanderGoal(MuddyPigEntity entity, double speedIn, int chance) {
+            super(entity, speedIn, chance);
+            this.muddyPig = entity;
         }
 
-    }
-
-    public boolean canSwim() {
-        return (this.eyesInWater && this.isInWater()) || (this.isInMud());
+        public boolean shouldExecute() {
+            return (!this.creature.isInWater() && !this.muddyPig.isInMud()) && super.shouldExecute();
+        }
     }
 
     @Override

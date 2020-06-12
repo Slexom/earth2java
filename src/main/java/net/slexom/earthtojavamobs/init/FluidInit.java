@@ -48,6 +48,7 @@ public class FluidInit {
                     Block.Properties.create(Material.WATER, MaterialColor.BROWN)
                             .doesNotBlockMovement()
                             .hardnessAndResistance(100.0F)
+                            .speedFactor(0.5F)
                             .noDrops()
             )
     );

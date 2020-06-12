@@ -36,7 +36,7 @@ public class MudFlowingFluidBlock extends FlowingFluidBlock {
             this.field_212565_c.add(fluidIn.getFlowingFluidState(8 - i, false));
         }
         this.field_212565_c.add(fluidIn.getFlowingFluidState(8, true));
-        this.setDefaultState(this.stateContainer.getBaseState().with(LEVEL, Integer.valueOf(0)));
+        this.setDefaultState(this.stateContainer.getBaseState().with(LEVEL, 0));
         fluidStateCacheInitialized = true;
         supplier = fluidIn.delegate;
     }
@@ -49,61 +49,27 @@ public class MudFlowingFluidBlock extends FlowingFluidBlock {
         this.supplier = supplier;
     }
 
-    @Override
-    public float getSpeedFactor() {
-        return 0.3F;
-    }
-
-
     private void triggerMixEffects(IWorld worldIn, BlockPos pos) {
         worldIn.playEvent(1501, pos, 0);
     }
 
-
     public boolean reactWithNeighbors(World worldIn, BlockPos pos, BlockState state) {
-
         ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");
-
-        if (FluidTags.getCollection().get(mudTag) != null) {
-            if (this.fluid.isIn(FluidTags.getCollection().get(mudTag))) {
-                boolean flagForMud = false;
-                for (Direction direction : Direction.values()) {
-                    if (worldIn.getFluidState(pos.offset(direction)).isTagged(FluidTags.LAVA)) {
-                        flagForMud = true;
-                        break;
-                    }
-                }
-                if (flagForMud) {
-                    worldIn.setBlockState(pos, net.minecraftforge.event.ForgeEventFactory.fireFluidPlaceBlockEvent(worldIn, pos, pos, Blocks.DIRT.getDefaultState()));
-                    this.triggerMixEffects(worldIn, pos);
-                    return false;
-                }
-            }
-        }
-        if (this.fluid.isIn(FluidTags.LAVA)) {
+        if (this.fluid.isIn(FluidTags.getCollection().getOrCreate(mudTag))) {
             boolean flag = false;
             for (Direction direction : Direction.values()) {
-                if (direction != Direction.DOWN && worldIn.getFluidState(pos.offset(direction)).isTagged(FluidTags.WATER)) {
+                if (worldIn.getFluidState(pos.offset(direction)).isTagged(FluidTags.LAVA)) {
                     flag = true;
                     break;
                 }
             }
             if (flag) {
-                IFluidState ifluidstate = worldIn.getFluidState(pos);
-                if (ifluidstate.isSource()) {
-                    worldIn.setBlockState(pos, net.minecraftforge.event.ForgeEventFactory.fireFluidPlaceBlockEvent(worldIn, pos, pos, Blocks.OBSIDIAN.getDefaultState()));
-                    this.triggerMixEffects(worldIn, pos);
-                    return false;
-                }
-                if (ifluidstate.getActualHeight(worldIn, pos) >= 0.44444445F) {
-                    worldIn.setBlockState(pos, net.minecraftforge.event.ForgeEventFactory.fireFluidPlaceBlockEvent(worldIn, pos, pos, Blocks.COBBLESTONE.getDefaultState()));
-                    this.triggerMixEffects(worldIn, pos);
-                    return false;
-                }
+                worldIn.setBlockState(pos, net.minecraftforge.event.ForgeEventFactory.fireFluidPlaceBlockEvent(worldIn, pos, pos, Blocks.DIRT.getDefaultState()));
+                this.triggerMixEffects(worldIn, pos);
+                return false;
             }
         }
         return true;
-
     }
 
 }
