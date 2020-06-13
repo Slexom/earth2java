@@ -5,7 +5,6 @@ import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.item.BoatEntity;
 import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
@@ -15,15 +14,12 @@ import net.minecraft.network.IPacket;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
-import net.slexom.earthtojavamobs.EarthtojavamobsMod;
 import net.slexom.earthtojavamobs.init.FluidInit;
 
 import java.util.EnumSet;
@@ -102,28 +98,6 @@ public class MuddyPigEntity extends PigEntity {
         this.dataManager.register(IS_IN_MUD, false);
     }
 
-//    public boolean processInteract(PlayerEntity player, Hand hand) {
-//        if (super.processInteract(player, hand)) {
-//            return true;
-//        } else {
-//            ItemStack itemstack = player.getHeldItem(hand);
-//            if (itemstack.getItem() == Items.NAME_TAG) {
-//                itemstack.interactWithEntity(player, this, hand);
-//                return true;
-//            }  else if (this.getSaddled() && !this.isBeingRidden()) {
-//                    if (!this.world.isRemote) {
-//                        player.startRiding(this);
-//                    }
-//
-//                    return true;
-//                } else {
-//                    return itemstack.getItem() == Items.SADDLE && itemstack.interactWithEntity(player, this, hand);
-//                }
-//
-//
-//        }
-//    }
-
     public boolean isInMud() {
         return this.dataManager.get(IS_IN_MUD);
     }
@@ -147,38 +121,17 @@ public class MuddyPigEntity extends PigEntity {
         return (MuddyPigEntity) getType().create(this.world);
     }
 
-    public boolean handleWaterMovement() {
-        ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");
-        if (this.getRidingEntity() instanceof BoatEntity) {
-            this.inWater = false;
-        } else if (this.handleFluidAcceleration(FluidTags.WATER) || this.handleFluidAcceleration(FluidTags.getCollection().getOrCreate(mudTag))) {
-            if (!this.inWater && !this.firstUpdate) {
-                this.doWaterSplashEffect();
-            }
-            this.fallDistance = 0.0F;
-            this.inWater = true;
-            this.extinguish();
-        } else {
-            this.inWater = false;
-        }
-        return this.inWater;
-    }
-
     public static class GoToMudGoal extends MoveToBlockGoal {
         private final MuddyPigEntity muddy_pig;
 
         public GoToMudGoal(MuddyPigEntity entity, double speedIn) {
-            super(entity, speedIn, 24);
+            super(entity, speedIn, 16);
             this.muddy_pig = entity;
             this.field_203112_e = -1;
         }
 
         public boolean shouldExecute() {
             return !this.muddy_pig.isInMud() && super.shouldExecute();
-        }
-
-        public boolean shouldMove() {
-            return this.timeoutCounter % 120 == 0;
         }
 
         public boolean shouldContinueExecuting() {

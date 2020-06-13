@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class MudFlowingFluidBlock extends FlowingFluidBlock {
-    private FlowingFluid fluid;
+    private Fluid fluid;
 
     private final java.util.function.Supplier<? extends Fluid> supplier;
     private final List<IFluidState> field_212565_c;
@@ -53,9 +53,10 @@ public class MudFlowingFluidBlock extends FlowingFluidBlock {
         worldIn.playEvent(1501, pos, 0);
     }
 
+    @Override
     public boolean reactWithNeighbors(World worldIn, BlockPos pos, BlockState state) {
         ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");
-        if (this.fluid.isIn(FluidTags.getCollection().getOrCreate(mudTag))) {
+        if (this.supplier.get().isIn(FluidTags.getCollection().getOrCreate(mudTag))) {
             boolean flag = false;
             for (Direction direction : Direction.values()) {
                 if (worldIn.getFluidState(pos.offset(direction)).isTagged(FluidTags.LAVA)) {

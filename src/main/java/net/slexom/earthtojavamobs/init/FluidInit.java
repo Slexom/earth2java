@@ -43,7 +43,7 @@ public class FluidInit {
             .bucket(() -> ItemInit.MUD_BUCKET.get());
 
     public static final RegistryObject<FlowingFluidBlock> MUD_BLOCK = BlockInit.BLOCKS.register("mud_fluid",
-            () -> new FlowingFluidBlock(
+            () -> new MudFlowingFluidBlock(
                     () -> FluidInit.MUD_FLUID_STILL.get(),
                     Block.Properties.create(Material.WATER, MaterialColor.BROWN)
                             .doesNotBlockMovement()

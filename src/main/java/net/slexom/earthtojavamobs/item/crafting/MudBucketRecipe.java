@@ -1,4 +1,4 @@
-package net.slexom.earthtojavamobs.recipes;
+package net.slexom.earthtojavamobs.item.crafting;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -6,7 +6,6 @@ import com.google.gson.JsonParseException;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.BucketItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.item.crafting.ShapelessRecipe;

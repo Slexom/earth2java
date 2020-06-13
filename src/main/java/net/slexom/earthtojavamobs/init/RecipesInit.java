@@ -5,7 +5,7 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.slexom.earthtojavamobs.EarthtojavamobsMod;
-import net.slexom.earthtojavamobs.recipes.MudBucketRecipe;
+import net.slexom.earthtojavamobs.item.crafting.MudBucketRecipe;
 
 public class RecipesInit {
 

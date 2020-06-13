@@ -2,7 +2,7 @@ package net.slexom.earthtojavamobs.fluid;
 
 
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.IFluidState;
+import net.minecraft.fluid.Fluid;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -21,20 +21,33 @@ public class MudFogHandler {
     @SubscribeEvent
     @OnlyIn(Dist.CLIENT)
     public static void onFogColor(EntityViewRenderEvent.FogColors event) {
-        if (event.getInfo().getRenderViewEntity() instanceof PlayerEntity) {
-            ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");
-            PlayerEntity player = (PlayerEntity) event.getInfo().getRenderViewEntity();
-            World world = player.world;
-            int x = MathHelper.floor(player.getPosX());
-            int y = MathHelper.floor(player.getPosYEye());
-            int z = MathHelper.floor(player.getPosZ());
-            IFluidState blockStateAtEyes = world.getFluidState(new BlockPos(x, y, z));
-            if (blockStateAtEyes.getFluid().isIn(FluidTags.getCollection().getOrCreate(mudTag))) {
-                event.setRed(87.0F / 255.0F);
-                event.setGreen(54.0F / 255.0F);
-                event.setBlue(35.0F / 255.0F);
-            }
+        ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");
+        Fluid blockStateAtEyes = getMudFluid(event);
+        if (blockStateAtEyes.isIn(FluidTags.getCollection().getOrCreate(mudTag))) {
+            event.setRed(87.0F / 255.0F);
+            event.setGreen(54.0F / 255.0F);
+            event.setBlue(35.0F / 255.0F);
         }
+    }
+
+    @SubscribeEvent
+    @OnlyIn(Dist.CLIENT)
+    public static void onFogDensity(EntityViewRenderEvent.FogDensity event) {
+        ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");
+        Fluid blockStateAtEyes = getMudFluid(event);
+        if (blockStateAtEyes.isIn(FluidTags.getCollection().getOrCreate(mudTag))) {
+            event.setDensity(0.85F);
+            event.setCanceled(true);
+        }
+    }
+
+    private static Fluid getMudFluid(EntityViewRenderEvent event) {
+        PlayerEntity player = (PlayerEntity) event.getInfo().getRenderViewEntity();
+        World world = player.world;
+        int x = MathHelper.floor(player.getPosX());
+        int y = MathHelper.floor(player.getPosYEye());
+        int z = MathHelper.floor(player.getPosZ());
+        return world.getFluidState(new BlockPos(x, y, z)).getFluid();
     }
 
 }
