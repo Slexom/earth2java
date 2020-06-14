@@ -33,7 +33,9 @@ public class FluidInit {
             MUD_FLUID_FLOWING,
             FluidAttributes.builder(MUD_FLUID_STILL_TEXTURE, MUD_FLUID_FLOWING_TEXTURE)
                     .luminosity(0)
-                    .density(1800)
+                    .density(3000)
+                    .viscosity(8000)
+
             //.overlay(new ResourceLocation("earthtojavamobs", "/fluids/mud_overlay"))
     )
             .slopeFindDistance(4)
@@ -44,11 +46,11 @@ public class FluidInit {
 
     public static final RegistryObject<FlowingFluidBlock> MUD_BLOCK = BlockInit.BLOCKS.register("mud_fluid",
             () -> new MudFlowingFluidBlock(
-                    () -> FluidInit.MUD_FLUID_STILL.get(),
+                    FluidInit.MUD_FLUID_STILL,
                     Block.Properties.create(Material.WATER, MaterialColor.BROWN)
                             .doesNotBlockMovement()
                             .hardnessAndResistance(100.0F)
-                            .speedFactor(0.5F)
+                            .speedFactor(0.75F)
                             .noDrops()
             )
     );
