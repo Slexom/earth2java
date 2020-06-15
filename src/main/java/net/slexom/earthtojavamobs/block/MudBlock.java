@@ -4,10 +4,12 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FlowingFluidBlock;
 import net.minecraft.fluid.FlowingFluid;
+import net.minecraft.pathfinding.PathType;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.slexom.earthtojavamobs.EarthtojavamobsMod;
@@ -22,6 +24,11 @@ public class MudBlock extends FlowingFluidBlock {
 
     private void triggerMixEffects(IWorld worldIn, BlockPos pos) {
         worldIn.playEvent(1501, pos, 0);
+    }
+
+    @Override
+    public boolean allowsMovement(BlockState state, IBlockReader worldIn, BlockPos pos, PathType type) {
+        return true;
     }
 
     @Override

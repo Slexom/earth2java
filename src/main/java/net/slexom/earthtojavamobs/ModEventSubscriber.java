@@ -22,10 +22,6 @@ public final class ModEventSubscriber {
 
     private static final Logger LOGGER = LogManager.getLogger(EarthtojavamobsMod.MOD_ID + " Mod Event Subscriber");
 
-    /**
-     * This method will be called by Forge when it is time for the mod to register its Items.
-     * This method will always be called after the Block registry method.
-     */
     @SubscribeEvent
     public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
         final IForgeRegistry<Item> registry = event.getRegistry();

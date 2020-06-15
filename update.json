@@ -5,7 +5,7 @@
     "1.15.2-recommended": "1.2.1"
   },
   "1.15.2": {
-    "1.2.2": "Fix server crash; Added Mud Bucket Recipe; Amber Chicken, Midnight Chicken and Stormy Chicken have a chance to appear when an egg is thrown",
+    "1.2.2": "Fix server crash. Added Mud Bucket Recipe. Improved Mud behavior. Amber Chicken, Midnight Chicken and Stormy Chicken have a chance to appear when an egg is thrown",
     "1.2.1": "Integrated Update Checker; Fixed server loading error;"
   }
 }

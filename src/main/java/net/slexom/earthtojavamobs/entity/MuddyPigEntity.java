@@ -18,7 +18,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
-import net.slexom.earthtojavamobs.init.FluidInit;
+import net.slexom.earthtojavamobs.init.BlockInit;
 
 import java.util.EnumSet;
 
@@ -57,7 +57,7 @@ public class MuddyPigEntity extends PigEntity {
         int j = MathHelper.floor(this.getPosY());
         int k = MathHelper.floor(this.getPosZ());
         BlockPos blockPos = new BlockPos(i, j, k);
-        boolean condition = this.world.getFluidState(blockPos).getBlockState().getBlock().equals(FluidInit.MUD_BLOCK.get());
+        boolean condition = this.world.getFluidState(blockPos).getBlockState().getBlock().equals(BlockInit.MUD_BLOCK.get());
         if (condition) {
             if (!isInMud()) {
                 finallyInMud++;
@@ -130,7 +130,7 @@ public class MuddyPigEntity extends PigEntity {
         @Override
         protected boolean shouldMoveTo(IWorldReader worldIn, BlockPos pos) {
             Block block = worldIn.getBlockState(pos).getBlock();
-            return block == FluidInit.MUD_BLOCK.get();
+            return block == BlockInit.MUD_BLOCK.get();
         }
     }
 
