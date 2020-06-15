@@ -13,7 +13,7 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.slexom.earthtojavamobs.EarthtojavamobsMod;
-import net.slexom.earthtojavamobs.fluid.MudFlowingFluidBlock;
+import net.slexom.earthtojavamobs.block.MudBlock;
 
 public class FluidInit {
 
@@ -34,18 +34,16 @@ public class FluidInit {
             FluidAttributes.builder(MUD_FLUID_STILL_TEXTURE, MUD_FLUID_FLOWING_TEXTURE)
                     .luminosity(0)
                     .density(3000)
-                    .viscosity(8000)
-
+                    .viscosity(8000) 
             //.overlay(new ResourceLocation("earthtojavamobs", "/fluids/mud_overlay"))
     )
-            .slopeFindDistance(4)
             .explosionResistance(100.F)
             .tickRate(20)
             .block(() -> FluidInit.MUD_BLOCK.get())
             .bucket(() -> ItemInit.MUD_BUCKET.get());
 
     public static final RegistryObject<FlowingFluidBlock> MUD_BLOCK = BlockInit.BLOCKS.register("mud_fluid",
-            () -> new MudFlowingFluidBlock(
+            () -> new MudBlock(
                     FluidInit.MUD_FLUID_STILL,
                     Block.Properties.create(Material.WATER, MaterialColor.BROWN)
                             .doesNotBlockMovement()

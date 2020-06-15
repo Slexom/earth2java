@@ -1,8 +1,6 @@
 {
   "replace": false,
   "values": [
-    "minecraft:water",
-    "minecraft:flowing_water",
     "earthtojavamobs:mud_fluid",
     "earthtojavamobs:mud_fluid_flowing"
   ]

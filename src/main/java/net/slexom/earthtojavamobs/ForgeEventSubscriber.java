@@ -1,14 +1,17 @@
 package net.slexom.earthtojavamobs;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.entity.projectile.EggEntity;
 import net.minecraft.entity.projectile.ThrowableEntity;
 import net.minecraft.world.World;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.slexom.earthtojavamobs.init.EntityTypesInit;
+import net.slexom.earthtojavamobs.init.FluidInit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -63,5 +66,19 @@ public final class ForgeEventSubscriber {
         }
         return chickenentity;
     }
+
+
+//    @SubscribeEvent
+//    public static void onMissingBlock(RegistryEvent.MissingMappings<Block> event) {
+//        for (RegistryEvent.MissingMappings.Mapping<Block> mapping : event.getMappings()) {
+//            switch (mapping.key.toString()) {
+//                case "earthtojavamobs:mud":
+//                    mapping.remap(FluidInit.MUD_BLOCK.get());
+//                    break;
+//                default:
+//
+//            }
+//        }
+//    }
 
 }
