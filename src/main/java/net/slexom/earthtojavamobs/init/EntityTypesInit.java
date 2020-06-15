@@ -267,6 +267,48 @@ public class EntityTypesInit {
         public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.TAIGA, BiomeSpawnHelper.SNOWY_TAIGA, BiomeSpawnHelper.GIANT_TAIGA);
     }
 
+
+    public static final class VestedRabbit{
+        public static final String registryName = "vested_rabbit";
+        public static final RegistryObject<EntityType<VestedRabbitEntity>> registryObject = ENTITY_TYPES.register(
+                registryName,
+                () -> EntityType.Builder.<VestedRabbitEntity>create(VestedRabbitEntity::new, EntityClassification.CREATURE)
+                        .size(EntityType.RABBIT.getWidth(), EntityType.RABBIT.getHeight())
+                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
+        );
+        public static final int eggPrimaryColor = 0xcc3300;
+        public static final int eggSecondaryColor = 0xff9933;
+        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS);
+    }
+
+
+    public static final class HarelequinRabbit{
+        public static final String registryName = "harelequin_rabbit";
+        public static final RegistryObject<EntityType<HarelequinRabbitEntity>> registryObject = ENTITY_TYPES.register(
+                registryName,
+                () -> EntityType.Builder.<HarelequinRabbitEntity>create(HarelequinRabbitEntity::new, EntityClassification.CREATURE)
+                        .size(EntityType.RABBIT.getWidth(), EntityType.RABBIT.getHeight())
+                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
+        );
+        public static final int eggPrimaryColor = 0xcc3300;
+        public static final int eggSecondaryColor = 0xff9933;
+        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS);
+    }
+
+
+    public static final class MuddyFootRabbit{
+        public static final String registryName = "muddy_foot_rabbit";
+        public static final RegistryObject<EntityType<MuddyFootRabbitEntity>> registryObject = ENTITY_TYPES.register(
+                registryName,
+                () -> EntityType.Builder.<MuddyFootRabbitEntity>create(MuddyFootRabbitEntity::new, EntityClassification.CREATURE)
+                        .size(EntityType.RABBIT.getWidth(), EntityType.RABBIT.getHeight())
+                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
+        );
+        public static final int eggPrimaryColor = 0xcc3300;
+        public static final int eggSecondaryColor = 0xff9933;
+        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS);
+    }
+
 }
 
 

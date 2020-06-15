@@ -52,6 +52,9 @@ public final class ClientModEventSubscriber {
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.SunsetCow.registryObject.get(), renderManagerIn -> new E2JCowRenderer(renderManagerIn, EntityTypesInit.SunsetCow.registryName));
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.TropicalSlime.registryObject.get(), TropicalSlimeRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.WoolyCow.registryObject.get(), WoolyCowRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.VestedRabbit.registryObject.get(), renderManagerIn -> new E2JRabbitRenderer(renderManagerIn, EntityTypesInit.VestedRabbit.registryName));
+        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.HarelequinRabbit.registryObject.get(), renderManagerIn -> new E2JRabbitRenderer(renderManagerIn, EntityTypesInit.HarelequinRabbit.registryName));
+        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.MuddyFootRabbit.registryObject.get(), renderManagerIn -> new E2JRabbitRenderer(renderManagerIn, EntityTypesInit.MuddyFootRabbit.registryName));
     }
 
 }

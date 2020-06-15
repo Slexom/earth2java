@@ -55,5 +55,7 @@ public class ItemInit {
     public static final RegistryObject<ModdedSpawnEggItem> SUNSET_COW_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.SunsetCow.registryName, EntityTypesInit.SunsetCow.registryObject, EntityTypesInit.SunsetCow.eggPrimaryColor, EntityTypesInit.SunsetCow.eggSecondaryColor);
     public static final RegistryObject<ModdedSpawnEggItem> TROPICAL_SLIME_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.TropicalSlime.registryName, EntityTypesInit.TropicalSlime.registryObject, EntityTypesInit.TropicalSlime.eggPrimaryColor, EntityTypesInit.TropicalSlime.eggSecondaryColor);
     public static final RegistryObject<ModdedSpawnEggItem> WOOLY_COW_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.WoolyCow.registryName, EntityTypesInit.WoolyCow.registryObject, EntityTypesInit.WoolyCow.eggPrimaryColor, EntityTypesInit.WoolyCow.eggSecondaryColor);
-
+    public static final RegistryObject<ModdedSpawnEggItem> VESTED_RABBIT_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.VestedRabbit.registryName, EntityTypesInit.VestedRabbit.registryObject, EntityTypesInit.VestedRabbit.eggPrimaryColor, EntityTypesInit.VestedRabbit.eggSecondaryColor);
+    public static final RegistryObject<ModdedSpawnEggItem> HARELEQUIN_RABBIT_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.HarelequinRabbit.registryName, EntityTypesInit.HarelequinRabbit.registryObject, EntityTypesInit.HarelequinRabbit.eggPrimaryColor, EntityTypesInit.HarelequinRabbit.eggSecondaryColor);
+    public static final RegistryObject<ModdedSpawnEggItem> MUDDY_FOOT_RABBIT_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.MuddyFootRabbit.registryName, EntityTypesInit.MuddyFootRabbit.registryObject, EntityTypesInit.MuddyFootRabbit.eggPrimaryColor, EntityTypesInit.MuddyFootRabbit.eggSecondaryColor);
 }

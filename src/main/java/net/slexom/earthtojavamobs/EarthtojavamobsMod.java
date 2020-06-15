@@ -113,6 +113,9 @@ public class EarthtojavamobsMod {
         registerAnimalEntitySpawn(EntityTypesInit.SunsetCow.registryObject.get(), EntityTypesInit.SunsetCow.spawnBiomes, 8, 2, 4);
         registerMonsterEntitySpawn(EntityTypesInit.TropicalSlime.registryObject.get(), EntityTypesInit.TropicalSlime.spawnBiomes, 7, 1, 3);
         registerAnimalEntitySpawn(EntityTypesInit.WoolyCow.registryObject.get(), EntityTypesInit.WoolyCow.spawnBiomes, 8, 2, 4);
+        registerAnimalEntitySpawn(EntityTypesInit.VestedRabbit.registryObject.get(), EntityTypesInit.VestedRabbit.spawnBiomes, 10, 2, 4);
+        registerAnimalEntitySpawn(EntityTypesInit.HarelequinRabbit.registryObject.get(), EntityTypesInit.HarelequinRabbit.spawnBiomes, 10, 2, 4);
+        registerAnimalEntitySpawn(EntityTypesInit.MuddyFootRabbit.registryObject.get(), EntityTypesInit.MuddyFootRabbit.spawnBiomes, 10, 2, 4);
     }
 
     private static void registerAnimalEntitySpawn(EntityType entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
