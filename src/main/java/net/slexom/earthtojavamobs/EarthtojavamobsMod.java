@@ -36,13 +36,17 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.slexom.earthtojavamobs.config.ConfigHolder;
+import net.slexom.earthtojavamobs.config.E2JModConfig;
 import net.slexom.earthtojavamobs.entity.GlowSquidEntity;
 import net.slexom.earthtojavamobs.init.*;
 import net.slexom.earthtojavamobs.utils.BiomeSpawnHelper;
 
+import java.text.MessageFormat;
 import java.util.Random;
 
 @Mod(EarthtojavamobsMod.MOD_ID)
@@ -61,8 +65,9 @@ public class EarthtojavamobsMod {
         modEventBus.register(this);
         modEventBus.addListener(this::setup);
 
-//        modLoadingContext.registerConfig(ModConfig.Type.CLIENT, ConfigHolder.CLIENT_SPEC);
-//        modLoadingContext.registerConfig(ModConfig.Type.SERVER, ConfigHolder.SERVER_SPEC);
+        modLoadingContext.registerConfig(ModConfig.Type.CLIENT, ConfigHolder.CLIENT_SPEC);
+        modLoadingContext.registerConfig(ModConfig.Type.SERVER, ConfigHolder.SERVER_SPEC);
+        modLoadingContext.registerConfig(ModConfig.Type.COMMON, ConfigHolder.COMMON_SPEC);
 
     }
 
@@ -94,28 +99,28 @@ public class EarthtojavamobsMod {
     }
 
     private static void registerEntitiesSpawn() {
-        registerAnimalEntitySpawn(EntityTypesInit.AmberChicken.registryObject.get(), EntityTypesInit.AmberChicken.spawnBiomes, 10, 2, 4);
-        registerAnimalEntitySpawn(EntityTypesInit.AshenCow.registryObject.get(), EntityTypesInit.AshenCow.spawnBiomes, 8, 2, 4);
-        registerAnimalEntitySpawn(EntityTypesInit.Cluckshroom.registryObject.get(), EntityTypesInit.Cluckshroom.spawnBiomes, 10, 2, 4);
-        registerAnimalEntitySpawn(EntityTypesInit.FleckedSheep.registryObject.get(), EntityTypesInit.FleckedSheep.spawnBiomes, 12, 2, 4);
+        registerAnimalEntitySpawn(EntityTypesInit.AmberChicken.registryObject.get(), E2JModConfig.amberChickenSpawnBiomes.toArray(new String[0]), E2JModConfig.amberChickenWeight, E2JModConfig.amberChickenGroupMin, E2JModConfig.amberChickenGroupMax);
+        registerAnimalEntitySpawn(EntityTypesInit.AshenCow.registryObject.get(), E2JModConfig.ashenCowSpawnBiomes.toArray(new String[0]), E2JModConfig.ashenCowWeight, E2JModConfig.ashenCowGroupMin, E2JModConfig.ashenCowGroupMax);
+        registerAnimalEntitySpawn(EntityTypesInit.Cluckshroom.registryObject.get(), E2JModConfig.cluckshroomSpawnBiomes.toArray(new String[0]), E2JModConfig.cluckshroomWeight, E2JModConfig.cluckshroomGroupMin, E2JModConfig.cluckshroomGroupMax);
+        registerAnimalEntitySpawn(EntityTypesInit.FleckedSheep.registryObject.get(), E2JModConfig.fleckedSheepSpawnBiomes.toArray(new String[0]), E2JModConfig.fleckedSheepWeight, E2JModConfig.fleckedSheepGroupMin, E2JModConfig.fleckedSheepGroupMax);
         registerGlowingSquidSpawn();
-        registerAnimalEntitySpawn(EntityTypesInit.HornedSheep.registryObject.get(), EntityTypesInit.HornedSheep.spawnBiomes, 12, 2, 4);
-        registerAnimalEntitySpawn(EntityTypesInit.InkySheep.registryObject.get(), EntityTypesInit.InkySheep.spawnBiomes, 12, 2, 4);
-        registerAnimalEntitySpawn(EntityTypesInit.MidnightChicken.registryObject.get(), EntityTypesInit.MidnightChicken.spawnBiomes, 10, 2, 4);
-        registerAnimalEntitySpawn(EntityTypesInit.Moobloom.registryObject.get(), EntityTypesInit.Moobloom.spawnBiomes, 8, 2, 4);
-        registerAnimalEntitySpawn(EntityTypesInit.MuddyPig.registryObject.get(), EntityTypesInit.MuddyPig.spawnBiomes, 10, 2, 4);
-        registerAnimalEntitySpawn(EntityTypesInit.PalePig.registryObject.get(), EntityTypesInit.PalePig.spawnBiomes, 10, 2, 4);
-        registerAnimalEntitySpawn(EntityTypesInit.PiebaldPig.registryObject.get(), EntityTypesInit.PiebaldPig.spawnBiomes, 10, 2, 4);
-        registerAnimalEntitySpawn(EntityTypesInit.RockySheep.registryObject.get(), EntityTypesInit.RockySheep.spawnBiomes, 12, 2, 4);
-        registerMonsterEntitySpawn(EntityTypesInit.SkeletonWolf.registryObject.get(), EntityTypesInit.SkeletonWolf.spawnBiomes, 7, 2, 6);
-        registerAnimalEntitySpawn(EntityTypesInit.SpottedPig.registryObject.get(), EntityTypesInit.SpottedPig.spawnBiomes, 10, 2, 4);
-        registerAnimalEntitySpawn(EntityTypesInit.StormyChicken.registryObject.get(), EntityTypesInit.StormyChicken.spawnBiomes, 10, 2, 4);
-        registerAnimalEntitySpawn(EntityTypesInit.SunsetCow.registryObject.get(), EntityTypesInit.SunsetCow.spawnBiomes, 8, 2, 4);
-        registerMonsterEntitySpawn(EntityTypesInit.TropicalSlime.registryObject.get(), EntityTypesInit.TropicalSlime.spawnBiomes, 7, 1, 3);
-        registerAnimalEntitySpawn(EntityTypesInit.WoolyCow.registryObject.get(), EntityTypesInit.WoolyCow.spawnBiomes, 8, 2, 4);
-        registerAnimalEntitySpawn(EntityTypesInit.VestedRabbit.registryObject.get(), EntityTypesInit.VestedRabbit.spawnBiomes, 10, 2, 4);
-        registerAnimalEntitySpawn(EntityTypesInit.HarelequinRabbit.registryObject.get(), EntityTypesInit.HarelequinRabbit.spawnBiomes, 10, 2, 4);
-        registerAnimalEntitySpawn(EntityTypesInit.MuddyFootRabbit.registryObject.get(), EntityTypesInit.MuddyFootRabbit.spawnBiomes, 10, 2, 4);
+        registerAnimalEntitySpawn(EntityTypesInit.HarelequinRabbit.registryObject.get(), E2JModConfig.harelequinRabbitSpawnBiomes.toArray(new String[0]), E2JModConfig.harelequinRabbitWeight, E2JModConfig.harelequinRabbitGroupMin, E2JModConfig.harelequinRabbitGroupMax);
+        registerAnimalEntitySpawn(EntityTypesInit.HornedSheep.registryObject.get(), E2JModConfig.hornedSheepSpawnBiomes.toArray(new String[0]), E2JModConfig.hornedSheepWeight, E2JModConfig.hornedSheepGroupMin, E2JModConfig.hornedSheepGroupMax);
+        registerAnimalEntitySpawn(EntityTypesInit.InkySheep.registryObject.get(), E2JModConfig.inkySheepSpawnBiomes.toArray(new String[0]), E2JModConfig.inkySheepWeight, E2JModConfig.inkySheepGroupMin, E2JModConfig.inkySheepGroupMax);
+        registerAnimalEntitySpawn(EntityTypesInit.MidnightChicken.registryObject.get(), E2JModConfig.midnightChickenSpawnBiomes.toArray(new String[0]), E2JModConfig.midnightChickenWeight, E2JModConfig.midnightChickenGroupMin, E2JModConfig.midnightChickenGroupMax);
+        registerAnimalEntitySpawn(EntityTypesInit.Moobloom.registryObject.get(), E2JModConfig.moobloomSpawnBiomes.toArray(new String[0]), E2JModConfig.moobloomWeight, E2JModConfig.moobloomGroupMin, E2JModConfig.moobloomGroupMax);
+        registerAnimalEntitySpawn(EntityTypesInit.MuddyFootRabbit.registryObject.get(), E2JModConfig.muddyFootRabbitSpawnBiomes.toArray(new String[0]), E2JModConfig.muddyFootRabbitWeight, E2JModConfig.muddyFootRabbitGroupMin, E2JModConfig.muddyFootRabbitGroupMax);
+        registerAnimalEntitySpawn(EntityTypesInit.MuddyPig.registryObject.get(), E2JModConfig.muddyPigSpawnBiomes.toArray(new String[0]), E2JModConfig.muddyPigWeight, E2JModConfig.muddyPigGroupMin, E2JModConfig.muddyPigGroupMax);
+        registerAnimalEntitySpawn(EntityTypesInit.PalePig.registryObject.get(), E2JModConfig.palePigSpawnBiomes.toArray(new String[0]), E2JModConfig.palePigWeight, E2JModConfig.palePigGroupMin, E2JModConfig.palePigGroupMax);
+        registerAnimalEntitySpawn(EntityTypesInit.PiebaldPig.registryObject.get(), E2JModConfig.piebaldPigSpawnBiomes.toArray(new String[0]), E2JModConfig.piebaldPigWeight, E2JModConfig.piebaldPigGroupMin, E2JModConfig.piebaldPigGroupMax);
+        registerAnimalEntitySpawn(EntityTypesInit.RockySheep.registryObject.get(), E2JModConfig.rockySheepSpawnBiomes.toArray(new String[0]), E2JModConfig.rockySheepWeight, E2JModConfig.rockySheepGroupMin, E2JModConfig.rockySheepGroupMax);
+        registerMonsterEntitySpawn(EntityTypesInit.SkeletonWolf.registryObject.get(), E2JModConfig.skeletonWolfSpawnBiomes.toArray(new String[0]), E2JModConfig.skeletonWolfWeight, E2JModConfig.skeletonWolfGroupMin, E2JModConfig.skeletonWolfGroupMax);
+        registerAnimalEntitySpawn(EntityTypesInit.SpottedPig.registryObject.get(), E2JModConfig.spottedPigSpawnBiomes.toArray(new String[0]), E2JModConfig.spottedPigWeight, E2JModConfig.spottedPigGroupMin, E2JModConfig.spottedPigGroupMax);
+        registerAnimalEntitySpawn(EntityTypesInit.StormyChicken.registryObject.get(), E2JModConfig.stormyChickenSpawnBiomes.toArray(new String[0]), E2JModConfig.stormyChickenWeight, E2JModConfig.stormyChickenGroupMin, E2JModConfig.stormyChickenGroupMax);
+        registerAnimalEntitySpawn(EntityTypesInit.SunsetCow.registryObject.get(), E2JModConfig.sunsetCowSpawnBiomes.toArray(new String[0]), E2JModConfig.sunsetCowWeight, E2JModConfig.sunsetCowGroupMin, E2JModConfig.sunsetCowGroupMax);
+        registerMonsterEntitySpawn(EntityTypesInit.TropicalSlime.registryObject.get(), E2JModConfig.tropicalSlimeSpawnBiomes.toArray(new String[0]), E2JModConfig.tropicalSlimeWeight, E2JModConfig.tropicalSlimeGroupMin, E2JModConfig.tropicalSlimeGroupMax);
+        registerAnimalEntitySpawn(EntityTypesInit.VestedRabbit.registryObject.get(), E2JModConfig.vestedRabbitSpawnBiomes.toArray(new String[0]), E2JModConfig.vestedRabbitWeight, E2JModConfig.vestedRabbitGroupMin, E2JModConfig.vestedRabbitGroupMax);
+        registerAnimalEntitySpawn(EntityTypesInit.WoolyCow.registryObject.get(), E2JModConfig.woolyCowSpawnBiomes.toArray(new String[0]), E2JModConfig.woolyCowWeight, E2JModConfig.woolyCowGroupMin, E2JModConfig.woolyCowGroupMax);
     }
 
     private static void registerAnimalEntitySpawn(EntityType entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
@@ -134,7 +139,7 @@ public class EarthtojavamobsMod {
 
     private static void registerGlowingSquidSpawn() {
         DeferredWorkQueue.runLater(() -> {
-            BiomeSpawnHelper.setWaterCreatureSpawnBiomes(EntityTypesInit.GlowSquid.registryObject.get(), EntityTypesInit.GlowSquid.spawnBiomes, 6, 1, 4);
+            BiomeSpawnHelper.setWaterCreatureSpawnBiomes(EntityTypesInit.GlowSquid.registryObject.get(), E2JModConfig.glowSquidSpawnBiomes.toArray(new String[0]), E2JModConfig.glowSquidWeight, E2JModConfig.glowSquidGroupMin, E2JModConfig.glowSquidGroupMax);
             EntitySpawnPlacementRegistry.register(EntityTypesInit.GlowSquid.registryObject.get(), EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, GlowSquidEntity::canGlowingSquidSpawn);
         });
     }

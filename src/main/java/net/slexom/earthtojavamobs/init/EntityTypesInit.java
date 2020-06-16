@@ -276,8 +276,8 @@ public class EntityTypesInit {
                         .size(EntityType.RABBIT.getWidth(), EntityType.RABBIT.getHeight())
                         .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
         );
-        public static final int eggPrimaryColor = 0xcc3300;
-        public static final int eggSecondaryColor = 0xff9933;
+        public static final int eggPrimaryColor = 0xdedede;
+        public static final int eggSecondaryColor = 0x747474;
         public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS);
     }
 
@@ -290,8 +290,8 @@ public class EntityTypesInit {
                         .size(EntityType.RABBIT.getWidth(), EntityType.RABBIT.getHeight())
                         .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
         );
-        public static final int eggPrimaryColor = 0xcc3300;
-        public static final int eggSecondaryColor = 0xff9933;
+        public static final int eggPrimaryColor = 0x1d1b1a;
+        public static final int eggSecondaryColor = 0xb09984;
         public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS);
     }
 
@@ -304,8 +304,8 @@ public class EntityTypesInit {
                         .size(EntityType.RABBIT.getWidth(), EntityType.RABBIT.getHeight())
                         .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
         );
-        public static final int eggPrimaryColor = 0xcc3300;
-        public static final int eggSecondaryColor = 0xff9933;
+        public static final int eggPrimaryColor = 0xe5e0dd;
+        public static final int eggSecondaryColor = 0x463832;
         public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS);
     }
 

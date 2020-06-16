@@ -1,4 +1,10 @@
 ## Earth2Java - MOBS
+
+![Version 1.3.0](https://img.shields.io/badge/Version-1.3.0-brightgreen)
+![MC 1.15.2](https://img.shields.io/badge/MC-1.15.2-blue)
+![Forge 31.2.0](https://img.shields.io/badge/Forge-31.2.0-blue)
+![License MIT](https://img.shields.io/badge/License-MIT-blue)
+![Curseforge Downloads](https://img.shields.io/badge/dynamic/json?color=6441a5&label=Curseforge&query=%24.downloadCount&suffix=%20Downloads&url=https%3A%2F%2Faddons-ecs.forgesvc.net%2Fapi%2Fv2%2Faddon%2F387396)
 ### Description
 This mod aims to bring mobs from Minecraft Earth to Minecraft Java Edition. Is not intented as a simple retexture of some chicken, but want to brings also AI, loot and special mechanics they have in MCE, if any.
 Most of the mobs have a generic Plains biome in MCE, I set entities in some more specific biome to diversify.

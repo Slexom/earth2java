@@ -38,5 +38,11 @@
   "entity.earthtojavamobs.inky_sheep": "Oveja entintada",
   "entity.earthtojavamobs.flecked_sheep": "Oveja jasperda",
   "item.earthtojavamobs.flecked_sheep_spawn_egg": "Generar oveja jasperda",
-  "item.earthtojavamobs.inky_sheep_spawn_egg": "Generar oveja entintada"
+  "item.earthtojavamobs.inky_sheep_spawn_egg": "Generar oveja entintada",
+  "entity.earthtojavamobs.vested_rabbit": "Conejo con chaleco",
+  "entity.earthtojavamobs.muddy_foot_rabbit": "Conejo de pie lodoso",
+  "entity.earthtojavamobs.harelequin_rabbit": "Conejo lebrarlequín",
+  "item.earthtojavamobs.vested_rabbit_spawn_egg": "Generar conejo con chaleco",
+  "item.earthtojavamobs.harelequin_rabbit_spawn_egg": "Generar conejo lebrarlequín",
+  "item.earthtojavamobs.muddy_foot_rabbit_spawn_egg": "Generar conejo de pie lodoso"
 }
