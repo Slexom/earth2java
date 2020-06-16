@@ -309,6 +309,19 @@ public class EntityTypesInit {
         public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS);
     }
 
+    public static final class FurnaceGolem{
+        public static final String registryName = "furnace_golem";
+        public static final RegistryObject<EntityType<FurnaceGolemEntity>> registryObject = ENTITY_TYPES.register(
+                registryName,
+                () -> EntityType.Builder.<FurnaceGolemEntity>create(FurnaceGolemEntity::new, EntityClassification.MISC)
+                        .size(EntityType.IRON_GOLEM.getWidth(), EntityType.IRON_GOLEM.getHeight())
+                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
+        );
+        public static final int eggPrimaryColor = 0xe5e0dd;
+        public static final int eggSecondaryColor = 0x463832;
+        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS);
+    }
+
 }
 
 

@@ -120,6 +120,11 @@ final class CommonConfig {
     final ForgeConfigSpec.IntValue woolyCowGroupMin;
     final ForgeConfigSpec.IntValue woolyCowGroupMax;
 
+    final ForgeConfigSpec.ConfigValue<List<String>> furnaceGolemSpawnBiomes;
+    final ForgeConfigSpec.IntValue furnaceGolemWeight;
+    final ForgeConfigSpec.IntValue furnaceGolemGroupMin;
+    final ForgeConfigSpec.IntValue furnaceGolemGroupMax;
+
     private final int standardSheepWeight = 12;
     private final int standardCowWeight = 8;
     private final int standardChickenWeight = 10;
@@ -136,13 +141,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.AmberChicken.spawnBiomes));
         amberChickenWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", standardChickenWeight, 0, 100);
+                .defineInRange("entityWeight", standardChickenWeight, 0, Integer.MAX_VALUE);
         amberChickenGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         amberChickenGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("ashenCow");
@@ -151,13 +156,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.AshenCow.spawnBiomes));
         ashenCowWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", standardCowWeight, 0, 100);
+                .defineInRange("entityWeight", standardCowWeight, 0, Integer.MAX_VALUE);
         ashenCowGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         ashenCowGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("cluckshroom");
@@ -166,13 +171,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.Cluckshroom.spawnBiomes));
         cluckshroomWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", standardChickenWeight, 0, 100);
+                .defineInRange("entityWeight", standardChickenWeight, 0, Integer.MAX_VALUE);
         cluckshroomGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         cluckshroomGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("fleckedSheep");
@@ -181,13 +186,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.FleckedSheep.spawnBiomes));
         fleckedSheepWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", standardSheepWeight, 0, 100);
+                .defineInRange("entityWeight", standardSheepWeight, 0, Integer.MAX_VALUE);
         fleckedSheepGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         fleckedSheepGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("glowSquid");
@@ -196,13 +201,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.GlowSquid.spawnBiomes));
         glowSquidWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", 6, 0, 100);
+                .defineInRange("entityWeight", 6, 0, Integer.MAX_VALUE);
         glowSquidGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         glowSquidGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("harelequinRabbit");
@@ -211,13 +216,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.HarelequinRabbit.spawnBiomes));
         harelequinRabbitWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", standardRabbitWeight, 0, 100);
+                .defineInRange("entityWeight", standardRabbitWeight, 0, Integer.MAX_VALUE);
         harelequinRabbitGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         harelequinRabbitGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("hornedSheep");
@@ -226,13 +231,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.HornedSheep.spawnBiomes));
         hornedSheepWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", standardSheepWeight, 0, 100);
+                .defineInRange("entityWeight", standardSheepWeight, 0, Integer.MAX_VALUE);
         hornedSheepGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         hornedSheepGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("inkySheep");
@@ -241,13 +246,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.InkySheep.spawnBiomes));
         inkySheepWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", standardSheepWeight, 0, 100);
+                .defineInRange("entityWeight", standardSheepWeight, 0, Integer.MAX_VALUE);
         inkySheepGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         inkySheepGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("midnightChicken");
@@ -256,13 +261,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.MidnightChicken.spawnBiomes));
         midnightChickenWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", standardChickenWeight, 0, 100);
+                .defineInRange("entityWeight", standardChickenWeight, 0, Integer.MAX_VALUE);
         midnightChickenGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         midnightChickenGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("moobloom");
@@ -271,13 +276,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.Moobloom.spawnBiomes));
         moobloomWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", standardCowWeight, 0, 100);
+                .defineInRange("entityWeight", standardCowWeight, 0, Integer.MAX_VALUE);
         moobloomGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         moobloomGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("muddyFootRabbit");
@@ -286,13 +291,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.MuddyFootRabbit.spawnBiomes));
         muddyFootRabbitWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", standardRabbitWeight, 0, 100);
+                .defineInRange("entityWeight", standardRabbitWeight, 0, Integer.MAX_VALUE);
         muddyFootRabbitGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         muddyFootRabbitGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("muddyPig");
@@ -301,13 +306,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.MuddyPig.spawnBiomes));
         muddyPigWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", standardPigWeight, 0, 100);
+                .defineInRange("entityWeight", standardPigWeight, 0, Integer.MAX_VALUE);
         muddyPigGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         muddyPigGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("palePig");
@@ -316,13 +321,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.PalePig.spawnBiomes));
         palePigWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", standardPigWeight, 0, 100);
+                .defineInRange("entityWeight", standardPigWeight, 0, Integer.MAX_VALUE);
         palePigGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         palePigGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("piebaldPig");
@@ -331,13 +336,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.PiebaldPig.spawnBiomes));
         piebaldPigWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", standardPigWeight, 0, 100);
+                .defineInRange("entityWeight", standardPigWeight, 0, Integer.MAX_VALUE);
         piebaldPigGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         piebaldPigGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("rockySheep");
@@ -346,13 +351,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.RockySheep.spawnBiomes));
         rockySheepWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", standardSheepWeight, 0, 100);
+                .defineInRange("entityWeight", standardSheepWeight, 0, Integer.MAX_VALUE);
         rockySheepGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         rockySheepGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("skeletonWolf");
@@ -361,13 +366,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.SkeletonWolf.spawnBiomes));
         skeletonWolfWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", standardWolfWeight, 0, 100);
+                .defineInRange("entityWeight", standardWolfWeight, 0, Integer.MAX_VALUE);
         skeletonWolfGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         skeletonWolfGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("spottedPig");
@@ -376,13 +381,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.SpottedPig.spawnBiomes));
         spottedPigWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", standardPigWeight, 0, 100);
+                .defineInRange("entityWeight", standardPigWeight, 0, Integer.MAX_VALUE);
         spottedPigGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         spottedPigGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("stormyChicken");
@@ -391,13 +396,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.StormyChicken.spawnBiomes));
         stormyChickenWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", standardChickenWeight, 0, 100);
+                .defineInRange("entityWeight", standardChickenWeight, 0, Integer.MAX_VALUE);
         stormyChickenGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         stormyChickenGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("sunsetCow");
@@ -406,13 +411,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.SunsetCow.spawnBiomes));
         sunsetCowWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", standardCowWeight, 0, 100);
+                .defineInRange("entityWeight", standardCowWeight, 0, Integer.MAX_VALUE);
         sunsetCowGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         sunsetCowGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("tropicalSlime");
@@ -421,13 +426,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.TropicalSlime.spawnBiomes));
         tropicalSlimeWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", 12, 0, 100);
+                .defineInRange("entityWeight", 12, 0, Integer.MAX_VALUE);
         tropicalSlimeGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         tropicalSlimeGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("vestedRabbit");
@@ -436,13 +441,13 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.VestedRabbit.spawnBiomes));
         vestedRabbitWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", standardRabbitWeight, 0, 100);
+                .defineInRange("entityWeight", standardRabbitWeight, 0, Integer.MAX_VALUE);
         vestedRabbitGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         vestedRabbitGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
 
         builder.push("woolyCow");
@@ -451,13 +456,28 @@ final class CommonConfig {
                 .define("spawnBiomes", Arrays.asList(EntityTypesInit.WoolyCow.spawnBiomes));
         woolyCowWeight = builder
                 .comment("Weight of entity in spawn")
-                .defineInRange("entityWeight", standardCowWeight, 0, 100);
+                .defineInRange("entityWeight", standardCowWeight, 0, Integer.MAX_VALUE);
         woolyCowGroupMin = builder
                 .comment("Minimum number of entities in group")
-                .defineInRange("entityGroupMin", 2, 0, 100);
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         woolyCowGroupMax = builder
                 .comment("Maximum number of entities in group")
-                .defineInRange("entityGroupMax", 4, 0, 100);
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
+        builder.pop();
+
+        builder.push("furnaceGolem");
+        furnaceGolemSpawnBiomes = builder
+                .comment("Biome where entity Spawn")
+                .define("spawnBiomes", Arrays.asList(EntityTypesInit.WoolyCow.spawnBiomes));
+        furnaceGolemWeight = builder
+                .comment("Weight of entity in spawn")
+                .defineInRange("entityWeight", 20, 0, Integer.MAX_VALUE);
+        furnaceGolemGroupMin = builder
+                .comment("Minimum number of entities in group")
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
+        furnaceGolemGroupMax = builder
+                .comment("Maximum number of entities in group")
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
         builder.pop();
     }

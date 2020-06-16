@@ -126,6 +126,10 @@ public final class E2JModConfig {
     public static int woolyCowGroupMin;
     public static int woolyCowGroupMax;;
 
+    public static List<String> furnaceGolemSpawnBiomes;
+    public static int furnaceGolemWeight;
+    public static int furnaceGolemGroupMin;
+    public static int furnaceGolemGroupMax;;
     // Client
 
     // Server
