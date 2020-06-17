@@ -16,6 +16,8 @@ public final class E2JModConfig {
 
     //Common
 
+    public static int mudLakeFrequency;
+
     public static List<String> amberChickenSpawnBiomes;
     public static int amberChickenWeight;
     public static int amberChickenGroupMin;

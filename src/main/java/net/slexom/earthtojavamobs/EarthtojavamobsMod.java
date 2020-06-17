@@ -94,7 +94,7 @@ public class EarthtojavamobsMod {
                                 return false;
                             return super.place(world, generator, rand, pos, config);
                         }
-                    }.withConfiguration(new BlockStateFeatureConfig(FluidInit.MUD_BLOCK.get().getDefaultState())).withPlacement(Placement.WATER_LAKE.configure(new ChanceConfig(40))));
+                    }.withConfiguration(new BlockStateFeatureConfig(FluidInit.MUD_BLOCK.get().getDefaultState())).withPlacement(Placement.WATER_LAKE.configure(new ChanceConfig(E2JModConfig.mudLakeFrequency))));
                 }
             }
         });

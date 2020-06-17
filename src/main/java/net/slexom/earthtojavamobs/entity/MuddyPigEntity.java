@@ -20,8 +20,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 import net.slexom.earthtojavamobs.init.FluidInit;
 
-import java.util.EnumSet;
-
 
 public class MuddyPigEntity extends PigEntity {
 
@@ -38,12 +36,12 @@ public class MuddyPigEntity extends PigEntity {
     }
 
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new MuddyPigEntity.SwimInMudGoal(this));
+        this.goalSelector.addGoal(0, new SwimGoal(this));
         this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.2D, Ingredient.fromItems(Items.CARROT_ON_A_STICK), false));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.2D, TEMPTATION_ITEMS, false));
-        this.goalSelector.addGoal(4, new MuddyPigEntity.GoToMudGoal(this, 1.0D));
+        // this.goalSelector.addGoal(4, new MuddyPigEntity.GoToMudGoal(this, 1.0D));
         this.goalSelector.addGoal(5, new FollowParentGoal(this, 1.1D));
         this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.addGoal(7, new LookRandomlyGoal(this));
@@ -116,7 +114,7 @@ public class MuddyPigEntity extends PigEntity {
         }
 
         public boolean shouldExecute() {
-            return this.muddyPig.onGround && !this.muddyPig.isInMud() && super.shouldExecute();
+            return !this.muddyPig.isInMud() && super.shouldExecute();
         }
 
         public boolean shouldContinueExecuting() {
@@ -124,7 +122,7 @@ public class MuddyPigEntity extends PigEntity {
         }
 
         public boolean shouldMove() {
-            return this.timeoutCounter % 60 == 0;
+            return this.timeoutCounter % 100 == 0;
         }
 
         @Override
@@ -134,28 +132,6 @@ public class MuddyPigEntity extends PigEntity {
         }
     }
 
-    public static class SwimInMudGoal extends SwimGoal {
-        private final MuddyPigEntity muddyPig;
-
-        public SwimInMudGoal(MuddyPigEntity entityIn) {
-            super(entityIn);
-            this.muddyPig = entityIn;
-            this.setMutexFlags(EnumSet.of(Goal.Flag.JUMP));
-            entityIn.getNavigator().setCanSwim(true);
-        }
-
-        public boolean shouldExecute() {
-            double d0 = (double) this.muddyPig.getEyeHeight() < 0.4D ? 0.2D : 0.4D;
-            return (this.muddyPig.isInWater() || this.muddyPig.isInMud()) && this.muddyPig.getSubmergedHeight() > d0 || this.muddyPig.isInLava();
-        }
-
-        public void tick() {
-            if (this.muddyPig.getRNG().nextFloat() < 0.8F) {
-                this.muddyPig.getJumpController().setJumping();
-            }
-
-        }
-    }
 
     @Override
     public IPacket<?> createSpawnPacket() {
