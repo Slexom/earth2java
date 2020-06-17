@@ -38,5 +38,13 @@
   "entity.earthtojavamobs.inky_sheep": "Tintiges Schaf",
   "entity.earthtojavamobs.flecked_sheep": "Geflecktes Schaf",
   "item.earthtojavamobs.flecked_sheep_spawn_egg": "Geflecktes Schaf-Spawn-Ei",
-  "item.earthtojavamobs.inky_sheep_spawn_egg": "Tintiges Schaf-Spawn-Ei"
+  "item.earthtojavamobs.inky_sheep_spawn_egg": "Tintiges Schaf-Spawn-Ei",
+  "entity.earthtojavamobs.vested_rabbit": "Bekleidetes Kaninchen",
+  "entity.earthtojavamobs.muddy_foot_rabbit": "Schlammfuß-Kaninchen",
+  "entity.earthtojavamobs.harelequin_rabbit": "Haselequin-Kaninchen",
+  "item.earthtojavamobs.vested_rabbit_spawn_egg": "Bekleidetes Kaninchen Spawn-EI",
+  "item.earthtojavamobs.harelequin_rabbit_spawn_egg": "Haselequin-Kaninchen-Spawn-Ei",
+  "item.earthtojavamobs.muddy_foot_rabbit_spawn_egg": "Schlammfuß-Kaninchen-Spawn-Ei",
+  "entity.earthtojavamobs.furnace_golem": "Ofengolem",
+  "item.earthtojavamobs.furnace_golem_spawn_egg": "Ofengolem-Spawn-Ei"
 }

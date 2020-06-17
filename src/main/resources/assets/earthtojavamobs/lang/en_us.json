@@ -38,5 +38,13 @@
   "entity.earthtojavamobs.inky_sheep": "Inky Sheep",
   "entity.earthtojavamobs.flecked_sheep": "Flecked Sheep",
   "item.earthtojavamobs.flecked_sheep_spawn_egg": "Flecked Sheep Spawn Egg",
-  "item.earthtojavamobs.inky_sheep_spawn_egg": "Inky Sheep Spawn Egg"
+  "item.earthtojavamobs.inky_sheep_spawn_egg": "Inky Sheep Spawn Egg",
+  "entity.earthtojavamobs.vested_rabbit": "Vested Rabbit",
+  "entity.earthtojavamobs.muddy_foot_rabbit": "Muddy Foot Rabbit",
+  "entity.earthtojavamobs.harelequin_rabbit": "Harelequin Rabbit",
+  "item.earthtojavamobs.vested_rabbit_spawn_egg": "Vested Rabbit Spawn Egg",
+  "item.earthtojavamobs.harelequin_rabbit_spawn_egg": "Harelequin Rabbit Spawn Egg",
+  "item.earthtojavamobs.muddy_foot_rabbit_spawn_egg": "Muddy Foot Rabbit Spawn Egg",
+  "entity.earthtojavamobs.furnace_golem": "Furnace Golem",
+  "item.earthtojavamobs.furnace_golem_spawn_egg": "Furnace Golem Spwan Egg"
 }

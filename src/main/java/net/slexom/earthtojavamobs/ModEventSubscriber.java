@@ -12,6 +12,8 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.registries.IForgeRegistry;
+import net.slexom.earthtojavamobs.config.ConfigHelper;
+import net.slexom.earthtojavamobs.config.ConfigHolder;
 import net.slexom.earthtojavamobs.init.BlockInit;
 import net.slexom.earthtojavamobs.item.ModdedSpawnEggItem;
 import org.apache.logging.log4j.LogManager;
@@ -36,20 +38,19 @@ public final class ModEventSubscriber {
                 });
     }
 
-    /**
-     * This method will be called by Forge when a config changes.
-     */
     @SubscribeEvent
     public static void onModConfigEvent(final ModConfig.ModConfigEvent event) {
-//        final ModConfig config = event.getConfig();
-//        // Rebake the configs when they change
-//        if (config.getSpec() == ConfigHolder.CLIENT_SPEC) {
-//            ConfigHelper.bakeClient(config);
-//            LOGGER.debug("Baked client config");
-//        } else if (config.getSpec() == ConfigHolder.SERVER_SPEC) {
-//            ConfigHelper.bakeServer(config);
-//            LOGGER.debug("Baked server config");
-//        }
+        final ModConfig config = event.getConfig();
+        if (config.getSpec() == ConfigHolder.CLIENT_SPEC) {
+            ConfigHelper.bakeClient(config);
+            LOGGER.debug("Baked client config");
+        } else if (config.getSpec() == ConfigHolder.SERVER_SPEC) {
+            ConfigHelper.bakeServer(config);
+            LOGGER.debug("Baked server config");
+        } else if (config.getSpec() == ConfigHolder.COMMON_SPEC) {
+            ConfigHelper.bakeCommon(config);
+            LOGGER.debug("Baked common config");
+        }
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)

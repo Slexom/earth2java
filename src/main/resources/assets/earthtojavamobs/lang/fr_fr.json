@@ -38,5 +38,13 @@
   "entity.earthtojavamobs.inky_sheep": "Mouton d'encre",
   "entity.earthtojavamobs.flecked_sheep": "Mouton tacheté",
   "item.earthtojavamobs.flecked_sheep_spawn_egg": "Oeuf d'apparition de mouton tacheté",
-  "item.earthtojavamobs.inky_sheep_spawn_egg": "Oeuf d'apparition de mouton d'encre"
+  "item.earthtojavamobs.inky_sheep_spawn_egg": "Oeuf d'apparition de mouton d'encre",
+  "entity.earthtojavamobs.vested_rabbit": "Lapin effet habillé",
+  "entity.earthtojavamobs.muddy_foot_rabbit": "Lapin aux pattes boueuses",
+  "entity.earthtojavamobs.harelequin_rabbit": "Lapin arlequin",
+  "item.earthtojavamobs.vested_rabbit_spawn_egg": "Oeuf d'apparition de lapin effet habillé",
+  "item.earthtojavamobs.harelequin_rabbit_spawn_egg": "Oeuf d'apparition de lapin arlequin",
+  "item.earthtojavamobs.muddy_foot_rabbit_spawn_egg": "Oeuf d'apparition de lapin aux pattes boueuses",
+  "entity.earthtojavamobs.furnace_golem": "Golem fourneau",
+  "item.earthtojavamobs.furnace_golem_spawn_egg": "Oeuf d'apparition de golem fourneau"
 }
