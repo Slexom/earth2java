@@ -4,7 +4,6 @@ package net.slexom.earthtojavamobs.entity;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.AgeableEntity;
-import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.goal.*;
@@ -63,19 +62,9 @@ public class FleckedSheepEntity extends AnimalEntity implements net.minecraftfor
     }
 
     @Override
-    public CreatureAttribute getCreatureAttribute() {
-        return CreatureAttribute.UNDEFINED;
-    }
-
-    protected void dropSpecialItems(DamageSource source, int looting, boolean recentlyHitIn) {
-        super.dropSpecialItems(source, looting, recentlyHitIn);
-    }
-
-    @Override
     protected float getSoundVolume() {
         return 1.0F;
     }
-
 
     protected void updateAITasks() {
         this.sheepTimer = this.eatGrassGoal.getEatingGrassTimer();
@@ -89,9 +78,6 @@ public class FleckedSheepEntity extends AnimalEntity implements net.minecraftfor
         super.livingTick();
     }
 
-    /**
-     * Handler for {@link World#setEntityState}
-     */
     public void handleStatusUpdate(byte id) {
         if (id == 10) {
             this.sheepTimer = 40;

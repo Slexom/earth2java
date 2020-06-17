@@ -75,13 +75,10 @@ public class SkeletonWolfEntity extends AbstractSkeletonEntity {
     }
 
     public void setCombatTask() {
-
-
     }
 
     public void attackEntityWithRangedAttack(LivingEntity target, float distanceFactor) {
     }
-
 
     protected void registerData() {
         super.registerData();

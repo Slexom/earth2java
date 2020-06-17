@@ -13,6 +13,8 @@ public final class ConfigHelper {
 
     public static void bakeCommon(final net.minecraftforge.fml.config.ModConfig config) {
 
+        E2JModConfig.mudLakeFrequency = ConfigHolder.COMMON.mudLakeFrequency.get();
+
         E2JModConfig.amberChickenSpawnBiomes = ConfigHolder.COMMON.amberChickenSpawnBiomes.get();
         E2JModConfig.amberChickenWeight = ConfigHolder.COMMON.amberChickenWeight.get();
         E2JModConfig.amberChickenGroupMin = ConfigHolder.COMMON.amberChickenGroupMin.get();

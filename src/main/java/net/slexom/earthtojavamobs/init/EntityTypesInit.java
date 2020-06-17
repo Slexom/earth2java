@@ -318,8 +318,8 @@ public class EntityTypesInit {
                         .immuneToFire()
                         .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
         );
-        public static final int eggPrimaryColor = 0xe5e0dd;
-        public static final int eggSecondaryColor = 0x463832;
+        public static final int eggPrimaryColor = 0x56585a;
+        public static final int eggSecondaryColor = 0xff5501;
         public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS);
     }
 

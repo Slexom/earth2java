@@ -8,7 +8,10 @@ import java.util.List;
 
 final class CommonConfig {
 
+    final String CATEGORY_GENERAL = "general";
     final String CATEGORY_ENTITIES = "entities";
+
+    final ForgeConfigSpec.IntValue mudLakeFrequency;
 
     final ForgeConfigSpec.ConfigValue<List<String>> amberChickenSpawnBiomes;
     final ForgeConfigSpec.IntValue amberChickenWeight;
@@ -134,6 +137,11 @@ final class CommonConfig {
     private final int standardFoxWeight = 8;
 
     CommonConfig(final ForgeConfigSpec.Builder builder) {
+        builder.push(CATEGORY_GENERAL);
+        mudLakeFrequency = builder
+                .comment("Frequency of mud lake generation. Lower number -> High appearance chance")
+                .defineInRange("mudLakeFrequency", 40, 1, Integer.MAX_VALUE);
+        builder.pop();
         builder.push(CATEGORY_ENTITIES);
         builder.push("amberChicken");
         amberChickenSpawnBiomes = builder

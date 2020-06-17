@@ -21,7 +21,6 @@ import org.apache.logging.log4j.Logger;
 
 @Mod.EventBusSubscriber(modid = EarthtojavamobsMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class ModEventSubscriber {
-
     private static final Logger LOGGER = LogManager.getLogger(EarthtojavamobsMod.MOD_ID + " Mod Event Subscriber");
 
     @SubscribeEvent

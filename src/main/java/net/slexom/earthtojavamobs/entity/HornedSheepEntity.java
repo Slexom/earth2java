@@ -224,10 +224,6 @@ public class HornedSheepEntity extends SheepEntity {
         }
     }
 
-    public CreatureAttribute getCreatureAttribute() {
-        return CreatureAttribute.UNDEFINED;
-    }
-
     private boolean isWithinDistance(BlockPos pos) {
         return pos.withinDistance(new BlockPos(this), (double) 48);
     }
