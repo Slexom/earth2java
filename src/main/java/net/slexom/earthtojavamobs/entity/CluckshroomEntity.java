@@ -11,15 +11,12 @@ import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.RestrictSunGoal;
 import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.network.IPacket;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
-import net.minecraftforge.registries.ForgeRegistries;
 
 
 public class CluckshroomEntity extends ChickenEntity {
@@ -36,30 +33,6 @@ public class CluckshroomEntity extends ChickenEntity {
         this.goalSelector.addGoal(1, new RestrictSunGoal(this));
         this.goalSelector.addGoal(1, new FleeSunGoal(this, 1.0D));
         this.goalSelector.addGoal(3, new CluckshroomEntity.PlaceBlockGoal(this));
-    }
-
-    protected void dropSpecialItems(DamageSource source, int looting, boolean recentlyHitIn) {
-        super.dropSpecialItems(source, looting, recentlyHitIn);
-    }
-
-    @Override
-    public net.minecraft.util.SoundEvent getAmbientSound() {
-        return (net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.chicken.ambient"));
-    }
-
-    @Override
-    public net.minecraft.util.SoundEvent getHurtSound(DamageSource ds) {
-        return (net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.chicken.hurt"));
-    }
-
-    @Override
-    public net.minecraft.util.SoundEvent getDeathSound() {
-        return (net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.chicken.death"));
-    }
-
-    @Override
-    protected float getSoundVolume() {
-        return 1.0F;
     }
 
     @Override

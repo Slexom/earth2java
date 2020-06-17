@@ -52,9 +52,6 @@ public class WoolyCowEntity extends CowEntity implements net.minecraftforge.comm
         super.livingTick();
     }
 
-    /**
-     * Handler for {@link World#setEntityState}
-     */
     public void handleStatusUpdate(byte id) {
         if (id == 10) {
             this.shearTimer = 40;
@@ -66,20 +63,6 @@ public class WoolyCowEntity extends CowEntity implements net.minecraftforge.comm
     protected void registerData() {
         super.registerData();
         this.dataManager.register(isSheared, (byte) 0);
-    }
-
-    @Override
-    public CreatureAttribute getCreatureAttribute() {
-        return CreatureAttribute.UNDEFINED;
-    }
-
-    protected void dropSpecialItems(DamageSource source, int looting, boolean recentlyHitIn) {
-        super.dropSpecialItems(source, looting, recentlyHitIn);
-    }
-
-    @Override
-    protected float getSoundVolume() {
-        return 1.0F;
     }
 
     public boolean getSheared() {

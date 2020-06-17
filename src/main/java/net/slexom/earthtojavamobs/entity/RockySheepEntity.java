@@ -4,7 +4,6 @@ package net.slexom.earthtojavamobs.entity;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.AgeableEntity;
-import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.goal.*;
@@ -26,53 +25,12 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-import java.text.MessageFormat;
-
 public class RockySheepEntity extends AnimalEntity implements net.minecraftforge.common.IShearable {
-    private static final String registryNameEntity = "rocky_sheep";
-    private static final String registryNameSpawnEgg = MessageFormat.format("{0}_spawn_egg", registryNameEntity);
-
-//    public RockySheepEntity(EarthtojavamobsModElements instance) {
-//        super(instance, 32);
-//        FMLJavaModLoadingContext.get().getModEventBus().register(this);
-//    }
-//
-//    @Override
-//    public void initElements() {
-//        entity = (EntityType.Builder.<RockySheepEntity>create(RockySheepEntity::new, EntityClassification.CREATURE).setShouldReceiveVelocityUpdates(true)
-//                .setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(RockySheepEntity::new).size(0.9f, 1.3f)).build(registryNameEntity)
-//                .setRegistryName(registryNameEntity);
-//        elements.entities.add(() -> entity);
-//        elements.items.add(
-//                () -> new SpawnEggItem(entity, 0xa69f9b, 0xe9d0bd, new Item.Properties().group(ItemGroup.MISC)).setRegistryName(registryNameSpawnEgg));
-//    }
-//
-//    @Override
-//    public void init(FMLCommonSetupEvent event) {
-//        DeferredWorkQueue.runLater(new Runnable() {
-//            @Override
-//            public void run() {
-//                String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS, BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.GRAVELLY_MOUNTAINS);
-//                BiomeSpawnHelper.setCreatureSpawnBiomes(entity, spawnBiomes, 12, 2, 4);
-//                EntitySpawnPlacementRegistry.register(entity, EntitySpawnPlacementRegistry.PlacementType.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
-//                        AnimalEntity::canAnimalSpawn);
-//            }
-//        });
-//    }
-
-//    @SubscribeEvent
-//    @OnlyIn(Dist.CLIENT)
-//    public void registerModels(ModelRegistryEvent event) {
-//        RenderingRegistry.registerEntityRenderingHandler(entity, renderManager -> new RockySheepRenderer(renderManager) {
-//        });
-//    }
-
 
     private static final DataParameter<Byte> isSheared = EntityDataManager.createKey(RockySheepEntity.class, DataSerializers.BYTE);
 
     private int sheepTimer;
     private EatGrassGoal eatGrassGoal;
-
 
     public RockySheepEntity(EntityType<? extends RockySheepEntity> type, World world) {
         super(type, world);
@@ -99,21 +57,6 @@ public class RockySheepEntity extends AnimalEntity implements net.minecraftforge
         this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue((double) 0.23F);
     }
 
-    @Override
-    public CreatureAttribute getCreatureAttribute() {
-        return CreatureAttribute.UNDEFINED;
-    }
-
-    protected void dropSpecialItems(DamageSource source, int looting, boolean recentlyHitIn) {
-        super.dropSpecialItems(source, looting, recentlyHitIn);
-    }
-
-    @Override
-    protected float getSoundVolume() {
-        return 1.0F;
-    }
-
-
     protected void updateAITasks() {
         this.sheepTimer = this.eatGrassGoal.getEatingGrassTimer();
         super.updateAITasks();
@@ -126,9 +69,6 @@ public class RockySheepEntity extends AnimalEntity implements net.minecraftforge
         super.livingTick();
     }
 
-    /**
-     * Handler for {@link World#setEntityState}
-     */
     public void handleStatusUpdate(byte id) {
         if (id == 10) {
             this.sheepTimer = 40;

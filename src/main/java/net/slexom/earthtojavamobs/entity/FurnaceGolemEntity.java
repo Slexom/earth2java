@@ -63,7 +63,7 @@ public class FurnaceGolemEntity extends IronGolemEntity {
         super.livingTick();
         if (this.isAngry()) {
             float rand = new Random().nextFloat();
-            if (rand > 0.80F && rand <= 0.85F) {
+            if (rand > 0.80F && rand <= 0.83F) {
                 int x = MathHelper.floor(this.getPosX());
                 int y = MathHelper.floor(this.getPosY());
                 int z = MathHelper.floor(this.getPosZ());

@@ -49,15 +49,6 @@ public class TropicalSlimeEntity extends CreatureEntity {
         this.targetSelector.addGoal(3, (new HurtByTargetGoal(this)));
     }
 
-    @Override
-    public CreatureAttribute getCreatureAttribute() {
-        return super.getCreatureAttribute();
-    }
-
-    protected void dropSpecialItems(DamageSource source, int looting, boolean recentlyHitIn) {
-        super.dropSpecialItems(source, looting, recentlyHitIn);
-    }
-
     protected void registerAttributes() {
         super.registerAttributes();
         this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue((double) (16.0D));
@@ -198,11 +189,9 @@ public class TropicalSlimeEntity extends CreatureEntity {
         return SoundEvents.ENTITY_SLIME_JUMP;
     }
 
-
     protected boolean spawnCustomParticles() {
         return false;
     }
-
 
     static class AttackGoal extends Goal {
         private final TropicalSlimeEntity slime;
@@ -213,10 +202,6 @@ public class TropicalSlimeEntity extends CreatureEntity {
             this.setMutexFlags(EnumSet.of(Goal.Flag.LOOK));
         }
 
-        /**
-         * Returns whether execution should begin. You can also read and cache any state necessary for execution in this
-         * method as well.
-         */
         public boolean shouldExecute() {
             LivingEntity livingentity = this.slime.getAttackTarget();
             if (livingentity == null) {
@@ -228,17 +213,11 @@ public class TropicalSlimeEntity extends CreatureEntity {
             }
         }
 
-        /**
-         * Execute a one shot task or start executing a continuous task
-         */
         public void startExecuting() {
             this.growTieredTimer = 300;
             super.startExecuting();
         }
 
-        /**
-         * Returns whether an in-progress EntityAIBase should continue executing
-         */
         public boolean shouldContinueExecuting() {
             LivingEntity livingentity = this.slime.getAttackTarget();
             if (livingentity == null) {
@@ -252,9 +231,6 @@ public class TropicalSlimeEntity extends CreatureEntity {
             }
         }
 
-        /**
-         * Keep ticking a continuous task that has already been started
-         */
         public void tick() {
             this.slime.faceEntity(this.slime.getAttackTarget(), 10.0F, 10.0F);
             ((TropicalSlimeEntity.MoveHelperController) this.slime.getMoveHelper()).setDirection(this.slime.rotationYaw, this.slime.canDamagePlayer());
@@ -271,25 +247,18 @@ public class TropicalSlimeEntity extends CreatureEntity {
             this.setMutexFlags(EnumSet.of(Goal.Flag.LOOK));
         }
 
-        /**
-         * Returns whether execution should begin. You can also read and cache any state necessary for execution in this
-         * method as well.
-         */
         public boolean shouldExecute() {
             return this.slime.getAttackTarget() == null && (this.slime.onGround || this.slime.isInWater() || this.slime.isInLava() || this.slime.isPotionActive(Effects.LEVITATION)) && this.slime.getMoveHelper() instanceof TropicalSlimeEntity.MoveHelperController;
         }
 
-        /**
-         * Keep ticking a continuous task that has already been started
-         */
         public void tick() {
             if (--this.nextRandomizeTime <= 0) {
                 this.nextRandomizeTime = 40 + this.slime.getRNG().nextInt(60);
                 this.chosenDegrees = (float) this.slime.getRNG().nextInt(360);
             }
-
             ((TropicalSlimeEntity.MoveHelperController) this.slime.getMoveHelper()).setDirection(this.chosenDegrees, false);
         }
+
     }
 
     static class FloatGoal extends Goal {
@@ -301,10 +270,6 @@ public class TropicalSlimeEntity extends CreatureEntity {
             slimeIn.getNavigator().setCanSwim(true);
         }
 
-        /**
-         * Returns whether execution should begin. You can also read and cache any state necessary for execution in this
-         * method as well.
-         */
         public boolean shouldExecute() {
             return (this.slime.isInWater() || this.slime.isInLava()) && this.slime.getMoveHelper() instanceof TropicalSlimeEntity.MoveHelperController;
         }
@@ -393,22 +358,6 @@ public class TropicalSlimeEntity extends CreatureEntity {
     public IPacket<?> createSpawnPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
-
-//
-//        public static boolean func_223366_c(EntityType<SlimeEntity> p_223366_0_, IWorld p_223366_1_, SpawnReason reason, BlockPos p_223366_3_, Random randomIn) {
-//            if (p_223366_1_.getWorldInfo().getGenerator().handleSlimeSpawnReduction(randomIn, p_223366_1_) && randomIn.nextInt(4) != 1) {
-//                return false;
-//            } else {
-//                if (p_223366_1_.getDifficulty() != Difficulty.PEACEFUL) {
-//                    Biome biome = p_223366_1_.getBiome(p_223366_3_);
-//                    if (biome == Biomes.BEACH && p_223366_3_.getY() > 60 && p_223366_3_.getY() < 80 && randomIn.nextFloat() < 0.5F && randomIn.nextFloat() < p_223366_1_.getCurrentMoonPhaseFactor() && p_223366_1_.getLight(p_223366_3_) <= randomIn.nextInt(8)) {
-//                        return canSpawnOn(p_223366_0_, p_223366_1_, reason, p_223366_3_, randomIn);
-//                    }
-//                }
-//                return false;
-//            }
-//        }
-
 
 }
  

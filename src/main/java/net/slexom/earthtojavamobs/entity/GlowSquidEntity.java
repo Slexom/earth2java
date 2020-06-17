@@ -1,7 +1,6 @@
 
 package net.slexom.earthtojavamobs.entity;
 
-import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.SpawnReason;
@@ -12,8 +11,6 @@ import net.minecraft.entity.passive.SquidEntity;
 import net.minecraft.network.IPacket;
 import net.minecraft.pathfinding.SwimmerPathNavigator;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.shapes.VoxelShapes;
@@ -21,7 +18,6 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Random;
 
@@ -63,56 +59,12 @@ public class GlowSquidEntity extends SquidEntity {
     }
 
     @Override
-    public CreatureAttribute getCreatureAttribute() {
-        return CreatureAttribute.UNDEFINED;
-    }
-
-    protected void dropSpecialItems(DamageSource source, int looting, boolean recentlyHitIn) {
-        super.dropSpecialItems(source, looting, recentlyHitIn);
-    }
-
-    @Override
-    public net.minecraft.util.SoundEvent getAmbientSound() {
-        return (net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.squid.ambient"));
-    }
-
-    @Override
-    public net.minecraft.util.SoundEvent getHurtSound(DamageSource ds) {
-        return (net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.squid.hurt"));
-    }
-
-    @Override
-    public net.minecraft.util.SoundEvent getDeathSound() {
-        return (net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.squid.death"));
-    }
-
-    @Override
-    protected float getSoundVolume() {
-        return 1.0F;
-    }
-
-    @Override
-    protected void registerAttributes() {
-        super.registerAttributes();
-    }
-
-    @Override
-    public boolean canBreatheUnderwater() {
-        return true;
-    }
-
-    @Override
     public boolean isNotColliding(IWorldReader worldreader) {
         return worldreader.checkNoEntityCollision(this, VoxelShapes.create(this.getBoundingBox()));
     }
 
-    @Override
-    public boolean isPushedByWater() {
-        return false;
-    }
-
-    public static boolean canGlowingSquidSpawn(EntityType<GlowSquidEntity> p_223365_0_, IWorld p_223365_1_, SpawnReason reason, BlockPos p_223365_3_, Random p_223365_4_) {
-        return p_223365_3_.getY() > 45 && p_223365_3_.getY() < p_223365_1_.getSeaLevel();
+    public static boolean canGlowingSquidSpawn(EntityType<GlowSquidEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) {
+        return pos.getY() > 45 && pos.getY() < world.getSeaLevel();
     }
 
     @Override
