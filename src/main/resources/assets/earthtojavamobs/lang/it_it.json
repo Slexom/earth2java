@@ -44,5 +44,7 @@
   "entity.earthtojavamobs.harelequin_rabbit": "Coniglio arleprecchino",
   "item.earthtojavamobs.vested_rabbit_spawn_egg": "Uovo generatore di coniglio vestito",
   "item.earthtojavamobs.harelequin_rabbit_spawn_egg": "Uovo generatore di coniglio arleprecchino",
-  "item.earthtojavamobs.muddy_foot_rabbit_spawn_egg": "Uovo generatore di coniglio dalle zampe infangate"
+  "item.earthtojavamobs.muddy_foot_rabbit_spawn_egg": "Uovo generatore di coniglio dalle zampe infangate",
+  "entity.earthtojavamobs.furnace_golem": "Golem fornace",
+  "item.earthtojavamobs.furnace_golem_spawn_egg": "Uovo generatore di golem fornace"
 }

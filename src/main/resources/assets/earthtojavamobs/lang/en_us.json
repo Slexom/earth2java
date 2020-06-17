@@ -44,5 +44,7 @@
   "entity.earthtojavamobs.harelequin_rabbit": "Harelequin Rabbit",
   "item.earthtojavamobs.vested_rabbit_spawn_egg": "Vested Rabbit Spawn Egg",
   "item.earthtojavamobs.harelequin_rabbit_spawn_egg": "Harelequin Rabbit Spawn Egg",
-  "item.earthtojavamobs.muddy_foot_rabbit_spawn_egg": "Muddy Foot Rabbit Spawn Egg"
+  "item.earthtojavamobs.muddy_foot_rabbit_spawn_egg": "Muddy Foot Rabbit Spawn Egg",
+  "entity.earthtojavamobs.furnace_golem": "Furnace Golem",
+  "item.earthtojavamobs.furnace_golem_spawn_egg": "Furnace Golem Spwan Egg"
 }

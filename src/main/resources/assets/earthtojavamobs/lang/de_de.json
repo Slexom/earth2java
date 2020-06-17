@@ -44,5 +44,7 @@
   "entity.earthtojavamobs.harelequin_rabbit": "Haselequin-Kaninchen",
   "item.earthtojavamobs.vested_rabbit_spawn_egg": "Bekleidetes Kaninchen Spawn-EI",
   "item.earthtojavamobs.harelequin_rabbit_spawn_egg": "Haselequin-Kaninchen-Spawn-Ei",
-  "item.earthtojavamobs.muddy_foot_rabbit_spawn_egg": "Schlammfuß-Kaninchen-Spawn-Ei"
+  "item.earthtojavamobs.muddy_foot_rabbit_spawn_egg": "Schlammfuß-Kaninchen-Spawn-Ei",
+  "entity.earthtojavamobs.furnace_golem": "Ofengolem",
+  "item.earthtojavamobs.furnace_golem_spawn_egg": "Ofengolem-Spawn-Ei"
 }

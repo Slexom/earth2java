@@ -44,5 +44,7 @@
   "entity.earthtojavamobs.harelequin_rabbit": "Lapin arlequin",
   "item.earthtojavamobs.vested_rabbit_spawn_egg": "Oeuf d'apparition de lapin effet habillé",
   "item.earthtojavamobs.harelequin_rabbit_spawn_egg": "Oeuf d'apparition de lapin arlequin",
-  "item.earthtojavamobs.muddy_foot_rabbit_spawn_egg": "Oeuf d'apparition de lapin aux pattes boueuses"
+  "item.earthtojavamobs.muddy_foot_rabbit_spawn_egg": "Oeuf d'apparition de lapin aux pattes boueuses",
+  "entity.earthtojavamobs.furnace_golem": "Golem fourneau",
+  "item.earthtojavamobs.furnace_golem_spawn_egg": "Oeuf d'apparition de golem fourneau"
 }

@@ -315,6 +315,7 @@ public class EntityTypesInit {
                 registryName,
                 () -> EntityType.Builder.<FurnaceGolemEntity>create(FurnaceGolemEntity::new, EntityClassification.MISC)
                         .size(EntityType.IRON_GOLEM.getWidth(), EntityType.IRON_GOLEM.getHeight())
+                        .immuneToFire()
                         .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
         );
         public static final int eggPrimaryColor = 0xe5e0dd;

@@ -22,7 +22,7 @@ public class FurnaceGolemFlamesLayer extends LayerRenderer<FurnaceGolemEntity, F
     }
 
     public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, FurnaceGolemEntity entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-        if (!entitylivingbaseIn.isInvisible() && (entitylivingbaseIn.getAttackTimer() > 0 )) {
+        if (!entitylivingbaseIn.isInvisible() && entitylivingbaseIn.isAngry()) {
             this.currentFrame = (int) (Math.floor(entitylivingbaseIn.ticksExisted / ANIMATION_TIME) % ANIMATION_FRAMES);
             String frameLocation = MessageFormat.format("earthtojavamobs:textures/mobs/iron_golem/furnace_golem/furnace_golem_flames_layer_anim_{0}.png", (this.currentFrame + 1));
             ResourceLocation resourcelocation = new ResourceLocation(frameLocation);

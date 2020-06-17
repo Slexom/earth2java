@@ -22,7 +22,7 @@ public class FurnaceGolemRenderer extends MobRenderer<FurnaceGolemEntity, Furnac
         ResourceLocation textureBlink = new ResourceLocation("earthtojavamobs:textures/mobs/iron_golem/furnace_golem/furnace_golem_blink.png");
         ResourceLocation textureAngry = new ResourceLocation("earthtojavamobs:textures/mobs/iron_golem/furnace_golem/furnace_golem_angry.png");
         int blinkTime = 150;
-        return entity.getAttackTimer() > 0 ? textureAngry : (entity.ticksExisted % blinkTime) == 0 || (entity.ticksExisted % blinkTime) == 1 || (entity.ticksExisted % blinkTime) == 2 || (entity.ticksExisted % blinkTime) == 3 ? textureBlink : texture;
+        return entity.isAngry() ? textureAngry : (entity.ticksExisted % blinkTime) == 0 || (entity.ticksExisted % blinkTime) == 1 || (entity.ticksExisted % blinkTime) == 2 || (entity.ticksExisted % blinkTime) == 3 ? textureBlink : texture;
     }
 
     protected void applyRotations(FurnaceGolemEntity entityLiving, MatrixStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks) {

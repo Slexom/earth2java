@@ -44,5 +44,7 @@
   "entity.earthtojavamobs.harelequin_rabbit": "Conejo lebrarlequín",
   "item.earthtojavamobs.vested_rabbit_spawn_egg": "Generar conejo con chaleco",
   "item.earthtojavamobs.harelequin_rabbit_spawn_egg": "Generar conejo lebrarlequín",
-  "item.earthtojavamobs.muddy_foot_rabbit_spawn_egg": "Generar conejo de pie lodoso"
+  "item.earthtojavamobs.muddy_foot_rabbit_spawn_egg": "Generar conejo de pie lodoso",
+  "entity.earthtojavamobs.furnace_golem": "Gólem de horno",
+  "item.earthtojavamobs.furnace_golem_spawn_egg": "Generar gólem de horno"
 }
