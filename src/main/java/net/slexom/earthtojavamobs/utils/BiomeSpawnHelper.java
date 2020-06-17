@@ -41,10 +41,7 @@ public final class BiomeSpawnHelper {
 
     public static final String[] OCEAN = new String[]{"minecraft:ocean", "minecraft:deep_ocean", "minecraft:frozen_ocean", "minecraft:deep_frozen_ocean", "minecraft:cold_ocean", "minecraft:deep_cold_ocean", "minecraft:lukewarm_ocean", "minecraft:deep_lukewarm_ocean", "minecraft:warm_ocean", "minecraft:deep_warm_ocean"};
 
-    /**
-     * @param biomes
-     * @return
-     */
+
     public static String[] getBiomesListFromBiomes(String[]... biomes) {
         return Stream.of(biomes).flatMap(Stream::of).toArray(String[]::new);
     }

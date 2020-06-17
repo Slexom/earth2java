@@ -7,7 +7,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.entity.RockySheepEntity;
 
 @OnlyIn(Dist.CLIENT)
-public class RockySheepWoolModel<T extends RockySheepEntity.CustomEntity> extends QuadrupedModel<T> {
+public class RockySheepWoolModel<T extends RockySheepEntity> extends QuadrupedModel<T> {
     private float headRotationAngleX;
 
     public RockySheepWoolModel() {

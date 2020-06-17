@@ -7,7 +7,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.entity.InkySheepEntity;
 
 @OnlyIn(Dist.CLIENT)
-public class InkySheepModel<T extends InkySheepEntity.CustomEntity> extends QuadrupedModel<T> {
+public class InkySheepModel<T extends InkySheepEntity> extends QuadrupedModel<T> {
     private float headRotationAngleX;
 
     public InkySheepModel() {

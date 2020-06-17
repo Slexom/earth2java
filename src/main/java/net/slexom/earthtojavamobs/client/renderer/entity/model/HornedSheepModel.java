@@ -7,7 +7,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.entity.HornedSheepEntity;
 
 @OnlyIn(Dist.CLIENT)
-public class HornedSheepModel<T extends HornedSheepEntity.CustomEntity> extends QuadrupedModel<T> {
+public class HornedSheepModel<T extends HornedSheepEntity> extends QuadrupedModel<T> {
     private float headRotationAngleX;
 
 

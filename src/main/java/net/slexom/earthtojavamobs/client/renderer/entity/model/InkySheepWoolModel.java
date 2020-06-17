@@ -8,7 +8,7 @@ import net.slexom.earthtojavamobs.entity.InkySheepEntity;
 import net.slexom.earthtojavamobs.entity.RockySheepEntity;
 
 @OnlyIn(Dist.CLIENT)
-public class InkySheepWoolModel<T extends InkySheepEntity.CustomEntity> extends QuadrupedModel<T> {
+public class InkySheepWoolModel<T extends InkySheepEntity> extends QuadrupedModel<T> {
     private float headRotationAngleX;
 
     public InkySheepWoolModel() {

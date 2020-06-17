@@ -7,7 +7,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class WoolyCowWoolModel<T extends WoolyCowEntity.CustomEntity> extends QuadrupedModel<T> {
+public class WoolyCowWoolModel<T extends WoolyCowEntity> extends QuadrupedModel<T> {
     private float headRotationAngleX;
 
     public WoolyCowWoolModel() {

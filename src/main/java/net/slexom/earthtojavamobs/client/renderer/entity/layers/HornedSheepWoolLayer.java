@@ -10,15 +10,15 @@ import net.minecraft.util.ResourceLocation;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.HornedSheepModel;
 import net.slexom.earthtojavamobs.entity.HornedSheepEntity;
 
-public class HornedSheepWoolLayer extends LayerRenderer<HornedSheepEntity.CustomEntity, HornedSheepModel<HornedSheepEntity.CustomEntity>> {
+public class HornedSheepWoolLayer extends LayerRenderer<HornedSheepEntity, HornedSheepModel<HornedSheepEntity>> {
     private static final ResourceLocation TEXTURE = new ResourceLocation("textures/entity/sheep/sheep_fur.png");
-    private final SheepWoolModel<HornedSheepEntity.CustomEntity> sheepModel = new SheepWoolModel<>();
+    private final SheepWoolModel<HornedSheepEntity> sheepModel = new SheepWoolModel<>();
 
-    public HornedSheepWoolLayer(IEntityRenderer<HornedSheepEntity.CustomEntity, HornedSheepModel<HornedSheepEntity.CustomEntity>> rendererIn) {
+    public HornedSheepWoolLayer(IEntityRenderer<HornedSheepEntity, HornedSheepModel<HornedSheepEntity>> rendererIn) {
         super(rendererIn);
     }
 
-    public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, HornedSheepEntity.CustomEntity entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, HornedSheepEntity entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
         if (!entitylivingbaseIn.getSheared() && !entitylivingbaseIn.isInvisible()) {
             float f;
             float f1;
@@ -30,13 +30,13 @@ public class HornedSheepWoolLayer extends LayerRenderer<HornedSheepEntity.Custom
                 int k = i % j;
                 int l = (i + 1) % j;
                 float f3 = ((float) (entitylivingbaseIn.ticksExisted % 25) + partialTicks) / 25.0F;
-                float[] afloat1 = HornedSheepEntity.CustomEntity.getDyeRgb(DyeColor.byId(k));
-                float[] afloat2 = HornedSheepEntity.CustomEntity.getDyeRgb(DyeColor.byId(l));
+                float[] afloat1 = HornedSheepEntity.getDyeRgb(DyeColor.byId(k));
+                float[] afloat2 = HornedSheepEntity.getDyeRgb(DyeColor.byId(l));
                 f = afloat1[0] * (1.0F - f3) + afloat2[0] * f3;
                 f1 = afloat1[1] * (1.0F - f3) + afloat2[1] * f3;
                 f2 = afloat1[2] * (1.0F - f3) + afloat2[2] * f3;
             } else {
-                float[] afloat = HornedSheepEntity.CustomEntity.getDyeRgb(entitylivingbaseIn.getFleeceColor());
+                float[] afloat = HornedSheepEntity.getDyeRgb(entitylivingbaseIn.getFleeceColor());
                 f = afloat[0];
                 f1 = afloat[1];
                 f2 = afloat[2];

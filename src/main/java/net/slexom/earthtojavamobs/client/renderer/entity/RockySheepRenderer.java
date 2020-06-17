@@ -10,7 +10,7 @@ import net.slexom.earthtojavamobs.client.renderer.entity.model.RockySheepModel;
 import net.slexom.earthtojavamobs.entity.RockySheepEntity;
 
 @OnlyIn(Dist.CLIENT)
-public class RockySheepRenderer extends MobRenderer<RockySheepEntity.CustomEntity, RockySheepModel<RockySheepEntity.CustomEntity>> {
+public class RockySheepRenderer extends MobRenderer<RockySheepEntity, RockySheepModel<RockySheepEntity>> {
     private static final ResourceLocation texture = new ResourceLocation("earthtojavamobs:textures/mobs/sheep/rocky_sheep/rocky_sheep.png");
     private static final ResourceLocation textureBlink = new ResourceLocation("earthtojavamobs:textures/mobs/sheep/rocky_sheep/rocky_sheep_blink.png");
     private static final int blinkTime = 150;
@@ -20,7 +20,7 @@ public class RockySheepRenderer extends MobRenderer<RockySheepEntity.CustomEntit
         this.addLayer(new RockySheepWoolLayer(this));
     }
 
-    public ResourceLocation getEntityTexture(RockySheepEntity.CustomEntity entity) {
+    public ResourceLocation getEntityTexture(RockySheepEntity entity) {
         return (entity.ticksExisted % blinkTime) == 0 || (entity.ticksExisted % blinkTime) == 1 || (entity.ticksExisted % blinkTime) == 2 || (entity.ticksExisted % blinkTime) == 3 ? textureBlink : texture;
     }
 }

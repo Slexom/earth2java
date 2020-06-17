@@ -1,6 +1,5 @@
-
 {
   "variants": {
-    "": { "model": "earthtojavamobs:block/mud" }
+    "": { "model": "earthtojavamobs:block/mud_fluid" }
   }
 }
