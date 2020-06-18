@@ -1,12 +1,13 @@
 package net.slexom.earthtojavamobs.client.renderer.entity.model;
 
 import com.google.common.collect.ImmutableList;
-import net.minecraft.client.renderer.entity.model.IronGolemModel;
 import net.minecraft.client.renderer.entity.model.SegmentedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.entity.passive.IronGolemEntity;
-import net.slexom.earthtojavamobs.entity.FurnaceGolemEntity;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
+@OnlyIn(Dist.CLIENT)
 public class FurnaceGolemModel<T extends IronGolemEntity> extends SegmentedModel<T> {
     private final ModelRenderer ironGolemHead;
     private final ModelRenderer ironGolemBody;

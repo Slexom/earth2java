@@ -5,10 +5,13 @@ import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.entity.IEntityRenderer;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.FleckedSheepModel;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.FleckedSheepWoolModel;
-import net.slexom.earthtojavamobs.entity.FleckedSheepEntity;
+import net.slexom.earthtojavamobs.entity.passive.FleckedSheepEntity;
 
+@OnlyIn(Dist.CLIENT)
 public class FleckedSheepWoolLayer extends LayerRenderer<FleckedSheepEntity, FleckedSheepModel<FleckedSheepEntity>> {
     private static final ResourceLocation TEXTURE = new ResourceLocation("earthtojavamobs:textures/mobs/sheep/flecked_sheep/flecked_sheep_fur.png");
     private final FleckedSheepWoolModel<FleckedSheepEntity> sheepModel = new FleckedSheepWoolModel<>();

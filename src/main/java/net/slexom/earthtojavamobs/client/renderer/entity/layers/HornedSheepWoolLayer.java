@@ -7,9 +7,12 @@ import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.client.renderer.entity.model.SheepWoolModel;
 import net.minecraft.item.DyeColor;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.HornedSheepModel;
-import net.slexom.earthtojavamobs.entity.HornedSheepEntity;
+import net.slexom.earthtojavamobs.entity.passive.HornedSheepEntity;
 
+@OnlyIn(Dist.CLIENT)
 public class HornedSheepWoolLayer extends LayerRenderer<HornedSheepEntity, HornedSheepModel<HornedSheepEntity>> {
     private static final ResourceLocation TEXTURE = new ResourceLocation("textures/entity/sheep/sheep_fur.png");
     private final SheepWoolModel<HornedSheepEntity> sheepModel = new SheepWoolModel<>();

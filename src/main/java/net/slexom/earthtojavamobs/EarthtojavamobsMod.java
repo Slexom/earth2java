@@ -26,7 +26,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.slexom.earthtojavamobs.config.ConfigHolder;
 import net.slexom.earthtojavamobs.config.E2JModConfig;
-import net.slexom.earthtojavamobs.entity.GlowSquidEntity;
+import net.slexom.earthtojavamobs.entity.passive.GlowSquidEntity;
 import net.slexom.earthtojavamobs.init.*;
 import net.slexom.earthtojavamobs.utils.BiomeSpawnHelper;
 
@@ -105,6 +105,7 @@ public class EarthtojavamobsMod {
         registerAnimalEntitySpawn(EntityTypesInit.VestedRabbit.registryObject.get(), E2JModConfig.vestedRabbitSpawnBiomes.toArray(new String[0]), E2JModConfig.vestedRabbitWeight, E2JModConfig.vestedRabbitGroupMin, E2JModConfig.vestedRabbitGroupMax);
         registerAnimalEntitySpawn(EntityTypesInit.WoolyCow.registryObject.get(), E2JModConfig.woolyCowSpawnBiomes.toArray(new String[0]), E2JModConfig.woolyCowWeight, E2JModConfig.woolyCowGroupMin, E2JModConfig.woolyCowGroupMax);
         registerMobEntitySpawn(EntityTypesInit.FurnaceGolem.registryObject.get(), E2JModConfig.furnaceGolemSpawnBiomes.toArray(new String[0]), E2JModConfig.furnaceGolemWeight, E2JModConfig.furnaceGolemGroupMin, E2JModConfig.furnaceGolemGroupMax);
+        registerMobEntitySpawn(EntityTypesInit.MelonGolem.registryObject.get(), E2JModConfig.furnaceGolemSpawnBiomes.toArray(new String[0]), E2JModConfig.furnaceGolemWeight, E2JModConfig.furnaceGolemGroupMin, E2JModConfig.furnaceGolemGroupMax);
     }
 
     private static void registerAnimalEntitySpawn(EntityType entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {

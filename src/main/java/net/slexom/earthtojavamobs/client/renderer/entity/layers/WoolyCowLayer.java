@@ -2,7 +2,7 @@ package net.slexom.earthtojavamobs.client.renderer.entity.layers;
 
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import net.slexom.earthtojavamobs.entity.WoolyCowEntity;
+import net.slexom.earthtojavamobs.entity.passive.WoolyCowEntity;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.WoolyCowWoolModel;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.entity.IEntityRenderer;

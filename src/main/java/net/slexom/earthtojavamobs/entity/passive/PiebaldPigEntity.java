@@ -1,4 +1,4 @@
-package net.slexom.earthtojavamobs.entity;
+package net.slexom.earthtojavamobs.entity.passive;
 
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;

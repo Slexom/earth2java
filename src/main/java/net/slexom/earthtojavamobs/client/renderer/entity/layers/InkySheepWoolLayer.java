@@ -5,10 +5,13 @@ import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.entity.IEntityRenderer;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.InkySheepModel;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.InkySheepWoolModel;
-import net.slexom.earthtojavamobs.entity.InkySheepEntity;
+import net.slexom.earthtojavamobs.entity.passive.InkySheepEntity;
 
+@OnlyIn(Dist.CLIENT)
 public class InkySheepWoolLayer extends LayerRenderer<InkySheepEntity, InkySheepModel<InkySheepEntity>> {
     private static final ResourceLocation TEXTURE = new ResourceLocation("earthtojavamobs:textures/mobs/sheep/inky_sheep/inky_sheep_fur.png");
     private final InkySheepWoolModel<InkySheepEntity> sheepModel = new InkySheepWoolModel<>();

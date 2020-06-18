@@ -1,6 +1,6 @@
 package net.slexom.earthtojavamobs.client.renderer.entity.model;
 
-import net.slexom.earthtojavamobs.entity.WoolyCowEntity;
+import net.slexom.earthtojavamobs.entity.passive.WoolyCowEntity;
 import net.minecraft.client.renderer.entity.model.QuadrupedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraftforge.api.distmarker.Dist;

@@ -7,7 +7,9 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.slexom.earthtojavamobs.EarthtojavamobsMod;
-import net.slexom.earthtojavamobs.entity.*;
+import net.slexom.earthtojavamobs.entity.monster.SkeletonWolfEntity;
+import net.slexom.earthtojavamobs.entity.passive.*;
+import net.slexom.earthtojavamobs.entity.projectile.MelonSeedProjectileEntity;
 import net.slexom.earthtojavamobs.utils.BiomeSpawnHelper;
 
 public class EntityTypesInit {
@@ -268,7 +270,7 @@ public class EntityTypesInit {
     }
 
 
-    public static final class VestedRabbit{
+    public static final class VestedRabbit {
         public static final String registryName = "vested_rabbit";
         public static final RegistryObject<EntityType<VestedRabbitEntity>> registryObject = ENTITY_TYPES.register(
                 registryName,
@@ -282,7 +284,7 @@ public class EntityTypesInit {
     }
 
 
-    public static final class HarelequinRabbit{
+    public static final class HarelequinRabbit {
         public static final String registryName = "harelequin_rabbit";
         public static final RegistryObject<EntityType<HarelequinRabbitEntity>> registryObject = ENTITY_TYPES.register(
                 registryName,
@@ -296,7 +298,7 @@ public class EntityTypesInit {
     }
 
 
-    public static final class MuddyFootRabbit{
+    public static final class MuddyFootRabbit {
         public static final String registryName = "muddy_foot_rabbit";
         public static final RegistryObject<EntityType<MuddyFootRabbitEntity>> registryObject = ENTITY_TYPES.register(
                 registryName,
@@ -309,7 +311,7 @@ public class EntityTypesInit {
         public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS);
     }
 
-    public static final class FurnaceGolem{
+    public static final class FurnaceGolem {
         public static final String registryName = "furnace_golem";
         public static final RegistryObject<EntityType<FurnaceGolemEntity>> registryObject = ENTITY_TYPES.register(
                 registryName,
@@ -321,6 +323,29 @@ public class EntityTypesInit {
         public static final int eggPrimaryColor = 0x56585a;
         public static final int eggSecondaryColor = 0xff5501;
         public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS);
+    }
+
+    public static final class MelonGolem {
+        public static final String registryName = "melon_golem";
+        public static final RegistryObject<EntityType<MelonGolemEntity>> registryObject = ENTITY_TYPES.register(
+                registryName,
+                () -> EntityType.Builder.<MelonGolemEntity>create(MelonGolemEntity::new, EntityClassification.MISC)
+                        .size(EntityType.SNOW_GOLEM.getWidth(), EntityType.SNOW_GOLEM.getHeight())
+                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
+        );
+        public static final int eggPrimaryColor = 0xeeffff;
+        public static final int eggSecondaryColor = 0x52811c;
+        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.SNOWY_TAIGA, BiomeSpawnHelper.SNOWY_TUNDRA, BiomeSpawnHelper.SNOWY_BEACH, BiomeSpawnHelper.ICE_SPIKE);
+    }
+
+    public static final class MelonSeedProjectile {
+        public static final String registryName = "melon_seed_projectile";
+        public static final RegistryObject<EntityType<MelonSeedProjectileEntity>> registryObject = ENTITY_TYPES.register(
+                registryName,
+                () -> EntityType.Builder.<MelonSeedProjectileEntity>create(MelonSeedProjectileEntity::new, EntityClassification.MISC)
+                        .size(0.25F, 0.25F)
+                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
+        );
     }
 
 }

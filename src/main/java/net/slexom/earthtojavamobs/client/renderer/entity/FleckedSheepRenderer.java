@@ -7,7 +7,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.client.renderer.entity.layers.FleckedSheepWoolLayer;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.FleckedSheepModel;
-import net.slexom.earthtojavamobs.entity.FleckedSheepEntity;
+import net.slexom.earthtojavamobs.entity.passive.FleckedSheepEntity;
 
 @OnlyIn(Dist.CLIENT)
 public class FleckedSheepRenderer extends MobRenderer<FleckedSheepEntity, FleckedSheepModel<FleckedSheepEntity>> {

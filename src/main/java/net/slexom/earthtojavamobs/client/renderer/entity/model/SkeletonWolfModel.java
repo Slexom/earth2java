@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.slexom.earthtojavamobs.entity.SkeletonWolfEntity;
+import net.slexom.earthtojavamobs.entity.monster.SkeletonWolfEntity;
 
 @OnlyIn(Dist.CLIENT)
 public class SkeletonWolfModel<T extends SkeletonWolfEntity> extends TintedAgeableModel<T> {

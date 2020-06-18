@@ -129,6 +129,11 @@ public final class ConfigHelper {
         E2JModConfig.furnaceGolemWeight = ConfigHolder.COMMON.furnaceGolemWeight.get();
         E2JModConfig.furnaceGolemGroupMin = ConfigHolder.COMMON.furnaceGolemGroupMin.get();
         E2JModConfig.furnaceGolemGroupMax = ConfigHolder.COMMON.furnaceGolemGroupMax.get();
+
+        E2JModConfig.melonGolemSpawnBiomes = ConfigHolder.COMMON.melonGolemSpawnBiomes.get();
+        E2JModConfig.melonGolemWeight = ConfigHolder.COMMON.melonGolemWeight.get();
+        E2JModConfig.melonGolemGroupMin = ConfigHolder.COMMON.melonGolemGroupMin.get();
+        E2JModConfig.melonGolemGroupMax = ConfigHolder.COMMON.melonGolemGroupMax.get();
     }
 
     public static void bakeServer(final net.minecraftforge.fml.config.ModConfig config) {

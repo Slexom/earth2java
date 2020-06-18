@@ -1,5 +1,5 @@
 
-package net.slexom.earthtojavamobs.entity;
+package net.slexom.earthtojavamobs.entity.passive;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SharedMonsterAttributes;

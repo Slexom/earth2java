@@ -5,10 +5,13 @@ import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.client.renderer.entity.layers.FurnaceGolemFlamesLayer;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.FurnaceGolemModel;
-import net.slexom.earthtojavamobs.entity.FurnaceGolemEntity;
+import net.slexom.earthtojavamobs.entity.passive.FurnaceGolemEntity;
 
+@OnlyIn(Dist.CLIENT)
 public class FurnaceGolemRenderer extends MobRenderer<FurnaceGolemEntity, FurnaceGolemModel<FurnaceGolemEntity>> {
 
     public FurnaceGolemRenderer(EntityRendererManager renderManagerIn) {

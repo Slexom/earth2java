@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.client.renderer.entity.layers.MoobloomLayer;
-import net.slexom.earthtojavamobs.entity.MoobloomEntity;
+import net.slexom.earthtojavamobs.entity.passive.MoobloomEntity;
 
 @OnlyIn(Dist.CLIENT)
 public class MoobloomRenderer extends MobRenderer<MoobloomEntity, CowModel<MoobloomEntity>> {

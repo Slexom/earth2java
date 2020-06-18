@@ -2,7 +2,7 @@ package net.slexom.earthtojavamobs.client.renderer.entity;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.slexom.earthtojavamobs.entity.WoolyCowEntity;
+import net.slexom.earthtojavamobs.entity.passive.WoolyCowEntity;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.model.CowModel;

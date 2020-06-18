@@ -18,7 +18,7 @@ archivesBaseName = 'earth2javamobs'
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20200514-1.15.1'
+    mappings channel: 'snapshot', version: '20200618-1.15.1'
 
     runs {
         client {

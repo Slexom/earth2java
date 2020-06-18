@@ -10,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.slexom.earthtojavamobs.entity.TropicalSlimeEntity;
+import net.slexom.earthtojavamobs.entity.passive.TropicalSlimeEntity;
 
 import java.text.MessageFormat;
 

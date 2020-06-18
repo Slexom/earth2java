@@ -4,7 +4,7 @@ import net.minecraft.client.renderer.entity.model.QuadrupedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.slexom.earthtojavamobs.entity.HornedSheepEntity;
+import net.slexom.earthtojavamobs.entity.passive.HornedSheepEntity;
 
 @OnlyIn(Dist.CLIENT)
 public class HornedSheepModel<T extends HornedSheepEntity> extends QuadrupedModel<T> {

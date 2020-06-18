@@ -1,4 +1,4 @@
-package net.slexom.earthtojavamobs.entity;
+package net.slexom.earthtojavamobs.entity.passive;
 
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
@@ -82,7 +82,7 @@ public class HornedSheepEntity extends SheepEntity {
     }
 
     public boolean attackEntityAsMob(Entity entityIn) {
-        boolean flag = entityIn.attackEntityFrom(DamageSource.func_226252_a_(this), (float) ((int) this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getValue()));
+        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getValue()));
         if (flag) {
             this.applyEnchantments(this, entityIn);
         }

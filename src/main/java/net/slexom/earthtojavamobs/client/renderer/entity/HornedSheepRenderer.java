@@ -7,7 +7,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.client.renderer.entity.layers.HornedSheepWoolLayer;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.HornedSheepModel;
-import net.slexom.earthtojavamobs.entity.HornedSheepEntity;
+import net.slexom.earthtojavamobs.entity.passive.HornedSheepEntity;
 
 @OnlyIn(Dist.CLIENT)
 public class HornedSheepRenderer extends MobRenderer<HornedSheepEntity, HornedSheepModel<HornedSheepEntity>> {

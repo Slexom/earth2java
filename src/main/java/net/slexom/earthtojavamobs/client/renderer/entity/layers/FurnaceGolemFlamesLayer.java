@@ -5,11 +5,14 @@ import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.entity.IEntityRenderer;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.FurnaceGolemModel;
-import net.slexom.earthtojavamobs.entity.FurnaceGolemEntity;
+import net.slexom.earthtojavamobs.entity.passive.FurnaceGolemEntity;
 
 import java.text.MessageFormat;
 
+@OnlyIn(Dist.CLIENT)
 public class FurnaceGolemFlamesLayer extends LayerRenderer<FurnaceGolemEntity, FurnaceGolemModel<FurnaceGolemEntity>> {
 
     private static final int ANIMATION_FRAMES = 6;

@@ -6,7 +6,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.SkeletonWolfModel;
-import net.slexom.earthtojavamobs.entity.SkeletonWolfEntity;
+import net.slexom.earthtojavamobs.entity.monster.SkeletonWolfEntity;
 
 @OnlyIn(Dist.CLIENT)
 public class SkeletonWolfRenderer extends MobRenderer<SkeletonWolfEntity, SkeletonWolfModel<SkeletonWolfEntity>> {

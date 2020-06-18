@@ -11,7 +11,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.client.renderer.entity.layers.GlowingSquidGlowLayer;
-import net.slexom.earthtojavamobs.entity.GlowSquidEntity;
+import net.slexom.earthtojavamobs.entity.passive.GlowSquidEntity;
 
 @OnlyIn(Dist.CLIENT)
 public class GlowSquidRenderer extends MobRenderer<GlowSquidEntity, SquidModel<GlowSquidEntity>> {

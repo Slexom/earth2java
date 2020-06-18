@@ -2,7 +2,7 @@ package net.slexom.earthtojavamobs.client.renderer.entity.layers;
 
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import net.slexom.earthtojavamobs.entity.MoobloomEntity;
+import net.slexom.earthtojavamobs.entity.passive.MoobloomEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;

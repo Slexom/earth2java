@@ -1,4 +1,4 @@
-package net.slexom.earthtojavamobs.entity;
+package net.slexom.earthtojavamobs.entity.monster;
 
 
 import net.minecraft.entity.*;

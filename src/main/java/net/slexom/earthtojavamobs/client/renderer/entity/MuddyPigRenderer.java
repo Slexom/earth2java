@@ -14,7 +14,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.MuddyPigModel;
-import net.slexom.earthtojavamobs.entity.MuddyPigEntity;
+import net.slexom.earthtojavamobs.entity.passive.MuddyPigEntity;
 
 @OnlyIn(Dist.CLIENT)
 public class MuddyPigRenderer extends MobRenderer<MuddyPigEntity, MuddyPigModel<MuddyPigEntity>> {

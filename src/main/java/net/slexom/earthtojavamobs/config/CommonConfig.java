@@ -128,6 +128,11 @@ final class CommonConfig {
     final ForgeConfigSpec.IntValue furnaceGolemGroupMin;
     final ForgeConfigSpec.IntValue furnaceGolemGroupMax;
 
+    final ForgeConfigSpec.ConfigValue<List<String>> melonGolemSpawnBiomes;
+    final ForgeConfigSpec.IntValue melonGolemWeight;
+    final ForgeConfigSpec.IntValue melonGolemGroupMin;
+    final ForgeConfigSpec.IntValue melonGolemGroupMax;
+
     private final int standardSheepWeight = 12;
     private final int standardCowWeight = 8;
     private final int standardChickenWeight = 10;
@@ -484,6 +489,21 @@ final class CommonConfig {
                 .comment("Minimum number of entities in group")
                 .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         furnaceGolemGroupMax = builder
+                .comment("Maximum number of entities in group")
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
+        builder.pop();
+
+        builder.push("melonGolem");
+        melonGolemSpawnBiomes = builder
+                .comment("Biome where entity Spawn")
+                .define("spawnBiomes", Arrays.asList(EntityTypesInit.WoolyCow.spawnBiomes));
+        melonGolemWeight = builder
+                .comment("Weight of entity in spawn")
+                .defineInRange("entityWeight", 20, 0, Integer.MAX_VALUE);
+        melonGolemGroupMin = builder
+                .comment("Minimum number of entities in group")
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
+        melonGolemGroupMax = builder
                 .comment("Maximum number of entities in group")
                 .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();

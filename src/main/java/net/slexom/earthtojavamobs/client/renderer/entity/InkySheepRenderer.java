@@ -7,7 +7,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.client.renderer.entity.layers.InkySheepWoolLayer;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.InkySheepModel;
-import net.slexom.earthtojavamobs.entity.InkySheepEntity;
+import net.slexom.earthtojavamobs.entity.passive.InkySheepEntity;
 
 @OnlyIn(Dist.CLIENT)
 public class InkySheepRenderer extends MobRenderer<InkySheepEntity, InkySheepModel<InkySheepEntity>> {
