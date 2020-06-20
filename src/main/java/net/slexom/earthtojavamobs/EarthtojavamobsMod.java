@@ -5,6 +5,8 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.Biome;
@@ -135,6 +137,20 @@ public class EarthtojavamobsMod {
             BiomeSpawnHelper.setWaterCreatureSpawnBiomes(EntityTypesInit.GlowSquid.registryObject.get(), E2JModConfig.glowSquidSpawnBiomes.toArray(new String[0]), E2JModConfig.glowSquidWeight, E2JModConfig.glowSquidGroupMin, E2JModConfig.glowSquidGroupMax);
             EntitySpawnPlacementRegistry.register(EntityTypesInit.GlowSquid.registryObject.get(), EntitySpawnPlacementRegistry.PlacementType.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, GlowSquidEntity::canGlowingSquidSpawn);
         });
+    }
+
+    public static class E2JItemGroup extends ItemGroup{
+
+        public static final E2JItemGroup instance = new E2JItemGroup(ItemGroup.GROUPS.length, MOD_ID);
+
+        private E2JItemGroup(int index, String label) {
+            super(index, label);
+        }
+
+        @Override
+        public ItemStack createIcon() {
+            return new ItemStack(ItemInit.HORN.get());
+        }
     }
 
 }

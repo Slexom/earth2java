@@ -13,7 +13,7 @@ import net.slexom.earthtojavamobs.item.ModdedSpawnEggItem;
 
 public class ItemInit {
     public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, EarthtojavamobsMod.MOD_ID);
-
+    private static final ItemGroup itemGroup = EarthtojavamobsMod.E2JItemGroup.instance;
 
     public static final RegistryObject<BucketItem> MUD_BUCKET = ITEMS.register(
             "mud_fluid_bucket",
@@ -22,15 +22,15 @@ public class ItemInit {
                     new Item.Properties()
                             .containerItem(Items.BUCKET)
                             .maxStackSize(1)
-                            .group(ItemGroup.MISC)
+                            .group(itemGroup)
             )
     );
 
-    public static final RegistryObject<Item> HORN = ITEMS.register("horn", () -> new Item(new Item.Properties().group(ItemGroup.MISC).maxStackSize(64)));
+    public static final RegistryObject<Item> HORN = ITEMS.register("horn", () -> new Item(new Item.Properties().group(itemGroup).maxStackSize(64)));
 
 
     // SPAWN EGGS
-    private static final Item.Properties spawnEggProps = new Item.Properties().group(ItemGroup.MISC);
+    private static final Item.Properties spawnEggProps = new Item.Properties().group(itemGroup);
 
     private static RegistryObject<ModdedSpawnEggItem> registerSpawnEgg(String entityRegistryName, RegistryObject<? extends EntityType<?>> entity, int primaryColor, int secondaryColor) {
         return ITEMS.register(entityRegistryName + "_spawn_egg", () -> new ModdedSpawnEggItem(entity, primaryColor, secondaryColor, spawnEggProps));
