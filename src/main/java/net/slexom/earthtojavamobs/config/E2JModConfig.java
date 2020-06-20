@@ -135,6 +135,11 @@ public final class E2JModConfig {
     public static int melonGolemWeight;
     public static int melonGolemGroupMin;
     public static int melonGolemGroupMax;
+
+    public static List<String> albinoCowSpawnBiomes;
+    public static int albinoCowWeight;
+    public static int albinoCowGroupMin;
+    public static int albinoCowGroupMax;
     // Client
 
     // Server

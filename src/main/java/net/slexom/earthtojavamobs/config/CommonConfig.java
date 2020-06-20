@@ -133,6 +133,11 @@ final class CommonConfig {
     final ForgeConfigSpec.IntValue melonGolemGroupMin;
     final ForgeConfigSpec.IntValue melonGolemGroupMax;
 
+    final ForgeConfigSpec.ConfigValue<List<String>> albinoCowSpawnBiomes;
+    final ForgeConfigSpec.IntValue albinoCowWeight;
+    final ForgeConfigSpec.IntValue albinoCowGroupMin;
+    final ForgeConfigSpec.IntValue albinoCowGroupMax;
+
     private final int standardSheepWeight = 12;
     private final int standardCowWeight = 8;
     private final int standardChickenWeight = 10;
@@ -481,7 +486,7 @@ final class CommonConfig {
         builder.push("furnaceGolem");
         furnaceGolemSpawnBiomes = builder
                 .comment("Biome where entity Spawn")
-                .define("spawnBiomes", Arrays.asList(EntityTypesInit.WoolyCow.spawnBiomes));
+                .define("spawnBiomes", Arrays.asList(EntityTypesInit.FurnaceGolem.spawnBiomes));
         furnaceGolemWeight = builder
                 .comment("Weight of entity in spawn")
                 .defineInRange("entityWeight", 20, 0, Integer.MAX_VALUE);
@@ -496,7 +501,7 @@ final class CommonConfig {
         builder.push("melonGolem");
         melonGolemSpawnBiomes = builder
                 .comment("Biome where entity Spawn")
-                .define("spawnBiomes", Arrays.asList(EntityTypesInit.WoolyCow.spawnBiomes));
+                .define("spawnBiomes", Arrays.asList(EntityTypesInit.MelonGolem.spawnBiomes));
         melonGolemWeight = builder
                 .comment("Weight of entity in spawn")
                 .defineInRange("entityWeight", 20, 0, Integer.MAX_VALUE);
@@ -507,6 +512,22 @@ final class CommonConfig {
                 .comment("Maximum number of entities in group")
                 .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();
+
+        builder.push("albinoCow");
+        albinoCowSpawnBiomes = builder
+                .comment("Biome where entity Spawn")
+                .define("spawnBiomes", Arrays.asList(EntityTypesInit.AlbinoCow.spawnBiomes));
+        albinoCowWeight = builder
+                .comment("Weight of entity in spawn")
+                .defineInRange("entityWeight", 20, 0, Integer.MAX_VALUE);
+        albinoCowGroupMin = builder
+                .comment("Minimum number of entities in group")
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
+        albinoCowGroupMax = builder
+                .comment("Maximum number of entities in group")
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
+        builder.pop();
+
         builder.pop();
     }
 

@@ -134,6 +134,11 @@ public final class ConfigHelper {
         E2JModConfig.melonGolemWeight = ConfigHolder.COMMON.melonGolemWeight.get();
         E2JModConfig.melonGolemGroupMin = ConfigHolder.COMMON.melonGolemGroupMin.get();
         E2JModConfig.melonGolemGroupMax = ConfigHolder.COMMON.melonGolemGroupMax.get();
+
+        E2JModConfig.albinoCowSpawnBiomes = ConfigHolder.COMMON.albinoCowSpawnBiomes.get();
+        E2JModConfig.albinoCowWeight = ConfigHolder.COMMON.albinoCowWeight.get();
+        E2JModConfig.albinoCowGroupMin = ConfigHolder.COMMON.albinoCowGroupMin.get();
+        E2JModConfig.albinoCowGroupMax = ConfigHolder.COMMON.albinoCowGroupMax.get();
     }
 
     public static void bakeServer(final net.minecraftforge.fml.config.ModConfig config) {

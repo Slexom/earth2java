@@ -74,6 +74,10 @@ public class FurnaceGolemEntity extends IronGolemEntity {
                 }
             }
         }
+        if (this.isInWater()) {
+            this.attackEntityFrom(DamageSource.DROWN, 5.0F);
+        }
+
     }
 
     protected void registerData() {

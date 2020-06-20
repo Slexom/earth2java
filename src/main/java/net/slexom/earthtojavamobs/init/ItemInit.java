@@ -60,4 +60,7 @@ public class ItemInit {
     public static final RegistryObject<ModdedSpawnEggItem> MUDDY_FOOT_RABBIT_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.MuddyFootRabbit.registryName, EntityTypesInit.MuddyFootRabbit.registryObject, EntityTypesInit.MuddyFootRabbit.eggPrimaryColor, EntityTypesInit.MuddyFootRabbit.eggSecondaryColor);
     public static final RegistryObject<ModdedSpawnEggItem> FURNACE_GOLEM_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.FurnaceGolem.registryName, EntityTypesInit.FurnaceGolem.registryObject, EntityTypesInit.FurnaceGolem.eggPrimaryColor, EntityTypesInit.FurnaceGolem.eggSecondaryColor);
     public static final RegistryObject<ModdedSpawnEggItem> MELON_GOLEM_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.MelonGolem.registryName, EntityTypesInit.MelonGolem.registryObject, EntityTypesInit.MelonGolem.eggPrimaryColor, EntityTypesInit.MelonGolem.eggSecondaryColor);
+    public static final RegistryObject<ModdedSpawnEggItem> ALBINO_COW_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.AlbinoCow.registryName, EntityTypesInit.AlbinoCow.registryObject, EntityTypesInit.AlbinoCow.eggPrimaryColor, EntityTypesInit.AlbinoCow.eggSecondaryColor);
+
+
 }

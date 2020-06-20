@@ -189,7 +189,6 @@ public class EntityTypesInit {
         public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS, BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.GRAVELLY_MOUNTAINS);
     }
 
-
     public static final class SkeletonWolf {
         public static final String registryName = "skeleton_wolf";
         public static final RegistryObject<EntityType<SkeletonWolfEntity>> registryObject = ENTITY_TYPES.register(
@@ -269,7 +268,6 @@ public class EntityTypesInit {
         public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.TAIGA, BiomeSpawnHelper.SNOWY_TAIGA, BiomeSpawnHelper.GIANT_TAIGA);
     }
 
-
     public static final class VestedRabbit {
         public static final String registryName = "vested_rabbit";
         public static final RegistryObject<EntityType<VestedRabbitEntity>> registryObject = ENTITY_TYPES.register(
@@ -283,7 +281,6 @@ public class EntityTypesInit {
         public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS);
     }
 
-
     public static final class HarelequinRabbit {
         public static final String registryName = "harelequin_rabbit";
         public static final RegistryObject<EntityType<HarelequinRabbitEntity>> registryObject = ENTITY_TYPES.register(
@@ -296,7 +293,6 @@ public class EntityTypesInit {
         public static final int eggSecondaryColor = 0xb09984;
         public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS);
     }
-
 
     public static final class MuddyFootRabbit {
         public static final String registryName = "muddy_foot_rabbit";
@@ -347,6 +343,116 @@ public class EntityTypesInit {
                         .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
         );
     }
+
+    public static final class AlbinoCow {
+        public static final String registryName = "albino_cow";
+        public static final RegistryObject<EntityType<AlbinoCowEntity>> registryObject = ENTITY_TYPES.register(
+                registryName,
+                () -> EntityType.Builder.<AlbinoCowEntity>create(AlbinoCowEntity::new, EntityClassification.CREATURE)
+                        .size(EntityType.COW.getWidth(), EntityType.COW.getHeight())
+                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
+        );
+        public static final int eggPrimaryColor = 0xdecac3;
+        public static final int eggSecondaryColor = 0xf0a590;
+        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS, BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.GRAVELLY_MOUNTAINS);
+    }
+
+
+//    public static final E2JEntityRegister<AlbinoCowEntity> AlbinoCow = E2JEntityRegister.Builder.<AlbinoCowEntity>create()
+//            .setRegistryName("albino_cow")
+//            .setRegistryObject(
+//                    ENTITY_TYPES.register(
+//                            "albino_cow",
+//                            () -> EntityType.Builder.<AlbinoCowEntity>create(AlbinoCowEntity::new, EntityClassification.CREATURE)
+//                                    .size(EntityType.COW.getWidth(), EntityType.COW.getHeight())
+//                                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, "albino_cow").toString())
+//                    )
+//            )
+//            .setEggPrimaryColor(0xdecac3)
+//            .setEggSecondaryColor(0xf0a590)
+//            .setSpawnBiomes(BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS, BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.GRAVELLY_MOUNTAINS))
+//            .build();
+
+//    public static class E2JEntityRegister<T extends Entity> {
+//
+//        private final String registryName;
+//        private final RegistryObject<EntityType<T>> registryObject;
+//        private final int eggPrimaryColor;
+//        private final int eggSecondaryColor;
+//        private final String[] spawnBiomes;
+//
+//        public String getRegistryName() {
+//            return this.registryName;
+//        }
+//
+//        public RegistryObject<EntityType<T>> getRegistryObject() {
+//            return this.registryObject;
+//        }
+//
+//        public int getEggPrimaryColor() {
+//            return this.eggPrimaryColor;
+//        }
+//
+//        public int getEggSecondaryColor() {
+//            return this.eggSecondaryColor;
+//        }
+//
+//        public String[] getSpawnBiomes() {
+//            return this.spawnBiomes;
+//        }
+//
+//        public E2JEntityRegister(String registryName, RegistryObject<EntityType<T>> registryObject, int eggPrimaryColor, int eggSecondaryColor, String[] spawnBiomes) {
+//            this.registryName = registryName;
+//            this.registryObject = registryObject;
+//            this.eggPrimaryColor = eggPrimaryColor;
+//            this.eggSecondaryColor = eggSecondaryColor;
+//            this.spawnBiomes = spawnBiomes;
+//        }
+//
+//        public static class Builder<T extends Entity> {
+//
+//            private String registryName;
+//            private RegistryObject<EntityType<T>> registryObject;
+//            private int eggPrimaryColor;
+//            private int eggSecondaryColor;
+//            private String[] spawnBiomes;
+//
+//            public static <T extends Entity> E2JEntityRegister.Builder<T> create() {
+//                return new E2JEntityRegister.Builder<>();
+//            }
+//
+//            public E2JEntityRegister.Builder<T> setRegistryName(String registryName) {
+//                this.registryName = registryName;
+//                return this;
+//            }
+//
+//            public E2JEntityRegister.Builder<T> setRegistryObject(RegistryObject<EntityType<T>> registryObject) {
+//                this.registryObject = registryObject;
+//                return this;
+//            }
+//
+//            public E2JEntityRegister.Builder<T> setEggPrimaryColor(int eggPrimaryColor) {
+//                this.eggPrimaryColor = eggPrimaryColor;
+//                return this;
+//            }
+//
+//            public E2JEntityRegister.Builder<T> setEggSecondaryColor(int eggSecondaryColor) {
+//                this.eggSecondaryColor = eggSecondaryColor;
+//                return this;
+//            }
+//
+//            public E2JEntityRegister.Builder<T> setSpawnBiomes(String[] spawnBiomes) {
+//                this.spawnBiomes = spawnBiomes;
+//                return this;
+//            }
+//
+//            public E2JEntityRegister<T> build() {
+//                return new E2JEntityRegister<>(this.registryName, this.registryObject, this.eggPrimaryColor, this.eggSecondaryColor, this.spawnBiomes);
+//            }
+//
+//        }
+//
+//    }
 
 }
 

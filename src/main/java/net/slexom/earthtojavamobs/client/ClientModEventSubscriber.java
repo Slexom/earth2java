@@ -1,7 +1,11 @@
 package net.slexom.earthtojavamobs.client;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererManager;
+import net.minecraft.client.renderer.entity.SpriteRenderer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.tags.FluidTags;
@@ -12,11 +16,13 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.slexom.earthtojavamobs.EarthtojavamobsMod;
 import net.slexom.earthtojavamobs.client.renderer.entity.*;
+import net.slexom.earthtojavamobs.entity.projectile.MelonSeedProjectileEntity;
 import net.slexom.earthtojavamobs.init.EntityTypesInit;
 import net.slexom.earthtojavamobs.init.FluidInit;
 import org.apache.logging.log4j.LogManager;
@@ -65,8 +71,9 @@ public final class ClientModEventSubscriber {
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.MuddyFootRabbit.registryObject.get(), renderManagerIn -> new E2JRabbitRenderer(renderManagerIn, EntityTypesInit.MuddyFootRabbit.registryName));
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.FurnaceGolem.registryObject.get(), FurnaceGolemRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.MelonGolem.registryObject.get(), MelonGolemRenderer::new);
+//        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.MelonSeedProjectile.registryObject.get(), renderManagerIn -> new SpriteRenderer<MelonSeedProjectileEntity>(renderManagerIn, Minecraft.getInstance().getItemRenderer()));
+        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.AlbinoCow.registryObject.get(), renderManagerIn -> new E2JCowRenderer(renderManagerIn, EntityTypesInit.AlbinoCow.registryName));
     }
-
 
     @SubscribeEvent
     public static void onFogColor(EntityViewRenderEvent.FogColors event) {
