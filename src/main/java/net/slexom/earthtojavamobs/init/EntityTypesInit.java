@@ -7,452 +7,245 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.slexom.earthtojavamobs.EarthtojavamobsMod;
+import net.slexom.earthtojavamobs.entity.monster.BoneSpiderEntity;
 import net.slexom.earthtojavamobs.entity.monster.SkeletonWolfEntity;
 import net.slexom.earthtojavamobs.entity.passive.*;
+import net.slexom.earthtojavamobs.entity.projectile.BoneShardEntity;
 import net.slexom.earthtojavamobs.entity.projectile.MelonSeedProjectileEntity;
-import net.slexom.earthtojavamobs.utils.BiomeSpawnHelper;
 
 public class EntityTypesInit {
 
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = new DeferredRegister<>(ForgeRegistries.ENTITIES, EarthtojavamobsMod.MOD_ID);
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public static final class AmberChicken {
-        public static final String registryName = "amber_chicken";
-        public static final RegistryObject<EntityType<AmberChickenEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<AmberChickenEntity>create(AmberChickenEntity::new, EntityClassification.CREATURE)
-                        .size(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
+    public static final String BONE_SHARD_REGISTRY_NAME = "bone_shard";
+    public static final RegistryObject<EntityType<BoneShardEntity>> BONE_SHARD_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            BONE_SHARD_REGISTRY_NAME,
+            () -> EntityType.Builder.<BoneShardEntity>create(BoneShardEntity::new, EntityClassification.MISC)
+                    .size(0.25F, 0.25F)
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, BONE_SHARD_REGISTRY_NAME).toString())
+    );
 
-        public static final int eggPrimaryColor = -3066087;
-        public static final int eggSecondaryColor = -1865173;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.DESERT, BiomeSpawnHelper.SAVANNA);
+    public static final String MELON_SEED_PROJECTILE_REGISTRY_NAME = "melon_seed_projectile";
+    public static final RegistryObject<EntityType<MelonSeedProjectileEntity>> MELON_SEED_PROJECTILE_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            MELON_SEED_PROJECTILE_REGISTRY_NAME,
+            () -> EntityType.Builder.<MelonSeedProjectileEntity>create(MelonSeedProjectileEntity::new, EntityClassification.MISC)
+                    .size(0.25F, 0.25F)
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, MELON_SEED_PROJECTILE_REGISTRY_NAME).toString())
+    );
 
-    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public static final class AshenCow {
-        public static final String registryName = "ashen_cow";
-        public static final RegistryObject<EntityType<AshenCowEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<AshenCowEntity>create(AshenCowEntity::new, EntityClassification.CREATURE)
-                        .size(EntityType.COW.getWidth(), EntityType.COW.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0x3c3c49;
-        public static final int eggSecondaryColor = 0x898491;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.GRAVELLY_MOUNTAINS);
-    }
+    public static final String AMBER_CHICKEN_REGISTRY_NAME = "amber_chicken";
+    public static final RegistryObject<EntityType<AmberChickenEntity>> AMBER_CHICKEN_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            AMBER_CHICKEN_REGISTRY_NAME,
+            () -> EntityType.Builder.create(AmberChickenEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, AMBER_CHICKEN_REGISTRY_NAME).toString())
+    );
 
-    public static final class Cluckshroom {
-        public static final String registryName = "cluckshroom";
-        public static final RegistryObject<EntityType<CluckshroomEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<CluckshroomEntity>create(CluckshroomEntity::new, EntityClassification.CREATURE)
-                        .size(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0xef0000;
-        public static final int eggSecondaryColor = 0xffffee;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.MUSHROOM_FIELDS);
-    }
+    public static final String ASHEN_COW_REGISTRY_NAME = "ashen_cow";
+    public static final RegistryObject<EntityType<AshenCowEntity>> ASHEN_COW_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            ASHEN_COW_REGISTRY_NAME,
+            () -> EntityType.Builder.create(AshenCowEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.COW.getWidth(), EntityType.COW.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, ASHEN_COW_REGISTRY_NAME).toString())
+    );
 
-    public static final class FleckedSheep {
-        public static final String registryName = "flecked_sheep";
-        public static final RegistryObject<EntityType<FleckedSheepEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<FleckedSheepEntity>create(FleckedSheepEntity::new, EntityClassification.CREATURE)
-                        .size(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0x2c1e17;
-        public static final int eggSecondaryColor = 0x907666;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS, BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.TAIGA, BiomeSpawnHelper.GRAVELLY_MOUNTAINS, BiomeSpawnHelper.FOREST);
-    }
+    public static final String CLUCKSHROOM_REGISTRY_NAME = "cluckshroom";
+    public static final RegistryObject<EntityType<CluckshroomEntity>> CLUCKSHROOM_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            CLUCKSHROOM_REGISTRY_NAME,
+            () -> EntityType.Builder.create(CluckshroomEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, CLUCKSHROOM_REGISTRY_NAME).toString())
+    );
 
-    public static final class GlowSquid {
-        public static final String registryName = "glow_squid";
-        public static final RegistryObject<EntityType<GlowSquidEntity>> registryObject = EntityTypesInit.ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<GlowSquidEntity>create(GlowSquidEntity::new, EntityClassification.WATER_CREATURE)
-                        .size(EntityType.SQUID.getWidth(), EntityType.SQUID.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0x095656;
-        public static final int eggSecondaryColor = 0x80ffc0;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.OCEAN, BiomeSpawnHelper.RIVER, BiomeSpawnHelper.SWAMP);
+    public static final String FLECKED_SHEEP_REGISTRY_NAME = "flecked_sheep";
+    public static final RegistryObject<EntityType<FleckedSheepEntity>> FLECKED_SHEEP_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            FLECKED_SHEEP_REGISTRY_NAME,
+            () -> EntityType.Builder.create(FleckedSheepEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, FLECKED_SHEEP_REGISTRY_NAME).toString())
+    );
 
-    }
+    public static final String GLOW_SQUID_REGISTRY_NAME = "glow_squid";
+    public static final RegistryObject<EntityType<GlowSquidEntity>> GLOW_SQUID_REGISTRY_OBJECT = EntityTypesInit.ENTITY_TYPES.register(
+            GLOW_SQUID_REGISTRY_NAME,
+            () -> EntityType.Builder.create(GlowSquidEntity::new, EntityClassification.WATER_CREATURE)
+                    .size(EntityType.SQUID.getWidth(), EntityType.SQUID.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, GLOW_SQUID_REGISTRY_NAME).toString())
+    );
 
-    public static final class HornedSheep {
-        public static final String registryName = "horned_sheep";
-        public static final RegistryObject<EntityType<HornedSheepEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<HornedSheepEntity>create(HornedSheepEntity::new, EntityClassification.CREATURE)
-                        .size(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0xececec;
-        public static final int eggSecondaryColor = 0x291811;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS, BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.GRAVELLY_MOUNTAINS);
-    }
+    public static final String HORNED_SHEEP_REGISTRY_NAME = "horned_sheep";
+    public static final RegistryObject<EntityType<HornedSheepEntity>> HORNED_SHEEP_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            HORNED_SHEEP_REGISTRY_NAME,
+            () -> EntityType.Builder.create(HornedSheepEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, HORNED_SHEEP_REGISTRY_NAME).toString())
+    );
 
-    public static final class InkySheep {
-        public static final String registryName = "inky_sheep";
-        public static final RegistryObject<EntityType<InkySheepEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<InkySheepEntity>create(InkySheepEntity::new, EntityClassification.CREATURE)
-                        .size(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0x181716;
-        public static final int eggSecondaryColor = 0x8a7564;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS, BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.GRAVELLY_MOUNTAINS);
-    }
+    public static final String INKY_SHEEP_REGISTRY_NAME = "inky_sheep";
+    public static final RegistryObject<EntityType<InkySheepEntity>> INKY_SHEEP_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            INKY_SHEEP_REGISTRY_NAME,
+            () -> EntityType.Builder.create(InkySheepEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, INKY_SHEEP_REGISTRY_NAME).toString())
+    );
 
-    public static final class MidnightChicken {
-        public static final String registryName = "midnight_chicken";
-        public static final RegistryObject<EntityType<MidnightChickenEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<MidnightChickenEntity>create(MidnightChickenEntity::new, EntityClassification.CREATURE)
-                        .size(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = -16382709;
-        public static final int eggSecondaryColor = -15261094;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.FOREST, BiomeSpawnHelper.DARK_FOREST, BiomeSpawnHelper.JUNGLE, BiomeSpawnHelper.BIRCH_FOREST);
-    }
+    public static final String MIDNIGHT_CHICKEN_REGISTRY_NAME = "midnight_chicken";
+    public static final RegistryObject<EntityType<MidnightChickenEntity>> MIDNIGHT_CHICKEN_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            MIDNIGHT_CHICKEN_REGISTRY_NAME,
+            () -> EntityType.Builder.create(MidnightChickenEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, MIDNIGHT_CHICKEN_REGISTRY_NAME).toString())
+    );
 
-    public static final class Moobloom {
-        public static final String registryName = "moobloom";
-        public static final RegistryObject<EntityType<MoobloomEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<MoobloomEntity>create(MoobloomEntity::new, EntityClassification.CREATURE)
-                        .size(EntityType.COW.getWidth(), EntityType.COW.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0xfaca00;
-        public static final int eggSecondaryColor = 0xf7edc1;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(new String[]{"minecraft:flower_forest"});
-    }
+    public static final String MOOBLOOM_REGISTRY_NAME = "moobloom";
+    public static final RegistryObject<EntityType<MoobloomEntity>> MOOBLOOM_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            MOOBLOOM_REGISTRY_NAME,
+            () -> EntityType.Builder.create(MoobloomEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.COW.getWidth(), EntityType.COW.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, MOOBLOOM_REGISTRY_NAME).toString())
+    );
 
-    public static final class MuddyPig {
-        public static final String registryName = "muddy_pig";
-        public static final RegistryObject<EntityType<MuddyPigEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<MuddyPigEntity>create(MuddyPigEntity::new, EntityClassification.CREATURE)
-                        .size(EntityType.PIG.getWidth(), EntityType.PIG.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0xe6918b;
-        public static final int eggSecondaryColor = 0x573621;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS, BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.RIVER);
-    }
+    public static final String MUDDY_PIG_REGISTRY_NAME = "muddy_pig";
+    public static final RegistryObject<EntityType<MuddyPigEntity>> MUDDY_PIG_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            MUDDY_PIG_REGISTRY_NAME,
+            () -> EntityType.Builder.create(MuddyPigEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.PIG.getWidth(), EntityType.PIG.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, MUDDY_PIG_REGISTRY_NAME).toString())
+    );
 
-    public static final class PalePig {
-        public static final String registryName = "pale_pig";
-        public static final RegistryObject<EntityType<PalePigEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<PalePigEntity>create(PalePigEntity::new, EntityClassification.CREATURE)
-                        .size(EntityType.PIG.getWidth(), EntityType.PIG.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0xd3a0a0;
-        public static final int eggSecondaryColor = 0xead3d3;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.SNOWY_TUNDRA, BiomeSpawnHelper.SNOWY_TAIGA);
-    }
+    public static final String PALE_PIG_REGISTRY_NAME = "pale_pig";
+    public static final RegistryObject<EntityType<PalePigEntity>> PALE_PIG_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            PALE_PIG_REGISTRY_NAME,
+            () -> EntityType.Builder.create(PalePigEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.PIG.getWidth(), EntityType.PIG.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, PALE_PIG_REGISTRY_NAME).toString())
+    );
 
-    public static final class PiebaldPig {
-        public static final String registryName = "piebald_pig";
-        public static final RegistryObject<EntityType<PiebaldPigEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<PiebaldPigEntity>create(PiebaldPigEntity::new, EntityClassification.CREATURE)
-                        .size(EntityType.PIG.getWidth(), EntityType.PIG.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0xd7c0a9;
-        public static final int eggSecondaryColor = 0x9b4628;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.FOREST, BiomeSpawnHelper.BIRCH_FOREST, BiomeSpawnHelper.PLAINS, BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.TAIGA, BiomeSpawnHelper.SAVANNA);
-    }
+    public static final String PIEBALD_PIG_REGISTRY_NAME = "piebald_pig";
+    public static final RegistryObject<EntityType<PiebaldPigEntity>> PIEBALD_PIG_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            PIEBALD_PIG_REGISTRY_NAME,
+            () -> EntityType.Builder.create(PiebaldPigEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.PIG.getWidth(), EntityType.PIG.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, PIEBALD_PIG_REGISTRY_NAME).toString())
+    );
 
-    public static final class RockySheep {
-        public static final String registryName = "rocky_sheep";
-        public static final RegistryObject<EntityType<RockySheepEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<RockySheepEntity>create(RockySheepEntity::new, EntityClassification.CREATURE)
-                        .size(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0xa69f9b;
-        public static final int eggSecondaryColor = 0xe9d0bd;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS, BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.GRAVELLY_MOUNTAINS);
-    }
+    public static final String ROCKY_SHEEP_REGISTRY_NAME = "rocky_sheep";
+    public static final RegistryObject<EntityType<RockySheepEntity>> ROCKY_SHEEP_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            ROCKY_SHEEP_REGISTRY_NAME,
+            () -> EntityType.Builder.create(RockySheepEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, ROCKY_SHEEP_REGISTRY_NAME).toString())
+    );
 
-    public static final class SkeletonWolf {
-        public static final String registryName = "skeleton_wolf";
-        public static final RegistryObject<EntityType<SkeletonWolfEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<SkeletonWolfEntity>create(SkeletonWolfEntity::new, EntityClassification.MONSTER)
-                        .size(EntityType.WOLF.getWidth(), EntityType.WOLF.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0xededed;
-        public static final int eggSecondaryColor = 0xbababa;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.FOREST, BiomeSpawnHelper.TAIGA, BiomeSpawnHelper.SNOWY_TAIGA, BiomeSpawnHelper.GIANT_TAIGA);
-    }
+    public static final String SKELETON_WOLF_REGISTRY_NAME = "skeleton_wolf";
+    public static final RegistryObject<EntityType<SkeletonWolfEntity>> SKELETON_WOLF_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            SKELETON_WOLF_REGISTRY_NAME,
+            () -> EntityType.Builder.create(SkeletonWolfEntity::new, EntityClassification.MONSTER)
+                    .size(EntityType.WOLF.getWidth(), EntityType.WOLF.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, SKELETON_WOLF_REGISTRY_NAME).toString())
+    );
 
-    public static final class SpottedPig {
-        public static final String registryName = "spotted_pig";
-        public static final RegistryObject<EntityType<SpottedPigEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<SpottedPigEntity>create(SpottedPigEntity::new, EntityClassification.CREATURE)
-                        .size(EntityType.PIG.getWidth(), EntityType.PIG.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0xedd4d1;
-        public static final int eggSecondaryColor = 0x413938;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.SWAMP);
-    }
+    public static final String SPOTTED_PIG_REGISTRY_NAME = "spotted_pig";
+    public static final RegistryObject<EntityType<SpottedPigEntity>> SPOTTED_PIG_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            SPOTTED_PIG_REGISTRY_NAME,
+            () -> EntityType.Builder.create(SpottedPigEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.PIG.getWidth(), EntityType.PIG.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, SPOTTED_PIG_REGISTRY_NAME).toString())
+    );
 
-    public static final class StormyChicken {
-        public static final String registryName = "stormy_chicken";
-        public static final RegistryObject<EntityType<StormyChickenEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<StormyChickenEntity>create(StormyChickenEntity::new, EntityClassification.CREATURE)
-                        .size(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0x3e2525;
-        public static final int eggSecondaryColor = 0xc0c0c0;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS, BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.GRAVELLY_MOUNTAINS, BiomeSpawnHelper.TAIGA);
-    }
+    public static final String STORMY_CHICKEN_REGISTRY_NAME = "stormy_chicken";
+    public static final RegistryObject<EntityType<StormyChickenEntity>> STORMY_CHICKEN_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            STORMY_CHICKEN_REGISTRY_NAME,
+            () -> EntityType.Builder.create(StormyChickenEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, STORMY_CHICKEN_REGISTRY_NAME).toString())
+    );
 
-    public static final class SunsetCow {
-        public static final String registryName = "sunset_cow";
-        public static final RegistryObject<EntityType<SunsetCowEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<SunsetCowEntity>create(SunsetCowEntity::new, EntityClassification.CREATURE)
-                        .size(EntityType.COW.getWidth(), EntityType.COW.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0x993d0d;
-        public static final int eggSecondaryColor = 0x171514;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.SAVANNA);
-    }
+    public static final String SUNSET_COW_REGISTRY_NAME = "sunset_cow";
+    public static final RegistryObject<EntityType<SunsetCowEntity>> SUNSET_COW_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            SUNSET_COW_REGISTRY_NAME,
+            () -> EntityType.Builder.create(SunsetCowEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.COW.getWidth(), EntityType.COW.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, SUNSET_COW_REGISTRY_NAME).toString())
+    );
 
-    public static final class TropicalSlime {
-        public static final String registryName = "tropical_slime";
-        public static final RegistryObject<EntityType<TropicalSlimeEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<TropicalSlimeEntity>create(TropicalSlimeEntity::new, EntityClassification.CREATURE)
-                        .size(0.51F, 0.51F)
-                        .immuneToFire()
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0x0e496e;
-        public static final int eggSecondaryColor = 0x8ed3ff;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.BEACH);
-    }
+    public static final String TROPICAL_SLIME_REGISTRY_NAME = "tropical_slime";
+    public static final RegistryObject<EntityType<TropicalSlimeEntity>> TROPICAL_SLIME_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            TROPICAL_SLIME_REGISTRY_NAME,
+            () -> EntityType.Builder.create(TropicalSlimeEntity::new, EntityClassification.CREATURE)
+                    .size(0.51F, 0.51F)
+                    .immuneToFire()
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, TROPICAL_SLIME_REGISTRY_NAME).toString())
+    );
 
-    public static final class WoolyCow {
-        public static final String registryName = "wooly_cow";
-        public static final RegistryObject<EntityType<WoolyCowEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<WoolyCowEntity>create(WoolyCowEntity::new, EntityClassification.CREATURE)
-                        .size(EntityType.COW.getWidth(), EntityType.COW.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0xcc3300;
-        public static final int eggSecondaryColor = 0xff9933;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.TAIGA, BiomeSpawnHelper.SNOWY_TAIGA, BiomeSpawnHelper.GIANT_TAIGA);
-    }
+    public static final String WOOLY_COW_REGISTRY_NAME = "wooly_cow";
+    public static final RegistryObject<EntityType<WoolyCowEntity>> WOOLY_COW_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            WOOLY_COW_REGISTRY_NAME,
+            () -> EntityType.Builder.create(WoolyCowEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.COW.getWidth(), EntityType.COW.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, WOOLY_COW_REGISTRY_NAME).toString())
+    );
 
-    public static final class VestedRabbit {
-        public static final String registryName = "vested_rabbit";
-        public static final RegistryObject<EntityType<VestedRabbitEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<VestedRabbitEntity>create(VestedRabbitEntity::new, EntityClassification.CREATURE)
-                        .size(EntityType.RABBIT.getWidth(), EntityType.RABBIT.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0xdedede;
-        public static final int eggSecondaryColor = 0x747474;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS);
-    }
+    public static final String VESTED_RABBIT_REGISTRY_NAME = "vested_rabbit";
+    public static final RegistryObject<EntityType<VestedRabbitEntity>> VESTED_RABBIT_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            VESTED_RABBIT_REGISTRY_NAME,
+            () -> EntityType.Builder.create(VestedRabbitEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.RABBIT.getWidth(), EntityType.RABBIT.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, VESTED_RABBIT_REGISTRY_NAME).toString())
+    );
 
-    public static final class HarelequinRabbit {
-        public static final String registryName = "harelequin_rabbit";
-        public static final RegistryObject<EntityType<HarelequinRabbitEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<HarelequinRabbitEntity>create(HarelequinRabbitEntity::new, EntityClassification.CREATURE)
-                        .size(EntityType.RABBIT.getWidth(), EntityType.RABBIT.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0x1d1b1a;
-        public static final int eggSecondaryColor = 0xb09984;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS);
-    }
+    public static final String HARELEQUIN_RABBIT_REGISTRY_NAME = "harelequin_rabbit";
+    public static final RegistryObject<EntityType<HarelequinRabbitEntity>> HARELEQUIN_RABBIT_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            HARELEQUIN_RABBIT_REGISTRY_NAME,
+            () -> EntityType.Builder.create(HarelequinRabbitEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.RABBIT.getWidth(), EntityType.RABBIT.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, HARELEQUIN_RABBIT_REGISTRY_NAME).toString())
+    );
 
-    public static final class MuddyFootRabbit {
-        public static final String registryName = "muddy_foot_rabbit";
-        public static final RegistryObject<EntityType<MuddyFootRabbitEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<MuddyFootRabbitEntity>create(MuddyFootRabbitEntity::new, EntityClassification.CREATURE)
-                        .size(EntityType.RABBIT.getWidth(), EntityType.RABBIT.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0xe5e0dd;
-        public static final int eggSecondaryColor = 0x463832;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS);
-    }
+    public static final String MUDDY_FOOT_RABBIT_REGISTRY_NAME = "muddy_foot_rabbit";
+    public static final RegistryObject<EntityType<MuddyFootRabbitEntity>> MUDDY_FOOT_RABBIT_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            MUDDY_FOOT_RABBIT_REGISTRY_NAME,
+            () -> EntityType.Builder.create(MuddyFootRabbitEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.RABBIT.getWidth(), EntityType.RABBIT.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, MUDDY_FOOT_RABBIT_REGISTRY_NAME).toString())
+    );
 
-    public static final class FurnaceGolem {
-        public static final String registryName = "furnace_golem";
-        public static final RegistryObject<EntityType<FurnaceGolemEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<FurnaceGolemEntity>create(FurnaceGolemEntity::new, EntityClassification.MISC)
-                        .size(EntityType.IRON_GOLEM.getWidth(), EntityType.IRON_GOLEM.getHeight())
-                        .immuneToFire()
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0x56585a;
-        public static final int eggSecondaryColor = 0xff5501;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS);
-    }
+    public static final String FURNACE_GOLEM_REGISTRY_NAME = "furnace_golem";
+    public static final RegistryObject<EntityType<FurnaceGolemEntity>> FURNACE_GOLEM_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            FURNACE_GOLEM_REGISTRY_NAME,
+            () -> EntityType.Builder.create(FurnaceGolemEntity::new, EntityClassification.MISC)
+                    .size(EntityType.IRON_GOLEM.getWidth(), EntityType.IRON_GOLEM.getHeight())
+                    .immuneToFire()
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, FURNACE_GOLEM_REGISTRY_NAME).toString())
+    );
 
-    public static final class MelonGolem {
-        public static final String registryName = "melon_golem";
-        public static final RegistryObject<EntityType<MelonGolemEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<MelonGolemEntity>create(MelonGolemEntity::new, EntityClassification.MISC)
-                        .size(EntityType.SNOW_GOLEM.getWidth(), EntityType.SNOW_GOLEM.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0xeeffff;
-        public static final int eggSecondaryColor = 0x52811c;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.SNOWY_TAIGA, BiomeSpawnHelper.SNOWY_TUNDRA, BiomeSpawnHelper.SNOWY_BEACH, BiomeSpawnHelper.ICE_SPIKE);
-    }
+    public static final String MELON_GOLEM_REGISTRY_NAME = "melon_golem";
+    public static final RegistryObject<EntityType<MelonGolemEntity>> MELON_GOLEM_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            MELON_GOLEM_REGISTRY_NAME,
+            () -> EntityType.Builder.create(MelonGolemEntity::new, EntityClassification.MISC)
+                    .size(EntityType.SNOW_GOLEM.getWidth(), EntityType.SNOW_GOLEM.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, MELON_GOLEM_REGISTRY_NAME).toString())
+    );
 
-    public static final class MelonSeedProjectile {
-        public static final String registryName = "melon_seed_projectile";
-        public static final RegistryObject<EntityType<MelonSeedProjectileEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<MelonSeedProjectileEntity>create(MelonSeedProjectileEntity::new, EntityClassification.MISC)
-                        .size(0.25F, 0.25F)
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-    }
+    public static final String ALBINO_COW_REGISTRY_NAME = "albino_cow";
+    public static final RegistryObject<EntityType<AlbinoCowEntity>> ALBINO_COW_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            ALBINO_COW_REGISTRY_NAME,
+            () -> EntityType.Builder.create(AlbinoCowEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.COW.getWidth(), EntityType.COW.getHeight())
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, ALBINO_COW_REGISTRY_NAME).toString())
+    );
 
-    public static final class AlbinoCow {
-        public static final String registryName = "albino_cow";
-        public static final RegistryObject<EntityType<AlbinoCowEntity>> registryObject = ENTITY_TYPES.register(
-                registryName,
-                () -> EntityType.Builder.<AlbinoCowEntity>create(AlbinoCowEntity::new, EntityClassification.CREATURE)
-                        .size(EntityType.COW.getWidth(), EntityType.COW.getHeight())
-                        .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, registryName).toString())
-        );
-        public static final int eggPrimaryColor = 0xdecac3;
-        public static final int eggSecondaryColor = 0xf0a590;
-        public static final String[] spawnBiomes = BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS, BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.GRAVELLY_MOUNTAINS);
-    }
-
-
-//    public static final E2JEntityRegister<AlbinoCowEntity> AlbinoCow = E2JEntityRegister.Builder.<AlbinoCowEntity>create()
-//            .setRegistryName("albino_cow")
-//            .setRegistryObject(
-//                    ENTITY_TYPES.register(
-//                            "albino_cow",
-//                            () -> EntityType.Builder.<AlbinoCowEntity>create(AlbinoCowEntity::new, EntityClassification.CREATURE)
-//                                    .size(EntityType.COW.getWidth(), EntityType.COW.getHeight())
-//                                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, "albino_cow").toString())
-//                    )
-//            )
-//            .setEggPrimaryColor(0xdecac3)
-//            .setEggSecondaryColor(0xf0a590)
-//            .setSpawnBiomes(BiomeSpawnHelper.getBiomesListFromBiomes(BiomeSpawnHelper.PLAINS, BiomeSpawnHelper.MOUNTAINS, BiomeSpawnHelper.GRAVELLY_MOUNTAINS))
-//            .build();
-
-//    public static class E2JEntityRegister<T extends Entity> {
-//
-//        private final String registryName;
-//        private final RegistryObject<EntityType<T>> registryObject;
-//        private final int eggPrimaryColor;
-//        private final int eggSecondaryColor;
-//        private final String[] spawnBiomes;
-//
-//        public String getRegistryName() {
-//            return this.registryName;
-//        }
-//
-//        public RegistryObject<EntityType<T>> getRegistryObject() {
-//            return this.registryObject;
-//        }
-//
-//        public int getEggPrimaryColor() {
-//            return this.eggPrimaryColor;
-//        }
-//
-//        public int getEggSecondaryColor() {
-//            return this.eggSecondaryColor;
-//        }
-//
-//        public String[] getSpawnBiomes() {
-//            return this.spawnBiomes;
-//        }
-//
-//        public E2JEntityRegister(String registryName, RegistryObject<EntityType<T>> registryObject, int eggPrimaryColor, int eggSecondaryColor, String[] spawnBiomes) {
-//            this.registryName = registryName;
-//            this.registryObject = registryObject;
-//            this.eggPrimaryColor = eggPrimaryColor;
-//            this.eggSecondaryColor = eggSecondaryColor;
-//            this.spawnBiomes = spawnBiomes;
-//        }
-//
-//        public static class Builder<T extends Entity> {
-//
-//            private String registryName;
-//            private RegistryObject<EntityType<T>> registryObject;
-//            private int eggPrimaryColor;
-//            private int eggSecondaryColor;
-//            private String[] spawnBiomes;
-//
-//            public static <T extends Entity> E2JEntityRegister.Builder<T> create() {
-//                return new E2JEntityRegister.Builder<>();
-//            }
-//
-//            public E2JEntityRegister.Builder<T> setRegistryName(String registryName) {
-//                this.registryName = registryName;
-//                return this;
-//            }
-//
-//            public E2JEntityRegister.Builder<T> setRegistryObject(RegistryObject<EntityType<T>> registryObject) {
-//                this.registryObject = registryObject;
-//                return this;
-//            }
-//
-//            public E2JEntityRegister.Builder<T> setEggPrimaryColor(int eggPrimaryColor) {
-//                this.eggPrimaryColor = eggPrimaryColor;
-//                return this;
-//            }
-//
-//            public E2JEntityRegister.Builder<T> setEggSecondaryColor(int eggSecondaryColor) {
-//                this.eggSecondaryColor = eggSecondaryColor;
-//                return this;
-//            }
-//
-//            public E2JEntityRegister.Builder<T> setSpawnBiomes(String[] spawnBiomes) {
-//                this.spawnBiomes = spawnBiomes;
-//                return this;
-//            }
-//
-//            public E2JEntityRegister<T> build() {
-//                return new E2JEntityRegister<>(this.registryName, this.registryObject, this.eggPrimaryColor, this.eggSecondaryColor, this.spawnBiomes);
-//            }
-//
-//        }
-//
-//    }
+    public static final String BONE_SPIDER_REGISTRY_NAME = "bone_spider";
+    public static final RegistryObject<EntityType<BoneSpiderEntity>> BONE_SPIDER_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            BONE_SPIDER_REGISTRY_NAME,
+            () -> EntityType.Builder.create(BoneSpiderEntity::new, EntityClassification.MONSTER)
+                    .size(0.6F, 0.7F)
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, BONE_SPIDER_REGISTRY_NAME).toString())
+    );
 
 }
 

@@ -139,6 +139,11 @@ public final class ConfigHelper {
         E2JModConfig.albinoCowWeight = ConfigHolder.COMMON.albinoCowWeight.get();
         E2JModConfig.albinoCowGroupMin = ConfigHolder.COMMON.albinoCowGroupMin.get();
         E2JModConfig.albinoCowGroupMax = ConfigHolder.COMMON.albinoCowGroupMax.get();
+
+        E2JModConfig.boneSpiderSpawnBiomes = ConfigHolder.COMMON.boneSpiderSpawnBiomes.get();
+        E2JModConfig.boneSpiderWeight = ConfigHolder.COMMON.boneSpiderWeight.get();
+        E2JModConfig.boneSpiderGroupMin = ConfigHolder.COMMON.boneSpiderGroupMin.get();
+        E2JModConfig.boneSpiderGroupMax = ConfigHolder.COMMON.boneSpiderGroupMax.get();
     }
 
     public static void bakeServer(final net.minecraftforge.fml.config.ModConfig config) {

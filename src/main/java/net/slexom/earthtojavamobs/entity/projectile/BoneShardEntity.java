@@ -6,7 +6,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.network.IPacket;
 import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ItemParticleData;
@@ -19,31 +18,32 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkHooks;
 import net.slexom.earthtojavamobs.init.EntityTypesInit;
+import net.slexom.earthtojavamobs.init.ItemInit;
 
-public class MelonSeedProjectileEntity extends ProjectileItemEntity {
+public class BoneShardEntity extends ProjectileItemEntity {
 
 
-    public MelonSeedProjectileEntity(World worldIn, LivingEntity throwerIn) {
-        super(EntityTypesInit.MELON_SEED_PROJECTILE_REGISTRY_OBJECT.get(), throwerIn, worldIn);
+    public BoneShardEntity(World worldIn, LivingEntity throwerIn) {
+        super(EntityTypesInit.BONE_SHARD_REGISTRY_OBJECT.get(), throwerIn, worldIn);
     }
 
-    public MelonSeedProjectileEntity(World worldIn, double x, double y, double z) {
-        super(EntityTypesInit.MELON_SEED_PROJECTILE_REGISTRY_OBJECT.get(), x, y, z, worldIn);
+    public BoneShardEntity(World worldIn, double x, double y, double z) {
+        super(EntityTypesInit.BONE_SHARD_REGISTRY_OBJECT.get(), x, y, z, worldIn);
     }
 
-    public MelonSeedProjectileEntity(EntityType<MelonSeedProjectileEntity> entityType, World world) {
+    public BoneShardEntity(EntityType<BoneShardEntity> entityType, World world) {
         super(entityType, world);
     }
 
     @Override
     protected Item getDefaultItem() {
-        return Items.MELON_SEEDS;
+        return ItemInit.BONE_SHARD.get();
     }
 
     @OnlyIn(Dist.CLIENT)
     private IParticleData makeParticle() {
         ItemStack itemstack = this.func_213882_k();
-        return (IParticleData) (itemstack.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemParticleData(ParticleTypes.ITEM, itemstack));
+        return (IParticleData) (itemstack.isEmpty() ? ParticleTypes.SPIT : new ItemParticleData(ParticleTypes.ITEM, itemstack));
     }
 
     @OnlyIn(Dist.CLIENT)

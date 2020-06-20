@@ -13,12 +13,8 @@ public class SkeletonWolfRenderer extends MobRenderer<SkeletonWolfEntity, Skelet
 
     public SkeletonWolfRenderer(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, new SkeletonWolfModel<>(), 0.5F);
-
     }
 
-    /**
-     * Defines what float the third param in setRotationAngles of ModelBase is
-     */
     protected float handleRotationFloat(SkeletonWolfEntity livingBase, float partialTicks) {
         return livingBase.getTailRotation();
     }

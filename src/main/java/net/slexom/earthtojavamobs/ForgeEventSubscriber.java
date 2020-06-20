@@ -65,13 +65,13 @@ public final class ForgeEventSubscriber {
         ChickenEntity chickenentity;
         switch (chickenType) {
             case 0:
-                chickenentity = EntityTypesInit.AmberChicken.registryObject.get().create(world);
+                chickenentity = EntityTypesInit.AMBER_CHICKEN_REGISTRY_OBJECT.get().create(world);
                 break;
             case 2:
-                chickenentity = EntityTypesInit.MidnightChicken.registryObject.get().create(world);
+                chickenentity = EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_OBJECT.get().create(world);
                 break;
             case 4:
-                chickenentity = EntityTypesInit.StormyChicken.registryObject.get().create(world);
+                chickenentity = EntityTypesInit.STORMY_CHICKEN_REGISTRY_OBJECT.get().create(world);
                 break;
             default:
                 chickenentity = EntityType.CHICKEN.create(world);
@@ -99,7 +99,7 @@ public final class ForgeEventSubscriber {
                     }
                 }
                 BlockPos blockpos = patternHelper.translateOffset(1, 2, 0).getPos();
-                FurnaceGolemEntity furnaceGolemEntity = EntityTypesInit.FurnaceGolem.registryObject.get().create(world);
+                FurnaceGolemEntity furnaceGolemEntity = EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT.get().create(world);
                 furnaceGolemEntity.setPlayerCreated(true);
                 furnaceGolemEntity.setLocationAndAngles((double) blockpos.getX() + 0.5D, (double) blockpos.getY() + 0.05D, (double) blockpos.getZ() + 0.5D, 0.0F, 0.0F);
                 world.addEntity(furnaceGolemEntity);
