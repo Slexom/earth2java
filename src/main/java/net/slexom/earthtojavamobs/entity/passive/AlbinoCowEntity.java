@@ -1,28 +1,13 @@
 package net.slexom.earthtojavamobs.entity.passive;
 
-import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.passive.CowEntity;
-import net.minecraft.network.IPacket;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.slexom.earthtojavamobs.entity.base.E2JBaseCowEntity;
 
-public class AlbinoCowEntity extends CowEntity {
+public class AlbinoCowEntity extends E2JBaseCowEntity<AlbinoCowEntity> {
 
     public AlbinoCowEntity(EntityType<AlbinoCowEntity> type, World world) {
         super(type, world);
-        experienceValue = (int) Math.ceil(Math.random() * 3);
-        setNoAI(false);
-    }
-
-    @Override
-    public CowEntity createChild(AgeableEntity ageable) {
-        return (AlbinoCowEntity) getType().create(this.world);
-    }
-
-    @Override
-    public IPacket<?> createSpawnPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
     }
 
 }

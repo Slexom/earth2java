@@ -4,7 +4,6 @@ package net.slexom.earthtojavamobs.entity.passive;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.passive.CowEntity;
@@ -18,9 +17,9 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
+import net.slexom.earthtojavamobs.entity.base.E2JBaseCowEntity;
 
-
-public class MoobloomEntity extends CowEntity implements net.minecraftforge.common.IShearable {
+public class MoobloomEntity extends E2JBaseCowEntity<MoobloomEntity> implements net.minecraftforge.common.IShearable {
 
     public MoobloomEntity(EntityType<MoobloomEntity> type, World world) {
         super(type, world);
@@ -60,11 +59,6 @@ public class MoobloomEntity extends CowEntity implements net.minecraftforge.comm
             this.playSound(SoundEvents.ENTITY_MOOSHROOM_SHEAR, 1.0F, 1.0F);
         }
         return ret;
-    }
-
-    @Override
-    public CowEntity createChild(AgeableEntity ageable) {
-        return (MoobloomEntity) getType().create(this.world);
     }
 
     static class PlaceBlockGoal extends Goal {

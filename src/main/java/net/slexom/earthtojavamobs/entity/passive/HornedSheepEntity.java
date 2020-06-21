@@ -2,7 +2,6 @@ package net.slexom.earthtojavamobs.entity.passive;
 
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
@@ -16,12 +15,13 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
+import net.slexom.earthtojavamobs.entity.base.E2JBaseSheepEntity;
 
 import javax.annotation.Nullable;
 import java.util.UUID;
 
 
-public class HornedSheepEntity extends SheepEntity {
+public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
 
     private EatGrassGoal eatGrassGoal;
     private static final DataParameter<Byte> DATA_FLAGS_ID = EntityDataManager.createKey(HornedSheepEntity.class, DataSerializers.BYTE);
@@ -199,11 +199,6 @@ public class HornedSheepEntity extends SheepEntity {
         }
     }
 
-    @Override
-    public HornedSheepEntity createChild(AgeableEntity ageable) {
-        return (HornedSheepEntity) getType().create(this.world);
-    }
-
     public boolean setSheepAttacker(Entity attacker) {
         this.setAnger(400 + this.rand.nextInt(400));
         if (attacker instanceof LivingEntity) {
@@ -229,6 +224,7 @@ public class HornedSheepEntity extends SheepEntity {
     }
 
     static class AngerGoal extends HurtByTargetGoal {
+
         AngerGoal(HornedSheepEntity sheepIn) {
             super(sheepIn);
         }
@@ -237,13 +233,13 @@ public class HornedSheepEntity extends SheepEntity {
             if (mobIn instanceof HornedSheepEntity && this.goalOwner.canEntityBeSeen(targetIn) && ((HornedSheepEntity) mobIn).setSheepAttacker(targetIn)) {
                 mobIn.setAttackTarget(targetIn);
             }
-
         }
+
     }
 
     static class AttackPlayerGoal extends NearestAttackableTargetGoal<PlayerEntity> {
-        AttackPlayerGoal(HornedSheepEntity beeIn) {
-            super(beeIn, PlayerEntity.class, true);
+        AttackPlayerGoal(HornedSheepEntity sheepEntity) {
+            super(sheepEntity, PlayerEntity.class, true);
         }
 
         public boolean shouldExecute() {

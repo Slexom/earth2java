@@ -1,10 +1,8 @@
 package net.slexom.earthtojavamobs.entity.passive;
 
 import net.minecraft.block.Block;
-import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
@@ -18,10 +16,11 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
+import net.slexom.earthtojavamobs.entity.base.E2JBasePigEntity;
 import net.slexom.earthtojavamobs.init.BlockInit;
 
 
-public class MuddyPigEntity extends PigEntity {
+public class MuddyPigEntity extends E2JBasePigEntity<MuddyPigEntity> {
 
     private static final DataParameter<Boolean> IS_IN_MUD = EntityDataManager.createKey(MuddyPigEntity.class, DataSerializers.BOOLEAN);
     private static final Ingredient TEMPTATION_ITEMS = Ingredient.fromItems(Items.CARROT, Items.POTATO, Items.BEETROOT);
@@ -97,11 +96,6 @@ public class MuddyPigEntity extends PigEntity {
     public void readAdditional(CompoundNBT compound) {
         super.readAdditional(compound);
         this.setInMud(compound.getBoolean("IsInMud"));
-    }
-
-    @Override
-    public PigEntity createChild(AgeableEntity ageable) {
-        return (MuddyPigEntity) getType().create(this.world);
     }
 
     public static class GoToMudGoal extends MoveToBlockGoal {

@@ -3,15 +3,15 @@ package net.slexom.earthtojavamobs.entity.monster;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.RangedAttackGoal;
-import net.minecraft.entity.monster.SpiderEntity;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.slexom.earthtojavamobs.entity.base.E2JBaseSpiderEntity;
 import net.slexom.earthtojavamobs.entity.projectile.BoneShardEntity;
 
-public class BoneSpiderEntity extends SpiderEntity implements IRangedAttackMob {
+public class BoneSpiderEntity extends E2JBaseSpiderEntity<BoneSpiderEntity> implements IRangedAttackMob {
 
-    public BoneSpiderEntity(EntityType<? extends SpiderEntity> type, World worldIn) {
+    public BoneSpiderEntity(EntityType<BoneSpiderEntity> type, World worldIn) {
         super(type, worldIn);
     }
 

@@ -2,10 +2,8 @@
 package net.slexom.earthtojavamobs.entity.passive;
 
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.EatGrassGoal;
-import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
@@ -16,14 +14,14 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
+import net.slexom.earthtojavamobs.entity.base.E2JBaseCowEntity;
 
-public class WoolyCowEntity extends CowEntity implements net.minecraftforge.common.IShearable {
+public class WoolyCowEntity extends E2JBaseCowEntity<WoolyCowEntity> implements net.minecraftforge.common.IShearable {
 
     private static final DataParameter<Byte> isSheared = EntityDataManager.createKey(WoolyCowEntity.class, DataSerializers.BYTE);
 
     private int shearTimer;
     private EatGrassGoal eatGrassGoal;
-
 
     public WoolyCowEntity(EntityType<WoolyCowEntity> type, World world) {
         super(type, world);
@@ -100,11 +98,6 @@ public class WoolyCowEntity extends CowEntity implements net.minecraftforge.comm
         }
         this.playSound(SoundEvents.ENTITY_SHEEP_SHEAR, 1.0F, 1.0F);
         return ret;
-    }
-
-    @Override
-    public CowEntity createChild(AgeableEntity ageable) {
-        return (WoolyCowEntity) getType().create(this.world);
     }
 
     public void writeAdditional(CompoundNBT compound) {

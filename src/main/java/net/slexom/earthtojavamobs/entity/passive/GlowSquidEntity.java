@@ -23,6 +23,11 @@ import java.util.Random;
 
 public class GlowSquidEntity extends SquidEntity {
 
+    private int lastBlink = 0;
+    private int nextBlinkInterval = new Random().nextInt(760) + 60;
+    private int remainingTick = 0;
+    private int internalBlinkTick = 0;
+
     public GlowSquidEntity(EntityType<GlowSquidEntity> type, World world) {
         super(type, world);
         experienceValue = (int) Math.ceil(Math.random() * 3);
@@ -56,6 +61,23 @@ public class GlowSquidEntity extends SquidEntity {
         super.registerGoals();
         this.goalSelector.addGoal(1, new RandomSwimmingGoal(this, 1, 40));
         this.goalSelector.addGoal(2, new PanicGoal(this, 1.2));
+    }
+
+    public void livingTick() {
+        super.livingTick();
+        if (this.remainingTick > 0) {
+            --this.remainingTick;
+        }
+        if (this.internalBlinkTick == (this.lastBlink + this.nextBlinkInterval)) {
+            this.lastBlink = this.internalBlinkTick;
+            this.nextBlinkInterval = new Random().nextInt(740) + 60;
+            this.remainingTick = 4;
+        }
+        ++this.internalBlinkTick;
+    }
+
+    public int getBlinkRemainingTicks() {
+        return this.remainingTick;
     }
 
     @Override

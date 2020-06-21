@@ -16,33 +16,12 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.slexom.earthtojavamobs.client.renderer.entity.model.MuddyPigModel;
 import net.slexom.earthtojavamobs.entity.passive.MuddyPigEntity;
 
-import java.util.Random;
-
 @OnlyIn(Dist.CLIENT)
 public class MuddyPigRenderer extends MobRenderer<MuddyPigEntity, MuddyPigModel<MuddyPigEntity>> {
-
-    private int lastBlink = 0;
-    private int nextBlinkInterval = new Random().nextInt(760) + 60;
-    private int remainingTick = 0;
-    private int internalBlinkTick = 0;
 
     public MuddyPigRenderer(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, new MuddyPigModel<>(), 0.7F);
         this.addLayer(new SaddleLayer(this));
-    }
-
-    @Override
-    public void render(MuddyPigEntity entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
-        super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
-        if (remainingTick > 0) {
-            --remainingTick;
-        }
-        if (internalBlinkTick == (lastBlink + nextBlinkInterval)) {
-            lastBlink = internalBlinkTick;
-            nextBlinkInterval = new Random().nextInt(740) + 60;
-            remainingTick = 4;
-        }
-        ++internalBlinkTick;
     }
 
     public ResourceLocation getEntityTexture(MuddyPigEntity entity) {
@@ -50,7 +29,7 @@ public class MuddyPigRenderer extends MobRenderer<MuddyPigEntity, MuddyPigModel<
         ResourceLocation textureBlink = new ResourceLocation("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_blink.png");
         ResourceLocation textureDried = new ResourceLocation("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_dried.png");
         ResourceLocation textureDriedBlink = new ResourceLocation("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_dried_blink.png");
-        boolean blink = remainingTick > 0;
+        boolean blink = entity.getBlinkRemainingTicks() > 0;
         return entity.isInMud() ?
                 blink ?
                         textureBlink :

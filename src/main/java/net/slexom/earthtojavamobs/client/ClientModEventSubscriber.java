@@ -19,8 +19,6 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.slexom.earthtojavamobs.EarthtojavamobsMod;
 import net.slexom.earthtojavamobs.client.renderer.entity.*;
-import net.slexom.earthtojavamobs.entity.projectile.BoneShardEntity;
-import net.slexom.earthtojavamobs.entity.projectile.MelonSeedProjectileEntity;
 import net.slexom.earthtojavamobs.init.EntityTypesInit;
 import net.slexom.earthtojavamobs.init.FluidInit;
 import org.apache.logging.log4j.LogManager;
@@ -69,12 +67,12 @@ public final class ClientModEventSubscriber {
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.MUDDY_FOOT_RABBIT_REGISTRY_OBJECT.get(), renderManagerIn -> new E2JRabbitRenderer(renderManagerIn, EntityTypesInit.MUDDY_FOOT_RABBIT_REGISTRY_NAME));
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT.get(), FurnaceGolemRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.MELON_GOLEM_REGISTRY_OBJECT.get(), MelonGolemRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.MELON_SEED_PROJECTILE_REGISTRY_OBJECT.get(), renderManagerIn -> new SpriteRenderer<MelonSeedProjectileEntity>(renderManagerIn, Minecraft.getInstance().getItemRenderer()));
+        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.MELON_SEED_PROJECTILE_REGISTRY_OBJECT.get(), renderManagerIn -> new SpriteRenderer<>(renderManagerIn, Minecraft.getInstance().getItemRenderer()));
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.ALBINO_COW_REGISTRY_OBJECT.get(), renderManagerIn -> new E2JCowRenderer(renderManagerIn, EntityTypesInit.ALBINO_COW_REGISTRY_NAME));
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.JUMBO_RABBIT_REGISTRY_OBJECT.get(), renderManagerIn -> new JumboRabbitRenderer(renderManagerIn, EntityTypesInit.JUMBO_RABBIT_REGISTRY_NAME));
 
-        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.BONE_SPIDER_REGISTRY_OBJECT.get(), renderManagerIn -> new E2JSpiderRenderer<>(renderManagerIn, EntityTypesInit.BONE_SPIDER_REGISTRY_NAME));
-        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.BONE_SHARD_REGISTRY_OBJECT.get(), renderManagerIn -> new SpriteRenderer<BoneShardEntity>(renderManagerIn, Minecraft.getInstance().getItemRenderer()));
+        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.BONE_SPIDER_REGISTRY_OBJECT.get(), renderManagerIn -> new E2JSpiderRenderer(renderManagerIn, EntityTypesInit.BONE_SPIDER_REGISTRY_NAME));
+        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.BONE_SHARD_REGISTRY_OBJECT.get(), renderManagerIn -> new SpriteRenderer<>(renderManagerIn, Minecraft.getInstance().getItemRenderer()));
     }
 
     @SubscribeEvent

@@ -1,4 +1,4 @@
-package net.slexom.earthtojavamobs.entity.passive;
+package net.slexom.earthtojavamobs.entity.base;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.AgeableEntity;
@@ -24,16 +24,23 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkHooks;
+import net.slexom.earthtojavamobs.entity.passive.RockySheepEntity;
 
-public class OneColorSheepEntity<T extends AnimalEntity> extends AnimalEntity implements net.minecraftforge.common.IShearable {
+import java.util.Random;
+
+public class E2JOneColorSheepEntity<T extends AnimalEntity> extends AnimalEntity implements net.minecraftforge.common.IShearable {
 
     private static final DataParameter<Byte> isSheared = EntityDataManager.createKey(RockySheepEntity.class, DataSerializers.BYTE);
 
     private int sheepTimer;
     private EatGrassGoal eatGrassGoal;
     private ItemStack wool;
+    private int lastBlink = 0;
+    private int nextBlinkInterval = new Random().nextInt(760) + 60;
+    private int remainingTick = 0;
+    private int internalBlinkTick = 0;
 
-    public OneColorSheepEntity(EntityType<? extends AnimalEntity> type, World world, ItemStack wool) {
+    public E2JOneColorSheepEntity(EntityType<? extends AnimalEntity> type, World world, ItemStack wool) {
         super(type, world);
         this.wool = wool;
         experienceValue = 2;
@@ -69,6 +76,19 @@ public class OneColorSheepEntity<T extends AnimalEntity> extends AnimalEntity im
             this.sheepTimer = Math.max(0, this.sheepTimer - 1);
         }
         super.livingTick();
+        if (this.remainingTick > 0) {
+            --this.remainingTick;
+        }
+        if (this.internalBlinkTick == (this.lastBlink + this.nextBlinkInterval)) {
+            this.lastBlink = this.internalBlinkTick;
+            this.nextBlinkInterval = new Random().nextInt(740) + 60;
+            this.remainingTick = 4;
+        }
+        ++this.internalBlinkTick;
+    }
+
+    public int getBlinkRemainingTicks() {
+        return this.remainingTick;
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -183,4 +203,3 @@ public class OneColorSheepEntity<T extends AnimalEntity> extends AnimalEntity im
     }
 
 }
-

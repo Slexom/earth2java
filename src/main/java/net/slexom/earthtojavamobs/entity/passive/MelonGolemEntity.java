@@ -21,9 +21,15 @@ import net.slexom.earthtojavamobs.entity.projectile.MelonSeedProjectileEntity;
 
 import javax.annotation.Nullable;
 import java.util.EnumSet;
+import java.util.Random;
 
 public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob {
     private static final DataParameter<Byte> MELON_EQUIPPED = EntityDataManager.createKey(MelonGolemEntity.class, DataSerializers.BYTE);
+
+    private int lastBlink = 0;
+    private int nextBlinkInterval = new Random().nextInt(760) + 60;
+    private int remainingTick = 0;
+    private int internalBlinkTick = 0;
 
     public MelonGolemEntity(EntityType<? extends MelonGolemEntity> type, World worldIn) {
         super(type, worldIn);
@@ -71,7 +77,19 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob {
                 }
             }
         }
+        if (this.remainingTick > 0) {
+            --this.remainingTick;
+        }
+        if (this.internalBlinkTick == (this.lastBlink + this.nextBlinkInterval)) {
+            this.lastBlink = this.internalBlinkTick;
+            this.nextBlinkInterval = new Random().nextInt(740) + 60;
+            this.remainingTick = 4;
+        }
+        ++this.internalBlinkTick;
+    }
 
+    public int getBlinkRemainingTicks() {
+        return this.remainingTick;
     }
 
     /**

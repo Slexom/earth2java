@@ -4,22 +4,19 @@ package net.slexom.earthtojavamobs.entity.passive;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.FleeSunGoal;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.RestrictSunGoal;
-import net.minecraft.entity.passive.ChickenEntity;
-import net.minecraft.network.IPacket;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.slexom.earthtojavamobs.entity.base.E2JBaseChickenEntity;
 
 
-public class CluckshroomEntity extends ChickenEntity {
+public class CluckshroomEntity extends E2JBaseChickenEntity<CluckshroomEntity> {
 
     public CluckshroomEntity(EntityType<CluckshroomEntity> type, World world) {
         super(type, world);
@@ -34,12 +31,6 @@ public class CluckshroomEntity extends ChickenEntity {
         this.goalSelector.addGoal(1, new FleeSunGoal(this, 1.0D));
         this.goalSelector.addGoal(3, new CluckshroomEntity.PlaceBlockGoal(this));
     }
-
-    @Override
-    public ChickenEntity createChild(AgeableEntity ageable) {
-        return (CluckshroomEntity) getType().create(this.world);
-    }
-
 
     static class PlaceBlockGoal extends Goal {
         private final CluckshroomEntity cluckshroom;
@@ -71,12 +62,6 @@ public class CluckshroomEntity extends ChickenEntity {
                 iworld.setBlockState(blockPos, blockState, 3);
             }
         }
-
-
     }
 
-    @Override
-    public IPacket<?> createSpawnPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
-    }
 }

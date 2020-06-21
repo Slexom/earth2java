@@ -1,7 +1,6 @@
 package net.slexom.earthtojavamobs.client.renderer.entity;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -12,33 +11,12 @@ import net.slexom.earthtojavamobs.client.renderer.entity.layers.FurnaceGolemFlam
 import net.slexom.earthtojavamobs.client.renderer.entity.model.FurnaceGolemModel;
 import net.slexom.earthtojavamobs.entity.passive.FurnaceGolemEntity;
 
-import java.util.Random;
-
 @OnlyIn(Dist.CLIENT)
 public class FurnaceGolemRenderer extends MobRenderer<FurnaceGolemEntity, FurnaceGolemModel<FurnaceGolemEntity>> {
-
-    private int lastBlink = 0;
-    private int nextBlinkInterval = new Random().nextInt(760) + 60;
-    private int remainingTick = 0;
-    private int internalBlinkTick = 0;
 
     public FurnaceGolemRenderer(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, new FurnaceGolemModel<>(), 0.7F);
         this.addLayer(new FurnaceGolemFlamesLayer(this));
-    }
-
-    @Override
-    public void render(FurnaceGolemEntity entityIn, float entityYaw, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn) {
-        super.render(entityIn, entityYaw, partialTicks, matrixStackIn, bufferIn, packedLightIn);
-        if (remainingTick > 0) {
-            --remainingTick;
-        }
-        if (internalBlinkTick == (lastBlink + nextBlinkInterval)) {
-            lastBlink = internalBlinkTick;
-            nextBlinkInterval = new Random().nextInt(740) + 60;
-            remainingTick = 4;
-        }
-        ++internalBlinkTick;
     }
 
     protected void applyRotations(FurnaceGolemEntity entityLiving, MatrixStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks) {
@@ -55,7 +33,6 @@ public class FurnaceGolemRenderer extends MobRenderer<FurnaceGolemEntity, Furnac
         ResourceLocation texture = new ResourceLocation("earthtojavamobs:textures/mobs/iron_golem/furnace_golem/furnace_golem.png");
         ResourceLocation textureBlink = new ResourceLocation("earthtojavamobs:textures/mobs/iron_golem/furnace_golem/furnace_golem_blink.png");
         ResourceLocation textureAngry = new ResourceLocation("earthtojavamobs:textures/mobs/iron_golem/furnace_golem/furnace_golem_angry.png");
-        int blinkTime = 150;
-        return entity.isAngry() ? textureAngry : remainingTick > 0 ? textureBlink : texture;
+        return entity.isAngry() ? textureAngry : entity.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
     }
 }
