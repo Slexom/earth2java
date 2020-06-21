@@ -137,8 +137,8 @@ public class ItemInit {
     public static final int ALBINO_COW_EGG_SECONDARY_COLOR = 0xf0a590;
     public static final RegistryObject<ModdedSpawnEggItem> ALBINO_COW_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.ALBINO_COW_REGISTRY_NAME, EntityTypesInit.ALBINO_COW_REGISTRY_OBJECT, ALBINO_COW_EGG_PRIMARY_COLOR, ALBINO_COW_EGG_SECONDARY_COLOR);
 
-    public static final int BONE_SPIDER_EGG_PRIMARY_COLOR = 0x002244;
-    public static final int BONE_SPIDER_EGG_SECONDARY_COLOR = 0x442200;
+    public static final int BONE_SPIDER_EGG_PRIMARY_COLOR = 0x200d16;
+    public static final int BONE_SPIDER_EGG_SECONDARY_COLOR = 0xd6e7e5;
     public static final RegistryObject<ModdedSpawnEggItem> BONE_SPIDER_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.BONE_SPIDER_REGISTRY_NAME, EntityTypesInit.BONE_SPIDER_REGISTRY_OBJECT, BONE_SPIDER_EGG_PRIMARY_COLOR, BONE_SPIDER_EGG_SECONDARY_COLOR);
 
     public static final int JUMBO_RABBIT_EGG_PRIMARY_COLOR = 0xb57766;

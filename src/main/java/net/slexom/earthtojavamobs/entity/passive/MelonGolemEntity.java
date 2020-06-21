@@ -31,7 +31,7 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob {
     }
 
     protected void registerGoals() {
-        this.goalSelector.addGoal(1, new RangedAttackGoal(this, 1.25D, 20, 10.0F));
+        this.goalSelector.addGoal(1, new MelonGolemEntity.RangedAttack(this, 1.25D, 20, 10.0F));
         // this.goalSelector.addGoal(2, new WaterAvoidingRandomWalkingGoal(this, 1.0D, 1.0000001E-5F));
         this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
@@ -123,6 +123,26 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob {
 
     protected int getJumpDelay() {
         return this.rand.nextInt(20) + 10;
+    }
+
+    static class RangedAttack extends RangedAttackGoal {
+        private final MelonGolemEntity rangedAttackEntityHost;
+
+        public RangedAttack(MelonGolemEntity attacker, double movespeed, int maxAttackTime, float maxAttackDistanceIn) {
+            super(attacker, movespeed, maxAttackTime, maxAttackDistanceIn);
+            this.rangedAttackEntityHost = attacker;
+        }
+
+        public RangedAttack(MelonGolemEntity attacker, double movespeed, int p_i1650_4_, int maxAttackTime, float maxAttackDistanceIn) {
+            super(attacker, movespeed, p_i1650_4_, maxAttackTime, maxAttackDistanceIn);
+            this.rangedAttackEntityHost = attacker;
+        }
+
+        @Override
+        public void tick() {
+            super.tick();
+            ((MelonGolemEntity.MoveHelperController) this.rangedAttackEntityHost.getMoveHelper()).setDirection(this.rangedAttackEntityHost.rotationYaw, true);
+        }
     }
 
     static class HopGoal extends Goal {

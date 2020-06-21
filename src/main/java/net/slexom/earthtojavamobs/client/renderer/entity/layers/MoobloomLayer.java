@@ -58,7 +58,7 @@ public class MoobloomLayer<T extends MoobloomEntity> extends LayerRenderer<T, Co
             matrixStackIn.pop();
             matrixStackIn.push();
             this.getEntityModel().getHead().translateRotate(matrixStackIn);
-            matrixStackIn.translate(0.0D, (double) -0.0F, (double) -0.2F);
+            matrixStackIn.translate(0.0D, (double) -0.5F, (double) -0.2F);
             matrixStackIn.rotate(Vector3f.YP.rotationDegrees(-78.0F));
             matrixStackIn.scale(-0.5F, -0.5F, 0.5F);
             matrixStackIn.translate(-0.5D, -0.5D, -0.5D);
