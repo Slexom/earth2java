@@ -127,7 +127,6 @@ public class RockySheepEntity extends AnimalEntity implements net.minecraftforge
         return ret;
     }
 
-
     public void writeAdditional(CompoundNBT compound) {
         super.writeAdditional(compound);
         compound.putBoolean("Sheared", this.getSheared());
@@ -137,7 +136,6 @@ public class RockySheepEntity extends AnimalEntity implements net.minecraftforge
         super.readAdditional(compound);
         this.setSheared(compound.getBoolean("Sheared"));
     }
-
 
     public float getHeadRotationPointY(float p_70894_1_) {
         if (this.sheepTimer <= 0) {

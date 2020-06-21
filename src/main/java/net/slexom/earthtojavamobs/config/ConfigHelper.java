@@ -144,6 +144,11 @@ public final class ConfigHelper {
         E2JModConfig.boneSpiderWeight = ConfigHolder.COMMON.boneSpiderWeight.get();
         E2JModConfig.boneSpiderGroupMin = ConfigHolder.COMMON.boneSpiderGroupMin.get();
         E2JModConfig.boneSpiderGroupMax = ConfigHolder.COMMON.boneSpiderGroupMax.get();
+
+        E2JModConfig.jumboRabbitSpawnBiomes = ConfigHolder.COMMON.jumboRabbitSpawnBiomes.get();
+        E2JModConfig.jumboRabbitWeight = ConfigHolder.COMMON.jumboRabbitWeight.get();
+        E2JModConfig.jumboRabbitGroupMin = ConfigHolder.COMMON.jumboRabbitGroupMin.get();
+        E2JModConfig.jumboRabbitGroupMax = ConfigHolder.COMMON.jumboRabbitGroupMax.get();
     }
 
     public static void bakeServer(final net.minecraftforge.fml.config.ModConfig config) {

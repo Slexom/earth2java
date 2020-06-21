@@ -145,6 +145,11 @@ public final class E2JModConfig {
     public static int boneSpiderWeight;
     public static int boneSpiderGroupMin;
     public static int boneSpiderGroupMax;
+
+    public static List<String> jumboRabbitSpawnBiomes;
+    public static int jumboRabbitWeight;
+    public static int jumboRabbitGroupMin;
+    public static int jumboRabbitGroupMax;
     // Client
 
     // Server

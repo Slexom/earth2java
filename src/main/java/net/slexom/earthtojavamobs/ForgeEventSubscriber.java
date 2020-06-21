@@ -34,7 +34,7 @@ import java.util.function.Predicate;
 public final class ForgeEventSubscriber {
 
     private static final Logger LOGGER = LogManager.getLogger(EarthtojavamobsMod.MOD_ID + " Mod Event Subscriber");
-    private static final Predicate<BlockState> IS_PUMPKIN = (p_210301_0_) -> p_210301_0_ != null && (p_210301_0_.getBlock() == Blocks.CARVED_PUMPKIN || p_210301_0_.getBlock() == Blocks.JACK_O_LANTERN);
+    private static final Predicate<BlockState> IS_PUMPKIN = (blockState) -> blockState != null && (blockState.getBlock() == Blocks.CARVED_PUMPKIN || blockState.getBlock() == Blocks.JACK_O_LANTERN);
 
     @SubscribeEvent
     public static void onEggThrown(ProjectileImpactEvent.Throwable event) {

@@ -143,6 +143,11 @@ final class CommonConfig {
     final ForgeConfigSpec.IntValue boneSpiderGroupMin;
     final ForgeConfigSpec.IntValue boneSpiderGroupMax;
 
+    final ForgeConfigSpec.ConfigValue<List<String>> jumboRabbitSpawnBiomes;
+    final ForgeConfigSpec.IntValue jumboRabbitWeight;
+    final ForgeConfigSpec.IntValue jumboRabbitGroupMin;
+    final ForgeConfigSpec.IntValue jumboRabbitGroupMax;
+
     private final int standardSheepWeight = 12;
     private final int standardCowWeight = 8;
     private final int standardChickenWeight = 10;
@@ -544,6 +549,21 @@ final class CommonConfig {
                 .comment("Minimum number of entities in group")
                 .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
         boneSpiderGroupMax = builder
+                .comment("Maximum number of entities in group")
+                .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
+        builder.pop();
+
+        builder.push("boneSpider");
+        jumboRabbitSpawnBiomes = builder
+                .comment("Biome where entity Spawn")
+                .define("spawnBiomes", Arrays.asList(BiomeSpawnHelper.JUMBO_RABBIT_SPAWN_BIOMES));
+        jumboRabbitWeight = builder
+                .comment("Weight of entity in spawn")
+                .defineInRange("entityWeight", 20, 0, Integer.MAX_VALUE);
+        jumboRabbitGroupMin = builder
+                .comment("Minimum number of entities in group")
+                .defineInRange("entityGroupMin", 2, 0, Integer.MAX_VALUE);
+        jumboRabbitGroupMax = builder
                 .comment("Maximum number of entities in group")
                 .defineInRange("entityGroupMax", 4, 0, Integer.MAX_VALUE);
         builder.pop();

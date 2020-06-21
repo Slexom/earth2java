@@ -247,6 +247,14 @@ public class EntityTypesInit {
                     .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, BONE_SPIDER_REGISTRY_NAME).toString())
     );
 
+    public static final String JUMBO_RABBIT_REGISTRY_NAME = "jumbo_rabbit";
+    public static final RegistryObject<EntityType<JumboRabbitEntity>> JUMBO_RABBIT_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            JUMBO_RABBIT_REGISTRY_NAME,
+            () -> EntityType.Builder.create(JumboRabbitEntity::new, EntityClassification.CREATURE)
+                    .size(0.8F, 1.0F)
+                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, JUMBO_RABBIT_REGISTRY_NAME).toString())
+    );
+
 }
 
 
