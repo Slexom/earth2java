@@ -1,8 +1,8 @@
 package net.slexom.earthtojavamobs.entity.monster;
 
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.entity.ai.goal.RangedAttackGoal;
+import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -17,8 +17,16 @@ public class BoneSpiderEntity extends E2JBaseSpiderEntity<BoneSpiderEntity> impl
 
     @Override
     protected void registerGoals() {
-        super.registerGoals();
-        this.goalSelector.addGoal(3, new RangedAttackGoal(this, 1.0D, 40, 16.0F));
+        this.goalSelector.addGoal(1, new SwimGoal(this));
+        this.goalSelector.addGoal(3, new RangedAttackGoal(this, 1.0D, 20,40, 8.0F));
+        this.goalSelector.addGoal(3, new LeapAtTargetGoal(this, 0.4F));
+        this.goalSelector.addGoal(4, new BoneSpiderEntity.AttackGoal(this));
+        this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 0.8D));
+        this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 8.0F));
+        this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
+        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
+        //this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, MobEntity.class, true));
     }
 
     @Override
@@ -56,13 +64,7 @@ public class BoneSpiderEntity extends E2JBaseSpiderEntity<BoneSpiderEntity> impl
         }
 
         public boolean shouldContinueExecuting() {
-            float f = this.attacker.getBrightness();
-            if (f >= 0.5F && this.attacker.getRNG().nextInt(100) == 0) {
-                this.attacker.setAttackTarget((LivingEntity) null);
-                return false;
-            } else {
-                return super.shouldContinueExecuting();
-            }
+            return super.shouldContinueExecuting();
         }
 
         @Override
@@ -70,6 +72,8 @@ public class BoneSpiderEntity extends E2JBaseSpiderEntity<BoneSpiderEntity> impl
             return (double) (4.0F + attackTarget.getWidth());
         }
     }
+
+
 //
 //    static class RangedAttackGoal extends Goal {
 //        private final MobEntity entityHost;

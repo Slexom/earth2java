@@ -4,7 +4,6 @@ import net.minecraft.block.FlowingFluidBlock;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -28,9 +27,11 @@ public final class ModEventSubscriber {
         final IForgeRegistry<Item> registry = event.getRegistry();
         BlockInit.BLOCKS.getEntries().stream()
                 .filter(block -> !(block.get() instanceof FlowingFluidBlock))
+                .filter(block -> block.get() != BlockInit.MELON_GOLEM_HEAD_SHOOT.get())
+                .filter(block -> block.get() != BlockInit.MELON_GOLEM_HEAD_BLINK.get())
                 .map(RegistryObject::get)
                 .forEach(block -> {
-                    final Item.Properties properties = new Item.Properties().group(ItemGroup.MISC);
+                    final Item.Properties properties = new Item.Properties().group(EarthtojavamobsMod.E2JItemGroup.instance);
                     final BlockItem blockItem = new BlockItem(block, properties);
                     blockItem.setRegistryName(block.getRegistryName());
                     registry.register(blockItem);

@@ -8,6 +8,8 @@ import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.passive.GolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -23,7 +25,7 @@ import javax.annotation.Nullable;
 import java.util.EnumSet;
 import java.util.Random;
 
-public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob {
+public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, net.minecraftforge.common.IShearable  {
     private static final DataParameter<Byte> MELON_EQUIPPED = EntityDataManager.createKey(MelonGolemEntity.class, DataSerializers.BYTE);
 
     private int lastBlink = 0;
@@ -38,10 +40,9 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob {
 
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new MelonGolemEntity.RangedAttack(this, 1.25D, 20, 10.0F));
-        // this.goalSelector.addGoal(2, new WaterAvoidingRandomWalkingGoal(this, 1.0D, 1.0000001E-5F));
+        this.goalSelector.addGoal(2, new MelonGolemEntity.HopGoal(this));
         this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
-        this.goalSelector.addGoal(5, new MelonGolemEntity.HopGoal(this));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, MobEntity.class, 10, true, false, (entity) -> entity instanceof IMob && !(entity instanceof TropicalSlimeEntity)));
     }
 
@@ -49,6 +50,27 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob {
         super.registerAttributes();
         this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(4.0D);
         this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue((double) 0.2F);
+    }
+
+    protected void registerData() {
+        super.registerData();
+        this.dataManager.register(MELON_EQUIPPED, (byte)16);
+    }
+
+    public void writeAdditional(CompoundNBT compound) {
+        super.writeAdditional(compound);
+        compound.putBoolean("Pumpkin", this.isMelonEquipped());
+    }
+
+    /**
+     * (abstract) Protected helper method to read subclass entity data from NBT.
+     */
+    public void readAdditional(CompoundNBT compound) {
+        super.readAdditional(compound);
+        if (compound.contains("Pumpkin")) {
+            this.setMelonEquipped(compound.getBoolean("Pumpkin"));
+        }
+
     }
 
     public void livingTick() {
@@ -142,6 +164,19 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob {
     protected int getJumpDelay() {
         return this.rand.nextInt(20) + 10;
     }
+
+
+    @Override
+    public boolean isShearable(ItemStack item, net.minecraft.world.IWorldReader world, BlockPos pos) {
+        return this.isMelonEquipped();
+    }
+
+    @Override
+    public java.util.List<ItemStack> onSheared(ItemStack item, net.minecraft.world.IWorld world, BlockPos pos, int fortune) {
+        this.setMelonEquipped(false);
+        return new java.util.ArrayList<>();
+    }
+
 
     static class RangedAttack extends RangedAttackGoal {
         private final MelonGolemEntity rangedAttackEntityHost;

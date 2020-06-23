@@ -4,24 +4,31 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.CarvedPumpkinBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.pattern.BlockMaterialMatcher;
 import net.minecraft.block.pattern.BlockPattern;
 import net.minecraft.block.pattern.BlockPatternBuilder;
 import net.minecraft.block.pattern.BlockStateMatcher;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.passive.ChickenEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.projectile.EggEntity;
 import net.minecraft.entity.projectile.ThrowableEntity;
-import net.minecraft.util.CachedBlockInfo;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.slexom.earthtojavamobs.entity.passive.FurnaceGolemEntity;
+import net.slexom.earthtojavamobs.init.BlockInit;
 import net.slexom.earthtojavamobs.init.EntityTypesInit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -80,6 +87,30 @@ public final class ForgeEventSubscriber {
         return chickenentity;
     }
 
+    @SubscribeEvent
+    public static void onCarvingMelon(PlayerInteractEvent.RightClickBlock event) {
+        PlayerEntity player = event.getPlayer();
+        BlockPos pos = event.getPos();
+        Hand hand = event.getHand();
+        ItemStack itemstack = player.getHeldItem(hand);
+        World worldIn = player.world;
+        BlockState blockState = worldIn.getBlockState(pos);
+        Block block = blockState.getBlock();
+        if (itemstack.getItem() == Items.SHEARS && block == Blocks.MELON) {
+            if (!worldIn.isRemote) {
+                Direction direction = event.getFace();
+                Direction direction1 = direction.getAxis() == Direction.Axis.Y ? player.getHorizontalFacing().getOpposite() : direction;
+                worldIn.playSound((PlayerEntity) null, pos, SoundEvents.BLOCK_PUMPKIN_CARVE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                worldIn.setBlockState(pos, BlockInit.CARVED_MELON.get().getDefaultState().with(CarvedPumpkinBlock.FACING, direction1), 11);
+                ItemEntity itementity = new ItemEntity(worldIn, (double) pos.getX() + 0.5D + (double) direction1.getXOffset() * 0.65D, (double) pos.getY() + 0.1D, (double) pos.getZ() + 0.5D + (double) direction1.getZOffset() * 0.65D, new ItemStack(Items.MELON_SEEDS, 4));
+                itementity.setMotion(0.05D * (double) direction1.getXOffset() + worldIn.rand.nextDouble() * 0.02D, 0.05D, 0.05D * (double) direction1.getZOffset() + worldIn.rand.nextDouble() * 0.02D);
+                worldIn.addEntity(itementity);
+                itemstack.damageItem(1, player, (entity) -> {
+                    entity.sendBreakAnimation(hand);
+                });
+            }
+        }
+    }
 
     @SubscribeEvent
     public static void onFurnaceGolemCreation(BlockEvent.EntityPlaceEvent event) {
