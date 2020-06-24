@@ -29,10 +29,9 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, n
     private static final DataParameter<Byte> MELON_EQUIPPED = EntityDataManager.createKey(MelonGolemEntity.class, DataSerializers.BYTE);
     private static final DataParameter<Integer> SHOOTING_TICKS = EntityDataManager.createKey(MelonGolemEntity.class, DataSerializers.VARINT);
     private int lastBlink = 0;
-    private int nextBlinkInterval = new Random().nextInt(760) + 60;
+    private int nextBlinkInterval = new Random().nextInt(740) + 60;
     private int remainingTick = 0;
     private int internalBlinkTick = 0;
-    private int shootingTick = 0;
 
     public MelonGolemEntity(EntityType<? extends MelonGolemEntity> type, World worldIn) {
         super(type, worldIn);
@@ -64,9 +63,6 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, n
         compound.putBoolean("Pumpkin", this.isMelonEquipped());
     }
 
-    /**
-     * (abstract) Protected helper method to read subclass entity data from NBT.
-     */
     public void readAdditional(CompoundNBT compound) {
         super.readAdditional(compound);
         if (compound.contains("Pumpkin")) {
@@ -130,7 +126,6 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, n
 
     public void attackEntityWithRangedAttack(LivingEntity target, float distanceFactor) {
         this.setShootingTicks();
-        System.out.println(this.shootingTick);
         MelonSeedProjectileEntity melonSeedEntity = new MelonSeedProjectileEntity(this.world, this);
         double d0 = target.getPosYEye() - (double) 1.1F;
         double d1 = target.getPosX() - this.getPosX();
