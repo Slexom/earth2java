@@ -27,14 +27,19 @@ public final class ModEventSubscriber {
         final IForgeRegistry<Item> registry = event.getRegistry();
         BlockInit.BLOCKS.getEntries().stream()
                 .filter(block -> !(block.get() instanceof FlowingFluidBlock))
-                .filter(block -> block.get() != BlockInit.MELON_GOLEM_HEAD_SHOOT.get())
-                .filter(block -> block.get() != BlockInit.MELON_GOLEM_HEAD_BLINK.get())
                 .map(RegistryObject::get)
                 .forEach(block -> {
                     final Item.Properties properties = new Item.Properties().group(EarthtojavamobsMod.E2JItemGroup.instance);
-                    final BlockItem blockItem = new BlockItem(block, properties);
-                    blockItem.setRegistryName(block.getRegistryName());
-                    registry.register(blockItem);
+                    final Item.Properties hiddenBlockProperties = new Item.Properties().group(null);
+                    if (block == BlockInit.MELON_GOLEM_HEAD_BLINK.get() || block == BlockInit.MELON_GOLEM_HEAD_SHOOT.get()) {
+                        final BlockItem blockItem = new BlockItem(block, hiddenBlockProperties);
+                        blockItem.setRegistryName(block.getRegistryName());
+                        registry.register(blockItem);
+                    } else {
+                        final BlockItem blockItem = new BlockItem(block, properties);
+                        blockItem.setRegistryName(block.getRegistryName());
+                        registry.register(blockItem);
+                    }
                 });
     }
 

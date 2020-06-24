@@ -30,7 +30,8 @@ public class MelonGolemHeadLayer extends LayerRenderer<MelonGolemEntity, SnowMan
             matrixStackIn.scale(0.625F, -0.625F, -0.625F);
             ItemStack head = new ItemStack(BlockInit.CARVED_MELON.get());
             ItemStack headBlink = new ItemStack(BlockInit.MELON_GOLEM_HEAD_BLINK.get());
-            ItemStack itemstack = entitylivingbaseIn.getBlinkRemainingTicks() > 0 ? headBlink : head;
+            ItemStack headShoot = new ItemStack(BlockInit.MELON_GOLEM_HEAD_SHOOT.get());
+            ItemStack itemstack = entitylivingbaseIn.isShooting() ? headShoot : entitylivingbaseIn.getBlinkRemainingTicks() > 0 ? headBlink : head;
             Minecraft.getInstance().getItemRenderer().renderItem(entitylivingbaseIn, itemstack, ItemCameraTransforms.TransformType.HEAD, false, matrixStackIn, bufferIn, entitylivingbaseIn.world, packedLightIn, LivingRenderer.getPackedOverlay(entitylivingbaseIn, 0.0F));
             matrixStackIn.pop();
         }

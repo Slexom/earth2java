@@ -24,13 +24,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkHooks;
-import net.slexom.earthtojavamobs.entity.passive.RockySheepEntity;
 
 import java.util.Random;
 
 public class E2JOneColorSheepEntity<T extends AnimalEntity> extends AnimalEntity implements net.minecraftforge.common.IShearable {
 
-    private static final DataParameter<Byte> isSheared = EntityDataManager.createKey(RockySheepEntity.class, DataSerializers.BYTE);
+    private static final DataParameter<Byte> isSheared = EntityDataManager.createKey(E2JOneColorSheepEntity.class, DataSerializers.BYTE);
 
     private int sheepTimer;
     private EatGrassGoal eatGrassGoal;
@@ -104,7 +103,6 @@ public class E2JOneColorSheepEntity<T extends AnimalEntity> extends AnimalEntity
         super.registerData();
         this.dataManager.register(isSheared, (byte) 0);
     }
-
 
     @Override
     public T createChild(AgeableEntity ageable) {

@@ -25,13 +25,14 @@ import javax.annotation.Nullable;
 import java.util.EnumSet;
 import java.util.Random;
 
-public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, net.minecraftforge.common.IShearable  {
+public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, net.minecraftforge.common.IShearable {
     private static final DataParameter<Byte> MELON_EQUIPPED = EntityDataManager.createKey(MelonGolemEntity.class, DataSerializers.BYTE);
-
+    private static final DataParameter<Integer> SHOOTING_TICKS = EntityDataManager.createKey(MelonGolemEntity.class, DataSerializers.VARINT);
     private int lastBlink = 0;
     private int nextBlinkInterval = new Random().nextInt(760) + 60;
     private int remainingTick = 0;
     private int internalBlinkTick = 0;
+    private int shootingTick = 0;
 
     public MelonGolemEntity(EntityType<? extends MelonGolemEntity> type, World worldIn) {
         super(type, worldIn);
@@ -54,7 +55,8 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, n
 
     protected void registerData() {
         super.registerData();
-        this.dataManager.register(MELON_EQUIPPED, (byte)16);
+        this.dataManager.register(MELON_EQUIPPED, (byte) 16);
+        this.dataManager.register(SHOOTING_TICKS, 0);
     }
 
     public void writeAdditional(CompoundNBT compound) {
@@ -99,6 +101,10 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, n
                 }
             }
         }
+        int currentShootingTicks = this.dataManager.get(SHOOTING_TICKS);
+        if (currentShootingTicks > 0) {
+            this.dataManager.set(SHOOTING_TICKS, --currentShootingTicks);
+        }
         if (this.remainingTick > 0) {
             --this.remainingTick;
         }
@@ -114,10 +120,17 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, n
         return this.remainingTick;
     }
 
-    /**
-     * Attack the specified entity using a ranged attack.
-     */
+    public boolean isShooting() {
+        return this.dataManager.get(SHOOTING_TICKS) > 0;
+    }
+
+    public void setShootingTicks() {
+        this.dataManager.set(SHOOTING_TICKS, 8);
+    }
+
     public void attackEntityWithRangedAttack(LivingEntity target, float distanceFactor) {
+        this.setShootingTicks();
+        System.out.println(this.shootingTick);
         MelonSeedProjectileEntity melonSeedEntity = new MelonSeedProjectileEntity(this.world, this);
         double d0 = target.getPosYEye() - (double) 1.1F;
         double d1 = target.getPosX() - this.getPosX();
@@ -165,7 +178,6 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, n
         return this.rand.nextInt(20) + 10;
     }
 
-
     @Override
     public boolean isShearable(ItemStack item, net.minecraft.world.IWorldReader world, BlockPos pos) {
         return this.isMelonEquipped();
@@ -176,7 +188,6 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, n
         this.setMelonEquipped(false);
         return new java.util.ArrayList<>();
     }
-
 
     static class RangedAttack extends RangedAttackGoal {
         private final MelonGolemEntity rangedAttackEntityHost;
