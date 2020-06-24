@@ -19,7 +19,7 @@ public class BoneSpiderEntity extends E2JBaseSpiderEntity<BoneSpiderEntity> impl
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new SwimGoal(this));
         this.goalSelector.addGoal(3, new RangedAttackGoal(this, 1.0D, 20,40, 8.0F));
-        this.goalSelector.addGoal(3, new LeapAtTargetGoal(this, 0.4F));
+        this.goalSelector.addGoal(4, new LeapAtTargetGoal(this, 0.4F));
         this.goalSelector.addGoal(4, new BoneSpiderEntity.AttackGoal(this));
         this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 0.8D));
         this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 8.0F));
@@ -64,12 +64,17 @@ public class BoneSpiderEntity extends E2JBaseSpiderEntity<BoneSpiderEntity> impl
         }
 
         public boolean shouldContinueExecuting() {
+            LivingEntity livingentity = this.attacker.getAttackTarget();
+            if (livingentity == null) {
+                this.attacker.getNavigator().clearPath();
+                return false;
+            }
             return super.shouldContinueExecuting();
         }
 
         @Override
         protected double getAttackReachSqr(LivingEntity attackTarget) {
-            return (double) (4.0F + attackTarget.getWidth());
+            return (double) (3.0F + attackTarget.getWidth());
         }
     }
 

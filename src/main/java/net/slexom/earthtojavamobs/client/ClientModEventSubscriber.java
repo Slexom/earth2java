@@ -4,15 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.entity.SpriteRenderer;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.Fluid;
-import net.minecraft.tags.FluidTags;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -74,36 +66,5 @@ public final class ClientModEventSubscriber {
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.BONE_SPIDER_REGISTRY_OBJECT.get(), renderManagerIn -> new E2JSpiderRenderer(renderManagerIn, EntityTypesInit.BONE_SPIDER_REGISTRY_NAME));
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.BONE_SHARD_REGISTRY_OBJECT.get(), renderManagerIn -> new SpriteRenderer<>(renderManagerIn, Minecraft.getInstance().getItemRenderer()));
     }
-
-    @SubscribeEvent
-    public static void onFogColor(EntityViewRenderEvent.FogColors event) {
-        ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");
-        Fluid blockStateAtEyes = getMudFluid(event);
-        if (blockStateAtEyes.isIn(FluidTags.getCollection().getOrCreate(mudTag))) {
-            event.setRed(87.0F / 255.0F);
-            event.setGreen(54.0F / 255.0F);
-            event.setBlue(35.0F / 255.0F);
-        }
-    }
-
-    @SubscribeEvent
-    public static void onFogDensity(EntityViewRenderEvent.FogDensity event) {
-        ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");
-        Fluid blockStateAtEyes = getMudFluid(event);
-        if (blockStateAtEyes.isIn(FluidTags.getCollection().getOrCreate(mudTag))) {
-            event.setDensity(0.85F);
-            event.setCanceled(true);
-        }
-    }
-
-    private static Fluid getMudFluid(EntityViewRenderEvent event) {
-        PlayerEntity player = (PlayerEntity) event.getInfo().getRenderViewEntity();
-        World world = player.world;
-        int x = MathHelper.floor(player.getPosX());
-        int y = MathHelper.floor(player.getPosYEye());
-        int z = MathHelper.floor(player.getPosZ());
-        return world.getFluidState(new BlockPos(x, y, z)).getFluid();
-    }
-
 
 }
