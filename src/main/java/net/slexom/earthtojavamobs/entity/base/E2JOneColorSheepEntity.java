@@ -42,7 +42,7 @@ public class E2JOneColorSheepEntity<T extends AnimalEntity> extends AnimalEntity
     public E2JOneColorSheepEntity(EntityType<? extends AnimalEntity> type, World world, ItemStack wool) {
         super(type, world);
         this.wool = wool;
-        experienceValue = 2;
+        experienceValue = 3;
         setNoAI(false);
     }
 

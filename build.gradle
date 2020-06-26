@@ -11,14 +11,14 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
-version = '1.0'
-group = 'com.slexom.earth2javamobs'
+version = '1.3.1'
+group = 'net.slexom.earth2javamobs'
 archivesBaseName = 'earth2javamobs'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 
 minecraft {
-    mappings channel: 'snapshot', version: '20200618-1.15.1'
+    mappings channel: 'snapshot', version: '20200626-1.15.1'
 
     runs {
         client {
@@ -50,7 +50,7 @@ minecraft {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.15.2-31.2.22'
+    minecraft 'net.minecraftforge:forge:1.15.2-31.2.27'
 }
 
 

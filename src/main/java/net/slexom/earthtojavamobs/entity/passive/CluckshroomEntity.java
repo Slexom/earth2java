@@ -20,8 +20,6 @@ public class CluckshroomEntity extends E2JBaseChickenEntity<CluckshroomEntity> {
 
     public CluckshroomEntity(EntityType<CluckshroomEntity> type, World world) {
         super(type, world);
-        experienceValue = (int) Math.ceil(Math.random() * 3);
-        setNoAI(false);
     }
 
     @Override

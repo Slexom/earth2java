@@ -30,8 +30,6 @@ public class MuddyPigEntity extends E2JBasePigEntity<MuddyPigEntity> {
 
     public MuddyPigEntity(EntityType<MuddyPigEntity> type, World world) {
         super(type, world);
-        experienceValue = (int) Math.ceil(Math.random() * 3);
-        setNoAI(false);
     }
 
     protected void registerGoals() {
@@ -125,7 +123,6 @@ public class MuddyPigEntity extends E2JBasePigEntity<MuddyPigEntity> {
             return block == BlockInit.MUD_BLOCK.get();
         }
     }
-
 
     @Override
     public IPacket<?> createSpawnPacket() {

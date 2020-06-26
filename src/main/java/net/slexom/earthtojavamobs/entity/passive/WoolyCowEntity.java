@@ -25,8 +25,6 @@ public class WoolyCowEntity extends E2JBaseCowEntity<WoolyCowEntity> implements 
 
     public WoolyCowEntity(EntityType<WoolyCowEntity> type, World world) {
         super(type, world);
-        experienceValue = (int) Math.ceil(Math.random() * 3);
-        setNoAI(false);
     }
 
     @Override

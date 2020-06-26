@@ -32,6 +32,8 @@ public class FurnaceGolemEntity extends IronGolemEntity {
 
     public FurnaceGolemEntity(EntityType<? extends IronGolemEntity> type, World worldIn) {
         super(type, worldIn);
+        experienceValue = 5;
+        setNoAI(false);
     }
 
     @Override

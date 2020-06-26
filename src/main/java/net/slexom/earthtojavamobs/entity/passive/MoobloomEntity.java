@@ -23,8 +23,6 @@ public class MoobloomEntity extends E2JBaseCowEntity<MoobloomEntity> implements 
 
     public MoobloomEntity(EntityType<MoobloomEntity> type, World world) {
         super(type, world);
-        experienceValue = (int) Math.ceil(Math.random() * 3);
-        setNoAI(false);
     }
 
     @Override

@@ -30,7 +30,7 @@ public class GlowSquidEntity extends SquidEntity {
 
     public GlowSquidEntity(EntityType<GlowSquidEntity> type, World world) {
         super(type, world);
-        experienceValue = (int) Math.ceil(Math.random() * 3);
+        experienceValue = 3;
         setNoAI(false);
         this.moveController = new MovementController(this) {
             @Override

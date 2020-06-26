@@ -29,7 +29,7 @@ public class SkeletonWolfEntity extends AbstractSkeletonEntity {
 
     public SkeletonWolfEntity(EntityType<SkeletonWolfEntity> type, World world) {
         super(type, world);
-        experienceValue = (int) Math.ceil(Math.random() * 3);
+        experienceValue = 5;
         setNoAI(false);
     }
 

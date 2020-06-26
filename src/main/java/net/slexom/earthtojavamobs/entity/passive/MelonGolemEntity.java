@@ -13,6 +13,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
@@ -40,9 +41,10 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, n
 
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new MelonGolemEntity.RangedAttack(this, 1.25D, 20, 10.0F));
-        this.goalSelector.addGoal(2, new MelonGolemEntity.HopGoal(this));
+        this.goalSelector.addGoal(2, new MelonGolemEntity.FaceRandomGoal(this));
         this.goalSelector.addGoal(3, new LookAtGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.addGoal(4, new LookRandomlyGoal(this));
+        this.goalSelector.addGoal(5, new MelonGolemEntity.HopGoal(this));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, MobEntity.class, 10, true, false, (entity) -> entity instanceof IMob && !(entity instanceof TropicalSlimeEntity)));
     }
 
@@ -273,4 +275,26 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, n
         }
     }
 
+    static class FaceRandomGoal extends Goal {
+        private final MelonGolemEntity melonGolem;
+        private float chosenDegrees;
+        private int nextRandomizeTime;
+
+        public FaceRandomGoal(MelonGolemEntity melonGolem) {
+            this.melonGolem = melonGolem;
+            this.setMutexFlags(EnumSet.of(Goal.Flag.LOOK));
+        }
+
+        public boolean shouldExecute() {
+            return this.melonGolem.getAttackTarget() == null && (this.melonGolem.onGround || this.melonGolem.isInWater() || this.melonGolem.isInLava() || this.melonGolem.isPotionActive(Effects.LEVITATION)) && this.melonGolem.getMoveHelper() instanceof MelonGolemEntity.MoveHelperController;
+        }
+
+        public void tick() {
+            if (--this.nextRandomizeTime <= 0) {
+                this.nextRandomizeTime = 40 + this.melonGolem.getRNG().nextInt(60);
+                this.chosenDegrees = (float)this.melonGolem.getRNG().nextInt(360);
+            }
+            ((MelonGolemEntity.MoveHelperController)this.melonGolem.getMoveHelper()).setDirection(this.chosenDegrees, false);
+        }
+    }
 }

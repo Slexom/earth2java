@@ -1,6 +1,6 @@
 ## Earth2Java
 
-![Version 1.3.0](https://img.shields.io/badge/Version-1.3.0-brightgreen)
+![Version](https://img.shields.io/badge/dynamic/json?color=success&label=Version&query=%24.promos%5B%221.15.2-latest%22%5D&url=https%3A%2F%2Fraw.githubusercontent.com%2FSlexom%2Fearth2java%2Fmaster%2Fupdate.json)
 ![MC 1.15.2](https://img.shields.io/badge/MC-1.15.2-blue)
 ![Forge 31.2.0](https://img.shields.io/badge/Forge-31.2.0-blue)
 ![License MIT](https://img.shields.io/badge/License-MIT-blue)
