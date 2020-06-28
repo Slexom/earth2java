@@ -2,6 +2,9 @@ package net.slexom.earthtojavamobs.entity.base;
 
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.network.IPacket;
 import net.minecraft.world.World;
@@ -21,6 +24,11 @@ public class E2JBasePigEntity<T extends PigEntity> extends PigEntity {
         experienceValue = 3;
         setNoAI(false);
     }
+
+    public static AttributeModifierMap.MutableAttribute registerAttributes() {
+        return MobEntity.func_233666_p_().func_233815_a_(Attributes.field_233818_a_, 10.0D).func_233815_a_(Attributes.field_233821_d_, 0.25D);
+    }
+
     @Override
     public void livingTick() {
         super.livingTick();

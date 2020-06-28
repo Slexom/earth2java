@@ -2,8 +2,9 @@ package net.slexom.earthtojavamobs.init;
 
 import net.minecraft.entity.ai.attributes.GlobalEntityTypeAttributes;
 import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.passive.*;
-import net.slexom.earthtojavamobs.entity.base.E2JOneColorSheepEntity;
+import net.minecraft.entity.passive.IronGolemEntity;
+import net.minecraft.entity.passive.SquidEntity;
+import net.slexom.earthtojavamobs.entity.base.*;
 import net.slexom.earthtojavamobs.entity.monster.BoneSpiderEntity;
 import net.slexom.earthtojavamobs.entity.monster.SkeletonWolfEntity;
 import net.slexom.earthtojavamobs.entity.passive.HornedSheepEntity;
@@ -13,28 +14,28 @@ public class EntityAttributeInit {
 
     public static void init() {
 
-        GlobalEntityTypeAttributes.put(EntityTypesInit.AMBER_CHICKEN_REGISTRY_OBJECT.get(), ChickenEntity.func_234187_eI_().func_233813_a_());
-        GlobalEntityTypeAttributes.put(EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_OBJECT.get(), ChickenEntity.func_234187_eI_().func_233813_a_());
-        GlobalEntityTypeAttributes.put(EntityTypesInit.STORMY_CHICKEN_REGISTRY_OBJECT.get(), ChickenEntity.func_234187_eI_().func_233813_a_());
-        GlobalEntityTypeAttributes.put(EntityTypesInit.CLUCKSHROOM_REGISTRY_OBJECT.get(), ChickenEntity.func_234187_eI_().func_233813_a_());
+        GlobalEntityTypeAttributes.put(EntityTypesInit.AMBER_CHICKEN_REGISTRY_OBJECT.get(), E2JBaseChickenEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_OBJECT.get(), E2JBaseChickenEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(EntityTypesInit.STORMY_CHICKEN_REGISTRY_OBJECT.get(), E2JBaseChickenEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(EntityTypesInit.CLUCKSHROOM_REGISTRY_OBJECT.get(), E2JBaseChickenEntity.registerAttributes().func_233813_a_());
 
 
-        GlobalEntityTypeAttributes.put(EntityTypesInit.ALBINO_COW_REGISTRY_OBJECT.get(), CowEntity.func_234188_eI_().func_233813_a_());
-        GlobalEntityTypeAttributes.put(EntityTypesInit.ASHEN_COW_REGISTRY_OBJECT.get(), CowEntity.func_234188_eI_().func_233813_a_());
-        GlobalEntityTypeAttributes.put(EntityTypesInit.SUNSET_COW_REGISTRY_OBJECT.get(), CowEntity.func_234188_eI_().func_233813_a_());
-        GlobalEntityTypeAttributes.put(EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT.get(), CowEntity.func_234188_eI_().func_233813_a_());
-        GlobalEntityTypeAttributes.put(EntityTypesInit.MOOBLOOM_REGISTRY_OBJECT.get(), CowEntity.func_234188_eI_().func_233813_a_());
+        GlobalEntityTypeAttributes.put(EntityTypesInit.ALBINO_COW_REGISTRY_OBJECT.get(), E2JBaseCowEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(EntityTypesInit.ASHEN_COW_REGISTRY_OBJECT.get(), E2JBaseCowEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(EntityTypesInit.SUNSET_COW_REGISTRY_OBJECT.get(), E2JBaseCowEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT.get(), E2JBaseCowEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(EntityTypesInit.MOOBLOOM_REGISTRY_OBJECT.get(), E2JBaseCowEntity.registerAttributes().func_233813_a_());
 
 
-        GlobalEntityTypeAttributes.put(EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT.get(), PigEntity.func_234215_eI_().func_233813_a_());
-        GlobalEntityTypeAttributes.put(EntityTypesInit.PALE_PIG_REGISTRY_OBJECT.get(), PigEntity.func_234215_eI_().func_233813_a_());
-        GlobalEntityTypeAttributes.put(EntityTypesInit.MUDDY_PIG_REGISTRY_OBJECT.get(), PigEntity.func_234215_eI_().func_233813_a_());
-        GlobalEntityTypeAttributes.put(EntityTypesInit.SPOTTED_PIG_REGISTRY_OBJECT.get(), PigEntity.func_234215_eI_().func_233813_a_());
+        GlobalEntityTypeAttributes.put(EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT.get(), E2JBasePigEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(EntityTypesInit.PALE_PIG_REGISTRY_OBJECT.get(), E2JBasePigEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(EntityTypesInit.MUDDY_PIG_REGISTRY_OBJECT.get(), E2JBasePigEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(EntityTypesInit.SPOTTED_PIG_REGISTRY_OBJECT.get(), E2JBasePigEntity.registerAttributes().func_233813_a_());
 
-        GlobalEntityTypeAttributes.put(EntityTypesInit.JUMBO_RABBIT_REGISTRY_OBJECT.get(), RabbitEntity.func_234224_eJ_().func_233813_a_());
-        GlobalEntityTypeAttributes.put(EntityTypesInit.HARELEQUIN_RABBIT_REGISTRY_OBJECT.get(), RabbitEntity.func_234224_eJ_().func_233813_a_());
-        GlobalEntityTypeAttributes.put(EntityTypesInit.MUDDY_FOOT_RABBIT_REGISTRY_OBJECT.get(), RabbitEntity.func_234224_eJ_().func_233813_a_());
-        GlobalEntityTypeAttributes.put(EntityTypesInit.VESTED_RABBIT_REGISTRY_OBJECT.get(), RabbitEntity.func_234224_eJ_().func_233813_a_());
+        GlobalEntityTypeAttributes.put(EntityTypesInit.JUMBO_RABBIT_REGISTRY_OBJECT.get(), E2JBaseRabbitEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(EntityTypesInit.HARELEQUIN_RABBIT_REGISTRY_OBJECT.get(), E2JBaseRabbitEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(EntityTypesInit.MUDDY_FOOT_RABBIT_REGISTRY_OBJECT.get(), E2JBaseRabbitEntity.registerAttributes().func_233813_a_());
+        GlobalEntityTypeAttributes.put(EntityTypesInit.VESTED_RABBIT_REGISTRY_OBJECT.get(), E2JBaseRabbitEntity.registerAttributes().func_233813_a_());
 
         GlobalEntityTypeAttributes.put(EntityTypesInit.INKY_SHEEP_REGISTRY_OBJECT.get(), E2JOneColorSheepEntity.registerAttributes().func_233813_a_());
         GlobalEntityTypeAttributes.put(EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT.get(), E2JOneColorSheepEntity.registerAttributes().func_233813_a_());
