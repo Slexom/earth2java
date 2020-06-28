@@ -2,19 +2,19 @@ package net.slexom.earthtojavamobs.client.renderer.entity.layers;
 
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import net.slexom.earthtojavamobs.entity.passive.MoobloomEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockRendererDispatcher;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
-import net.minecraft.client.renderer.Vector3f;
 import net.minecraft.client.renderer.entity.IEntityRenderer;
 import net.minecraft.client.renderer.entity.LivingRenderer;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.client.renderer.entity.model.CowModel;
+import net.minecraft.util.math.vector.Vector3f;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.slexom.earthtojavamobs.entity.passive.MoobloomEntity;
 
 @OnlyIn(Dist.CLIENT)
 public class MoobloomLayer<T extends MoobloomEntity> extends LayerRenderer<T, CowModel<T>> {

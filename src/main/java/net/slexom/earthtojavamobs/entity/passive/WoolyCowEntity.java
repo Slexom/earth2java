@@ -4,19 +4,24 @@ package net.slexom.earthtojavamobs.entity.passive;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.EatGrassGoal;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IForgeShearable;
 import net.minecraftforge.fml.network.NetworkHooks;
 import net.slexom.earthtojavamobs.entity.base.E2JBaseCowEntity;
 
-public class WoolyCowEntity extends E2JBaseCowEntity<WoolyCowEntity> implements net.minecraftforge.common.IShearable {
+import javax.annotation.Nullable;
+
+public class WoolyCowEntity extends E2JBaseCowEntity<WoolyCowEntity> implements IForgeShearable {
 
     private static final DataParameter<Byte> isSheared = EntityDataManager.createKey(WoolyCowEntity.class, DataSerializers.BYTE);
 
@@ -79,23 +84,22 @@ public class WoolyCowEntity extends E2JBaseCowEntity<WoolyCowEntity> implements 
         }
     }
 
-    @Override
-    public boolean isShearable(ItemStack item, net.minecraft.world.IWorldReader world, BlockPos pos) {
-        return !this.getSheared() && !this.isChild();
+    public boolean isShearable(@javax.annotation.Nonnull ItemStack item, World world, BlockPos pos) {
+        return this.isAlive() && !this.getSheared() && !this.isChild();
     }
 
-    @Override
-    public java.util.List<ItemStack> onSheared(ItemStack item, net.minecraft.world.IWorld world, BlockPos pos, int fortune) {
-        java.util.List<ItemStack> ret = new java.util.ArrayList<>();
+    public java.util.List<ItemStack> onSheared(@Nullable PlayerEntity player, @javax.annotation.Nonnull ItemStack item, World world, BlockPos pos, int fortune) {
+        world.playMovingSound(null, this, SoundEvents.ENTITY_SHEEP_SHEAR, player == null ? SoundCategory.BLOCKS : SoundCategory.PLAYERS, 1.0F, 1.0F);
         if (!this.world.isRemote) {
             this.setSheared(true);
+            java.util.List<ItemStack> items = new java.util.ArrayList<>();
             int i = 1 + this.rand.nextInt(3);
             for (int j = 0; j < i; ++j) {
-                ret.add(new ItemStack(Blocks.BROWN_WOOL));
+                items.add(new ItemStack(Blocks.BROWN_WOOL));
             }
+            return items;
         }
-        this.playSound(SoundEvents.ENTITY_SHEEP_SHEAR, 1.0F, 1.0F);
-        return ret;
+        return java.util.Collections.emptyList();
     }
 
     public void writeAdditional(CompoundNBT compound) {

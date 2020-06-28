@@ -1,6 +1,8 @@
 package net.slexom.earthtojavamobs.entity.passive;
 
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
@@ -82,7 +84,7 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
     }
 
     public boolean attackEntityAsMob(Entity entityIn) {
-        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getValue()));
+        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getAttribute(Attributes.field_233823_f_).getValue()));//ATTACK
         if (flag) {
             this.applyEnchantments(this, entityIn);
         }
@@ -151,10 +153,12 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
         return (this.dataManager.get(DATA_FLAGS_ID) & 2) != 0;
     }
 
-    protected void registerAttributes() {
-        super.registerAttributes();
-        this.getAttributes().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2.0D);
-        this.getAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(48.0D);
+    public static AttributeModifierMap.MutableAttribute registerAttributes() {
+        return MobEntity.func_233666_p_()
+                .func_233815_a_(Attributes.field_233818_a_, 8.0D)
+                .func_233815_a_(Attributes.field_233819_b_, 48.0D)
+                .func_233815_a_(Attributes.field_233821_d_, 0.23D)
+                .func_233815_a_(Attributes.field_233823_f_, 2.0D);
     }
 
     public ResourceLocation getLootTable() {
@@ -220,7 +224,7 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
     }
 
     private boolean isWithinDistance(BlockPos pos) {
-        return pos.withinDistance(new BlockPos(this), (double) 48);
+        return pos.withinDistance(new BlockPos(this.getPosX(), this.getPosY(), this.getPosZ()), (double) 48);
     }
 
     static class AngerGoal extends HurtByTargetGoal {

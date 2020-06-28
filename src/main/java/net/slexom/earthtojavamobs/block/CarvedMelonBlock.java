@@ -51,27 +51,27 @@ public class CarvedMelonBlock extends HorizontalBlock {
         return this.getSnowmanBasePattern().match(p_196354_1_, p_196354_2_) != null;
     }
 
-    private void trySpawnGolem(World p_196358_1_, BlockPos p_196358_2_) {
-        BlockPattern.PatternHelper blockpattern$patternhelper = this.getSnowmanPattern().match(p_196358_1_, p_196358_2_);
+    private void trySpawnGolem(World world, BlockPos pos) {
+        BlockPattern.PatternHelper blockpattern$patternhelper = this.getSnowmanPattern().match(world, pos);
         if (blockpattern$patternhelper != null) {
             for (int i = 0; i < this.getSnowmanPattern().getThumbLength(); ++i) {
                 CachedBlockInfo cachedBlockInfo = blockpattern$patternhelper.translateOffset(0, i, 0);
-                p_196358_1_.setBlockState(cachedBlockInfo.getPos(), Blocks.AIR.getDefaultState(), 2);
-                p_196358_1_.playEvent(2001, cachedBlockInfo.getPos(), Block.getStateId(cachedBlockInfo.getBlockState()));
+                world.setBlockState(cachedBlockInfo.getPos(), Blocks.AIR.getDefaultState(), 2);
+                world.playEvent(2001, cachedBlockInfo.getPos(), Block.getStateId(cachedBlockInfo.getBlockState()));
             }
 
-            MelonGolemEntity melonGolemEntity = EntityTypesInit.MELON_GOLEM_REGISTRY_OBJECT.get().create(p_196358_1_);
+            MelonGolemEntity melonGolemEntity = EntityTypesInit.MELON_GOLEM_REGISTRY_OBJECT.get().create(world);
             BlockPos blockPos = blockpattern$patternhelper.translateOffset(0, 2, 0).getPos();
             melonGolemEntity.setLocationAndAngles((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 0.05D, (double) blockPos.getZ() + 0.5D, 0.0F, 0.0F);
-            p_196358_1_.addEntity(melonGolemEntity);
+            world.addEntity(melonGolemEntity);
 
-            for (ServerPlayerEntity serverplayerentity : p_196358_1_.getEntitiesWithinAABB(ServerPlayerEntity.class, melonGolemEntity.getBoundingBox().grow(5.0D))) {
+            for (ServerPlayerEntity serverplayerentity : world.getEntitiesWithinAABB(ServerPlayerEntity.class, melonGolemEntity.getBoundingBox().grow(5.0D))) {
                 CriteriaTriggers.SUMMONED_ENTITY.trigger(serverplayerentity, melonGolemEntity);
             }
 
             for (int l = 0; l < this.getSnowmanPattern().getThumbLength(); ++l) {
                 CachedBlockInfo cachedblockinfo3 = blockpattern$patternhelper.translateOffset(0, l, 0);
-                p_196358_1_.notifyNeighbors(cachedblockinfo3.getPos(), Blocks.AIR);
+                world.func_230547_a_(cachedblockinfo3.getPos(), Blocks.AIR);
             }
         }
     }

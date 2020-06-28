@@ -3,6 +3,8 @@ package net.slexom.earthtojavamobs.entity.passive;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.controller.MovementController;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.IMob;
@@ -20,13 +22,14 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IForgeShearable;
 import net.slexom.earthtojavamobs.entity.projectile.MelonSeedProjectileEntity;
 
 import javax.annotation.Nullable;
 import java.util.EnumSet;
 import java.util.Random;
 
-public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, net.minecraftforge.common.IShearable {
+public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, IForgeShearable {
     private static final DataParameter<Byte> MELON_EQUIPPED = EntityDataManager.createKey(MelonGolemEntity.class, DataSerializers.BYTE);
     private static final DataParameter<Integer> SHOOTING_TICKS = EntityDataManager.createKey(MelonGolemEntity.class, DataSerializers.VARINT);
     private int lastBlink = 0;
@@ -48,10 +51,10 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, n
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, MobEntity.class, 10, true, false, (entity) -> entity instanceof IMob && !(entity instanceof TropicalSlimeEntity)));
     }
 
-    protected void registerAttributes() {
-        super.registerAttributes();
-        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(4.0D);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue((double) 0.2F);
+    public static AttributeModifierMap.MutableAttribute registerAttributes() {
+        return MobEntity.func_233666_p_()
+                .func_233815_a_(Attributes.field_233818_a_, 4.0D) //MAX_HEALTH
+                .func_233815_a_(Attributes.field_233821_d_, 0.2F);//MOVEMENT_SPEED
     }
 
     protected void registerData() {
@@ -175,12 +178,10 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, n
         return this.rand.nextInt(20) + 10;
     }
 
-    @Override
     public boolean isShearable(ItemStack item, net.minecraft.world.IWorldReader world, BlockPos pos) {
         return this.isMelonEquipped();
     }
 
-    @Override
     public java.util.List<ItemStack> onSheared(ItemStack item, net.minecraft.world.IWorld world, BlockPos pos, int fortune) {
         this.setMelonEquipped(false);
         return new java.util.ArrayList<>();
@@ -253,8 +254,8 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, n
                 this.mob.setMoveForward(0.0F);
             } else {
                 this.action = MovementController.Action.WAIT;
-                if (this.mob.onGround) {
-                    this.mob.setAIMoveSpeed((float) (this.speed * this.mob.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getValue()));
+                if (this.mob.func_233570_aj_()) {
+                    this.mob.setAIMoveSpeed((float) (this.speed * this.mob.getAttribute(Attributes.field_233821_d_).getValue()));
                     if (this.jumpDelay-- <= 0) {
                         this.jumpDelay = this.melonGolem.getJumpDelay();
                         if (this.isAggressive) {
@@ -268,7 +269,7 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, n
                         this.mob.setAIMoveSpeed(0.0F);
                     }
                 } else {
-                    this.mob.setAIMoveSpeed((float) (this.speed * this.mob.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getValue()));
+                    this.mob.setAIMoveSpeed((float) (this.speed * this.mob.getAttribute(Attributes.field_233821_d_).getValue()));
                 }
 
             }
@@ -292,9 +293,9 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, n
         public void tick() {
             if (--this.nextRandomizeTime <= 0) {
                 this.nextRandomizeTime = 40 + this.melonGolem.getRNG().nextInt(60);
-                this.chosenDegrees = (float)this.melonGolem.getRNG().nextInt(360);
+                this.chosenDegrees = (float) this.melonGolem.getRNG().nextInt(360);
             }
-            ((MelonGolemEntity.MoveHelperController)this.melonGolem.getMoveHelper()).setDirection(this.chosenDegrees, false);
+            ((MelonGolemEntity.MoveHelperController) this.melonGolem.getMoveHelper()).setDirection(this.chosenDegrees, false);
         }
     }
 }

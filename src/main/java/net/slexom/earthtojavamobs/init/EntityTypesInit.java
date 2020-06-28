@@ -15,7 +15,7 @@ import net.slexom.earthtojavamobs.entity.projectile.MelonSeedProjectileEntity;
 
 public class EntityTypesInit {
 
-    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = new DeferredRegister<>(ForgeRegistries.ENTITIES, EarthtojavamobsMod.MOD_ID);
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, EarthtojavamobsMod.MOD_ID);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

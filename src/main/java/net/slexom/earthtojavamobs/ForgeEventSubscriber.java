@@ -140,7 +140,7 @@ public final class ForgeEventSubscriber {
                 for (int i1 = 0; i1 < golemPattern.getPalmLength(); ++i1) {
                     for (int j1 = 0; j1 < golemPattern.getThumbLength(); ++j1) {
                         CachedBlockInfo cachedblockinfo1 = patternHelper.translateOffset(i1, j1, 0);
-                        world.notifyNeighbors(cachedblockinfo1.getPos(), Blocks.AIR);
+                        world.func_230547_a_(cachedblockinfo1.getPos(), Blocks.AIR);
                     }
                 }
             }

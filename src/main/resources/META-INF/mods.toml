@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[31,)"
+loaderVersion="[32,)"
 issueTrackerURL="https://github.com/Slexom/earth2java/issues"
 
 [[mods]]
@@ -16,7 +16,7 @@ updateJSONURL="https://raw.githubusercontent.com/Slexom/earth2java/master/update
 [[dependencies.earthtojavamobs]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.15.2]"
+    versionRange="[1.16.1]"
     ordering="NONE"
     side="BOTH"
 

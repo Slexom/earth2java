@@ -42,7 +42,7 @@ public class CluckshroomEntity extends E2JBaseChickenEntity<CluckshroomEntity> {
         }
 
         public boolean canPlace(IWorldReader world, BlockState target, BlockPos targetPos, BlockState downTarget, BlockPos downTargetPos) {
-            return !downTarget.isAir(world, downTargetPos) && downTarget.isCollisionShapeOpaque(world, downTargetPos) && target.isValidPosition(world, targetPos);
+            return !downTarget.isAir(world, downTargetPos) && downTarget.isOpaqueCube(world, downTargetPos) && target.isValidPosition(world, targetPos);
         }
 
         public void tick() {
@@ -55,7 +55,7 @@ public class CluckshroomEntity extends E2JBaseChickenEntity<CluckshroomEntity> {
             BlockState blockState = mushroom.getDefaultState();
             BlockPos blockDownPos = blockPos.down();
             BlockState blockDownState = iworld.getBlockState(blockDownPos);
-            if (canPlace(iworld, blockState, blockPos, blockDownState, blockDownPos) && !net.minecraftforge.event.ForgeEventFactory.onBlockPlace(cluckshroom, new net.minecraftforge.common.util.BlockSnapshot(iworld, blockPos, blockDownState), net.minecraft.util.Direction.UP)) {
+            if (canPlace(iworld, blockState, blockPos, blockDownState, blockDownPos) && !net.minecraftforge.event.ForgeEventFactory.onBlockPlace(cluckshroom,   net.minecraftforge.common.util.BlockSnapshot.create(iworld, blockDownPos), net.minecraft.util.Direction.UP)) {
                 iworld.destroyBlock(blockPos, false);
                 iworld.setBlockState(blockPos, blockState, 3);
             }

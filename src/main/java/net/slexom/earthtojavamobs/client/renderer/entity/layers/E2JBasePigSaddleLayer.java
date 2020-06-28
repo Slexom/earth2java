@@ -21,7 +21,7 @@ public class E2JBasePigSaddleLayer extends LayerRenderer<E2JBasePigEntity<? exte
     }
 
     public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, E2JBasePigEntity<? extends PigEntity> entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-        if (entitylivingbaseIn.getSaddled()) {
+        if (entitylivingbaseIn.isHorseSaddled()) {
             this.getEntityModel().copyModelAttributesTo(this.pigModel);
             this.pigModel.setLivingAnimations(entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks);
             this.pigModel.setRotationAngles(entitylivingbaseIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);

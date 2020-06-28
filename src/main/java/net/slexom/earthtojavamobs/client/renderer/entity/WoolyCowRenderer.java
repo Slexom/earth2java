@@ -9,8 +9,6 @@ import net.slexom.earthtojavamobs.entity.passive.WoolyCowEntity;
 @OnlyIn(Dist.CLIENT)
 public class WoolyCowRenderer extends E2JCowRenderer {
 
-    private int remainingTick = 0;
-
     public WoolyCowRenderer(EntityRendererManager renderManagerIn) {
         super(renderManagerIn, "wooly_cow");
     }
@@ -21,6 +19,11 @@ public class WoolyCowRenderer extends E2JCowRenderer {
         ResourceLocation textureSheared = new ResourceLocation("earthtojavamobs:textures/mobs/cow/wooly_cow/wooly_cow_sheared.png");
         ResourceLocation textureShearedBlink = new ResourceLocation("earthtojavamobs:textures/mobs/cow/wooly_cow/wooly_cow_sheared_blink.png");
         boolean blink = entity.getBlinkRemainingTicks() > 0;
-        return entity.getSheared() ? blink ? textureShearedBlink : textureSheared : blink ? textureBlink : texture;
+        return entity.getSheared() ?
+                blink ?
+                        textureShearedBlink : textureSheared
+                :
+                blink ?
+                        textureBlink : texture;
     }
 }

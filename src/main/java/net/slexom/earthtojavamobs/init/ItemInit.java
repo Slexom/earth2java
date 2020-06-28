@@ -13,7 +13,7 @@ import net.slexom.earthtojavamobs.item.BoneShardItem;
 import net.slexom.earthtojavamobs.item.ModdedSpawnEggItem;
 
 public class ItemInit {
-    public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, EarthtojavamobsMod.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, EarthtojavamobsMod.MOD_ID);
     private static final ItemGroup itemGroup = EarthtojavamobsMod.E2JItemGroup.instance;
 
     public static final RegistryObject<BucketItem> MUD_BUCKET = ITEMS.register(

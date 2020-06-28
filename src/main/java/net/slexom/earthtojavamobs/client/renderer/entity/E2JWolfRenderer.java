@@ -2,7 +2,6 @@ package net.slexom.earthtojavamobs.client.renderer.entity;
 
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.WolfRenderer;
-import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
@@ -25,7 +24,7 @@ public class E2JWolfRenderer extends WolfRenderer {
         String resourceTextureAngry = MessageFormat.format("earthtojavamobs:textures/mobs/wolf/{0}/{0}_angry.png", this.registryName);
         ResourceLocation texture = new ResourceLocation(resourceTexture);
         ResourceLocation textureAngry = new ResourceLocation(resourceTextureAngry);
-        return entity.isAngry() ? textureAngry : texture;
+        return entity.func_233684_eK_() ? textureAngry : texture;
     }
 
 }

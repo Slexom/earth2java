@@ -3,7 +3,9 @@ package net.slexom.earthtojavamobs.entity.base;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -16,6 +18,7 @@ import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -25,9 +28,10 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkHooks;
 
+import javax.annotation.Nullable;
 import java.util.Random;
 
-public class E2JOneColorSheepEntity<T extends AnimalEntity> extends AnimalEntity implements net.minecraftforge.common.IShearable {
+public class E2JOneColorSheepEntity<T extends AnimalEntity> extends AnimalEntity implements net.minecraftforge.common.IForgeShearable {
 
     private static final DataParameter<Byte> isSheared = EntityDataManager.createKey(E2JOneColorSheepEntity.class, DataSerializers.BYTE);
 
@@ -59,10 +63,9 @@ public class E2JOneColorSheepEntity<T extends AnimalEntity> extends AnimalEntity
         this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
     }
 
-    protected void registerAttributes() {
-        super.registerAttributes();
-        this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(8.0D);
-        this.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue((double) 0.23F);
+
+    public static AttributeModifierMap.MutableAttribute registerAttributes() {
+        return MobEntity.func_233666_p_().func_233815_a_(Attributes.field_233818_a_, 8.0D).func_233815_a_(Attributes.field_233821_d_, 0.23F);
     }
 
     protected void updateAITasks() {
@@ -129,23 +132,22 @@ public class E2JOneColorSheepEntity<T extends AnimalEntity> extends AnimalEntity
         }
     }
 
-    @Override
-    public boolean isShearable(ItemStack item, net.minecraft.world.IWorldReader world, BlockPos pos) {
-        return !this.getSheared() && !this.isChild();
+    public boolean isShearable(@javax.annotation.Nonnull ItemStack item, World world, BlockPos pos) {
+        return this.isAlive() && !this.getSheared() && !this.isChild();
     }
 
-    @Override
-    public java.util.List<ItemStack> onSheared(ItemStack item, net.minecraft.world.IWorld world, BlockPos pos, int fortune) {
-        java.util.List<ItemStack> ret = new java.util.ArrayList<>();
+    public java.util.List<ItemStack> onSheared(@Nullable PlayerEntity player, @javax.annotation.Nonnull ItemStack item, World world, BlockPos pos, int fortune) {
+        world.playMovingSound(null, this, SoundEvents.ENTITY_SHEEP_SHEAR, player == null ? SoundCategory.BLOCKS : SoundCategory.PLAYERS, 1.0F, 1.0F);
         if (!this.world.isRemote) {
+            java.util.List<ItemStack> items = new java.util.ArrayList<>();
             this.setSheared(true);
             int i = 1 + this.rand.nextInt(3);
             for (int j = 0; j < i; ++j) {
-                ret.add(this.wool);
+                items.add(this.wool);
             }
+            return items;
         }
-        this.playSound(SoundEvents.ENTITY_SHEEP_SHEAR, 1.0F, 1.0F);
-        return ret;
+        return java.util.Collections.emptyList();
     }
 
     public void writeAdditional(CompoundNBT compound) {

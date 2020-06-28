@@ -1,7 +1,6 @@
 package net.slexom.earthtojavamobs.item;
 
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.SnowballEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Stats;
@@ -27,7 +26,7 @@ public class BoneShardItem extends Item {
         if (!worldIn.isRemote) {
             BoneShardEntity boneShardEntity = new BoneShardEntity(worldIn, playerIn);
             boneShardEntity.setItem(itemstack);
-            boneShardEntity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
+            boneShardEntity.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
             worldIn.addEntity(boneShardEntity);
         }
 
@@ -36,6 +35,6 @@ public class BoneShardItem extends Item {
             itemstack.shrink(1);
         }
 
-        return ActionResult.resultSuccess(itemstack);
+        return ActionResult.func_233538_a_(itemstack, worldIn.isRemote());
     }
 }

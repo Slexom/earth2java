@@ -56,11 +56,12 @@ public class MelonSeedProjectileEntity extends ProjectileItemEntity {
         }
     }
 
+    protected void onEntityHit(EntityRayTraceResult p_213868_1_) {
+        super.onEntityHit(p_213868_1_);
+        Entity entity = p_213868_1_.getEntity();
+        entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.func_234616_v_()), (float)10.0F);
+    }
     protected void onImpact(RayTraceResult result) {
-        if (result.getType() == RayTraceResult.Type.ENTITY) {
-            Entity entity = ((EntityRayTraceResult) result).getEntity();
-            entity.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), 10.0F);
-        }
         if (!this.world.isRemote) {
             this.world.setEntityState(this, (byte) 3);
             this.remove();

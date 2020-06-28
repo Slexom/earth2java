@@ -9,7 +9,7 @@ import net.slexom.earthtojavamobs.item.crafting.MudBucketRecipe;
 
 public class RecipesInit {
 
-    public static final DeferredRegister<IRecipeSerializer<?>> RECIPES = new DeferredRegister<>(ForgeRegistries.RECIPE_SERIALIZERS, EarthtojavamobsMod.MOD_ID);
+    public static final DeferredRegister<IRecipeSerializer<?>> RECIPES = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, EarthtojavamobsMod.MOD_ID);
 
     public static final RegistryObject<MudBucketRecipe.Serializer> MUD_BUCKET_RECIPE = RECIPES.register("mud_bucket", MudBucketRecipe.Serializer::new);
 

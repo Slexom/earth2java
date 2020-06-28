@@ -13,7 +13,7 @@ import net.slexom.earthtojavamobs.block.CarvedMelonBlock;
 import net.slexom.earthtojavamobs.block.MudBlock;
 
 public class BlockInit {
-    public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS, EarthtojavamobsMod.MOD_ID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, EarthtojavamobsMod.MOD_ID);
 
     public static final RegistryObject<Block> CARVED_MELON = BLOCKS.register(
             "carved_melon",
@@ -21,7 +21,7 @@ public class BlockInit {
     );
     public static final RegistryObject<Block> MELON_LANTERN = BLOCKS.register(
             "melon_lantern",
-            () -> new CarvedMelonBlock(Block.Properties.create(Material.GOURD, MaterialColor.LIME).hardnessAndResistance(1.0F).sound(SoundType.WOOD).lightValue(15))
+            () -> new CarvedMelonBlock(Block.Properties.create(Material.GOURD, MaterialColor.LIME).hardnessAndResistance(1.0F).sound(SoundType.WOOD).func_235838_a_((p_235462_0_) -> 15))
     );
     public static final RegistryObject<Block> MELON_GOLEM_HEAD_BLINK = BLOCKS.register(
             "melon_golem_blink",

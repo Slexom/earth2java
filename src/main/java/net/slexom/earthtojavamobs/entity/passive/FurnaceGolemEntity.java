@@ -2,6 +2,7 @@ package net.slexom.earthtojavamobs.entity.passive;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.CreeperEntity;
 import net.minecraft.entity.monster.IMob;
@@ -40,10 +41,8 @@ public class FurnaceGolemEntity extends IronGolemEntity {
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.0D, true));
         this.goalSelector.addGoal(2, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
-        this.goalSelector.addGoal(2, new MoveTowardsVillageGoal(this, 0.6D));
-        this.goalSelector.addGoal(3, new MoveThroughVillageGoal(this, 0.6D, false, 4, () -> {
-            return false;
-        }));
+        this.goalSelector.addGoal(2, new ReturnToVillageGoal(this, 0.6D, false));
+        this.goalSelector.addGoal(4, new PatrolVillageGoal(this, 0.6D));
         this.goalSelector.addGoal(6, new WaterAvoidingRandomWalkingGoal(this, 0.6D));
         this.goalSelector.addGoal(7, new LookAtGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
@@ -55,7 +54,7 @@ public class FurnaceGolemEntity extends IronGolemEntity {
     public boolean attackEntityAsMob(Entity entityIn) {
         this.attackTimer = 10;
         this.world.setEntityState(this, (byte) 4);
-        float f = (float) this.getAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).getValue();
+        float f = (float) this.getAttribute(Attributes.field_233823_f_).getValue();
         float f1 = f > 0.0F ? f / 2.0F + (float) this.rand.nextInt((int) f) : 0.0F;
         boolean flag = entityIn.attackEntityFrom(DamageSource.ON_FIRE, f1);
         if (flag) {
