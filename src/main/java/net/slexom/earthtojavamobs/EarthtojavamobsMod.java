@@ -7,22 +7,20 @@ import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.RegistryKey;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.DimensionType;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
+import net.minecraft.world.ISeedReader;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.ChunkGenerator;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.feature.BlockStateFeatureConfig;
 import net.minecraft.world.gen.feature.LakesFeature;
+import net.minecraft.world.gen.feature.structure.StructureManager;
 import net.minecraft.world.gen.placement.ChanceConfig;
 import net.minecraft.world.gen.placement.Placement;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
@@ -71,18 +69,16 @@ public class EarthtojavamobsMod {
             public void run() {
                 for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
                     biome.addFeature(GenerationStage.Decoration.LAKES, new LakesFeature(BlockStateFeatureConfig.field_236455_a_)
-                .withConfiguration(new BlockStateFeatureConfig(BlockInit.MUD_BLOCK.get().getDefaultState())).withPlacement(Placement.WATER_LAKE.configure(new ChanceConfig(E2JModConfig.mudLakeFrequency))));
-
                     {
                         @Override
-                        public boolean place(World world, ChunkGenerator generator, Random rand, BlockPos pos, BlockStateFeatureConfig config) {
-                            DimensionType dimensionType = world.getDimension().getType();
+                        public  boolean func_230362_a_(ISeedReader seedReader, StructureManager structureManager, ChunkGenerator generator, Random rand, BlockPos pos, BlockStateFeatureConfig config) {
+                            RegistryKey<DimensionType> dimensionType = seedReader.getWorld().func_234922_V_();
                             boolean dimensionCriteria = false;
                             if (dimensionType == DimensionType.field_235999_c_)
                                 dimensionCriteria = true;
                             if (!dimensionCriteria)
                                 return false;
-                            return super.func_230367_a_();place(world, generator, rand, pos, config);
+                            return super.func_230362_a_(seedReader,structureManager, generator, rand, pos, config);
                         }
                     }.withConfiguration(new BlockStateFeatureConfig(BlockInit.MUD_BLOCK.get().getDefaultState())).withPlacement(Placement.WATER_LAKE.configure(new ChanceConfig(E2JModConfig.mudLakeFrequency))));
                 }
@@ -163,12 +159,4 @@ public class EarthtojavamobsMod {
         }
     }
 
-    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents {
-
-        @SubscribeEvent(priority = EventPriority.LOWEST)
-        public static void registerAttributes(final RegistryEvent.Register<EntityType<?>> event) {
-            EntityAttributeInit.init();
-        }
-    }
 }

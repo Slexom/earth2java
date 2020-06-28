@@ -14,6 +14,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 import net.slexom.earthtojavamobs.config.ConfigHelper;
 import net.slexom.earthtojavamobs.config.ConfigHolder;
 import net.slexom.earthtojavamobs.init.BlockInit;
+import net.slexom.earthtojavamobs.init.EntityAttributeInit;
 import net.slexom.earthtojavamobs.item.ModdedSpawnEggItem;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -61,6 +62,7 @@ public final class ModEventSubscriber {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onPostRegisterEntities(final RegistryEvent.Register<EntityType<?>> event) {
         ModdedSpawnEggItem.initUnaddedEggs();
+        EntityAttributeInit.init();
     }
 
 }
