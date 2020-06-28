@@ -1,8 +1,13 @@
 ## Earth2Java
 
-![Version 1.3.0](https://img.shields.io/badge/Version-1.3.0-brightgreen)
+![Version 1.3.1](https://img.shields.io/badge/Version-1.3.1-brightgreen)
 ![MC 1.15.2](https://img.shields.io/badge/MC-1.15.2-blue)
-![Forge 31.2.0](https://img.shields.io/badge/Forge-31.2.0-blue)
+![Forge 31.2.0](https://img.shields.io/badge/Forge-31.2.x-blue)
+---
+![Version 2.0.0](https://img.shields.io/badge/Version-2.0.0-brightgreen)
+![MC 1.16.1](https://img.shields.io/badge/MC-1.16.1-blue)
+![Forge 32.0.x](https://img.shields.io/badge/Forge-32.0.x-blue)
+---
 ![License MIT](https://img.shields.io/badge/License-MIT-blue)
 [![CurseForge Downloads](https://img.shields.io/badge/dynamic/json?color=6441a5&label=CurseForge&query=%24.downloadCount&suffix=%20Downloads&url=https%3A%2F%2Faddons-ecs.forgesvc.net%2Fapi%2Fv2%2Faddon%2F387396)](https://www.curseforge.com/minecraft/mc-mods/earth2java-mobs)
 ### Description
