@@ -1,6 +1,5 @@
 package net.slexom.earthtojavamobs.entity.passive;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.player.PlayerEntity;
@@ -119,8 +118,7 @@ public class MuddyPigEntity extends E2JBasePigEntity<MuddyPigEntity> {
 
         @Override
         protected boolean shouldMoveTo(IWorldReader worldIn, BlockPos pos) {
-            Block block = worldIn.getBlockState(pos).getBlock();
-            return block == BlockInit.MUD_BLOCK.get();
+            return worldIn.getBlockState(pos).isIn(BlockInit.MUD_BLOCK.get());
         }
     }
 

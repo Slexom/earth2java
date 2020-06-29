@@ -1,12 +1,17 @@
 package net.slexom.earthtojavamobs.entity.monster;
 
 
-import net.minecraft.entity.*;
+import net.minecraft.block.BlockState;
+import net.minecraft.entity.CreatureAttribute;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.entity.monster.AbstractSkeletonEntity;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.MonsterEntity;
+import net.minecraft.entity.passive.WolfEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
 import net.minecraft.network.datasync.DataParameter;
@@ -15,15 +20,14 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
 import javax.annotation.Nullable;
 
-public class SkeletonWolfEntity extends AbstractSkeletonEntity {
+public class SkeletonWolfEntity extends MonsterEntity {
 
     protected static final DataParameter<Boolean> ANGRY = EntityDataManager.createKey(SkeletonWolfEntity.class, DataSerializers.BOOLEAN);
 
@@ -37,10 +41,20 @@ public class SkeletonWolfEntity extends AbstractSkeletonEntity {
     }
 
     protected void registerGoals() {
-        super.registerGoals();
+        this.goalSelector.addGoal(2, new RestrictSunGoal(this));
+        this.goalSelector.addGoal(3, new FleeSunGoal(this, 1.0D));
+        this.goalSelector.addGoal(3, new AvoidEntityGoal<>(this, WolfEntity.class, 6.0F, 1.0D, 1.2D));
         this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 1.2D, false));
+        this.goalSelector.addGoal(5, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
+        this.goalSelector.addGoal(6, new LookAtGoal(this, PlayerEntity.class, 8.0F));
+        this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
+        this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, PlayerEntity.class, true));
     }
 
+    public CreatureAttribute getCreatureAttribute() {
+        return CreatureAttribute.UNDEAD;
+    }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MonsterEntity.func_234295_eP_().func_233815_a_(Attributes.field_233818_a_, 10.0D).func_233815_a_(Attributes.field_233823_f_, 4.0D).func_233815_a_(Attributes.field_233821_d_, (double) 0.3F);
@@ -58,27 +72,8 @@ public class SkeletonWolfEntity extends AbstractSkeletonEntity {
         return SoundEvents.ENTITY_SKELETON_DEATH;
     }
 
-    protected SoundEvent getStepSound() {
-        return SoundEvents.ENTITY_SKELETON_STEP;
-    }
-
-    public void updateRidden() {
-        /* No rides for you, little wolf */
-    }
-
-
-    public ILivingEntityData onInitialSpawn(IWorld worldIn, DifficultyInstance difficultyIn, SpawnReason reason, @Nullable ILivingEntityData spawnDataIn, @Nullable CompoundNBT dataTag) {
-        spawnDataIn = super.onInitialSpawn(worldIn, difficultyIn, reason, spawnDataIn, dataTag);
-        this.getAttribute(Attributes.field_233823_f_).setBaseValue(4.0D);
-        this.setCombatTask();
-        this.setCanPickUpLoot(this.rand.nextFloat() < 0.55F * difficultyIn.getClampedAdditionalDifficulty());
-        return spawnDataIn;
-    }
-
-    public void setCombatTask() {
-    }
-
-    public void attackEntityWithRangedAttack(LivingEntity target, float distanceFactor) {
+    protected void playStepSound(BlockPos pos, BlockState blockIn) {
+        this.playSound(SoundEvents.ENTITY_SKELETON_STEP, 0.35F, 1.0F);
     }
 
     protected void registerData() {
@@ -112,16 +107,15 @@ public class SkeletonWolfEntity extends AbstractSkeletonEntity {
         this.dataManager.set(ANGRY, angry);
     }
 
-    public void handleStatusUpdate(byte id) {
-        super.handleStatusUpdate(id);
-    }
-
     public void setAttackTarget(@Nullable LivingEntity entitylivingbaseIn) {
         super.setAttackTarget(entitylivingbaseIn);
         this.setAngry(entitylivingbaseIn != null);
     }
 
     public void livingTick() {
+        if (this.isAlive() && this.isInDaylight()) {
+            this.setFire(8);
+        }
         super.livingTick();
         if (!this.world.isRemote && this.getAttackTarget() == null && this.isAngry()) {
             this.setAngry(false);
@@ -138,6 +132,10 @@ public class SkeletonWolfEntity extends AbstractSkeletonEntity {
 
     public float getInterestedAngle(float p_70917_1_) {
         return MathHelper.lerp(p_70917_1_, this.headRotationCourseOld, this.headRotationCourse) * 0.15F * (float) Math.PI;
+    }
+
+    public boolean attackEntityAsMob(Entity entityIn) {
+        return super.attackEntityAsMob(entityIn);
     }
 
     @Override
