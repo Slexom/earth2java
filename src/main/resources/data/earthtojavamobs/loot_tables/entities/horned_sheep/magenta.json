@@ -14,17 +14,8 @@
       "rolls": 1,
       "entries": [
         {
-          "type": "minecraft:item",
-          "name": "minecraft:magenta_wool"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
-        {
           "type": "minecraft:loot_table",
-          "name": "minecraft:entities/sheep"
+          "name": "minecraft:entities/sheep/magenta"
         }
       ]
     }

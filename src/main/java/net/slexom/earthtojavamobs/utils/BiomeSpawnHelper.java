@@ -6,6 +6,8 @@ import net.minecraft.world.biome.Biome;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
@@ -99,4 +101,9 @@ public final class BiomeSpawnHelper {
     public static void setMonsterSpawnBiomes(EntityType entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
         setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, EntityClassification.MONSTER);
     }
+
+    public static List<String> convertForConfig(String[] ary){
+        return Arrays.stream(ary).collect(Collectors.toList());
+    }
+
 }

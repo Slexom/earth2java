@@ -14,17 +14,8 @@
       "rolls": 1,
       "entries": [
         {
-          "type": "minecraft:item",
-          "name": "minecraft:cyan_wool"
-        }
-      ]
-    },
-    {
-      "rolls": 1,
-      "entries": [
-        {
           "type": "minecraft:loot_table",
-          "name": "minecraft:entities/sheep"
+          "name": "minecraft:entities/sheep/cyan"
         }
       ]
     }
