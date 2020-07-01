@@ -2,8 +2,6 @@ package net.slexom.earthtojavamobs.client.renderer.tileentity;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
-import net.minecraft.block.BedBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ChestBlock;
 import net.minecraft.client.renderer.Atlases;
@@ -15,15 +13,19 @@ import net.minecraft.client.renderer.tileentity.DualBrightnessCallback;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.state.properties.BedPart;
-import net.minecraft.tileentity.BedTileEntity;
 import net.minecraft.tileentity.TileEntityMerger;
-import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.vector.Vector3f;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.slexom.earthtojavamobs.block.RainbowBedBlock;
+import net.slexom.earthtojavamobs.init.TileEntityTypeInit;
 import net.slexom.earthtojavamobs.tileentity.RainbowBedTileEntity;
 
-public class RainbowBedTileEntityRenderer  extends TileEntityRenderer<RainbowBedTileEntity> {
+@OnlyIn(Dist.CLIENT)
+public class RainbowBedTileEntityRenderer extends TileEntityRenderer<RainbowBedTileEntity> {
     private final ModelRenderer field_228843_a_;
     private final ModelRenderer field_228844_c_;
     private final ModelRenderer[] field_228845_d_ = new ModelRenderer[4];
@@ -42,29 +44,27 @@ public class RainbowBedTileEntityRenderer  extends TileEntityRenderer<RainbowBed
         this.field_228845_d_[1].addBox(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F);
         this.field_228845_d_[2].addBox(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F);
         this.field_228845_d_[3].addBox(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F);
-        this.field_228845_d_[0].rotateAngleX = ((float)Math.PI / 2F);
-        this.field_228845_d_[1].rotateAngleX = ((float)Math.PI / 2F);
-        this.field_228845_d_[2].rotateAngleX = ((float)Math.PI / 2F);
-        this.field_228845_d_[3].rotateAngleX = ((float)Math.PI / 2F);
+        this.field_228845_d_[0].rotateAngleX = ((float) Math.PI / 2F);
+        this.field_228845_d_[1].rotateAngleX = ((float) Math.PI / 2F);
+        this.field_228845_d_[2].rotateAngleX = ((float) Math.PI / 2F);
+        this.field_228845_d_[3].rotateAngleX = ((float) Math.PI / 2F);
         this.field_228845_d_[0].rotateAngleZ = 0.0F;
-        this.field_228845_d_[1].rotateAngleZ = ((float)Math.PI / 2F);
-        this.field_228845_d_[2].rotateAngleZ = ((float)Math.PI * 1.5F);
-        this.field_228845_d_[3].rotateAngleZ = (float)Math.PI;
+        this.field_228845_d_[1].rotateAngleZ = ((float) Math.PI / 2F);
+        this.field_228845_d_[2].rotateAngleZ = ((float) Math.PI * 1.5F);
+        this.field_228845_d_[3].rotateAngleZ = (float) Math.PI;
     }
 
     public void render(RainbowBedTileEntity tileEntityIn, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int combinedLightIn, int combinedOverlayIn) {
-        RenderMaterial rendermaterial = Atlases.BED_TEXTURES[tileEntityIn.getColor().getId()];
+        RenderMaterial material = new RenderMaterial(Atlases.BED_ATLAS, new ResourceLocation("earthtojavamobs:entity/bed/rainbow"));
         World world = tileEntityIn.getWorld();
         if (world != null) {
             BlockState blockstate = tileEntityIn.getBlockState();
-            TileEntityMerger.ICallbackWrapper<? extends BedTileEntity> icallbackwrapper = TileEntityMerger.func_226924_a_(TileEntityType.BED, BedBlock::func_226863_i_, BedBlock::func_226862_h_, ChestBlock.FACING, blockstate, world, tileEntityIn.getPos(), (p_228846_0_, p_228846_1_) -> {
-                return false;
-            });
-            int i = icallbackwrapper.<Int2IntFunction>apply(new DualBrightnessCallback<>()).get(combinedLightIn);
-            this.func_228847_a_(matrixStackIn, bufferIn, blockstate.get(BedBlock.PART) == BedPart.HEAD, blockstate.get(BedBlock.HORIZONTAL_FACING), rendermaterial, i, combinedOverlayIn, false);
+            TileEntityMerger.ICallbackWrapper<RainbowBedTileEntity> icallbackwrapper = TileEntityMerger.func_226924_a_(TileEntityTypeInit.RAINBOW_BED.get(), RainbowBedBlock::func_226863_i_, RainbowBedBlock::func_226862_h_, ChestBlock.FACING, blockstate, world, tileEntityIn.getPos(), (p_228846_0_, p_228846_1_) -> false);
+            int i = icallbackwrapper.apply(new DualBrightnessCallback<>()).get(combinedLightIn);
+            this.func_228847_a_(matrixStackIn, bufferIn, blockstate.get(RainbowBedBlock.PART) == BedPart.HEAD, blockstate.get(RainbowBedBlock.HORIZONTAL_FACING), material, i, combinedOverlayIn, false);
         } else {
-            this.func_228847_a_(matrixStackIn, bufferIn, true, Direction.SOUTH, rendermaterial, combinedLightIn, combinedOverlayIn, false);
-            this.func_228847_a_(matrixStackIn, bufferIn, false, Direction.SOUTH, rendermaterial, combinedLightIn, combinedOverlayIn, true);
+            this.func_228847_a_(matrixStackIn, bufferIn, true, Direction.SOUTH, material, combinedLightIn, combinedOverlayIn, false);
+            this.func_228847_a_(matrixStackIn, bufferIn, false, Direction.SOUTH, material, combinedLightIn, combinedOverlayIn, true);
         }
 
     }

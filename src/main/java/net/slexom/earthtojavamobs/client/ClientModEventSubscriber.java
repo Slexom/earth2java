@@ -6,13 +6,16 @@ import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.renderer.entity.SpriteRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.slexom.earthtojavamobs.EarthtojavamobsMod;
 import net.slexom.earthtojavamobs.client.renderer.entity.*;
+import net.slexom.earthtojavamobs.client.renderer.tileentity.RainbowBedTileEntityRenderer;
 import net.slexom.earthtojavamobs.init.EntityTypesInit;
 import net.slexom.earthtojavamobs.init.FluidInit;
+import net.slexom.earthtojavamobs.init.TileEntityTypeInit;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -65,6 +68,8 @@ public final class ClientModEventSubscriber {
 
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.BONE_SPIDER_REGISTRY_OBJECT.get(), renderManagerIn -> new E2JSpiderRenderer(renderManagerIn, EntityTypesInit.BONE_SPIDER_REGISTRY_NAME));
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.BONE_SHARD_REGISTRY_OBJECT.get(), renderManagerIn -> new SpriteRenderer<>(renderManagerIn, Minecraft.getInstance().getItemRenderer()));
+
+        ClientRegistry.bindTileEntityRenderer(TileEntityTypeInit.RAINBOW_BED.get(), RainbowBedTileEntityRenderer::new);
     }
 
 }
