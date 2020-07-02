@@ -1,10 +1,10 @@
 ## Earth2Java
 
-![Version 1.3.1](https://img.shields.io/badge/Version-1.3.1-brightgreen)
+![Version 1.3.2](https://img.shields.io/badge/Version-1.3.2-brightgreen)
 ![MC 1.15.2](https://img.shields.io/badge/MC-1.15.2-blue)
 ![Forge 31.2.0](https://img.shields.io/badge/Forge-31.2.x-blue)
 ---
-![Version 2.0.0](https://img.shields.io/badge/Version-2.0.0-brightgreen)
+![Version 2.0.1](https://img.shields.io/badge/Version-2.0.1-brightgreen)
 ![MC 1.16.1](https://img.shields.io/badge/MC-1.16.1-blue)
 ![Forge 32.0.x](https://img.shields.io/badge/Forge-32.0.x-blue)
 ---
