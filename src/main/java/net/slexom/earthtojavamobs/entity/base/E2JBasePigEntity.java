@@ -32,6 +32,10 @@ public class E2JBasePigEntity<T extends PigEntity> extends PigEntity {
     @Override
     public void livingTick() {
         super.livingTick();
+        this.updateBlink();
+    }
+
+    public void updateBlink(){
         if (this.remainingTick > 0) {
             --this.remainingTick;
         }
@@ -41,6 +45,7 @@ public class E2JBasePigEntity<T extends PigEntity> extends PigEntity {
             this.remainingTick = 4;
         }
         ++this.internalBlinkTick;
+
     }
 
     public int getBlinkRemainingTicks() {

@@ -30,7 +30,7 @@ public class MuddyPigRenderer extends MobRenderer<MuddyPigEntity, MuddyPigModel<
         ResourceLocation textureDried = new ResourceLocation("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_dried.png");
         ResourceLocation textureDriedBlink = new ResourceLocation("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_dried_blink.png");
         boolean blink = entity.getBlinkRemainingTicks() > 0;
-        return entity.isInMud() ?
+        return entity.isInMuddyState() ?
                 blink ?
                         textureBlink :
                         texture :
