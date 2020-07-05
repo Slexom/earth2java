@@ -11,7 +11,7 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.world.World;
 import net.slexom.earthtojavamobs.entity.projectile.BoneShardEntity;
 
-public class BoneShardItem extends Item {
+public class BoneShardItem extends E2JItem {
     public BoneShardItem(Item.Properties builder) {
         super(builder);
     }

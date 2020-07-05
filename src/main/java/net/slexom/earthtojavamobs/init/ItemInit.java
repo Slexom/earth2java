@@ -10,6 +10,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.slexom.earthtojavamobs.EarthtojavamobsMod;
 import net.slexom.earthtojavamobs.item.BoneShardItem;
+import net.slexom.earthtojavamobs.item.HornItem;
 import net.slexom.earthtojavamobs.item.ModdedSpawnEggItem;
 
 public class ItemInit {
@@ -27,7 +28,7 @@ public class ItemInit {
             )
     );
 
-    public static final RegistryObject<Item> HORN = ITEMS.register("horn", () -> new Item(new Item.Properties().group(itemGroup).maxStackSize(64)));
+    public static final RegistryObject<Item> HORN = ITEMS.register("horn", () -> new HornItem(new Item.Properties().group(itemGroup).maxStackSize(64)));
     public static final RegistryObject<Item> BONE_SHARD = ITEMS.register("bone_shard", () -> new BoneShardItem(new Item.Properties().group(null).maxStackSize(16)));
 
     // SPAWN EGGS

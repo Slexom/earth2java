@@ -177,7 +177,7 @@ public class EntityTypesInit {
     public static final RegistryObject<EntityType<TropicalSlimeEntity>> TROPICAL_SLIME_REGISTRY_OBJECT = ENTITY_TYPES.register(
             TROPICAL_SLIME_REGISTRY_NAME,
             () -> EntityType.Builder.create(TropicalSlimeEntity::new, EntityClassification.CREATURE)
-                    .size(0.51F, 0.51F)
+                    .size(2.0F, 2.0F)
                     .immuneToFire()
                     .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, TROPICAL_SLIME_REGISTRY_NAME).toString())
     );

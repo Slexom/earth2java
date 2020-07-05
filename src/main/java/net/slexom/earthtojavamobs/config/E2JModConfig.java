@@ -150,7 +150,11 @@ public final class E2JModConfig {
     public static int jumboRabbitWeight;
     public static int jumboRabbitGroupMin;
     public static int jumboRabbitGroupMax;
+
+
     // Client
+
+    public static boolean showDescription;
 
     // Server
 

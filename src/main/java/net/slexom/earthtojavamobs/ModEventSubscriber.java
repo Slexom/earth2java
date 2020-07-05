@@ -61,9 +61,9 @@ public final class ModEventSubscriber {
         if (config.getSpec() == ConfigHolder.CLIENT_SPEC) {
             ConfigHelper.bakeClient(config);
             LOGGER.debug("Baked client config");
-        } else if (config.getSpec() == ConfigHolder.SERVER_SPEC) {
-            ConfigHelper.bakeServer(config);
-            LOGGER.debug("Baked server config");
+//        } else if (config.getSpec() == ConfigHolder.SERVER_SPEC) {
+//            ConfigHelper.bakeServer(config);
+//            LOGGER.debug("Baked server config");
         } else if (config.getSpec() == ConfigHolder.COMMON_SPEC) {
             ConfigHelper.bakeCommon(config);
             LOGGER.debug("Baked common config");

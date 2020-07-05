@@ -9,6 +9,7 @@ package net.slexom.earthtojavamobs.config;
 public final class ConfigHelper {
 
     public static void bakeClient(final net.minecraftforge.fml.config.ModConfig config) {
+        E2JModConfig.showDescription = ConfigHolder.CLIENT.showDescription.get();
     }
 
     public static void bakeCommon(final net.minecraftforge.fml.config.ModConfig config) {

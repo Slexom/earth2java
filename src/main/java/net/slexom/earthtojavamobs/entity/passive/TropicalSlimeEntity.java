@@ -1,6 +1,8 @@
 
 package net.slexom.earthtojavamobs.entity.passive;
 
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.controller.MovementController;
@@ -16,6 +18,7 @@ import net.minecraft.particles.IParticleData;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.*;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
@@ -64,12 +67,8 @@ public class TropicalSlimeEntity extends CreatureEntity {
                 this.world.addParticle(ParticleTypes.EXPLOSION, this.getPosX(), this.getPosYHeight(0.5D), this.getPosZ(), 0.0D, 0.0D, 0.0D);
                 this.remove();
                 player.playSound(SoundEvents.ENTITY_SLIME_SQUISH, 1.0F, 1.0F);
-                itemstack.shrink(1);
-                if (itemstack.isEmpty()) {
-                    player.setHeldItem(hand, new ItemStack(Items.TROPICAL_FISH_BUCKET));
-                } else if (!player.inventory.addItemStackToInventory(new ItemStack(Items.TROPICAL_FISH_BUCKET))) {
-                    player.dropItem(new ItemStack(Items.TROPICAL_FISH_BUCKET), false);
-                }
+                giveTropicalFishBucket(player, hand, itemstack);
+                spawnWater();
                 return ActionResultType.func_233537_a_(this.world.isRemote);
             } else {
                 return super.func_230254_b_(player, hand);
@@ -77,6 +76,23 @@ public class TropicalSlimeEntity extends CreatureEntity {
         } else {
             return super.func_230254_b_(player, hand);
         }
+    }
+
+    private void giveTropicalFishBucket(PlayerEntity player, Hand hand, ItemStack itemstack) {
+        itemstack.shrink(1);
+        if (!player.inventory.addItemStackToInventory(new ItemStack(Items.TROPICAL_FISH_BUCKET))) {
+            player.dropItem(new ItemStack(Items.TROPICAL_FISH_BUCKET), false);
+        }
+    }
+
+    private void spawnWater() {
+        int x = MathHelper.floor(this.getPosX());
+        int y = MathHelper.floor(this.getPosY());
+        int z = MathHelper.floor(this.getPosZ());
+        BlockPos blockPos = new BlockPos(x, y, z);
+        BlockState waterState = Blocks.WATER.getDefaultState();
+        this.world.destroyBlock(blockPos, false);
+        this.world.setBlockState(blockPos, waterState, 3);
     }
 
     protected IParticleData getSquishParticle() {

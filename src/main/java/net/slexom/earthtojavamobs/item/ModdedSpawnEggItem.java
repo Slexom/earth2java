@@ -1,6 +1,7 @@
 package net.slexom.earthtojavamobs.item;
 
 import net.minecraft.block.DispenserBlock;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.entity.EntityType;
@@ -9,10 +10,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.Direction;
+import net.minecraft.util.text.IFormattableTextComponent;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.util.Lazy;
 import net.minecraftforge.common.util.NonNullSupplier;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
+import net.slexom.earthtojavamobs.config.E2JModConfig;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -77,4 +86,16 @@ public class ModdedSpawnEggItem extends SpawnEggItem {
         return entityTypeSupplier.get();
     }
 
+
+    @OnlyIn(Dist.CLIENT)
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        if (E2JModConfig.showDescription) {
+            tooltip.add(this.getEggDescription().func_240699_a_(TextFormatting.GRAY));
+        }
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public IFormattableTextComponent getEggDescription() {
+        return new TranslationTextComponent(this.getTranslationKey() + ".desc");
+    }
 }
