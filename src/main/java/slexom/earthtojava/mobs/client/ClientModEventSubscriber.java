@@ -66,10 +66,18 @@ public final class ClientModEventSubscriber {
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.ALBINO_COW_REGISTRY_OBJECT.get(), renderManagerIn -> new E2JCowRenderer(renderManagerIn, EntityTypesInit.ALBINO_COW_REGISTRY_NAME));
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.JUMBO_RABBIT_REGISTRY_OBJECT.get(), renderManagerIn -> new JumboRabbitRenderer(renderManagerIn, EntityTypesInit.JUMBO_RABBIT_REGISTRY_NAME));
 
-        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.BONE_SPIDER_REGISTRY_OBJECT.get(), renderManagerIn -> new E2JSpiderRenderer(renderManagerIn, EntityTypesInit.BONE_SPIDER_REGISTRY_NAME));
+        RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.BONE_SPIDER_REGISTRY_OBJECT.get(), BoneSpiderRenderer::new);
         RenderingRegistry.registerEntityRenderingHandler(EntityTypesInit.BONE_SHARD_REGISTRY_OBJECT.get(), renderManagerIn -> new SpriteRenderer<>(renderManagerIn, Minecraft.getInstance().getItemRenderer()));
 
         ClientRegistry.bindTileEntityRenderer(TileEntityTypeInit.RAINBOW_BED.get(), RainbowBedTileEntityRenderer::new);
     }
+
+//    @SubscribeEvent
+//    public static void bedAtlas(TextureStitchEvent.Pre event) {
+//        ResourceLocation rainbowBedTexture = new ResourceLocation(EarthToJavaMobsMod.MOD_ID, "entity/bed/rainbow");
+//        if (event.getMap().getTextureLocation() == Atlases.BED_ATLAS) {
+//            event.addSprite(rainbowBedTexture);
+//        }
+//    }
 
 }

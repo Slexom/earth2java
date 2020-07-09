@@ -13,7 +13,7 @@ public class JumboRabbitRenderer extends MobRenderer<JumboRabbitEntity, JumboRab
     private final String registryName;
 
     public JumboRabbitRenderer(EntityRendererManager renderManagerIn, String registryName) {
-        super(renderManagerIn, new JumboRabbitModel<>(), 0.3F);
+        super(renderManagerIn, new JumboRabbitModel<>(), 0.6F);
         this.registryName = registryName;
     }
 

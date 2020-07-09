@@ -1,13 +1,10 @@
 package slexom.earthtojava.mobs;
 
 import net.minecraft.block.FlowingFluidBlock;
-import net.minecraft.client.renderer.Atlases;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -76,11 +73,4 @@ public final class ModEventSubscriber {
         EntityAttributeInit.init();
     }
 
-    @SubscribeEvent
-    public static void bedAtlas(TextureStitchEvent.Pre event) {
-        ResourceLocation rainbowBedTexture = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "entity/bed/rainbow");
-        if (event.getMap().getTextureLocation() == Atlases.BED_ATLAS) {
-            event.addSprite(rainbowBedTexture);
-        }
-    }
 }
