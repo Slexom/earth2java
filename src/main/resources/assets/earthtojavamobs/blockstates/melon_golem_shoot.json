@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "earthtojavamobs:block/melon_golem_shoot" },
+        "facing=south": { "model": "earthtojavamobs:block/melon_golem_shoot", "y": 180 },
+        "facing=west":  { "model": "earthtojavamobs:block/melon_golem_shoot", "y": 270 },
+        "facing=east":  { "model": "earthtojavamobs:block/melon_golem_shoot", "y": 90 }
+    }
+}

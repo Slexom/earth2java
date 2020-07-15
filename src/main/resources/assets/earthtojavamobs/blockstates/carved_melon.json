@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "earthtojavamobs:block/carved_melon" },
+        "facing=south": { "model": "earthtojavamobs:block/carved_melon", "y": 180 },
+        "facing=west":  { "model": "earthtojavamobs:block/carved_melon", "y": 270 },
+        "facing=east":  { "model": "earthtojavamobs:block/carved_melon", "y": 90 }
+    }
+}
