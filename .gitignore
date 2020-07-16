@@ -44,3 +44,4 @@ local.properties
 #MCreator
 .mcreator
 elements/
+gradle.properties

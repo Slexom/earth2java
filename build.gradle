@@ -140,7 +140,12 @@ publishing {
     }
     repositories {
         maven {
-            url "file:///${project.projectDir}/mcmodsrepo"
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/slexom/${project.properties['github_repo']}")
+            credentials {
+                username = "${project.properties['github_owner']}"
+                password = "${project.properties['github_token']}"
+            }
         }
     }
 }
