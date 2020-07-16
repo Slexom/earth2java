@@ -14,7 +14,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 version = '2.0.2'
-group = 'net.slexom.earth2javamobs'
+group = 'slexom.earth2java.mobs'
 archivesBaseName = 'earth2javamobs'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
