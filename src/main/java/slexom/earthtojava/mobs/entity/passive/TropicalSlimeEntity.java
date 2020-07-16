@@ -1,46 +1,47 @@
-
 package slexom.earthtojava.mobs.entity.passive;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.controller.MovementController;
+import net.minecraft.entity.*;
+import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.ai.goal.HurtByTargetGoal;
+import net.minecraft.entity.ai.goal.RevengeGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
+import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.mob.MobEntityWithAi;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.network.IPacket;
-import net.minecraft.particles.IParticleData;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.potion.Effects;
+import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-
 import java.util.EnumSet;
 
-public class TropicalSlimeEntity extends CreatureEntity {
+public class TropicalSlimeEntity extends MobEntityWithAi {
 
+    private final int size;
     public float squishAmount;
     public float squishFactor;
     public float prevSquishFactor;
     private boolean wasOnGround;
-    private final int size;
 
     public TropicalSlimeEntity(EntityType<TropicalSlimeEntity> type, World world) {
         super(type, world);
         this.size = 4;
         this.experiencePoints = this.size;
         setAiDisabled(false);
-        this.moveController = new MoveHelperController(this);
+        this.moveControl = new MoveHelperController(this);
     }
 
     @Override
@@ -51,53 +52,53 @@ public class TropicalSlimeEntity extends CreatureEntity {
         this.goalSelector.add(2, new AttackGoal(this));
         this.goalSelector.add(3, new FaceRandomGoal(this));
         this.goalSelector.add(5, new HopGoal(this));
-        this.targetSelector.add(3, (new HurtByTargetGoal(this)));
+        this.targetSelector.add(3, (new RevengeGoal(this)));
     }
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeInstance(EntityAttributes.MAX_HEALTH).setBaseValue((double) (16.0D));
-        this.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED).setBaseValue((double) 0.6);
-        this.getAttributes().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
+        this.getAttributeInstance(EntityAttributes.MAX_HEALTH).setBaseValue(16.0D);
+        this.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED).setBaseValue(0.6D);
+        this.getAttributes().register(EntityAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
     }
 
-    public boolean processInteract(PlayerEntity player, Hand hand) {
-        ItemStack itemstack = player.getHeldItem(hand);
-        if (itemstack.getItem() == Items.BUCKET && !player.abilities.isCreativeMode && !this.isBaby()) {
+    public boolean interactMob(PlayerEntity player, Hand hand) {
+        ItemStack itemstack = player.getStackInHand(hand);
+        if (itemstack.getItem() == Items.BUCKET && !player.abilities.creativeMode && !this.isBaby()) {
             if (!this.world.isClient) {
                 this.remove();
-                this.world.addParticle(ParticleTypes.EXPLOSION, this.getPosX(), this.getPosYHeight(0.5D), this.getPosZ(), 0.0D, 0.0D, 0.0D);
+                this.world.addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 0.0D, 0.0D, 0.0D);
                 player.playSound(SoundEvents.ENTITY_SLIME_SQUISH, 1.0F, 1.0F);
                 spawnWater();
                 giveTropicalFishBucket(player, hand, itemstack);
                 return true;
             } else {
-                return super.processInteract(player, hand);
+                return super.interactMob(player, hand);
             }
 
         } else {
-            return super.processInteract(player, hand);
+            return super.interactMob(player, hand);
         }
     }
 
     private void giveTropicalFishBucket(PlayerEntity player, Hand hand, ItemStack itemstack) {
-        itemstack.shrink(1);
-        if (!player.inventory.addItemStackToInventory(new ItemStack(Items.TROPICAL_FISH_BUCKET))) {
+        itemstack.decrement(1);
+        if (!player.inventory.insertStack(new ItemStack(Items.TROPICAL_FISH_BUCKET))) {
             player.dropItem(new ItemStack(Items.TROPICAL_FISH_BUCKET), false);
         }
     }
 
     private void spawnWater() {
-        int x = MathHelper.floor(this.getPosX());
-        int y = MathHelper.floor(this.getPosY());
-        int z = MathHelper.floor(this.getPosZ());
+        int x = MathHelper.floor(this.getX());
+        int y = MathHelper.floor(this.getY());
+        int z = MathHelper.floor(this.getZ());
         BlockPos blockPos = new BlockPos(x, y, z);
         BlockState waterState = Blocks.WATER.getDefaultState();
-        this.world.destroyBlock(blockPos, false);
+        this.world.removeBlock(blockPos, false);
         this.world.setBlockState(blockPos, waterState, 3);
     }
 
-    protected IParticleData getSquishParticle() {
+    protected ParticleEffect getSquishParticle() {
         return ParticleTypes.DRIPPING_WATER;
     }
 
@@ -109,13 +110,13 @@ public class TropicalSlimeEntity extends CreatureEntity {
             int i = this.size;
             if (spawnCustomParticles()) i = 0; // don't spawn particles if it's handled by the implementation itself
             for (int j = 0; j < i * 8; ++j) {
-                float f = this.rand.nextFloat() * ((float) Math.PI * 2F);
-                float f1 = this.rand.nextFloat() * 0.5F + 0.5F;
+                float f = this.random.nextFloat() * ((float) Math.PI * 2F);
+                float f1 = this.random.nextFloat() * 0.5F + 0.5F;
                 float f2 = MathHelper.sin(f) * (float) i * 0.5F * f1;
                 float f3 = MathHelper.cos(f) * (float) i * 0.5F * f1;
-                this.world.addParticle(this.getSquishParticle(), this.getPosX() + (double) f2, this.getPosY(), this.getPosZ() + (double) f3, 0.0D, 0.0D, 0.0D);
+                this.world.addParticle(this.getSquishParticle(), this.getX() + (double) f2, this.getY(), this.getZ() + (double) f3, 0.0D, 0.0D, 0.0D);
             }
-            this.playSound(this.getSquishSound(), this.getSoundVolume(), ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F) / 0.8F);
+            this.playSound(this.getSquishSound(), this.getSoundVolume(), ((this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F) / 0.8F);
             this.squishAmount = -0.5F;
         } else if (!this.onGround && this.wasOnGround) {
             this.squishAmount = 1.0F;
@@ -129,21 +130,21 @@ public class TropicalSlimeEntity extends CreatureEntity {
     }
 
     protected int getJumpDelay() {
-        return this.rand.nextInt(20) + 10;
+        return this.random.nextInt(20) + 10;
     }
 
     public EntityType<? extends TropicalSlimeEntity> getType() {
         return (EntityType<? extends TropicalSlimeEntity>) super.getType();
     }
 
-    public void applyEntityCollision(Entity entityIn) {
-        super.applyEntityCollision(entityIn);
+    public void pushAwayFrom(Entity entityIn) {
+        super.pushAwayFrom(entityIn);
         if (entityIn instanceof IronGolemEntity && this.canDamagePlayer()) {
             this.dealDamage((LivingEntity) entityIn);
         }
     }
 
-    public void onCollideWithPlayer(PlayerEntity entityIn) {
+    public void onPlayerCollision(PlayerEntity entityIn) {
         if (this.canDamagePlayer()) {
             this.dealDamage(entityIn);
         }
@@ -153,20 +154,20 @@ public class TropicalSlimeEntity extends CreatureEntity {
     protected void dealDamage(LivingEntity entityIn) {
         if (this.isAlive()) {
             int i = this.size;
-            if (this.getDistanceSq(entityIn) < 0.6D * (double) i * 0.6D * (double) i && this.canEntityBeSeen(entityIn) && entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), this.func_225512_er_())) {
-                this.playSound(SoundEvents.ENTITY_SLIME_ATTACK, 1.0F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F);
-                this.applyEnchantments(this, entityIn);
+            if (this.squaredDistanceTo(entityIn) < 0.6D * (double) i * 0.6D * (double) i && this.canSee(entityIn) && entityIn.damage(DamageSource.mob(this), this.func_225512_er_())) {
+                this.playSound(SoundEvents.ENTITY_SLIME_ATTACK, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
+                this.dealDamage(this, entityIn);
             }
         }
 
     }
 
-    protected float getStandingEyeHeight(Pose poseIn, EntitySize sizeIn) {
+    protected float getActiveEyeHeight(EntityPose poseIn, EntityDimensions sizeIn) {
         return 0.625F * sizeIn.height;
     }
 
     protected boolean canDamagePlayer() {
-        return this.isServerWorld();
+        return this.canMoveVoluntarily();
     }
 
     protected float func_225512_er_() {
@@ -185,11 +186,7 @@ public class TropicalSlimeEntity extends CreatureEntity {
         return SoundEvents.ENTITY_SLIME_SQUISH;
     }
 
-    protected ResourceLocation getLootTable() {
-        return this.getType().getLootTable();
-    }
-
-    public int getVerticalFaceSpeed() {
+    public int getLookPitchSpeed() {
         return 0;
     }
 
@@ -198,9 +195,9 @@ public class TropicalSlimeEntity extends CreatureEntity {
     }
 
     protected void jump() {
-        Vec3d vec3d = this.getMotion();
-        this.setMotion(vec3d.x, (double) this.getJumpUpwardsMotion(), vec3d.z);
-        this.isAirBorne = true;
+        Vec3d vec3d = this.getVelocity();
+        this.setVelocity(vec3d.x, (double) this.getJumpVelocity(), vec3d.z);
+        this.velocityDirty = true;
     }
 
     protected SoundEvent getJumpSound() {
@@ -217,32 +214,32 @@ public class TropicalSlimeEntity extends CreatureEntity {
 
         public AttackGoal(TropicalSlimeEntity slimeIn) {
             this.slime = slimeIn;
-            this.setMutexFlags(EnumSet.of(Goal.Flag.LOOK));
+            this.setControls(EnumSet.of(Goal.Control.LOOK));
         }
 
-        public boolean shouldExecute() {
-            LivingEntity livingentity = this.slime.getAttackTarget();
+        public boolean canStart() {
+            LivingEntity livingentity = this.slime.getTarget();
             if (livingentity == null) {
                 return false;
             } else if (!livingentity.isAlive()) {
                 return false;
             } else {
-                return livingentity instanceof PlayerEntity && ((PlayerEntity) livingentity).abilities.disableDamage ? false : this.slime.getMoveHelper() instanceof MoveHelperController;
+                return livingentity instanceof PlayerEntity && ((PlayerEntity) livingentity).abilities.invulnerable ? false : this.slime.getMoveControl() instanceof MoveHelperController;
             }
         }
 
-        public void startExecuting() {
+        public void start() {
             this.growTieredTimer = 300;
-            super.startExecuting();
+            super.start();
         }
 
-        public boolean shouldContinueExecuting() {
-            LivingEntity livingentity = this.slime.getAttackTarget();
+        public boolean shouldContinue() {
+            LivingEntity livingentity = this.slime.getTarget();
             if (livingentity == null) {
                 return false;
             } else if (!livingentity.isAlive()) {
                 return false;
-            } else if (livingentity instanceof PlayerEntity && ((PlayerEntity) livingentity).abilities.disableDamage) {
+            } else if (livingentity instanceof PlayerEntity && ((PlayerEntity) livingentity).abilities.invulnerable) {
                 return false;
             } else {
                 return --this.growTieredTimer > 0;
@@ -250,8 +247,8 @@ public class TropicalSlimeEntity extends CreatureEntity {
         }
 
         public void tick() {
-            this.slime.faceEntity(this.slime.getAttackTarget(), 10.0F, 10.0F);
-            ((MoveHelperController) this.slime.getMoveHelper()).setDirection(this.slime.rotationYaw, this.slime.canDamagePlayer());
+            this.slime.lookAtEntity(this.slime.getTarget(), 10.0F, 10.0F);
+            ((MoveHelperController) this.slime.getMoveControl()).look(this.slime.yaw, this.slime.canDamagePlayer());
         }
     }
 
@@ -262,19 +259,19 @@ public class TropicalSlimeEntity extends CreatureEntity {
 
         public FaceRandomGoal(TropicalSlimeEntity slimeIn) {
             this.slime = slimeIn;
-            this.setMutexFlags(EnumSet.of(Goal.Flag.LOOK));
+            this.setControls(EnumSet.of(Goal.Control.LOOK));
         }
 
-        public boolean shouldExecute() {
-            return this.slime.getAttackTarget() == null && (this.slime.onGround || this.slime.isInWater() || this.slime.isInLava() || this.slime.isPotionActive(Effects.LEVITATION)) && this.slime.getMoveHelper() instanceof MoveHelperController;
+        public boolean canStart() {
+            return this.slime.getTarget() == null && (this.slime.onGround || this.slime.isTouchingWater() || this.slime.isInLava() || this.slime.hasStatusEffect(StatusEffects.LEVITATION)) && this.slime.getMoveControl() instanceof MoveHelperController;
         }
 
         public void tick() {
             if (--this.nextRandomizeTime <= 0) {
-                this.nextRandomizeTime = 40 + this.slime.getRNG().nextInt(60);
-                this.chosenDegrees = (float) this.slime.getRNG().nextInt(360);
+                this.nextRandomizeTime = 40 + this.slime.getRandom().nextInt(60);
+                this.chosenDegrees = (float) this.slime.getRandom().nextInt(360);
             }
-            ((MoveHelperController) this.slime.getMoveHelper()).setDirection(this.chosenDegrees, false);
+            ((MoveHelperController) this.slime.getMoveControl()).look(this.chosenDegrees, false);
         }
 
     }
@@ -284,19 +281,19 @@ public class TropicalSlimeEntity extends CreatureEntity {
 
         public FloatGoal(TropicalSlimeEntity slimeIn) {
             this.slime = slimeIn;
-            this.setMutexFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
-            slimeIn.getNavigator().setCanSwim(true);
+            this.setControls(EnumSet.of(Goal.Control.JUMP, Goal.Control.MOVE));
+            slime.getNavigation().setCanSwim(true);
         }
 
-        public boolean shouldExecute() {
-            return (this.slime.isInWater() || this.slime.isInLava()) && this.slime.getMoveHelper() instanceof MoveHelperController;
+        public boolean canStart() {
+            return (this.slime.isTouchingWater() || this.slime.isInLava()) && this.slime.getMoveControl() instanceof MoveHelperController;
         }
 
         public void tick() {
-            if (this.slime.getRNG().nextFloat() < 0.8F) {
-                this.slime.getJumpController().setJumping();
+            if (this.slime.getRandom().nextFloat() < 0.8F) {
+                this.slime.getJumpControl().setActive();
             }
-            ((MoveHelperController) this.slime.getMoveHelper()).setSpeed(1.2D);
+            ((MoveHelperController) this.slime.getMoveControl()).move(1.2D);
         }
     }
 
@@ -305,73 +302,72 @@ public class TropicalSlimeEntity extends CreatureEntity {
 
         public HopGoal(TropicalSlimeEntity slimeIn) {
             this.slime = slimeIn;
-            this.setMutexFlags(EnumSet.of(Goal.Flag.JUMP, Goal.Flag.MOVE));
+            this.setControls(EnumSet.of(Goal.Control.JUMP, Goal.Control.MOVE));
         }
 
-        public boolean shouldExecute() {
-            return !this.slime.isPassenger();
+        public boolean canStart() {
+            return !this.slime.hasVehicle();
         }
 
         public void tick() {
-            ((MoveHelperController) this.slime.getMoveHelper()).setSpeed(1.0D);
+            ((MoveHelperController) this.slime.getMoveControl()).move(1.0D);
         }
     }
 
-    static class MoveHelperController extends MovementController {
+    static class MoveHelperController extends MoveControl {
+        private final TropicalSlimeEntity slime;
         private float yRot;
         private int jumpDelay;
-        private final TropicalSlimeEntity slime;
         private boolean isAggressive;
 
         public MoveHelperController(TropicalSlimeEntity slimeIn) {
             super(slimeIn);
             this.slime = slimeIn;
-            this.yRot = 180.0F * slimeIn.rotationYaw / (float) Math.PI;
+            this.yRot = 180.0F * slimeIn.yaw / (float) Math.PI;
         }
 
-        public void setDirection(float yRotIn, boolean aggressive) {
+        public void look(float yRotIn, boolean aggressive) {
             this.yRot = yRotIn;
             this.isAggressive = aggressive;
         }
 
-        public void setSpeed(double speedIn) {
+        public void move(double speedIn) {
             this.speed = speedIn;
-            this.action = MovementController.Action.MOVE_TO;
+            this.state = MoveControl.State.MOVE_TO;
         }
 
         public void tick() {
-            this.mob.rotationYaw = this.limitAngle(this.mob.rotationYaw, this.yRot, 90.0F);
-            this.mob.rotationYawHead = this.mob.rotationYaw;
-            this.mob.renderYawOffset = this.mob.rotationYaw;
-            if (this.action != MovementController.Action.MOVE_TO) {
-                this.mob.setMoveForward(0.0F);
+            this.entity.yaw = this.changeAngle(this.entity.yaw, this.yRot, 90.0F);
+            this.entity.headYaw = this.entity.yaw;
+            this.entity.bodyYaw = this.entity.yaw;
+            if (this.state != MoveControl.State.MOVE_TO) {
+                this.entity.setForwardSpeed(0.0F);
             } else {
-                this.action = MovementController.Action.WAIT;
-                if (this.mob.onGround) {
-                    this.mob.setAIMoveSpeed((float) (this.speed * this.mob.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getValue()));
+                this.state = MoveControl.State.WAIT;
+                if (this.entity.onGround) {
+                    this.entity.setMovementSpeed((float) (this.speed * this.entity.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED).getValue()));
                     if (this.jumpDelay-- <= 0) {
                         this.jumpDelay = this.slime.getJumpDelay();
                         if (this.isAggressive) {
                             this.jumpDelay /= 3;
                         }
 
-                        this.slime.getJumpController().setJumping();
+                        this.slime.getJumpControl().setActive();
                         if (this.slime.makesSoundOnJump()) {
-                            this.slime.playSound(this.slime.getJumpSound(), this.slime.getSoundVolume(), ((this.slime.getRNG().nextFloat() - this.slime.getRNG().nextFloat()) * 0.2F + 1.0F) * 0.8F);
+                            this.slime.playSound(this.slime.getJumpSound(), this.slime.getSoundVolume(), ((this.slime.getRandom().nextFloat() - this.slime.getRandom().nextFloat()) * 0.2F + 1.0F) * 0.8F);
                         }
                     } else {
-                        this.slime.moveStrafing = 0.0F;
-                        this.slime.moveForward = 0.0F;
-                        this.mob.setAIMoveSpeed(0.0F);
+                        this.slime.sidewaysSpeed = 0.0F;
+                        this.slime.forwardSpeed = 0.0F;
+                        this.entity.setMovementSpeed(0.0F);
                     }
                 } else {
-                    this.mob.setAIMoveSpeed((float) (this.speed * this.mob.getAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getValue()));
+                    this.entity.setMovementSpeed((float) (this.speed * this.entity.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED).getValue()));
                 }
 
             }
         }
     }
-
 
 
 }

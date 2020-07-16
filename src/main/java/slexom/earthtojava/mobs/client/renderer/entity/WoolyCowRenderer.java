@@ -19,6 +19,6 @@ public class WoolyCowRenderer extends E2JCowRenderer {
         Identifier textureSheared = new Identifier("earthtojavamobs:textures/mobs/cow/wooly_cow/wooly_cow_sheared.png");
         Identifier textureShearedBlink = new Identifier("earthtojavamobs:textures/mobs/cow/wooly_cow/wooly_cow_sheared_blink.png");
         boolean blink = entity.getBlinkRemainingTicks() > 0;
-        return entity.getSheared() ? blink ? textureShearedBlink : textureSheared : blink ? textureBlink : texture;
+        return entity.isSheared() ? blink ? textureShearedBlink : textureSheared : blink ? textureBlink : texture;
     }
 }

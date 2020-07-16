@@ -3,17 +3,17 @@ package slexom.earthtojava.mobs.client.renderer.entity;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
-import slexom.earthtojava.mobs.client.renderer.entity.model.JumboRabbitEntityModel;
+import slexom.earthtojava.mobs.client.renderer.entity.model.JumboRabbitModel;
 import slexom.earthtojava.mobs.entity.passive.JumboRabbitEntity;
 
 import java.text.MessageFormat;
 
-public class JumboRabbitRenderer extends MobEntityRenderer<JumboRabbitEntity, JumboRabbitEntityModel<JumboRabbitEntity>> {
+public class JumboRabbitRenderer extends MobEntityRenderer<JumboRabbitEntity, JumboRabbitModel<JumboRabbitEntity>> {
 
     private final String registryName;
 
     public JumboRabbitRenderer(EntityRenderDispatcher renderManagerIn, String registryName) {
-        super(renderManagerIn, new JumboRabbitEntityModel<>(), 0.6F);
+        super(renderManagerIn, new JumboRabbitModel<>(), 0.6F);
         this.registryName = registryName;
     }
 

@@ -13,7 +13,7 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.data.DataTracker;
 import import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -80,10 +80,10 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
         }
     }
 
-    public boolean attackEntityAsMob(Entity entityIn) {
-        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.getAttributeInstance(EntityAttributes.ATTACK_DAMAGE).getValue()));
+    public boolean tryAttack(Entity entityIn) {
+        boolean flag = entityIn.damage(DamageSource.mob(this), (float) ((int) this.getAttributeInstance(EntityAttributes.ATTACK_DAMAGE).getValue()));
         if (flag) {
-            this.applyEnchantments(this, entityIn);
+            this.dealDamage(this, entityIn);
         }
         return flag;
     }
@@ -99,7 +99,7 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
         if (this.isAngry()) {
             int i = this.getAnger();
             this.setAnger(i - 1);
-            LivingEntity livingentity = this.getAttackTarget();
+            LivingEntity livingentity = this.getTarget();
             if (i == 0 && livingentity != null) {
                 this.setSheepAttacker(livingentity);
             }
@@ -121,7 +121,7 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
     public void tickMovement() {
         super.tickMovement();
         if (!this.world.isClient) {
-            boolean flag = this.isAngry() && this.getAttackTarget() != null && this.getAttackTarget().getDistanceSq(this) < 4.0D;
+            boolean flag = this.isAngry() && this.getTarget() != null && this.getTarget().squaredDistanceTo(this) < 4.0D;
             this.setNearTarget(flag);
         }
     }
@@ -150,63 +150,57 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
         return (this.dataTracker.get(DATA_FLAGS_ID) & 2) != 0;
     }
 
-    protected void initAttributes() {
-        super.initAttributes();
-        this.getAttributes().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2.0D);
-        this.getAttributeInstance(EntityAttributes.FOLLOW_RANGE).setBaseValue(48.0D);
-    }
-
-    public ResourceLocation getLootTable() {
-        if (this.getSheared()) {
-            return this.getType().getLootTable();
+    public Identifier getLootTableId() {
+        if (this.isSheared()) {
+            return this.getType().getLootTableId();
         } else {
-            switch (this.getFleeceColor()) {
+            switch (this.getColor()) {
                 case WHITE:
                 default:
-                    return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/white");
+                    return new Identifier("earthtojavamobs", "entities/horned_sheep/white");
                 case ORANGE:
-                    return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/orange");
+                    return new Identifier("earthtojavamobs", "entities/horned_sheep/orange");
                 case MAGENTA:
-                    return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/magenta");
+                    return new Identifier("earthtojavamobs", "entities/horned_sheep/magenta");
                 case LIGHT_BLUE:
-                    return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/light_blue");
+                    return new Identifier("earthtojavamobs", "entities/horned_sheep/light_blue");
                 case YELLOW:
-                    return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/yellow");
+                    return new Identifier("earthtojavamobs", "entities/horned_sheep/yellow");
                 case LIME:
-                    return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/lime");
+                    return new Identifier("earthtojavamobs", "entities/horned_sheep/lime");
                 case PINK:
-                    return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/pink");
+                    return new Identifier("earthtojavamobs", "entities/horned_sheep/pink");
                 case GRAY:
-                    return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/gray");
+                    return new Identifier("earthtojavamobs", "entities/horned_sheep/gray");
                 case LIGHT_GRAY:
-                    return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/light_gray");
+                    return new Identifier("earthtojavamobs", "entities/horned_sheep/light_gray");
                 case CYAN:
-                    return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/cyan");
+                    return new Identifier("earthtojavamobs", "entities/horned_sheep/cyan");
                 case PURPLE:
-                    return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/purple");
+                    return new Identifier("earthtojavamobs", "entities/horned_sheep/purple");
                 case BLUE:
-                    return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/blue");
+                    return new Identifier("earthtojavamobs", "entities/horned_sheep/blue");
                 case BROWN:
-                    return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/brown");
+                    return new Identifier("earthtojavamobs", "entities/horned_sheep/brown");
                 case GREEN:
-                    return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/green");
+                    return new Identifier("earthtojavamobs", "entities/horned_sheep/green");
                 case RED:
-                    return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/red");
+                    return new Identifier("earthtojavamobs", "entities/horned_sheep/red");
                 case BLACK:
-                    return new ResourceLocation("earthtojavamobs", "entities/horned_sheep/black");
+                    return new Identifier("earthtojavamobs", "entities/horned_sheep/black");
             }
         }
     }
 
     public boolean setSheepAttacker(Entity attacker) {
-        this.setAnger(400 + this.rand.nextInt(400));
+        this.setAnger(400 + this.random.nextInt(400));
         if (attacker instanceof LivingEntity) {
             this.setRevengeTarget((LivingEntity) attacker);
         }
         return true;
     }
 
-    public boolean attackEntityFrom(DamageSource source, float amount) {
+    public boolean damage(DamageSource source, float amount) {
         if (this.isInvulnerableTo(source)) {
             return false;
         } else {
@@ -214,7 +208,7 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
             if (!this.world.isClient && entity instanceof PlayerEntity && !((PlayerEntity) entity).isCreative() && this.canEntityBeSeen(entity) && !this.isAIDisabled()) {
                 this.setSheepAttacker(entity);
             }
-            return super.attackEntityFrom(source, amount);
+            return super.damage(source, amount);
         }
     }
 
@@ -222,33 +216,33 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
         return pos.withinDistance(new BlockPos(this), (double) 48);
     }
 
-    static class AngerGoal extends HurtByTargetGoal {
+    static class AngerGoal extends RevengeGoal {
 
         AngerGoal(HornedSheepEntity sheepIn) {
             super(sheepIn);
         }
 
-        protected void setAttackTarget(MobEntity mobIn, LivingEntity targetIn) {
+        protected void setTarget(MobEntity mobIn, LivingEntity targetIn) {
             if (mobIn instanceof HornedSheepEntity && this.goalOwner.canEntityBeSeen(targetIn) && ((HornedSheepEntity) mobIn).setSheepAttacker(targetIn)) {
-                mobIn.setAttackTarget(targetIn);
+                mobIn.setTarget(targetIn);
             }
         }
 
     }
 
-    static class AttackPlayerGoal extends NearestAttackableTargetGoal<PlayerEntity> {
+    static class AttackPlayerGoal extends FollowTargetGoal<PlayerEntity> {
         AttackPlayerGoal(HornedSheepEntity sheepEntity) {
             super(sheepEntity, PlayerEntity.class, true);
         }
 
-        public boolean shouldExecute() {
-            return this.canCharge() && super.shouldExecute();
+        public boolean canStart() {
+            return this.canCharge() && super.canStart();
         }
 
-        public boolean shouldContinueExecuting() {
+        public boolean shouldContinue() {
             boolean flag = this.canCharge();
-            if (flag && this.goalOwner.getAttackTarget() != null) {
-                return super.shouldContinueExecuting();
+            if (flag && this.goalOwner.getTarget() != null) {
+                return super.shouldContinue();
             } else {
                 this.target = null;
                 return false;
@@ -270,12 +264,12 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
             this.attacker = creatureIn;
         }
 
-        public boolean shouldExecute() {
-            return super.shouldExecute() && this.attacker.isAngry();
+        public boolean canStart() {
+            return super.canStart() && this.attacker.isAngry();
         }
 
-        public boolean shouldContinueExecuting() {
-            return super.shouldContinueExecuting() && this.attacker.isAngry();
+        public boolean shouldContinue() {
+            return super.shouldContinue() && this.attacker.isAngry();
         }
     }
 

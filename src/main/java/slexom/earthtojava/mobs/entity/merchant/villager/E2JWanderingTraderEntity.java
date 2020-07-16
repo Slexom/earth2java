@@ -4,10 +4,10 @@ import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.merchant.villager.VillagerTrades;
-import net.minecraft.entity.merchant.villager.WanderingTraderEntity;
-import net.minecraft.item.MerchantOffer;
-import net.minecraft.item.MerchantOffers;
+import net.minecraft.entity.passive.WanderingTraderEntity;
+import net.minecraft.village.TradeOffer;
+import net.minecraft.village.TradeOffers;
+import net.minecraft.village.TraderOfferList;
 import net.minecraft.world.World;
 import slexom.earthtojava.mobs.init.ItemInit;
 import slexom.earthtojava.mobs.utils.TradesHelper;
@@ -15,8 +15,8 @@ import slexom.earthtojava.mobs.utils.TradesHelper;
 
 public class E2JWanderingTraderEntity extends WanderingTraderEntity {
 
-    public static final Int2ObjectMap<VillagerTrades.ITrade[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(
-            1, new VillagerTrades.ITrade[]{
+    public static final Int2ObjectMap<TradeOffers.Factory[]> TRADES = new Int2ObjectOpenHashMap<>(ImmutableMap.of(
+            1, new TradeOffers.Factory[]{
                     TradesHelper.POTION_FIRE_RESISTANCE,
                     TradesHelper.POTION_HARMING,
                     TradesHelper.POTION_HEALING,
@@ -56,7 +56,7 @@ public class E2JWanderingTraderEntity extends WanderingTraderEntity {
                     TradesHelper.POTION_WATER_BREATHING,
                     TradesHelper.POTION_WEAKNESS,
             },
-            2, new VillagerTrades.ITrade[]{new TradesHelper.ItemsForRubiesTrade(ItemInit.MUD_BUCKET.get(), 1, 1, 4, 1)}
+            2, new TradeOffers.Factory[]{new TradesHelper.ItemsForRubiesTrade(ItemInit.MUD_BUCKET, 1, 1, 4, 1)}
     ));
 
     public E2JWanderingTraderEntity(EntityType<? extends WanderingTraderEntity> type, World worldIn) {
@@ -64,19 +64,18 @@ public class E2JWanderingTraderEntity extends WanderingTraderEntity {
     }
 
 
-    protected void populateTradeData() {
-        VillagerTrades.ITrade[] avillagertrades$itrade = TRADES.get(1);
-        VillagerTrades.ITrade[] avillagertrades$itrade1 = TRADES.get(2);
-        if (avillagertrades$itrade != null && avillagertrades$itrade1 != null) {
-            MerchantOffers merchantoffers = this.getOffers();
-            this.addTrades(merchantoffers, avillagertrades$itrade, 7);
-            int i = this.rand.nextInt(avillagertrades$itrade1.length);
-            VillagerTrades.ITrade villagertrades$itrade = avillagertrades$itrade1[i];
-            MerchantOffer merchantoffer = villagertrades$itrade.getOffer(this, this.rand);
-            if (merchantoffer != null) {
-                merchantoffers.add(merchantoffer);
+    protected void fillRecipes() {
+        TradeOffers.Factory[] factorys = TRADES.get(1);
+        TradeOffers.Factory[] factorys2 = TRADES.get(2);
+        if (factorys != null && factorys2 != null) {
+            TraderOfferList traderOfferList = this.getOffers();
+            this.fillRecipesFromPool(traderOfferList, factorys, 5);
+            int i = this.random.nextInt(factorys2.length);
+            TradeOffers.Factory factory = factorys2[i];
+            TradeOffer tradeOffer = factory.create(this, this.random);
+            if (tradeOffer != null) {
+                traderOfferList.add(tradeOffer);
             }
-
         }
     }
 

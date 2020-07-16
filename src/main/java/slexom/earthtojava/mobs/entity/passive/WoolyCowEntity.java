@@ -1,24 +1,29 @@
-
 package slexom.earthtojava.mobs.entity.passive;
 
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.goal.EatGrassGoal;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.IPacket;
-import net.minecraft.entity.data.TrackedData;
-import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.data.DataTracker;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.Shearable;
+import net.minecraft.entity.ai.goal.EatGrassGoal;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemConvertible;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.world.World;
 import slexom.earthtojava.mobs.entity.base.E2JBaseCowEntity;
 
-public class WoolyCowEntity extends E2JBaseCowEntity<WoolyCowEntity> implements net.minecraftforge.common.IShearable {
+public class WoolyCowEntity extends E2JBaseCowEntity<WoolyCowEntity> implements Shearable {
 
     private static final TrackedData<Byte> isSheared = DataTracker.registerData(WoolyCowEntity.class, TrackedDataHandlerRegistry.BYTE);
 
@@ -62,7 +67,7 @@ public class WoolyCowEntity extends E2JBaseCowEntity<WoolyCowEntity> implements 
         this.dataTracker.startTracking(isSheared, (byte) 0);
     }
 
-    public boolean getSheared() {
+    public boolean isSheared() {
         return (this.dataTracker.get(isSheared) & 16) != 0;
     }
 
@@ -82,35 +87,48 @@ public class WoolyCowEntity extends E2JBaseCowEntity<WoolyCowEntity> implements 
         }
     }
 
-    @Override
-    public boolean isShearable(ItemStack item, net.minecraft.world.IWorldReader world, BlockPos pos) {
-        return !this.getSheared() && !this.isBaby();
+    public ActionResult interactMob(PlayerEntity player, Hand hand) {
+        ItemStack itemStack = player.getStackInHand(hand);
+        if (itemStack.getItem() == Items.SHEARS) {
+            if (!this.world.isClient && this.isShearable()) {
+                this.sheared(SoundCategory.PLAYERS);
+                itemStack.damage(1, (LivingEntity) player, playerEntity -> playerEntity.sendToolBreakStatus(hand));
+                return ActionResult.SUCCESS;
+            } else {
+                return ActionResult.CONSUME;
+            }
+        } else {
+            return super.interactMob(player, hand);
+        }
     }
 
-    @Override
-    public java.util.List<ItemStack> onSheared(ItemStack item, net.minecraft.world.IWorld world, BlockPos pos, int fortune) {
-        java.util.List<ItemStack> ret = new java.util.ArrayList<>();
-        if (!this.world.isClient) {
-            this.setSheared(true);
-            int i = 1 + this.rand.nextInt(3);
-            for (int j = 0; j < i; ++j) {
-                ret.add(new ItemStack(Blocks.BROWN_WOOL));
+
+    public void sheared(SoundCategory shearedSoundCategory) {
+        this.world.playSoundFromEntity((PlayerEntity) null, this, SoundEvents.ENTITY_SHEEP_SHEAR, shearedSoundCategory, 1.0F, 1.0F);
+        this.setSheared(true);
+        int i = 1 + this.random.nextInt(3);
+
+        for (int j = 0; j < i; ++j) {
+            ItemEntity itemEntity = this.dropItem((ItemConvertible) Blocks.BROWN_WOOL, 1);
+            if (itemEntity != null) {
+                itemEntity.setVelocity(itemEntity.getVelocity().add((double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F), (double) (this.random.nextFloat() * 0.05F), (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F)));
             }
         }
-        this.playSound(SoundEvents.ENTITY_SHEEP_SHEAR, 1.0F, 1.0F);
-        return ret;
+
+    }
+
+    public boolean isShearable() {
+        return this.isAlive() && !this.isSheared() && !this.isBaby();
     }
 
     public void writeCustomDataToTag(CompoundTag compound) {
         super.writeCustomDataToTag(compound);
-        compound.putBoolean("Sheared", this.getSheared());
+        compound.putBoolean("Sheared", this.isSheared());
     }
 
     public void readCustomDataFromTag(CompoundTag compound) {
         super.readCustomDataFromTag(compound);
         this.setSheared(compound.getBoolean("Sheared"));
     }
-
-
 
 }

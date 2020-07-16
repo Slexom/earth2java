@@ -5,13 +5,14 @@ import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,8 +20,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -47,6 +50,10 @@ public class E2JOneColorSheepEntity<T extends AnimalEntity> extends AnimalEntity
         setAiDisabled(false);
     }
 
+    public static DefaultAttributeContainer.Builder createSheepAttributes() {
+        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 8.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.23000000417232513D);
+    }
+
     protected void initGoals() {
         this.eatGrassGoal = new EatGrassGoal(this);
         this.goalSelector.add(0, new SwimGoal(this));
@@ -58,12 +65,6 @@ public class E2JOneColorSheepEntity<T extends AnimalEntity> extends AnimalEntity
         this.goalSelector.add(6, new WanderAroundFarGoal(this, 1.0D));
         this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(8, new LookAroundGoal(this));
-    }
-
-    protected void initAttributes() {
-        super.initAttributes();
-        this.getAttributeInstance(EntityAttributes.MAX_HEALTH).setBaseValue(8.0D);
-        this.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED).setBaseValue((double) 0.23F);
     }
 
     protected void mobTick() {
@@ -130,36 +131,41 @@ public class E2JOneColorSheepEntity<T extends AnimalEntity> extends AnimalEntity
         }
     }
 
+    public boolean isShearable() {
+        return this.isAlive() && !this.isSheared() && !this.isBaby();
+    }
 
-    public boolean interactMob(PlayerEntity player, Hand hand) {
+    public ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemStack = player.getStackInHand(hand);
-        if (itemStack.getItem() == Items.SHEARS && !this.isSheared() && !this.isBaby()) {
-            this.dropItems();
-            if (!this.world.isClient) {
-                itemStack.damage(1, (LivingEntity) player, ((playerEntity) -> playerEntity.sendToolBreakStatus(hand)));
+        if (itemStack.getItem() == Items.SHEARS) {
+            if (!this.world.isClient && this.isShearable()) {
+                this.sheared(SoundCategory.PLAYERS);
+                itemStack.damage(1, player, (playerEntity) -> {
+                    playerEntity.sendToolBreakStatus(hand);
+                });
+                return ActionResult.SUCCESS;
+            } else {
+                return ActionResult.CONSUME;
             }
-
-            return true;
         } else {
             return super.interactMob(player, hand);
         }
     }
 
+    public void sheared(SoundCategory shearedSoundCategory) {
+        this.world.playSoundFromEntity((PlayerEntity) null, this, SoundEvents.ENTITY_SHEEP_SHEAR, shearedSoundCategory, 1.0F, 1.0F);
+        this.setSheared(true);
+        int i = 1 + this.random.nextInt(3);
 
-    public void dropItems() {
-        if (!this.world.isClient) {
-            this.setSheared(true);
-            int i = 1 + this.random.nextInt(3);
-            for (int j = 0; j < i; ++j) {
-                ItemEntity itemEntity = this.dropItem(this.wool.getItem(), 1);
-                if (itemEntity != null) {
-                    itemEntity.setVelocity(itemEntity.getVelocity().add((double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F), (double) (this.random.nextFloat() * 0.05F), (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F)));
-                }
+        for (int j = 0; j < i; ++j) {
+            ItemEntity itemEntity = this.dropItem(this.wool.getItem(), 1);
+            if (itemEntity != null) {
+                itemEntity.setVelocity(itemEntity.getVelocity().add((double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F), (double) (this.random.nextFloat() * 0.05F), (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F)));
             }
         }
 
-        this.playSound(SoundEvents.ENTITY_SHEEP_SHEAR, 1.0F, 1.0F);
     }
+
 
     public void writeCustomDataToTag(CompoundTag compound) {
         super.writeCustomDataToTag(compound);

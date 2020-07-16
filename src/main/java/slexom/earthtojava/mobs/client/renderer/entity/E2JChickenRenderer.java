@@ -21,9 +21,9 @@ public class E2JChickenRenderer extends MobEntityRenderer<E2JBaseChickenEntity<?
         this.registryName = registryName;
     }
 
-    protected float getAnimationProgress(E2JBaseChickenEntity<? extends ChickenEntity> chickenEntity, float partialTicks) {
-        float g = MathHelper.lerp(partialTicks, chickenEntity.prevFlapProgress, chickenEntity.flapProgress);
-        float h = MathHelper.lerp(partialTicks, chickenEntity.prevMaxWingDeviation, chickenEntity.maxWingDeviation);
+    protected float getAnimationProgress(E2JBaseChickenEntity<? extends ChickenEntity> chickenEntity, float f) {
+        float g = MathHelper.lerp(f, chickenEntity.prevFlapProgress, chickenEntity.flapProgress);
+        float h = MathHelper.lerp(f, chickenEntity.prevMaxWingDeviation, chickenEntity.maxWingDeviation);
         return (MathHelper.sin(g) + 1.0F) * h;
     }
 

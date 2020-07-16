@@ -1,68 +1,33 @@
 package slexom.earthtojava.mobs.client.renderer.entity.model;
 
 import com.google.common.collect.ImmutableList;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.entity.model.EntityModel;
-import net.minecraft.client.model.ModelPart;
-import net.minecraft.util.math.MathHelper;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.render.entity.model.EntityModel;
+import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.math.MathHelper;
 import slexom.earthtojava.mobs.entity.passive.JumboRabbitEntity;
 
 @Environment(EnvType.CLIENT)
-public class JumboRabbitEntityModel<T extends JumboRabbitEntity> extends EntityModel<T> {
-    /**
-     * The Rabbit's Left Foot
-     */
-    private final ModelRenderer rabbitLeftFoot;
-    /**
-     * The Rabbit's Right Foot
-     */
-    private final ModelRenderer rabbitRightFoot;
-    /**
-     * The Rabbit's Left Thigh
-     */
-    private final ModelRenderer rabbitLeftThigh;
-    /**
-     * The Rabbit's Right Thigh
-     */
-    private final ModelRenderer rabbitRightThigh;
-    /**
-     * The Rabbit's Body
-     */
-    private final ModelRenderer rabbitBody;
-    /**
-     * The Rabbit's Left Arm
-     */
-    private final ModelRenderer rabbitLeftArm;
-    /**
-     * The Rabbit's Right Arm
-     */
-    private final ModelRenderer rabbitRightArm;
-    /**
-     * The Rabbit's Head
-     */
-    private final ModelRenderer rabbitHead;
-    /**
-     * The Rabbit's Right Ear
-     */
-    private final ModelRenderer rabbitRightEar;
-    /**
-     * The Rabbit's Left Ear
-     */
-    private final ModelRenderer rabbitLeftEar;
-    /**
-     * The Rabbit's Tail
-     */
-    private final ModelRenderer rabbitTail;
-    /**
-     * The Rabbit's Nose
-     */
-    private final ModelRenderer rabbitNose;
+public class JumboRabbitModel<T extends JumboRabbitEntity> extends EntityModel<T> {
+
+    private final ModelPart rabbitLeftFoot;
+    private final ModelPart rabbitRightFoot;
+    private final ModelPart rabbitLeftThigh;
+    private final ModelPart rabbitRightThigh;
+    private final ModelPart rabbitBody;
+    private final ModelPart rabbitLeftArm;
+    private final ModelPart rabbitRightArm;
+    private final ModelPart rabbitHead;
+    private final ModelPart rabbitRightEar;
+    private final ModelPart rabbitLeftEar;
+    private final ModelPart rabbitTail;
+    private final ModelPart rabbitNose;
     private float jumpRotation;
 
-    public JumboRabbitEntityModel() {
+    public JumboRabbitModel() {
 
         float bodyX = -3.5F;
         float bodyY = -6.0F;
@@ -146,15 +111,14 @@ public class JumboRabbitEntityModel<T extends JumboRabbitEntity> extends EntityM
         this.setRotationOffset(this.rabbitNose, 0.0F, 0.0F, 0.0F);
     }
 
-    private void setRotationOffset(ModelRenderer renderer, float x, float y, float z) {
+    private void setRotationOffset(ModelPart renderer, float x, float y, float z) {
         renderer.pitch = x;
-        renderer.rotateAngleY = y;
-        renderer.rotateAngleZ = z;
+        renderer.yaw = y;
+        renderer.roll = z;
     }
 
     public void render(MatrixStack matrixStackIn, VertexConsumer bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
-        if (this.isChild) {
-            float f = 1.5F;
+        if (this.child) {
             matrixStackIn.push();
             matrixStackIn.scale(0.56666666F, 0.56666666F, 0.56666666F);
             matrixStackIn.translate(0.0D, 1.375D, 0.125D);
@@ -185,16 +149,16 @@ public class JumboRabbitEntityModel<T extends JumboRabbitEntity> extends EntityM
      * Sets this entity's model rotation angles
      */
     public void setAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        float f = ageInTicks - (float) entityIn.ticksExisted;
+        float f = ageInTicks - (float) entityIn.age;
         this.rabbitNose.pitch = headPitch * ((float) Math.PI / 180F);
         this.rabbitHead.pitch = headPitch * ((float) Math.PI / 180F);
         this.rabbitRightEar.pitch = headPitch * ((float) Math.PI / 180F);
         this.rabbitLeftEar.pitch = headPitch * ((float) Math.PI / 180F);
-        this.rabbitNose.rotateAngleY = netHeadYaw * ((float) Math.PI / 180F);
-        this.rabbitHead.rotateAngleY = netHeadYaw * ((float) Math.PI / 180F);
-        this.rabbitRightEar.rotateAngleY = this.rabbitNose.rotateAngleY - 0.2617994F;
-        this.rabbitLeftEar.rotateAngleY = this.rabbitNose.rotateAngleY + 0.2617994F;
-        this.jumpRotation = MathHelper.sin(entityIn.getJumpCompletion(f) * (float) Math.PI);
+        this.rabbitNose.yaw = netHeadYaw * ((float) Math.PI / 180F);
+        this.rabbitHead.yaw = netHeadYaw * ((float) Math.PI / 180F);
+        this.rabbitRightEar.yaw = this.rabbitNose.yaw - 0.2617994F;
+        this.rabbitLeftEar.yaw = this.rabbitNose.yaw + 0.2617994F;
+        this.jumpRotation = MathHelper.sin(entityIn.method_6605(f) * (float) Math.PI);
         this.rabbitLeftThigh.pitch = (this.jumpRotation * 50.0F - 21.0F) * ((float) Math.PI / 180F);
         this.rabbitRightThigh.pitch = (this.jumpRotation * 50.0F - 21.0F) * ((float) Math.PI / 180F);
         this.rabbitLeftFoot.pitch = this.jumpRotation * 50.0F * ((float) Math.PI / 180F);
@@ -205,6 +169,6 @@ public class JumboRabbitEntityModel<T extends JumboRabbitEntity> extends EntityM
 
     public void animateModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick) {
         super.animateModel(entityIn, limbSwing, limbSwingAmount, partialTick);
-        this.jumpRotation = MathHelper.sin(entityIn.getJumpCompletion(partialTick) * (float) Math.PI);
+        this.jumpRotation = MathHelper.sin(entityIn.method_6605(partialTick) * (float) Math.PI);
     }
 }

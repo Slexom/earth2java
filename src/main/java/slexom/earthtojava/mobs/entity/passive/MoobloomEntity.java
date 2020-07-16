@@ -14,7 +14,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
+import net.minecraft.world.WorldView;
 import net.minecraft.world.World;
 
 import slexom.earthtojava.mobs.entity.base.E2JBaseCowEntity;
@@ -33,18 +33,18 @@ public class MoobloomEntity extends E2JBaseCowEntity<MoobloomEntity> implements 
     }
 
     @Override
-    public boolean isShearable(ItemStack item, net.minecraft.world.IWorldReader world, BlockPos pos) {
+    public boolean isShearable(ItemStack item, net.minecraft.world.WorldView world, BlockPos pos) {
         return !this.isBaby();
     }
 
     @Override
     public java.util.List<ItemStack> onSheared(ItemStack item, net.minecraft.world.IWorld world, BlockPos pos, int fortune) {
         java.util.List<ItemStack> ret = new java.util.ArrayList<>();
-        this.world.addParticle(ParticleTypes.EXPLOSION, this.getPosX(), this.getPosYHeight(0.5D), this.getPosZ(), 0.0D, 0.0D, 0.0D);
+        this.world.addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getPosYHeight(0.5D), this.getZ(), 0.0D, 0.0D, 0.0D);
         if (!this.world.isClient) {
             this.remove();
             CowEntity cowentity = EntityType.COW.create(this.world);
-            cowentity.setLocationAndAngles(this.getPosX(), this.getPosY(), this.getPosZ(), this.rotationYaw, this.rotationPitch);
+            cowentity.setLocationAndAngles(this.getX(), this.getY(), this.getZ(), this.rotationYaw, this.rotationPitch);
             cowentity.setHealth(this.getHealth());
             cowentity.renderYawOffset = this.renderYawOffset;
             if (this.hasCustomName()) {
@@ -67,19 +67,19 @@ public class MoobloomEntity extends E2JBaseCowEntity<MoobloomEntity> implements 
             this.moobloom = p_i45843_1_;
         }
 
-        public boolean shouldExecute() {
-            return this.moobloom.getRNG().nextInt(2000) == 0;
+        public boolean canStart() {
+            return this.moobloom.getRandom().nextInt(2000) == 0;
         }
 
-        public boolean canPlace(IWorldReader world, BlockState target, BlockPos targetPos, BlockState downTarget, BlockPos downTargetPos) {
+        public boolean canPlace(WorldView world, BlockState target, BlockPos targetPos, BlockState downTarget, BlockPos downTargetPos) {
             return !downTarget.isAir(world, downTargetPos) && downTarget.isCollisionShapeOpaque(world, downTargetPos) && target.isValidPosition(world, targetPos);
         }
 
         public void tick() {
             IWorld iworld = this.moobloom.world;
-            int i = MathHelper.floor(this.moobloom.getPosX());
-            int j = MathHelper.floor(this.moobloom.getPosY());
-            int k = MathHelper.floor(this.moobloom.getPosZ());
+            int i = MathHelper.floor(this.moobloom.getX());
+            int j = MathHelper.floor(this.moobloom.getY());
+            int k = MathHelper.floor(this.moobloom.getZ());
             Block flower = Math.random() > 0.8 ? Blocks.SUNFLOWER : BlockInit.BUTTERCUP.get();
             BlockPos blockPos = new BlockPos(i, j, k);
             BlockState blockState = flower.getDefaultState();

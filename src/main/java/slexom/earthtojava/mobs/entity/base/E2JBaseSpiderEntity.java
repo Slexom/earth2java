@@ -1,6 +1,9 @@
 package slexom.earthtojava.mobs.entity.base;
 
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
+import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.SpiderEntity;
 import net.minecraft.world.World;
 
@@ -17,6 +20,10 @@ public class E2JBaseSpiderEntity<T extends SpiderEntity> extends SpiderEntity {
         super(type, worldIn);
         experiencePoints = 3;
         setAiDisabled(false);
+    }
+
+    public static DefaultAttributeContainer.Builder createSpiderAttributes() {
+        return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 16.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.30000001192092896D);
     }
 
     @Override

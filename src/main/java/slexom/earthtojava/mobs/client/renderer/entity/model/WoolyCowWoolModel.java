@@ -2,10 +2,8 @@ package slexom.earthtojava.mobs.client.renderer.entity.model;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.entity.model.QuadrupedEntityModel;
 import net.minecraft.client.model.ModelPart;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
+import net.minecraft.client.render.entity.model.QuadrupedEntityModel;
 import slexom.earthtojava.mobs.entity.passive.WoolyCowEntity;
 
 @Environment(EnvType.CLIENT)
@@ -23,14 +21,14 @@ public class WoolyCowWoolModel<T extends WoolyCowEntity> extends QuadrupedEntity
         this.torso.addCuboid(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F, 0.0F);
         this.torso.setPivot(0.0F, 5.0F, 2.0F);
         this.torso.setTextureOffset(52, 0).addCuboid(-2.0F, 2.0F, -8.0F, 4.0F, 6.0F, 1.0F);
-        --this.backRightLeg.rotationPointX;
-        ++this.backLeftLeg.rotationPointX;
-        this.backRightLeg.rotationPointZ += 0.0F;
-        this.backLeftLeg.rotationPointZ += 0.0F;
-        --this.frontRightLeg.rotationPointX;
-        ++this.frontLeftLeg.rotationPointX;
-        --this.frontRightLeg.rotationPointZ;
-        --this.frontLeftLeg.rotationPointZ;
+        --this.backRightLeg.pivotX;
+        ++this.backLeftLeg.pivotX;
+        this.backRightLeg.pivotZ += 0.0F;
+        this.backLeftLeg.pivotZ += 0.0F;
+        --this.frontRightLeg.pivotX;
+        ++this.frontLeftLeg.pivotX;
+        --this.frontRightLeg.pivotZ;
+        --this.frontLeftLeg.pivotZ;
     }
 
     public void animateModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick) {

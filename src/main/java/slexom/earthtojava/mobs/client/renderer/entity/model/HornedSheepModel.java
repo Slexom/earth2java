@@ -62,8 +62,8 @@ public class HornedSheepModel<T extends HornedSheepEntity> extends QuadrupedEnti
 
     public void animateModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick) {
         super.animateModel(entityIn, limbSwing, limbSwingAmount, partialTick);
-        this.head.pivotY= 6.0F + entityIn.getHeadRotationPointY(partialTick) * 9.0F;
-        this.headRotationAngleX = entityIn.getHeadRotationAngleX(partialTick);
+        this.head.pivotY= 6.0F + entityIn.method_6628(partialTick) * 9.0F;
+        this.headRotationAngleX = entityIn.method_6641(partialTick);
     }
 
     public void setAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {

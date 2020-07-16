@@ -1,29 +1,27 @@
 package slexom.earthtojava.mobs.client.renderer.entity.model;
 
 import com.google.common.collect.ImmutableList;
-import net.minecraft.client.render.entity.model.TintedAgeableModel;
-import net.minecraft.client.model.ModelPart;
-import net.minecraft.util.math.MathHelper;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.render.entity.model.TintableAnimalModel;
+import net.minecraft.util.math.MathHelper;
 import slexom.earthtojava.mobs.entity.monster.SkeletonWolfEntity;
 
 @Environment(EnvType.CLIENT)
-public class SkeletonWolfModel<T extends SkeletonWolfEntity> extends TintedAgeableModel<T> {
-    private final ModelRenderer head;
-    private final ModelRenderer headChild;
-    private final ModelRenderer body;
-    private final ModelRenderer backRightLeg;
-    private final ModelRenderer backLeftLeg;
-    private final ModelRenderer frontRightLeg;
-    private final ModelRenderer frontLeftLeg;
-    private final ModelRenderer tail;
-    private final ModelRenderer tailChild;
-    private final ModelRenderer mane;
+public class SkeletonWolfModel<T extends SkeletonWolfEntity> extends TintableAnimalModel<T> {
+    private final ModelPart head;
+    private final ModelPart headChild;
+    private final ModelPart torso;
+    private final ModelPart backRightLeg;
+    private final ModelPart backLeftLeg;
+    private final ModelPart frontRightLeg;
+    private final ModelPart frontLeftLeg;
+    private final ModelPart tail;
+    private final ModelPart tailChild;
+    private final ModelPart mane;
 
     public SkeletonWolfModel() {
-        float f = 0.0F;
-        float f1 = 13.5F;
         this.head = new ModelPart(this, 0, 0);
         this.head.setPivot(-1.0F, 13.5F, -7.0F);
         this.headChild = new ModelPart(this, 0, 0);
@@ -57,19 +55,19 @@ public class SkeletonWolfModel<T extends SkeletonWolfEntity> extends TintedAgeab
         this.headChild.setTextureOffset(0, 10).addCuboid(-0.5F, 0.0F, -5.0F, 3.0F, 3.0F, 4.0F, 0.0F);
     }
 
-    protected Iterable<ModelRenderer> getHeadParts() {
+    protected Iterable<ModelPart> getHeadParts() {
         return ImmutableList.of(this.head);
     }
 
-    protected Iterable<ModelRenderer> getBodyParts() {
+    protected Iterable<ModelPart> getBodyParts() {
         return ImmutableList.of(this.torso, this.backRightLeg, this.backLeftLeg, this.frontRightLeg, this.frontLeftLeg, this.tail, this.mane);
     }
 
     public void animateModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick) {
         if (entityIn.isAngry()) {
-            this.tail.rotateAngleY = 0.0F;
+            this.tail.yaw = 0.0F;
         } else {
-            this.tail.rotateAngleY = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+            this.tail.yaw = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
         }
         this.torso.setPivot(0.0F, 14.0F, 2.0F);
         this.torso.pitch = ((float) Math.PI / 2F);
@@ -84,7 +82,7 @@ public class SkeletonWolfModel<T extends SkeletonWolfEntity> extends TintedAgeab
         this.backLeftLeg.pitch = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
         this.frontRightLeg.pitch = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
         this.frontLeftLeg.pitch = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-        this.headChild.rotateAngleZ = entityIn.getInterestedAngle(partialTick);
+        this.headChild.roll = entityIn.getInterestedAngle(partialTick);
     }
 
     /**
@@ -92,7 +90,7 @@ public class SkeletonWolfModel<T extends SkeletonWolfEntity> extends TintedAgeab
      */
     public void setAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.head.pitch = headPitch * ((float) Math.PI / 180F);
-        this.head.rotateAngleY = netHeadYaw * ((float) Math.PI / 180F);
+        this.head.yaw = netHeadYaw * ((float) Math.PI / 180F);
         this.tail.pitch = ageInTicks;
     }
 }

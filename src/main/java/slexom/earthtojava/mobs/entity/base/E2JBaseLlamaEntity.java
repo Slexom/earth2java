@@ -1,6 +1,8 @@
 package slexom.earthtojava.mobs.entity.base;
 
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.passive.LlamaEntity;
 import net.minecraft.world.World;
 
@@ -17,6 +19,10 @@ public class E2JBaseLlamaEntity extends LlamaEntity {
         super(type, worldIn);
         experiencePoints = 3;
         setAiDisabled(false);
+    }
+
+    public static DefaultAttributeContainer.Builder createLlamaAttributes() {
+        return createAbstractDonkeyAttributes().add(EntityAttributes.GENERIC_FOLLOW_RANGE, 40.0D);
     }
 
     @Override

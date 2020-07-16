@@ -1,20 +1,20 @@
 package slexom.earthtojava.mobs.client.renderer.entity.model;
 
 import com.google.common.collect.ImmutableList;
-import net.minecraft.client.render.entity.model.SegmentedModel;
-import net.minecraft.client.model.ModelPart;
-import net.minecraft.entity.passive.IronGolemEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.render.entity.model.CompositeEntityModel;
+import net.minecraft.entity.passive.IronGolemEntity;
 
 @Environment(EnvType.CLIENT)
-public class FurnaceGolemModel<T extends IronGolemEntity> extends SegmentedModel<T> {
-    private final ModelRenderer ironGolemHead;
-    private final ModelRenderer ironGolemBody;
-    private final ModelRenderer ironGolemRightArm;
-    private final ModelRenderer ironGolemLeftArm;
-    private final ModelRenderer ironGolemLeftLeg;
-    private final ModelRenderer ironGolemRightLeg;
+public class FurnaceGolemModel<T extends IronGolemEntity> extends CompositeEntityModel<T> {
+    private final ModelPart ironGolemHead;
+    private final ModelPart ironGolemBody;
+    private final ModelPart ironGolemRightArm;
+    private final ModelPart ironGolemLeftArm;
+    private final ModelPart ironGolemLeftLeg;
+    private final ModelPart ironGolemRightLeg;
 
     public FurnaceGolemModel() {
         this.ironGolemHead = (new ModelPart(this)).setTextureSize(128, 128);
@@ -40,28 +40,28 @@ public class FurnaceGolemModel<T extends IronGolemEntity> extends SegmentedModel
         this.ironGolemRightLeg.addCuboid(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F, 0.0F);
     }
 
-    public Iterable<ModelRenderer> getParts() {
+    public Iterable<ModelPart> getParts() {
         return ImmutableList.of(this.ironGolemHead, this.ironGolemBody, this.ironGolemLeftLeg, this.ironGolemRightLeg, this.ironGolemRightArm, this.ironGolemLeftArm);
     }
 
     public void setAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        this.ironGolemHead.rotateAngleY = netHeadYaw * ((float)Math.PI / 180F);
-        this.ironGolemHead.pitch = headPitch * ((float)Math.PI / 180F);
+        this.ironGolemHead.yaw = netHeadYaw * ((float) Math.PI / 180F);
+        this.ironGolemHead.pitch = headPitch * ((float) Math.PI / 180F);
         this.ironGolemLeftLeg.pitch = -1.5F * this.triangleWave(limbSwing, 13.0F) * limbSwingAmount;
         this.ironGolemRightLeg.pitch = 1.5F * this.triangleWave(limbSwing, 13.0F) * limbSwingAmount;
-        this.ironGolemLeftLeg.rotateAngleY = 0.0F;
-        this.ironGolemRightLeg.rotateAngleY = 0.0F;
+        this.ironGolemLeftLeg.yaw = 0.0F;
+        this.ironGolemRightLeg.yaw = 0.0F;
     }
 
     public void animateModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick) {
-        int i = entityIn.getAttackTimer();
+        int i = entityIn.getAttackTicksLeft();
         if (i > 0) {
-            this.ironGolemRightArm.pitch = -2.0F + 1.5F * this.triangleWave((float)i - partialTick, 10.0F);
-            this.ironGolemLeftArm.pitch = -2.0F + 1.5F * this.triangleWave((float)i - partialTick, 10.0F);
+            this.ironGolemRightArm.pitch = -2.0F + 1.5F * this.triangleWave((float) i - partialTick, 10.0F);
+            this.ironGolemLeftArm.pitch = -2.0F + 1.5F * this.triangleWave((float) i - partialTick, 10.0F);
         } else {
-            int j = entityIn.getHoldRoseTick();
+            int j = entityIn.getLookingAtVillagerTicks();
             if (j > 0) {
-                this.ironGolemRightArm.pitch = -0.8F + 0.025F * this.triangleWave((float)j, 70.0F);
+                this.ironGolemRightArm.pitch = -0.8F + 0.025F * this.triangleWave((float) j, 70.0F);
                 this.ironGolemLeftArm.pitch = 0.0F;
             } else {
                 this.ironGolemRightArm.pitch = (-0.2F + 1.5F * this.triangleWave(limbSwing, 13.0F)) * limbSwingAmount;
@@ -75,7 +75,4 @@ public class FurnaceGolemModel<T extends IronGolemEntity> extends SegmentedModel
         return (Math.abs(p_78172_1_ % p_78172_2_ - p_78172_2_ * 0.5F) - p_78172_2_ * 0.25F) / (p_78172_2_ * 0.25F);
     }
 
-    public ModelRenderer getArmHoldingRose() {
-        return this.ironGolemRightArm;
-    }
 }

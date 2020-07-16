@@ -52,19 +52,19 @@ public class FurnaceGolemEntity extends IronGolemEntity {
         this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(8, new LookAroundGoal(this));
         this.targetSelector.add(1, new DefendVillageTargetGoal(this));
-        this.targetSelector.add(2, new HurtByTargetGoal(this));
-        this.targetSelector.add(3, new NearestAttackableTargetGoal(this, MobEntity.class, 5, false, false, (p_213619_0_) -> p_213619_0_ instanceof IMob && !(p_213619_0_ instanceof CreeperEntity) && !(p_213619_0_ instanceof TropicalSlimeEntity)));
+        this.targetSelector.add(2, new RevengeGoal(this));
+        this.targetSelector.add(3, new FollowTargetGoal(this, MobEntity.class, 5, false, false, (p_213619_0_) -> p_213619_0_ instanceof IMob && !(p_213619_0_ instanceof CreeperEntity) && !(p_213619_0_ instanceof TropicalSlimeEntity)));
     }
 
-    public boolean attackEntityAsMob(Entity entityIn) {
+    public boolean tryAttack(Entity entityIn) {
         this.attackTimer = 10;
         this.world.setEntityState(this, (byte) 4);
         float f = (float) this.getAttributeInstance(EntityAttributes.ATTACK_DAMAGE).getValue();
-        float f1 = f > 0.0F ? f / 2.0F + (float) this.rand.nextInt((int) f) : 0.0F;
-        boolean flag = entityIn.attackEntityFrom(DamageSource.ON_FIRE, f1);
+        float f1 = f > 0.0F ? f / 2.0F + (float) this.random.nextInt((int) f) : 0.0F;
+        boolean flag = entityIn.damage(DamageSource.ON_FIRE, f1);
         if (flag) {
             entityIn.setMotion(entityIn.getMotion().add(0.0D, 0.4D, 0.0D));
-            this.applyEnchantments(this, entityIn);
+            this.dealDamage(this, entityIn);
         }
         this.playSound(SoundEvents.ENTITY_IRON_GOLEM_ATTACK, 1.0F, 1.0F);
         return flag;
@@ -75,9 +75,9 @@ public class FurnaceGolemEntity extends IronGolemEntity {
         if (this.isAngry()) {
             float rand = new Random().nextFloat();
             if (rand > 0.80F && rand <= 0.83F) {
-                int x = MathHelper.floor(this.getPosX());
-                int y = MathHelper.floor(this.getPosY());
-                int z = MathHelper.floor(this.getPosZ());
+                int x = MathHelper.floor(this.getX());
+                int y = MathHelper.floor(this.getY());
+                int z = MathHelper.floor(this.getZ());
                 BlockPos pos = new BlockPos(x, y - 0.2D, z);
                 BlockPos posRandom = pos.add(new Random().nextInt(3) - 1, 0, new Random().nextInt(3) - 1);
                 if (!this.world.isAirBlock(posRandom) && this.world.isAirBlock(posRandom.up())) {
@@ -86,7 +86,7 @@ public class FurnaceGolemEntity extends IronGolemEntity {
             }
         }
         if (this.isInWater()) {
-            this.attackEntityFrom(DamageSource.DROWN, 5.0F);
+            this.damage(DamageSource.DROWN, 5.0F);
         }
 
         if (this.remainingTick > 0) {
@@ -117,17 +117,17 @@ public class FurnaceGolemEntity extends IronGolemEntity {
         this.dataTracker.set(IS_ANGRY, angry);
     }
 
-    private static final class NearestAttackableTargetGoal extends net.minecraft.entity.ai.goal.NearestAttackableTargetGoal<LivingEntity> {
+    private static final class FollowTargetGoal extends net.minecraft.entity.ai.goal.FollowTargetGoal<LivingEntity> {
         FurnaceGolemEntity golem;
 
-        public NearestAttackableTargetGoal(FurnaceGolemEntity entity, Class targetClassIn, int targetChanceIn, boolean checkSight, boolean nearbyOnlyIn, @Nullable Predicate targetPredicate) {
+        public FollowTargetGoal(FurnaceGolemEntity entity, Class targetClassIn, int targetChanceIn, boolean checkSight, boolean nearbyOnlyIn, @Nullable Predicate targetPredicate) {
             super(entity, targetClassIn, targetChanceIn, checkSight, nearbyOnlyIn, targetPredicate);
             this.golem = entity;
         }
 
-        public void startExecuting() {
+        public void start() {
             this.golem.setAngry(true);
-            super.startExecuting();
+            super.start();
         }
 
         public void resetTask() {
@@ -147,10 +147,10 @@ public class FurnaceGolemEntity extends IronGolemEntity {
             this.setMutexFlags(EnumSet.of(Goal.Flag.TARGET));
         }
 
-        public void startExecuting() {
+        public void start() {
             this.golem.setAngry(true);
-            this.golem.setAttackTarget(this.villageAgressorTarget);
-            super.startExecuting();
+            this.golem.setTarget(this.villageAgressorTarget);
+            super.start();
         }
 
         public void resetTask() {

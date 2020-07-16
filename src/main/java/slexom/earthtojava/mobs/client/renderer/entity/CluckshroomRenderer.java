@@ -18,10 +18,10 @@ public class CluckshroomRenderer extends MobEntityRenderer<CluckshroomEntity, Cl
         this.addFeature(new CluckshroomLayer<>(this));
     }
 
-    protected float handleRotationFloat(CluckshroomEntity livingBase, float partialTicks) {
-        float f = MathHelper.lerp(partialTicks, livingBase.oFlap, livingBase.wingRotation);
-        float f1 = MathHelper.lerp(partialTicks, livingBase.oFlapSpeed, livingBase.destPos);
-        return (MathHelper.sin(f) + 1.0F) * f1;
+    protected float getAnimationProgress(CluckshroomEntity chickenEntity, float f) {
+        float g = MathHelper.lerp(f, chickenEntity.prevFlapProgress, chickenEntity.flapProgress);
+        float h = MathHelper.lerp(f, chickenEntity.prevMaxWingDeviation, chickenEntity.maxWingDeviation);
+        return (MathHelper.sin(g) + 1.0F) * h;
     }
 
     @Override

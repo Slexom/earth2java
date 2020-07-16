@@ -6,13 +6,13 @@ import net.fabricmc.api.Environment;
 import slexom.earthtojava.mobs.entity.passive.MuddyPigEntity;
 
 @Environment(EnvType.CLIENT)
-public class MuddyPigEntityModel<T extends MuddyPigEntity> extends QuadrupedEntityModel<T> {
+public class MuddyPigModel<T extends MuddyPigEntity> extends QuadrupedEntityModel<T> {
 
-    public MuddyPigEntityModel() {
+    public MuddyPigModel() {
         this(0.0F);
     }
 
-    public MuddyPigEntityModel(float scale) {
+    public MuddyPigModel(float scale) {
         super(6, scale, false, 4.0F, 4.0F, 2.0F, 2.0F, 24);
         float mudBoxX = -1.0F;
         float mudBoxY = -5.0F;
@@ -23,8 +23,8 @@ public class MuddyPigEntityModel<T extends MuddyPigEntity> extends QuadrupedEnti
     }
 
     public void animateModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick) {
-        this.head.rotateAngleZ = entityIn.getShakeAngle(partialTick, -0.07F);
+        this.head.roll = entityIn.getShakeAngle(partialTick, -0.07F);
         this.head.pitch = (float)Math.PI / 8.0F;
-        this.torso.rotateAngleZ = entityIn.getShakeAngle(partialTick, -0.14F);
+        this.torso.roll = entityIn.getShakeAngle(partialTick, -0.14F);
     }
 }

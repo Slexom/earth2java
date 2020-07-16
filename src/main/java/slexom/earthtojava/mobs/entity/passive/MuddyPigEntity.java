@@ -16,7 +16,7 @@ import net.minecraft.entity.data.DataTracker;
 import import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.IWorldReader;
+import net.minecraft.world.WorldView;
 import net.minecraft.world.World;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -56,9 +56,9 @@ public class MuddyPigEntity extends E2JBasePigEntity<MuddyPigEntity> {
     @Override
     public void tickMovement() {
         super.tickMovement();
-        int i = MathHelper.floor(this.getPosX());
-        int j = MathHelper.floor(this.getPosY());
-        int k = MathHelper.floor(this.getPosZ());
+        int i = MathHelper.floor(this.getX());
+        int j = MathHelper.floor(this.getY());
+        int k = MathHelper.floor(this.getZ());
         BlockPos blockPos = new BlockPos(i, j, k);
         boolean condition = this.world.getFluidState(blockPos).getBlockState().getBlock().equals(BlockInit.MUD_BLOCK.get());
         if (condition) {
@@ -142,11 +142,11 @@ public class MuddyPigEntity extends E2JBasePigEntity<MuddyPigEntity> {
             this.field_203112_e = -1;
         }
 
-        public boolean shouldExecute() {
-            return !this.muddyPig.isInMuddyState() && super.shouldExecute();
+        public boolean canStart() {
+            return !this.muddyPig.isInMuddyState() && super.canStart();
         }
 
-        public boolean shouldContinueExecuting() {
+        public boolean shouldContinue() {
             return !this.muddyPig.isInMuddyState() && this.timeoutCounter <= 600 && this.shouldMoveTo(this.muddyPig.world, this.destinationBlock);
         }
 
@@ -155,7 +155,7 @@ public class MuddyPigEntity extends E2JBasePigEntity<MuddyPigEntity> {
         }
 
         @Override
-        protected boolean shouldMoveTo(IWorldReader worldIn, BlockPos pos) {
+        protected boolean shouldMoveTo(WorldView worldIn, BlockPos pos) {
             Block block = worldIn.getBlockState(pos).getBlock();
             return block == BlockInit.MUD_BLOCK.get();
         }
@@ -173,7 +173,7 @@ public class MuddyPigEntity extends E2JBasePigEntity<MuddyPigEntity> {
 //         * Returns whether execution should begin. You can also read and cache any state necessary for execution in this
 //         * method as well.
 //         */
-//        public boolean shouldExecute() {
+//        public boolean canStart() {
 //            if ((this.muddyPigEntity.isBaby() || this.muddyPigEntity.isPlayful()) && this.muddyPigEntity.onGround) {
 //                if (!this.muddyPigEntity.canPerformAction()) {
 //                    return false;
@@ -207,14 +207,14 @@ public class MuddyPigEntity extends E2JBasePigEntity<MuddyPigEntity> {
 //        /**
 //         * Returns whether an in-progress EntityAIBase should continue executing
 //         */
-//        public boolean shouldContinueExecuting() {
+//        public boolean shouldContinue() {
 //            return false;
 //        }
 //
 //        /**
 //         * Execute a one shot task or start executing a continuous task
 //         */
-//        public void startExecuting() {
+//        public void start() {
 //            this.muddyPigEntity.func_213576_v(true);
 //        }
 //

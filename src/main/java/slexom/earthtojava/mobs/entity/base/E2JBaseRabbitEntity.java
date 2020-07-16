@@ -1,6 +1,9 @@
 package slexom.earthtojava.mobs.entity.base;
 
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
+import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.RabbitEntity;
 import net.minecraft.world.World;
@@ -18,6 +21,10 @@ public class E2JBaseRabbitEntity<T extends RabbitEntity> extends RabbitEntity {
         super(type, worldIn);
         experiencePoints = 3;
         setAiDisabled(false);
+    }
+
+    public static DefaultAttributeContainer.Builder createRabbitAttributes() {
+        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 3.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3D);
     }
 
     @Override

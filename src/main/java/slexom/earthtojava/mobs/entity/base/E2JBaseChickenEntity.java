@@ -1,5 +1,8 @@
 package slexom.earthtojava.mobs.entity.base;
 
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
+import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.ChickenEntity;
@@ -19,6 +22,11 @@ public class E2JBaseChickenEntity<T extends ChickenEntity> extends ChickenEntity
         experiencePoints = 3;
         setAiDisabled(false);
     }
+
+    public static DefaultAttributeContainer.Builder createChickenAttributes() {
+        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 4.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25D);
+    }
+
 
     @Override
     public void tickMovement() {

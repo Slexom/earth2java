@@ -1,17 +1,17 @@
 package slexom.earthtojava.mobs.client.renderer.entity.model;
 
 import com.google.common.collect.ImmutableList;
-import net.minecraft.client.render.entity.model.SegmentedModel;
 import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.render.entity.model.CompositeEntityModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 
-public class MelonGolemModel <T extends Entity> extends SegmentedModel<T> {
-    private final ModelRenderer body;
-    private final ModelRenderer bottomBody;
-    private final ModelRenderer head;
-    private final ModelRenderer rightHand;
-    private final ModelRenderer leftHand;
+public class MelonGolemModel<T extends Entity> extends CompositeEntityModel<T> {
+    private final ModelPart torso;
+    private final ModelPart bottomBody;
+    private final ModelPart head;
+    private final ModelPart rightHand;
+    private final ModelPart leftHand;
 
     public MelonGolemModel() {
         this.head = (new ModelPart(this, 0, 0)).setTextureSize(128, 64);
@@ -35,26 +35,26 @@ public class MelonGolemModel <T extends Entity> extends SegmentedModel<T> {
      * Sets this entity's model rotation angles
      */
     public void setAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        this.head.rotateAngleY = netHeadYaw * ((float)Math.PI / 180F);
-        this.head.pitch = headPitch * ((float)Math.PI / 180F);
-        this.torso.rotateAngleY = netHeadYaw * ((float)Math.PI / 180F) * 0.25F;
-        float f = MathHelper.sin(this.torso.rotateAngleY);
-        float f1 = MathHelper.cos(this.torso.rotateAngleY);
-        this.rightHand.rotateAngleZ = 1.0F;
-        this.leftHand.rotateAngleZ = -1.0F;
-        this.rightHand.rotateAngleY = 0.0F + this.torso.rotateAngleY;
-        this.leftHand.rotateAngleY = (float)Math.PI + this.torso.rotateAngleY;
-        this.rightHand.rotationPointX = f1 * 5.0F;
-        this.rightHand.rotationPointZ = -f * 5.0F;
-        this.leftHand.rotationPointX = -f1 * 5.0F;
-        this.leftHand.rotationPointZ = f * 5.0F;
+        this.head.yaw = netHeadYaw * ((float) Math.PI / 180F);
+        this.head.pitch = headPitch * ((float) Math.PI / 180F);
+        this.torso.yaw = netHeadYaw * ((float) Math.PI / 180F) * 0.25F;
+        float f = MathHelper.sin(this.torso.yaw);
+        float f1 = MathHelper.cos(this.torso.yaw);
+        this.rightHand.roll = 1.0F;
+        this.leftHand.roll = -1.0F;
+        this.rightHand.yaw = 0.0F + this.torso.yaw;
+        this.leftHand.yaw = (float) Math.PI + this.torso.yaw;
+        this.rightHand.pivotX = f1 * 5.0F;
+        this.rightHand.pivotZ = -f * 5.0F;
+        this.leftHand.pivotX = -f1 * 5.0F;
+        this.leftHand.pivotZ = f * 5.0F;
     }
 
-    public Iterable<ModelRenderer> getParts() {
+    public Iterable<ModelPart> getParts() {
         return ImmutableList.of(this.torso, this.bottomBody, this.head, this.rightHand, this.leftHand);
     }
 
-    public ModelRenderer func_205070_a() {
+    public ModelPart func_205070_a() {
         return this.head;
     }
 }

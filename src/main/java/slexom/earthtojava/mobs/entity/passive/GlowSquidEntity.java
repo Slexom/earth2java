@@ -4,7 +4,7 @@ package slexom.earthtojava.mobs.entity.passive;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.controller.MovementController;
+import net.minecraft.entity.ai.controller.MoveControl;
 import net.minecraft.entity.ai.goal.EscapeDangerGoal;
 import net.minecraft.entity.ai.goal.RandomSwimmingGoal;
 import net.minecraft.entity.passive.SquidEntity;
@@ -15,7 +15,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
+import net.minecraft.world.WorldView;
 import net.minecraft.world.World;
 
 
@@ -32,15 +32,15 @@ public class GlowSquidEntity extends SquidEntity {
         super(type, world);
         experiencePoints = 3;
         setAiDisabled(false);
-        this.moveController = new MovementController(this) {
+        this.moveControl = new MoveControl(this) {
             @Override
             public void tick() {
                 if (GlowSquidEntity.this.areEyesInFluid(FluidTags.WATER))
                     GlowSquidEntity.this.setMotion(GlowSquidEntity.this.getMotion().add(0, 0.005, 0));
-                if (this.action == MovementController.Action.MOVE_TO && !GlowSquidEntity.this.getNavigator().noPath()) {
-                    double dx = this.posX - GlowSquidEntity.this.getPosX();
-                    double dy = this.posY - GlowSquidEntity.this.getPosY();
-                    double dz = this.posZ - GlowSquidEntity.this.getPosZ();
+                if (this.action == MoveControl.Action.MOVE_TO && !GlowSquidEntity.this.getNavigator().noPath()) {
+                    double dx = this.posX - GlowSquidEntity.this.getX();
+                    double dy = this.posY - GlowSquidEntity.this.getY();
+                    double dz = this.posZ - GlowSquidEntity.this.getZ();
                     dy = dy / (double) MathHelper.sqrt(dx * dx + dy * dy + dz * dz);
                     GlowSquidEntity.this.rotationYaw = this.limitAngle(GlowSquidEntity.this.rotationYaw,
                             (float) (MathHelper.atan2(dz, dx) * (double) (180 / (float) Math.PI)) - 90, 90);
@@ -81,7 +81,7 @@ public class GlowSquidEntity extends SquidEntity {
     }
 
     @Override
-    public boolean isNotColliding(IWorldReader worldreader) {
+    public boolean isNotColliding(WorldView worldreader) {
         return worldreader.checkNoEntityCollision(this, VoxelShapes.create(this.getBoundingBox()));
     }
 
