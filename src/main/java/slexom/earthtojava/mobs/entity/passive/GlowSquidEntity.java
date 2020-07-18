@@ -1,23 +1,20 @@
-
 package slexom.earthtojava.mobs.entity.passive;
 
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.controller.MoveControl;
+import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.ai.goal.EscapeDangerGoal;
-import net.minecraft.entity.ai.goal.RandomSwimmingGoal;
+import net.minecraft.entity.ai.goal.SwimAroundGoal;
+import net.minecraft.entity.ai.pathing.SwimNavigation;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.passive.SquidEntity;
-import net.minecraft.network.IPacket;
-import net.minecraft.pathfinding.SwimmerPathNavigator;
-import net.minecraft.tags.FluidTags;
+import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.shapes.VoxelShapes;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.WorldView;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.World;
-
+import net.minecraft.world.WorldAccess;
+import net.minecraft.world.WorldView;
 
 import java.util.Random;
 
@@ -35,31 +32,34 @@ public class GlowSquidEntity extends SquidEntity {
         this.moveControl = new MoveControl(this) {
             @Override
             public void tick() {
-                if (GlowSquidEntity.this.areEyesInFluid(FluidTags.WATER))
-                    GlowSquidEntity.this.setMotion(GlowSquidEntity.this.getMotion().add(0, 0.005, 0));
-                if (this.action == MoveControl.Action.MOVE_TO && !GlowSquidEntity.this.getNavigator().noPath()) {
-                    double dx = this.posX - GlowSquidEntity.this.getX();
-                    double dy = this.posY - GlowSquidEntity.this.getY();
-                    double dz = this.posZ - GlowSquidEntity.this.getZ();
+                if (GlowSquidEntity.this.isSubmergedIn(FluidTags.WATER))
+                    GlowSquidEntity.this.setVelocity(GlowSquidEntity.this.getVelocity().add(0, 0.005, 0));
+                if (this.state == MoveControl.State.MOVE_TO && !GlowSquidEntity.this.getNavigation().isIdle()) {
+                    double dx = this.targetX - GlowSquidEntity.this.getX();
+                    double dy = this.targetY - GlowSquidEntity.this.getY();
+                    double dz = this.targetZ - GlowSquidEntity.this.getZ();
                     dy = dy / (double) MathHelper.sqrt(dx * dx + dy * dy + dz * dz);
-                    GlowSquidEntity.this.rotationYaw = this.limitAngle(GlowSquidEntity.this.rotationYaw,
-                            (float) (MathHelper.atan2(dz, dx) * (double) (180 / (float) Math.PI)) - 90, 90);
-                    GlowSquidEntity.this.renderYawOffset = GlowSquidEntity.this.rotationYaw;
-                    GlowSquidEntity.this.setAIMoveSpeed(MathHelper.lerp(0.125f, GlowSquidEntity.this.getAIMoveSpeed(),
-                            (float) (this.speed * GlowSquidEntity.this.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED).getValue())));
-                    GlowSquidEntity.this.setMotion(GlowSquidEntity.this.getMotion().add(0, GlowSquidEntity.this.getAIMoveSpeed() * dy * 0.1, 0));
+                    GlowSquidEntity.this.yaw = this.changeAngle(GlowSquidEntity.this.yaw, (float) (MathHelper.atan2(dz, dx) * (double) (180 / (float) Math.PI)) - 90, 90);
+                    GlowSquidEntity.this.bodyYaw = GlowSquidEntity.this.yaw;
+                    GlowSquidEntity.this.setMovementSpeed(MathHelper.lerp(0.125f, GlowSquidEntity.this.getMovementSpeed(),
+                            (float) (this.speed * GlowSquidEntity.this.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).getValue())));
+                    GlowSquidEntity.this.setVelocity(GlowSquidEntity.this.getVelocity().add(0, GlowSquidEntity.this.getMovementSpeed() * dy * 0.1, 0));
                 } else {
-                    GlowSquidEntity.this.setAIMoveSpeed(0);
+                    GlowSquidEntity.this.setMovementSpeed(0);
                 }
             }
         };
-        this.navigator = new SwimmerPathNavigator(this, this.world);
+        this.navigation = new SwimNavigation(this, this.world);
+    }
+
+    public static boolean canGlowingSquidSpawn(EntityType<GlowSquidEntity> entity, WorldAccess world, SpawnReason reason, BlockPos pos, Random rand) {
+        return pos.getY() > 45 && pos.getY() < world.getSeaLevel();
     }
 
     @Override
     protected void initGoals() {
         super.initGoals();
-        this.goalSelector.add(1, new RandomSwimmingGoal(this, 1, 40));
+        this.goalSelector.add(1, new SwimAroundGoal(this, 1, 40));
         this.goalSelector.add(2, new EscapeDangerGoal(this, 1.2));
     }
 
@@ -81,14 +81,9 @@ public class GlowSquidEntity extends SquidEntity {
     }
 
     @Override
-    public boolean isNotColliding(WorldView worldreader) {
-        return worldreader.checkNoEntityCollision(this, VoxelShapes.create(this.getBoundingBox()));
+    public boolean canSpawn(WorldView worldreader) {
+        return worldreader.intersectsEntities(this, VoxelShapes.cuboid(this.getBoundingBox()));
     }
-
-    public static boolean canGlowingSquidSpawn(EntityType<GlowSquidEntity> entity, IWorld world, SpawnReason reason, BlockPos pos, Random rand) {
-        return pos.getY() > 45 && pos.getY() < world.getSeaLevel();
-    }
-
 
 
 }

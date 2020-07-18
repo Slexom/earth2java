@@ -1,79 +1,91 @@
 package slexom.earthtojava.mobs.item.crafting;
 
-import com.google.gson.JsonElement;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import net.minecraft.inventory.CraftingInventory;
 import net.minecraft.item.BucketItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.IRecipeSerializer;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.item.crafting.ShapelessRecipe;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.util.JSONUtils;
-import net.minecraft.util.NonNullList;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.recipe.ShapedRecipe;
+import net.minecraft.recipe.ShapelessRecipe;
 import net.minecraft.util.Identifier;
-import net.minecraftforge.common.crafting.CraftingHelper;
-import net.minecraftforge.registries.ForgeRegistryEntry;
+import net.minecraft.util.JsonHelper;
+import net.minecraft.util.collection.DefaultedList;
 import slexom.earthtojava.mobs.init.RecipesInit;
 
 public class MudBucketRecipe extends ShapelessRecipe {
 
-    public MudBucketRecipe(Identifier idIn, String groupIn, ItemStack recipeOutputIn, NonNullList<Ingredient> recipeItemsIn) {
-        super(idIn, groupIn, recipeOutputIn, recipeItemsIn);
+    public MudBucketRecipe(Identifier id, String group, ItemStack output, DefaultedList<Ingredient> input) {
+        super(id, group, output, input);
     }
 
     @Override
-    public NonNullList<ItemStack> getRemainingItems(final CraftingInventory inv) {
-        System.out.println("HERE");
-        final NonNullList<ItemStack> remainingItems = NonNullList.withSize(inv.getSizeInventory(), ItemStack.EMPTY);
+    public DefaultedList<ItemStack> getRemainingStacks(CraftingInventory inv) {
+        final DefaultedList<ItemStack> remainingItems = DefaultedList.ofSize(inv.size(), ItemStack.EMPTY);
         for (int i = 0; i < remainingItems.size(); ++i) {
-            ItemStack itemstack = inv.getStackInSlot(i);
-            if (itemstack.hasContainerItem() && !(itemstack.getItem() instanceof BucketItem)) {
-                remainingItems.set(i, itemstack.getContainerItem());
+            ItemStack itemstack = inv.getStack(i);
+            if (itemstack.getItem().hasRecipeRemainder() && !(itemstack.getItem() instanceof BucketItem)) {
+                remainingItems.set(i, itemstack);
             }
         }
         return remainingItems;
     }
-    public IRecipeSerializer<?> getSerializer() {
-        return RecipesInit.MUD_BUCKET_RECIPE.get();
+
+    public RecipeSerializer<?> getSerializer() {
+        return RecipesInit.MUD_BUCKET_RECIPE;
     }
 
-    public static class Serializer extends ForgeRegistryEntry<IRecipeSerializer<?>> implements IRecipeSerializer<MudBucketRecipe> {
-        @Override
-        public MudBucketRecipe read(final Identifier recipeID, final JsonObject json) {
-            final String group = JSONUtils.getString(json, "group", "");
-            final NonNullList<Ingredient> ingredients = NonNullList.create();
-            for (final JsonElement element : JSONUtils.getJsonArray(json, "ingredients")) {
-                ingredients.add(CraftingHelper.getIngredient(element));
+    public static class Serializer implements RecipeSerializer<MudBucketRecipe> {
+
+        private static DefaultedList<Ingredient> getIngredients(JsonArray json) {
+            DefaultedList<Ingredient> defaultedList = DefaultedList.of();
+
+            for (int i = 0; i < json.size(); ++i) {
+                Ingredient ingredient = Ingredient.fromJson(json.get(i));
+                if (!ingredient.isEmpty()) {
+                    defaultedList.add(ingredient);
+                }
             }
-            if (ingredients.isEmpty()) {
+
+            return defaultedList;
+        }
+
+        public MudBucketRecipe read(Identifier recipeID, JsonObject json) {
+            String string = JsonHelper.getString(json, "group", "");
+            DefaultedList<Ingredient> defaultedList = getIngredients(JsonHelper.getArray(json, "ingredients"));
+            if (defaultedList.isEmpty()) {
                 throw new JsonParseException("No ingredients for shapeless recipe");
+            } else if (defaultedList.size() > 9) {
+                throw new JsonParseException("Too many ingredients for shapeless recipe");
+            } else {
+                ItemStack itemStack = ShapedRecipe.getItemStack(JsonHelper.getObject(json, "result"));
+                return new MudBucketRecipe(recipeID, string, itemStack, defaultedList);
             }
-            final ItemStack result = CraftingHelper.getItemStack(JSONUtils.getJsonObject(json, "result"), true);
-            return new MudBucketRecipe(recipeID, group, result, ingredients);
         }
 
         @Override
-        public MudBucketRecipe read(final Identifier recipeID, final PacketBuffer buffer) {
+        public MudBucketRecipe read(Identifier recipeID, PacketByteBuf buffer) {
             final String group = buffer.readString(Short.MAX_VALUE);
             final int numIngredients = buffer.readVarInt();
-            final NonNullList<Ingredient> ingredients = NonNullList.withSize(numIngredients, Ingredient.EMPTY);
+            final DefaultedList<Ingredient> ingredients = DefaultedList.ofSize(numIngredients, Ingredient.EMPTY);
             for (int j = 0; j < ingredients.size(); ++j) {
-                ingredients.set(j, Ingredient.read(buffer));
+                ingredients.set(j, Ingredient.fromPacket(buffer));
             }
             final ItemStack result = buffer.readItemStack();
             return new MudBucketRecipe(recipeID, group, result, ingredients);
         }
 
         @Override
-        public void write(final PacketBuffer buffer, final MudBucketRecipe recipe) {
+        public void write(PacketByteBuf buffer, MudBucketRecipe recipe) {
             buffer.writeString(recipe.getGroup());
-            buffer.writeVarInt(recipe.getIngredients().size());
-            for (final Ingredient ingredient : recipe.getIngredients()) {
+            buffer.writeVarInt(recipe.getPreviewInputs().size());
+            for (final Ingredient ingredient : recipe.getPreviewInputs()) {
                 ingredient.write(buffer);
             }
-            buffer.writeItemStack(recipe.getRecipeOutput());
+            buffer.writeItemStack(recipe.getOutput());
         }
     }
 }

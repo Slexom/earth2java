@@ -1,9 +1,13 @@
 package slexom.earthtojava.mobs.init;
 
 import net.minecraft.entity.EntityType;
-import net.minecraft.item.*;
+import net.minecraft.item.BucketItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.Items;
 import slexom.earthtojava.mobs.Earth2JavaMod;
 import slexom.earthtojava.mobs.item.BoneShardItem;
+import slexom.earthtojava.mobs.item.E2JSpawnEggItem;
 import slexom.earthtojava.mobs.item.HornItem;
 
 public class ItemInit {
@@ -11,39 +15,39 @@ public class ItemInit {
 
     private static final ItemGroup itemGroup = Earth2JavaMod.ITEM_GROUP;
     private static final Item.Settings spawnEggProps = new Item.Settings().group(itemGroup);
-    public static SpawnEggItem ALBINO_COW_SPAWN_EGG;
-    public static SpawnEggItem AMBER_CHICKEN_SPAWN_EGG;
-    public static SpawnEggItem ASHEN_COW_SPAWN_EGG;
+    public static E2JSpawnEggItem ALBINO_COW_SPAWN_EGG;
+    public static E2JSpawnEggItem AMBER_CHICKEN_SPAWN_EGG;
+    public static E2JSpawnEggItem ASHEN_COW_SPAWN_EGG;
     public static Item BONE_SHARD;
-    public static SpawnEggItem BONE_SPIDER_SPAWN_EGG;
-    public static SpawnEggItem CLUCKSHROOM_SPAWN_EGG;
-    public static SpawnEggItem FLECKED_SHEEP_SPAWN_EGG;
-    public static SpawnEggItem FURNACE_GOLEM_SPAWN_EGG;
-    public static SpawnEggItem GLOW_SQUID_SPAWN_EGG;
-    public static SpawnEggItem HARELEQUIN_RABBIT_SPAWN_EGG;
+    public static E2JSpawnEggItem BONE_SPIDER_SPAWN_EGG;
+    public static E2JSpawnEggItem CLUCKSHROOM_SPAWN_EGG;
+    public static E2JSpawnEggItem FLECKED_SHEEP_SPAWN_EGG;
+    public static E2JSpawnEggItem FURNACE_GOLEM_SPAWN_EGG;
+    public static E2JSpawnEggItem GLOW_SQUID_SPAWN_EGG;
+    public static E2JSpawnEggItem HARELEQUIN_RABBIT_SPAWN_EGG;
     public static Item HORN;
-    public static SpawnEggItem HORNED_SHEEP_SPAWN_EGG;
-    public static SpawnEggItem INKY_SHEEP_SPAWN_EGG;
-    public static SpawnEggItem JOLLY_LLAMA_SPAWN_EGG;
-    public static SpawnEggItem JUMBO_RABBIT_SPAWN_EGG;
-    public static SpawnEggItem MELON_GOLEM_SPAWN_EGG;
-    public static SpawnEggItem MIDNIGHT_CHICKEN_SPAWN_EGG;
-    public static SpawnEggItem MOOBLOOM_SPAWN_EGG;
-    public static SpawnEggItem MUDDY_FOOT_RABBIT_SPAWN_EGG;
-    public static SpawnEggItem MUDDY_PIG_SPAWN_EGG;
-    public static BucketItem MUD_BUCKET;
-    public static SpawnEggItem PALE_PIG_SPAWN_EGG;
-    public static SpawnEggItem PIEBALD_PIG_SPAWN_EGG;
-    public static SpawnEggItem ROCKY_SHEEP_SPAWN_EGG;
+    public static E2JSpawnEggItem HORNED_SHEEP_SPAWN_EGG;
+    public static E2JSpawnEggItem INKY_SHEEP_SPAWN_EGG;
+    public static E2JSpawnEggItem JOLLY_LLAMA_SPAWN_EGG;
+    public static E2JSpawnEggItem JUMBO_RABBIT_SPAWN_EGG;
+    public static E2JSpawnEggItem MELON_GOLEM_SPAWN_EGG;
+    public static E2JSpawnEggItem MIDNIGHT_CHICKEN_SPAWN_EGG;
+    public static E2JSpawnEggItem MOOBLOOM_SPAWN_EGG;
+    public static E2JSpawnEggItem MUDDY_FOOT_RABBIT_SPAWN_EGG;
+    public static E2JSpawnEggItem MUDDY_PIG_SPAWN_EGG;
+    public static Item MUD_BUCKET;
+    public static E2JSpawnEggItem PALE_PIG_SPAWN_EGG;
+    public static E2JSpawnEggItem PIEBALD_PIG_SPAWN_EGG;
+    public static E2JSpawnEggItem ROCKY_SHEEP_SPAWN_EGG;
     public static Item RUBY;
-    public static SpawnEggItem SKELETON_WOLF_SPAWN_EGG;
-    public static SpawnEggItem SPOTTED_PIG_SPAWN_EGG;
-    public static SpawnEggItem STORMY_CHICKEN_SPAWN_EGG;
-    public static SpawnEggItem SUNSET_COW_SPAWN_EGG;
-    public static SpawnEggItem TROPICAL_SLIME_SPAWN_EGG;
-    public static SpawnEggItem VESTED_RABBIT_SPAWN_EGG;
-    public static SpawnEggItem WANDERING_TRADER_SPAWN_EGG;
-    public static SpawnEggItem WOOLY_COW_SPAWN_EGG;
+    public static E2JSpawnEggItem SKELETON_WOLF_SPAWN_EGG;
+    public static E2JSpawnEggItem SPOTTED_PIG_SPAWN_EGG;
+    public static E2JSpawnEggItem STORMY_CHICKEN_SPAWN_EGG;
+    public static E2JSpawnEggItem SUNSET_COW_SPAWN_EGG;
+    public static E2JSpawnEggItem TROPICAL_SLIME_SPAWN_EGG;
+    public static E2JSpawnEggItem VESTED_RABBIT_SPAWN_EGG;
+    public static E2JSpawnEggItem WANDERING_TRADER_SPAWN_EGG;
+    public static E2JSpawnEggItem WOOLY_COW_SPAWN_EGG;
 
     public static void init() {
         HORN = RegisterHelper.registerItem("horn", new HornItem(new Item.Settings().group(itemGroup).maxCount(64)));
@@ -53,8 +57,8 @@ public class ItemInit {
         registerSpawnEggs();
     }
 
-    private static SpawnEggItem registerSpawnEgg(String registryName, EntityType<?> entity, int primaryColor, int secondaryColor) {
-        return (SpawnEggItem) RegisterHelper.registerItem(registryName, new SpawnEggItem(entity, primaryColor, secondaryColor, spawnEggProps));
+    private static E2JSpawnEggItem registerSpawnEgg(String registryName, EntityType<?> entity, int primaryColor, int secondaryColor) {
+        return (E2JSpawnEggItem) RegisterHelper.registerItem(registryName, new E2JSpawnEggItem(entity, primaryColor, secondaryColor, spawnEggProps));
     }
 
     private static void registerSpawnEggs() {

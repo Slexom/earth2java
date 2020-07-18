@@ -3,33 +3,37 @@ package slexom.earthtojava.mobs.entity.passive;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.Durations;
 import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Items;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.IPacket;
+import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.data.DataTracker;
-import import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.mob.Angerable;
+import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Items;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.IntRange;
 import net.minecraft.world.World;
-
 import slexom.earthtojava.mobs.entity.base.E2JBaseSheepEntity;
 
 import javax.annotation.Nullable;
 import java.util.UUID;
 
 
-public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
+public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> implements Angerable {
 
-    private EatGrassGoal eatGrassGoal;
     private static final TrackedData<Byte> DATA_FLAGS_ID = DataTracker.registerData(HornedSheepEntity.class, TrackedDataHandlerRegistry.BYTE);
-    private static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(HornedSheepEntity.class, TrackedDataHandlerRegistry.VARINT);
+    private static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(HornedSheepEntity.class, TrackedDataHandlerRegistry.INTEGER);
+    private static final IntRange field_234180_bw_ = Durations.betweenSeconds(20, 39);
+    private EatGrassGoal eatGrassGoal;
     private UUID lastHurtBy;
-
 
     public HornedSheepEntity(EntityType<? extends HornedSheepEntity> type, World world) {
         super(type, world);
@@ -52,46 +56,32 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
         this.goalSelector.add(6, new WanderAroundFarGoal(this, 1.0D));
         this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(8, new LookAroundGoal(this));
-        this.targetSelector.add(1, (new AngerGoal(this)).setCallsForHelp());
+        this.targetSelector.add(1, (new AngerGoal(this)).setGroupRevenge());
         this.targetSelector.add(2, new AttackPlayerGoal(this));
     }
 
     public void writeCustomDataToTag(CompoundTag compound) {
         super.writeCustomDataToTag(compound);
-        compound.putInt("Anger", this.getAnger());
-        if (this.lastHurtBy != null) {
-            compound.putString("HurtBy", this.lastHurtBy.toString());
-        } else {
-            compound.putString("HurtBy", "");
-        }
+        this.angerToTag(compound);
     }
 
     public void readCustomDataFromTag(CompoundTag compound) {
         super.readCustomDataFromTag(compound);
-        String s = compound.getString("HurtBy");
-        if (!s.isEmpty()) {
-            this.lastHurtBy = UUID.fromString(s);
-            PlayerEntity playerentity = this.world.getPlayerByUuid(this.lastHurtBy);
-            this.setRevengeTarget(playerentity);
-            if (playerentity != null) {
-                this.attackingPlayer = playerentity;
-                this.recentlyHit = this.getRevengeTimer();
-            }
-        }
+        this.angerFromTag((ServerWorld) this.world, compound);
     }
 
     public boolean tryAttack(Entity entityIn) {
-        boolean flag = entityIn.damage(DamageSource.mob(this), (float) ((int) this.getAttributeInstance(EntityAttributes.ATTACK_DAMAGE).getValue()));
+        boolean flag = entityIn.damage(DamageSource.mob(this), (float) ((int) this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).getValue()));
         if (flag) {
             this.dealDamage(this, entityIn);
         }
         return flag;
     }
 
-    public void setRevengeTarget(@Nullable LivingEntity livingBase) {
-        super.setRevengeTarget(livingBase);
+    public void setAttacker(@Nullable LivingEntity livingBase) {
+        super.setAttacker(livingBase);
         if (livingBase != null) {
-            this.lastHurtBy = livingBase.getUniqueID();
+            this.lastHurtBy = livingBase.getUuid();
         }
     }
 
@@ -126,16 +116,8 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
         }
     }
 
-    private boolean isNearTarget() {
-        return this.getSheepFlag();
-    }
-
     private void setNearTarget(boolean p_226452_1_) {
         this.setSheepFlag(p_226452_1_);
-    }
-
-    private boolean isTooFar(BlockPos pos) {
-        return !this.isWithinDistance(pos);
     }
 
     private void setSheepFlag(boolean p_226404_2_) {
@@ -144,10 +126,6 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
         } else {
             this.dataTracker.set(DATA_FLAGS_ID, (byte) (this.dataTracker.get(DATA_FLAGS_ID) & ~2));
         }
-    }
-
-    private boolean getSheepFlag() {
-        return (this.dataTracker.get(DATA_FLAGS_ID) & 2) != 0;
     }
 
     public Identifier getLootTableId() {
@@ -195,7 +173,7 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
     public boolean setSheepAttacker(Entity attacker) {
         this.setAnger(400 + this.random.nextInt(400));
         if (attacker instanceof LivingEntity) {
-            this.setRevengeTarget((LivingEntity) attacker);
+            this.setAttacker((LivingEntity) attacker);
         }
         return true;
     }
@@ -204,8 +182,8 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
         if (this.isInvulnerableTo(source)) {
             return false;
         } else {
-            Entity entity = source.getTrueSource();
-            if (!this.world.isClient && entity instanceof PlayerEntity && !((PlayerEntity) entity).isCreative() && this.canEntityBeSeen(entity) && !this.isAIDisabled()) {
+            Entity entity = source.getAttacker();
+            if (!this.world.isClient && entity instanceof PlayerEntity && !((PlayerEntity) entity).isCreative() && this.canSee(entity) && !this.isAiDisabled()) {
                 this.setSheepAttacker(entity);
             }
             return super.damage(source, amount);
@@ -213,7 +191,33 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
     }
 
     private boolean isWithinDistance(BlockPos pos) {
-        return pos.withinDistance(new BlockPos(this), (double) 48);
+        return pos.isWithinDistance(new BlockPos(this.getPos()), (double) 48);
+    }
+
+    @Override
+    public int getAngerTime() {
+        return this.dataTracker.get(ANGER_TIME);
+    }
+
+    @Override
+    public void setAngerTime(int ticks) {
+        this.dataTracker.set(ANGER_TIME, ticks);
+    }
+
+    @Nullable
+    @Override
+    public UUID getAngryAt() {
+        return this.lastHurtBy;
+    }
+
+    @Override
+    public void setAngryAt(@Nullable UUID uuid) {
+        this.lastHurtBy = uuid;
+    }
+
+    @Override
+    public void chooseRandomAngerTime() {
+        this.setAngerTime(field_234180_bw_.choose(this.random));
     }
 
     static class AngerGoal extends RevengeGoal {
@@ -222,8 +226,8 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
             super(sheepIn);
         }
 
-        protected void setTarget(MobEntity mobIn, LivingEntity targetIn) {
-            if (mobIn instanceof HornedSheepEntity && this.goalOwner.canEntityBeSeen(targetIn) && ((HornedSheepEntity) mobIn).setSheepAttacker(targetIn)) {
+        protected void setMobEntityTarget(MobEntity mobIn, LivingEntity targetIn) {
+            if (mobIn instanceof HornedSheepEntity && this.mob.canSee(targetIn) && ((HornedSheepEntity) mobIn).setSheepAttacker(targetIn)) {
                 mobIn.setTarget(targetIn);
             }
         }
@@ -241,7 +245,7 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
 
         public boolean shouldContinue() {
             boolean flag = this.canCharge();
-            if (flag && this.goalOwner.getTarget() != null) {
+            if (flag && this.mob.getTarget() != null) {
                 return super.shouldContinue();
             } else {
                 this.target = null;
@@ -250,7 +254,7 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> {
         }
 
         private boolean canCharge() {
-            HornedSheepEntity sheepEntity = (HornedSheepEntity) this.goalOwner;
+            HornedSheepEntity sheepEntity = (HornedSheepEntity) this.mob;
             return sheepEntity.isAngry();
         }
     }

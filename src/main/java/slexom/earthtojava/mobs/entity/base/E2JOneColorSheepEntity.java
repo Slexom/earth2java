@@ -50,7 +50,7 @@ public class E2JOneColorSheepEntity<T extends AnimalEntity> extends AnimalEntity
         setAiDisabled(false);
     }
 
-    public static DefaultAttributeContainer.Builder createSheepAttributes() {
+    public static DefaultAttributeContainer.Builder createOneColorSheepAttributes() {
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 8.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.23000000417232513D);
     }
 

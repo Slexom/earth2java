@@ -1,9 +1,10 @@
 package slexom.earthtojava.mobs.utils;
 
-import net.minecraft.entity.EntityClassification;
+import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,11 +13,6 @@ import java.util.stream.Stream;
 
 
 public final class BiomeSpawnHelper {
-
-    public static final String[] MOOBLOOM_SPAWN_BIOMES = getBiomesListFromBiomes(new String[]{"minecraft:flower_forest"});
-
-    private BiomeSpawnHelper() {
-    }
 
     public static final String[] SNOWY_TUNDRA = new String[]{"minecraft:snowy_tundra", "minecraft:snowy_mountains"};
     public static final String[] ICE_SPIKE = new String[]{"minecraft:ice_spikes"};
@@ -56,10 +52,12 @@ public final class BiomeSpawnHelper {
     public static final String[] FURNACE_GOLEM_SPAWN_BIOMES = getBiomesListFromBiomes(DESERT);
     public static final String[] MUDDY_FOOT_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS);
     public static final String[] HARELEQUIN_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS);
+    public static final String[] MOOBLOOM_SPAWN_BIOMES = getBiomesListFromBiomes(new String[]{"minecraft:flower_forest"});
     public static final String[] JUMBO_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS);
     public static final String[] VESTED_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS);
     public static final String[] STORMY_CHICKEN_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS, MOUNTAINS, GRAVELLY_MOUNTAINS, TAIGA);
     public static final String[] ROCKY_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS, MOUNTAINS, GRAVELLY_MOUNTAINS);
+    public static final String[] RAINBOW_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS, FOREST);
     public static final String[] INKY_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS, MOUNTAINS, GRAVELLY_MOUNTAINS);
     public static final String[] HORNED_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS, MOUNTAINS, GRAVELLY_MOUNTAINS);
     public static final String[] FLECKED_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS, MOUNTAINS, TAIGA, GRAVELLY_MOUNTAINS, FOREST);
@@ -78,29 +76,35 @@ public final class BiomeSpawnHelper {
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    private BiomeSpawnHelper() {
+    }
+
     public static String[] getBiomesListFromBiomes(String[]... biomes) {
         return Stream.of(biomes).flatMap(Stream::of).toArray(String[]::new);
     }
 
-    private static void setSpawnBiomes(EntityType entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn, EntityClassification classification) {
-        for (Biome biome : ForgeRegistries.BIOMES.getValues()) {
-            boolean biomeCriteria = Arrays.asList(spawnBiomes).contains(ForgeRegistries.BIOMES.getKey(biome).toString());
-            if (!biomeCriteria)
-                continue;
-            biome.getSpawns(classification).add(new Biome.SpawnListEntry(entity, weight, minGroupCountIn, maxGroupCountIn));
+    private static void setSpawnBiomes(EntityType entity, String[] spawnBiomes, int weight, int minGroupSize, int maxGroupSize, SpawnGroup classification) {
+        Registry.BIOME.forEach(biome -> addToBiome(biome,  entity,   spawnBiomes,  weight,  minGroupSize,   maxGroupSize,  classification));
+        RegistryEntryAddedCallback.event(Registry.BIOME).register((i, identifier, biome) -> addToBiome(biome,  entity,   spawnBiomes,  weight,  minGroupSize,   maxGroupSize,  classification));
+    }
+
+    private static void addToBiome(Biome biome, EntityType entity, String[] spawnBiomes, int weight, int minGroupSize, int maxGroupSize, SpawnGroup classification) {
+        boolean biomeCriteria = Arrays.asList(spawnBiomes).contains(biome.getTranslationKey());
+        if (biomeCriteria) {
+            biome.getEntitySpawnList(classification).add(new Biome.SpawnEntry(entity, weight, minGroupSize, maxGroupSize));
         }
     }
 
     public static void setCreatureSpawnBiomes(EntityType entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
-        setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, EntityClassification.CREATURE);
+        setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.CREATURE);
     }
 
     public static void setWaterCreatureSpawnBiomes(EntityType entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
-        setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, EntityClassification.WATER_CREATURE);
+        setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.WATER_CREATURE);
     }
 
     public static void setMonsterSpawnBiomes(EntityType entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
-        setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, EntityClassification.MONSTER);
+        setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.MONSTER);
     }
 
     public static List<String> convertForConfig(String[] ary) {

@@ -9,8 +9,8 @@ import net.minecraft.entity.ai.goal.EscapeSunlightGoal;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import slexom.earthtojava.mobs.entity.base.E2JBaseChickenEntity;
 
@@ -32,8 +32,8 @@ public class CluckshroomEntity extends E2JBaseChickenEntity<CluckshroomEntity> {
     static class PlaceBlockGoal extends Goal {
         private final CluckshroomEntity cluckshroom;
 
-        public PlaceBlockGoal(CluckshroomEntity p_i45843_1_) {
-            this.cluckshroom = p_i45843_1_;
+        public PlaceBlockGoal(CluckshroomEntity entity) {
+            this.cluckshroom = entity;
         }
 
         public boolean canStart() {
@@ -45,7 +45,7 @@ public class CluckshroomEntity extends E2JBaseChickenEntity<CluckshroomEntity> {
         }
 
         public void tick() {
-            IWorld iworld = this.cluckshroom.world;
+            WorldAccess world = this.cluckshroom.world;
             int i = MathHelper.floor(this.cluckshroom.getX());
             int j = MathHelper.floor(this.cluckshroom.getY());
             int k = MathHelper.floor(this.cluckshroom.getZ());
@@ -53,10 +53,10 @@ public class CluckshroomEntity extends E2JBaseChickenEntity<CluckshroomEntity> {
             BlockPos blockPos = new BlockPos(i, j, k);
             BlockState blockState = mushroom.getDefaultState();
             BlockPos blockDownPos = blockPos.down();
-            BlockState blockDownState = iworld.getBlockState(blockDownPos);
-            if (canPlace(iworld, blockState, blockPos, blockDownState, blockDownPos)) {
-                iworld.removeBlock(blockPos, false);
-                iworld.setBlockState(blockPos, blockState, 3);
+            BlockState blockDownState = world.getBlockState(blockDownPos);
+            if (canPlace(world, blockState, blockPos, blockDownState, blockDownPos)) {
+                world.removeBlock(blockPos, false);
+                world.setBlockState(blockPos, blockState, 3);
             }
         }
     }

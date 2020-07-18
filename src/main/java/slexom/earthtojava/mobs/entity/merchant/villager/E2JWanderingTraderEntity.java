@@ -4,6 +4,9 @@ import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
+import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.WanderingTraderEntity;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOffers;
@@ -63,6 +66,9 @@ public class E2JWanderingTraderEntity extends WanderingTraderEntity {
         super(type, worldIn);
     }
 
+    public static DefaultAttributeContainer.Builder createWanderingTraderAttributes() {
+        return MobEntity.createMobAttributes();
+    }
 
     protected void fillRecipes() {
         TradeOffers.Factory[] factorys = TRADES.get(1);

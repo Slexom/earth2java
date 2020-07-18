@@ -19,8 +19,8 @@ import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -42,6 +42,7 @@ public class TropicalSlimeEntity extends MobEntityWithAi {
         this.experiencePoints = this.size;
         setAiDisabled(false);
         this.moveControl = new MoveHelperController(this);
+        this.setAttributes();
     }
 
     @Override
@@ -55,14 +56,13 @@ public class TropicalSlimeEntity extends MobEntityWithAi {
         this.targetSelector.add(3, (new RevengeGoal(this)));
     }
 
-    protected void initAttributes() {
-        super.initAttributes();
-        this.getAttributeInstance(EntityAttributes.MAX_HEALTH).setBaseValue(16.0D);
-        this.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED).setBaseValue(0.6D);
-        this.getAttributes().register(EntityAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
+    protected void setAttributes() {
+        this.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).setBaseValue(16.0D);
+        this.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).setBaseValue(0.6D);
+        this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).setBaseValue(4.0D);
     }
 
-    public boolean interactMob(PlayerEntity player, Hand hand) {
+    public ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemstack = player.getStackInHand(hand);
         if (itemstack.getItem() == Items.BUCKET && !player.abilities.creativeMode && !this.isBaby()) {
             if (!this.world.isClient) {
@@ -71,7 +71,7 @@ public class TropicalSlimeEntity extends MobEntityWithAi {
                 player.playSound(SoundEvents.ENTITY_SLIME_SQUISH, 1.0F, 1.0F);
                 spawnWater();
                 giveTropicalFishBucket(player, hand, itemstack);
-                return true;
+                return ActionResult.success(this.world.isClient);
             } else {
                 return super.interactMob(player, hand);
             }
@@ -171,7 +171,7 @@ public class TropicalSlimeEntity extends MobEntityWithAi {
     }
 
     protected float func_225512_er_() {
-        return (float) this.getAttributeInstance(EntityAttributes.ATTACK_DAMAGE).getValue();
+        return (float) this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
     }
 
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
@@ -344,8 +344,8 @@ public class TropicalSlimeEntity extends MobEntityWithAi {
                 this.entity.setForwardSpeed(0.0F);
             } else {
                 this.state = MoveControl.State.WAIT;
-                if (this.entity.onGround) {
-                    this.entity.setMovementSpeed((float) (this.speed * this.entity.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED).getValue()));
+                if (this.entity.isOnGround()) {
+                    this.entity.setMovementSpeed((float) (this.speed * this.entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).getValue()));
                     if (this.jumpDelay-- <= 0) {
                         this.jumpDelay = this.slime.getJumpDelay();
                         if (this.isAggressive) {
@@ -362,7 +362,7 @@ public class TropicalSlimeEntity extends MobEntityWithAi {
                         this.entity.setMovementSpeed(0.0F);
                     }
                 } else {
-                    this.entity.setMovementSpeed((float) (this.speed * this.entity.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED).getValue()));
+                    this.entity.setMovementSpeed((float) (this.speed * this.entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).getValue()));
                 }
 
             }

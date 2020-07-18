@@ -4,17 +4,17 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.goal.Goal;
-import net.minecraft.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.entity.ai.goal.MoveThroughVillageGoal;
-import net.minecraft.entity.monster.CreeperEntity;
-import net.minecraft.entity.monster.IMob;
-import net.minecraft.entity.passive.IronGolemEntity;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.data.DataTracker;
-import import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.mob.CreeperEntity;
+import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.mob.Monster;
+import net.minecraft.entity.passive.IronGolemEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -43,27 +43,25 @@ public class FurnaceGolemEntity extends IronGolemEntity {
     @Override
     protected void initGoals() {
         this.goalSelector.add(1, new MeleeAttackGoal(this, 1.0D, true));
-        this.goalSelector.add(2, new MoveTowardsTargetGoal(this, 0.9D, 32.0F));
-        this.goalSelector.add(2, new MoveTowardsVillageGoal(this, 0.6D));
-        this.goalSelector.add(3, new MoveThroughVillageGoal(this, 0.6D, false, 4, () -> {
-            return false;
-        }));
+        this.goalSelector.add(2, new GoToEntityTargetGoal(this, 0.9D, 32.0F));
+        this.goalSelector.add(2, new IronGolemWanderAroundGoal(this, 0.6D));
+        this.goalSelector.add(3, new WanderAroundPointOfInterestGoal(this, 0.6D, false));
         this.goalSelector.add(6, new WanderAroundFarGoal(this, 0.6D));
         this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(8, new LookAroundGoal(this));
         this.targetSelector.add(1, new DefendVillageTargetGoal(this));
         this.targetSelector.add(2, new RevengeGoal(this));
-        this.targetSelector.add(3, new FollowTargetGoal(this, MobEntity.class, 5, false, false, (p_213619_0_) -> p_213619_0_ instanceof IMob && !(p_213619_0_ instanceof CreeperEntity) && !(p_213619_0_ instanceof TropicalSlimeEntity)));
+        this.targetSelector.add(3, new FollowTargetGoal(this, MobEntity.class, 5, false, false, (p_213619_0_) -> p_213619_0_ instanceof Monster && !(p_213619_0_ instanceof CreeperEntity) && !(p_213619_0_ instanceof TropicalSlimeEntity)));
     }
 
     public boolean tryAttack(Entity entityIn) {
         this.attackTimer = 10;
-        this.world.setEntityState(this, (byte) 4);
-        float f = (float) this.getAttributeInstance(EntityAttributes.ATTACK_DAMAGE).getValue();
+        this.world.sendEntityStatus(this, (byte) 4);
+        float f = (float) this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
         float f1 = f > 0.0F ? f / 2.0F + (float) this.random.nextInt((int) f) : 0.0F;
         boolean flag = entityIn.damage(DamageSource.ON_FIRE, f1);
         if (flag) {
-            entityIn.setMotion(entityIn.getMotion().add(0.0D, 0.4D, 0.0D));
+            entityIn.setVelocity(entityIn.getVelocity().add(0.0D, 0.4D, 0.0D));
             this.dealDamage(this, entityIn);
         }
         this.playSound(SoundEvents.ENTITY_IRON_GOLEM_ATTACK, 1.0F, 1.0F);
@@ -80,12 +78,12 @@ public class FurnaceGolemEntity extends IronGolemEntity {
                 int z = MathHelper.floor(this.getZ());
                 BlockPos pos = new BlockPos(x, y - 0.2D, z);
                 BlockPos posRandom = pos.add(new Random().nextInt(3) - 1, 0, new Random().nextInt(3) - 1);
-                if (!this.world.isAirBlock(posRandom) && this.world.isAirBlock(posRandom.up())) {
+                if (!this.world.isAir(posRandom) && this.world.isAir(posRandom.up())) {
                     this.world.setBlockState(posRandom.up(), Blocks.FIRE.getDefaultState(), 3);
                 }
             }
         }
-        if (this.isInWater()) {
+        if (this.isInsideWaterOrBubbleColumn()) {
             this.damage(DamageSource.DROWN, 5.0F);
         }
 
@@ -130,21 +128,21 @@ public class FurnaceGolemEntity extends IronGolemEntity {
             super.start();
         }
 
-        public void resetTask() {
+        public void stop() {
             this.golem.setAngry(false);
-            super.resetTask();
+            super.stop();
         }
     }
 
 
-    public class DefendVillageTargetGoal extends net.minecraft.entity.ai.goal.DefendVillageTargetGoal {
+    public class DefendVillageTargetGoal extends TrackIronGolemTargetGoal {
         private final FurnaceGolemEntity golem;
         private LivingEntity villageAgressorTarget;
 
         public DefendVillageTargetGoal(FurnaceGolemEntity ironGolemIn) {
             super(ironGolemIn);
             this.golem = ironGolemIn;
-            this.setMutexFlags(EnumSet.of(Goal.Flag.TARGET));
+            this.setControls(EnumSet.of(Goal.Control.TARGET));
         }
 
         public void start() {
@@ -153,9 +151,9 @@ public class FurnaceGolemEntity extends IronGolemEntity {
             super.start();
         }
 
-        public void resetTask() {
+        public void stop() {
             this.golem.setAngry(false);
-            super.resetTask();
+            super.stop();
         }
     }
 

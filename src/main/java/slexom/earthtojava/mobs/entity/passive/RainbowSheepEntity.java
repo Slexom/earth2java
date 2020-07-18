@@ -8,6 +8,6 @@ import slexom.earthtojava.mobs.init.BlockInit;
 
 public class RainbowSheepEntity extends E2JOneColorSheepEntity<RainbowSheepEntity> {
     public RainbowSheepEntity(EntityType<? extends RainbowSheepEntity> type, World world) {
-        super(type, world, new ItemStack( BlockInit.RAINBOW_WOOL.get()));
+        super(type, world, new ItemStack( BlockInit.RAINBOW_WOOL));
     }
 }

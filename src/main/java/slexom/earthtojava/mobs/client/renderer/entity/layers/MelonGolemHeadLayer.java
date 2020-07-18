@@ -4,11 +4,10 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.entity.LivingRenderer;
+import net.minecraft.client.render.entity.LivingEntityRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.model.SnowmanEntityModel;
-import net.minecraft.client.render.model.ItemCameraTransforms;
 import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.util.math.Vector3f;
@@ -25,15 +24,15 @@ public class MelonGolemHeadLayer extends FeatureRenderer<MelonGolemEntity, Snowm
     public void render(MatrixStack matrixStackIn, VertexConsumerProvider bufferIn, int packedLightIn, MelonGolemEntity entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
         if (!entitylivingbaseIn.isInvisible() && entitylivingbaseIn.isMelonEquipped()) {
             matrixStackIn.push();
-            this.getContextModel().method_2834().rotate(matrixStackIn);
+            this.getContextModel().getTopSnowball().rotate(matrixStackIn);
             matrixStackIn.translate(0.0D, -0.34375D, 0.0D);
             matrixStackIn.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(180.0F));
             matrixStackIn.scale(0.625F, -0.625F, -0.625F);
-            ItemStack head = new ItemStack(BlockInit.CARVED_MELON.get());
-            ItemStack headBlink = new ItemStack(BlockInit.MELON_GOLEM_HEAD_BLINK.get());
-            ItemStack headShoot = new ItemStack(BlockInit.MELON_GOLEM_HEAD_SHOOT.get());
+            ItemStack head = new ItemStack(BlockInit.CARVED_MELON);
+            ItemStack headBlink = new ItemStack(BlockInit.MELON_GOLEM_HEAD_BLINK);
+            ItemStack headShoot = new ItemStack(BlockInit.MELON_GOLEM_HEAD_SHOOT);
             ItemStack itemstack = entitylivingbaseIn.isShooting() ? headShoot : entitylivingbaseIn.getBlinkRemainingTicks() > 0 ? headBlink : head;
-            MinecraftClient.getInstance().getItemRenderer().renderItem(entitylivingbaseIn, itemstack, ModelTransformation.Mode.HEAD, false, matrixStackIn, bufferIn, entitylivingbaseIn.world, packedLightIn, LivingRenderer.getPackedOverlay(entitylivingbaseIn, 0.0F));
+            MinecraftClient.getInstance().getItemRenderer().renderItem(entitylivingbaseIn, itemstack, ModelTransformation.Mode.HEAD, false, matrixStackIn, bufferIn, entitylivingbaseIn.world, packedLightIn, LivingEntityRenderer.getOverlay(entitylivingbaseIn, 0.0F));
             matrixStackIn.pop();
         }
     }

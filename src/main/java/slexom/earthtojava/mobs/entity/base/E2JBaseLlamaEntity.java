@@ -21,7 +21,7 @@ public class E2JBaseLlamaEntity extends LlamaEntity {
         setAiDisabled(false);
     }
 
-    public static DefaultAttributeContainer.Builder createLlamaAttributes() {
+    public static DefaultAttributeContainer.Builder createJollyLlamaAttributes() {
         return createAbstractDonkeyAttributes().add(EntityAttributes.GENERIC_FOLLOW_RANGE, 40.0D);
     }
 

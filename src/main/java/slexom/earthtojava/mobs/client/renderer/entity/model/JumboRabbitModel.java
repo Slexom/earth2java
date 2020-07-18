@@ -158,7 +158,7 @@ public class JumboRabbitModel<T extends JumboRabbitEntity> extends EntityModel<T
         this.rabbitHead.yaw = netHeadYaw * ((float) Math.PI / 180F);
         this.rabbitRightEar.yaw = this.rabbitNose.yaw - 0.2617994F;
         this.rabbitLeftEar.yaw = this.rabbitNose.yaw + 0.2617994F;
-        this.jumpRotation = MathHelper.sin(entityIn.method_6605(f) * (float) Math.PI);
+        this.jumpRotation = MathHelper.sin(entityIn.getJumpProgress(f) * (float) Math.PI);
         this.rabbitLeftThigh.pitch = (this.jumpRotation * 50.0F - 21.0F) * ((float) Math.PI / 180F);
         this.rabbitRightThigh.pitch = (this.jumpRotation * 50.0F - 21.0F) * ((float) Math.PI / 180F);
         this.rabbitLeftFoot.pitch = this.jumpRotation * 50.0F * ((float) Math.PI / 180F);
@@ -169,6 +169,6 @@ public class JumboRabbitModel<T extends JumboRabbitEntity> extends EntityModel<T
 
     public void animateModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick) {
         super.animateModel(entityIn, limbSwing, limbSwingAmount, partialTick);
-        this.jumpRotation = MathHelper.sin(entityIn.method_6605(partialTick) * (float) Math.PI);
+        this.jumpRotation = MathHelper.sin(entityIn.getJumpProgress(partialTick) * (float) Math.PI);
     }
 }
