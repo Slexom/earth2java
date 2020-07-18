@@ -1,5 +1,6 @@
 package slexom.earthtojava.mobs.item;
 
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -22,7 +23,11 @@ public class E2JItem extends Item {
     @OnlyIn(Dist.CLIENT)
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
         if (E2JModConfig.showDescription) {
-            tooltip.add(new TranslationTextComponent(this.getTranslationKey() + ".desc").func_240699_a_(TextFormatting.GRAY));
+            String translationKey = this.getTranslationKey() + ".desc";
+            if (I18n.hasKey(translationKey)) {
+                TranslationTextComponent description = new TranslationTextComponent(translationKey);
+                tooltip.add(description.func_240699_a_(TextFormatting.GRAY));
+            }
         }
     }
 

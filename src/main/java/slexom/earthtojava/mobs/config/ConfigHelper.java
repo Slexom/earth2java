@@ -15,6 +15,13 @@ public final class ConfigHelper {
     public static void bakeCommon(final net.minecraftforge.fml.config.ModConfig config) {
 
         E2JModConfig.mudLakeFrequency = ConfigHolder.COMMON.mudLakeFrequency.get();
+        E2JModConfig.canWanderingTraderSpawn = ConfigHolder.COMMON.canWanderingTraderSpawn.get();
+        E2JModConfig.canRubyOreGenerate = ConfigHolder.COMMON.canRubyOreGenerate.get();
+        E2JModConfig.rubyOreCount = ConfigHolder.COMMON.rubyOreCount.get();
+        E2JModConfig.rubyOreBottomOffset = ConfigHolder.COMMON.rubyOreBottomOffset.get();
+        E2JModConfig.rubyOreTopOffset = ConfigHolder.COMMON.rubyOreTopOffset.get();
+        E2JModConfig.rubyOreMaximum = ConfigHolder.COMMON.rubyOreMaximum.get();
+
 
         E2JModConfig.amberChickenSpawnBiomes = ConfigHolder.COMMON.amberChickenSpawnBiomes.get();
         E2JModConfig.amberChickenWeight = ConfigHolder.COMMON.amberChickenWeight.get();
@@ -150,6 +157,16 @@ public final class ConfigHelper {
         E2JModConfig.jumboRabbitWeight = ConfigHolder.COMMON.jumboRabbitWeight.get();
         E2JModConfig.jumboRabbitGroupMin = ConfigHolder.COMMON.jumboRabbitGroupMin.get();
         E2JModConfig.jumboRabbitGroupMax = ConfigHolder.COMMON.jumboRabbitGroupMax.get();
+
+        E2JModConfig.jollyLlamaSpawnBiomes = ConfigHolder.COMMON.jollyLlamaSpawnBiomes.get();
+        E2JModConfig.jollyLlamaWeight = ConfigHolder.COMMON.jollyLlamaWeight.get();
+        E2JModConfig.jollyLlamaGroupMin = ConfigHolder.COMMON.jollyLlamaGroupMin.get();
+        E2JModConfig.jollyLlamaGroupMax = ConfigHolder.COMMON.jollyLlamaGroupMax.get();
+
+        E2JModConfig.rainbowSheepSpawnBiomes = ConfigHolder.COMMON.rainbowSheepSpawnBiomes.get();
+        E2JModConfig.rainbowSheepWeight = ConfigHolder.COMMON.rainbowSheepWeight.get();
+        E2JModConfig.rainbowSheepGroupMin = ConfigHolder.COMMON.rainbowSheepGroupMin.get();
+        E2JModConfig.rainbowSheepGroupMax = ConfigHolder.COMMON.rainbowSheepGroupMax.get();
     }
 
     public static void bakeServer(final net.minecraftforge.fml.config.ModConfig config) {

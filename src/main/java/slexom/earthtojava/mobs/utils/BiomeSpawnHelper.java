@@ -53,13 +53,14 @@ public final class BiomeSpawnHelper {
     public static final String[] ASHEN_COW_SPAWN_BIOMES = getBiomesListFromBiomes(MOUNTAINS, GRAVELLY_MOUNTAINS);
     public static final String[] WOOLY_COW_SPAWN_BIOMES = getBiomesListFromBiomes(TAIGA, SNOWY_TAIGA, GIANT_TAIGA);
     public static final String[] ALBINO_COW_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS, MOUNTAINS, GRAVELLY_MOUNTAINS);
-    public static final String[] FURNACE_GOLEM_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS);
+    public static final String[] FURNACE_GOLEM_SPAWN_BIOMES = getBiomesListFromBiomes(DESERT);
     public static final String[] MUDDY_FOOT_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS);
     public static final String[] HARELEQUIN_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS);
     public static final String[] JUMBO_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS);
     public static final String[] VESTED_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS);
     public static final String[] STORMY_CHICKEN_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS, MOUNTAINS, GRAVELLY_MOUNTAINS, TAIGA);
     public static final String[] ROCKY_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS, MOUNTAINS, GRAVELLY_MOUNTAINS);
+    public static final String[] RAINBOW_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS, FOREST);
     public static final String[] INKY_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS, MOUNTAINS, GRAVELLY_MOUNTAINS);
     public static final String[] HORNED_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS, MOUNTAINS, GRAVELLY_MOUNTAINS);
     public static final String[] FLECKED_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomes(PLAINS, MOUNTAINS, TAIGA, GRAVELLY_MOUNTAINS, FOREST);
@@ -74,6 +75,7 @@ public final class BiomeSpawnHelper {
     public static final String[] BONE_SPIDER_SPAWN_BIOMES = getBiomesListFromBiomes(BADLANDS);
     public static final String[] SKELETON_WOLF_SPAWN_BIOMES = getBiomesListFromBiomes(FOREST, TAIGA, SNOWY_TAIGA, GIANT_TAIGA, BADLANDS);
     public static final String[] GLOW_SQUID_SPAWN_BIOMES = getBiomesListFromBiomes(OCEAN, RIVER, SWAMP);
+    public static final String[] JOLLY_LLAMA_SPAWN_BIOMES = getBiomesListFromBiomes(SNOWY_TUNDRA, ICE_SPIKE, SNOWY_TAIGA, FROZEN_RIVER, SNOWY_BEACH);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -102,7 +104,7 @@ public final class BiomeSpawnHelper {
         setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, EntityClassification.MONSTER);
     }
 
-    public static List<String> convertForConfig(String[] ary){
+    public static List<String> convertForConfig(String[] ary) {
         return Arrays.stream(ary).collect(Collectors.toList());
     }
 

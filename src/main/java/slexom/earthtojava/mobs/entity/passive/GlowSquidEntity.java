@@ -46,7 +46,7 @@ public class GlowSquidEntity extends SquidEntity {
                             (float) (MathHelper.atan2(dz, dx) * (double) (180 / (float) Math.PI)) - 90, 90);
                     GlowSquidEntity.this.renderYawOffset = GlowSquidEntity.this.rotationYaw;
                     GlowSquidEntity.this.setAIMoveSpeed(MathHelper.lerp(0.125f, GlowSquidEntity.this.getAIMoveSpeed(),
-                            (float) (this.speed * GlowSquidEntity.this.getAttribute(Attributes.field_233821_d_).getValue())));
+                            (float) (this.speed * GlowSquidEntity.this.getAttribute(Attributes.MOVEMENT_SPEED).getValue())));
                     GlowSquidEntity.this.setMotion(GlowSquidEntity.this.getMotion().add(0, GlowSquidEntity.this.getAIMoveSpeed() * dy * 0.1, 0));
                 } else {
                     GlowSquidEntity.this.setAIMoveSpeed(0);

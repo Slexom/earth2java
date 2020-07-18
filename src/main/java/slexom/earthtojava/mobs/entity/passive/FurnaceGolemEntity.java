@@ -57,7 +57,7 @@ public class FurnaceGolemEntity extends IronGolemEntity {
     public boolean attackEntityAsMob(Entity entityIn) {
         this.attackTimer = 10;
         this.world.setEntityState(this, (byte) 4);
-        float f = (float) this.getAttribute(Attributes.field_233823_f_).getValue();
+        float f = (float) this.getAttribute(Attributes.ATTACK_DAMAGE).getValue();
         float f1 = f > 0.0F ? f / 2.0F + (float) this.rand.nextInt((int) f) : 0.0F;
         boolean flag = entityIn.attackEntityFrom(DamageSource.ON_FIRE, f1);
         if (flag) {

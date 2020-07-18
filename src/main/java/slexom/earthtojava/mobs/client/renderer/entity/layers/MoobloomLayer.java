@@ -3,7 +3,6 @@ package slexom.earthtojava.mobs.client.renderer.entity.layers;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BlockRendererDispatcher;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
@@ -15,6 +14,7 @@ import net.minecraft.util.math.vector.Vector3f;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import slexom.earthtojava.mobs.entity.passive.MoobloomEntity;
+import slexom.earthtojava.mobs.init.BlockInit;
 
 @OnlyIn(Dist.CLIENT)
 public class MoobloomLayer<T extends MoobloomEntity> extends LayerRenderer<T, CowModel<T>> {
@@ -26,7 +26,7 @@ public class MoobloomLayer<T extends MoobloomEntity> extends LayerRenderer<T, Co
     public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, T entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
         if (!entitylivingbaseIn.isChild() && !entitylivingbaseIn.isInvisible()) {
             BlockRendererDispatcher blockrendererdispatcher = Minecraft.getInstance().getBlockRendererDispatcher();
-            BlockState blockstate = Blocks.DANDELION.getDefaultState();
+            BlockState blockstate = BlockInit.BUTTERCUP.get().getDefaultState();
             int i = LivingRenderer.getPackedOverlay(entitylivingbaseIn, 0.0F);
             matrixStackIn.push();
             matrixStackIn.translate((double) 0.2F, (double) -0.1F, 0.5D);

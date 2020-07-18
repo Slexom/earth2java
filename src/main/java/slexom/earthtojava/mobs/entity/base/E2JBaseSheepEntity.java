@@ -2,6 +2,9 @@ package slexom.earthtojava.mobs.entity.base;
 
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.network.IPacket;
 import net.minecraft.world.World;
@@ -21,6 +24,11 @@ public class E2JBaseSheepEntity<T extends SheepEntity> extends SheepEntity {
         experienceValue = 3;
         setNoAI(false);
     }
+
+    public static AttributeModifierMap.MutableAttribute registerAttributes() {
+        return MobEntity.func_233666_p_().func_233815_a_(Attributes.MAX_HEALTH, 8.0D).func_233815_a_(Attributes.MOVEMENT_SPEED, (double) 0.23F);
+    }
+
     @Override
     public void livingTick() {
         super.livingTick();

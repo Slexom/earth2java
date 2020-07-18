@@ -40,7 +40,7 @@ public class TropicalSlimeEntity extends CreatureEntity {
         experienceValue = this.size;
         setNoAI(false);
         this.moveController = new TropicalSlimeEntity.MoveHelperController(this);
-        this.registerAttributes();
+        this.setAttributes();
     }
 
     @Override
@@ -54,10 +54,10 @@ public class TropicalSlimeEntity extends CreatureEntity {
         this.targetSelector.addGoal(3, (new HurtByTargetGoal(this)));
     }
 
-    protected void registerAttributes() {
-        this.getAttribute(Attributes.field_233818_a_).setBaseValue(16.0D);
-        this.getAttribute(Attributes.field_233821_d_).setBaseValue(0.6D);
-        this.getAttribute(Attributes.field_233823_f_).setBaseValue(4.0D);
+    private void setAttributes() {
+        this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(16.0D);
+        this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0.6D);
+        this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(4.0D);
     }
 
     public ActionResultType func_230254_b_(PlayerEntity player, Hand hand) {
@@ -168,7 +168,7 @@ public class TropicalSlimeEntity extends CreatureEntity {
     }
 
     protected float func_225512_er_() {
-        return (float) this.func_233637_b_(Attributes.field_233823_f_);
+        return (float) this.func_233637_b_(Attributes.ATTACK_DAMAGE);
     }
 
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
@@ -346,7 +346,7 @@ public class TropicalSlimeEntity extends CreatureEntity {
             } else {
                 this.action = MovementController.Action.WAIT;
                 if (this.mob.func_233570_aj_()) {
-                    this.mob.setAIMoveSpeed((float) (this.speed * this.mob.getAttribute(Attributes.field_233821_d_).getValue()));
+                    this.mob.setAIMoveSpeed((float) (this.speed * this.mob.getAttribute(Attributes.MOVEMENT_SPEED).getValue()));
                     if (this.jumpDelay-- <= 0) {
                         this.jumpDelay = this.slime.getJumpDelay();
                         if (this.isAggressive) {
@@ -363,7 +363,7 @@ public class TropicalSlimeEntity extends CreatureEntity {
                         this.mob.setAIMoveSpeed(0.0F);
                     }
                 } else {
-                    this.mob.setAIMoveSpeed((float) (this.speed * this.mob.getAttribute(Attributes.field_233821_d_).getValue()));
+                    this.mob.setAIMoveSpeed((float) (this.speed * this.mob.getAttribute(Attributes.MOVEMENT_SPEED).getValue()));
                 }
 
             }

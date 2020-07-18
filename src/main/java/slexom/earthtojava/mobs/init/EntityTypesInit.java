@@ -6,7 +6,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import slexom.earthtojava.mobs.EarthtojavamobsMod;
+import slexom.earthtojava.mobs.EarthToJavaMobsMod;
+import slexom.earthtojava.mobs.entity.merchant.villager.E2JWanderingTraderEntity;
 import slexom.earthtojava.mobs.entity.monster.BoneSpiderEntity;
 import slexom.earthtojava.mobs.entity.monster.SkeletonWolfEntity;
 import slexom.earthtojava.mobs.entity.passive.*;
@@ -15,7 +16,7 @@ import slexom.earthtojava.mobs.entity.projectile.MelonSeedProjectileEntity;
 
 public class EntityTypesInit {
 
-    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, EarthtojavamobsMod.MOD_ID);
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITIES, EarthToJavaMobsMod.MOD_ID);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -24,7 +25,7 @@ public class EntityTypesInit {
             BONE_SHARD_REGISTRY_NAME,
             () -> EntityType.Builder.<BoneShardEntity>create(BoneShardEntity::new, EntityClassification.MISC)
                     .size(0.25F, 0.25F)
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, BONE_SHARD_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, BONE_SHARD_REGISTRY_NAME).toString())
     );
 
     public static final String MELON_SEED_PROJECTILE_REGISTRY_NAME = "melon_seed_projectile";
@@ -32,7 +33,7 @@ public class EntityTypesInit {
             MELON_SEED_PROJECTILE_REGISTRY_NAME,
             () -> EntityType.Builder.<MelonSeedProjectileEntity>create(MelonSeedProjectileEntity::new, EntityClassification.MISC)
                     .size(0.25F, 0.25F)
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, MELON_SEED_PROJECTILE_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, MELON_SEED_PROJECTILE_REGISTRY_NAME).toString())
     );
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -42,7 +43,7 @@ public class EntityTypesInit {
             AMBER_CHICKEN_REGISTRY_NAME,
             () -> EntityType.Builder.create(AmberChickenEntity::new, EntityClassification.CREATURE)
                     .size(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, AMBER_CHICKEN_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, AMBER_CHICKEN_REGISTRY_NAME).toString())
     );
 
     public static final String ASHEN_COW_REGISTRY_NAME = "ashen_cow";
@@ -50,7 +51,7 @@ public class EntityTypesInit {
             ASHEN_COW_REGISTRY_NAME,
             () -> EntityType.Builder.create(AshenCowEntity::new, EntityClassification.CREATURE)
                     .size(EntityType.COW.getWidth(), EntityType.COW.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, ASHEN_COW_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, ASHEN_COW_REGISTRY_NAME).toString())
     );
 
     public static final String CLUCKSHROOM_REGISTRY_NAME = "cluckshroom";
@@ -58,7 +59,7 @@ public class EntityTypesInit {
             CLUCKSHROOM_REGISTRY_NAME,
             () -> EntityType.Builder.create(CluckshroomEntity::new, EntityClassification.CREATURE)
                     .size(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, CLUCKSHROOM_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, CLUCKSHROOM_REGISTRY_NAME).toString())
     );
 
     public static final String FLECKED_SHEEP_REGISTRY_NAME = "flecked_sheep";
@@ -66,7 +67,7 @@ public class EntityTypesInit {
             FLECKED_SHEEP_REGISTRY_NAME,
             () -> EntityType.Builder.create(FleckedSheepEntity::new, EntityClassification.CREATURE)
                     .size(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, FLECKED_SHEEP_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, FLECKED_SHEEP_REGISTRY_NAME).toString())
     );
 
     public static final String GLOW_SQUID_REGISTRY_NAME = "glow_squid";
@@ -74,7 +75,7 @@ public class EntityTypesInit {
             GLOW_SQUID_REGISTRY_NAME,
             () -> EntityType.Builder.create(GlowSquidEntity::new, EntityClassification.WATER_CREATURE)
                     .size(EntityType.SQUID.getWidth(), EntityType.SQUID.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, GLOW_SQUID_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, GLOW_SQUID_REGISTRY_NAME).toString())
     );
 
     public static final String HORNED_SHEEP_REGISTRY_NAME = "horned_sheep";
@@ -82,7 +83,7 @@ public class EntityTypesInit {
             HORNED_SHEEP_REGISTRY_NAME,
             () -> EntityType.Builder.create(HornedSheepEntity::new, EntityClassification.CREATURE)
                     .size(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, HORNED_SHEEP_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, HORNED_SHEEP_REGISTRY_NAME).toString())
     );
 
     public static final String INKY_SHEEP_REGISTRY_NAME = "inky_sheep";
@@ -90,7 +91,7 @@ public class EntityTypesInit {
             INKY_SHEEP_REGISTRY_NAME,
             () -> EntityType.Builder.create(InkySheepEntity::new, EntityClassification.CREATURE)
                     .size(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, INKY_SHEEP_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, INKY_SHEEP_REGISTRY_NAME).toString())
     );
 
     public static final String MIDNIGHT_CHICKEN_REGISTRY_NAME = "midnight_chicken";
@@ -98,7 +99,7 @@ public class EntityTypesInit {
             MIDNIGHT_CHICKEN_REGISTRY_NAME,
             () -> EntityType.Builder.create(MidnightChickenEntity::new, EntityClassification.CREATURE)
                     .size(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, MIDNIGHT_CHICKEN_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, MIDNIGHT_CHICKEN_REGISTRY_NAME).toString())
     );
 
     public static final String MOOBLOOM_REGISTRY_NAME = "moobloom";
@@ -106,7 +107,7 @@ public class EntityTypesInit {
             MOOBLOOM_REGISTRY_NAME,
             () -> EntityType.Builder.create(MoobloomEntity::new, EntityClassification.CREATURE)
                     .size(EntityType.COW.getWidth(), EntityType.COW.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, MOOBLOOM_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, MOOBLOOM_REGISTRY_NAME).toString())
     );
 
     public static final String MUDDY_PIG_REGISTRY_NAME = "muddy_pig";
@@ -114,7 +115,7 @@ public class EntityTypesInit {
             MUDDY_PIG_REGISTRY_NAME,
             () -> EntityType.Builder.create(MuddyPigEntity::new, EntityClassification.CREATURE)
                     .size(EntityType.PIG.getWidth(), EntityType.PIG.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, MUDDY_PIG_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, MUDDY_PIG_REGISTRY_NAME).toString())
     );
 
     public static final String PALE_PIG_REGISTRY_NAME = "pale_pig";
@@ -122,7 +123,7 @@ public class EntityTypesInit {
             PALE_PIG_REGISTRY_NAME,
             () -> EntityType.Builder.create(PalePigEntity::new, EntityClassification.CREATURE)
                     .size(EntityType.PIG.getWidth(), EntityType.PIG.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, PALE_PIG_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, PALE_PIG_REGISTRY_NAME).toString())
     );
 
     public static final String PIEBALD_PIG_REGISTRY_NAME = "piebald_pig";
@@ -130,7 +131,15 @@ public class EntityTypesInit {
             PIEBALD_PIG_REGISTRY_NAME,
             () -> EntityType.Builder.create(PiebaldPigEntity::new, EntityClassification.CREATURE)
                     .size(EntityType.PIG.getWidth(), EntityType.PIG.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, PIEBALD_PIG_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, PIEBALD_PIG_REGISTRY_NAME).toString())
+    );
+
+    public static final String RAINBOW_SHEEP_REGISTRY_NAME = "rainbow_sheep";
+    public static final RegistryObject<EntityType<RainbowSheepEntity>> RAINBOW_SHEEP_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            RAINBOW_SHEEP_REGISTRY_NAME,
+            () -> EntityType.Builder.create(RainbowSheepEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, RAINBOW_SHEEP_REGISTRY_NAME).toString())
     );
 
     public static final String ROCKY_SHEEP_REGISTRY_NAME = "rocky_sheep";
@@ -138,7 +147,7 @@ public class EntityTypesInit {
             ROCKY_SHEEP_REGISTRY_NAME,
             () -> EntityType.Builder.create(RockySheepEntity::new, EntityClassification.CREATURE)
                     .size(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, ROCKY_SHEEP_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, ROCKY_SHEEP_REGISTRY_NAME).toString())
     );
 
     public static final String SKELETON_WOLF_REGISTRY_NAME = "skeleton_wolf";
@@ -146,7 +155,7 @@ public class EntityTypesInit {
             SKELETON_WOLF_REGISTRY_NAME,
             () -> EntityType.Builder.create(SkeletonWolfEntity::new, EntityClassification.MONSTER)
                     .size(EntityType.WOLF.getWidth(), EntityType.WOLF.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, SKELETON_WOLF_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, SKELETON_WOLF_REGISTRY_NAME).toString())
     );
 
     public static final String SPOTTED_PIG_REGISTRY_NAME = "spotted_pig";
@@ -154,7 +163,7 @@ public class EntityTypesInit {
             SPOTTED_PIG_REGISTRY_NAME,
             () -> EntityType.Builder.create(SpottedPigEntity::new, EntityClassification.CREATURE)
                     .size(EntityType.PIG.getWidth(), EntityType.PIG.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, SPOTTED_PIG_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, SPOTTED_PIG_REGISTRY_NAME).toString())
     );
 
     public static final String STORMY_CHICKEN_REGISTRY_NAME = "stormy_chicken";
@@ -162,7 +171,7 @@ public class EntityTypesInit {
             STORMY_CHICKEN_REGISTRY_NAME,
             () -> EntityType.Builder.create(StormyChickenEntity::new, EntityClassification.CREATURE)
                     .size(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, STORMY_CHICKEN_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, STORMY_CHICKEN_REGISTRY_NAME).toString())
     );
 
     public static final String SUNSET_COW_REGISTRY_NAME = "sunset_cow";
@@ -170,7 +179,7 @@ public class EntityTypesInit {
             SUNSET_COW_REGISTRY_NAME,
             () -> EntityType.Builder.create(SunsetCowEntity::new, EntityClassification.CREATURE)
                     .size(EntityType.COW.getWidth(), EntityType.COW.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, SUNSET_COW_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, SUNSET_COW_REGISTRY_NAME).toString())
     );
 
     public static final String TROPICAL_SLIME_REGISTRY_NAME = "tropical_slime";
@@ -179,7 +188,7 @@ public class EntityTypesInit {
             () -> EntityType.Builder.create(TropicalSlimeEntity::new, EntityClassification.CREATURE)
                     .size(2.0F, 2.0F)
                     .immuneToFire()
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, TROPICAL_SLIME_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, TROPICAL_SLIME_REGISTRY_NAME).toString())
     );
 
     public static final String WOOLY_COW_REGISTRY_NAME = "wooly_cow";
@@ -187,7 +196,7 @@ public class EntityTypesInit {
             WOOLY_COW_REGISTRY_NAME,
             () -> EntityType.Builder.create(WoolyCowEntity::new, EntityClassification.CREATURE)
                     .size(EntityType.COW.getWidth(), EntityType.COW.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, WOOLY_COW_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, WOOLY_COW_REGISTRY_NAME).toString())
     );
 
     public static final String VESTED_RABBIT_REGISTRY_NAME = "vested_rabbit";
@@ -195,7 +204,7 @@ public class EntityTypesInit {
             VESTED_RABBIT_REGISTRY_NAME,
             () -> EntityType.Builder.create(VestedRabbitEntity::new, EntityClassification.CREATURE)
                     .size(EntityType.RABBIT.getWidth(), EntityType.RABBIT.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, VESTED_RABBIT_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, VESTED_RABBIT_REGISTRY_NAME).toString())
     );
 
     public static final String HARELEQUIN_RABBIT_REGISTRY_NAME = "harelequin_rabbit";
@@ -203,7 +212,7 @@ public class EntityTypesInit {
             HARELEQUIN_RABBIT_REGISTRY_NAME,
             () -> EntityType.Builder.create(HarelequinRabbitEntity::new, EntityClassification.CREATURE)
                     .size(EntityType.RABBIT.getWidth(), EntityType.RABBIT.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, HARELEQUIN_RABBIT_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, HARELEQUIN_RABBIT_REGISTRY_NAME).toString())
     );
 
     public static final String MUDDY_FOOT_RABBIT_REGISTRY_NAME = "muddy_foot_rabbit";
@@ -211,7 +220,7 @@ public class EntityTypesInit {
             MUDDY_FOOT_RABBIT_REGISTRY_NAME,
             () -> EntityType.Builder.create(MuddyFootRabbitEntity::new, EntityClassification.CREATURE)
                     .size(EntityType.RABBIT.getWidth(), EntityType.RABBIT.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, MUDDY_FOOT_RABBIT_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, MUDDY_FOOT_RABBIT_REGISTRY_NAME).toString())
     );
 
     public static final String FURNACE_GOLEM_REGISTRY_NAME = "furnace_golem";
@@ -220,7 +229,7 @@ public class EntityTypesInit {
             () -> EntityType.Builder.create(FurnaceGolemEntity::new, EntityClassification.MISC)
                     .size(EntityType.IRON_GOLEM.getWidth(), EntityType.IRON_GOLEM.getHeight())
                     .immuneToFire()
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, FURNACE_GOLEM_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, FURNACE_GOLEM_REGISTRY_NAME).toString())
     );
 
     public static final String MELON_GOLEM_REGISTRY_NAME = "melon_golem";
@@ -228,7 +237,7 @@ public class EntityTypesInit {
             MELON_GOLEM_REGISTRY_NAME,
             () -> EntityType.Builder.create(MelonGolemEntity::new, EntityClassification.MISC)
                     .size(EntityType.SNOW_GOLEM.getWidth(), EntityType.SNOW_GOLEM.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, MELON_GOLEM_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, MELON_GOLEM_REGISTRY_NAME).toString())
     );
 
     public static final String ALBINO_COW_REGISTRY_NAME = "albino_cow";
@@ -236,7 +245,7 @@ public class EntityTypesInit {
             ALBINO_COW_REGISTRY_NAME,
             () -> EntityType.Builder.create(AlbinoCowEntity::new, EntityClassification.CREATURE)
                     .size(EntityType.COW.getWidth(), EntityType.COW.getHeight())
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, ALBINO_COW_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, ALBINO_COW_REGISTRY_NAME).toString())
     );
 
     public static final String BONE_SPIDER_REGISTRY_NAME = "bone_spider";
@@ -244,7 +253,7 @@ public class EntityTypesInit {
             BONE_SPIDER_REGISTRY_NAME,
             () -> EntityType.Builder.create(BoneSpiderEntity::new, EntityClassification.MONSTER)
                     .size(0.6F, 0.7F)
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, BONE_SPIDER_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, BONE_SPIDER_REGISTRY_NAME).toString())
     );
 
     public static final String JUMBO_RABBIT_REGISTRY_NAME = "jumbo_rabbit";
@@ -252,9 +261,24 @@ public class EntityTypesInit {
             JUMBO_RABBIT_REGISTRY_NAME,
             () -> EntityType.Builder.create(JumboRabbitEntity::new, EntityClassification.CREATURE)
                     .size(0.8F, 1.0F)
-                    .build(new ResourceLocation(EarthtojavamobsMod.MOD_ID, JUMBO_RABBIT_REGISTRY_NAME).toString())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, JUMBO_RABBIT_REGISTRY_NAME).toString())
     );
 
+    public static final String JOLLY_LLAMA_REGISTRY_NAME = "jolly_llama";
+    public static final RegistryObject<EntityType<JollyLlamaEntity>> JOLLY_LLAMA_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            JOLLY_LLAMA_REGISTRY_NAME,
+            () -> EntityType.Builder.create(JollyLlamaEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.LLAMA.getWidth(), EntityType.LLAMA.getHeight())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, JOLLY_LLAMA_REGISTRY_NAME).toString())
+    );
+
+    public static final String WANDERING_TRADER_REGISTRY_NAME = "wandering_trader";
+    public static final RegistryObject<EntityType<E2JWanderingTraderEntity>> WANDERING_TRADER_REGISTRY_OBJECT = ENTITY_TYPES.register(
+            WANDERING_TRADER_REGISTRY_NAME,
+            () -> EntityType.Builder.create(E2JWanderingTraderEntity::new, EntityClassification.CREATURE)
+                    .size(EntityType.WANDERING_TRADER.getWidth(), EntityType.WANDERING_TRADER.getHeight())
+                    .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, WANDERING_TRADER_REGISTRY_NAME).toString())
+    );
 }
 
 

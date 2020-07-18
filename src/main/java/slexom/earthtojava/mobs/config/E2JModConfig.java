@@ -15,6 +15,13 @@ public final class E2JModConfig {
     //Common
 
     public static int mudLakeFrequency;
+    public static boolean canWanderingTraderSpawn;
+    public static boolean canRubyOreGenerate;
+    public static int rubyOreCount;
+    public static int rubyOreBottomOffset;
+    public static int rubyOreTopOffset;
+    public static int rubyOreMaximum;
+
 
     public static List<String> amberChickenSpawnBiomes;
     public static int amberChickenWeight;
@@ -150,6 +157,16 @@ public final class E2JModConfig {
     public static int jumboRabbitWeight;
     public static int jumboRabbitGroupMin;
     public static int jumboRabbitGroupMax;
+
+    public static List<String> jollyLlamaSpawnBiomes;
+    public static int jollyLlamaWeight;
+    public static int jollyLlamaGroupMin;
+    public static int jollyLlamaGroupMax;
+
+    public static List<String> rainbowSheepSpawnBiomes;
+    public static int rainbowSheepWeight;
+    public static int rainbowSheepGroupMin;
+    public static int rainbowSheepGroupMax;
 
 
     // Client

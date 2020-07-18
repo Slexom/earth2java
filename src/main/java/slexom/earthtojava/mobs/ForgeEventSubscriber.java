@@ -37,10 +37,10 @@ import java.util.Random;
 import java.util.function.Predicate;
 
 
-@EventBusSubscriber(modid = EarthtojavamobsMod.MOD_ID, bus = EventBusSubscriber.Bus.FORGE)
+@EventBusSubscriber(modid = EarthToJavaMobsMod.MOD_ID, bus = EventBusSubscriber.Bus.FORGE)
 public final class ForgeEventSubscriber {
 
-    private static final Logger LOGGER = LogManager.getLogger(EarthtojavamobsMod.MOD_ID + " Mod Event Subscriber");
+    private static final Logger LOGGER = LogManager.getLogger(EarthToJavaMobsMod.MOD_ID + " Mod Event Subscriber");
     private static final Predicate<BlockState> IS_PUMPKIN = (blockState) -> blockState != null && (blockState.getBlock() == Blocks.CARVED_PUMPKIN || blockState.getBlock() == Blocks.JACK_O_LANTERN);
 
     @SubscribeEvent

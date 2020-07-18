@@ -19,7 +19,7 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fluids.FluidAttributes;
-import slexom.earthtojava.mobs.EarthtojavamobsMod;
+import slexom.earthtojava.mobs.EarthToJavaMobsMod;
 import slexom.earthtojava.mobs.init.BlockInit;
 import slexom.earthtojava.mobs.init.FluidInit;
 import slexom.earthtojava.mobs.init.ItemInit;
@@ -44,7 +44,7 @@ public class MudFluid extends FlowingFluid {
 
     @Override
     public boolean isEquivalentTo(Fluid fluidIn) {
-        ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");
+        ResourceLocation mudTag = new ResourceLocation(EarthToJavaMobsMod.MOD_ID, "mud");
         return fluidIn.isIn(FluidTags.getCollection().getOrCreate(mudTag));
     }
 
@@ -71,7 +71,7 @@ public class MudFluid extends FlowingFluid {
 
     @Override
     protected boolean canDisplace(FluidState fluidStateIn, IBlockReader blockReader, BlockPos pos, Fluid fluidIn, Direction directionIn) {
-        ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");
+        ResourceLocation mudTag = new ResourceLocation(EarthToJavaMobsMod.MOD_ID, "mud");
         return directionIn == Direction.DOWN && !fluidIn.isIn(FluidTags.getCollection().getOrCreate(mudTag));
     }
 
@@ -106,7 +106,7 @@ public class MudFluid extends FlowingFluid {
 
     @Override
     protected void flowInto(IWorld worldIn, BlockPos pos, BlockState blockStateIn, Direction direction, FluidState fluidStateIn) {
-        ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");
+        ResourceLocation mudTag = new ResourceLocation(EarthToJavaMobsMod.MOD_ID, "mud");
         if (this.getFluid().isIn(FluidTags.getCollection().getOrCreate(mudTag))) {
             boolean flag = false;
             for (Direction dir : Direction.values()) {
@@ -127,8 +127,8 @@ public class MudFluid extends FlowingFluid {
     @Override
     protected FluidAttributes createAttributes() {
         return  FluidAttributes.builder(
-                new ResourceLocation(EarthtojavamobsMod.MOD_ID, "/fluids/mud_still"),
-                new ResourceLocation(EarthtojavamobsMod.MOD_ID, "/fluids/mud_flow"))
+                new ResourceLocation(EarthToJavaMobsMod.MOD_ID, "/fluids/mud_still"),
+                new ResourceLocation(EarthToJavaMobsMod.MOD_ID, "/fluids/mud_flow"))
                 .density(1600).viscosity(3400).build(this);
     }
 

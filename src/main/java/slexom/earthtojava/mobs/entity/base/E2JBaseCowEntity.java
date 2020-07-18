@@ -19,14 +19,14 @@ public class E2JBaseCowEntity<T extends CowEntity> extends CowEntity {
     private int remainingTick = 0;
     private int internalBlinkTick = 0;
 
-    public E2JBaseCowEntity(EntityType<? extends CowEntity> type, World worldIn) {
+    public E2JBaseCowEntity(EntityType<T> type, World worldIn) {
         super(type, worldIn);
         experienceValue = 3;
         setNoAI(false);
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return MobEntity.func_233666_p_().func_233815_a_(Attributes.field_233818_a_, 10.0D).func_233815_a_(Attributes.field_233821_d_, (double) 0.2F);
+        return MobEntity.func_233666_p_().func_233815_a_(Attributes.MAX_HEALTH, 10.0D).func_233815_a_(Attributes.MOVEMENT_SPEED, (double) 0.2F);
     }
 
     @Override

@@ -13,17 +13,17 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import slexom.earthtojava.mobs.EarthtojavamobsMod;
+import slexom.earthtojava.mobs.EarthToJavaMobsMod;
 
 
-@EventBusSubscriber(modid = EarthtojavamobsMod.MOD_ID, bus = EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+@EventBusSubscriber(modid = EarthToJavaMobsMod.MOD_ID, bus = EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public final class ClientForgeEventSubscriber {
 
-    private static final Logger LOGGER = LogManager.getLogger(EarthtojavamobsMod.MOD_ID + " Client Mod Event Subscriber");
+    private static final Logger LOGGER = LogManager.getLogger(EarthToJavaMobsMod.MOD_ID + " Client Mod Event Subscriber");
 
     @SubscribeEvent
     public static void onFogColor(EntityViewRenderEvent.FogColors event) {
-        ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");
+        ResourceLocation mudTag = new ResourceLocation(EarthToJavaMobsMod.MOD_ID, "mud");
         Fluid blockStateAtEyes = getMudFluid(event);
         if (blockStateAtEyes.isIn(FluidTags.getCollection().getOrCreate(mudTag))) {
             event.setRed(87.0F / 255.0F);
@@ -34,7 +34,7 @@ public final class ClientForgeEventSubscriber {
 
     @SubscribeEvent
     public static void onFogDensity(EntityViewRenderEvent.FogDensity event) {
-        ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");
+        ResourceLocation mudTag = new ResourceLocation(EarthToJavaMobsMod.MOD_ID, "mud");
         Fluid blockStateAtEyes = getMudFluid(event);
         if (blockStateAtEyes.isIn(FluidTags.getCollection().getOrCreate(mudTag))) {
             event.setDensity(0.85F);

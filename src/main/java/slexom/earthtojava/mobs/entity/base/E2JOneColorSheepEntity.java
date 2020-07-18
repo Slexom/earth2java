@@ -65,7 +65,7 @@ public class E2JOneColorSheepEntity<T extends AnimalEntity> extends AnimalEntity
 
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return MobEntity.func_233666_p_().func_233815_a_(Attributes.field_233818_a_, 8.0D).func_233815_a_(Attributes.field_233821_d_, 0.23F);
+        return MobEntity.func_233666_p_().func_233815_a_(Attributes.MAX_HEALTH, 8.0D).func_233815_a_(Attributes.MOVEMENT_SPEED, 0.23F);
     }
 
     protected void updateAITasks() {

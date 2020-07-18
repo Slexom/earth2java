@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "minecraft:rainbow_bed"
+      "earthtojavamobs:rainbow_bed"
     ]
   },
   "criteria": {

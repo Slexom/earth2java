@@ -23,6 +23,7 @@ import net.minecraftforge.common.IForgeShearable;
 import net.minecraftforge.common.util.BlockSnapshot;
 import net.minecraftforge.fml.network.NetworkHooks;
 import slexom.earthtojava.mobs.entity.base.E2JBaseCowEntity;
+import slexom.earthtojava.mobs.init.BlockInit;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -64,7 +65,7 @@ public class MoobloomEntity extends E2JBaseCowEntity<MoobloomEntity> implements 
             this.world.addEntity(cowentity);
             java.util.List<ItemStack> ret = new java.util.ArrayList<>();
             for (int i = 0; i < 5; ++i) {
-                ret.add(new ItemStack(Blocks.DANDELION));
+                ret.add(new ItemStack(BlockInit.BUTTERCUP.get()));
             }
          }
         return java.util.Collections.emptyList();
@@ -90,7 +91,7 @@ public class MoobloomEntity extends E2JBaseCowEntity<MoobloomEntity> implements 
             int i = MathHelper.floor(this.moobloom.getPosX());
             int j = MathHelper.floor(this.moobloom.getPosY());
             int k = MathHelper.floor(this.moobloom.getPosZ());
-            Block flower = Math.random() > 0.8 ? Blocks.SUNFLOWER : Blocks.DANDELION;
+            Block flower = Math.random() > 0.8 ? Blocks.SUNFLOWER : BlockInit.BUTTERCUP.get();
             BlockPos blockPos = new BlockPos(i, j, k);
             BlockState blockState = flower.getDefaultState();
             BlockPos blockDownPos = blockPos.down();

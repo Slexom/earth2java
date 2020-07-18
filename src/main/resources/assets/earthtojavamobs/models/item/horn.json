@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "earthtojavamobs:items/horn"
+    "layer0": "earthtojavamobs:item/horn"
   }
 }

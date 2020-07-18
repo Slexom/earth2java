@@ -10,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.EarthtojavamobsMod;
+import slexom.earthtojava.mobs.EarthToJavaMobsMod;
 
 import java.util.function.Supplier;
 
@@ -25,7 +25,7 @@ public class MudBlock extends FlowingFluidBlock {
     }
 
     public boolean reactWithNeighbors(World worldIn, BlockPos pos, BlockState state) {
-        ResourceLocation mudTag = new ResourceLocation(EarthtojavamobsMod.MOD_ID, "mud");
+        ResourceLocation mudTag = new ResourceLocation(EarthToJavaMobsMod.MOD_ID, "mud");
         if (this.getFluid().isIn(FluidTags.getCollection().getOrCreate(mudTag))) {
             boolean flag = false;
             for (Direction direction : Direction.values()) {

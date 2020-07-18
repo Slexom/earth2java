@@ -33,7 +33,7 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> imp
     private static final DataParameter<Integer> ANGER_TIME = EntityDataManager.createKey(HornedSheepEntity.class, DataSerializers.VARINT);
     private UUID lastHurtBy;
 
-    private static final RangedInteger field_234180_bw_ = TickRangeConverter.func_233037_a_(20, 39);
+    private static final RangedInteger field_234180_bw_ = TickRangeConverter.convertRange(20, 39);
 
     public HornedSheepEntity(EntityType<? extends HornedSheepEntity> type, World world) {
         super(type, world);
@@ -71,7 +71,7 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> imp
     }
 
     public boolean attackEntityAsMob(Entity entityIn) {
-        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.func_233637_b_(Attributes.field_233823_f_)));//ATTACK
+        boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), (float) ((int) this.func_233637_b_(Attributes.ATTACK_DAMAGE)));//ATTACK
         if (flag) {
             this.applyEnchantments(this, entityIn);
         }
@@ -144,10 +144,10 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> imp
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MobEntity.func_233666_p_()
-                .func_233815_a_(Attributes.field_233818_a_, 8.0D)
-                .func_233815_a_(Attributes.field_233819_b_, 48.0D)
-                .func_233815_a_(Attributes.field_233821_d_, 0.23D)
-                .func_233815_a_(Attributes.field_233823_f_, 2.0D);
+                .func_233815_a_(Attributes.MAX_HEALTH, 8.0D)
+                .func_233815_a_(Attributes.FOLLOW_RANGE, 48.0D)
+                .func_233815_a_(Attributes.MOVEMENT_SPEED, 0.23D)
+                .func_233815_a_(Attributes.ATTACK_DAMAGE, 2.0D);
     }
 
     public ResourceLocation getLootTable() {

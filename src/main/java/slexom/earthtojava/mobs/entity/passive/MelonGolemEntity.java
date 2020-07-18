@@ -53,8 +53,8 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, I
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
         return MobEntity.func_233666_p_()
-                .func_233815_a_(Attributes.field_233818_a_, 4.0D) //MAX_HEALTH
-                .func_233815_a_(Attributes.field_233821_d_, 0.2F);//MOVEMENT_SPEED
+                .func_233815_a_(Attributes.MAX_HEALTH, 4.0D) //MAX_HEALTH
+                .func_233815_a_(Attributes.MOVEMENT_SPEED, 0.2F);//MOVEMENT_SPEED
     }
 
     protected void registerData() {
@@ -255,7 +255,7 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, I
             } else {
                 this.action = MovementController.Action.WAIT;
                 if (this.mob.func_233570_aj_()) {
-                    this.mob.setAIMoveSpeed((float) (this.speed * this.mob.getAttribute(Attributes.field_233821_d_).getValue()));
+                    this.mob.setAIMoveSpeed((float) (this.speed * this.mob.getAttribute(Attributes.MOVEMENT_SPEED).getValue()));
                     if (this.jumpDelay-- <= 0) {
                         this.jumpDelay = this.melonGolem.getJumpDelay();
                         if (this.isAggressive) {
@@ -269,7 +269,7 @@ public class MelonGolemEntity extends GolemEntity implements IRangedAttackMob, I
                         this.mob.setAIMoveSpeed(0.0F);
                     }
                 } else {
-                    this.mob.setAIMoveSpeed((float) (this.speed * this.mob.getAttribute(Attributes.field_233821_d_).getValue()));
+                    this.mob.setAIMoveSpeed((float) (this.speed * this.mob.getAttribute(Attributes.MOVEMENT_SPEED).getValue()));
                 }
 
             }

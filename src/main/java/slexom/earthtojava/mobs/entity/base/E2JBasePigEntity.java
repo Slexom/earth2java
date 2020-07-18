@@ -26,7 +26,7 @@ public class E2JBasePigEntity<T extends PigEntity> extends PigEntity {
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return MobEntity.func_233666_p_().func_233815_a_(Attributes.field_233818_a_, 10.0D).func_233815_a_(Attributes.field_233821_d_, 0.25D);
+        return MobEntity.func_233666_p_().func_233815_a_(Attributes.MAX_HEALTH, 10.0D).func_233815_a_(Attributes.MOVEMENT_SPEED, 0.25D);
     }
 
     @Override

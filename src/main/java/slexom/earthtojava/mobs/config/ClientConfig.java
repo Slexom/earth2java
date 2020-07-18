@@ -12,6 +12,7 @@ final class ClientConfig {
         showDescription = builder
                 .comment("Show(true) or hide(false) Minecraft Earth description for items")
                 .define("showDescription", true);
+        builder.pop();
     }
 
 }

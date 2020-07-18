@@ -1,0 +1,18 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#@#",
+        " # "
+    ],
+    "key": {
+        "@": {
+            "item": "minecraft:dirt"
+        },
+        "#": {
+            "item": "minecraft:brick"
+        }
+    },
+    "result": {
+        "item": "earthtojavamobs:flower_pot"
+    }
+}

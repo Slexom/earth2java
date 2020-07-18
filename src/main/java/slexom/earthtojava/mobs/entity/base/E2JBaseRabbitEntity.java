@@ -26,7 +26,7 @@ public class E2JBaseRabbitEntity<T extends RabbitEntity> extends RabbitEntity {
     }
 
     public static AttributeModifierMap.MutableAttribute registerAttributes() {
-        return MobEntity.func_233666_p_().func_233815_a_(Attributes.field_233818_a_, 3.0D).func_233815_a_(Attributes.field_233821_d_, (double) 0.3F);
+        return MobEntity.func_233666_p_().func_233815_a_(Attributes.MAX_HEALTH, 3.0D).func_233815_a_(Attributes.MOVEMENT_SPEED, (double) 0.3F);
     }
 
     @Override
