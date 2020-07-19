@@ -1,10 +1,7 @@
 package slexom.earthtojava.mobs.init;
 
 import net.minecraft.entity.EntityType;
-import net.minecraft.item.BucketItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import slexom.earthtojava.mobs.Earth2JavaMod;
 import slexom.earthtojava.mobs.item.BoneShardItem;
 import slexom.earthtojava.mobs.item.E2JSpawnEggItem;
@@ -48,17 +45,19 @@ public class ItemInit {
     public static E2JSpawnEggItem VESTED_RABBIT_SPAWN_EGG;
     public static E2JSpawnEggItem WANDERING_TRADER_SPAWN_EGG;
     public static E2JSpawnEggItem WOOLY_COW_SPAWN_EGG;
+    public static BedItem RAINBOW_BED;
 
     public static void init() {
         HORN = RegisterHelper.registerItem("horn", new HornItem(new Item.Settings().group(itemGroup).maxCount(64)));
         MUD_BUCKET = RegisterHelper.registerItem("mud_fluid_bucket", new BucketItem(FluidInit.MUD_FLUID_STILL, new Item.Settings().recipeRemainder(Items.BUCKET).maxCount(1).group(itemGroup)));
         BONE_SHARD = RegisterHelper.registerItem("bone_shard", new BoneShardItem(new Item.Settings().group(null).maxCount(16)));
         RUBY = RegisterHelper.registerItem("ruby", new Item(new Item.Settings().group(itemGroup).maxCount(64)));
+        RAINBOW_BED = (BedItem) RegisterHelper.registerItem("rainbow_bed", new BedItem(BlockInit.RAINBOW_BED,(new Item.Settings()).maxCount(1).group(ItemGroup.DECORATIONS)));
         registerSpawnEggs();
     }
 
     private static E2JSpawnEggItem registerSpawnEgg(String registryName, EntityType<?> entity, int primaryColor, int secondaryColor) {
-        return (E2JSpawnEggItem) RegisterHelper.registerItem(registryName, new E2JSpawnEggItem(entity, primaryColor, secondaryColor, spawnEggProps));
+        return (E2JSpawnEggItem) RegisterHelper.registerItem(registryName + "_spawn_egg", new E2JSpawnEggItem(entity, primaryColor, secondaryColor, spawnEggProps));
     }
 
     private static void registerSpawnEggs() {

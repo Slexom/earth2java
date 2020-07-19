@@ -43,7 +43,7 @@ public class FurnaceGolemEntity extends IronGolemEntity {
     @Override
     protected void initGoals() {
         this.goalSelector.add(1, new MeleeAttackGoal(this, 1.0D, true));
-        this.goalSelector.add(2, new GoToEntityTargetGoal(this, 0.9D, 32.0F));
+        this.goalSelector.add(2, new WanderNearTargetGoal(this, 0.9D, 32.0F));
         this.goalSelector.add(2, new IronGolemWanderAroundGoal(this, 0.6D));
         this.goalSelector.add(3, new WanderAroundPointOfInterestGoal(this, 0.6D, false));
         this.goalSelector.add(6, new WanderAroundFarGoal(this, 0.6D));

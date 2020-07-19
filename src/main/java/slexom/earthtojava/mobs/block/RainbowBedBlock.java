@@ -5,7 +5,7 @@ import net.minecraft.block.BedBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.util.DyeColor;
 import net.minecraft.world.BlockView;
-import slexom.earthtojava.mobs.init.TileEntityTypeInit;
+import slexom.earthtojava.mobs.init.BlockEntityTypeInit;
 
 public class RainbowBedBlock extends BedBlock {
     public RainbowBedBlock(DyeColor colorIn, AbstractBlock.Settings properties) {
@@ -13,7 +13,7 @@ public class RainbowBedBlock extends BedBlock {
     }
 
     public BlockEntity createBlockEntity(BlockView world) {
-        return TileEntityTypeInit.RAINBOW_BED.instantiate();
+        return BlockEntityTypeInit.RAINBOW_BED.instantiate();
     }
 
 }

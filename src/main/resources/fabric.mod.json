@@ -1,36 +1,35 @@
 {
-  "schemaVersion": 1,
-  "id": "earthtojavamobs",
-  "version": "${version}",
-
-  "name": "Earth2Java",
-  "description": "Bring mobs from Minecraft Earth to Minecraft Java Edition.",
-  "authors": [
-    "Slexom"
-  ],
-  "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/earth2java-mobs"
-  },
-
-  "license": "CC0-1.0",
-  "icon": "assets/earthtojavamobs/logo.png",
-
-  "environment": "*",
-  "entrypoints": {
-    "main": [
-      "slexom.earthtojava.mobs.Earth2JavaMod"
-    ]
-  },
-  "mixins": [
-    "earthtojavamobs.mixins.json"
-  ],
-
-  "depends": {
-    "fabricloader": ">=0.7.4",
-    "fabric": "*",
-    "minecraft": "1.15.x"
-  },
-  "suggests": {
-    "flamingo": "*"
-  }
+    "schemaVersion": 1,
+    "id": "earthtojavamobs",
+    "version": "${version}",
+    "name": "Earth2Java",
+    "description": "Bring mobs from Minecraft Earth to Minecraft Java Edition.",
+    "authors": [
+        "Slexom"
+    ],
+    "contact": {
+        "homepage": "https://www.curseforge.com/minecraft/mc-mods/earth2java-mobs"
+    },
+    "license": "CC0-1.0",
+    "icon": "assets/earthtojavamobs/logo.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "slexom.earthtojava.mobs.Earth2JavaMod"
+        ],
+        "client": [
+            "slexom.earthtojava.mobs.Earth2JavaClientMod"
+        ]
+    },
+    "mixins": [
+        "earthtojavamobs.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.7.4",
+        "fabric": "*",
+        "minecraft": "1.16.1"
+    },
+    "suggests": {
+        "flamingo": "*"
+    }
 }

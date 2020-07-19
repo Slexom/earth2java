@@ -6,7 +6,7 @@ import net.minecraft.util.registry.Registry;
 import slexom.earthtojava.mobs.Earth2JavaMod;
 import slexom.earthtojava.mobs.tileentity.RainbowBedTileEntity;
 
-public class TileEntityTypeInit {
+public class BlockEntityTypeInit {
 
     public static BlockEntityType<RainbowBedTileEntity> RAINBOW_BED;
 

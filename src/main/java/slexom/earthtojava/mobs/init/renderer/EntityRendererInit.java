@@ -1,17 +1,13 @@
 package slexom.earthtojava.mobs.init.renderer;
 
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import slexom.earthtojava.mobs.client.renderer.entity.*;
 import slexom.earthtojava.mobs.client.renderer.tileentity.RainbowBedTileEntityRenderer;
-import slexom.earthtojava.mobs.init.BlockInit;
 import slexom.earthtojava.mobs.init.EntityTypesInit;
-import slexom.earthtojava.mobs.init.FluidInit;
-import slexom.earthtojava.mobs.init.TileEntityTypeInit;
+import slexom.earthtojava.mobs.init.BlockEntityTypeInit;
 
 public class EntityRendererInit {
 
@@ -22,7 +18,7 @@ public class EntityRendererInit {
     }
 
     private static void registerTileEntityRenderer() {
-        BlockEntityRendererRegistry.INSTANCE.register(TileEntityTypeInit.RAINBOW_BED, RainbowBedTileEntityRenderer::new);
+        BlockEntityRendererRegistry.INSTANCE.register(BlockEntityTypeInit.RAINBOW_BED, RainbowBedTileEntityRenderer::new);
     }
 
     private static void registerProjectileRenderer() {

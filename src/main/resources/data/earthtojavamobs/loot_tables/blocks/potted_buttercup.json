@@ -6,7 +6,7 @@
             "entries": [
                 {
                     "type": "minecraft:item",
-                    "name": "earthtojavamobs:flower_pot"
+                    "name": "minecraft:flower_pot"
                 }
             ],
             "conditions": [

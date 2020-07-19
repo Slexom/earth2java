@@ -59,23 +59,23 @@ public class EntityAttributeInit {
         RegisterHelper.registerEntityAttributes(EntityTypesInit.WANDERING_TRADER_REGISTRY_OBJECT, E2JWanderingTraderEntity.createWanderingTraderAttributes());
     }
 
-    public static void registerBaseChickenAttributes(EntityType<? extends LivingEntity> entityType) {
+    private static void registerBaseChickenAttributes(EntityType<? extends LivingEntity> entityType) {
         RegisterHelper.registerEntityAttributes(entityType, E2JBaseChickenEntity.createChickenAttributes());
     }
 
-    public static void registerBaseCowAttributes(EntityType<? extends LivingEntity> entityType) {
+    private static void registerBaseCowAttributes(EntityType<? extends LivingEntity> entityType) {
         RegisterHelper.registerEntityAttributes(entityType, E2JBaseCowEntity.createCowAttributes());
     }
 
-    public static void registerBasePigAttributes(EntityType<? extends LivingEntity> entityType) {
+    private static void registerBasePigAttributes(EntityType<? extends LivingEntity> entityType) {
         RegisterHelper.registerEntityAttributes(entityType, E2JBasePigEntity.createPigAttributes());
     }
 
-    public static void registerBaseOneColorSheepAttributes(EntityType<? extends LivingEntity> entityType) {
+    private static void registerBaseOneColorSheepAttributes(EntityType<? extends LivingEntity> entityType) {
         RegisterHelper.registerEntityAttributes(entityType, E2JOneColorSheepEntity.createOneColorSheepAttributes());
     }
 
-    public static void registerBaseRabbitAttributes(EntityType<? extends LivingEntity> entityType) {
+    private static void registerBaseRabbitAttributes(EntityType<? extends LivingEntity> entityType) {
         RegisterHelper.registerEntityAttributes(entityType, E2JBaseRabbitEntity.createRabbitAttributes());
     }
 

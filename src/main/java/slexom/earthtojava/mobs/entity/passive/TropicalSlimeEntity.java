@@ -10,7 +10,7 @@ import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.mob.MobEntityWithAi;
+import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -28,7 +28,7 @@ import net.minecraft.world.World;
 
 import java.util.EnumSet;
 
-public class TropicalSlimeEntity extends MobEntityWithAi {
+public class TropicalSlimeEntity extends PathAwareEntity {
 
     private final int size;
     public float squishAmount;

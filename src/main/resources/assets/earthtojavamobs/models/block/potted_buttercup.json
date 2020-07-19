@@ -1,5 +1,5 @@
 {
-    "parent": "earthtojavamobs:block/flower_pot_cross",
+    "parent": "block/flower_pot_cross",
     "textures": {
         "plant": "earthtojavamobs:block/buttercup"
     }

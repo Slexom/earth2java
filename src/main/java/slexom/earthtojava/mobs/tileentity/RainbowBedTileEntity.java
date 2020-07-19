@@ -7,13 +7,13 @@ import net.minecraft.block.BedBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.util.DyeColor;
-import slexom.earthtojava.mobs.init.TileEntityTypeInit;
+import slexom.earthtojava.mobs.init.BlockEntityTypeInit;
 
 public class RainbowBedTileEntity extends BlockEntity {
     private DyeColor color;
 
     public RainbowBedTileEntity() {
-        super(TileEntityTypeInit.RAINBOW_BED);
+        super(BlockEntityTypeInit.RAINBOW_BED);
     }
 
     public RainbowBedTileEntity(DyeColor colorIn) {
