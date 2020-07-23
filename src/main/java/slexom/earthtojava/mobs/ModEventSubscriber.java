@@ -11,7 +11,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,8 +20,8 @@ import slexom.earthtojava.mobs.config.ConfigHolder;
 import slexom.earthtojava.mobs.init.BlockInit;
 import slexom.earthtojava.mobs.init.EntityAttributeInit;
 import slexom.earthtojava.mobs.item.E2JBlockItem;
+import slexom.earthtojava.mobs.item.E2JItemGroup;
 import slexom.earthtojava.mobs.item.ModdedSpawnEggItem;
-import slexom.earthtojava.mobs.world.gen.E2JOreGen;
 
 @Mod.EventBusSubscriber(modid = EarthToJavaMobsMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class ModEventSubscriber {
@@ -31,7 +30,7 @@ public final class ModEventSubscriber {
     @SubscribeEvent
     public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
         final IForgeRegistry<Item> registry = event.getRegistry();
-        final ItemGroup ITEM_GROUP = EarthToJavaMobsMod.E2JItemGroup.instance;
+        final ItemGroup ITEM_GROUP = E2JItemGroup.instance;
         BlockInit.BLOCKS.getEntries().stream()
                 .filter(block -> !(block.get() instanceof FlowingFluidBlock))
                 .filter(block -> block.get() != BlockInit.POTTED_BUTTERCUP.get())
@@ -75,11 +74,6 @@ public final class ModEventSubscriber {
     public static void onPostRegisterEntities(final RegistryEvent.Register<EntityType<?>> event) {
         ModdedSpawnEggItem.initUnaddedEggs();
         EntityAttributeInit.init();
-    }
-
-    @SubscribeEvent
-    public static void registerOres(FMLLoadCompleteEvent event) {
-        E2JOreGen.generateOre();
     }
 
 }

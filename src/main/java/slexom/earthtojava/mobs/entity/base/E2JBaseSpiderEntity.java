@@ -15,7 +15,7 @@ public class E2JBaseSpiderEntity<T extends SpiderEntity> extends SpiderEntity {
     private int remainingTick = 0;
     private int internalBlinkTick = 0;
 
-    public E2JBaseSpiderEntity(EntityType<? extends SpiderEntity> type, World worldIn) {
+    public E2JBaseSpiderEntity(EntityType<T> type, World worldIn) {
         super(type, worldIn);
         experienceValue = 3;
         setNoAI(false);

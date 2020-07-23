@@ -43,7 +43,7 @@ public class E2JOneColorSheepEntity<T extends AnimalEntity> extends AnimalEntity
     private int remainingTick = 0;
     private int internalBlinkTick = 0;
 
-    public E2JOneColorSheepEntity(EntityType<? extends AnimalEntity> type, World world, ItemStack wool) {
+    public E2JOneColorSheepEntity(EntityType<T> type, World world, ItemStack wool) {
         super(type, world);
         this.wool = wool;
         experienceValue = 3;

@@ -9,17 +9,18 @@ import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.network.IPacket;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
+import slexom.earthtojava.mobs.entity.IEntityBlink;
 
 import java.util.Random;
 
-public class E2JBaseChickenEntity<T extends ChickenEntity> extends ChickenEntity {
+public class E2JBaseChickenEntity<T extends ChickenEntity> extends ChickenEntity implements IEntityBlink {
 
     private int lastBlink = 0;
     private int nextBlinkInterval = new Random().nextInt(760) + 60;
     private int remainingTick = 0;
     private int internalBlinkTick = 0;
 
-    public E2JBaseChickenEntity(EntityType<? extends ChickenEntity> type, World worldIn) {
+    public E2JBaseChickenEntity(EntityType<? extends E2JBaseChickenEntity> type, World worldIn) {
         super(type, worldIn);
         experienceValue = 3;
         setNoAI(false);
@@ -32,6 +33,11 @@ public class E2JBaseChickenEntity<T extends ChickenEntity> extends ChickenEntity
     @Override
     public void livingTick() {
         super.livingTick();
+        updateRemainingTicks();
+    }
+
+    @Override
+    public void updateRemainingTicks() {
         if (this.remainingTick > 0) {
             --this.remainingTick;
         }
@@ -43,6 +49,7 @@ public class E2JBaseChickenEntity<T extends ChickenEntity> extends ChickenEntity
         ++this.internalBlinkTick;
     }
 
+    @Override
     public int getBlinkRemainingTicks() {
         return this.remainingTick;
     }

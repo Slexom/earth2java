@@ -14,7 +14,7 @@ import slexom.earthtojava.mobs.item.*;
 public class ItemInit {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, EarthToJavaMobsMod.MOD_ID);
     public static final RegistryObject<Item> BONE_SHARD = ITEMS.register("bone_shard", () -> new BoneShardItem(new Item.Properties().group(null).maxStackSize(16)));
-    private static final ItemGroup itemGroup = EarthToJavaMobsMod.E2JItemGroup.instance;
+    private static final ItemGroup itemGroup = E2JItemGroup.instance;
     public static final RegistryObject<BucketItem> MUD_BUCKET = ITEMS.register(
             "mud_fluid_bucket",
             () -> new MudFluidBucketItem(

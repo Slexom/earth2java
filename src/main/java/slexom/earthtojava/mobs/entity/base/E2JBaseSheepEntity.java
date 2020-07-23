@@ -19,7 +19,7 @@ public class E2JBaseSheepEntity<T extends SheepEntity> extends SheepEntity {
     private int remainingTick = 0;
     private int internalBlinkTick = 0;
 
-    public E2JBaseSheepEntity(EntityType<? extends SheepEntity> type, World worldIn) {
+    public E2JBaseSheepEntity(EntityType<T> type, World worldIn) {
         super(type, worldIn);
         experienceValue = 3;
         setNoAI(false);

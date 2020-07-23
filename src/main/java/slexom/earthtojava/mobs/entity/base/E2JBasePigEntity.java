@@ -19,7 +19,7 @@ public class E2JBasePigEntity<T extends PigEntity> extends PigEntity {
     private int remainingTick = 0;
     private int internalBlinkTick = 0;
 
-    public E2JBasePigEntity(EntityType<? extends PigEntity> type, World worldIn) {
+    public E2JBasePigEntity(EntityType<T> type, World worldIn) {
         super(type, worldIn);
         experienceValue = 3;
         setNoAI(false);

@@ -185,8 +185,8 @@ public class EntityTypesInit {
     public static final String TROPICAL_SLIME_REGISTRY_NAME = "tropical_slime";
     public static final RegistryObject<EntityType<TropicalSlimeEntity>> TROPICAL_SLIME_REGISTRY_OBJECT = ENTITY_TYPES.register(
             TROPICAL_SLIME_REGISTRY_NAME,
-            () -> EntityType.Builder.create(TropicalSlimeEntity::new, EntityClassification.CREATURE)
-                    .size(2.0F, 2.0F)
+            () -> EntityType.Builder.create(TropicalSlimeEntity::new, EntityClassification.MONSTER)
+                    .size(2.04F, 2.04F)
                     .immuneToFire()
                     .build(new ResourceLocation(EarthToJavaMobsMod.MOD_ID, TROPICAL_SLIME_REGISTRY_NAME).toString())
     );

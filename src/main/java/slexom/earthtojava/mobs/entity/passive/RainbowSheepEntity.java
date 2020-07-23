@@ -7,7 +7,7 @@ import slexom.earthtojava.mobs.entity.base.E2JOneColorSheepEntity;
 import slexom.earthtojava.mobs.init.BlockInit;
 
 public class RainbowSheepEntity extends E2JOneColorSheepEntity<RainbowSheepEntity> {
-    public RainbowSheepEntity(EntityType<? extends RainbowSheepEntity> type, World world) {
-        super(type, world, new ItemStack( BlockInit.RAINBOW_WOOL.get()));
+    public RainbowSheepEntity(EntityType<RainbowSheepEntity> type, World world) {
+        super(type, world, new ItemStack(BlockInit.RAINBOW_WOOL.get()));
     }
 }

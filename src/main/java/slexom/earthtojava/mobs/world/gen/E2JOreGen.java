@@ -20,29 +20,4 @@ import java.util.Random;
 
 public class E2JOreGen {
 
-    public static void generateOre() {
-        for (Biome biome : ForgeRegistries.BIOMES) {
-
-            biome.addFeature(
-                    GenerationStage.Decoration.UNDERGROUND_ORES,
-                    new OreFeature(OreFeatureConfig.field_236566_a_) {
-                        @Override
-                        public boolean func_230362_a_(ISeedReader seedReader, StructureManager structureManager, ChunkGenerator generator, Random random, BlockPos pos, OreFeatureConfig config) {
-                            if (!E2JModConfig.canRubyOreGenerate) {
-                                return false;
-                            }
-                            RegistryKey<DimensionType> dimensionType = seedReader.getWorld().func_234922_V_();
-                            boolean dimensionCriteria = false;
-                            if (dimensionType == DimensionType.field_235999_c_)
-                                dimensionCriteria = true;
-                            if (!dimensionCriteria)
-                                return false;
-                            return super.func_230362_a_(seedReader, structureManager, generator, random, pos, config);
-                        }
-                    }.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockInit.RUBY_ORE.get().getDefaultState(), 8))
-                            .withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(E2JModConfig.rubyOreCount, E2JModConfig.rubyOreBottomOffset, E2JModConfig.rubyOreTopOffset, E2JModConfig.rubyOreMaximum)))
-            );
-        }
-    }
-
 }

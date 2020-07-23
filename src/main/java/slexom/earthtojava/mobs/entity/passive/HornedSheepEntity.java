@@ -35,7 +35,7 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> imp
 
     private static final RangedInteger field_234180_bw_ = TickRangeConverter.convertRange(20, 39);
 
-    public HornedSheepEntity(EntityType<? extends HornedSheepEntity> type, World world) {
+    public HornedSheepEntity(EntityType<HornedSheepEntity> type, World world) {
         super(type, world);
     }
 

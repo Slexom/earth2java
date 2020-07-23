@@ -19,7 +19,7 @@ public class E2JBaseRabbitEntity<T extends RabbitEntity> extends RabbitEntity {
     private int remainingTick = 0;
     private int internalBlinkTick = 0;
 
-    public E2JBaseRabbitEntity(EntityType<? extends RabbitEntity> type, World worldIn) {
+    public E2JBaseRabbitEntity(EntityType<T> type, World worldIn) {
         super(type, worldIn);
         experienceValue = 3;
         setNoAI(false);
