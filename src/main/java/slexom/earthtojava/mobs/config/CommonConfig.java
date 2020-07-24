@@ -13,6 +13,8 @@ final class CommonConfig {
 
     final ForgeConfigSpec.IntValue mudLakeFrequency;
     final ForgeConfigSpec.BooleanValue canWanderingTraderSpawn;
+    final ForgeConfigSpec.IntValue wanderingTraderDelay;
+    final ForgeConfigSpec.IntValue wanderingTraderChance;
     final ForgeConfigSpec.BooleanValue canRubyOreGenerate;
     final ForgeConfigSpec.IntValue rubyOreCount;
     final ForgeConfigSpec.IntValue rubyOreBottomOffset;
@@ -182,6 +184,12 @@ final class CommonConfig {
         canWanderingTraderSpawn = builder
                 .comment("Enable or disable the custom Wandering Trader")
                 .define("canWanderingTraderSpawn", true);
+        wanderingTraderDelay = builder
+                .comment("Number of in-game days to wait until the mod trader can spawn")
+                .defineInRange("mudLakeFrequency", 4, 0, Integer.MAX_VALUE);
+        wanderingTraderChance = builder
+                .comment("Chance for the mod trader to spawn")
+                .defineInRange("wanderingTraderChance", 20, 1, 100);
 
         builder.pop();
 

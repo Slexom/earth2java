@@ -30,19 +30,23 @@ import java.util.Random;
 
 public class E2JWanderingTraderSpawner {
 
-    private final int CHANCE = 25;
-    private Random random = new Random();
+    private final int CHANCE = E2JModConfig.wanderingTraderChance;
+    private final int DELAY = E2JModConfig.wanderingTraderDelay;
+    private final Random random = new Random();
     private ServerWorld world;
     private IServerWorldInfo iServerWorldInfo;
 
     @SubscribeEvent
     public void tick(TickEvent.WorldTickEvent event) {
-        if(E2JModConfig.canWanderingTraderSpawn) {
+        if (E2JModConfig.canWanderingTraderSpawn) {
             world = (ServerWorld) event.world;
             iServerWorldInfo = world.getServer().func_240793_aU_().func_230407_G_();
-            if (iServerWorldInfo.getDayTime() % 24000 == 1500) {
-                if (random.nextInt(100) < CHANCE) {
-                    spawnTrader(this.world);
+            long dayTime = iServerWorldInfo.getDayTime();
+            if ((dayTime / 24000L) > DELAY) {
+                if (dayTime % 24000 == 1500) {
+                    if (random.nextInt(100) < CHANCE) {
+                        spawnTrader(this.world);
+                    }
                 }
             }
         }
