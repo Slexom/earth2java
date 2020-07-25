@@ -21,10 +21,10 @@ import net.minecraft.world.spawner.WorldEntitySpawner;
 import net.minecraft.world.storage.IServerWorldInfo;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.LogicalSide;
 import slexom.earthtojava.mobs.config.E2JModConfig;
 import slexom.earthtojava.mobs.entity.merchant.villager.E2JWanderingTraderEntity;
 import slexom.earthtojava.mobs.init.EntityTypesInit;
-import slexom.earthtojava.mobs.world.storage.E2JWanderingTraderSaveData;
 
 import javax.annotation.Nullable;
 import java.util.Optional;
@@ -32,8 +32,6 @@ import java.util.Random;
 
 public class E2JWanderingTraderSpawner {
 
-    private final int CHANCE = E2JModConfig.wanderingTraderChance;
-    private final int DELAY = E2JModConfig.wanderingTraderDelay;
     private final Random random = new Random();
     private final int DAY = 24000;
     private ServerWorld world;
@@ -42,37 +40,43 @@ public class E2JWanderingTraderSpawner {
     @SubscribeEvent
     public void tick(TickEvent.WorldTickEvent event) {
         if (E2JModConfig.canWanderingTraderSpawn) {
-            world = (ServerWorld) event.world;
-            if (world.getGameRules().getBoolean(GameRules.field_230128_E_)) {
-                iServerWorldInfo = world.getServer().func_240793_aU_().func_230407_G_();
-                long dayTime = iServerWorldInfo.getDayTime();
-                E2JWanderingTraderSaveData data = E2JWanderingTraderSaveData.get(world);
-                int spawnDelay = data.getTraderDelay();
-                int spawnTime = data.getTraderSpawnTime();
-                if (spawnDelay == 0) {
-                    data.setTraderDelay(DAY);
-                }
-                if (spawnTime == 0) {
-                    data.setTraderSpawnTime(1500);
-                }
-                if (--spawnTime == 0) {
-                    if (--spawnDelay == 0) {
-                        if ((dayTime / (long) DAY) > DELAY) {
+            if(event.phase == TickEvent.Phase.END && event.side == LogicalSide.SERVER){
+                world = (ServerWorld) event.world;
+                if(world.getGameRules().getBoolean(GameRules.field_230128_E_) && world.getGameRules().getBoolean(GameRules.DO_MOB_SPAWNING)){
+                    iServerWorldInfo = world.getServer().func_240793_aU_().func_230407_G_();
+                    int CHANCE = E2JModConfig.wanderingTraderChance;
+                    int DELAY = E2JModConfig.wanderingTraderDelay;
+                    long dayTime = iServerWorldInfo.getDayTime();
+                    if ((dayTime / (long)DAY) > DELAY) {
+                        if (dayTime % DAY == 1500) {
                             if (random.nextInt(100) < CHANCE) {
                                 spawnTrader(this.world);
                             }
                         }
-                        data.setTraderDelay(DAY);
-                    } else {
-                        data.setTraderDelay(spawnDelay);
                     }
-                    data.setTraderSpawnTime(1500);
-                } else {
-                    data.setTraderSpawnTime(spawnTime);
                 }
+//                world = (ServerWorld) event.world;
+//                if (world.getGameRules().getBoolean(GameRules.field_230128_E_) && world.getGameRules().getBoolean(GameRules.DO_MOB_SPAWNING)) {
+//                    iServerWorldInfo = world.getServer().func_240793_aU_().func_230407_G_();
+//                    long dayTime = iServerWorldInfo.getDayTime();
+//                    E2JWanderingTraderSaveData data = E2JWanderingTraderSaveData.get(world);
+//                    int spawnDelay = data.getTraderDelay();
+//                    if (spawnDelay <= 0) {
+//                        spawnDelay = DAY;
+//                        data.setTraderDelay(spawnDelay);
+//                    }
+//                    if (--spawnTime == 0) {
+//                        spawnTime = 1500;
+//                        spawnDelay -= 1500;
+//                        data.setTraderDelay(spawnDelay);
+//                        if (spawnDelay == 0) {
+//                            if (this.random.nextInt(100) < CHANCE) {
+//                                spawnTrader(this.world);
+//                            }
+//                        }
+//                    }
+//                }
             }
-
-
         }
     }
 
