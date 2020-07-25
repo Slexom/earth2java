@@ -186,7 +186,7 @@ final class CommonConfig {
                 .define("canWanderingTraderSpawn", true);
         wanderingTraderDelay = builder
                 .comment("Number of in-game days to wait until the mod trader can spawn")
-                .defineInRange("mudLakeFrequency", 4, 0, Integer.MAX_VALUE);
+                .defineInRange("wanderingTraderDelay", 4, 0, Integer.MAX_VALUE);
         wanderingTraderChance = builder
                 .comment("Chance for the mod trader to spawn")
                 .defineInRange("wanderingTraderChance", 20, 1, 100);
