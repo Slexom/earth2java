@@ -11,6 +11,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.village.PointOfInterestManager;
 import net.minecraft.village.PointOfInterestType;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.biome.Biomes;
@@ -23,6 +24,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import slexom.earthtojava.mobs.config.E2JModConfig;
 import slexom.earthtojava.mobs.entity.merchant.villager.E2JWanderingTraderEntity;
 import slexom.earthtojava.mobs.init.EntityTypesInit;
+import slexom.earthtojava.mobs.world.storage.E2JWanderingTraderSaveData;
 
 import javax.annotation.Nullable;
 import java.util.Optional;
@@ -33,6 +35,7 @@ public class E2JWanderingTraderSpawner {
     private final int CHANCE = E2JModConfig.wanderingTraderChance;
     private final int DELAY = E2JModConfig.wanderingTraderDelay;
     private final Random random = new Random();
+    private final int DAY = 24000;
     private ServerWorld world;
     private IServerWorldInfo iServerWorldInfo;
 
@@ -40,15 +43,36 @@ public class E2JWanderingTraderSpawner {
     public void tick(TickEvent.WorldTickEvent event) {
         if (E2JModConfig.canWanderingTraderSpawn) {
             world = (ServerWorld) event.world;
-            iServerWorldInfo = world.getServer().func_240793_aU_().func_230407_G_();
-            long dayTime = iServerWorldInfo.getDayTime();
-            if ((dayTime / 24000L) > DELAY) {
-                if (dayTime % 24000 == 1500) {
-                    if (random.nextInt(100) < CHANCE) {
-                        spawnTrader(this.world);
+            if (world.getGameRules().getBoolean(GameRules.field_230128_E_)) {
+                iServerWorldInfo = world.getServer().func_240793_aU_().func_230407_G_();
+                long dayTime = iServerWorldInfo.getDayTime();
+                E2JWanderingTraderSaveData data = E2JWanderingTraderSaveData.get(world);
+                int spawnDelay = data.getTraderDelay();
+                int spawnTime = data.getTraderSpawnTime();
+                if (spawnDelay == 0) {
+                    data.setTraderDelay(DAY);
+                }
+                if (spawnTime == 0) {
+                    data.setTraderSpawnTime(1500);
+                }
+                if (--spawnTime == 0) {
+                    if (--spawnDelay == 0) {
+                        if ((dayTime / (long) DAY) > DELAY) {
+                            if (random.nextInt(100) < CHANCE) {
+                                spawnTrader(this.world);
+                            }
+                        }
+                        data.setTraderDelay(DAY);
+                    } else {
+                        data.setTraderDelay(spawnDelay);
                     }
+                    data.setTraderSpawnTime(1500);
+                } else {
+                    data.setTraderSpawnTime(spawnTime);
                 }
             }
+
+
         }
     }
 
