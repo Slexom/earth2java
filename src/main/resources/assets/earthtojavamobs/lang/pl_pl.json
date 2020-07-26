@@ -74,5 +74,6 @@
     "block.earthtojavamobs.rainbow_bed.desc": "Co za kolory! Łóżko to jeden z pierwszych mebli, które warto skonstruować w nowym domu. Łóżka są wspaniałe! Każdy je uwielbia.",
     "block.earthtojavamobs.rainbow_carpet.desc": "Co za szyk! Dodaj kolorów swoim budynkom, by stały się bardziej przytulne. Ale uważaj: dywany mogą zająć się ogniem.",
     "block.earthtojavamobs.rainbow_wool.desc": "Bee, bee! Tęczowa owco, masz może trochę wełny? Taka wełna to fantastyczny materiał budowlany. Pamiętaj tylko, że jest łatwopalna.",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

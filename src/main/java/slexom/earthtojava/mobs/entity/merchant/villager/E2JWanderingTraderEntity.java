@@ -75,9 +75,8 @@ public class E2JWanderingTraderEntity extends WanderingTraderEntity {
         TradeOffers.Factory[] factorys2 = TRADES.get(2);
         if (factorys != null && factorys2 != null) {
             TraderOfferList traderOfferList = this.getOffers();
-            this.fillRecipesFromPool(traderOfferList, factorys, 5);
-            int i = this.random.nextInt(factorys2.length);
-            TradeOffers.Factory factory = factorys2[i];
+            this.fillRecipesFromPool(traderOfferList, factorys, 8);
+            TradeOffers.Factory factory = factorys2[0];
             TradeOffer tradeOffer = factory.create(this, this.random);
             if (tradeOffer != null) {
                 traderOfferList.add(tradeOffer);

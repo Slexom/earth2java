@@ -74,5 +74,6 @@
     "block.earthtojavamobs.rainbow_bed.desc": "Так барвисто! Для нового будинку ви в першу чергу захочете зробити ліжко, бо воно незамінне. Хто не любить ліжок?",
     "block.earthtojavamobs.rainbow_carpet.desc": "Так барвисто! Освіжіть свої будівлі та створіть домашній затишок. Але пам’ятайте: килими легкозаймисті.",
     "block.earthtojavamobs.rainbow_wool.desc": "Бе-е, бе-е, вівце кольорів веселки, у тебе лишилося трохи вовни? Ця вовна є відмінним будівельним матеріалом. Просто не забувайте, що вона легкозаймиста.",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

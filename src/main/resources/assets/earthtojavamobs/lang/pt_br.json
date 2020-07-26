@@ -107,5 +107,6 @@
     "block.earthtojavamobs.rainbow_wool.desc": "Méé, Méé, ovelha de arco-íris, você tem um pouco de lã? Esta lã tingida é um material de construção fantástico. Apenas lembre-se de que ela é inflamável.",
     "block.earthtojavamobs.carved_melon": "Melão esculpido",
     "block.earthtojavamobs.melon_lantern": "Lanterna de melão",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

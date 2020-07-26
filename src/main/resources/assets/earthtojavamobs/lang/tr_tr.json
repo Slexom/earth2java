@@ -72,5 +72,6 @@
     "block.earthtojavamobs.rainbow_bed.desc": "Ne kadar rengarenk! Yataklar yeni evin için yapmak isteyeceğin ilk şeylerden biridir çünkü yataklar harikadır. Kim yatak sevmez ki?",
     "block.earthtojavamobs.rainbow_carpet.desc": "Ne kadar rengarenk! Binalarını aydınlat ve sade bir hava kat. Ama unutma: Halılar alev alabilir.",
     "block.earthtojavamobs.rainbow_wool.desc": "Mee, mee, gökkuşağı renkli koyun, hiç yünün var mı? Bu yün muhteşem bir inşaat malzemesi olur. Sadece tutuşabildiğini aklından çıkarma.",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

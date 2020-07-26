@@ -110,5 +110,6 @@
     "block.earthtojavamobs.ruby_block": "Blocco di rubino",
     "block.earthtojavamobs.ruby_ore": "Rubino grezzo",
     "item.earthtojavamobs.ruby": "Rubino",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

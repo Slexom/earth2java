@@ -74,5 +74,6 @@
     "block.earthtojavamobs.rainbow_bed.desc": "Vilken färgglädje! En säng är bland det första du bör bygga i ditt nya hem, för de är fantastiska. Vem tycker inte om sängar?",
     "block.earthtojavamobs.rainbow_carpet.desc": "Vilken färgglädje! Liva upp dina byggnader och gör dem hemtrevligare. Kom ihåg att mattor kan fatta eld.",
     "block.earthtojavamobs.rainbow_wool.desc": "Bä, bä, regnbågsfärgade får, har du någon ull? Denna ull är ett fantastiskt byggnadsmaterial, men tänk på att det lätt fattar eld.",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

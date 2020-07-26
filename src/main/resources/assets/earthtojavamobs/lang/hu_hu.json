@@ -74,5 +74,6 @@
     "block.earthtojavamobs.rainbow_bed.desc": "Milyen színpompás! Az ágy az első tárgyak egyike lesz, amit el szeretnél majd készíteni házadhoz, mert az ágyak zseniálisak. Ki ne szeretné az ágyat?",
     "block.earthtojavamobs.rainbow_carpet.desc": "Milyen színpompás! Dobd fel az épületeidet, adj nekik otthonosabb hangulatot. Azt viszont ne felejtsd el, hogy a szőnyegek gyúlékonyak.",
     "block.earthtojavamobs.rainbow_wool.desc": "Bee, bee, szivárványszínű bárány, van gyapjad? Ez a gyapjú fantasztikus építőanyag. Csak ne feledd, hogy gyúlékony.",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

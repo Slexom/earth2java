@@ -74,5 +74,6 @@
     "block.earthtojavamobs.rainbow_bed.desc": "Que colorido! As camas são uma das primeiras coisas que vais querer fazer para a tua nova casa porque são brilhantes. Quem não gosta de camas?",
     "block.earthtojavamobs.rainbow_carpet.desc": "Que colorido! Ilumina os teus edifícios e dá-lhes um toque familiar. Mas lembra-te: os tapetes ardem.",
     "block.earthtojavamobs.rainbow_wool.desc": "Mee, mee, ovelha colorida arco-íris, tens lã? A lã pintada cria material de construção fantástico. Mas lembra-te que inflamável.",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

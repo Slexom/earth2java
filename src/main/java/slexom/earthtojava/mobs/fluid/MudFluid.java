@@ -10,7 +10,6 @@ import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.item.Item;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.Property;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -25,6 +24,10 @@ import slexom.earthtojava.mobs.init.ItemInit;
 
 public class MudFluid extends FlowableFluid {
 
+    @Override
+    public boolean matchesType(Fluid fluid) {
+        return fluid == getStill() || fluid == getFlowing();
+    }
 
     @Override
     public Fluid getFlowing() {
@@ -122,13 +125,14 @@ public class MudFluid extends FlowableFluid {
 
     public static class Flowing extends MudFluid {
 
+        @Override
         protected void appendProperties(StateManager.Builder<Fluid, FluidState> builder) {
             super.appendProperties(builder);
-            builder.add(new Property[]{LEVEL});
+            builder.add(LEVEL);
         }
 
         public int getLevel(FluidState state) {
-            return (Integer) state.get(LEVEL);
+            return state.get(LEVEL);
         }
 
         public boolean isStill(FluidState state) {

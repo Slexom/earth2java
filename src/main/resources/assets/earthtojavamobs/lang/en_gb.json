@@ -74,5 +74,6 @@
     "block.earthtojavamobs.rainbow_bed.desc": "So colourful! Beds are one of the first things you'll want to make for your new house because they are brilliant. Who doesn't like a bed?",
     "block.earthtojavamobs.rainbow_carpet.desc": "So colourful! Brighten up your buildings and give them a homely feel. Remember though: carpets are flammable.",
     "block.earthtojavamobs.rainbow_wool.desc": "Baa, baa, rainbow-coloured sheep, have you any wool? This wool makes a fantastic building material. Just remember that it's flammable.",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

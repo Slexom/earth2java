@@ -74,5 +74,6 @@
     "block.earthtojavamobs.rainbow_bed.desc": "¡Qué colorido! Las camas son una de las primeras cosas que tienes que hacer para tu casa nueva, porque son geniales. ¿Quién no disfruta una buena cama?",
     "block.earthtojavamobs.rainbow_carpet.desc": "¡Qué colorido! Decora tus edificios con un toque hogareño. Pero recuerda que las alfombras son inflamables.",
     "block.earthtojavamobs.rainbow_wool.desc": "Bee, bee... Oveja arcoíris, ¿tienes algo de lana? Esta lana es un material de construcción fabuloso. Solo recuerda que es inflamable.",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

@@ -107,5 +107,6 @@
     "block.earthtojavamobs.rainbow_wool.desc": "¡Bee, bee! Oveja arcoíris, ¿tienes lana? Esta lana es un material de construcción fantástico. Tan solo recuerda que es inflamable.",
     "block.earthtojavamobs.carved_melon": "Melón tallado",
     "block.earthtojavamobs.melon_lantern": "Linterna de melón",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

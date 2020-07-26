@@ -107,5 +107,6 @@
     "block.earthtojavamobs.rainbow_wool.desc": "메에에, 메에에, 무지개색 양아, 혹시 양털 좀 있니? 이 양털은 환상적인 건축 재료가 됩니다. 불이 잘 붙는다는 것만 기억하세요.",
     "block.earthtojavamobs.carved_melon": "조각된 수박",
     "block.earthtojavamobs.melon_lantern": "수박 랜턴",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

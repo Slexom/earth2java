@@ -74,5 +74,6 @@
     "block.earthtojavamobs.rainbow_bed.desc": "Aká pestrofarebná! Postele patria medzi prvé veci, ktoré budete chcieť vyrobiť pre svoj nový dom, pretože sú brilantné. Kto nemá rád posteľ?",
     "block.earthtojavamobs.rainbow_carpet.desc": "Aké pestrofarebné! Rozjasnite svoje budovy a dodajte im útulný vzhľad. Pamätajte však na to, že koberce sú horľavé.",
     "block.earthtojavamobs.rainbow_wool.desc": "Bé, bé, dúhová ovca, máš nejakú vlnu? Táto vlna je úžasný stavebný materiál. Len nezabudnite, že je horľavý.",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

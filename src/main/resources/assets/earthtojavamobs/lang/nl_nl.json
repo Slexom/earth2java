@@ -74,5 +74,6 @@
     "block.earthtojavamobs.rainbow_bed.desc": "Zo kleurrijk! Een bed is een van de eerste dingen die je wilt maken voor je huis – ze zijn zo geweldig! Wie houdt er nu niet van bedden?",
     "block.earthtojavamobs.rainbow_carpet.desc": "Zo kleurrijk! Fleur je bouwwerken op en maak ze gezellig. Maar denk eraan: tapijten zijn brandbaar.",
     "block.earthtojavamobs.rainbow_wool.desc": "Beeeh, beeeh, regenboog gekleurd schaap, heb je wol? Dit wol is een geweldige bouwmateriaal. Denk er wel aan dat het brandbaar is.",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

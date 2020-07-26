@@ -107,5 +107,6 @@
     "block.earthtojavamobs.rainbow_wool.desc": "Бее-бее, радужная овечка, у тебя есть шерсть? Эта шерсть — фантастический строительный материал. Не забывайте, только, что она огнеопасна.",
     "block.earthtojavamobs.carved_melon": "Вырезанная дыня",
     "block.earthtojavamobs.melon_lantern": "Светильник дыня",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

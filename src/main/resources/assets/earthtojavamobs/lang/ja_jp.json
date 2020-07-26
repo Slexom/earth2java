@@ -107,5 +107,6 @@
     "block.earthtojavamobs.rainbow_wool.desc": "メーメー、虹色の羊さん、ウールを持ってませんか? このウールはすばらしい建築材料ですが、燃えやすい点には注意しましょう。",
     "block.earthtojavamobs.carved_melon": "くり抜かれたスイカ",
     "block.earthtojavamobs.melon_lantern": "スイカランタン",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

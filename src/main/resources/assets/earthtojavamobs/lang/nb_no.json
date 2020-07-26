@@ -74,5 +74,6 @@
     "block.earthtojavamobs.rainbow_bed.desc": "Så fargerikt! Senger er en av de første tingene du vil lage til det nye huset ditt, fordi de er fantastiske. Hvem liker ikke en seng?",
     "block.earthtojavamobs.rainbow_carpet.desc": "Så fargerikt! Lys opp bygningene dine og gi dem en hjemmekoselig følelse. Men husk: Tepper er brannfarlige.",
     "block.earthtojavamobs.rainbow_wool.desc": "Bæ, bæ, regnbuefargede lam, har du noe ull? Denne ullen er et fantastisk byggemateriale. Bare husk at det er brannfarlig.",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

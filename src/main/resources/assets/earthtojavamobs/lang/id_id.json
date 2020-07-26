@@ -74,5 +74,6 @@
     "block.earthtojavamobs.rainbow_bed.desc": "Sangat penuh warna! Tempat tidur adalah salah satu item pertama yang ingin kamu buat untuk rumah barumu karena kehebatannya. Siapa yang tidak suka tempat tidur?",
     "block.earthtojavamobs.rainbow_carpet.desc": "Sangat penuh warna! Semarakkan bangunanmu dan berikan nuansa yang nyaman. Tetapi ingat: karpet mudah terbakar.",
     "block.earthtojavamobs.rainbow_wool.desc": "Mbek, mbek, domba pelangi, apa kamu punya wol? Wol ini bisa jadi material bangunan yang fantastis. Tetapi ingat, wol mudah terbakar.",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

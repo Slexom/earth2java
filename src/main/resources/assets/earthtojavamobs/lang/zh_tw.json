@@ -74,5 +74,6 @@
     "block.earthtojavamobs.rainbow_bed.desc": "色彩真豐富! 有了新家，第一個要做的就是床舖，因為床舖很棒。誰不喜歡床舖？",
     "block.earthtojavamobs.rainbow_carpet.desc": "色彩真豐富! 讓您的建築看起來更明亮，並增添一種家的感覺。但是提醒您：地毯易燃。",
     "block.earthtojavamobs.rainbow_wool.desc": "咩咩，彩虹色綿羊，你有羊毛嗎？這種羊毛是非常好的建築材料。但別忘了，這種材料易燃。",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

@@ -74,5 +74,6 @@
     "block.earthtojavamobs.rainbow_bed.desc": "Tellement coloré! Les lits font partie des premières choses que vous souhaiterez fabriquer pour votre nouvelle maison parce que c'est une idée si brillante. Qui n'aime pas les lits?",
     "block.earthtojavamobs.rainbow_carpet.desc": "Tellement coloré! Éclairez vos bâtiments et donnez-leur un côté chaleureux. Mais, rappelez-vous que les tapis sont inflammables.",
     "block.earthtojavamobs.rainbow_wool.desc": "Bêêê, bêêê... petit mouton arc-en-ciel, as-tu de la laine? Cette laine est un matériau de construction fantastique. Rappelez-vous toutefois qu'elle est inflammable.",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

@@ -104,5 +104,6 @@
     "block.earthtojavamobs.rainbow_wool.desc": "Bêê, bêê, mouton arc-en-ciel, as-tu de la laine ? Cette laine est un fantastique matériau de construction. Rappelez-vous simplement qu'elle peut prendre feu.",
     "block.earthtojavamobs.carved_melon": "Pastèque sculptées",
     "block.earthtojavamobs.melon_lantern": "Pastèque-lanterne",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

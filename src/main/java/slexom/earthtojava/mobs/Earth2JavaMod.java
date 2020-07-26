@@ -3,7 +3,7 @@ package slexom.earthtojava.mobs;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.minecraft.block.Blocks;
+import net.minecraft.block.ComposterBlock;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
@@ -15,8 +15,8 @@ public class Earth2JavaMod implements ModInitializer {
 
     public static final String MOD_ID = "earthtojavamobs";
     public static final ItemGroup ITEM_GROUP = FabricItemGroupBuilder.build(
-            new Identifier(MOD_ID, MOD_ID),
-            () -> new ItemStack(Blocks.COBBLESTONE));
+            new Identifier(MOD_ID, "group"),
+            () -> new ItemStack(ItemInit.HORN));
 
     @Override
     public void onInitialize() {
@@ -27,19 +27,19 @@ public class Earth2JavaMod implements ModInitializer {
         BiomeInit.init();
         EntityTypesInit.init();
         EntityAttributeInit.init();
+        EntitySpawnInit.init();
         ItemInit.init();
         RecipesInit.init();
-        EntitySpawnInit.init();
         registerTraderSpawner();
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(BlockInit.BUTTERCUP.asItem(), 0.65F);
+
     }
 
     private void registerTraderSpawner() {
-        E2JWanderingTraderManager spawner = new E2JWanderingTraderManager();
 
-        ServerTickEvents.START_SERVER_TICK.register(minecraftServer -> {
+        ServerTickEvents.END_SERVER_TICK.register(minecraftServer -> {
             ServerWorld world = minecraftServer.getOverworld();
-            spawner.spawn(world, true, true);
-            //E2JWanderingTraderManageraaa.tick(world);
+            E2JWanderingTraderManager.tick(world);
         });
     }
 

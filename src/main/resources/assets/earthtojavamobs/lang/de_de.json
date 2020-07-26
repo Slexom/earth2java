@@ -107,5 +107,6 @@
     "block.earthtojavamobs.rainbow_wool.desc": "Mäh! Mähähhh! Regenbogenfarbenes Schaf, hast du Wolle? Diese Wolle eignet sich fantastisch als Werkstoff. Denke aber daran, dass es sehr leicht entzündlich ist.",
     "block.earthtojavamobs.carved_melon": "Geschnitzter Melone",
     "block.earthtojavamobs.melon_lantern": "Melone Lanterne",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

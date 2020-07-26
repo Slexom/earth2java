@@ -4,9 +4,9 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.resource.language.I18n;
-import net.minecraft.entity.EntityType;
+import net.minecraft.fluid.Fluid;
+import net.minecraft.item.BucketItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.SpawnEggItem;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -17,10 +17,9 @@ import slexom.earthtojava.mobs.utils.Utils;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class E2JSpawnEggItem extends SpawnEggItem {
-
-    public E2JSpawnEggItem(EntityType<?> type, int primaryColor, int secondaryColor, Settings settings) {
-        super(type, primaryColor, secondaryColor, settings);
+public class MudBucketItem extends BucketItem {
+    public MudBucketItem(Fluid fluid, Settings settings) {
+        super(fluid, settings);
     }
 
     @Environment(EnvType.CLIENT)
@@ -32,5 +31,4 @@ public class E2JSpawnEggItem extends SpawnEggItem {
             strings.forEach(string -> tooltip.add(new LiteralText(string).formatted(Formatting.GRAY)));
         }
     }
-
 }

@@ -74,5 +74,6 @@
     "block.earthtojavamobs.rainbow_bed.desc": "Todella värikästä! Sängyt ovat ensimmäisiä asioita, joita uuteen taloon kannattaa tehdä, sillä ne ovat niin loistavia. Kuka nyt ei sängystä tykkäisi?",
     "block.earthtojavamobs.rainbow_carpet.desc": "Todella värikästä! Piristä rakennuksiasi kotoisalla tunnelmalla. Muista kuitenkin, että matot ovat syttyviä.",
     "block.earthtojavamobs.rainbow_wool.desc": "Bää bää, sateenkaaren värinen lammas, onko sulla villaa? Värjätty villa on mahtava rakennusmateriaali. Kunhan vain muistat, että se on syttyvää.",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

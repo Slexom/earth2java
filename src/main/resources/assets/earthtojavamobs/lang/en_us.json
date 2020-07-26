@@ -110,5 +110,6 @@
     "block.earthtojavamobs.ruby_block": "Ruby Block",
     "block.earthtojavamobs.ruby_ore": "Ruby Ore",
     "item.earthtojavamobs.ruby": "Ruby",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

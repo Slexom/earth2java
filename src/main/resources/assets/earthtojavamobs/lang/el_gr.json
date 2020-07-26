@@ -74,5 +74,6 @@
     "block.earthtojavamobs.rainbow_bed.desc": "Τόσο πολύχρωμο! Το κρεβάτι είναι ένα από τα πρώτα πράγματα που θα πρέπει να φτιάξεις στο νέο σου σπίτι γιατί είναι φανταστικό. Σε ποιον δεν αρέσει ένα κρεβάτι;",
     "block.earthtojavamobs.rainbow_carpet.desc": "Τόσο πολύχρωμο! Φώτισε τα κτίριά σου και χάρισέ τους μια σπιτική πινελιά. Μην ξεχνάς όμως: τα χαλιά είναι εύφλεκτα.",
     "block.earthtojavamobs.rainbow_wool.desc": "Μπε, μπε, πολύχρωμο προβατάκι, έχεις μαλλί; Αυτό το μαλλί είναι ένα φανταστικό κατασκευαστικό υλικό. Απλώς μην ξεχνάς ότι είναι εύφλεκτο.",
-    "itemGroup.earthtojavamobs": "Earth2Java"
+    "itemGroup.earthtojavamobs": "Earth2Java",
+    "itemGroup.earthtojavamobs.group": "Earth2Java"
 }

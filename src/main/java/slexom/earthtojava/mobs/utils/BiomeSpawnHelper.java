@@ -3,8 +3,14 @@ package slexom.earthtojava.mobs.utils;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.mob.WaterCreatureEntity;
+import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.util.Util;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.Biomes;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +20,7 @@ import java.util.stream.Stream;
 
 public final class BiomeSpawnHelper {
 
-    public static final String[] SNOWY_TUNDRA = new String[]{"minecraft:snowy_tundra", "minecraft:snowy_mountains"};
+    public static final String[] SNOWY_TUNDRA = new String[]{ "minecraft:snowy_tundra", "minecraft:snowy_mountains"};
     public static final String[] ICE_SPIKE = new String[]{"minecraft:ice_spikes"};
     public static final String[] SNOWY_TAIGA = new String[]{"minecraft:snowy_taiga", "minecraft:snowy_taiga_hills", "minecraft:snowy_taiga_mountains"};
     public static final String[] FROZEN_RIVER = new String[]{"minecraft:frozen_river"};
@@ -88,23 +94,28 @@ public final class BiomeSpawnHelper {
         RegistryEntryAddedCallback.event(Registry.BIOME).register((i, identifier, biome) -> addToBiome(biome,  entity,   spawnBiomes,  weight,  minGroupSize,   maxGroupSize,  classification));
     }
 
-    private static void addToBiome(Biome biome, EntityType entity, String[] spawnBiomes, int weight, int minGroupSize, int maxGroupSize, SpawnGroup classification) {
-        boolean biomeCriteria = Arrays.asList(spawnBiomes).contains(biome.getTranslationKey());
+    private static void addToBiome(Biome biome, EntityType<?> entity, String[] spawnBiomes, int weight, int minGroupSize, int maxGroupSize, SpawnGroup classification) {
+        boolean biomeCriteria = Arrays.asList(spawnBiomes).contains(Registry.BIOME.getId(biome).toString());
         if (biomeCriteria) {
             biome.getEntitySpawnList(classification).add(new Biome.SpawnEntry(entity, weight, minGroupSize, maxGroupSize));
         }
     }
 
-    public static void setCreatureSpawnBiomes(EntityType entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
+    public static <T extends AnimalEntity> void setCreatureSpawnBiomes(EntityType<T> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
         setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.CREATURE);
     }
 
-    public static void setWaterCreatureSpawnBiomes(EntityType entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
+    public static <T extends WaterCreatureEntity> void setWaterCreatureSpawnBiomes(EntityType<T> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
         setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.WATER_CREATURE);
     }
 
-    public static void setMonsterSpawnBiomes(EntityType entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
+    public static <T extends HostileEntity> void setMonsterSpawnBiomes(EntityType<T> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
         setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.MONSTER);
+    }
+
+
+    public static <T extends MobEntity> void setMobSpawnBiomes(EntityType<T> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
+        setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.MISC);
     }
 
     public static List<String> convertForConfig(String[] ary) {
