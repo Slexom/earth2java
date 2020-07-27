@@ -17,9 +17,17 @@ import net.minecraft.util.collection.DefaultedList;
 import slexom.earthtojava.mobs.init.RecipesInit;
 
 public class MudBucketRecipe extends ShapelessRecipe {
+    private final Identifier id;
+    private final String group;
+    private final ItemStack output;
+    private final DefaultedList<Ingredient> input;
 
     public MudBucketRecipe(Identifier id, String group, ItemStack output, DefaultedList<Ingredient> input) {
         super(id, group, output, input);
+        this.id = id;
+        this.group = group;
+        this.output = output;
+        this.input = input;
     }
 
     @Override
@@ -80,7 +88,7 @@ public class MudBucketRecipe extends ShapelessRecipe {
 
         @Override
         public void write(PacketByteBuf buffer, MudBucketRecipe recipe) {
-            buffer.writeString(recipe.getGroup());
+            buffer.writeString(recipe.group);
             buffer.writeVarInt(recipe.getPreviewInputs().size());
             for (final Ingredient ingredient : recipe.getPreviewInputs()) {
                 ingredient.write(buffer);

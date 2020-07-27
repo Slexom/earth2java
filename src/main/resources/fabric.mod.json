@@ -11,7 +11,7 @@
         "homepage": "https://www.curseforge.com/minecraft/mc-mods/earth2java-fabric",
         "issues": "https://www.curseforge.com/minecraft/mc-mods/earth2java-fabric/issues"
     },
-    "license": "CC0-1.0",
+    "license": "MIT License",
     "icon": "assets/earthtojavamobs/logo.png",
     "environment": "*",
     "entrypoints": {
@@ -32,5 +32,11 @@
     },
     "suggests": {
         "flamingo": "*"
+    },
+    "custom": {
+        "modupdater": {
+            "strategy": "curseforge",
+            "projectID": 398022
+        }
     }
 }

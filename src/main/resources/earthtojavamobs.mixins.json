@@ -4,11 +4,12 @@
     "package": "slexom.earthtojava.mobs.mixins",
     "compatibilityLevel": "JAVA_8",
     "mixins": [
-        "BERItemRenderer",
-        "MudFogMixin",
         "SpawnRestrictionAccessor"
     ],
-    "client": [],
+    "client": [
+        "BERItemRenderer",
+        "MudFogMixin"
+    ],
     "injectors": {
         "defaultRequire": 1
     }
