@@ -1,8 +1,0 @@
-{
-    "parent": "block/orientable",
-    "textures": {
-        "top": "block/melon_top",
-        "front": "earthtojavamobs:block/melon_golem_shoot",
-        "side": "block/melon_side"
-    }
-}
