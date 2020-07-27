@@ -1,10 +1,22 @@
 {
   "homepage": "https://www.curseforge.com/minecraft/mc-mods/earth2java-mobs",
   "promos": {
-    "1.15.2-latest": "1.3.1",
-    "1.15.2-recommended": "1.3.1"
+    "1.16.1-latest": "2.1.0",
+    "1.16.1-recommended": "2.1.0",
+    "1.15.2-latest": "1.4.1",
+    "1.15.2-recommended": "1.4.1"
+  },
+  "1.16.1": {
+    "2.1.0": "Added Jolly Llama; Added Rainbow Sheep; Added Rainbow Wool, Rainbow Bed, and Rainbow Carpet; Added Ruby Ore, Ruby Block and Ruby; Added new Wandering Trader to trade Ruby for potions; Added Buttercup; Added custom pot for Buttercup; Added configuration options for Ruby Ore generation and Wandering Trader Spawn; Moobloom now release Buttercup instead of Dandelion;  Moobloom now have Buttercup instead of Dandelion on the model; Tuned Bone Spider AI; Minor improvements;",
+    "2.0.2": "Added MCE item description to items. Can be enabled/disabled in earthtojavamobs-client.toml; Added glowing eyes for Bone Spider; Muddy Pig shake when enter mud; Tropical slime spawn also a water source when a bucket is used on it; Enlarged hitbox on Tropical Slime; Fixed error on reading Bone Spider configuration; Fixed missing Melon Golem loot table; Fixed Mud-Lava interaction; Fixed server startup error; Minor improvements;",
+    "2.0.1": "New languages; Config spawn reset bug fixes",
+    "2.0.0": "Porting for 1.16.1 of mod version 1.3.1"
   },
   "1.15.2": {
+    "1.4.1": "Added configuration options for Ruby Ore generation and Wandering Trader Spawn;",
+    "1.4.0": "Added Jolly Llama; Added Rainbow Sheep; Added Rainbow Wool, Rainbow Bed, and Rainbow Carpet; Added Ruby Ore, Ruby Block and Ruby; Added new Wandering Trader to trade Ruby for potions;Added Buttercup; Added custom pot for Buttercup; Moobloom now release Buttercup instead of Dandelion; Moobloom now have Buttercup instead of Dandelion on the model; Tuned Bone Spider AI; Minor improvements;",
+    "1.3.3": "Added MCE item description to items. Can be enabled/disabled in earthtojavamobs-client.toml; Added glowing eyes for Bone Spider; Tropical slime spawn also a water source when a bucket is used on it; Enlarged hitbox on Tropical Slime; Fixed error on reading Bone Spider configuration; Fixed missing Melon Golem loot table; Fixed Mud-Lava interaction; Fixed server startup error; Minor improvements;",
+    "1.3.2": "New languages; Config spawn reset bug fixes",
     "1.3.1": "New entities, blocks and more!!",
     "1.3.0": "Added new entities; Added new localizations;",
     "1.2.2": "Fix server crash; Added Mud Bucket Recipe; Amber Chicken, Midnight Chicken and Stormy Chicken have a chance to appear when an egg is thrown",
