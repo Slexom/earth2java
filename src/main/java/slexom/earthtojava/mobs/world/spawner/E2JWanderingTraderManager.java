@@ -1,5 +1,6 @@
 package slexom.earthtojava.mobs.world.spawner;
 
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.SpawnRestriction;
@@ -14,6 +15,7 @@ import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.level.ServerWorldProperties;
 import net.minecraft.world.poi.PointOfInterestStorage;
 import net.minecraft.world.poi.PointOfInterestType;
+import slexom.earthtojava.mobs.config.ModConfig;
 import slexom.earthtojava.mobs.entity.merchant.villager.E2JWanderingTraderEntity;
 import slexom.earthtojava.mobs.init.EntityTypesInit;
 
@@ -24,13 +26,17 @@ import java.util.Random;
 
 public class E2JWanderingTraderManager {
 
-    private final static int CHANCE = 25;
+    private static final ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+
+    private final static int CHANCE = config.modWanderingTrader.chance;
 
     public static void tick(ServerWorld serverWorld) {
-        if (serverWorld.getGameRules().getBoolean(GameRules.DO_TRADER_SPAWNING)) {
-            if (serverWorld.getTimeOfDay() % 24000 == 1500) {
-                if (serverWorld.getRandom().nextInt(100) < CHANCE) {
-                    spawnTrader(serverWorld);
+        if (config.modWanderingTrader.canSpawn) {
+            if (serverWorld.getGameRules().getBoolean(GameRules.DO_TRADER_SPAWNING)) {
+                if (serverWorld.getTimeOfDay() % (24000 * config.modWanderingTrader.delay) == 1500) {
+                    if (serverWorld.getRandom().nextInt(100) < CHANCE) {
+                        spawnTrader(serverWorld);
+                    }
                 }
             }
         }

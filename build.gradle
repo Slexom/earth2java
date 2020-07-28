@@ -10,6 +10,10 @@ archivesBaseName = project.archives_base_name
 version = "${project.mod_version}+${project.minecraft_version}"
 group = project.maven_group
 
+repositories {
+	jcenter()
+}
+
 dependencies {
 	//to change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -20,6 +24,12 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	compileOnly group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
+
+	modApi "me.shedaniel.cloth:config-2:4.6.0"
+	include "me.shedaniel.cloth:config-2:4.6.0"
+	modApi "me.sargunvohra.mcmods:autoconfig1u:3.2.0-unstable"
+	include "me.sargunvohra.mcmods:autoconfig1u:3.2.0-unstable"
+	modImplementation "io.github.prospector:modmenu:1.14.5+build.30"
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
 }

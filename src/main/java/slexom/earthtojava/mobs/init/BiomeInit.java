@@ -1,5 +1,6 @@
 package slexom.earthtojava.mobs.init;
 
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
@@ -14,8 +15,10 @@ import net.minecraft.world.gen.feature.RandomPatchFeatureConfig;
 import net.minecraft.world.gen.feature.SingleStateFeatureConfig;
 import net.minecraft.world.gen.placer.SimpleBlockPlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
+import slexom.earthtojava.mobs.config.ModConfig;
 
 public class BiomeInit {
+    private static final ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
     public static void init() {
         Registry.BIOME.forEach(BiomeInit::handleBiome);
@@ -41,12 +44,14 @@ public class BiomeInit {
     }
 
     private static void addRubyOre(Biome biome) {
-        if (isInOverworld(biome) && !isMushroom(biome)) {
-            biome.addFeature(
-                    GenerationStep.Feature.UNDERGROUND_ORES,
-                    Feature.ORE
-                            .configure(new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE, BlockInit.RUBY_ORE.getDefaultState(), 8))
-                            .createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(2, 0, 0, 16))));
+        if(config.rubyOre.canGenerate) {
+            if (isInOverworld(biome) && !isMushroom(biome)) {
+                biome.addFeature(
+                        GenerationStep.Feature.UNDERGROUND_ORES,
+                        Feature.ORE
+                                .configure(new OreFeatureConfig(OreFeatureConfig.Target.NATURAL_STONE, BlockInit.RUBY_ORE.getDefaultState(), 8))
+                                .createDecoratedFeature(Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(config.rubyOre.count, config.rubyOre.bottomOffset, config.rubyOre.topOffset, config.rubyOre.maximum))));
+            }
         }
     }
 
@@ -56,7 +61,7 @@ public class BiomeInit {
                     GenerationStep.Feature.LOCAL_MODIFICATIONS,
                     FeatureInit.MUD_LAKE
                             .configure(new SingleStateFeatureConfig(BlockInit.MUD_BLOCK.getDefaultState()))
-                            .createDecoratedFeature(Decorator.WATER_LAKE.configure(new ChanceDecoratorConfig(40)))
+                            .createDecoratedFeature(Decorator.WATER_LAKE.configure(new ChanceDecoratorConfig(config.mudLakeFrequency)))
             );
         }
     }

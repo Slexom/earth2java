@@ -20,6 +20,9 @@
         ],
         "client": [
             "slexom.earthtojava.mobs.Earth2JavaClientMod"
+        ],
+        "modmenu": [
+            "slexom.earthtojava.mobs.config.ModMenuIntegration"
         ]
     },
     "mixins": [
