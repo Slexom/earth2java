@@ -29,7 +29,7 @@ public class Earth2JavaMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        AutoConfig.register(ModConfig.class, JanksonConfigSerializer::new);
+        AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
         FluidInit.init();
         BlockInit.init();
         BlockEntityTypeInit.init();
