@@ -1,5 +1,6 @@
 package slexom.earthtojava.mobs.utils;
 
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
@@ -11,12 +12,14 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOffers;
+import slexom.earthtojava.mobs.config.ModConfig;
 import slexom.earthtojava.mobs.init.ItemInit;
 
 import java.util.Random;
 
 public class TradesHelper {
 
+    private static final ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
     private static final float BASE_POTION_PRICE = 4.0F;
     private static final float BONUS_POTION_MULTIPLIER = 1.25F;
@@ -105,7 +108,8 @@ public class TradesHelper {
         }
 
         public TradeOffer create(Entity trader, Random rand) {
-            return new TradeOffer(new ItemStack(ItemInit.RUBY, this.currencyAmount), new ItemStack(this.itemStack.getItem(), this.sellingItemAmount), this.maxInStock, this.givenExp, this.priceMultiplier);
+            Item currency = config.rubyOre.canGenerate ? ItemInit.RUBY : Items.EMERALD;
+            return new TradeOffer(new ItemStack(currency, this.currencyAmount), new ItemStack(this.itemStack.getItem(), this.sellingItemAmount), this.maxInStock, this.givenExp, this.priceMultiplier);
         }
     }
 
@@ -129,9 +133,10 @@ public class TradesHelper {
         }
 
         public TradeOffer create(Entity trader, Random rand) {
+            Item currency = config.rubyOre.canGenerate ? ItemInit.RUBY : Items.EMERALD;
             Potion potion = Registry.POTION.get(new Identifier(this.potionType));
             ItemStack potionItemStack = PotionUtil.setPotion(new ItemStack(this.itemStack.getItem(), sellingItemAmount), potion);
-            return new TradeOffer(new ItemStack(ItemInit.RUBY, this.currencyAmount), potionItemStack, this.maxInStock, this.givenExp, this.priceMultiplier);
+            return new TradeOffer(new ItemStack(currency, this.currencyAmount), potionItemStack, this.maxInStock, this.givenExp, this.priceMultiplier);
         }
     }
 }
