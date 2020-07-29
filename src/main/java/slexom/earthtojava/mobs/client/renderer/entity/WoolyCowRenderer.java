@@ -1,16 +1,19 @@
 package slexom.earthtojava.mobs.client.renderer.entity;
 
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
+import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.client.render.entity.model.CowEntityModel;
+import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.util.Identifier;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import slexom.earthtojava.mobs.entity.passive.WoolyCowEntity;
 
 @Environment(EnvType.CLIENT)
-public class WoolyCowRenderer extends E2JCowRenderer {
+public class WoolyCowRenderer extends MobEntityRenderer<WoolyCowEntity, CowEntityModel<WoolyCowEntity>> {
 
-    public WoolyCowRenderer(EntityRenderDispatcher renderManagerIn) {
-        super(renderManagerIn, "wooly_cow");
+    public WoolyCowRenderer(EntityRenderDispatcher entityRenderDispatcher) {
+        super(entityRenderDispatcher, new CowEntityModel<>(), 0.7F);
     }
 
     public Identifier getTexture(WoolyCowEntity entity) {
