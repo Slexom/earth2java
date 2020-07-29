@@ -1,6 +1,8 @@
 package slexom.earthtojava.mobs.entity.monster;
 
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityGroup;
@@ -90,7 +92,8 @@ public class SkeletonWolfEntity extends HostileEntity {
         this.setAngry(compound.getBoolean("Angry"));
     }
 
-    public float getTailRotation() {
+    @Environment(EnvType.CLIENT)
+    public float getTailAngle() {
         if (this.isAngry()) {
             return 1.5393804F;
         } else {

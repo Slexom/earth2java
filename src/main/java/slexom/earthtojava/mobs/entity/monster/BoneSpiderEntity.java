@@ -26,7 +26,7 @@ public class BoneSpiderEntity extends E2JBaseSpiderEntity<BoneSpiderEntity> impl
     @Override
     protected void initGoals() {
         this.goalSelector.add(1, new SwimGoal(this));
-        this.goalSelector.add(3, new ProjectileAttackGoal(this, 20, 40, 12.0F));
+        this.goalSelector.add(3, new ProjectileAttackGoal(this, 1.0D, 40, 12.0F));
         this.goalSelector.add(4, new PounceAtTargetGoal(this, 0.4F));
         this.goalSelector.add(4, new AttackGoal(this));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.8D));
@@ -37,7 +37,7 @@ public class BoneSpiderEntity extends E2JBaseSpiderEntity<BoneSpiderEntity> impl
     }
 
     public static DefaultAttributeContainer.Builder createBoneSpiderAttributes() {
-        return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 32.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.30000001192092896D);
+        return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 32.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3D);
     }
 
     @Override
