@@ -5,6 +5,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.Durations;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
@@ -58,6 +59,14 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> imp
         this.goalSelector.add(8, new LookAroundGoal(this));
         this.targetSelector.add(1, (new AngerGoal(this)).setGroupRevenge());
         this.targetSelector.add(2, new AttackPlayerGoal(this));
+    }
+
+    public static DefaultAttributeContainer.Builder createHornedSheepAttributes() {
+        return MobEntity.createMobAttributes()
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 8.0D)
+                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 48.0D)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.23D)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2.0D);
     }
 
     public void writeCustomDataToTag(CompoundTag compound) {
