@@ -3,7 +3,7 @@
 ![Version 1.0.1](https://img.shields.io/badge/Version-1.0.1-brightgreen)
 ![MC 1.16.1](https://img.shields.io/badge/MC-1.16.1-blue)
 ![Fabric 0.9.0+build.204](https://img.shields.io/badge/Fabric-0.9.0+build.204-critical)
-![Fabric API](https://img.shields.io/badge/Fabric%20API-0.16.0+build.384--1.16.1-critical)
+![Fabric API](https://img.shields.io/badge/Fabric%20API-0.16.2+build.385--1.16.1-critical)
 
 ![License MIT](https://img.shields.io/badge/License-MIT-blue)
 [![CurseForge Downloads](https://img.shields.io/badge/dynamic/json?color=6441a5&label=CurseForge&query=%24.downloadCount&suffix=%20Downloads&url=https%3A%2F%2Faddons-ecs.forgesvc.net%2Fapi%2Fv2%2Faddon%2F398022)](https://www.curseforge.com/minecraft/mc-mods/earth2java-mobs)
