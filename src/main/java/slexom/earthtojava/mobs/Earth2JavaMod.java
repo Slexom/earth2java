@@ -13,6 +13,7 @@ import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import slexom.earthtojava.mobs.config.ModConfig;
+import slexom.earthtojava.mobs.events.ModEvents;
 import slexom.earthtojava.mobs.init.*;
 import slexom.earthtojava.mobs.world.spawner.E2JWanderingTraderManager;
 
@@ -28,6 +29,7 @@ public class Earth2JavaMod implements ModInitializer {
     @Override
     public void onInitialize() {
         AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
+        ModEvents.init();
         FluidInit.init();
         BlockInit.init();
         BlockEntityTypeInit.init();
@@ -38,18 +40,11 @@ public class Earth2JavaMod implements ModInitializer {
         EntitySpawnInit.init();
         ItemInit.init();
         RecipesInit.init();
-        registerTraderSpawner();
         ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(BlockInit.BUTTERCUP.asItem(), 0.65F);
         LOGGER.info("Mod loaded! Enjoy :D");
     }
 
-    private void registerTraderSpawner() {
 
-        ServerTickEvents.END_SERVER_TICK.register(minecraftServer -> {
-            ServerWorld world = minecraftServer.getOverworld();
-            E2JWanderingTraderManager.tick(world);
-        });
-    }
 
 
 }
