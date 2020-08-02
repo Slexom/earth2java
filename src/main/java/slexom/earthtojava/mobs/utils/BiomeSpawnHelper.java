@@ -93,11 +93,6 @@ public final class BiomeSpawnHelper {
         return Stream.of(types).flatMap(Stream::of).map(Biome.Category::getName).toArray(String[]::new);
     }
 
-//    private static void setSpawnBiomes(EntityType entity, String[] spawnBiomes, int weight, int minGroupSize, int maxGroupSize, SpawnGroup classification) {
-//        Registry.BIOME.forEach(biome -> addToBiome(biome,  entity,   spawnBiomes,  weight,  minGroupSize,   maxGroupSize,  classification));
-//        RegistryEntryAddedCallback.event(Registry.BIOME).register((i, identifier, biome) -> addToBiome(biome,  entity,   spawnBiomes,  weight,  minGroupSize,   maxGroupSize,  classification));
-//    }
-
     private static void setSpawnBiomes(EntityType<?> entity, String[] spawnBiomes, int weight, int minGroupSize, int maxGroupSize, SpawnGroup classification) {
         List<String> blackList = Arrays.stream(spawnBiomes).filter(id -> id.contains("!")).collect(Collectors.toList());
         List<String> spawnList = expandSpawnList(Arrays.stream(spawnBiomes).filter(id -> !id.contains("!")).collect(Collectors.toList()));
@@ -130,20 +125,6 @@ public final class BiomeSpawnHelper {
     private static boolean isBiomeCategory(String identifier) {
         return identifier.split(":").length == 1;
     }
-
-//    private static void removeEntityFromBiomes(EntityType<?> entity, List<String> blackList, int weight, int minGroupSize, int maxGroupSize, SpawnGroup classification) {
-//        for (String identifier : blackList) {
-//            Biome vanillaBiome = Registry.BIOME.get(new Identifier(identifier));
-//            if (vanillaBiome != null) {
-//                removeFromBiome(vanillaBiome, entity, weight, minGroupSize, maxGroupSize, classification);
-//            }
-//            RegistryEntryAddedCallback.event(Registry.BIOME).register((i, registryName, biome) -> {
-//                if (registryName.toString().equals(identifier)) {
-//                    removeFromBiome(biome, entity, weight, minGroupSize, maxGroupSize, classification);
-//                }
-//            });
-//        }
-//    }
 
     private static void addEntityToBiomes(EntityType<?> entity, List<String> spawnList, int minGroupSize, int maxGroupSize, SpawnGroup classification, int weight) {
         for (String identifier : spawnList) {
@@ -188,7 +169,6 @@ public final class BiomeSpawnHelper {
     public static <T extends HostileEntity> void setMonsterSpawnBiomes(EntityType<T> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
         setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.MONSTER);
     }
-
 
     public static <T extends MobEntity> void setMobSpawnBiomes(EntityType<T> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
         setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.MISC);
