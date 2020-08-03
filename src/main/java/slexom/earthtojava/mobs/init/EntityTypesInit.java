@@ -35,6 +35,7 @@ public class EntityTypesInit {
     public static final String MUDDY_PIG_REGISTRY_NAME = "muddy_pig";
     public static final String PALE_PIG_REGISTRY_NAME = "pale_pig";
     public static final String PIEBALD_PIG_REGISTRY_NAME = "piebald_pig";
+    public static final String PINK_FOOTED_PIG_REGISTRY_NAME = "pink_footed_pig";
     public static final String RAINBOW_SHEEP_REGISTRY_NAME = "rainbow_sheep";
     public static final String ROCKY_SHEEP_REGISTRY_NAME = "rocky_sheep";
     public static final String SKELETON_WOLF_REGISTRY_NAME = "skeleton_wolf";
@@ -67,6 +68,7 @@ public class EntityTypesInit {
     public static EntityType<MuddyPigEntity> MUDDY_PIG_REGISTRY_OBJECT;
     public static EntityType<PalePigEntity> PALE_PIG_REGISTRY_OBJECT;
     public static EntityType<PiebaldPigEntity> PIEBALD_PIG_REGISTRY_OBJECT;
+    public static EntityType<PinkFootedPigEntity> PINK_FOOTED_PIG_REGISTRY_OBJECT;
     public static EntityType<RainbowSheepEntity> RAINBOW_SHEEP_REGISTRY_OBJECT;
     public static EntityType<RockySheepEntity> ROCKY_SHEEP_REGISTRY_OBJECT;
     public static EntityType<SkeletonWolfEntity> SKELETON_WOLF_REGISTRY_OBJECT;
@@ -101,6 +103,7 @@ public class EntityTypesInit {
         MUDDY_PIG_REGISTRY_OBJECT = RegisterHelper.registerEntity(MUDDY_PIG_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MuddyPigEntity::new).dimensions(EntityDimensions.fixed(EntityType.PIG.getWidth(), EntityType.PIG.getHeight())).trackable(64, 3).build());
         PALE_PIG_REGISTRY_OBJECT = RegisterHelper.registerEntity(PALE_PIG_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, PalePigEntity::new).dimensions(EntityDimensions.fixed(EntityType.PIG.getWidth(), EntityType.PIG.getHeight())).trackable(64, 3).build());
         PIEBALD_PIG_REGISTRY_OBJECT = RegisterHelper.registerEntity(PIEBALD_PIG_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, PiebaldPigEntity::new).dimensions(EntityDimensions.fixed(EntityType.PIG.getWidth(), EntityType.PIG.getHeight())).trackable(64, 3).build());
+        PINK_FOOTED_PIG_REGISTRY_OBJECT = RegisterHelper.registerEntity(PINK_FOOTED_PIG_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, PinkFootedPigEntity::new).dimensions(EntityDimensions.fixed(EntityType.PIG.getWidth(), EntityType.PIG.getHeight())).trackable(64, 3).build());
         RAINBOW_SHEEP_REGISTRY_OBJECT = RegisterHelper.registerEntity(RAINBOW_SHEEP_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, RainbowSheepEntity::new).dimensions(EntityDimensions.fixed(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight())).trackable(64, 3).build());
         ROCKY_SHEEP_REGISTRY_OBJECT = RegisterHelper.registerEntity(ROCKY_SHEEP_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, RockySheepEntity::new).dimensions(EntityDimensions.fixed(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight())).trackable(64, 3).build());
         SKELETON_WOLF_REGISTRY_OBJECT = RegisterHelper.registerEntity(SKELETON_WOLF_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, SkeletonWolfEntity::new).dimensions(EntityDimensions.fixed(EntityType.WOLF.getWidth(), EntityType.WOLF.getHeight())).trackable(64, 3).build());

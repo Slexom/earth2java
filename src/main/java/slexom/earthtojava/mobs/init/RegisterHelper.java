@@ -28,11 +28,11 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class RegisterHelper {
-    private static Item.Settings commonSettings = new Item.Settings().group(Earth2JavaMod.ITEM_GROUP);
+    private static final Item.Settings commonSettings = new Item.Settings().group(Earth2JavaMod.ITEM_GROUP);
 
     public static Block registerBlock(String registryName, Block block, boolean registerItem) {
         if (registerItem) {
-            registerItem(registryName, new BlockItem(block, commonSettings){
+            registerItem(registryName, new BlockItem(block, commonSettings) {
                 @Environment(EnvType.CLIENT)
                 public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
                     String translationKey = this.getTranslationKey() + ".desc";
@@ -62,4 +62,5 @@ public class RegisterHelper {
     public static void registerEntityAttributes(EntityType<? extends LivingEntity> entityType, DefaultAttributeContainer.Builder attributes) {
         FabricDefaultAttributeRegistry.register(entityType, attributes);
     }
+
 }

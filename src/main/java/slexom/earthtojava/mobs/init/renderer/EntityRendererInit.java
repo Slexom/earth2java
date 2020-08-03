@@ -57,6 +57,7 @@ public class EntityRendererInit {
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.BONE_SPIDER_REGISTRY_OBJECT, (dispatcher, context) -> new BoneSpiderRenderer(dispatcher));
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.WANDERING_TRADER_REGISTRY_OBJECT, (dispatcher, context) -> new E2JWanderingTraderRenderer(dispatcher));
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_OBJECT, (dispatcher, context) -> new RainbowSheepRenderer(dispatcher));
+        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_OBJECT, (dispatcher, context) -> new E2JPigRenderer(dispatcher, EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_NAME));
     }
 
 

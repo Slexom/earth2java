@@ -84,9 +84,9 @@ public class ModConfig implements ConfigData {
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig piebaldPig = new EntityConfig(BiomeSpawnHelper.PIEBALD_PIG_SPAWN_BIOMES, 10);
-    //    @ConfigEntry.Category("entities")
-    //    @ConfigEntry.Gui.CollapsibleObject
-    //    public EntityConfig pinkFootedPig = new EntityConfig(BiomeSpawnHelper.PINK_FOOTED_PIG_SPAWN_BIOMES, 10);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig pinkFootedPig = new EntityConfig(BiomeSpawnHelper.PINK_FOOTED_PIG_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig rainbowSheep = new EntityConfig(BiomeSpawnHelper.RAINBOW_SHEEP_SPAWN_BIOMES, 12);
