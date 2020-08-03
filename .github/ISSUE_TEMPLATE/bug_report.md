@@ -8,9 +8,9 @@ assignees: ''
 ---
 
 **Target Version**
-*Mod Loader*: Fabric or Forge (exact version, not say just _latest_)
+*Mod Loader*: Fabric or Forge (exact version, not say just latest)
 *Minecraft Version*:  1.15.2/1.16.1
-*Mod Version*: 
+*Mod Version*: exact version, not say just latest
 
 **Describe the bug**
 A clear and concise description of what the bug is.
