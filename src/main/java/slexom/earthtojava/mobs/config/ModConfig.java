@@ -5,16 +5,18 @@ import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
 import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
 import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry;
 import me.sargunvohra.mcmods.autoconfig1u.shadowed.blue.endless.jankson.Comment;
-import net.minecraft.item.Item;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import slexom.earthtojava.mobs.Earth2JavaMod;
-import slexom.earthtojava.mobs.init.ItemInit;
 import slexom.earthtojava.mobs.utils.BiomeSpawnHelper;
 
+import java.text.MessageFormat;
 import java.util.List;
 
 @Config(name = Earth2JavaMod.MOD_ID)
 public class ModConfig implements ConfigData {
 
+    private static final Logger LOGGER = LogManager.getLogger("Earth2Java");
 
     @ConfigEntry.Category("default")
     @ConfigEntry.Gui.CollapsibleObject
@@ -116,6 +118,18 @@ public class ModConfig implements ConfigData {
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig woolyCow = new EntityConfig(BiomeSpawnHelper.WOOLY_COW_SPAWN_BIOMES, 8);
+
+    @Override
+    public void validatePostLoad() throws ValidationException {
+        if (modWanderingTrader.currencyItem == null) {
+            modWanderingTrader.currencyItem = "earthtojavamobs:ruby";
+            printCorrectionMessage("modWanderingTrader.currencyItem", "null", "earthtojavamobs:ruby");
+        }
+    }
+
+    private void printCorrectionMessage(String field, String old, String corrected) {
+        LOGGER.info(MessageFormat.format("[Earth2Java] (Config) Corrected field {0}: was {1}, now {2}", field, old, corrected));
+    }
 
     public static class EntityConfig {
         public int weight;
