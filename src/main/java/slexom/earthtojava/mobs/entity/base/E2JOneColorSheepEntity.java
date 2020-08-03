@@ -5,6 +5,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.Shearable;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -31,7 +32,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class E2JOneColorSheepEntity<T extends AnimalEntity> extends AnimalEntity {
+public class E2JOneColorSheepEntity<T extends AnimalEntity> extends AnimalEntity implements Shearable {
 
     private static final TrackedData<Byte> isSheared = DataTracker.registerData(E2JOneColorSheepEntity.class, TrackedDataHandlerRegistry.BYTE);
 
