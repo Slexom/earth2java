@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtil;
+import net.minecraft.tag.ItemTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.village.TradeOffer;
@@ -74,6 +75,18 @@ public class TradesHelper {
         return Math.round(amount);
     }
 
+    private static Item getCurrencyItem() {
+        Item defaultCurrency = Registry.ITEM.get(new Identifier(config.modWanderingTrader.currencyItem));
+        if (defaultCurrency == null) {
+            defaultCurrency = ItemInit.RUBY;
+        }
+        if (!defaultCurrency.isIn(ItemTags.getContainer().getOrCreate(new Identifier("c:rubies")))) {
+            defaultCurrency = ItemInit.RUBY;
+        }
+        return config.rubyOre.canGenerate ? defaultCurrency : Items.EMERALD;
+    }
+
+
     public static class ItemsForRubiesTrade implements TradeOffers.Factory {
         private final ItemStack itemStack;
         private final int currencyAmount;
@@ -108,8 +121,7 @@ public class TradesHelper {
         }
 
         public TradeOffer create(Entity trader, Random rand) {
-            Item currency = config.rubyOre.canGenerate ? ItemInit.RUBY : Items.EMERALD;
-            return new TradeOffer(new ItemStack(currency, this.currencyAmount), new ItemStack(this.itemStack.getItem(), this.sellingItemAmount), this.maxInStock, this.givenExp, this.priceMultiplier);
+            return new TradeOffer(new ItemStack(TradesHelper::getCurrencyItem, this.currencyAmount), new ItemStack(this.itemStack.getItem(), this.sellingItemAmount), this.maxInStock, this.givenExp, this.priceMultiplier);
         }
     }
 
@@ -133,10 +145,9 @@ public class TradesHelper {
         }
 
         public TradeOffer create(Entity trader, Random rand) {
-            Item currency = config.rubyOre.canGenerate ? ItemInit.RUBY : Items.EMERALD;
             Potion potion = Registry.POTION.get(new Identifier(this.potionType));
             ItemStack potionItemStack = PotionUtil.setPotion(new ItemStack(this.itemStack.getItem(), sellingItemAmount), potion);
-            return new TradeOffer(new ItemStack(currency, this.currencyAmount), potionItemStack, this.maxInStock, this.givenExp, this.priceMultiplier);
+            return new TradeOffer(new ItemStack(TradesHelper::getCurrencyItem, this.currencyAmount), potionItemStack, this.maxInStock, this.givenExp, this.priceMultiplier);
         }
     }
 }

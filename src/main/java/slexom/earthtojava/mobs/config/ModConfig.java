@@ -5,7 +5,9 @@ import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
 import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
 import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry;
 import me.sargunvohra.mcmods.autoconfig1u.shadowed.blue.endless.jankson.Comment;
+import net.minecraft.item.Item;
 import slexom.earthtojava.mobs.Earth2JavaMod;
+import slexom.earthtojava.mobs.init.ItemInit;
 import slexom.earthtojava.mobs.utils.BiomeSpawnHelper;
 
 import java.util.List;
@@ -155,12 +157,20 @@ public class ModConfig implements ConfigData {
         @Comment("Game days between spawn")
         public int delay;
         public int chance;
+        public String currencyItem;
 
+        WanderingTraderConfig(boolean canSpawn, int delay, int chance, String currencyItem) {
+            this.canSpawn = canSpawn;
+            this.delay = delay;
+            this.chance = chance;
+            this.currencyItem = currencyItem;
+        }
 
         WanderingTraderConfig(boolean canSpawn, int delay, int chance) {
             this.canSpawn = canSpawn;
             this.delay = delay;
             this.chance = chance;
+            this.currencyItem = "earthtojavamobs:ruby";
         }
 
     }
