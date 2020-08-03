@@ -23,3 +23,9 @@ A clear and concise description of what you expected to happen.
 
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
+
+**Mod List**
+Add here any other mod you are using together with Earth2Java.
+
+**Logs**
+Drop here the log.
