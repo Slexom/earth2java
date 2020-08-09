@@ -2,8 +2,10 @@ package slexom.earthtojava.mobs.init;
 
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
+import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.source.BiomeSource;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
@@ -21,8 +23,8 @@ public class BiomeInit {
     private static final ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
     public static void init() {
-        Registry.BIOME.forEach(BiomeInit::handleBiome);
-        RegistryEntryAddedCallback.event(Registry.BIOME).register((i, identifier, biome) -> handleBiome(biome));
+        BuiltinRegistries.BIOME.forEach(BiomeInit::handleBiome);
+        RegistryEntryAddedCallback.event(BuiltinRegistries.BIOME).register((i, identifier, biome) -> handleBiome(biome));
     }
 
     private static void handleBiome(Biome biome) {
