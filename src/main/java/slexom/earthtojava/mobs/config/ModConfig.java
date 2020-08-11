@@ -16,8 +16,6 @@ import java.util.List;
 @Config(name = Earth2JavaMod.MOD_ID)
 public class ModConfig implements ConfigData {
 
-    private static final Logger LOGGER = LogManager.getLogger("Earth2Java");
-
     @ConfigEntry.Category("default")
     @ConfigEntry.Gui.CollapsibleObject
     public WanderingTraderConfig modWanderingTrader = new WanderingTraderConfig(false, 4, 20);
@@ -128,7 +126,7 @@ public class ModConfig implements ConfigData {
     }
 
     private void printCorrectionMessage(String field, String old, String corrected) {
-        LOGGER.info(MessageFormat.format("[Earth2Java] (Config) Corrected field {0}: was {1}, now {2}", field, old, corrected));
+        System.out.println(MessageFormat.format("[Earth2Java] (Config) Corrected field {0}: was {1}, now {2}", field, old, corrected));
     }
 
     public static class EntityConfig {
