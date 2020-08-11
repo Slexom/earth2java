@@ -5,8 +5,6 @@ import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
 import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
 import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry;
 import me.sargunvohra.mcmods.autoconfig1u.shadowed.blue.endless.jankson.Comment;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import slexom.earthtojava.mobs.Earth2JavaMod;
 import slexom.earthtojava.mobs.utils.BiomeSpawnHelper;
 
