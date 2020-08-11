@@ -11,7 +11,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.*;
-import net.minecraft.world.biome.Biomes;
+import net.minecraft.world.biome.BuiltInBiomes;
 import net.minecraft.world.level.ServerWorldProperties;
 import net.minecraft.world.poi.PointOfInterestStorage;
 import net.minecraft.world.poi.PointOfInterestType;
@@ -52,13 +52,13 @@ public class E2JWanderingTraderManager {
             BlockPos blockPos2 = optional.orElse(blockPos);
             BlockPos blockPos3 = getLlamaSpawnPosition(serverWorld, blockPos2, 48);
             if (blockPos3 != null && wontSuffocateAt(serverWorld, blockPos3)) {
-                if (serverWorld.getBiome(blockPos3) == Biomes.THE_VOID) {
+                if (serverWorld.method_31081(blockPos3).equals(Optional.of(BuiltInBiomes.THE_VOID))) {
                     return;
                 }
                 E2JWanderingTraderEntity traderEntity = EntityTypesInit.WANDERING_TRADER_REGISTRY_OBJECT.spawn(serverWorld, (CompoundTag) null, (Text) null, (PlayerEntity) null, blockPos3, SpawnReason.EVENT, false, false);
                 if (traderEntity != null) {
                     for (int j = 0; j < 2; ++j) {
-                        spawnTraderLlama(traderEntity);
+                        spawnTraderLlama(serverWorld, traderEntity);
                     }
                     serverWorldProperties.setWanderingTraderId(traderEntity.getUuid());
                     traderEntity.setDespawnDelay(32000);
@@ -69,10 +69,10 @@ public class E2JWanderingTraderManager {
         }
     }
 
-    private static void spawnTraderLlama(E2JWanderingTraderEntity wanderingTrader) {
+    private static void spawnTraderLlama(ServerWorld serverWorld, E2JWanderingTraderEntity wanderingTrader) {
         BlockPos blockpos = getLlamaSpawnPosition(wanderingTrader.world, wanderingTrader.getBlockPos(), 4);
         if (blockpos != null) {
-            TraderLlamaEntity traderLlamaEntity = EntityType.TRADER_LLAMA.spawn(wanderingTrader.world, (CompoundTag) null, (Text) null, (PlayerEntity) null, blockpos, SpawnReason.EVENT, false, false);
+            TraderLlamaEntity traderLlamaEntity = EntityType.TRADER_LLAMA.spawn(serverWorld, (CompoundTag) null, (Text) null, (PlayerEntity) null, blockpos, SpawnReason.EVENT, false, false);
             if (traderLlamaEntity != null) {
                 traderLlamaEntity.attachLeash(wanderingTrader, true);
             }

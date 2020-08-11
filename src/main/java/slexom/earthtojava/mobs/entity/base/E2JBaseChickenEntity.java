@@ -6,6 +6,7 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.ChickenEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -47,8 +48,8 @@ public class E2JBaseChickenEntity<T extends ChickenEntity> extends ChickenEntity
     }
 
     @Override
-    public T createChild(PassiveEntity ageable) {
-        return (T) getType().create(this.world);
+    public T createChild(ServerWorld world, PassiveEntity ageable) {
+        return (T) getType().create(world);
     }
 
 }

@@ -26,13 +26,13 @@ public class SpawnFurnaceGolem {
 
     @Final
     @Shadow
-    private static Predicate<BlockState> IS_PUMPKIN_PREDICATE ;
+    private static Predicate<BlockState> IS_GOLEM_HEAD_PREDICATE ;
 
     private BlockPattern furnaceGolemPattern;
 
     private BlockPattern getFurnaceGolemPattern() {
         if (this.furnaceGolemPattern == null) {
-            this.furnaceGolemPattern = BlockPatternBuilder.start().aisle("~^~", "#@#", "~#~").where('@', CachedBlockPosition.matchesBlockState(BlockStatePredicate.forBlock(Blocks.BLAST_FURNACE))).where('^', CachedBlockPosition.matchesBlockState(IS_PUMPKIN_PREDICATE)).where('#', CachedBlockPosition.matchesBlockState(BlockStatePredicate.forBlock(Blocks.IRON_BLOCK))).where('~', CachedBlockPosition.matchesBlockState(MaterialPredicate.create(Material.AIR))).build();
+            this.furnaceGolemPattern = BlockPatternBuilder.start().aisle("~^~", "#@#", "~#~").where('@', CachedBlockPosition.matchesBlockState(BlockStatePredicate.forBlock(Blocks.BLAST_FURNACE))).where('^', CachedBlockPosition.matchesBlockState(IS_GOLEM_HEAD_PREDICATE)).where('#', CachedBlockPosition.matchesBlockState(BlockStatePredicate.forBlock(Blocks.IRON_BLOCK))).where('~', CachedBlockPosition.matchesBlockState(MaterialPredicate.create(Material.AIR))).build();
         }
         return this.furnaceGolemPattern;
     }

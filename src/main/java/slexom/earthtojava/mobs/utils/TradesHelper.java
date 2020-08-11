@@ -1,6 +1,7 @@
 package slexom.earthtojava.mobs.utils;
 
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
@@ -80,7 +81,7 @@ public class TradesHelper {
         if (defaultCurrency == null) {
             defaultCurrency = ItemInit.RUBY;
         }
-        if (!defaultCurrency.isIn(ItemTags.getContainer().getOrCreate(new Identifier("c:rubies")))) {
+        if (!defaultCurrency.isIn(TagRegistry.item(new Identifier("c:rubies")))) {
             defaultCurrency = ItemInit.RUBY;
         }
         return config.rubyOre.canGenerate ? defaultCurrency : Items.EMERALD;

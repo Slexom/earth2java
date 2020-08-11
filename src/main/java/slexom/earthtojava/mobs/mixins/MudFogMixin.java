@@ -2,6 +2,7 @@ package slexom.earthtojava.mobs.mixins;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.BackgroundRenderer;
 import net.minecraft.client.render.Camera;
@@ -36,7 +37,7 @@ public class MudFogMixin {
     private static void mudFogColor(Camera camera, float tickDelta, ClientWorld world, int i, float f, CallbackInfo ci) {
         Identifier mudTag = new Identifier(Earth2JavaMod.MOD_ID, "mud");
         Fluid fluid = camera.getSubmergedFluidState().getFluid();
-        if (fluid.isIn(FluidTags.getContainer().getOrCreate(mudTag))) {
+        if (fluid.isIn(TagRegistry.fluid(mudTag))) {
             red = 87.0F / 255.0F;
             green = 54.0F / 255.0F;
             blue = 35.0F / 255.0F;
@@ -50,7 +51,7 @@ public class MudFogMixin {
     private static void mudFogDensity(Camera camera, BackgroundRenderer.FogType fogType, float viewDistance, boolean thickFog, CallbackInfo ci){
         Identifier mudTag = new Identifier(Earth2JavaMod.MOD_ID, "mud");
         Fluid fluid = camera.getSubmergedFluidState().getFluid();
-        if (fluid.isIn(FluidTags.getContainer().getOrCreate(mudTag))) {
+        if (fluid.isIn(TagRegistry.fluid(mudTag))) {
             RenderSystem.fogDensity(0.85F);
             RenderSystem.fogMode(GlStateManager.FogMode.LINEAR);
             ci.cancel();

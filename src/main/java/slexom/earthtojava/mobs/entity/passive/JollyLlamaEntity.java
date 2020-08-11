@@ -29,7 +29,7 @@ public class JollyLlamaEntity extends E2JBaseLlamaEntity {
     }
 
     @Override
-    public boolean setSaddled() {
+    public boolean canBeSaddled() {
         return false;
     }
 

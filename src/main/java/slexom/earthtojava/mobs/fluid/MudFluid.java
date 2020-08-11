@@ -1,5 +1,6 @@
 package slexom.earthtojava.mobs.fluid;
 
+import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -52,7 +53,7 @@ public class MudFluid extends FlowableFluid {
     @Override
     protected void beforeBreakingBlock(WorldAccess world, BlockPos pos, BlockState state) {
         BlockEntity blockEntity = state.getBlock().hasBlockEntity() ? world.getBlockEntity(pos) : null;
-        Block.dropStacks(state, world.getWorld(), pos, blockEntity);
+        Block.dropStacks(state, world , pos, blockEntity);
     }
 
 
@@ -70,7 +71,7 @@ public class MudFluid extends FlowableFluid {
     @Override
     public boolean canBeReplacedWith(FluidState state, BlockView world, BlockPos pos, Fluid fluid, Direction direction) {
         Identifier mudTag = new Identifier(Earth2JavaMod.MOD_ID, "mud");
-        return direction == Direction.DOWN && !fluid.isIn(FluidTags.getContainer().getOrCreate(mudTag));
+        return direction == Direction.DOWN && !fluid.isIn(TagRegistry.fluid(mudTag));
     }
 
     @Override
@@ -105,7 +106,7 @@ public class MudFluid extends FlowableFluid {
     @Override
     protected void flow(WorldAccess worldIn, BlockPos pos, BlockState blockStateIn, Direction direction, FluidState fluidStateIn) {
         Identifier mudTag = new Identifier(Earth2JavaMod.MOD_ID, "mud");
-        if (this.getFlowing().isIn(FluidTags.getContainer().getOrCreate(mudTag))) {
+        if (this.getFlowing().isIn(TagRegistry.fluid(mudTag))) {
             boolean flag = false;
             for (Direction dir : Direction.values()) {
                 if (worldIn.getFluidState(pos.offset(dir)).isIn(FluidTags.LAVA)) {

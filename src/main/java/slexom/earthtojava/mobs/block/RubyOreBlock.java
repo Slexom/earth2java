@@ -4,6 +4,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.OreBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -20,7 +21,7 @@ public class RubyOreBlock extends OreBlock {
         return MathHelper.nextInt(rand, 3, 7);
     }
 
-    public void onStacksDropped(BlockState state, World worldIn, BlockPos pos, ItemStack stack) {
+    public void onStacksDropped(BlockState state, ServerWorld worldIn, BlockPos pos, ItemStack stack) {
         super.onStacksDropped(state, worldIn, pos, stack);
     }
 

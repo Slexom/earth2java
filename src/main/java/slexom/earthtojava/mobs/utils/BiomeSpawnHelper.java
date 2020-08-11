@@ -7,8 +7,10 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.WaterCreatureEntity;
 import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.SpawnSettings;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -114,9 +116,9 @@ public final class BiomeSpawnHelper {
             }
         });
         for (String biomeCategory : biomeCategories) {
-            Registry.BIOME.forEach(biome -> {
+            BuiltinRegistries.BIOME.forEach(biome -> {
                 if (biome.getCategory().toString().toUpperCase().equals(biomeCategory.toUpperCase())) {
-                    biomesFromCategories.add(Registry.BIOME.getId(biome).toString());
+                    biomesFromCategories.add(BuiltinRegistries.BIOME.getId(biome).toString());
                 }
             });
         }
@@ -131,20 +133,20 @@ public final class BiomeSpawnHelper {
         for (String identifier : spawnList) {
             String[] splitted = identifier.split(":");
             if (splitted.length == 2) {
-                Registry.BIOME.forEach(biome -> {
-                    if (Registry.BIOME.getId(biome).toString().equals(identifier)) {
+                BuiltinRegistries.BIOME.forEach(biome -> {
+                    if (BuiltinRegistries.BIOME.getId(biome).toString().equals(identifier)) {
                         addToBiome(biome, entity, weight, minGroupSize, maxGroupSize, classification);
                     }
                 });
-                RegistryEntryAddedCallback.event(Registry.BIOME).register((i, registryName, biome) -> {
+                RegistryEntryAddedCallback.event(BuiltinRegistries.BIOME).register((i, registryName, biome) -> {
                     if (registryName.toString().equals(identifier)) {
                         addToBiome(biome, entity, weight, minGroupSize, maxGroupSize, classification);
                     }
                 });
             }
             if (splitted.length == 1) {
-                Registry.BIOME.forEach(biome -> addToBiomeCategory(biome, identifier, entity, weight, minGroupSize, maxGroupSize, classification));
-                RegistryEntryAddedCallback.event(Registry.BIOME).register((i, registryName, biome) -> addToBiomeCategory(biome, identifier, entity, weight, minGroupSize, maxGroupSize, classification));
+                BuiltinRegistries.BIOME.forEach(biome -> addToBiomeCategory(biome, identifier, entity, weight, minGroupSize, maxGroupSize, classification));
+                RegistryEntryAddedCallback.event(BuiltinRegistries.BIOME).register((i, registryName, biome) -> addToBiomeCategory(biome, identifier, entity, weight, minGroupSize, maxGroupSize, classification));
             }
         }
     }
@@ -156,7 +158,7 @@ public final class BiomeSpawnHelper {
     }
 
     private static void addToBiome(Biome biome, EntityType<?> entity, int weight, int minGroupSize, int maxGroupSize, SpawnGroup classification) {
-        biome.getEntitySpawnList(classification).add(new Biome.SpawnEntry(entity, weight, minGroupSize, maxGroupSize));
+        biome.getSpawnSettings().getSpawnEntry(classification).add(new SpawnSettings.SpawnEntry(entity, weight, minGroupSize, maxGroupSize));
     }
 
     public static <T extends AnimalEntity> void setCreatureSpawnBiomes(EntityType<T> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {

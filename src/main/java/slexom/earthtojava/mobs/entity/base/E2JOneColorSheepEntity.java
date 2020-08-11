@@ -21,6 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -108,8 +109,8 @@ public class E2JOneColorSheepEntity<T extends AnimalEntity> extends AnimalEntity
     }
 
     @Override
-    public T createChild(PassiveEntity ageable) {
-        return (T) getType().create(this.world);
+    public T createChild(ServerWorld world, PassiveEntity ageable) {
+        return (T) getType().create(world);
     }
 
     public boolean isSheared() {
