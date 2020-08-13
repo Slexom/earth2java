@@ -27,6 +27,7 @@ public class EntitySpawnInit {
         registerAnimalEntitySpawn(EntityTypesInit.ALBINO_COW_REGISTRY_OBJECT, config.albinoCow.spawnBiomes.toArray(new String[0]), config.albinoCow.weight, config.albinoCow.groupMin, config.albinoCow.groupMax);
         registerAnimalEntitySpawn(EntityTypesInit.AMBER_CHICKEN_REGISTRY_OBJECT, config.amberChicken.spawnBiomes.toArray(new String[0]), config.amberChicken.weight, config.amberChicken.groupMin, config.amberChicken.groupMax);
         registerAnimalEntitySpawn(EntityTypesInit.ASHEN_COW_REGISTRY_OBJECT, config.ashenCow.spawnBiomes.toArray(new String[0]), config.ashenCow.weight, config.ashenCow.groupMin, config.ashenCow.groupMax);
+        registerAnimalEntitySpawn(EntityTypesInit.BRONZED_CHICKEN_REGISTRY_OBJECT, config.bronzedChicken);
         registerAnimalEntitySpawn(EntityTypesInit.CLUCKSHROOM_REGISTRY_OBJECT, config.cluckshroom.spawnBiomes.toArray(new String[0]), config.cluckshroom.weight, config.cluckshroom.groupMin, config.cluckshroom.groupMax);
         registerAnimalEntitySpawn(EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT, config.fleckedSheep.spawnBiomes.toArray(new String[0]), config.fleckedSheep.weight, config.fleckedSheep.groupMin, config.fleckedSheep.groupMax);
         registerAnimalEntitySpawn(EntityTypesInit.HARELEQUIN_RABBIT_REGISTRY_OBJECT, config.harelequinRabbit.spawnBiomes.toArray(new String[0]), config.harelequinRabbit.weight, config.harelequinRabbit.groupMin, config.harelequinRabbit.groupMax);
@@ -71,14 +72,26 @@ public class EntitySpawnInit {
         SpawnRestrictionAccessor.callRegister(entity, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::isValidNaturalSpawn);
     }
 
+    private static <T extends AnimalEntity> void registerAnimalEntitySpawn(EntityType<T> entity, ModConfig.EntityConfig entityConfig) {
+        registerAnimalEntitySpawn(entity, entityConfig.spawnBiomes.toArray(new String[0]), entityConfig.weight, entityConfig.groupMin, entityConfig.groupMax);
+    }
+
     private static <T extends HostileEntity> void registerMonsterEntitySpawn(EntityType<T> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
         BiomeSpawnHelper.setMonsterSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn);
         SpawnRestrictionAccessor.callRegister(entity, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HostileEntity::canSpawnInDark);
     }
 
+    private static <T extends HostileEntity> void registerMonsterEntitySpawn(EntityType<T> entity, ModConfig.EntityConfig entityConfig) {
+        registerMonsterEntitySpawn(entity, entityConfig.spawnBiomes.toArray(new String[0]), entityConfig.weight, entityConfig.groupMin, entityConfig.groupMax);
+    }
+
     private static <T extends MobEntity> void registerMobEntitySpawn(EntityType<T> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
         BiomeSpawnHelper.setMobSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn);
         SpawnRestrictionAccessor.callRegister(entity, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, MobEntity::canMobSpawn);
+    }
+
+    private static <T extends MobEntity> void registerMobEntitySpawn(EntityType<T> entity, ModConfig.EntityConfig entityConfig) {
+        registerMobEntitySpawn(entity, entityConfig.spawnBiomes.toArray(new String[0]), entityConfig.weight, entityConfig.groupMin, entityConfig.groupMax);
     }
 
     private static void registerGlowingSquidSpawn() {

@@ -20,6 +20,7 @@ public class EntityAttributeInit {
         registerBaseChickenAttributes(EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_OBJECT);
         registerBaseChickenAttributes(EntityTypesInit.STORMY_CHICKEN_REGISTRY_OBJECT);
         registerBaseChickenAttributes(EntityTypesInit.CLUCKSHROOM_REGISTRY_OBJECT);
+        registerBaseChickenAttributes(EntityTypesInit.BRONZED_CHICKEN_REGISTRY_OBJECT);
 
 
         registerBaseCowAttributes(EntityTypesInit.ALBINO_COW_REGISTRY_OBJECT);

@@ -21,6 +21,7 @@ public class ItemInit {
     public static E2JSpawnEggItem ASHEN_COW_SPAWN_EGG;
     public static Item BONE_SHARD;
     public static E2JSpawnEggItem BONE_SPIDER_SPAWN_EGG;
+    public static E2JSpawnEggItem BRONZED_CHICKEN_SPAWN_EGG;
     public static E2JSpawnEggItem CLUCKSHROOM_SPAWN_EGG;
     public static E2JSpawnEggItem FLECKED_SHEEP_SPAWN_EGG;
     public static E2JSpawnEggItem FURNACE_GOLEM_SPAWN_EGG;
@@ -71,6 +72,7 @@ public class ItemInit {
         AMBER_CHICKEN_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.AMBER_CHICKEN_REGISTRY_NAME, EntityTypesInit.AMBER_CHICKEN_REGISTRY_OBJECT, 0xd13719, 0xe38a2b);
         ASHEN_COW_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.ASHEN_COW_REGISTRY_NAME, EntityTypesInit.ASHEN_COW_REGISTRY_OBJECT, 0x3c3c49, 0x898491);
         BONE_SPIDER_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.BONE_SPIDER_REGISTRY_NAME, EntityTypesInit.BONE_SPIDER_REGISTRY_OBJECT, 0x200d16, 0xd6e7e5);
+        BRONZED_CHICKEN_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.BRONZED_CHICKEN_REGISTRY_NAME, EntityTypesInit.BRONZED_CHICKEN_REGISTRY_OBJECT, 0x040f30, 0xb2492a);
         CLUCKSHROOM_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.CLUCKSHROOM_REGISTRY_NAME, EntityTypesInit.CLUCKSHROOM_REGISTRY_OBJECT, 0xef0000, 0xffffee);
         FLECKED_SHEEP_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.FLECKED_SHEEP_REGISTRY_NAME, EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT, 0x2c1e17, 0x907666);
         FURNACE_GOLEM_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.FURNACE_GOLEM_REGISTRY_NAME, EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT, 0x56585a, 0xff5501);
