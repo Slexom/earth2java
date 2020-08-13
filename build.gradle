@@ -28,11 +28,15 @@ dependencies {
     modApi("me.shedaniel.cloth:config-2:4.7.0-unstable") {
         exclude(group: "net.fabricmc.fabric-api")
     }
-    include "me.shedaniel.cloth:config-2:4.7.0-unstable"
+    include("me.shedaniel.cloth:config-2:4.7.0-unstable") {
+        exclude(group: "net.fabricmc.fabric-api")
+    }
     modApi("me.sargunvohra.mcmods:autoconfig1u:3.2.0-unstable") {
         exclude(group: "net.fabricmc.fabric-api")
     }
-    include "me.sargunvohra.mcmods:autoconfig1u:3.2.0-unstable"
+    include("me.sargunvohra.mcmods:autoconfig1u:3.2.0-unstable") {
+        exclude(group: "net.fabricmc.fabric-api")
+    }
     modImplementation("io.github.prospector:modmenu:1.14.6+build.31") {
         exclude(group: "net.fabricmc.fabric-api")
     }
