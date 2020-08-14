@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.client.renderer.entity.layers;
+package slexom.earthtojava.mobs.client.renderer.entity.feature;
 
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;

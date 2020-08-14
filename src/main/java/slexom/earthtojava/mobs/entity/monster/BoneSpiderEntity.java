@@ -12,10 +12,9 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import slexom.earthtojava.mobs.entity.ai.goal.BoneSpiderMeleeAttackGoal;
 import slexom.earthtojava.mobs.entity.base.E2JBaseSpiderEntity;
 import slexom.earthtojava.mobs.entity.projectile.BoneShardEntity;
-
-import java.util.EnumSet;
 
 public class BoneSpiderEntity extends E2JBaseSpiderEntity<BoneSpiderEntity> implements RangedAttackMob {
 
@@ -28,12 +27,12 @@ public class BoneSpiderEntity extends E2JBaseSpiderEntity<BoneSpiderEntity> impl
         this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(3, new ProjectileAttackGoal(this, 1.0D, 40, 12.0F));
         this.goalSelector.add(4, new PounceAtTargetGoal(this, 0.4F));
-        this.goalSelector.add(4, new AttackGoal(this));
+        this.goalSelector.add(4, new BoneSpiderMeleeAttackGoal(this));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.8D));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(6, new LookAroundGoal(this));
         this.targetSelector.add(1, new RevengeGoal(this));
-        this.targetSelector.add(2, new FollowTargetGoal<>(this, PlayerEntity.class, true));
+        this.targetSelector.add(2, new FollowTargetGoal(this, PlayerEntity.class, true));
     }
 
     public static DefaultAttributeContainer.Builder createBoneSpiderAttributes() {
@@ -56,30 +55,6 @@ public class BoneSpiderEntity extends E2JBaseSpiderEntity<BoneSpiderEntity> impl
         boneShard.setVelocity(d1, d2 + (double) f, d3, 1.6F, 8.0F);
         this.playSound(SoundEvents.ITEM_CROSSBOW_SHOOT, 1.0F, 1.2F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
         this.world.spawnEntity(boneShard);
-    }
-
-    static class AttackGoal extends MeleeAttackGoal {
-        public AttackGoal(BoneSpiderEntity spider) {
-            super(spider, 1.0D, false);
-        }
-
-        public boolean canStart() {
-            return super.canStart() && !this.mob.hasPassengers();
-        }
-
-        public boolean shouldContinue() {
-            float f = this.mob.getBrightnessAtEyes();
-            if (f >= 0.5F && this.mob.getRandom().nextInt(100) == 0) {
-                this.mob.setTarget((LivingEntity)null);
-                return false;
-            } else {
-                return super.shouldContinue();
-            }
-        }
-
-        protected double getSquaredMaxAttackDistance(LivingEntity entity) {
-            return (double)(4.0F + entity.getWidth());
-        }
     }
 
 }

@@ -6,7 +6,7 @@ import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
-import slexom.earthtojava.mobs.client.renderer.entity.layers.CluckshroomLayer;
+import slexom.earthtojava.mobs.client.renderer.entity.feature.CluckshroomLayer;
 import slexom.earthtojava.mobs.client.renderer.entity.model.CluckshroomModel;
 import slexom.earthtojava.mobs.entity.passive.CluckshroomEntity;
 

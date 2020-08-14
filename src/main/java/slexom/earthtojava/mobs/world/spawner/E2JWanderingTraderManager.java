@@ -11,7 +11,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.*;
-import net.minecraft.world.biome.BuiltInBiomes;
+import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.level.ServerWorldProperties;
 import net.minecraft.world.poi.PointOfInterestStorage;
 import net.minecraft.world.poi.PointOfInterestType;
@@ -47,12 +47,12 @@ public class E2JWanderingTraderManager {
         ServerWorldProperties serverWorldProperties = serverWorld.getServer().getSaveProperties().getMainWorldProperties();
         if (playerentity != null) {
             BlockPos blockPos = playerentity.getBlockPos();
-            PointOfInterestStorage pointofinterestmanager = serverWorld.getPointOfInterestStorage();
-            Optional<BlockPos> optional = pointofinterestmanager.getPosition(PointOfInterestType.MEETING.getCompletionCondition(), (blockPosx) -> true, blockPos, 48, PointOfInterestStorage.OccupationStatus.ANY);
+            PointOfInterestStorage pointOfInterestStorage = serverWorld.getPointOfInterestStorage();
+            Optional<BlockPos> optional = pointOfInterestStorage.getPosition(PointOfInterestType.MEETING.getCompletionCondition(), (blockPosX) -> true, blockPos, 48, PointOfInterestStorage.OccupationStatus.ANY);
             BlockPos blockPos2 = optional.orElse(blockPos);
             BlockPos blockPos3 = getLlamaSpawnPosition(serverWorld, blockPos2, 48);
             if (blockPos3 != null && wontSuffocateAt(serverWorld, blockPos3)) {
-                if (serverWorld.method_31081(blockPos3).equals(Optional.of(BuiltInBiomes.THE_VOID))) {
+                if (serverWorld.method_31081(blockPos3).equals(Optional.of(BiomeKeys.THE_VOID))) {
                     return;
                 }
                 E2JWanderingTraderEntity traderEntity = EntityTypesInit.WANDERING_TRADER_REGISTRY_OBJECT.spawn(serverWorld, (CompoundTag) null, (Text) null, (PlayerEntity) null, blockPos3, SpawnReason.EVENT, false, false);
@@ -108,4 +108,5 @@ public class E2JWanderingTraderManager {
         } while (blockView.getBlockState(blockPos2).getCollisionShape(blockView, blockPos2).isEmpty());
         return false;
     }
+
 }

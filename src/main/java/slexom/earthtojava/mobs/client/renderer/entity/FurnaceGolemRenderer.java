@@ -7,7 +7,8 @@ import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.util.Identifier;
-import slexom.earthtojava.mobs.client.renderer.entity.layers.FurnaceGolemFlamesLayer;
+import slexom.earthtojava.mobs.client.renderer.entity.feature.FurnaceGolemFlamesLayer;
+import slexom.earthtojava.mobs.client.renderer.entity.feature.FurnaceGolemTorchFeatureRenderer;
 import slexom.earthtojava.mobs.client.renderer.entity.model.FurnaceGolemModel;
 import slexom.earthtojava.mobs.entity.passive.FurnaceGolemEntity;
 
@@ -17,6 +18,7 @@ public class FurnaceGolemRenderer extends MobEntityRenderer<FurnaceGolemEntity, 
     public FurnaceGolemRenderer(EntityRenderDispatcher renderManagerIn) {
         super(renderManagerIn, new FurnaceGolemModel<>(), 0.7F);
         this.addFeature(new FurnaceGolemFlamesLayer(this));
+        this.addFeature(new FurnaceGolemTorchFeatureRenderer(this));
     }
 
     protected void setupTransforms(FurnaceGolemEntity entityLiving, MatrixStack matrixStackIn, float ageInTicks, float rotationYaw, float partialTicks) {

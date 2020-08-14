@@ -3,7 +3,7 @@ package slexom.earthtojava.mobs.client.renderer.entity;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
-import slexom.earthtojava.mobs.client.renderer.entity.layers.RainbowSheepWoolLayer;
+import slexom.earthtojava.mobs.client.renderer.entity.feature.RainbowSheepWoolLayer;
 import slexom.earthtojava.mobs.client.renderer.entity.model.RainbowSheepModel;
 import slexom.earthtojava.mobs.entity.passive.RainbowSheepEntity;
 

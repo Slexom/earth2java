@@ -7,7 +7,7 @@ import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.util.Identifier;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import slexom.earthtojava.mobs.client.renderer.entity.layers.E2JBasePigSaddleLayer;
+import slexom.earthtojava.mobs.client.renderer.entity.feature.E2JBasePigSaddleLayer;
 import slexom.earthtojava.mobs.entity.base.E2JBasePigEntity;
 
 import java.text.MessageFormat;

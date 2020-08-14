@@ -5,7 +5,7 @@ import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import slexom.earthtojava.mobs.client.renderer.entity.layers.E2JOneColorSheepWoolLayer;
+import slexom.earthtojava.mobs.client.renderer.entity.feature.E2JOneColorSheepWoolLayer;
 import slexom.earthtojava.mobs.client.renderer.entity.model.E2JOneColorSheepModel;
 import slexom.earthtojava.mobs.entity.base.E2JOneColorSheepEntity;
 

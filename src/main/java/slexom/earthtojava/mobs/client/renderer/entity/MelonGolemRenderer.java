@@ -6,7 +6,7 @@ import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.entity.model.SnowmanEntityModel;
 import net.minecraft.util.Identifier;
-import slexom.earthtojava.mobs.client.renderer.entity.layers.MelonGolemHeadLayer;
+import slexom.earthtojava.mobs.client.renderer.entity.feature.MelonGolemHeadLayer;
 import slexom.earthtojava.mobs.entity.passive.MelonGolemEntity;
 
 @Environment(EnvType.CLIENT)

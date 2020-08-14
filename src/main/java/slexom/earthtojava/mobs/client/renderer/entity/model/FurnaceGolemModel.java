@@ -6,9 +6,10 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.CompositeEntityModel;
 import net.minecraft.entity.passive.IronGolemEntity;
+import slexom.earthtojava.mobs.entity.passive.FurnaceGolemEntity;
 
 @Environment(EnvType.CLIENT)
-public class FurnaceGolemModel<T extends IronGolemEntity> extends CompositeEntityModel<T> {
+public class FurnaceGolemModel<T extends FurnaceGolemEntity> extends CompositeEntityModel<T> {
     private final ModelPart ironGolemHead;
     private final ModelPart ironGolemBody;
     private final ModelPart ironGolemRightArm;
@@ -69,6 +70,10 @@ public class FurnaceGolemModel<T extends IronGolemEntity> extends CompositeEntit
             }
         }
 
+    }
+
+    public ModelPart getRightArm() {
+        return this.ironGolemRightArm;
     }
 
     private float triangleWave(float p_78172_1_, float p_78172_2_) {

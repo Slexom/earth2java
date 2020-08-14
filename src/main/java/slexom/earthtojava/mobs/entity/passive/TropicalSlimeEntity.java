@@ -3,13 +3,10 @@ package slexom.earthtojava.mobs.entity.passive;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.control.MoveControl;
-import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.RevengeGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -25,8 +22,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import java.util.EnumSet;
+import slexom.earthtojava.mobs.entity.ai.control.TropicalSlimeMoveController;
+import slexom.earthtojava.mobs.entity.ai.goal.TropicalSlimeAttackGoal;
+import slexom.earthtojava.mobs.entity.ai.goal.TropicalSlimeFaceRandomGoal;
+import slexom.earthtojava.mobs.entity.ai.goal.TropicalSlimeFloatGoal;
+import slexom.earthtojava.mobs.entity.ai.goal.TropicalSlimeHopGoal;
 
 public class TropicalSlimeEntity extends PathAwareEntity {
 
@@ -41,7 +41,7 @@ public class TropicalSlimeEntity extends PathAwareEntity {
         this.size = 4;
         this.experiencePoints = this.size;
         setAiDisabled(false);
-        this.moveControl = new MoveHelperController(this);
+        this.moveControl = new TropicalSlimeMoveController(this);
         this.setAttributes();
     }
 
@@ -49,10 +49,10 @@ public class TropicalSlimeEntity extends PathAwareEntity {
     protected void initGoals() {
         super.initGoals();
         this.goalSelector.add(1, new SwimGoal(this));
-        this.goalSelector.add(1, new FloatGoal(this));
-        this.goalSelector.add(2, new AttackGoal(this));
-        this.goalSelector.add(3, new FaceRandomGoal(this));
-        this.goalSelector.add(5, new HopGoal(this));
+        this.goalSelector.add(1, new TropicalSlimeFloatGoal(this));
+        this.goalSelector.add(2, new TropicalSlimeAttackGoal(this));
+        this.goalSelector.add(3, new TropicalSlimeFaceRandomGoal(this));
+        this.goalSelector.add(5, new TropicalSlimeHopGoal(this));
         this.targetSelector.add(3, (new RevengeGoal(this)));
     }
 
@@ -129,7 +129,7 @@ public class TropicalSlimeEntity extends PathAwareEntity {
         this.squishAmount *= 0.6F;
     }
 
-    protected int getJumpDelay() {
+    public int getJumpDelay() {
         return this.random.nextInt(20) + 10;
     }
 
@@ -166,7 +166,7 @@ public class TropicalSlimeEntity extends PathAwareEntity {
         return 0.625F * sizeIn.height;
     }
 
-    protected boolean canDamagePlayer() {
+    public boolean canDamagePlayer() {
         return this.canMoveVoluntarily();
     }
 
@@ -190,7 +190,7 @@ public class TropicalSlimeEntity extends PathAwareEntity {
         return 0;
     }
 
-    protected boolean makesSoundOnJump() {
+    public boolean makesSoundOnJump() {
         return true;
     }
 
@@ -200,175 +200,13 @@ public class TropicalSlimeEntity extends PathAwareEntity {
         this.velocityDirty = true;
     }
 
-    protected SoundEvent getJumpSound() {
+    public SoundEvent getJumpSound() {
         return SoundEvents.ENTITY_SLIME_JUMP;
     }
 
     protected boolean spawnCustomParticles() {
         return false;
     }
-
-    static class AttackGoal extends Goal {
-        private final TropicalSlimeEntity slime;
-        private int growTieredTimer;
-
-        public AttackGoal(TropicalSlimeEntity slimeIn) {
-            this.slime = slimeIn;
-            this.setControls(EnumSet.of(Goal.Control.LOOK));
-        }
-
-        public boolean canStart() {
-            LivingEntity livingentity = this.slime.getTarget();
-            if (livingentity == null) {
-                return false;
-            } else if (!livingentity.isAlive()) {
-                return false;
-            } else {
-                return livingentity instanceof PlayerEntity && ((PlayerEntity) livingentity).abilities.invulnerable ? false : this.slime.getMoveControl() instanceof MoveHelperController;
-            }
-        }
-
-        public void start() {
-            this.growTieredTimer = 300;
-            super.start();
-        }
-
-        public boolean shouldContinue() {
-            LivingEntity livingentity = this.slime.getTarget();
-            if (livingentity == null) {
-                return false;
-            } else if (!livingentity.isAlive()) {
-                return false;
-            } else if (livingentity instanceof PlayerEntity && ((PlayerEntity) livingentity).abilities.invulnerable) {
-                return false;
-            } else {
-                return --this.growTieredTimer > 0;
-            }
-        }
-
-        public void tick() {
-            this.slime.lookAtEntity(this.slime.getTarget(), 10.0F, 10.0F);
-            ((MoveHelperController) this.slime.getMoveControl()).look(this.slime.yaw, this.slime.canDamagePlayer());
-        }
-    }
-
-    static class FaceRandomGoal extends Goal {
-        private final TropicalSlimeEntity slime;
-        private float chosenDegrees;
-        private int nextRandomizeTime;
-
-        public FaceRandomGoal(TropicalSlimeEntity slimeIn) {
-            this.slime = slimeIn;
-            this.setControls(EnumSet.of(Goal.Control.LOOK));
-        }
-
-        public boolean canStart() {
-            return this.slime.getTarget() == null && (this.slime.onGround || this.slime.isTouchingWater() || this.slime.isInLava() || this.slime.hasStatusEffect(StatusEffects.LEVITATION)) && this.slime.getMoveControl() instanceof MoveHelperController;
-        }
-
-        public void tick() {
-            if (--this.nextRandomizeTime <= 0) {
-                this.nextRandomizeTime = 40 + this.slime.getRandom().nextInt(60);
-                this.chosenDegrees = (float) this.slime.getRandom().nextInt(360);
-            }
-            ((MoveHelperController) this.slime.getMoveControl()).look(this.chosenDegrees, false);
-        }
-
-    }
-
-    static class FloatGoal extends Goal {
-        private final TropicalSlimeEntity slime;
-
-        public FloatGoal(TropicalSlimeEntity slimeIn) {
-            this.slime = slimeIn;
-            this.setControls(EnumSet.of(Goal.Control.JUMP, Goal.Control.MOVE));
-            slime.getNavigation().setCanSwim(true);
-        }
-
-        public boolean canStart() {
-            return (this.slime.isTouchingWater() || this.slime.isInLava()) && this.slime.getMoveControl() instanceof MoveHelperController;
-        }
-
-        public void tick() {
-            if (this.slime.getRandom().nextFloat() < 0.8F) {
-                this.slime.getJumpControl().setActive();
-            }
-            ((MoveHelperController) this.slime.getMoveControl()).move(1.2D);
-        }
-    }
-
-    static class HopGoal extends Goal {
-        private final TropicalSlimeEntity slime;
-
-        public HopGoal(TropicalSlimeEntity slimeIn) {
-            this.slime = slimeIn;
-            this.setControls(EnumSet.of(Goal.Control.JUMP, Goal.Control.MOVE));
-        }
-
-        public boolean canStart() {
-            return !this.slime.hasVehicle();
-        }
-
-        public void tick() {
-            ((MoveHelperController) this.slime.getMoveControl()).move(1.0D);
-        }
-    }
-
-    static class MoveHelperController extends MoveControl {
-        private final TropicalSlimeEntity slime;
-        private float yRot;
-        private int jumpDelay;
-        private boolean isAggressive;
-
-        public MoveHelperController(TropicalSlimeEntity slimeIn) {
-            super(slimeIn);
-            this.slime = slimeIn;
-            this.yRot = 180.0F * slimeIn.yaw / (float) Math.PI;
-        }
-
-        public void look(float yRotIn, boolean aggressive) {
-            this.yRot = yRotIn;
-            this.isAggressive = aggressive;
-        }
-
-        public void move(double speedIn) {
-            this.speed = speedIn;
-            this.state = MoveControl.State.MOVE_TO;
-        }
-
-        public void tick() {
-            this.entity.yaw = this.changeAngle(this.entity.yaw, this.yRot, 90.0F);
-            this.entity.headYaw = this.entity.yaw;
-            this.entity.bodyYaw = this.entity.yaw;
-            if (this.state != MoveControl.State.MOVE_TO) {
-                this.entity.setForwardSpeed(0.0F);
-            } else {
-                this.state = MoveControl.State.WAIT;
-                if (this.entity.isOnGround()) {
-                    this.entity.setMovementSpeed((float) (this.speed * this.entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).getValue()));
-                    if (this.jumpDelay-- <= 0) {
-                        this.jumpDelay = this.slime.getJumpDelay();
-                        if (this.isAggressive) {
-                            this.jumpDelay /= 3;
-                        }
-
-                        this.slime.getJumpControl().setActive();
-                        if (this.slime.makesSoundOnJump()) {
-                            this.slime.playSound(this.slime.getJumpSound(), this.slime.getSoundVolume(), ((this.slime.getRandom().nextFloat() - this.slime.getRandom().nextFloat()) * 0.2F + 1.0F) * 0.8F);
-                        }
-                    } else {
-                        this.slime.sidewaysSpeed = 0.0F;
-                        this.slime.forwardSpeed = 0.0F;
-                        this.entity.setMovementSpeed(0.0F);
-                    }
-                } else {
-                    this.entity.setMovementSpeed((float) (this.speed * this.entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).getValue()));
-                }
-
-            }
-        }
-    }
-
 
 }
  

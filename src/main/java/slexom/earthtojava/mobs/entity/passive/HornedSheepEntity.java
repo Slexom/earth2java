@@ -23,6 +23,9 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.IntRange;
 import net.minecraft.world.World;
+import slexom.earthtojava.mobs.entity.ai.goal.HornedSheepFollowTargetGoal;
+import slexom.earthtojava.mobs.entity.ai.goal.HornedSheepMeleeAttackGoal;
+import slexom.earthtojava.mobs.entity.ai.goal.HornedSheepRevengeGoal;
 import slexom.earthtojava.mobs.entity.base.E2JBaseSheepEntity;
 
 import javax.annotation.Nullable;
@@ -54,12 +57,12 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> imp
         this.goalSelector.add(3, new TemptGoal(this, 1.1D, Ingredient.ofItems(Items.WHEAT), false));
         this.goalSelector.add(4, new FollowParentGoal(this, 1.25D));
         this.goalSelector.add(4, this.eatGrassGoal);
-        this.goalSelector.add(5, new ChargeGoal(this, 1.4D, true));
+        this.goalSelector.add(5, new HornedSheepMeleeAttackGoal(this, 1.4D, true));
         this.goalSelector.add(6, new WanderAroundFarGoal(this, 1.0D));
         this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(8, new LookAroundGoal(this));
-        this.targetSelector.add(1, (new AngerGoal(this)).setGroupRevenge());
-        this.targetSelector.add(2, new AttackPlayerGoal(this));
+        this.targetSelector.add(1, (new HornedSheepRevengeGoal(this)).setGroupRevenge());
+        this.targetSelector.add(2, new HornedSheepFollowTargetGoal(this));
     }
 
     public static DefaultAttributeContainer.Builder createHornedSheepAttributes() {
@@ -228,63 +231,6 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> imp
     @Override
     public void chooseRandomAngerTime() {
         this.setAngerTime(field_234180_bw_.choose(this.random));
-    }
-
-    static class AngerGoal extends RevengeGoal {
-
-        AngerGoal(HornedSheepEntity sheepIn) {
-            super(sheepIn);
-        }
-
-        protected void setMobEntityTarget(MobEntity mobIn, LivingEntity targetIn) {
-            if (mobIn instanceof HornedSheepEntity && this.mob.canSee(targetIn) && ((HornedSheepEntity) mobIn).setSheepAttacker(targetIn)) {
-                mobIn.setTarget(targetIn);
-            }
-        }
-
-    }
-
-    static class AttackPlayerGoal extends FollowTargetGoal<PlayerEntity> {
-        AttackPlayerGoal(HornedSheepEntity sheepEntity) {
-            super(sheepEntity, PlayerEntity.class, true);
-        }
-
-        public boolean canStart() {
-            return this.canCharge() && super.canStart();
-        }
-
-        public boolean shouldContinue() {
-            boolean flag = this.canCharge();
-            if (flag && this.mob.getTarget() != null) {
-                return super.shouldContinue();
-            } else {
-                this.target = null;
-                return false;
-            }
-        }
-
-        private boolean canCharge() {
-            HornedSheepEntity sheepEntity = (HornedSheepEntity) this.mob;
-            return sheepEntity.isAngry();
-        }
-    }
-
-    class ChargeGoal extends MeleeAttackGoal {
-
-        final HornedSheepEntity attacker;
-
-        ChargeGoal(HornedSheepEntity creatureIn, double speedIn, boolean useLongMemory) {
-            super(creatureIn, speedIn, useLongMemory);
-            this.attacker = creatureIn;
-        }
-
-        public boolean canStart() {
-            return super.canStart() && this.attacker.isAngry();
-        }
-
-        public boolean shouldContinue() {
-            return super.shouldContinue() && this.attacker.isAngry();
-        }
     }
 
 

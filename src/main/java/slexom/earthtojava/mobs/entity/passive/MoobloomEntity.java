@@ -1,12 +1,8 @@
 package slexom.earthtojava.mobs.entity.passive;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.Shearable;
-import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -17,11 +13,8 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldView;
+import slexom.earthtojava.mobs.entity.ai.goal.MoobloomPlaceBlockGoal;
 import slexom.earthtojava.mobs.entity.base.E2JBaseCowEntity;
 import slexom.earthtojava.mobs.init.BlockInit;
 
@@ -34,9 +27,8 @@ public class MoobloomEntity extends E2JBaseCowEntity<MoobloomEntity> implements 
     @Override
     protected void initGoals() {
         super.initGoals();
-        this.goalSelector.add(8, new PlaceBlockGoal(this));
+        this.goalSelector.add(8, new MoobloomPlaceBlockGoal(this));
     }
-
 
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemStack = player.getStackInHand(hand);
@@ -45,7 +37,6 @@ public class MoobloomEntity extends E2JBaseCowEntity<MoobloomEntity> implements 
             if (!this.world.isClient) {
                 itemStack.damage(1, player, ((playerEntity) -> playerEntity.sendToolBreakStatus(hand)));
             }
-
             return ActionResult.success(this.world.isClient);
         } else {
             return super.interactMob(player, hand);
@@ -65,14 +56,11 @@ public class MoobloomEntity extends E2JBaseCowEntity<MoobloomEntity> implements 
                 cowEntity.setCustomName(this.getCustomName());
                 cowEntity.setCustomNameVisible(this.isCustomNameVisible());
             }
-
             if (this.isPersistent()) {
                 cowEntity.setPersistent();
             }
-
             cowEntity.setInvulnerable(this.isInvulnerable());
             this.world.spawnEntity(cowEntity);
-
             for (int i = 0; i < 5; ++i) {
                 this.world.spawnEntity(new ItemEntity(this.world, this.getX(), this.getBodyY(1.0D), this.getZ(), new ItemStack(BlockInit.BUTTERCUP)));
             }
@@ -83,38 +71,5 @@ public class MoobloomEntity extends E2JBaseCowEntity<MoobloomEntity> implements 
     public boolean isShearable() {
         return this.isAlive() && !this.isBaby();
     }
-
-    static class PlaceBlockGoal extends Goal {
-        private final MoobloomEntity moobloom;
-
-        public PlaceBlockGoal(MoobloomEntity p_i45843_1_) {
-            this.moobloom = p_i45843_1_;
-        }
-
-        public boolean canStart() {
-            return this.moobloom.getRandom().nextInt(2000) == 0;
-        }
-
-        public boolean canPlace(WorldView world, BlockState target, BlockPos targetPos, BlockState downTarget, BlockPos downTargetPos) {
-            return !downTarget.isAir() && downTarget.isFullCube(world, downTargetPos) && target.isAir() && target.canPlaceAt(world, targetPos);
-        }
-
-        public void tick() {
-            WorldAccess world = this.moobloom.world;
-            int i = MathHelper.floor(this.moobloom.getX());
-            int j = MathHelper.floor(this.moobloom.getY());
-            int k = MathHelper.floor(this.moobloom.getZ());
-            Block flower = Math.random() > 0.8 ? Blocks.SUNFLOWER : BlockInit.BUTTERCUP;
-            BlockPos blockPos = new BlockPos(i, j, k);
-            BlockState blockState = flower.getDefaultState();
-            BlockPos blockDownPos = blockPos.down();
-            BlockState blockDownState = world.getBlockState(blockDownPos);
-            if (canPlace(world, blockState, blockPos, blockDownState, blockDownPos)) {
-                world.removeBlock(blockPos, false);
-                world.setBlockState(blockPos, blockState, 3);
-            }
-        }
-    }
-
 
 }

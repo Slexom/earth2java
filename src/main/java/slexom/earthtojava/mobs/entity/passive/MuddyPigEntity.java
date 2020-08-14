@@ -2,7 +2,6 @@ package slexom.earthtojava.mobs.entity.passive;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.damage.DamageSource;
@@ -16,7 +15,7 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldView;
+import slexom.earthtojava.mobs.entity.ai.goal.MuddyPigMoveToTargetGoal;
 import slexom.earthtojava.mobs.entity.base.E2JBasePigEntity;
 import slexom.earthtojava.mobs.init.BlockInit;
 
@@ -42,7 +41,7 @@ public class MuddyPigEntity extends E2JBasePigEntity<MuddyPigEntity> {
         this.goalSelector.add(2, new AnimalMateGoal(this, 1.0D));
         this.goalSelector.add(3, new TemptGoal(this, 1.2D, Ingredient.ofItems(Items.CARROT_ON_A_STICK), false));
         this.goalSelector.add(3, new TemptGoal(this, 1.2D, TEMPTATION_ITEMS, false));
-        this.goalSelector.add(4, new GoToMudGoal(this, 1.2D));
+        this.goalSelector.add(4, new MuddyPigMoveToTargetGoal(this, 1.2D));
         this.goalSelector.add(5, new FollowParentGoal(this, 1.1D));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(7, new LookAroundGoal(this));
@@ -138,7 +137,6 @@ public class MuddyPigEntity extends E2JBasePigEntity<MuddyPigEntity> {
         } else {
             super.handleStatus(id);
         }
-
     }
 
     @Environment(EnvType.CLIENT)
@@ -149,38 +147,8 @@ public class MuddyPigEntity extends E2JBasePigEntity<MuddyPigEntity> {
         } else if (f > 1.0F) {
             f = 1.0F;
         }
-
         return MathHelper.sin(f * (float) Math.PI) * MathHelper.sin(f * (float) Math.PI * 11.0F) * 0.15F * (float) Math.PI;
     }
-
-    public static class GoToMudGoal extends MoveToTargetPosGoal {
-        private final MuddyPigEntity muddyPig;
-
-        public GoToMudGoal(MuddyPigEntity entity, double speedIn) {
-            super(entity, speedIn, 16, 3);
-            this.muddyPig = entity;
-            this.lowestY = -1;
-        }
-
-        public boolean canStart() {
-            return !this.muddyPig.isInMuddyState() && super.canStart();
-        }
-
-        public boolean shouldContinue() {
-            return !this.muddyPig.isInMuddyState() && this.tryingTime <= 600 && this.isTargetPos(this.muddyPig.world, this.targetPos);
-        }
-
-        public boolean shouldResetPath() {
-            return this.tryingTime % 100 == 0;
-        }
-
-        @Override
-        protected boolean isTargetPos(WorldView worldIn, BlockPos pos) {
-            Block block = worldIn.getBlockState(pos).getBlock();
-            return block == BlockInit.MUD_BLOCK;
-        }
-    }
-
 
 }
  

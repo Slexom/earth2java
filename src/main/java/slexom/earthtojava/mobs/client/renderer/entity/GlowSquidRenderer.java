@@ -10,7 +10,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.util.math.Vector3f;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
-import slexom.earthtojava.mobs.client.renderer.entity.layers.GlowingSquidGlowLayer;
+import slexom.earthtojava.mobs.client.renderer.entity.feature.GlowingSquidGlowLayer;
 import slexom.earthtojava.mobs.entity.passive.GlowSquidEntity;
 
 @Environment(EnvType.CLIENT)

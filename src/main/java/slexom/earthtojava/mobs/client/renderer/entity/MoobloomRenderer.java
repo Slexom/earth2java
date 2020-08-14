@@ -6,7 +6,7 @@ import net.minecraft.client.render.entity.model.CowEntityModel;
 import net.minecraft.util.Identifier;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import slexom.earthtojava.mobs.client.renderer.entity.layers.MoobloomLayer;
+import slexom.earthtojava.mobs.client.renderer.entity.feature.MoobloomLayer;
 import slexom.earthtojava.mobs.entity.passive.MoobloomEntity;
 
 @Environment(EnvType.CLIENT)

@@ -3,7 +3,6 @@ package slexom.earthtojava.mobs.entity.passive;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
@@ -19,11 +18,10 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import slexom.earthtojava.mobs.entity.ai.goal.FurnaceGolemDefendVillageTargetGoal;
+import slexom.earthtojava.mobs.entity.ai.goal.FurnaceGolemFollowTargetGoal;
 
-import javax.annotation.Nullable;
-import java.util.EnumSet;
 import java.util.Random;
-import java.util.function.Predicate;
 
 public class FurnaceGolemEntity extends IronGolemEntity {
     public static final TrackedData<Boolean> IS_ANGRY = DataTracker.registerData(FurnaceGolemEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
@@ -44,14 +42,14 @@ public class FurnaceGolemEntity extends IronGolemEntity {
     protected void initGoals() {
         this.goalSelector.add(1, new MeleeAttackGoal(this, 1.0D, true));
         this.goalSelector.add(2, new WanderNearTargetGoal(this, 0.9D, 32.0F));
-        this.goalSelector.add(2, new IronGolemWanderAroundGoal(this, 0.6D));
-        this.goalSelector.add(3, new WanderAroundPointOfInterestGoal(this, 0.6D, false));
-        this.goalSelector.add(6, new WanderAroundFarGoal(this, 0.6D));
+        this.goalSelector.add(2, new WanderAroundPointOfInterestGoal(this, 0.6D, false));
+        this.goalSelector.add(4, new IronGolemWanderAroundGoal(this, 0.6D));
+        this.goalSelector.add(5, new IronGolemLookGoal(this));
         this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(8, new LookAroundGoal(this));
-        this.targetSelector.add(1, new DefendVillageTargetGoal(this));
+        this.targetSelector.add(1, new FurnaceGolemDefendVillageTargetGoal(this));
         this.targetSelector.add(2, new RevengeGoal(this));
-        this.targetSelector.add(3, new FollowTargetGoal(this, MobEntity.class, 5, false, false, (p_213619_0_) -> p_213619_0_ instanceof Monster && !(p_213619_0_ instanceof CreeperEntity) && !(p_213619_0_ instanceof TropicalSlimeEntity)));
+        this.targetSelector.add(3, new FurnaceGolemFollowTargetGoal(this, MobEntity.class, 5, false, false, (p_213619_0_) -> p_213619_0_ instanceof Monster && !(p_213619_0_ instanceof CreeperEntity) && !(p_213619_0_ instanceof TropicalSlimeEntity)));
     }
 
     public boolean tryAttack(Entity entityIn) {
@@ -113,48 +111,6 @@ public class FurnaceGolemEntity extends IronGolemEntity {
 
     public void setAngry(boolean angry) {
         this.dataTracker.set(IS_ANGRY, angry);
-    }
-
-    private static final class FollowTargetGoal extends net.minecraft.entity.ai.goal.FollowTargetGoal<LivingEntity> {
-        FurnaceGolemEntity golem;
-
-        public FollowTargetGoal(FurnaceGolemEntity entity, Class targetClassIn, int targetChanceIn, boolean checkSight, boolean nearbyOnlyIn, @Nullable Predicate targetPredicate) {
-            super(entity, targetClassIn, targetChanceIn, checkSight, nearbyOnlyIn, targetPredicate);
-            this.golem = entity;
-        }
-
-        public void start() {
-            this.golem.setAngry(true);
-            super.start();
-        }
-
-        public void stop() {
-            this.golem.setAngry(false);
-            super.stop();
-        }
-    }
-
-
-    public class DefendVillageTargetGoal extends TrackIronGolemTargetGoal {
-        private final FurnaceGolemEntity golem;
-        private LivingEntity villageAgressorTarget;
-
-        public DefendVillageTargetGoal(FurnaceGolemEntity ironGolemIn) {
-            super(ironGolemIn);
-            this.golem = ironGolemIn;
-            this.setControls(EnumSet.of(Goal.Control.TARGET));
-        }
-
-        public void start() {
-            this.golem.setAngry(true);
-            this.golem.setTarget(this.villageAgressorTarget);
-            super.start();
-        }
-
-        public void stop() {
-            this.golem.setAngry(false);
-            super.stop();
-        }
     }
 
 }
