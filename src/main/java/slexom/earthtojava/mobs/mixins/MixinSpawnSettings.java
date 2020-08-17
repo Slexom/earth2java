@@ -1,7 +1,5 @@
 package slexom.earthtojava.mobs.mixins;
 
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.world.biome.SpawnSettings;
 import org.spongepowered.asm.mixin.Final;
@@ -24,7 +22,7 @@ public class MixinSpawnSettings implements ExtendedSpawnSettings {
     private Map<SpawnGroup, List<SpawnSettings.SpawnEntry>> spawners;
 
     @Override
-    public void addToSpawner(SpawnGroup spawnGroup, SpawnSettings.SpawnEntry spawnEntry) {
+    public void e2jAddToSpawner(SpawnGroup spawnGroup, SpawnSettings.SpawnEntry spawnEntry) {
         List<SpawnSettings.SpawnEntry> spawnEntries = new ArrayList<>(this.spawners.get(spawnGroup));
         Map<SpawnGroup, List<SpawnSettings.SpawnEntry>> spawners = new HashMap<>(this.spawners);
         spawnEntries.add(spawnEntry);

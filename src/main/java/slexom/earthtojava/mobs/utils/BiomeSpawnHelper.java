@@ -153,16 +153,7 @@ public final class BiomeSpawnHelper {
 
     private static void addToBiome(Biome biome, EntityType<?> entity, int weight, int minGroupSize, int maxGroupSize, SpawnGroup spawnGroup) {
         SpawnSettings spawnSettings = biome.getSpawnSettings();
-
-        ((ExtendedSpawnSettings) spawnSettings).addToSpawner(spawnGroup, new SpawnSettings.SpawnEntry(entity, weight, minGroupSize, maxGroupSize));
-
-
-//        List<SpawnSettings.SpawnEntry> spawnEntry = new ArrayList<>(spawnSettings.getSpawnEntry(spawnGroup));
-//        spawnEntry.add(new SpawnSettings.SpawnEntry(entity, weight, minGroupSize, maxGroupSize));
-//        Map<SpawnGroup, List<SpawnSettings.SpawnEntry>> spawners = ((ExtendedSpawnSettings) spawnSettings).getSpawners();
-//        spawners.put(spawnGroup, spawnEntry);
-
-        //((ExtendedBiome) biome.getSpawnSettings()).setSpawnSettings(spawnSettings);
+        ((ExtendedSpawnSettings) spawnSettings).e2jAddToSpawner(spawnGroup, new SpawnSettings.SpawnEntry(entity, weight, minGroupSize, maxGroupSize));
     }
 
     public static <T extends AnimalEntity> void setCreatureSpawnBiomes(EntityType<T> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {

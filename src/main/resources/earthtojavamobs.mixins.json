@@ -4,8 +4,8 @@
     "package": "slexom.earthtojava.mobs.mixins",
     "compatibilityLevel": "JAVA_8",
     "mixins": [
+        "GenerationSettingsAccessor",
         "MixinBiome",
-        "MixinGenerationSettings",
         "MixinSpawnSettings",
         "SpawnFurnaceGolem",
         "SpawnRestrictionAccessor"

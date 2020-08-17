@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public interface ExtendedBiome {
-    void setSpawnSettings(SpawnSettings spawnSettings);
+    void e2jSetSpawnSettings(SpawnSettings spawnSettings);
 }

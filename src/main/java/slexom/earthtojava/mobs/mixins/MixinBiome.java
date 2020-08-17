@@ -17,7 +17,7 @@ public class MixinBiome implements ExtendedBiome {
     private SpawnSettings spawnSettings;
 
     @Override
-    public void setSpawnSettings(SpawnSettings spawnSettings) {
+    public void e2jSetSpawnSettings(SpawnSettings spawnSettings) {
         this.spawnSettings = spawnSettings;
     }
 }

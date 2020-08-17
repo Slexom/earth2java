@@ -1,5 +1,6 @@
 package slexom.earthtojava.mobs.init;
 
+import com.google.common.collect.Lists;
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.util.registry.BuiltinRegistries;
@@ -7,6 +8,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import slexom.earthtojava.mobs.config.ModConfig;
+import slexom.earthtojava.mobs.mixins.GenerationSettingsAccessor;
 import slexom.earthtojava.mobs.world.gen.feature.ExtendedGenerationSettings;
 
 import java.util.ArrayList;
@@ -60,16 +62,29 @@ public class BiomeInit {
         }
     }
 
-    private static void addFeature(Biome biome, GenerationStep.Feature step, ConfiguredFeature<?, ?> feature) {
-        List<List<Supplier<ConfiguredFeature<?, ?>>>> features = biome.getGenerationSettings().getFeatures();
-        if (!(features instanceof ArrayList)) features = new ArrayList<>(features);
-        int index = step.ordinal();
-        for (int i = 0; i <= index; i++) {
-            if (features.size() <= i) features.add(new ArrayList<>());
-            else if (!(features.get(i) instanceof ArrayList)) features.set(i, new ArrayList<>(features.get(i)));
-        }
-        features.get(index).add(() -> feature);
-        ((ExtendedGenerationSettings) biome.getGenerationSettings()).setFeatures(features);
-    }
+//    private static void addFeature(Biome biome, GenerationStep.Feature step, ConfiguredFeature<?, ?> feature) {
+//        List<List<Supplier<ConfiguredFeature<?, ?>>>> features = biome.getGenerationSettings().getFeatures();
+//        if (!(features instanceof ArrayList)) features = new ArrayList<>(features);
+//        int index = step.ordinal();
+//        for (int i = 0; i <= index; i++) {
+//            if (features.size() <= i) features.add(new ArrayList<>());
+//            else if (!(features.get(i) instanceof ArrayList)) features.set(i, new ArrayList<>(features.get(i)));
+//        }
+//        features.get(index).add(() -> feature);
+//        ((ExtendedGenerationSettings) biome.getGenerationSettings()).setFeatures(features);
+//    }
 
+
+    public static void addFeature(Biome biome, GenerationStep.Feature step, ConfiguredFeature<?, ?> feature) {
+        GenerationSettingsAccessor generationSettingsAccessor  = (GenerationSettingsAccessor) biome.getGenerationSettings();
+        int stepIndex = step.ordinal();
+        List<List<Supplier<ConfiguredFeature<?, ?>>>> featuresByStep = new ArrayList<>( generationSettingsAccessor.getFeatures());
+        while (featuresByStep.size() <= stepIndex) {
+            featuresByStep.add(Lists.newArrayList());
+        }
+        List<Supplier<ConfiguredFeature<?, ?>>> features = new ArrayList<>(featuresByStep.get(stepIndex));
+        features.add(() -> feature);
+        featuresByStep.set(stepIndex, features);
+        generationSettingsAccessor.setFeatures(featuresByStep);
+    }
 }
