@@ -37,8 +37,8 @@ public class GlowSquidRenderer extends MobEntityRenderer<GlowSquidEntity, SquidE
     }
 
     protected void setupTransforms(GlowSquidEntity squidEntity, MatrixStack matrixStack, float f, float g, float h) {
-        float i = MathHelper.lerp(h, squidEntity.field_6905, squidEntity.field_6907);
-        float j = MathHelper.lerp(h, squidEntity.field_6906, squidEntity.field_6903);
+        float i = MathHelper.lerp(h, squidEntity.prevTiltAngle, squidEntity.tiltAngle);
+        float j = MathHelper.lerp(h, squidEntity.prevRollAngle, squidEntity.rollAngle);
         matrixStack.translate(0.0D, 0.5D, 0.0D);
         matrixStack.multiply(Vector3f.POSITIVE_Y.getDegreesQuaternion(180.0F - g));
         matrixStack.multiply(Vector3f.POSITIVE_X.getDegreesQuaternion(i));
@@ -47,6 +47,6 @@ public class GlowSquidRenderer extends MobEntityRenderer<GlowSquidEntity, SquidE
     }
 
     protected float getAnimationProgress(GlowSquidEntity squidEntity, float f) {
-        return MathHelper.lerp(f, squidEntity.field_6900, squidEntity.field_6904);
+        return MathHelper.lerp(f, squidEntity.prevTentacleAngle, squidEntity.tentacleAngle);
     }
 }

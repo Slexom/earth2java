@@ -34,7 +34,7 @@ public class FluidRendererInit {
     public static void setupFluidRendering(final Fluid still, final Fluid flowing, final int color) {
         final Identifier stillSpriteId = new Identifier(Earth2JavaMod.MOD_ID, "fluids/mud_still");
         final Identifier flowingSpriteId = new Identifier(Earth2JavaMod.MOD_ID, "fluids/mud_flow");
-        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEX).register((atlasTexture, registry) -> {
+        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> {
             registry.register(stillSpriteId);
             registry.register(flowingSpriteId);
         });
@@ -49,7 +49,7 @@ public class FluidRendererInit {
 
             @Override
             public void apply(ResourceManager resourceManager) {
-                final Function<Identifier, Sprite> atlas = MinecraftClient.getInstance().getSpriteAtlas(SpriteAtlasTexture.BLOCK_ATLAS_TEX);
+                final Function<Identifier, Sprite> atlas = MinecraftClient.getInstance().getSpriteAtlas(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE);
                 fluidSprites[0] = atlas.apply(stillSpriteId);
                 fluidSprites[1] = atlas.apply(flowingSpriteId);
             }

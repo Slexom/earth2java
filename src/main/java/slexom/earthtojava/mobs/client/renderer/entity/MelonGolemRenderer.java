@@ -4,17 +4,17 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.MobEntityRenderer;
-import net.minecraft.client.render.entity.model.SnowmanEntityModel;
+import net.minecraft.client.render.entity.model.SnowGolemEntityModel;
 import net.minecraft.util.Identifier;
 import slexom.earthtojava.mobs.client.renderer.entity.feature.MelonGolemHeadLayer;
 import slexom.earthtojava.mobs.entity.passive.MelonGolemEntity;
 
 @Environment(EnvType.CLIENT)
-public class MelonGolemRenderer extends MobEntityRenderer<MelonGolemEntity, SnowmanEntityModel<MelonGolemEntity>> {
+public class MelonGolemRenderer extends MobEntityRenderer<MelonGolemEntity, SnowGolemEntityModel<MelonGolemEntity>> {
     private static final Identifier SNOW_MAN_TEXTURES = new Identifier("textures/entity/snow_golem.png");
 
     public MelonGolemRenderer(EntityRenderDispatcher renderManagerIn) {
-        super(renderManagerIn, new SnowmanEntityModel<>(), 0.5F);
+        super(renderManagerIn, new SnowGolemEntityModel<>(), 0.5F);
         this.addFeature(new MelonGolemHeadLayer(this));
     }
 

@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '0.4-SNAPSHOT'
+    id 'fabric-loom' version '0.5-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -25,16 +25,16 @@ dependencies {
 
     compileOnly group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
 
-    modApi("me.shedaniel.cloth:config-2:4.7.0-unstable") {
+    modApi("me.shedaniel.cloth:config-2:4.8.2") {
         exclude(group: "net.fabricmc.fabric-api")
     }
-    include("me.shedaniel.cloth:config-2:4.7.0-unstable") {
+    include("me.shedaniel.cloth:config-2:4.8.2") {
         exclude(group: "net.fabricmc.fabric-api")
     }
-    modApi("me.sargunvohra.mcmods:autoconfig1u:3.2.0-unstable") {
+    modApi("me.sargunvohra.mcmods:autoconfig1u:3.2.2") {
         exclude(group: "net.fabricmc.fabric-api")
     }
-    include("me.sargunvohra.mcmods:autoconfig1u:3.2.0-unstable") {
+    include("me.sargunvohra.mcmods:autoconfig1u:3.2.2") {
         exclude(group: "net.fabricmc.fabric-api")
     }
     modImplementation("io.github.prospector:modmenu:1.14.6+build.31") {

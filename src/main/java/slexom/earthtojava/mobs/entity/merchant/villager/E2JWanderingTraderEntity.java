@@ -9,8 +9,8 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.WanderingTraderEntity;
 import net.minecraft.village.TradeOffer;
+import net.minecraft.village.TradeOfferList;
 import net.minecraft.village.TradeOffers;
-import net.minecraft.village.TraderOfferList;
 import net.minecraft.world.World;
 import slexom.earthtojava.mobs.init.ItemInit;
 import slexom.earthtojava.mobs.utils.TradesHelper;
@@ -74,7 +74,7 @@ public class E2JWanderingTraderEntity extends WanderingTraderEntity {
         TradeOffers.Factory[] factorys = TRADES.get(1);
         TradeOffers.Factory[] factorys2 = TRADES.get(2);
         if (factorys != null && factorys2 != null) {
-            TraderOfferList traderOfferList = this.getOffers();
+            TradeOfferList traderOfferList = this.getOffers();
             this.fillRecipesFromPool(traderOfferList, factorys, 8);
             TradeOffers.Factory factory = factorys2[0];
             TradeOffer tradeOffer = factory.create(this, this.random);

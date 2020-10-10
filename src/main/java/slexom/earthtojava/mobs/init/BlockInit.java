@@ -31,7 +31,7 @@ public class BlockInit {
         //FLOWER_POT = RegisterHelper.registerBlock("flower_pot", () -> new E2JFlowerPotBlock(null, Blocks.AIR, AbstractBlock.Settings.of(Material.SUPPORTED).strength(0.0f).nonOpaque()), true);
         MELON_GOLEM_HEAD_BLINK = RegisterHelper.registerBlock("melon_golem_blink", new CarvedMelonBlock(AbstractBlock.Settings.of(Material.GOURD, MaterialColor.LIME).strength(1.0F).sounds(BlockSoundGroup.WOOD)), false);
         MELON_GOLEM_HEAD_SHOOT = RegisterHelper.registerBlock("melon_golem_shoot", new CarvedMelonBlock(AbstractBlock.Settings.of(Material.GOURD, MaterialColor.LIME).strength(1.0F).sounds(BlockSoundGroup.WOOD)), false);
-        MELON_LANTERN = RegisterHelper.registerBlock("melon_lantern", new CarvedMelonBlock(AbstractBlock.Settings.of(Material.GOURD, MaterialColor.LIME).strength(1.0F).sounds(BlockSoundGroup.WOOD).lightLevel((state) -> 15)), true);
+        MELON_LANTERN = RegisterHelper.registerBlock("melon_lantern", new CarvedMelonBlock(AbstractBlock.Settings.of(Material.GOURD, MaterialColor.LIME).strength(1.0F).sounds(BlockSoundGroup.WOOD).luminance((state) -> 15)), true);
         MUD_BLOCK = RegisterHelper.registerBlock("mud_fluid", new MudBlock(FluidInit.MUD_FLUID_STILL, AbstractBlock.Settings.of(Material.WATER, MaterialColor.BROWN).noCollision().strength(100.0F).dropsNothing()), false);
         POTTED_BUTTERCUP = RegisterHelper.registerBlock("potted_buttercup", new FlowerPotBlock(BUTTERCUP, AbstractBlock.Settings.of(Material.SUPPORTED).breakInstantly().nonOpaque()), false);
         RAINBOW_BED = RegisterHelper.registerBlock("rainbow_bed", new RainbowBedBlock(DyeColor.WHITE, AbstractBlock.Settings.of(Material.WOOL).sounds(BlockSoundGroup.WOOD).strength(0.2F).nonOpaque()), false);

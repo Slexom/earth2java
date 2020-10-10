@@ -115,7 +115,7 @@ public class SkeletonWolfEntity extends HostileEntity {
     }
 
     public void tickMovement() {
-        if (this.isAlive() && this.isInDaylight()) {
+        if (this.isAlive() && this.isAffectedByDaylight()) {
             this.setOnFireFor(8);
         }
         super.tickMovement();

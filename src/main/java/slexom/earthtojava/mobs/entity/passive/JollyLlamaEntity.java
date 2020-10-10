@@ -30,7 +30,7 @@ public class JollyLlamaEntity extends E2JBaseLlamaEntity {
         this.goalSelector.add(1, new HorseBondWithPlayerGoal(this, 1.2D));
         this.goalSelector.add(2, new FormCaravanGoal(this, 2.1D));
         this.goalSelector.add(4, new AnimalMateGoal(this, 1.0D));
-        this.goalSelector.add(5, this.eatFernGoal);
+       // this.goalSelector.add(5, this.eatFernGoal);
         this.goalSelector.add(5, new FollowParentGoal(this, 1.0D));
         this.goalSelector.add(6, new WanderAroundFarGoal(this, 0.7D));
         this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
