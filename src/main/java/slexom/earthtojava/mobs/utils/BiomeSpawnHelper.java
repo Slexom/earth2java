@@ -1,5 +1,6 @@
 package slexom.earthtojava.mobs.utils;
 
+import com.google.common.collect.ImmutableMap;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -10,12 +11,8 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.SpawnSettings;
-import slexom.earthtojava.mobs.world.biome.ExtendedSpawnSettings;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -152,8 +149,12 @@ public final class BiomeSpawnHelper {
     }
 
     private static void addToBiome(Biome biome, EntityType<?> entity, int weight, int minGroupSize, int maxGroupSize, SpawnGroup spawnGroup) {
-        SpawnSettings spawnSettings = biome.getSpawnSettings();
-        ((ExtendedSpawnSettings) spawnSettings).e2jAddToSpawner(spawnGroup, new SpawnSettings.SpawnEntry(entity, weight, minGroupSize, maxGroupSize));
+        if (biome.getSpawnSettings().spawners instanceof ImmutableMap) {
+            biome.getSpawnSettings().spawners = new HashMap<>(biome.getSpawnSettings().spawners);
+        }
+        List<SpawnSettings.SpawnEntry> spawnersList = new ArrayList<>(biome.getSpawnSettings().spawners.get(spawnGroup));
+        spawnersList.add(new SpawnSettings.SpawnEntry(entity, weight, minGroupSize, maxGroupSize));
+        biome.getSpawnSettings().spawners.put(spawnGroup, spawnersList);
     }
 
     public static <T extends AnimalEntity> void setCreatureSpawnBiomes(EntityType<T> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
