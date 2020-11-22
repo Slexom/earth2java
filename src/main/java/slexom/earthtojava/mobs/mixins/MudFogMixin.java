@@ -52,8 +52,10 @@ public class MudFogMixin {
         Identifier mudTag = new Identifier(Earth2JavaMod.MOD_ID, "mud");
         Fluid fluid = camera.getSubmergedFluidState().getFluid();
         if (fluid.isIn(TagRegistry.fluid(mudTag))) {
-            RenderSystem.fogDensity(0.85F);
+            RenderSystem.fogStart(0.0F);
+            RenderSystem.fogEnd(1.0F);
             RenderSystem.fogMode(GlStateManager.FogMode.LINEAR);
+            RenderSystem.setupNvFogDistance();
             ci.cancel();
         }
     }
