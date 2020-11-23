@@ -51,7 +51,7 @@ public class BiomeInit {
     }
 
     private static void addMudLake(Biome biome) {
-        if (isInOverworld(biome) && !isMushroom(biome)) {
+        if (isInOverworld(biome) && !isMushroom(biome) && config.mudLakeConfig.canGenerate) {
             addFeature(biome, GenerationStep.Feature.LAKES, FeatureInit.MUD_LAKE_CONFIGURED_FEATURE);
         }
     }
