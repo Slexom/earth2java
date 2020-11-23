@@ -22,7 +22,8 @@ public class ModConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject
     public OreConfig rubyOre = new OreConfig(false, 0, 0, 2, 8);
     @ConfigEntry.Category("generation")
-    public int mudLakeFrequency = 40;
+    @ConfigEntry.Gui.CollapsibleObject
+    public MudLakeConfig mudLakeConfig = new MudLakeConfig(true, 25);
 
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
@@ -208,6 +209,17 @@ public class ModConfig implements ConfigData {
             this.maximum = maximum;
         }
 
+    }
+
+    public static class MudLakeConfig {
+        public boolean canGenerate;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
+        public int mudLakeFrequency = 40;
+
+        MudLakeConfig(boolean canGenerate, int mudLakeFrequency){
+            this.canGenerate = canGenerate;
+            this.mudLakeFrequency = mudLakeFrequency;
+        }
     }
 
     public static class WanderingTraderConfig {
