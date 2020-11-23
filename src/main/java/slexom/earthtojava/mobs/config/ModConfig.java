@@ -131,6 +131,7 @@ public class ModConfig implements ConfigData {
     }
 
     public static class EntityConfig {
+        public boolean spawn;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
         public int weight;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 5)
@@ -141,7 +142,7 @@ public class ModConfig implements ConfigData {
 
         EntityConfig(String[] spawnBiomes, int weight, int groupMin, int groupMax) {
             this.spawnBiomes = BiomeSpawnHelper.convertForConfig(spawnBiomes);
-
+            this.spawn = true;
             this.weight = weight;
             this.groupMin = groupMin;
             this.groupMax = groupMax;
@@ -153,6 +154,7 @@ public class ModConfig implements ConfigData {
     }
 
     public static class GlowSquidConfig {
+        public boolean spawn;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
         public int weight;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 5)
@@ -179,6 +181,7 @@ public class ModConfig implements ConfigData {
 
         GlowSquidConfig(String[] spawnBiomes, int weight, int groupMin, int groupMax) {
             this.spawnBiomes = BiomeSpawnHelper.convertForConfig(spawnBiomes);
+            this.spawn = true;
             this.weight = weight;
             this.groupMin = groupMin;
             this.groupMax = groupMax;
