@@ -1,5 +1,6 @@
 package slexom.earthtojava.mobs.entity.passive;
 
+import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.EscapeDangerGoal;
@@ -11,6 +12,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
+import slexom.earthtojava.mobs.config.ModConfig;
 import slexom.earthtojava.mobs.entity.ai.control.GlowSquidMoveControl;
 
 import java.util.Random;
@@ -22,6 +24,8 @@ public class GlowSquidEntity extends SquidEntity {
     private int remainingTick = 0;
     private int internalBlinkTick = 0;
 
+    static ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+
     public GlowSquidEntity(EntityType<GlowSquidEntity> type, World world) {
         super(type, world);
         experiencePoints = 3;
@@ -31,7 +35,7 @@ public class GlowSquidEntity extends SquidEntity {
     }
 
     public static boolean canGlowingSquidSpawn(EntityType<GlowSquidEntity> entity, WorldAccess world, SpawnReason reason, BlockPos pos, Random rand) {
-        return pos.getY() > 45 && pos.getY() < world.getSeaLevel();
+        return pos.getY() > config.glowSquid.spawnHeight.spawnHeightMin && pos.getY() < config.glowSquid.spawnHeight.spawnHeightMax;
     }
 
     @Override

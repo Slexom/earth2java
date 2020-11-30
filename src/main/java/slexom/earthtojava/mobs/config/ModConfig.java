@@ -22,7 +22,8 @@ public class ModConfig implements ConfigData {
     @ConfigEntry.Gui.CollapsibleObject
     public OreConfig rubyOre = new OreConfig(false, 0, 0, 2, 8);
     @ConfigEntry.Category("generation")
-    public int mudLakeFrequency = 40;
+    @ConfigEntry.Gui.CollapsibleObject
+    public MudLakeConfig mudLakeConfig = new MudLakeConfig(true, 25);
 
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
@@ -50,7 +51,7 @@ public class ModConfig implements ConfigData {
     public EntityConfig furnaceGolem = new EntityConfig(BiomeSpawnHelper.FURNACE_GOLEM_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig glowSquid = new EntityConfig(BiomeSpawnHelper.GLOW_SQUID_SPAWN_BIOMES, 10);
+    public GlowSquidConfig glowSquid = new GlowSquidConfig(BiomeSpawnHelper.GLOW_SQUID_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig harelequinRabbit = new EntityConfig(BiomeSpawnHelper.HARELEQUIN_RABBIT_SPAWN_BIOMES, 4);
@@ -131,19 +132,64 @@ public class ModConfig implements ConfigData {
     }
 
     public static class EntityConfig {
+        public boolean spawn;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
         public int weight;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 5)
         public int groupMin;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 5)
         public int groupMax;
         public List<String> spawnBiomes;
 
         EntityConfig(String[] spawnBiomes, int weight, int groupMin, int groupMax) {
             this.spawnBiomes = BiomeSpawnHelper.convertForConfig(spawnBiomes);
+            this.spawn = true;
             this.weight = weight;
             this.groupMin = groupMin;
             this.groupMax = groupMax;
         }
 
         EntityConfig(String[] spawnBiomes, int weight) {
+            this(spawnBiomes, weight, 2, 4);
+        }
+    }
+
+    public static class GlowSquidConfig {
+        public boolean spawn;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
+        public int weight;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 5)
+        public int groupMin;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 5)
+        public int groupMax;
+
+        @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
+        public SpawnHeightConfig spawnHeight;
+
+        public static class SpawnHeightConfig {
+            @ConfigEntry.BoundedDiscrete(min = 1, max = 255)
+            public int spawnHeightMin;
+            @ConfigEntry.BoundedDiscrete(min = 1, max = 255)
+            public int spawnHeightMax;
+
+            SpawnHeightConfig() {
+                this.spawnHeightMin = 20;
+                this.spawnHeightMax = 45;
+            }
+        }
+
+        public List<String> spawnBiomes;
+
+        GlowSquidConfig(String[] spawnBiomes, int weight, int groupMin, int groupMax) {
+            this.spawnBiomes = BiomeSpawnHelper.convertForConfig(spawnBiomes);
+            this.spawn = true;
+            this.weight = weight;
+            this.groupMin = groupMin;
+            this.groupMax = groupMax;
+            this.spawnHeight = new SpawnHeightConfig();
+        }
+
+        GlowSquidConfig(String[] spawnBiomes, int weight) {
             this(spawnBiomes, weight, 2, 4);
         }
     }
@@ -163,6 +209,17 @@ public class ModConfig implements ConfigData {
             this.maximum = maximum;
         }
 
+    }
+
+    public static class MudLakeConfig {
+        public boolean canGenerate;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
+        public int mudLakeFrequency = 40;
+
+        MudLakeConfig(boolean canGenerate, int mudLakeFrequency){
+            this.canGenerate = canGenerate;
+            this.mudLakeFrequency = mudLakeFrequency;
+        }
     }
 
     public static class WanderingTraderConfig {
