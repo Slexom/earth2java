@@ -240,5 +240,11 @@
     "text.autoconfig.earthtojavamobs.option.harelequinRabbit.spawnBiomes": "Spawn Biomes",
     "text.autoconfig.earthtojavamobs.option.harelequinRabbit.weight": "Weight",
     "text.autoconfig.earthtojavamobs.option.harelequinRabbit.groupMin": "Group Min",
-    "text.autoconfig.earthtojavamobs.option.harelequinRabbit.groupMax": "Group Max"
+    "text.autoconfig.earthtojavamobs.option.harelequinRabbit.groupMax": "Group Max",
+    "text.autoconfig.earthtojavamobs.option.bronzedChicken": "Bronzed Chicken",
+    "text.autoconfig.earthtojavamobs.option.bronzedChicken.spawn": "Toggle Spawning",
+    "text.autoconfig.earthtojavamobs.option.bronzedChicken.spawnBiomes": "Spawn Biomes",
+    "text.autoconfig.earthtojavamobs.option.bronzedChicken.weight": "Weight",
+    "text.autoconfig.earthtojavamobs.option.bronzedChicken.groupMin": "Group Min",
+    "text.autoconfig.earthtojavamobs.option.bronzedChicken.groupMax": "Group Max"
 }

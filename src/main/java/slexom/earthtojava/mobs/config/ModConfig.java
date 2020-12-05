@@ -135,9 +135,9 @@ public class ModConfig implements ConfigData {
         public boolean spawn;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
         public int weight;
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 5)
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
         public int groupMin;
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 5)
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
         public int groupMax;
         public List<String> spawnBiomes;
 
