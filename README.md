@@ -1,6 +1,6 @@
 ## Earth2Java
 
-![Version 1.2.1](https://img.shields.io/badge/Version-1.2.1-brightgreen)
+![Version 1.2.4](https://img.shields.io/badge/Version-1.2.4-brightgreen)
 ![MC 1.16.4](https://img.shields.io/badge/MC-1.16.4-blue)
 ![Fabric 0.10.6+build.214](https://img.shields.io/badge/Fabric%20Loader-0.10.6+build.214-critical)
 ![Fabric API](https://img.shields.io/badge/Fabric%20API-0.25.1+build.416--1.16-critical)
