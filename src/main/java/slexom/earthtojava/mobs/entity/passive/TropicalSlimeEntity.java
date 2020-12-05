@@ -7,7 +7,7 @@ import net.minecraft.entity.ai.goal.RevengeGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.mob.PathAwareEntity;
+import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -28,7 +28,7 @@ import slexom.earthtojava.mobs.entity.ai.goal.TropicalSlimeFaceRandomGoal;
 import slexom.earthtojava.mobs.entity.ai.goal.TropicalSlimeFloatGoal;
 import slexom.earthtojava.mobs.entity.ai.goal.TropicalSlimeHopGoal;
 
-public class TropicalSlimeEntity extends PathAwareEntity {
+public class TropicalSlimeEntity extends HostileEntity {
 
     private final int size;
     public float squishAmount;

@@ -1,6 +1,7 @@
 package slexom.earthtojava.mobs.init;
 
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import net.fabricmc.fabric.mixin.object.builder.SpawnRestrictionAccessor;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.entity.mob.HostileEntity;
@@ -9,7 +10,6 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.world.Heightmap;
 import slexom.earthtojava.mobs.config.ModConfig;
 import slexom.earthtojava.mobs.entity.passive.GlowSquidEntity;
-import slexom.earthtojava.mobs.mixins.SpawnRestrictionAccessor;
 import slexom.earthtojava.mobs.utils.BiomeSpawnHelper;
 
 public class EntitySpawnInit {
@@ -54,16 +54,16 @@ public class EntitySpawnInit {
     private static void manageMonsterEntities() {
         registerMonsterEntitySpawn(EntityTypesInit.BONE_SPIDER_REGISTRY_OBJECT, config.boneSpider.spawnBiomes.toArray(new String[0]), config.boneSpider);
         registerMonsterEntitySpawn(EntityTypesInit.SKELETON_WOLF_REGISTRY_OBJECT, config.skeletonWolf.spawnBiomes.toArray(new String[0]), config.skeletonWolf);
+        registerMonsterEntitySpawn(EntityTypesInit.TROPICAL_SLIME_REGISTRY_OBJECT, config.tropicalSlime.spawnBiomes.toArray(new String[0]), config.tropicalSlime);
     }
 
     private static void manageMobEntities() {
-        registerMobEntitySpawn(EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT, config.furnaceGolem.spawnBiomes.toArray(new String[0]), config.furnaceGolem);
-        registerMobEntitySpawn(EntityTypesInit.MELON_GOLEM_REGISTRY_OBJECT, config.melonGolem.spawnBiomes.toArray(new String[0]), config.melonGolem);
-        registerMobEntitySpawn(EntityTypesInit.TROPICAL_SLIME_REGISTRY_OBJECT, config.tropicalSlime.spawnBiomes.toArray(new String[0]), config.tropicalSlime);
+        // registerMobEntitySpawn(EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT, config.furnaceGolem.spawnBiomes.toArray(new String[0]), config.furnaceGolem);
+        // registerMobEntitySpawn(EntityTypesInit.MELON_GOLEM_REGISTRY_OBJECT, config.melonGolem.spawnBiomes.toArray(new String[0]), config.melonGolem);
     }
 
     private static void manageWaterEntities() {
-        registerGlowingSquidSpawn(config.glowSquid);
+        registerGlowingSquidSpawn();
     }
 
 

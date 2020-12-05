@@ -214,7 +214,7 @@ public class ModConfig implements ConfigData {
     public static class MudLakeConfig {
         public boolean canGenerate;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
-        public int mudLakeFrequency = 40;
+        public int mudLakeFrequency;
 
         MudLakeConfig(boolean canGenerate, int mudLakeFrequency){
             this.canGenerate = canGenerate;

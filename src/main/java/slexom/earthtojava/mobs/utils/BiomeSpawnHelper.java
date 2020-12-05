@@ -1,6 +1,8 @@
 package slexom.earthtojava.mobs.utils;
 
-import com.google.common.collect.ImmutableMap;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
@@ -10,9 +12,12 @@ import net.minecraft.entity.mob.WaterCreatureEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.SpawnSettings;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -122,39 +127,21 @@ public final class BiomeSpawnHelper {
 
     private static void addEntityToBiomes(EntityType<?> entity, List<String> spawnList, int minGroupSize, int maxGroupSize, SpawnGroup classification, int weight) {
         for (String identifier : spawnList) {
-            String[] splitted = identifier.split(":");
-            if (splitted.length == 2) {
-                BuiltinRegistries.BIOME.forEach(biome -> {
-                    if (BuiltinRegistries.BIOME.getId(biome).toString().equals(identifier)) {
-                        addToBiome(biome, entity, weight, minGroupSize, maxGroupSize, classification);
-                    }
-                });
-                RegistryEntryAddedCallback.event(BuiltinRegistries.BIOME).register((i, registryName, biome) -> {
-                    if (registryName.toString().equals(identifier)) {
-                        addToBiome(biome, entity, weight, minGroupSize, maxGroupSize, classification);
-                    }
-                });
-            }
-            if (splitted.length == 1) {
-                BuiltinRegistries.BIOME.forEach(biome -> addToBiomeCategory(biome, identifier, entity, weight, minGroupSize, maxGroupSize, classification));
-                RegistryEntryAddedCallback.event(BuiltinRegistries.BIOME).register((i, registryName, biome) -> addToBiomeCategory(biome, identifier, entity, weight, minGroupSize, maxGroupSize, classification));
-            }
-        }
-    }
+            BuiltinRegistries.BIOME.stream()
+                    .filter(biome -> BuiltinRegistries.BIOME.getId(biome).toString().equals(identifier))
+                    .findFirst()
+                    .ifPresent(biome -> {
+                        Predicate<BiomeSelectionContext> predicate = BiomeSelectors.includeByKey(BuiltinRegistries.BIOME.getKey(biome).get());
+                        BiomeModifications.addSpawn(predicate, classification, entity, weight, minGroupSize, maxGroupSize);
+                    });
+            RegistryEntryAddedCallback.event(BuiltinRegistries.BIOME).register((i, registryName, biome) -> {
+                if (registryName.toString().equals(identifier)) {
+                    Predicate<BiomeSelectionContext> predicate = BiomeSelectors.includeByKey(BuiltinRegistries.BIOME.getKey(biome).get());
+                    BiomeModifications.addSpawn(predicate, classification, entity, weight, minGroupSize, maxGroupSize);
+                }
+            });
 
-    private static void addToBiomeCategory(Biome biome, String identifier, EntityType<?> entity, int weight, int minGroupSize, int maxGroupSize, SpawnGroup classification) {
-        if (biome.getCategory().toString().toUpperCase().equals(identifier.toUpperCase())) {
-            addToBiome(biome, entity, weight, minGroupSize, maxGroupSize, classification);
         }
-    }
-
-    private static void addToBiome(Biome biome, EntityType<?> entity, int weight, int minGroupSize, int maxGroupSize, SpawnGroup spawnGroup) {
-        if (biome.getSpawnSettings().spawners instanceof ImmutableMap) {
-            biome.getSpawnSettings().spawners = new HashMap<>(biome.getSpawnSettings().spawners);
-        }
-        List<SpawnSettings.SpawnEntry> spawnersList = new ArrayList<>(biome.getSpawnSettings().spawners.get(spawnGroup));
-        spawnersList.add(new SpawnSettings.SpawnEntry(entity, weight, minGroupSize, maxGroupSize));
-        biome.getSpawnSettings().spawners.put(spawnGroup, spawnersList);
     }
 
     public static <T extends AnimalEntity> void setCreatureSpawnBiomes(EntityType<T> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
