@@ -125,6 +125,17 @@ public class ModConfig implements ConfigData {
             modWanderingTrader.currencyItem = "earthtojavamobs:ruby";
             printCorrectionMessage("modWanderingTrader.currencyItem", "null", "earthtojavamobs:ruby");
         }
+        if (glowSquid.spawnHeight == null) {
+            GlowSquidConfig.SpawnHeightConfig spawnHeightConfig = new GlowSquidConfig.SpawnHeightConfig();
+            spawnHeightConfig.spawnHeightMin = 20;
+            spawnHeightConfig.spawnHeightMax = 45;
+            glowSquid.spawnHeight = spawnHeightConfig;
+            printCorrectionMessage("glowSquid.spawnHeight", "null", "\n" +
+                    "\"spawnHeight\": {\n" +
+                    "  \"spawnHeightMin\": 20,\n" +
+                    "  \"spawnHeightMax\": 45\n" +
+                    "}");
+        }
     }
 
     private void printCorrectionMessage(String field, String old, String corrected) {
@@ -165,19 +176,6 @@ public class ModConfig implements ConfigData {
 
         @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
         public SpawnHeightConfig spawnHeight;
-
-        public static class SpawnHeightConfig {
-            @ConfigEntry.BoundedDiscrete(min = 1, max = 255)
-            public int spawnHeightMin;
-            @ConfigEntry.BoundedDiscrete(min = 1, max = 255)
-            public int spawnHeightMax;
-
-            SpawnHeightConfig() {
-                this.spawnHeightMin = 20;
-                this.spawnHeightMax = 45;
-            }
-        }
-
         public List<String> spawnBiomes;
 
         GlowSquidConfig(String[] spawnBiomes, int weight, int groupMin, int groupMax) {
@@ -191,6 +189,18 @@ public class ModConfig implements ConfigData {
 
         GlowSquidConfig(String[] spawnBiomes, int weight) {
             this(spawnBiomes, weight, 2, 4);
+        }
+
+        public static class SpawnHeightConfig {
+            @ConfigEntry.BoundedDiscrete(min = 1, max = 255)
+            public int spawnHeightMin;
+            @ConfigEntry.BoundedDiscrete(min = 1, max = 255)
+            public int spawnHeightMax;
+
+            SpawnHeightConfig() {
+                this.spawnHeightMin = 20;
+                this.spawnHeightMax = 45;
+            }
         }
     }
 
@@ -216,7 +226,7 @@ public class ModConfig implements ConfigData {
         @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
         public int mudLakeFrequency;
 
-        MudLakeConfig(boolean canGenerate, int mudLakeFrequency){
+        MudLakeConfig(boolean canGenerate, int mudLakeFrequency) {
             this.canGenerate = canGenerate;
             this.mudLakeFrequency = mudLakeFrequency;
         }
