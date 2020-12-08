@@ -30,6 +30,7 @@ public class EntityAttributeInit {
         registerBaseCowAttributes(EntityTypesInit.SUNSET_COW_REGISTRY_OBJECT);
         registerBaseCowAttributes(EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT);
         registerBaseCowAttributes(EntityTypesInit.MOOBLOOM_REGISTRY_OBJECT);
+        registerBaseCowAttributes(EntityTypesInit.MOOLIP_REGISTRY_OBJECT);
 
 
         registerBasePigAttributes(EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT);

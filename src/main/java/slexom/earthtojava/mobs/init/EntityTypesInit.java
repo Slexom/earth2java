@@ -22,7 +22,6 @@ public class EntityTypesInit {
     public static final String BRONZED_CHICKEN_REGISTRY_NAME = "bronzed_chicken";
     public static final String CLUCKSHROOM_REGISTRY_NAME = "cluckshroom";
     public static final String COOKIE_COW_REGISTRY_NAME = "cookie_cow";
-    public static final String PINTO_COW_REGISTRY_NAME = "pinto_cow";
     public static final String FLECKED_SHEEP_REGISTRY_NAME = "flecked_sheep";
     public static final String FURNACE_GOLEM_REGISTRY_NAME = "furnace_golem";
     public static final String GLOW_SQUID_REGISTRY_NAME = "glow_squid";
@@ -35,11 +34,13 @@ public class EntityTypesInit {
     public static final String MELON_SEED_PROJECTILE_REGISTRY_NAME = "melon_seed_projectile";
     public static final String MIDNIGHT_CHICKEN_REGISTRY_NAME = "midnight_chicken";
     public static final String MOOBLOOM_REGISTRY_NAME = "moobloom";
+    public static final String MOOLIP_REGISTRY_NAME = "moolip";
     public static final String MUDDY_FOOT_RABBIT_REGISTRY_NAME = "muddy_foot_rabbit";
     public static final String MUDDY_PIG_REGISTRY_NAME = "muddy_pig";
     public static final String PALE_PIG_REGISTRY_NAME = "pale_pig";
     public static final String PIEBALD_PIG_REGISTRY_NAME = "piebald_pig";
     public static final String PINK_FOOTED_PIG_REGISTRY_NAME = "pink_footed_pig";
+    public static final String PINTO_COW_REGISTRY_NAME = "pinto_cow";
     public static final String RAINBOW_SHEEP_REGISTRY_NAME = "rainbow_sheep";
     public static final String ROCKY_SHEEP_REGISTRY_NAME = "rocky_sheep";
     public static final String SKELETON_WOLF_REGISTRY_NAME = "skeleton_wolf";
@@ -59,7 +60,6 @@ public class EntityTypesInit {
     public static EntityType<BronzedChickenEntity> BRONZED_CHICKEN_REGISTRY_OBJECT;
     public static EntityType<CluckshroomEntity> CLUCKSHROOM_REGISTRY_OBJECT;
     public static EntityType<CookieCowEntity> COOKIE_COW_REGISTRY_OBJECT;
-    public static EntityType<PintoCowEntity>PINTO_COW_REGISTRY_OBJECT;
     public static EntityType<FleckedSheepEntity> FLECKED_SHEEP_REGISTRY_OBJECT;
     public static EntityType<FurnaceGolemEntity> FURNACE_GOLEM_REGISTRY_OBJECT;
     public static EntityType<GlowSquidEntity> GLOW_SQUID_REGISTRY_OBJECT;
@@ -72,11 +72,13 @@ public class EntityTypesInit {
     public static EntityType<MelonSeedProjectileEntity> MELON_SEED_PROJECTILE_REGISTRY_OBJECT;
     public static EntityType<MidnightChickenEntity> MIDNIGHT_CHICKEN_REGISTRY_OBJECT;
     public static EntityType<MoobloomEntity> MOOBLOOM_REGISTRY_OBJECT;
+    public static EntityType<MoolipEntity> MOOLIP_REGISTRY_OBJECT;
     public static EntityType<MuddyFootRabbitEntity> MUDDY_FOOT_RABBIT_REGISTRY_OBJECT;
     public static EntityType<MuddyPigEntity> MUDDY_PIG_REGISTRY_OBJECT;
     public static EntityType<PalePigEntity> PALE_PIG_REGISTRY_OBJECT;
     public static EntityType<PiebaldPigEntity> PIEBALD_PIG_REGISTRY_OBJECT;
     public static EntityType<PinkFootedPigEntity> PINK_FOOTED_PIG_REGISTRY_OBJECT;
+    public static EntityType<PintoCowEntity> PINTO_COW_REGISTRY_OBJECT;
     public static EntityType<RainbowSheepEntity> RAINBOW_SHEEP_REGISTRY_OBJECT;
     public static EntityType<RockySheepEntity> ROCKY_SHEEP_REGISTRY_OBJECT;
     public static EntityType<SkeletonWolfEntity> SKELETON_WOLF_REGISTRY_OBJECT;
@@ -111,6 +113,7 @@ public class EntityTypesInit {
         MELON_SEED_PROJECTILE_REGISTRY_OBJECT = RegisterHelper.registerEntity(MELON_SEED_PROJECTILE_REGISTRY_NAME, FabricEntityTypeBuilder.<MelonSeedProjectileEntity>create(SpawnGroup.MISC, MelonSeedProjectileEntity::new).dimensions(EntityDimensions.fixed(0.25F, 0.25F)).trackable(64, 3).build());
         MIDNIGHT_CHICKEN_REGISTRY_OBJECT = RegisterHelper.registerEntity(MIDNIGHT_CHICKEN_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MidnightChickenEntity::new).dimensions(EntityDimensions.fixed(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight())).trackable(64, 3).build());
         MOOBLOOM_REGISTRY_OBJECT = RegisterHelper.registerEntity(MOOBLOOM_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MoobloomEntity::new).dimensions(EntityDimensions.fixed(EntityType.COW.getWidth(), EntityType.COW.getHeight())).trackable(64, 3).build());
+        MOOLIP_REGISTRY_OBJECT = RegisterHelper.registerEntity(MOOLIP_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MoolipEntity::new).dimensions(EntityDimensions.fixed(EntityType.COW.getWidth(), EntityType.COW.getHeight())).trackable(64, 3).build());
         MUDDY_FOOT_RABBIT_REGISTRY_OBJECT = RegisterHelper.registerEntity(MUDDY_FOOT_RABBIT_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MuddyFootRabbitEntity::new).dimensions(EntityDimensions.fixed(EntityType.RABBIT.getWidth(), EntityType.RABBIT.getHeight())).trackable(64, 3).build());
         MUDDY_PIG_REGISTRY_OBJECT = RegisterHelper.registerEntity(MUDDY_PIG_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MuddyPigEntity::new).dimensions(EntityDimensions.fixed(EntityType.PIG.getWidth(), EntityType.PIG.getHeight())).trackable(64, 3).build());
         PALE_PIG_REGISTRY_OBJECT = RegisterHelper.registerEntity(PALE_PIG_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, PalePigEntity::new).dimensions(EntityDimensions.fixed(EntityType.PIG.getWidth(), EntityType.PIG.getHeight())).trackable(64, 3).build());

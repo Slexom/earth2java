@@ -37,6 +37,7 @@ public class ItemInit {
     public static E2JSpawnEggItem MELON_GOLEM_SPAWN_EGG;
     public static E2JSpawnEggItem MIDNIGHT_CHICKEN_SPAWN_EGG;
     public static E2JSpawnEggItem MOOBLOOM_SPAWN_EGG;
+    public static E2JSpawnEggItem MOOLIP_SPAWN_EGG;
     public static E2JSpawnEggItem MUDDY_FOOT_RABBIT_SPAWN_EGG;
     public static E2JSpawnEggItem MUDDY_PIG_SPAWN_EGG;
     public static Item MUD_BUCKET;
@@ -90,6 +91,7 @@ public class ItemInit {
         MELON_GOLEM_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.MELON_GOLEM_REGISTRY_NAME, EntityTypesInit.MELON_GOLEM_REGISTRY_OBJECT, 0xeeffff, 0x52811c);
         MIDNIGHT_CHICKEN_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_NAME, EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_OBJECT, 0x06050B, 0x17225a);
         MOOBLOOM_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.MOOBLOOM_REGISTRY_NAME, EntityTypesInit.MOOBLOOM_REGISTRY_OBJECT, 0xfaca00, 0xf7edc1);
+        MOOLIP_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.MOOLIP_REGISTRY_NAME, EntityTypesInit.MOOLIP_REGISTRY_OBJECT, 0xea88be, 0xf9e7eb);
         MUDDY_FOOT_RABBIT_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.MUDDY_FOOT_RABBIT_REGISTRY_NAME, EntityTypesInit.MUDDY_FOOT_RABBIT_REGISTRY_OBJECT, 0xe5e0dd, 0x463832);
         MUDDY_PIG_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.MUDDY_PIG_REGISTRY_NAME, EntityTypesInit.MUDDY_PIG_REGISTRY_OBJECT, 0xe6918b, 0x573621);
         PALE_PIG_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.PALE_PIG_REGISTRY_NAME, EntityTypesInit.PALE_PIG_REGISTRY_OBJECT, 0xd3a0a0, 0xead3d3);

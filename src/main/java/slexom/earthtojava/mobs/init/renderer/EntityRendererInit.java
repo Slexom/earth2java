@@ -66,6 +66,7 @@ public class EntityRendererInit {
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.GLOW_SQUID_REGISTRY_OBJECT, (dispatcher, context) -> new GlowSquidRenderer(dispatcher));
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.HORNED_SHEEP_REGISTRY_OBJECT, (dispatcher, context) -> new HornedSheepRenderer(dispatcher));
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.MOOBLOOM_REGISTRY_OBJECT, (dispatcher, context) -> new MoobloomRenderer(dispatcher));
+        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.MOOLIP_REGISTRY_OBJECT, (dispatcher, context) -> new MoolipRenderer(dispatcher));
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.MUDDY_PIG_REGISTRY_OBJECT, (dispatcher, context) -> new MuddyPigRenderer(dispatcher));
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.SKELETON_WOLF_REGISTRY_OBJECT, (dispatcher, context) -> new SkeletonWolfRenderer(dispatcher));
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.TROPICAL_SLIME_REGISTRY_OBJECT, (dispatcher, context) -> new TropicalSlimeRenderer(dispatcher));

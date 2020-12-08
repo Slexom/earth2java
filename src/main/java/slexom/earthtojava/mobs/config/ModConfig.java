@@ -84,6 +84,9 @@ public class ModConfig implements ConfigData {
     public EntityConfig moobloom = new EntityConfig(BiomeSpawnHelper.MOOBLOOM_SPAWN_BIOMES, 8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig moolip = new EntityConfig(BiomeSpawnHelper.MOOLIP_SPAWN_BIOMES, 8);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig muddyPig = new EntityConfig(BiomeSpawnHelper.MUDDY_PIG_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
