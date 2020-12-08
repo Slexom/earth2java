@@ -38,6 +38,7 @@ public class Earth2JavaMod implements ModInitializer {
         ItemInit.init();
         RecipesInit.init();
         ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(BlockInit.BUTTERCUP.asItem(), 0.65F);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(BlockInit.PINK_DAISY.asItem(), 0.65F);
         LOGGER.info("[Earth2Java] Mod loaded! Enjoy :D");
     }
 

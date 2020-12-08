@@ -8,5 +8,7 @@ public class BlockRendererInit {
     public static void init() {
         BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.BUTTERCUP, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.POTTED_BUTTERCUP, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.PINK_DAISY, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.POTTED_PINK_DAISY, RenderLayer.getCutout());
     }
 }

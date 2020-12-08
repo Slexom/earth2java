@@ -3,13 +3,12 @@ package slexom.earthtojava.mobs.init;
 import com.google.common.collect.Lists;
 import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
+import net.fabricmc.fabric.mixin.biome.modification.GenerationSettingsAccessor;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import slexom.earthtojava.mobs.config.ModConfig;
-import slexom.earthtojava.mobs.mixins.GenerationSettingsAccessor;
-import slexom.earthtojava.mobs.world.gen.feature.ExtendedGenerationSettings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +27,7 @@ public class BiomeInit {
         addOres(biome);
         addMudLake(biome);
         addButtercup(biome);
+        addPinkDaisy(biome);
     }
 
     private static void addOres(Biome biome) {
@@ -62,6 +62,12 @@ public class BiomeInit {
         }
     }
 
+    private static void addPinkDaisy(Biome biome) {
+        if (isInOverworld(biome) && biome.getCategory() == Biome.Category.PLAINS) {
+            addFeature(biome, GenerationStep.Feature.VEGETAL_DECORATION, FeatureInit.FLOWER_PINK_DAISY_CONFIGURED_FEATURE);
+        }
+    }
+
 //    private static void addFeature(Biome biome, GenerationStep.Feature step, ConfiguredFeature<?, ?> feature) {
 //        List<List<Supplier<ConfiguredFeature<?, ?>>>> features = biome.getGenerationSettings().getFeatures();
 //        if (!(features instanceof ArrayList)) features = new ArrayList<>(features);
@@ -76,15 +82,16 @@ public class BiomeInit {
 
 
     public static void addFeature(Biome biome, GenerationStep.Feature step, ConfiguredFeature<?, ?> feature) {
-        GenerationSettingsAccessor generationSettingsAccessor  = (GenerationSettingsAccessor) biome.getGenerationSettings();
+        GenerationSettingsAccessor generationSettingsAccessor = (GenerationSettingsAccessor) biome.getGenerationSettings();
         int stepIndex = step.ordinal();
-        List<List<Supplier<ConfiguredFeature<?, ?>>>> featuresByStep = new ArrayList<>( generationSettingsAccessor.getFeatures());
+        List<List<Supplier<ConfiguredFeature<?, ?>>>> featuresByStep = new ArrayList<>(generationSettingsAccessor.fabric_getFeatures());
         while (featuresByStep.size() <= stepIndex) {
             featuresByStep.add(Lists.newArrayList());
         }
         List<Supplier<ConfiguredFeature<?, ?>>> features = new ArrayList<>(featuresByStep.get(stepIndex));
         features.add(() -> feature);
         featuresByStep.set(stepIndex, features);
-        generationSettingsAccessor.setFeatures(featuresByStep);
+        generationSettingsAccessor.fabric_setFeatures(featuresByStep);
     }
+
 }
