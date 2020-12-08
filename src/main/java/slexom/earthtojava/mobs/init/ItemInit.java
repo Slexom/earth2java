@@ -42,6 +42,7 @@ public class ItemInit {
     public static E2JSpawnEggItem MUDDY_PIG_SPAWN_EGG;
     public static Item MUD_BUCKET;
     public static E2JSpawnEggItem PALE_PIG_SPAWN_EGG;
+    public static E2JSpawnEggItem PATCHED_SHEEP_SPAWN_EGG;
     public static E2JSpawnEggItem PIEBALD_PIG_SPAWN_EGG;
     public static E2JSpawnEggItem PINK_FOOTED_PIG_SPAWN_EGG;
     public static E2JSpawnEggItem PINTO_COW_SPAWN_EGG;
@@ -95,6 +96,7 @@ public class ItemInit {
         MUDDY_FOOT_RABBIT_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.MUDDY_FOOT_RABBIT_REGISTRY_NAME, EntityTypesInit.MUDDY_FOOT_RABBIT_REGISTRY_OBJECT, 0xe5e0dd, 0x463832);
         MUDDY_PIG_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.MUDDY_PIG_REGISTRY_NAME, EntityTypesInit.MUDDY_PIG_REGISTRY_OBJECT, 0xe6918b, 0x573621);
         PALE_PIG_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.PALE_PIG_REGISTRY_NAME, EntityTypesInit.PALE_PIG_REGISTRY_OBJECT, 0xd3a0a0, 0xead3d3);
+        PATCHED_SHEEP_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.PATCHED_SHEEP_REGISTRY_NAME, EntityTypesInit.PATCHED_SHEEP_REGISTRY_OBJECT, 0xf3f0ee, 0x3b4054);
         PIEBALD_PIG_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.PIEBALD_PIG_REGISTRY_NAME, EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT, 0xd7c0a9, 0x9b4628);
         PINK_FOOTED_PIG_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_NAME, EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_OBJECT, 0x514246, 0xb39da2);
         PINTO_COW_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.PINTO_COW_REGISTRY_NAME, EntityTypesInit.PINTO_COW_REGISTRY_OBJECT, 0xc16921, 0xd8c4ad);

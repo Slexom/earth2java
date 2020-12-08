@@ -44,6 +44,7 @@ public class EntitySpawnInit {
         registerAnimalEntitySpawn(EntityTypesInit.MUDDY_PIG_REGISTRY_OBJECT, config.muddyPig.spawnBiomes.toArray(new String[0]), config.muddyPig);
         registerAnimalEntitySpawn(EntityTypesInit.MUDDY_FOOT_RABBIT_REGISTRY_OBJECT, config.muddyFootRabbit.spawnBiomes.toArray(new String[0]), config.muddyFootRabbit);
         registerAnimalEntitySpawn(EntityTypesInit.PALE_PIG_REGISTRY_OBJECT, config.palePig.spawnBiomes.toArray(new String[0]), config.palePig);
+        registerAnimalEntitySpawn(EntityTypesInit.PATCHED_SHEEP_REGISTRY_OBJECT, config.patchedSheep);
         registerAnimalEntitySpawn(EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT, config.piebaldPig.spawnBiomes.toArray(new String[0]), config.piebaldPig);
         registerAnimalEntitySpawn(EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_OBJECT, config.pinkFootedPig.spawnBiomes.toArray(new String[0]), config.pinkFootedPig);
         registerAnimalEntitySpawn(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_OBJECT, config.rainbowSheep.spawnBiomes.toArray(new String[0]), config.rainbowSheep);
