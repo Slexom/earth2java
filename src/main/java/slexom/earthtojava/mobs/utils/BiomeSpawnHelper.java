@@ -24,6 +24,7 @@ import java.util.stream.Stream;
 
 public final class BiomeSpawnHelper {
 
+    public static final String[] BOLD_STRIPED_RABBIT_SPAWN_BIOMES = new String[]{"plains", "extreme_hills"};
     public static final String[] MOOBLOOM_SPAWN_BIOMES = getBiomesListFromBiomes(new String[]{"minecraft:flower_forest"});
     public static final String[] PINK_FOOTED_PIG_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS);
     private static final String[] GRAVELLY_MOUNTAINS = new String[]{"minecraft:gravelly_mountains", "minecraft:modified_gravelly_mountains"};
@@ -78,7 +79,6 @@ public final class BiomeSpawnHelper {
     public static final String[] PIEBALD_PIG_SPAWN_BIOMES = getBiomesListFromBiomes(FOREST, BIRCH_FOREST, PLAINS, MOUNTAINS, TAIGA, SAVANNA);
     public static final String[] SKELETON_WOLF_SPAWN_BIOMES = getBiomesListFromBiomes(FOREST, TAIGA, SNOWY_TAIGA, GIANT_TAIGA, BADLANDS);
     public static final String[] WOOLY_COW_SPAWN_BIOMES = getBiomesListFromBiomes(TAIGA, SNOWY_TAIGA, GIANT_TAIGA);
-
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private BiomeSpawnHelper() {

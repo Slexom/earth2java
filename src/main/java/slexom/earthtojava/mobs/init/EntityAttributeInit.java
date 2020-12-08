@@ -40,6 +40,7 @@ public class EntityAttributeInit {
         registerBaseRabbitAttributes(EntityTypesInit.HARELEQUIN_RABBIT_REGISTRY_OBJECT);
         registerBaseRabbitAttributes(EntityTypesInit.MUDDY_FOOT_RABBIT_REGISTRY_OBJECT);
         registerBaseRabbitAttributes(EntityTypesInit.VESTED_RABBIT_REGISTRY_OBJECT);
+        registerBaseRabbitAttributes(EntityTypesInit.BOLD_STRIPED_RABBIT_REGISTRY_OBJECT);
 
         registerBaseOneColorSheepAttributes(EntityTypesInit.INKY_SHEEP_REGISTRY_OBJECT);
         registerBaseOneColorSheepAttributes(EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT);

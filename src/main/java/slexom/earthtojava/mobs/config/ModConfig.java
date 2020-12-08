@@ -39,6 +39,9 @@ public class ModConfig implements ConfigData {
     public EntityConfig boneSpider = new EntityConfig(BiomeSpawnHelper.BONE_SPIDER_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig boldStripedRabbit = new EntityConfig(BiomeSpawnHelper.BOLD_STRIPED_RABBIT_SPAWN_BIOMES, 8);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig bronzedChicken = new EntityConfig(BiomeSpawnHelper.BRONZED_CHICKEN_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
