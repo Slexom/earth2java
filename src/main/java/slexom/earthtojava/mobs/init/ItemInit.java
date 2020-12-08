@@ -17,6 +17,7 @@ public class ItemInit {
     private static final ItemGroup itemGroup = Earth2JavaMod.ITEM_GROUP;
     private static final Item.Settings spawnEggProps = new Item.Settings().group(itemGroup);
     public static E2JSpawnEggItem ALBINO_COW_SPAWN_EGG;
+    public static E2JSpawnEggItem COOKIE_COW_SPAWN_EGG;
     public static E2JSpawnEggItem AMBER_CHICKEN_SPAWN_EGG;
     public static E2JSpawnEggItem ASHEN_COW_SPAWN_EGG;
     public static E2JSpawnEggItem BOLD_STRIPED_RABBIT_SPAWN_EGG;
@@ -70,6 +71,7 @@ public class ItemInit {
 
     private static void registerSpawnEggs() {
         ALBINO_COW_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.ALBINO_COW_REGISTRY_NAME, EntityTypesInit.ALBINO_COW_REGISTRY_OBJECT, 0xdecac3, 0xf0a590);
+        COOKIE_COW_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.COOKIE_COW_REGISTRY_NAME, EntityTypesInit.COOKIE_COW_REGISTRY_OBJECT, 0x4c5662, 0xdbcdbe);
         AMBER_CHICKEN_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.AMBER_CHICKEN_REGISTRY_NAME, EntityTypesInit.AMBER_CHICKEN_REGISTRY_OBJECT, 0xd13719, 0xe38a2b);
         ASHEN_COW_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.ASHEN_COW_REGISTRY_NAME, EntityTypesInit.ASHEN_COW_REGISTRY_OBJECT, 0x3c3c49, 0x898491);
         BOLD_STRIPED_RABBIT_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.BOLD_STRIPED_RABBIT_REGISTRY_NAME, EntityTypesInit.BOLD_STRIPED_RABBIT_REGISTRY_OBJECT, 0x030303, 0xa4632b);
