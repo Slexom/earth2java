@@ -48,7 +48,7 @@ public class ModConfig implements ConfigData {
     public EntityConfig cluckshroom = new EntityConfig(BiomeSpawnHelper.CLUCKSHROOM_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig cookieCow = new EntityConfig(BiomeSpawnHelper.COOKIE_COW_SPAWN_BIOMES, 12);
+    public EntityConfig cookieCow = new EntityConfig(BiomeSpawnHelper.COOKIE_COW_SPAWN_BIOMES, 8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig fleckedSheep = new EntityConfig(BiomeSpawnHelper.FLECKED_SHEEP_SPAWN_BIOMES, 12);
@@ -97,6 +97,9 @@ public class ModConfig implements ConfigData {
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig pinkFootedPig = new EntityConfig(BiomeSpawnHelper.PINK_FOOTED_PIG_SPAWN_BIOMES, 10);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig pintoCow = new EntityConfig(BiomeSpawnHelper.PINTO_COW_SPAWN_BIOMES, 8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig rainbowSheep = new EntityConfig(BiomeSpawnHelper.RAINBOW_SHEEP_SPAWN_BIOMES, 12);

@@ -32,8 +32,6 @@ public class EntityRendererInit {
         registerSpecialVariantEntitiesRenderer();
 
 
-
-
     }
 
     private static void registerBaseVariantEntitiesRenderer() {
@@ -41,17 +39,22 @@ public class EntityRendererInit {
         registerChickenEntityRenderer(EntityTypesInit.BRONZED_CHICKEN_REGISTRY_OBJECT, EntityTypesInit.BRONZED_CHICKEN_REGISTRY_NAME);
         registerChickenEntityRenderer(EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_OBJECT, EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_NAME);
         registerChickenEntityRenderer(EntityTypesInit.STORMY_CHICKEN_REGISTRY_OBJECT, EntityTypesInit.STORMY_CHICKEN_REGISTRY_NAME);
+
         registerCowEntityRenderer(EntityTypesInit.ALBINO_COW_REGISTRY_OBJECT, EntityTypesInit.ALBINO_COW_REGISTRY_NAME);
         registerCowEntityRenderer(EntityTypesInit.ASHEN_COW_REGISTRY_OBJECT, EntityTypesInit.ASHEN_COW_REGISTRY_NAME);
-        registerCowEntityRenderer(EntityTypesInit.SUNSET_COW_REGISTRY_OBJECT, EntityTypesInit.SUNSET_COW_REGISTRY_NAME);
         registerCowEntityRenderer(EntityTypesInit.COOKIE_COW_REGISTRY_OBJECT, EntityTypesInit.COOKIE_COW_REGISTRY_NAME);
+        registerCowEntityRenderer(EntityTypesInit.PINTO_COW_REGISTRY_OBJECT, EntityTypesInit.PINTO_COW_REGISTRY_NAME);
+        registerCowEntityRenderer(EntityTypesInit.SUNSET_COW_REGISTRY_OBJECT, EntityTypesInit.SUNSET_COW_REGISTRY_NAME);
+
         registerPigEntityRenderer(EntityTypesInit.PALE_PIG_REGISTRY_OBJECT, EntityTypesInit.PALE_PIG_REGISTRY_NAME);
         registerPigEntityRenderer(EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT, EntityTypesInit.PIEBALD_PIG_REGISTRY_NAME);
         registerPigEntityRenderer(EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_OBJECT, EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_NAME);
         registerPigEntityRenderer(EntityTypesInit.SPOTTED_PIG_REGISTRY_OBJECT, EntityTypesInit.SPOTTED_PIG_REGISTRY_NAME);
+
         registerOneColorSheepEntityRenderer(EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT, EntityTypesInit.FLECKED_SHEEP_REGISTRY_NAME);
         registerOneColorSheepEntityRenderer(EntityTypesInit.INKY_SHEEP_REGISTRY_OBJECT, EntityTypesInit.INKY_SHEEP_REGISTRY_NAME);
         registerOneColorSheepEntityRenderer(EntityTypesInit.ROCKY_SHEEP_REGISTRY_OBJECT, EntityTypesInit.ROCKY_SHEEP_REGISTRY_NAME);
+
         registerRabbitEntityRenderer(EntityTypesInit.HARELEQUIN_RABBIT_REGISTRY_OBJECT, EntityTypesInit.HARELEQUIN_RABBIT_REGISTRY_NAME);
         registerRabbitEntityRenderer(EntityTypesInit.MUDDY_FOOT_RABBIT_REGISTRY_OBJECT, EntityTypesInit.MUDDY_FOOT_RABBIT_REGISTRY_NAME);
         registerRabbitEntityRenderer(EntityTypesInit.VESTED_RABBIT_REGISTRY_OBJECT, EntityTypesInit.VESTED_RABBIT_REGISTRY_NAME);

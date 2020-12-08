@@ -26,6 +26,7 @@ public final class BiomeSpawnHelper {
 
     public static final String[] BOLD_STRIPED_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.FOREST, Biome.Category.EXTREME_HILLS);
     public static final String[] COOKIE_COW_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.TAIGA, Biome.Category.EXTREME_HILLS);
+    public static final String[] PINTO_COW_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.TAIGA, Biome.Category.EXTREME_HILLS);
     public static final String[] MOOBLOOM_SPAWN_BIOMES = getBiomesListFromBiomes(new String[]{"minecraft:flower_forest"});
     public static final String[] PINK_FOOTED_PIG_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS);
     private static final String[] GRAVELLY_MOUNTAINS = new String[]{"minecraft:gravelly_mountains", "minecraft:modified_gravelly_mountains"};

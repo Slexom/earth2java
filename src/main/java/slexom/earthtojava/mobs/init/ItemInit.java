@@ -17,7 +17,6 @@ public class ItemInit {
     private static final ItemGroup itemGroup = Earth2JavaMod.ITEM_GROUP;
     private static final Item.Settings spawnEggProps = new Item.Settings().group(itemGroup);
     public static E2JSpawnEggItem ALBINO_COW_SPAWN_EGG;
-    public static E2JSpawnEggItem COOKIE_COW_SPAWN_EGG;
     public static E2JSpawnEggItem AMBER_CHICKEN_SPAWN_EGG;
     public static E2JSpawnEggItem ASHEN_COW_SPAWN_EGG;
     public static E2JSpawnEggItem BOLD_STRIPED_RABBIT_SPAWN_EGG;
@@ -25,6 +24,7 @@ public class ItemInit {
     public static E2JSpawnEggItem BONE_SPIDER_SPAWN_EGG;
     public static E2JSpawnEggItem BRONZED_CHICKEN_SPAWN_EGG;
     public static E2JSpawnEggItem CLUCKSHROOM_SPAWN_EGG;
+    public static E2JSpawnEggItem COOKIE_COW_SPAWN_EGG;
     public static E2JSpawnEggItem FLECKED_SHEEP_SPAWN_EGG;
     public static E2JSpawnEggItem FURNACE_GOLEM_SPAWN_EGG;
     public static E2JSpawnEggItem GLOW_SQUID_SPAWN_EGG;
@@ -43,6 +43,7 @@ public class ItemInit {
     public static E2JSpawnEggItem PALE_PIG_SPAWN_EGG;
     public static E2JSpawnEggItem PIEBALD_PIG_SPAWN_EGG;
     public static E2JSpawnEggItem PINK_FOOTED_PIG_SPAWN_EGG;
+    public static E2JSpawnEggItem PINTO_COW_SPAWN_EGG;
     public static BedItem RAINBOW_BED;
     public static E2JSpawnEggItem RAINBOW_SHEEP_SPAWN_EGG;
     public static E2JSpawnEggItem ROCKY_SHEEP_SPAWN_EGG;
@@ -94,6 +95,7 @@ public class ItemInit {
         PALE_PIG_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.PALE_PIG_REGISTRY_NAME, EntityTypesInit.PALE_PIG_REGISTRY_OBJECT, 0xd3a0a0, 0xead3d3);
         PIEBALD_PIG_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.PIEBALD_PIG_REGISTRY_NAME, EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT, 0xd7c0a9, 0x9b4628);
         PINK_FOOTED_PIG_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_NAME, EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_OBJECT, 0x514246, 0xb39da2);
+        PINTO_COW_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.PINTO_COW_REGISTRY_NAME, EntityTypesInit.PINTO_COW_REGISTRY_OBJECT, 0xc16921, 0xd8c4ad);
         RAINBOW_SHEEP_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_NAME, EntityTypesInit.RAINBOW_SHEEP_REGISTRY_OBJECT, 0xffffff, 0xffffff);
         ROCKY_SHEEP_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.ROCKY_SHEEP_REGISTRY_NAME, EntityTypesInit.ROCKY_SHEEP_REGISTRY_OBJECT, 0xa69f9b, 0xe9d0bd);
         SKELETON_WOLF_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.SKELETON_WOLF_REGISTRY_NAME, EntityTypesInit.SKELETON_WOLF_REGISTRY_OBJECT, 0xededed, 0xbababa);
