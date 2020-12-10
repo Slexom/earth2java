@@ -54,6 +54,9 @@ public class ModConfig implements ConfigData {
     public EntityConfig fleckedSheep = new EntityConfig(BiomeSpawnHelper.FLECKED_SHEEP_SPAWN_BIOMES, 12);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig fancyChicken = new EntityConfig(BiomeSpawnHelper.FANCY_CHICKEN_SPAWN_BIOMES, 10);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig furnaceGolem = new EntityConfig(BiomeSpawnHelper.FURNACE_GOLEM_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject

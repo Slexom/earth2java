@@ -4,9 +4,7 @@
     "package": "slexom.earthtojava.mobs.mixins",
     "compatibilityLevel": "JAVA_8",
     "mixins": [
-        "GenerationSettingsAccessor",
-        "SpawnFurnaceGolem",
-        "SpawnRestrictionAccessor"
+        "SpawnFurnaceGolem"
     ],
     "client": [
         "BERItemRenderer",

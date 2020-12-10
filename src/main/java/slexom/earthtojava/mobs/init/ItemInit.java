@@ -6,10 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
 import slexom.earthtojava.mobs.Earth2JavaMod;
-import slexom.earthtojava.mobs.item.BoneShardItem;
-import slexom.earthtojava.mobs.item.E2JSpawnEggItem;
-import slexom.earthtojava.mobs.item.HornItem;
-import slexom.earthtojava.mobs.item.MudBucketItem;
+import slexom.earthtojava.mobs.item.*;
 
 public class ItemInit {
 
@@ -25,6 +22,8 @@ public class ItemInit {
     public static E2JSpawnEggItem BRONZED_CHICKEN_SPAWN_EGG;
     public static E2JSpawnEggItem CLUCKSHROOM_SPAWN_EGG;
     public static E2JSpawnEggItem COOKIE_COW_SPAWN_EGG;
+    public static E2JSpawnEggItem FANCY_CHICKEN_SPAWN_EGG;
+    public static Item FANCY_FEATHER;
     public static E2JSpawnEggItem FLECKED_SHEEP_SPAWN_EGG;
     public static E2JSpawnEggItem FURNACE_GOLEM_SPAWN_EGG;
     public static E2JSpawnEggItem GLOW_SQUID_SPAWN_EGG;
@@ -61,6 +60,7 @@ public class ItemInit {
 
     public static void init() {
         HORN = RegisterHelper.registerItem("horn", new HornItem(new Item.Settings().group(itemGroup).maxCount(64)));
+        FANCY_FEATHER = RegisterHelper.registerItem("fancy_feather", new FancyFeatherItem(new Item.Settings().group(itemGroup).maxCount(64)));
         MUD_BUCKET = RegisterHelper.registerItem("mud_fluid_bucket", new MudBucketItem(FluidInit.MUD_FLUID_STILL, new Item.Settings().recipeRemainder(Items.BUCKET).maxCount(1).group(itemGroup)));
         BONE_SHARD = RegisterHelper.registerItem("bone_shard", new BoneShardItem(new Item.Settings().group(null).maxCount(16)));
         RUBY = RegisterHelper.registerItem("ruby", new Item(new Item.Settings().group(itemGroup).maxCount(64)));
@@ -81,6 +81,7 @@ public class ItemInit {
         BONE_SPIDER_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.BONE_SPIDER_REGISTRY_NAME, EntityTypesInit.BONE_SPIDER_REGISTRY_OBJECT, 0x200d16, 0xd6e7e5);
         BRONZED_CHICKEN_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.BRONZED_CHICKEN_REGISTRY_NAME, EntityTypesInit.BRONZED_CHICKEN_REGISTRY_OBJECT, 0x040f30, 0xb2492a);
         CLUCKSHROOM_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.CLUCKSHROOM_REGISTRY_NAME, EntityTypesInit.CLUCKSHROOM_REGISTRY_OBJECT, 0xef0000, 0xffffee);
+        FANCY_CHICKEN_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.FANCY_CHICKEN_REGISTRY_NAME, EntityTypesInit.FANCY_CHICKEN_REGISTRY_OBJECT, 0xf7b035, 0x478e8b);
         FLECKED_SHEEP_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.FLECKED_SHEEP_REGISTRY_NAME, EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT, 0x2c1e17, 0x907666);
         FURNACE_GOLEM_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.FURNACE_GOLEM_REGISTRY_NAME, EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT, 0x56585a, 0xff5501);
         GLOW_SQUID_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.GLOW_SQUID_REGISTRY_NAME, EntityTypesInit.GLOW_SQUID_REGISTRY_OBJECT, 0x095656, 0x80ffc0);
