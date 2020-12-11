@@ -45,11 +45,11 @@ public class FancyChickenModel<T extends Entity> extends AnimalModel<T> {
         this.leftLeg.addCuboid(-1.0F, -2.0F, -3.0F, 3.0F, 7.0F, 3.0F);
         this.leftLeg.setPivot(1.0F, 19.0F, 1.0F);
         this.rightWing = new ModelPart(this, 24, 13);
-        this.rightWing.addCuboid(0.0F, -2.0F, -3.0F, 1.0F, 4.0F, 6.0F);
-        this.rightWing.setPivot(-4.0F, 13.0F, 0.0F);
+        this.rightWing.addCuboid(0.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F);
+        this.rightWing.setPivot(-4.0F, 11.0F, 0.0F);
         this.leftWing = new ModelPart(this, 24, 13);
-        this.leftWing.addCuboid(-1.0F, -2.0F, -3.0F, 1.0F, 4.0F, 6.0F);
-        this.leftWing.setPivot(4.0F, 13.0F, 0.0F);
+        this.leftWing.addCuboid(-1.0F, 0.0F, -3.0F, 1.0F, 4.0F, 6.0F);
+        this.leftWing.setPivot(4.0F, 11.0F, 0.0F);
     }
 
     protected Iterable<ModelPart> getHeadParts() {
