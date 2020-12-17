@@ -120,6 +120,9 @@ public class ModConfig implements ConfigData {
     public EntityConfig skeletonWolf = new EntityConfig(BiomeSpawnHelper.SKELETON_WOLF_SPAWN_BIOMES, 8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig skewbaldChicken = new EntityConfig(BiomeSpawnHelper.SKEWBALD_CHICKEN_SPAWN_BIOMES, 10);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig spottedPig = new EntityConfig(BiomeSpawnHelper.SPOTTED_PIG_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject

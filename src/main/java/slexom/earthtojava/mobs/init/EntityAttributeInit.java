@@ -22,7 +22,7 @@ public class EntityAttributeInit {
         registerBaseChickenAttributes(EntityTypesInit.CLUCKSHROOM_REGISTRY_OBJECT);
         registerBaseChickenAttributes(EntityTypesInit.BRONZED_CHICKEN_REGISTRY_OBJECT);
         registerBaseChickenAttributes(EntityTypesInit.FANCY_CHICKEN_REGISTRY_OBJECT);
-
+        registerBaseChickenAttributes(EntityTypesInit.SKEWBALD_CHICKEN_REGISTRY_OBJECT);
 
         registerBaseCowAttributes(EntityTypesInit.ALBINO_COW_REGISTRY_OBJECT);
         registerBaseCowAttributes(EntityTypesInit.ASHEN_COW_REGISTRY_OBJECT);
@@ -32,7 +32,6 @@ public class EntityAttributeInit {
         registerBaseCowAttributes(EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT);
         registerBaseCowAttributes(EntityTypesInit.MOOBLOOM_REGISTRY_OBJECT);
         registerBaseCowAttributes(EntityTypesInit.MOOLIP_REGISTRY_OBJECT);
-
 
         registerBasePigAttributes(EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT);
         registerBasePigAttributes(EntityTypesInit.PALE_PIG_REGISTRY_OBJECT);
