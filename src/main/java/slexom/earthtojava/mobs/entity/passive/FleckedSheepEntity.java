@@ -3,14 +3,13 @@ package slexom.earthtojava.mobs.entity.passive;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.entity.base.E2JOneColorSheepEntity;
+import slexom.earthtojava.mobs.entity.base.E2JBaseMonoColorSheepEntity;
 
-public class FleckedSheepEntity extends E2JOneColorSheepEntity<FleckedSheepEntity> {
+public class FleckedSheepEntity extends E2JBaseMonoColorSheepEntity<FleckedSheepEntity> {
 
-    public FleckedSheepEntity(EntityType<? extends AnimalEntity> type, World world) {
+    public FleckedSheepEntity(EntityType<FleckedSheepEntity> type, World world) {
         super(type, world, new ItemStack(Blocks.BROWN_WOOL));
     }
 

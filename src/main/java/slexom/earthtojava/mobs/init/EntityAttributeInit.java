@@ -79,7 +79,7 @@ public class EntityAttributeInit {
     }
 
     private static void registerBaseOneColorSheepAttributes(EntityType<? extends LivingEntity> entityType) {
-        RegisterHelper.registerEntityAttributes(entityType, E2JOneColorSheepEntity.createOneColorSheepAttributes());
+        RegisterHelper.registerEntityAttributes(entityType, E2JBaseSheepEntity.createSheepAttributes());
     }
 
     private static void registerBaseRabbitAttributes(EntityType<? extends LivingEntity> entityType) {

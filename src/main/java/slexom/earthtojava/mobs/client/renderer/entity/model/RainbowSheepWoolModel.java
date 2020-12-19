@@ -12,11 +12,9 @@ public class RainbowSheepWoolModel<T extends RainbowSheepEntity> extends Quadrup
         this.head = new ModelPart(this, 0, 0).setTextureSize(64, 64);
         this.head.addCuboid(-4.0F, -5.0F, -4.0F, 8.0F, 8.0F, 8.0F, 0.6F);
         this.head.setPivot(0.0F, 6.0F, -8.0F);
-
         this.torso = new ModelPart(this, 22, 36).setTextureSize(64, 64);
         this.torso.addCuboid(-6.0F, -11.5F, -8.5F, 12.0F, 19.0F, 9.0F, 1.75F);
         this.torso.setPivot(0.0F, 5.0F, 2.0F);
-//        this.legFrontRight.addCuboid(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, 0.5F);
         this.backRightLeg = new ModelPart(this, 0, 29).setTextureSize(64, 64);
         this.backRightLeg.addCuboid(-2.5F, -0.5F, -3.0F, 5.0F, 7.0F, 6.0F, 0.5F);
         this.backRightLeg.setPivot(-3.0F, 12.0F, 7.0F);
@@ -33,13 +31,10 @@ public class RainbowSheepWoolModel<T extends RainbowSheepEntity> extends Quadrup
 
     public void animateModel(T entityIn, float limbSwing, float limbSwingAmount, float partialTick) {
         super.animateModel(entityIn, limbSwing, limbSwingAmount, partialTick);
-        this.head.pivotY = 6.0F + entityIn.getHeadRotationPointY(partialTick) * 9.0F;
-        this.headRotationAngleX = entityIn.getHeadRotationAngleX(partialTick);
+        this.head.pivotY = 6.0F + entityIn.getNeckAngle(partialTick) * 9.0F;
+        this.headRotationAngleX = entityIn.getHeadAngle(partialTick);
     }
 
-    /**
-     * Sets this entity's model rotation angles
-     */
     public void setAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         super.setAngles(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
         this.head.pitch = this.headRotationAngleX;

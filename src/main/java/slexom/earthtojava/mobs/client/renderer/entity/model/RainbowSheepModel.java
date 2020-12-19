@@ -1,13 +1,13 @@
 package slexom.earthtojava.mobs.client.renderer.entity.model;
 
 import net.minecraft.client.model.ModelPart;
-import slexom.earthtojava.mobs.entity.base.E2JOneColorSheepEntity;
+import net.minecraft.client.render.entity.model.SheepEntityModel;
+import slexom.earthtojava.mobs.entity.base.E2JBaseMonoColorSheepEntity;
 
-public class RainbowSheepModel<T extends E2JOneColorSheepEntity<T>> extends E2JOneColorSheepModel<T> {
+public class RainbowSheepModel<T extends E2JBaseMonoColorSheepEntity<T>> extends SheepEntityModel<T> {
 
     public RainbowSheepModel() {
         super();
-
         this.torso = new ModelPart(this, 36, 0);
         this.torso.addCuboid(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, 0.0F);
         this.torso.setPivot(0.0F, 5.0F, 2.0F);
