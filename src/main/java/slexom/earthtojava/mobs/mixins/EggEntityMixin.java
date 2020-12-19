@@ -1,70 +1,38 @@
 package slexom.earthtojava.mobs.mixins;
 
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.entity.projectile.thrown.EggEntity;
-import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
-import net.minecraft.util.hit.HitResult;
-import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import slexom.earthtojava.mobs.init.EntityTypesInit;
 
+import java.util.Random;
+
 @Mixin(EggEntity.class)
-public abstract class EggEntityMixin extends ThrownItemEntity {
+public class EggEntityMixin {
 
-    public EggEntityMixin(World world, LivingEntity owner) {
-        super(EntityType.EGG, owner, world);
-    }
-
-    /**
-     * @author Slexom
-     * @reason Add mod chickens to egg possible spawn
-     */
-    @Overwrite
-    public void onCollision(HitResult hitResult) {
-        if (!this.world.isClient) {
-            if (this.random.nextInt(8) == 0) {
-                int i = 1;
-                if (this.random.nextInt(32) == 0) {
-                    i = 4;
-                }
-                int random = this.random.nextInt(20);
-                for (int j = 0; j < i; ++j) {
-                    ChickenEntity chickenEntity;
-                    switch (random) {
-                        case 2: {
-                            chickenEntity = EntityTypesInit.AMBER_CHICKEN_REGISTRY_OBJECT.create(this.world);
-                            break;
-                        }
-                        case 4: {
-                            chickenEntity = EntityTypesInit.SKEWBALD_CHICKEN_REGISTRY_OBJECT.create(this.world);
-                            break;
-                        }
-                        case 6: {
-                            chickenEntity = EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_OBJECT.create(this.world);
-                            break;
-                        }
-                        case 8: {
-                            chickenEntity = EntityTypesInit.STORMY_CHICKEN_REGISTRY_OBJECT.create(this.world);
-                            break;
-                        }
-                        case 10: {
-                            chickenEntity = EntityTypesInit.BRONZED_CHICKEN_REGISTRY_OBJECT.create(this.world);
-                            break;
-                        }
-                        default: {
-                            chickenEntity = EntityType.CHICKEN.create(this.world);
-                        }
-                    }
-                    chickenEntity.setBreedingAge(-24000);
-                    chickenEntity.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.yaw, 0.0F);
-                    this.world.spawnEntity(chickenEntity);
-                }
-            }
-            this.world.sendEntityStatus(this, (byte) 3);
-            this.remove();
+    @Redirect(
+            method = "onCollision",
+            at = @At(
+                    value = "FIELD",
+                    target = "Lnet/minecraft/entity/EntityType;CHICKEN:Lnet/minecraft/entity/EntityType;")
+    )
+    public EntityType getChickenType() {
+        int random = new Random().nextInt(20);
+        switch (random) {
+            case 2:
+                return EntityTypesInit.AMBER_CHICKEN_REGISTRY_OBJECT;
+            case 4:
+                return EntityTypesInit.SKEWBALD_CHICKEN_REGISTRY_OBJECT;
+            case 6:
+                return EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_OBJECT;
+            case 8:
+                return EntityTypesInit.STORMY_CHICKEN_REGISTRY_OBJECT;
+            case 10:
+                return EntityTypesInit.BRONZED_CHICKEN_REGISTRY_OBJECT;
+            default:
+                return EntityType.CHICKEN;
         }
     }
 
