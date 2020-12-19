@@ -23,10 +23,8 @@ public class E2JWanderingTraderEntity extends WanderingTraderEntity {
                     TradesHelper.POTION_FIRE_RESISTANCE,
                     TradesHelper.POTION_HARMING,
                     TradesHelper.POTION_HEALING,
-                    TradesHelper.POTION_INVISIBILITY,
                     TradesHelper.POTION_LEAPING,
                     TradesHelper.POTION_LONG_FIRE_RESISTANCE,
-                    TradesHelper.POTION_LONG_INVISIBILITY,
                     TradesHelper.POTION_LONG_LEAPING,
                     TradesHelper.POTION_LONG_NIGHT_VISION,
                     TradesHelper.POTION_LONG_POISON,
@@ -35,10 +33,8 @@ public class E2JWanderingTraderEntity extends WanderingTraderEntity {
                     TradesHelper.POTION_LONG_SLOWNESS,
                     TradesHelper.POTION_LONG_STRENGTH,
                     TradesHelper.POTION_LONG_SWIFTNESS,
-                    TradesHelper.POTION_LONG_TURTLE_MASTER,
                     TradesHelper.POTION_LONG_WATER_BREATHING,
                     TradesHelper.POTION_LONG_WEAKNESS,
-                    TradesHelper.POTION_LUCK,
                     TradesHelper.POTION_NIGHT_VISION,
                     TradesHelper.POTION_POISON,
                     TradesHelper.POTION_REGENERATION,
@@ -53,13 +49,18 @@ public class E2JWanderingTraderEntity extends WanderingTraderEntity {
                     TradesHelper.POTION_STRONG_SLOWNESS,
                     TradesHelper.POTION_STRONG_STRENGTH,
                     TradesHelper.POTION_STRONG_SWIFTNESS,
-                    TradesHelper.POTION_STRONG_TURTLE_MASTER,
                     TradesHelper.POTION_SWIFTNESS,
-                    TradesHelper.POTION_TURTLE_MASTER,
                     TradesHelper.POTION_WATER_BREATHING,
                     TradesHelper.POTION_WEAKNESS,
             },
-            2, new TradeOffers.Factory[]{new TradesHelper.ItemsForRubiesTrade(ItemInit.MUD_BUCKET, 1, 1, 4, 1)}
+            2, new TradeOffers.Factory[]{
+                    TradesHelper.POTION_INVISIBILITY,
+                    TradesHelper.POTION_LONG_INVISIBILITY,
+                    TradesHelper.POTION_LONG_TURTLE_MASTER,
+                    TradesHelper.POTION_LUCK,
+                    TradesHelper.POTION_STRONG_TURTLE_MASTER,
+                    TradesHelper.POTION_TURTLE_MASTER,
+            }
     ));
 
     public E2JWanderingTraderEntity(EntityType<? extends WanderingTraderEntity> type, World worldIn) {
@@ -76,7 +77,8 @@ public class E2JWanderingTraderEntity extends WanderingTraderEntity {
         if (factorys != null && factorys2 != null) {
             TradeOfferList traderOfferList = this.getOffers();
             this.fillRecipesFromPool(traderOfferList, factorys, 8);
-            TradeOffers.Factory factory = factorys2[0];
+            int i = this.random.nextInt(factorys2.length);
+            TradeOffers.Factory factory = factorys2[i];
             TradeOffer tradeOffer = factory.create(this, this.random);
             if (tradeOffer != null) {
                 traderOfferList.add(tradeOffer);
