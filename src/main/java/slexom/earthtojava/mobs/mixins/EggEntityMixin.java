@@ -8,20 +8,21 @@ import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import slexom.earthtojava.mobs.init.EntityTypesInit;
 
 @Mixin(EggEntity.class)
 public abstract class EggEntityMixin extends ThrownItemEntity {
-
 
     public EggEntityMixin(World world, LivingEntity owner) {
         super(EntityType.EGG, owner, world);
     }
 
     /**
-     * Overwrite original method and add mod chickens to possible spawn
-     * @param hitResult
+     * @author Slexom
+     * @reason Add mod chickens to egg possible spawn
      */
+    @Overwrite
     public void onCollision(HitResult hitResult) {
         if (!this.world.isClient) {
             if (this.random.nextInt(8) == 0) {
