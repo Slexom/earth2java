@@ -22,15 +22,15 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import slexom.earthtojava.mobs.block.RainbowBedBlock;
 import slexom.earthtojava.mobs.init.BlockEntityTypeInit;
-import slexom.earthtojava.mobs.tileentity.RainbowBedTileEntity;
+import slexom.earthtojava.mobs.tileentity.RainbowBedBlockEntity;
 
 @Environment(EnvType.CLIENT)
-public class RainbowBedTileEntityRenderer extends BlockEntityRenderer<RainbowBedTileEntity> {
+public class RainbowBedBlockEntityRenderer extends BlockEntityRenderer<RainbowBedBlockEntity> {
     private final ModelPart field_228843_a_;
     private final ModelPart field_228844_c_;
     private final ModelPart[] legs = new ModelPart[4];
 
-    public RainbowBedTileEntityRenderer(BlockEntityRenderDispatcher p_i226004_1_) {
+    public RainbowBedBlockEntityRenderer(BlockEntityRenderDispatcher p_i226004_1_) {
         super(p_i226004_1_);
         this.field_228843_a_ = new ModelPart(64, 64, 0, 0);
         this.field_228843_a_.addCuboid(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F, 0.0F);
@@ -54,12 +54,12 @@ public class RainbowBedTileEntityRenderer extends BlockEntityRenderer<RainbowBed
         this.legs[3].roll = (float) Math.PI;
     }
 
-    public void render(RainbowBedTileEntity tileEntityIn, float partialTicks, MatrixStack matrixStackIn, VertexConsumerProvider bufferIn, int combinedLightIn, int combinedOverlayIn) {
+    public void render(RainbowBedBlockEntity tileEntityIn, float partialTicks, MatrixStack matrixStackIn, VertexConsumerProvider bufferIn, int combinedLightIn, int combinedOverlayIn) {
         SpriteIdentifier material = new SpriteIdentifier(TexturedRenderLayers.BEDS_ATLAS_TEXTURE, new Identifier("earthtojavamobs:entity/bed/rainbow"));
         World world = tileEntityIn.getWorld();
         if (world != null) {
             BlockState blockstate = tileEntityIn.getCachedState();
-            DoubleBlockProperties.PropertySource<RainbowBedTileEntity> icallbackwrapper = DoubleBlockProperties.toPropertySource(BlockEntityTypeInit.RAINBOW_BED, RainbowBedBlock::getBedPart, RainbowBedBlock::getOppositePartDirection, ChestBlock.FACING, blockstate, world, tileEntityIn.getPos(), (worldAccess, blockPos) -> false);
+            DoubleBlockProperties.PropertySource<RainbowBedBlockEntity> icallbackwrapper = DoubleBlockProperties.toPropertySource(BlockEntityTypeInit.RAINBOW_BED, RainbowBedBlock::getBedPart, RainbowBedBlock::getOppositePartDirection, ChestBlock.FACING, blockstate, world, tileEntityIn.getPos(), (worldAccess, blockPos) -> false);
             int i = icallbackwrapper.apply(new LightmapCoordinatesRetriever<>()).get(combinedLightIn);
             this.method_3558(matrixStackIn, bufferIn, blockstate.get(RainbowBedBlock.PART) == BedPart.HEAD, blockstate.get(RainbowBedBlock.FACING), material, i, combinedOverlayIn, false);
         } else {

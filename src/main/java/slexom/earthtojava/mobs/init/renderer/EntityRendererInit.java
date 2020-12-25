@@ -6,7 +6,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.entity.EntityType;
 import slexom.earthtojava.mobs.client.renderer.entity.*;
-import slexom.earthtojava.mobs.client.renderer.tileentity.RainbowBedTileEntityRenderer;
+import slexom.earthtojava.mobs.client.renderer.tileentity.RainbowBedBlockEntityRenderer;
 import slexom.earthtojava.mobs.init.BlockEntityTypeInit;
 import slexom.earthtojava.mobs.init.EntityTypesInit;
 
@@ -15,16 +15,17 @@ public class EntityRendererInit {
     public static void init() {
         registerEntitiesRenderer();
         registerProjectileRenderer();
-        registerTileEntityRenderer();
+        registerBlockEntityRenderer();
     }
 
-    private static void registerTileEntityRenderer() {
-        BlockEntityRendererRegistry.INSTANCE.register(BlockEntityTypeInit.RAINBOW_BED, RainbowBedTileEntityRenderer::new);
+    private static void registerBlockEntityRenderer() {
+        BlockEntityRendererRegistry.INSTANCE.register(BlockEntityTypeInit.RAINBOW_BED, RainbowBedBlockEntityRenderer::new);
     }
 
     private static void registerProjectileRenderer() {
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.MELON_SEED_PROJECTILE_REGISTRY_OBJECT, (dispatcher, context) -> new FlyingItemEntityRenderer<>(dispatcher, MinecraftClient.getInstance().getItemRenderer()));
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.BONE_SHARD_REGISTRY_OBJECT, (dispatcher, context) -> new FlyingItemEntityRenderer<>(dispatcher, MinecraftClient.getInstance().getItemRenderer()));
+        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.ROTTEN_FLESH_PROJECTILE_REGISTRY_OBJECT, (dispatcher, context) -> new FlyingItemEntityRenderer<>(dispatcher, MinecraftClient.getInstance().getItemRenderer()));
     }
 
     private static void registerEntitiesRenderer() {
@@ -81,6 +82,8 @@ public class EntityRendererInit {
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.WANDERING_TRADER_REGISTRY_OBJECT, (dispatcher, context) -> new E2JWanderingTraderRenderer(dispatcher));
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_OBJECT, (dispatcher, context) -> new RainbowSheepRenderer(dispatcher));
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.FANCY_CHICKEN_REGISTRY_OBJECT, (dispatcher, context) -> new FancyChickenRenderer(dispatcher));
+        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_OBJECT, (dispatcher, context) -> new BoulderingZombieRenderer(dispatcher));
+        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_OBJECT, (dispatcher, context) -> new LobberZombieRenderer(dispatcher));
     }
 
     private static void registerChickenEntityRenderer(EntityType<?> entity, String identifier) {
@@ -103,5 +106,8 @@ public class EntityRendererInit {
         EntityRendererRegistry.INSTANCE.register(entity, (dispatcher, context) -> new E2JRabbitRenderer(dispatcher, identifier));
     }
 
+    private static void registerZombieEntityRenderer(EntityType<?> entity, String identifier) {
+        EntityRendererRegistry.INSTANCE.register(entity, (dispatcher, context) -> new E2JZombieRenderer(dispatcher, identifier));
+    }
 
 }

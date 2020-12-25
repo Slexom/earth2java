@@ -12,7 +12,6 @@ public class BlockInit {
     public static Block BUTTERCUP;
     public static Block PINK_DAISY;
     public static Block CARVED_MELON;
-    //  public static E2JFlowerPotBlock FLOWER_POT;
     public static Block MELON_GOLEM_HEAD_BLINK;
     public static Block MELON_GOLEM_HEAD_SHOOT;
     public static Block MELON_LANTERN;

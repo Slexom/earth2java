@@ -42,6 +42,9 @@ public class ModConfig implements ConfigData {
     public EntityConfig boldStripedRabbit = new EntityConfig(BiomeSpawnHelper.BOLD_STRIPED_RABBIT_SPAWN_BIOMES, 8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig boulderingZombie = new EntityConfig(BiomeSpawnHelper.BOULDERING_ZOMBIE_SPAWN_BIOMES, 15);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig bronzedChicken = new EntityConfig(BiomeSpawnHelper.BRONZED_CHICKEN_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
@@ -76,6 +79,9 @@ public class ModConfig implements ConfigData {
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig jumboRabbit = new EntityConfig(BiomeSpawnHelper.JUMBO_RABBIT_SPAWN_BIOMES, 4);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig lobberZombie = new EntityConfig(BiomeSpawnHelper.LOBBER_ZOMBIE_SPAWN_BIOMES, 15);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig melonGolem = new EntityConfig(BiomeSpawnHelper.MELON_GOLEM_SPAWN_BIOMES, 10);

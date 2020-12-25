@@ -64,6 +64,9 @@ public class EntityAttributeInit {
         RegisterHelper.registerEntityAttributes(EntityTypesInit.JOLLY_LLAMA_REGISTRY_OBJECT, E2JBaseLlamaEntity.createJollyLlamaAttributes());
 
         RegisterHelper.registerEntityAttributes(EntityTypesInit.WANDERING_TRADER_REGISTRY_OBJECT, E2JWanderingTraderEntity.createWanderingTraderAttributes());
+
+        RegisterHelper.registerEntityAttributes(EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_OBJECT, E2JBaseZombieEntity.createZombieAttributes());
+        RegisterHelper.registerEntityAttributes(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_OBJECT, E2JBaseZombieEntity.createZombieAttributes());
     }
 
     private static void registerBaseChickenAttributes(EntityType<? extends LivingEntity> entityType) {
