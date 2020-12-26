@@ -106,8 +106,8 @@ public class EntityRendererInit {
         EntityRendererRegistry.INSTANCE.register(entity, (dispatcher, context) -> new E2JRabbitRenderer(dispatcher, identifier));
     }
 
-    private static void registerZombieEntityRenderer(EntityType<?> entity, String identifier) {
-        EntityRendererRegistry.INSTANCE.register(entity, (dispatcher, context) -> new E2JZombieRenderer(dispatcher, identifier));
-    }
+//    private static void registerZombieEntityRenderer(EntityType<?> entity, String identifier) {
+//        EntityRendererRegistry.INSTANCE.register(entity, (dispatcher, context) -> new E2JZombieRenderer(dispatcher, identifier));
+//    }
 
 }

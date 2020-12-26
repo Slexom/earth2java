@@ -1,13 +1,14 @@
 package slexom.earthtojava.mobs.client.renderer.entity;
 
-import net.minecraft.client.render.entity.EntityRenderDispatcher;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.client.render.entity.EntityRendererFactory.Context;
 import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.client.render.entity.feature.SaddleFeatureRenderer;
+import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.render.entity.model.PigEntityModel;
 import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.util.Identifier;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import slexom.earthtojava.mobs.client.renderer.entity.feature.E2JBasePigSaddleLayer;
 import slexom.earthtojava.mobs.entity.base.E2JBasePigEntity;
 
 import java.text.MessageFormat;
@@ -17,9 +18,9 @@ public class E2JPigRenderer extends MobEntityRenderer<E2JBasePigEntity<? extends
 
     private final String registryName;
 
-    public E2JPigRenderer(EntityRenderDispatcher renderManagerIn, String registryName) {
-        super(renderManagerIn, new PigEntityModel<>(), 0.7F);
-        this.addFeature(new E2JBasePigSaddleLayer(this));
+    public E2JPigRenderer(Context context, String registryName) {
+        super(context, new PigEntityModel<>(context.getPart(EntityModelLayers.PIG)), 0.7F);
+        this.addFeature(new SaddleFeatureRenderer(this, new PigEntityModel(context.getPart(EntityModelLayers.PIG_SADDLE)), new Identifier("textures/entity/pig/pig_saddle.png")));
         this.registryName = registryName;
     }
 

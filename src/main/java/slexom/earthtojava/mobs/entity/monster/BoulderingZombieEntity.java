@@ -32,11 +32,11 @@ public class BoulderingZombieEntity extends E2JBaseZombieEntity {
     }
 
     public boolean isClimbingWall() {
-        return ((Byte) this.dataTracker.get(IS_CLIMBING) & 1) != 0;
+        return (this.dataTracker.get(IS_CLIMBING) & 1) != 0;
     }
 
     public void setClimbingWall(boolean climbing) {
-        byte b = (Byte) this.dataTracker.get(IS_CLIMBING);
+        byte b = this.dataTracker.get(IS_CLIMBING);
         if (climbing) {
             b = (byte) (b | 1);
         } else {

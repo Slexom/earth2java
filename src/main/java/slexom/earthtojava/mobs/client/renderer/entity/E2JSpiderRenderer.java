@@ -1,9 +1,11 @@
 package slexom.earthtojava.mobs.client.renderer.entity;
 
+import net.minecraft.client.render.entity.EntityRendererFactory.Context;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.render.entity.model.SpiderEntityModel;
 import net.minecraft.entity.mob.SpiderEntity;
 import net.minecraft.util.Identifier;
@@ -16,8 +18,8 @@ public class E2JSpiderRenderer extends MobEntityRenderer<E2JBaseSpiderEntity<? e
 
     private final String registryName;
 
-    public E2JSpiderRenderer(EntityRenderDispatcher renderManagerIn, String registryName) {
-        super(renderManagerIn, new SpiderEntityModel<>(), 0.8F);
+    public E2JSpiderRenderer(Context context, String registryName) {
+        super(context, new SpiderEntityModel<>(context.getPart(EntityModelLayers.SPIDER)), 0.8F);
         this.registryName = registryName;
     }
 

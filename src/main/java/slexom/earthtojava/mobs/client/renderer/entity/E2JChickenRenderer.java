@@ -2,9 +2,10 @@ package slexom.earthtojava.mobs.client.renderer.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.entity.EntityRenderDispatcher;
+import net.minecraft.client.render.entity.EntityRendererFactory.Context;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.entity.model.ChickenEntityModel;
+import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
@@ -16,8 +17,8 @@ import java.text.MessageFormat;
 public class E2JChickenRenderer extends MobEntityRenderer<E2JBaseChickenEntity<? extends ChickenEntity>, ChickenEntityModel<E2JBaseChickenEntity<? extends ChickenEntity>>> {
     private final String registryName;
 
-    public E2JChickenRenderer(EntityRenderDispatcher renderManagerIn, String registryName) {
-        super(renderManagerIn, new ChickenEntityModel<>(), 0.3F);
+    public E2JChickenRenderer(Context context, String registryName) {
+        super(context, new ChickenEntityModel<>(context.getPart(EntityModelLayers.CHICKEN)), 0.3F);
         this.registryName = registryName;
     }
 

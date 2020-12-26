@@ -1,11 +1,12 @@
 package slexom.earthtojava.mobs.client.renderer.entity;
 
-import net.minecraft.client.render.entity.EntityRenderDispatcher;
-import net.minecraft.client.render.entity.MobEntityRenderer;
-import net.minecraft.client.render.entity.model.SheepEntityModel;
-import net.minecraft.util.Identifier;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.render.entity.EntityRendererFactory.Context;
+import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.client.render.entity.model.EntityModelLayers;
+import net.minecraft.client.render.entity.model.SheepEntityModel;
+import net.minecraft.util.Identifier;
 import slexom.earthtojava.mobs.client.renderer.entity.feature.E2JMonoColorSheepWoolFeature;
 import slexom.earthtojava.mobs.entity.base.E2JBaseMonoColorSheepEntity;
 
@@ -16,8 +17,8 @@ public class E2JMonoColorSheepRenderer extends MobEntityRenderer<E2JBaseMonoColo
 
     private final String registryName;
 
-    public E2JMonoColorSheepRenderer(EntityRenderDispatcher entityRenderDispatcher, String registryName) {
-        super(entityRenderDispatcher, new SheepEntityModel(), 0.7F);
+    public E2JMonoColorSheepRenderer(Context context, String registryName) {
+        super(context, new SheepEntityModel(context.getPart(EntityModelLayers.SHEEP)), 0.7F);
         this.registryName = registryName;
         String woolTexture = MessageFormat.format("earthtojavamobs:textures/mobs/sheep/{0}/{0}_fur.png", this.registryName, this.registryName);
         this.addFeature(new E2JMonoColorSheepWoolFeature(this, woolTexture));
