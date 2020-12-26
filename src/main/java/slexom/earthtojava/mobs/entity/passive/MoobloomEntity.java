@@ -1,5 +1,6 @@
 package slexom.earthtojava.mobs.entity.passive;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.Shearable;
@@ -47,7 +48,7 @@ public class MoobloomEntity extends E2JBaseCowEntity<MoobloomEntity> implements 
         this.world.playSoundFromEntity((PlayerEntity) null, this, SoundEvents.ENTITY_MOOSHROOM_SHEAR, shearedSoundCategory, 1.0F, 1.0F);
         if (!this.world.isClient()) {
             ((ServerWorld) this.world).spawnParticles(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
-            this.remove();
+            this.remove(RemovalReason.KILLED);
             CowEntity cowEntity = (CowEntity) EntityType.COW.create(this.world);
             cowEntity.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.yaw, this.pitch);
             cowEntity.setHealth(this.getHealth());

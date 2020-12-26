@@ -16,13 +16,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import slexom.earthtojava.mobs.block.CarvedMelonBlock;
 import slexom.earthtojava.mobs.init.BlockInit;
-import slexom.earthtojava.mobs.world.spawner.E2JWanderingTraderManager;
 
 public class ModEvents {
 
     public static void init() {
         melonBlockShearEvent();
-        registerTraderSpawner();
     }
 
     private static void melonBlockShearEvent() {
@@ -53,10 +51,4 @@ public class ModEvents {
         });
     }
 
-    private static void registerTraderSpawner() {
-        ServerTickEvents.END_SERVER_TICK.register(minecraftServer -> {
-            ServerWorld world = minecraftServer.getOverworld();
-            E2JWanderingTraderManager.tick(world);
-        });
-    }
 }

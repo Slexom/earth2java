@@ -177,7 +177,7 @@ public final class BiomeSpawnHelper {
         BuiltinRegistries.BIOME.stream().forEach(biome -> {
             biome
                     .getSpawnSettings()
-                    .getSpawnEntry(SpawnGroup.MONSTER)
+                    .getSpawnEntries(SpawnGroup.MONSTER)
                     .stream()
                     .filter(spawnEntry -> spawnEntry.type.equals(baseEntity))
                     .findFirst()

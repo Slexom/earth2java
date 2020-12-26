@@ -10,4 +10,5 @@ public class SkewbaldChickenEntity extends E2JBaseChickenEntity<SkewbaldChickenE
     public SkewbaldChickenEntity(EntityType<SkewbaldChickenEntity> type, World world) {
         super(type, world);
     }
+
 }

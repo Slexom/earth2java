@@ -10,4 +10,5 @@ public class FancyChickenEntity extends E2JBaseChickenEntity<FancyChickenEntity>
     public FancyChickenEntity(EntityType<FancyChickenEntity> type, World world) {
         super(type, world);
     }
+
 }

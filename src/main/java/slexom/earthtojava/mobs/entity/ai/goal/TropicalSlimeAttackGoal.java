@@ -24,7 +24,7 @@ public class TropicalSlimeAttackGoal extends Goal {
         } else if (!livingentity.isAlive()) {
             return false;
         } else {
-            return (!(livingentity instanceof PlayerEntity) || !((PlayerEntity) livingentity).abilities.invulnerable) && this.slime.getMoveControl() instanceof TropicalSlimeMoveController;
+            return (!(livingentity instanceof PlayerEntity) || !((PlayerEntity) livingentity).getAbilities().invulnerable) && this.slime.getMoveControl() instanceof TropicalSlimeMoveController;
         }
     }
 
@@ -39,7 +39,7 @@ public class TropicalSlimeAttackGoal extends Goal {
             return false;
         } else if (!livingentity.isAlive()) {
             return false;
-        } else if (livingentity instanceof PlayerEntity && ((PlayerEntity) livingentity).abilities.invulnerable) {
+        } else if (livingentity instanceof PlayerEntity && ((PlayerEntity) livingentity).getAbilities().invulnerable) {
             return false;
         } else {
             return --this.growTieredTimer > 0;

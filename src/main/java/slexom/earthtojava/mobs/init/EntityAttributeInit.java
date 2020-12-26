@@ -6,7 +6,6 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.passive.SquidEntity;
 import slexom.earthtojava.mobs.entity.base.*;
-import slexom.earthtojava.mobs.entity.merchant.villager.E2JWanderingTraderEntity;
 import slexom.earthtojava.mobs.entity.monster.BoneSpiderEntity;
 import slexom.earthtojava.mobs.entity.monster.SkeletonWolfEntity;
 import slexom.earthtojava.mobs.entity.passive.HornedSheepEntity;
@@ -62,8 +61,6 @@ public class EntityAttributeInit {
         RegisterHelper.registerEntityAttributes(EntityTypesInit.SKELETON_WOLF_REGISTRY_OBJECT, SkeletonWolfEntity.createSkeletonWolfAttributes());
 
         RegisterHelper.registerEntityAttributes(EntityTypesInit.JOLLY_LLAMA_REGISTRY_OBJECT, E2JBaseLlamaEntity.createJollyLlamaAttributes());
-
-        RegisterHelper.registerEntityAttributes(EntityTypesInit.WANDERING_TRADER_REGISTRY_OBJECT, E2JWanderingTraderEntity.createWanderingTraderAttributes());
 
         RegisterHelper.registerEntityAttributes(EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_OBJECT, E2JBaseZombieEntity.createZombieAttributes());
         RegisterHelper.registerEntityAttributes(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_OBJECT, E2JBaseZombieEntity.createZombieAttributes());

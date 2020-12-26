@@ -15,8 +15,7 @@ public class Earth2JavaClientMod implements ClientModInitializer {
     }
 
     private void addBedTextureToAtlas() {
-        Identifier sprite = new Identifier("earthtojavamobs:entity/bed/rainbow");
-        ClientSpriteRegistryCallback.event(TexturedRenderLayers.BEDS_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(sprite));
-
+//        Identifier sprite = new Identifier("earthtojavamobs:entity/bed/rainbow");
+//        ClientSpriteRegistryCallback.event(TexturedRenderLayers.BEDS_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(sprite));
     }
 }

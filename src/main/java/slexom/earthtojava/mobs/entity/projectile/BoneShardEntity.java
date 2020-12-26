@@ -64,7 +64,7 @@ public class BoneShardEntity extends ThrownItemEntity {
         super.onCollision(hitResult);
         if (!this.world.isClient) {
             this.world.sendEntityStatus(this, (byte) 3);
-            this.remove();
+            this.discard();
         }
 
     }

@@ -64,9 +64,9 @@ public class TropicalSlimeEntity extends HostileEntity {
 
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemstack = player.getStackInHand(hand);
-        if (itemstack.getItem() == Items.BUCKET && !player.abilities.creativeMode && !this.isBaby()) {
+        if (itemstack.getItem() == Items.BUCKET && !player.getAbilities().creativeMode && !this.isBaby()) {
             if (!this.world.isClient) {
-                this.remove();
+                this.remove(RemovalReason.KILLED);
                 this.world.addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 0.0D, 0.0D, 0.0D);
                 player.playSound(SoundEvents.ENTITY_SLIME_SQUISH, 1.0F, 1.0F);
                 spawnWater();
@@ -83,7 +83,7 @@ public class TropicalSlimeEntity extends HostileEntity {
 
     private void giveTropicalFishBucket(PlayerEntity player, Hand hand, ItemStack itemstack) {
         itemstack.decrement(1);
-        if (!player.inventory.insertStack(new ItemStack(Items.TROPICAL_FISH_BUCKET))) {
+        if (!player.getInventory().insertStack(new ItemStack(Items.TROPICAL_FISH_BUCKET))) {
             player.dropItem(new ItemStack(Items.TROPICAL_FISH_BUCKET), false);
         }
     }

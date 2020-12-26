@@ -5,6 +5,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.resource.language.I18n;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.text.LiteralText;
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class E2JSpawnEggItem extends SpawnEggItem {
 
-    public E2JSpawnEggItem(EntityType<?> type, int primaryColor, int secondaryColor, Settings settings) {
+    public E2JSpawnEggItem(EntityType<? extends MobEntity> type, int primaryColor, int secondaryColor, Settings settings) {
         super(type, primaryColor, secondaryColor, settings);
     }
 
