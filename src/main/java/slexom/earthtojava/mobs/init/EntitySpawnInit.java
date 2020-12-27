@@ -48,7 +48,7 @@ public class EntitySpawnInit {
         registerAnimalEntitySpawn(EntityTypesInit.PATCHED_SHEEP_REGISTRY_OBJECT, config.patchedSheep);
         registerAnimalEntitySpawn(EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT, config.piebaldPig.spawnBiomes.toArray(new String[0]), config.piebaldPig);
         registerAnimalEntitySpawn(EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_OBJECT, config.pinkFootedPig.spawnBiomes.toArray(new String[0]), config.pinkFootedPig);
-        registerAnimalEntitySpawn(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_OBJECT, config.rainbowSheep.spawnBiomes.toArray(new String[0]), config.rainbowSheep);
+       //  registerAnimalEntitySpawn(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_OBJECT, config.rainbowSheep.spawnBiomes.toArray(new String[0]), config.rainbowSheep);
         registerAnimalEntitySpawn(EntityTypesInit.ROCKY_SHEEP_REGISTRY_OBJECT, config.rockySheep.spawnBiomes.toArray(new String[0]), config.rockySheep);
         registerAnimalEntitySpawn(EntityTypesInit.SKEWBALD_CHICKEN_REGISTRY_OBJECT, config.skewbaldChicken);
         registerAnimalEntitySpawn(EntityTypesInit.SPOTTED_PIG_REGISTRY_OBJECT, config.spottedPig.spawnBiomes.toArray(new String[0]), config.spottedPig);
@@ -113,8 +113,8 @@ public class EntitySpawnInit {
     }
 
     private static void registerGlowingSquidSpawn() {
-        BiomeSpawnHelper.setWaterCreatureSpawnBiomes(EntityTypesInit.GLOW_SQUID_REGISTRY_OBJECT, config.glowSquid.spawnBiomes.toArray(new String[0]), config.glowSquid.weight, config.glowSquid.groupMin, config.glowSquid.groupMax);
-        SpawnRestrictionAccessor.callRegister(EntityTypesInit.GLOW_SQUID_REGISTRY_OBJECT, SpawnRestriction.Location.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, GlowSquidEntity::canGlowingSquidSpawn);
+//        BiomeSpawnHelper.setWaterCreatureSpawnBiomes(EntityTypesInit.GLOW_SQUID_REGISTRY_OBJECT, config.glowSquid.spawnBiomes.toArray(new String[0]), config.glowSquid.weight, config.glowSquid.groupMin, config.glowSquid.groupMax);
+//        SpawnRestrictionAccessor.callRegister(EntityTypesInit.GLOW_SQUID_REGISTRY_OBJECT, SpawnRestriction.Location.IN_WATER, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, GlowSquidEntity::canGlowingSquidSpawn);
 
     }
 }

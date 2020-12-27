@@ -106,7 +106,7 @@ public class ItemInit {
         PIEBALD_PIG_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.PIEBALD_PIG_REGISTRY_NAME, EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT, 0xd7c0a9, 0x9b4628);
         PINK_FOOTED_PIG_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_NAME, EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_OBJECT, 0x514246, 0xb39da2);
         PINTO_COW_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.PINTO_COW_REGISTRY_NAME, EntityTypesInit.PINTO_COW_REGISTRY_OBJECT, 0xc16921, 0xd8c4ad);
-        RAINBOW_SHEEP_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_NAME, EntityTypesInit.RAINBOW_SHEEP_REGISTRY_OBJECT, 0xffffff, 0xffffff);
+       // RAINBOW_SHEEP_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_NAME, EntityTypesInit.RAINBOW_SHEEP_REGISTRY_OBJECT, 0xffffff, 0xffffff);
         ROCKY_SHEEP_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.ROCKY_SHEEP_REGISTRY_NAME, EntityTypesInit.ROCKY_SHEEP_REGISTRY_OBJECT, 0xa69f9b, 0xe9d0bd);
         SKELETON_WOLF_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.SKELETON_WOLF_REGISTRY_NAME, EntityTypesInit.SKELETON_WOLF_REGISTRY_OBJECT, 0xededed, 0xbababa);
         SKEWBALD_CHICKEN_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.SKEWBALD_CHICKEN_REGISTRY_NAME, EntityTypesInit.SKEWBALD_CHICKEN_REGISTRY_OBJECT, 0xffe8cf, 0x353028);
