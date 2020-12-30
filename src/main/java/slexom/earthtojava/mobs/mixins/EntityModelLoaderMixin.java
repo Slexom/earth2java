@@ -13,7 +13,7 @@ import slexom.earthtojava.mobs.init.RegisterHelper;
 public class EntityModelLoaderMixin {
 
     @Inject(method = "getModelPart", at = @At("HEAD"), cancellable = true)
-    public void hookGetModelPart(EntityModelLayer layer, CallbackInfoReturnable<ModelPart> returnable) {
+    public void E2JGetModelPart(EntityModelLayer layer, CallbackInfoReturnable<ModelPart> returnable) {
         if (RegisterHelper.E2J_MODEL_LAYERS.containsKey(layer)) {
             returnable.setReturnValue(RegisterHelper.E2J_MODEL_LAYERS.get(layer).createModel());
         }

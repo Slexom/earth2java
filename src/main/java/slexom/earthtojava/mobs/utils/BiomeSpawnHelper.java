@@ -122,7 +122,7 @@ public final class BiomeSpawnHelper {
         });
         for (String biomeCategory : biomeCategories) {
             BuiltinRegistries.BIOME.forEach(biome -> {
-                if (biome.getCategory().toString().toUpperCase().equals(biomeCategory.toUpperCase())) {
+                if (biome.getCategory().toString().equalsIgnoreCase(biomeCategory)) {
                     biomesFromCategories.add(BuiltinRegistries.BIOME.getId(biome).toString());
                 }
             });
