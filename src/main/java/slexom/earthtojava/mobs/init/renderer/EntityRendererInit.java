@@ -61,7 +61,7 @@ public class EntityRendererInit {
     }
 
     private static void registerSpecialVariantEntitiesRenderer() {
-//        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.CLUCKSHROOM_REGISTRY_OBJECT, (dispatcher, context) -> new CluckshroomRenderer(dispatcher));
+        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.CLUCKSHROOM_REGISTRY_OBJECT, CluckshroomRenderer::new);
 //        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.GLOW_SQUID_REGISTRY_OBJECT, (dispatcher, context) -> new GlowSquidRenderer(dispatcher));
 //        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.HORNED_SHEEP_REGISTRY_OBJECT, (dispatcher, context) -> new HornedSheepRenderer(dispatcher));
 //        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.MOOBLOOM_REGISTRY_OBJECT, (dispatcher, context) -> new MoobloomRenderer(dispatcher));
@@ -82,7 +82,7 @@ public class EntityRendererInit {
 //        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_OBJECT, (dispatcher, context) -> new LobberZombieRenderer(dispatcher));
     }
 
-    private static <E extends E2JBaseChickenEntity> void registerChickenEntityRenderer(EntityType<E> entity, String identifier) {
+    private static <E extends E2JBaseChickenEntity<E>> void registerChickenEntityRenderer(EntityType<E> entity, String identifier) {
         EntityRendererRegistry.INSTANCE.register(entity, (context) -> new E2JChickenRenderer(context, identifier));
     }
 

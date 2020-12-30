@@ -31,7 +31,7 @@ public class EntitySpawnInit {
         registerAnimalEntitySpawn(EntityTypesInit.BOLD_STRIPED_RABBIT_REGISTRY_OBJECT, config.boldStripedRabbit);
         registerAnimalEntitySpawn(EntityTypesInit.COOKIE_COW_REGISTRY_OBJECT, config.cookieCow);
         registerAnimalEntitySpawn(EntityTypesInit.PINTO_COW_REGISTRY_OBJECT, config.pintoCow);
-        // registerAnimalEntitySpawn(EntityTypesInit.CLUCKSHROOM_REGISTRY_OBJECT, config.cluckshroom.spawnBiomes.toArray(new String[0]), config.cluckshroom);
+        registerAnimalEntitySpawn(EntityTypesInit.CLUCKSHROOM_REGISTRY_OBJECT, config.cluckshroom.spawnBiomes.toArray(new String[0]), config.cluckshroom);
         // registerAnimalEntitySpawn(EntityTypesInit.FANCY_CHICKEN_REGISTRY_OBJECT, config.fancyChicken);
         registerAnimalEntitySpawn(EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT, config.fleckedSheep.spawnBiomes.toArray(new String[0]), config.fleckedSheep);
         registerAnimalEntitySpawn(EntityTypesInit.HARELEQUIN_RABBIT_REGISTRY_OBJECT, config.harelequinRabbit.spawnBiomes.toArray(new String[0]), config.harelequinRabbit);

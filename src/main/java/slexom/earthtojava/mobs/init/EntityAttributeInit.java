@@ -48,7 +48,7 @@ public class EntityAttributeInit {
         registerBaseOneColorSheepAttributes(EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT);
         registerBaseOneColorSheepAttributes(EntityTypesInit.PATCHED_SHEEP_REGISTRY_OBJECT);
         registerBaseOneColorSheepAttributes(EntityTypesInit.ROCKY_SHEEP_REGISTRY_OBJECT);
-       // registerBaseOneColorSheepAttributes(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_OBJECT);
+        registerBaseOneColorSheepAttributes(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_OBJECT);
         RegisterHelper.registerEntityAttributes(EntityTypesInit.HORNED_SHEEP_REGISTRY_OBJECT, HornedSheepEntity.createHornedSheepAttributes());
 
         RegisterHelper.registerEntityAttributes(EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT, IronGolemEntity.createIronGolemAttributes());
