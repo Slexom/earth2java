@@ -5,6 +5,9 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.client.model.ModelPart;
+import net.minecraft.client.model.TexturedModelData;
+import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.resource.language.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -25,10 +28,13 @@ import slexom.earthtojava.mobs.Earth2JavaMod;
 import slexom.earthtojava.mobs.utils.Utils;
 
 import javax.annotation.Nullable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RegisterHelper {
     private static final Item.Settings commonSettings = new Item.Settings().group(Earth2JavaMod.ITEM_GROUP);
+    public static Map<EntityModelLayer, TexturedModelData>  E2J_MODEL_LAYERS = new HashMap<>();
 
     public static Block registerBlock(String registryName, Block block, boolean registerItem) {
         if (registerItem) {
@@ -63,4 +69,9 @@ public class RegisterHelper {
         FabricDefaultAttributeRegistry.register(entityType, attributes);
     }
 
+    public static EntityModelLayer registerEntityModelLayer(String registryName, TexturedModelData modelPart) {
+        EntityModelLayer entityModelLayer = new EntityModelLayer(new Identifier(Earth2JavaMod.MOD_ID, registryName), "main");
+        E2J_MODEL_LAYERS.put(entityModelLayer, modelPart);
+        return entityModelLayer;
+    }
 }

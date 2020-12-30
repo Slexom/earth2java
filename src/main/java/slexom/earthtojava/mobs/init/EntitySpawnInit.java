@@ -9,7 +9,6 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.world.Heightmap;
 import slexom.earthtojava.mobs.config.ModConfig;
-import slexom.earthtojava.mobs.entity.passive.GlowSquidEntity;
 import slexom.earthtojava.mobs.utils.BiomeSpawnHelper;
 
 public class EntitySpawnInit {
@@ -32,7 +31,7 @@ public class EntitySpawnInit {
         registerAnimalEntitySpawn(EntityTypesInit.COOKIE_COW_REGISTRY_OBJECT, config.cookieCow);
         registerAnimalEntitySpawn(EntityTypesInit.PINTO_COW_REGISTRY_OBJECT, config.pintoCow);
         registerAnimalEntitySpawn(EntityTypesInit.CLUCKSHROOM_REGISTRY_OBJECT, config.cluckshroom.spawnBiomes.toArray(new String[0]), config.cluckshroom);
-        // registerAnimalEntitySpawn(EntityTypesInit.FANCY_CHICKEN_REGISTRY_OBJECT, config.fancyChicken);
+        registerAnimalEntitySpawn(EntityTypesInit.FANCY_CHICKEN_REGISTRY_OBJECT, config.fancyChicken);
         registerAnimalEntitySpawn(EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT, config.fleckedSheep.spawnBiomes.toArray(new String[0]), config.fleckedSheep);
         registerAnimalEntitySpawn(EntityTypesInit.HARELEQUIN_RABBIT_REGISTRY_OBJECT, config.harelequinRabbit.spawnBiomes.toArray(new String[0]), config.harelequinRabbit);
 //        registerAnimalEntitySpawn(EntityTypesInit.HORNED_SHEEP_REGISTRY_OBJECT, config.hornedSheep.spawnBiomes.toArray(new String[0]), config.hornedSheep);
@@ -48,7 +47,7 @@ public class EntitySpawnInit {
         registerAnimalEntitySpawn(EntityTypesInit.PATCHED_SHEEP_REGISTRY_OBJECT, config.patchedSheep);
         registerAnimalEntitySpawn(EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT, config.piebaldPig.spawnBiomes.toArray(new String[0]), config.piebaldPig);
         registerAnimalEntitySpawn(EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_OBJECT, config.pinkFootedPig.spawnBiomes.toArray(new String[0]), config.pinkFootedPig);
-       //  registerAnimalEntitySpawn(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_OBJECT, config.rainbowSheep.spawnBiomes.toArray(new String[0]), config.rainbowSheep);
+        //  registerAnimalEntitySpawn(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_OBJECT, config.rainbowSheep.spawnBiomes.toArray(new String[0]), config.rainbowSheep);
         registerAnimalEntitySpawn(EntityTypesInit.ROCKY_SHEEP_REGISTRY_OBJECT, config.rockySheep.spawnBiomes.toArray(new String[0]), config.rockySheep);
         registerAnimalEntitySpawn(EntityTypesInit.SKEWBALD_CHICKEN_REGISTRY_OBJECT, config.skewbaldChicken);
         registerAnimalEntitySpawn(EntityTypesInit.SPOTTED_PIG_REGISTRY_OBJECT, config.spottedPig.spawnBiomes.toArray(new String[0]), config.spottedPig);

@@ -10,7 +10,8 @@
     ],
     "client": [
         "BERItemRenderer",
-        "MudFogMixin"
+        "MudFogMixin",
+        "EntityModelLoaderMixin"
     ],
     "injectors": {
         "defaultRequire": 1

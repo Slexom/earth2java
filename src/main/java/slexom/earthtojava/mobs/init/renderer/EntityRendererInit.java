@@ -77,7 +77,7 @@ public class EntityRendererInit {
 //        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.BONE_SPIDER_REGISTRY_OBJECT, (dispatcher, context) -> new BoneSpiderRenderer(dispatcher));
 //        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.WANDERING_TRADER_REGISTRY_OBJECT, (dispatcher, context) -> new E2JWanderingTraderRenderer(dispatcher));
 //        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_OBJECT, (dispatcher, context) -> new RainbowSheepRenderer(dispatcher));
-//        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.FANCY_CHICKEN_REGISTRY_OBJECT, (dispatcher, context) -> new FancyChickenRenderer(dispatcher));
+        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.FANCY_CHICKEN_REGISTRY_OBJECT, FancyChickenRenderer::new);
 //        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_OBJECT, (dispatcher, context) -> new BoulderingZombieRenderer(dispatcher));
 //        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_OBJECT, (dispatcher, context) -> new LobberZombieRenderer(dispatcher));
     }
@@ -90,7 +90,7 @@ public class EntityRendererInit {
         EntityRendererRegistry.INSTANCE.register(entity, (context) -> new E2JCowRenderer(context, identifier));
     }
 
-    private static <E extends E2JBaseMonoColorSheepEntity<E>>void registerMonoColorSheepEntityRenderer(EntityType<E> entity, String identifier) {
+    private static <E extends E2JBaseMonoColorSheepEntity<E>> void registerMonoColorSheepEntityRenderer(EntityType<E> entity, String identifier) {
         EntityRendererRegistry.INSTANCE.register(entity, (context) -> new E2JMonoColorSheepRenderer(context, identifier));
     }
 
