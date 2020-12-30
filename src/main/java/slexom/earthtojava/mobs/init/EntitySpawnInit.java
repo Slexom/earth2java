@@ -37,7 +37,7 @@ public class EntitySpawnInit {
         registerAnimalEntitySpawn(EntityTypesInit.HORNED_SHEEP_REGISTRY_OBJECT, config.hornedSheep.spawnBiomes.toArray(new String[0]), config.hornedSheep);
         registerAnimalEntitySpawn(EntityTypesInit.INKY_SHEEP_REGISTRY_OBJECT, config.inkySheep.spawnBiomes.toArray(new String[0]), config.inkySheep);
         registerAnimalEntitySpawn(EntityTypesInit.JOLLY_LLAMA_REGISTRY_OBJECT, config.jollyLlama.spawnBiomes.toArray(new String[0]), config.jollyLlama);
-//        registerAnimalEntitySpawn(EntityTypesInit.JUMBO_RABBIT_REGISTRY_OBJECT, config.jumboRabbit.spawnBiomes.toArray(new String[0]), config.jumboRabbit);
+        registerAnimalEntitySpawn(EntityTypesInit.JUMBO_RABBIT_REGISTRY_OBJECT, config.jumboRabbit.spawnBiomes.toArray(new String[0]), config.jumboRabbit);
         registerAnimalEntitySpawn(EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_OBJECT, config.midnightChicken.spawnBiomes.toArray(new String[0]), config.midnightChicken);
 //        registerAnimalEntitySpawn(EntityTypesInit.MOOBLOOM_REGISTRY_OBJECT, config.moobloom.spawnBiomes.toArray(new String[0]), config.moobloom);
 //        registerAnimalEntitySpawn(EntityTypesInit.MOOLIP_REGISTRY_OBJECT, config.moolip);

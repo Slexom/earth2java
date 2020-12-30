@@ -26,7 +26,6 @@ public class JollyLlamaModel extends EntityModel<JollyLlamaEntity> {
         this.frontLeftLeg = root.getChild("left_front_leg");
     }
 
-
     public static TexturedModelData getTexturedModelData(Dilation dilation) {
         ModelData modelData = new ModelData();
         ModelPartData modelPartData = modelData.getRoot();
@@ -45,10 +44,6 @@ public class JollyLlamaModel extends EntityModel<JollyLlamaEntity> {
         return TexturedModelData.of(modelData, 128, 64);
     }
 
-
-    /**
-     * Sets this entity's model rotation angles
-     */
     public void setAngles(JollyLlamaEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.head.pitch = headPitch * ((float) Math.PI / 180F);
         this.head.yaw = netHeadYaw * ((float) Math.PI / 180F);
@@ -82,6 +77,6 @@ public class JollyLlamaModel extends EntityModel<JollyLlamaEntity> {
                 p_228279_8_.render(matrices, vertices, light, overlay, red, green, blue, alpha);
             });
         }
-
     }
+
 }
