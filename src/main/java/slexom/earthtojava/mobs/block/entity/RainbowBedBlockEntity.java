@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.tileentity;
+package slexom.earthtojava.mobs.block.entity;
 
 
 import net.fabricmc.api.EnvType;

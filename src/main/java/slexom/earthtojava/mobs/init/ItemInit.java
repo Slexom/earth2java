@@ -2,6 +2,7 @@ package slexom.earthtojava.mobs.init;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.item.BedItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
@@ -47,7 +48,7 @@ public class ItemInit {
     public static E2JSpawnEggItem PIEBALD_PIG_SPAWN_EGG;
     public static E2JSpawnEggItem PINK_FOOTED_PIG_SPAWN_EGG;
     public static E2JSpawnEggItem PINTO_COW_SPAWN_EGG;
-    //    public static BedItem RAINBOW_BED;
+    public static BedItem RAINBOW_BED;
     public static E2JSpawnEggItem RAINBOW_SHEEP_SPAWN_EGG;
     public static E2JSpawnEggItem ROCKY_SHEEP_SPAWN_EGG;
     public static Item RUBY;
@@ -67,7 +68,7 @@ public class ItemInit {
         MUD_BUCKET = RegisterHelper.registerItem("mud_fluid_bucket", new MudBucketItem(FluidInit.MUD_FLUID_STILL, new Item.Settings().recipeRemainder(Items.BUCKET).maxCount(1).group(itemGroup)));
         BONE_SHARD = RegisterHelper.registerItem("bone_shard", new BoneShardItem(new Item.Settings().group(null).maxCount(16)));
         RUBY = RegisterHelper.registerItem("ruby", new Item(new Item.Settings().group(itemGroup).maxCount(64)));
-//        RAINBOW_BED = (BedItem) RegisterHelper.registerItem("rainbow_bed", new BedItem(BlockInit.RAINBOW_BED, (new Item.Settings()).maxCount(1).group(ItemGroup.DECORATIONS)));
+        RAINBOW_BED = (BedItem) RegisterHelper.registerItem("rainbow_bed", new BedItem(BlockInit.RAINBOW_BED, (new Item.Settings()).maxCount(1).group(ItemGroup.DECORATIONS)));
         registerSpawnEggs();
     }
 

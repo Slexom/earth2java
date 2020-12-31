@@ -9,7 +9,7 @@
         "SpawnFurnaceGolem"
     ],
     "client": [
-        "BERItemRenderer",
+        "BuiltinModelItemRendererMixin",
         "MudFogMixin",
         "EntityModelLoaderMixin"
     ],
