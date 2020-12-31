@@ -1,38 +1,37 @@
-//package slexom.earthtojava.mobs.client.renderer.entity.model;
-//
-//import net.minecraft.client.model.ModelPart;
-//import net.minecraft.client.render.entity.model.ZombieEntityModel;
-//import slexom.earthtojava.mobs.entity.monster.LobberZombieEntity;
-//
-//public class LobberZombieModel<T extends LobberZombieEntity> extends ZombieEntityModel<T> {
-//
-//    public LobberZombieModel(float scale, boolean bl) {
-//        super(scale, 0.0F, 64, bl ? 32 : 64);
-//    }
-//
-//    public LobberZombieModel(float scale, float pivotY, int textureWidth, int textureHeight) {
-//        super(scale, pivotY, textureWidth, textureHeight);
-//        this.rightArm = new ModelPart(this, 16, 32);
-//        this.rightArm.addCuboid(-3.0F, -2.0F, -2.0F, 4.0F, 11.0F, 4.0F, scale);
-//        this.rightArm.setPivot(-5.0F, 2.0F + pivotY, 0.0F);
-//        this.leftArm = new ModelPart(this, 32, 32);
-//        this.leftArm.mirror = true;
-//        this.leftArm.addCuboid(-1.0F, -2.0F, -2.0F, 5.0F, 14.0F, 4.0F, scale);
-//        this.leftArm.setPivot(5.0F, 2.0F + pivotY, 0.0F);
-//        this.rightLeg = new ModelPart(this, 0, 16);
-//        this.rightLeg.addCuboid(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, scale);
-//        this.rightLeg.setPivot(-1.9F, 12.0F + pivotY, 0.0F);
-//        this.leftLeg = new ModelPart(this, 0, 34);
-//        this.leftLeg.mirror = true;
-//        this.leftLeg.addCuboid(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, scale);
-//        this.leftLeg.setPivot(1.9F, 12.0F + pivotY, 0.0F);
-//    }
-//
-//    @Override
-//    public void animateModel(T livingEntity, float f, float g, float h) {
-//        this.rightArmPose = ArmPose.EMPTY;
-//        this.leftArmPose = ArmPose.EMPTY;
-//        super.animateModel(livingEntity, f, g, h);
-//    }
-//
-//}
+package slexom.earthtojava.mobs.client.renderer.entity.model;
+
+import net.minecraft.client.model.*;
+import net.minecraft.client.render.entity.model.ZombieEntityModel;
+import net.minecraft.client.util.math.Dilation;
+import slexom.earthtojava.mobs.entity.monster.LobberZombieEntity;
+
+public class LobberZombieModel<T extends LobberZombieEntity> extends ZombieEntityModel<T> {
+
+    public LobberZombieModel(ModelPart modelPart) {
+        super(modelPart);
+    }
+    public static ModelData getModelData(Dilation dilation, float pivotOffsetY) {
+        ModelData modelData = new ModelData();
+        ModelPartData modelPartData = modelData.getRoot();
+        modelPartData.addChild("head", ModelPartBuilder.create().uv(0, 0).cuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, dilation), ModelTransform.pivot(0.0F, 0.0F + pivotOffsetY, 0.0F));
+        modelPartData.addChild("hat", ModelPartBuilder.create().uv(32, 0).cuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, dilation.add(0.5F)), ModelTransform.pivot(0.0F, 0.0F + pivotOffsetY, 0.0F));
+        modelPartData.addChild("body", ModelPartBuilder.create().uv(16, 16).cuboid(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, dilation), ModelTransform.pivot(0.0F, 0.0F + pivotOffsetY, 0.0F));
+        modelPartData.addChild("right_arm", ModelPartBuilder.create().uv(16, 32).cuboid(-3.0F, -2.0F, -2.0F, 4.0F, 11.0F, 4.0F, dilation), ModelTransform.pivot(-5.0F, 2.0F + pivotOffsetY, 0.0F));
+        modelPartData.addChild("left_arm", ModelPartBuilder.create().uv(32, 32).mirrored().cuboid(-1.0F, -2.0F, -2.0F, 5.0F, 14.0F, 4.0F, dilation), ModelTransform.pivot(5.0F, 2.0F + pivotOffsetY, 0.0F));
+        modelPartData.addChild("right_leg", ModelPartBuilder.create().uv(0, 16).cuboid(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, dilation), ModelTransform.pivot(-1.9F, 12.0F + pivotOffsetY, 0.0F));
+        modelPartData.addChild("left_leg", ModelPartBuilder.create().uv(0, 34).mirrored().cuboid(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, dilation), ModelTransform.pivot(1.9F, 12.0F + pivotOffsetY, 0.0F));
+        return modelData;
+    }
+
+    public static TexturedModelData getTexturedModelData() {
+        return TexturedModelData.of(getModelData(Dilation.NONE, 0.0F), 64, 64);
+    }
+
+    @Override
+    public void animateModel(T livingEntity, float f, float g, float h) {
+        this.rightArmPose = ArmPose.EMPTY;
+        this.leftArmPose = ArmPose.EMPTY;
+        super.animateModel(livingEntity, f, g, h);
+    }
+
+}

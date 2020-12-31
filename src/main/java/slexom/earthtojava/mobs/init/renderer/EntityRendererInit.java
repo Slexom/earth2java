@@ -69,15 +69,15 @@ public class EntityRendererInit {
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.TROPICAL_SLIME_REGISTRY_OBJECT, TropicalSlimeRenderer::new);
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT, WoolyCowRenderer::new);
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT, FurnaceGolemRenderer::new);
-//        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.MELON_GOLEM_REGISTRY_OBJECT, (dispatcher, context) -> new MelonGolemRenderer(dispatcher));
+        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.MELON_GOLEM_REGISTRY_OBJECT, MelonGolemRenderer::new);
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.JUMBO_RABBIT_REGISTRY_OBJECT, JumboRabbitRenderer::new);
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.JOLLY_LLAMA_REGISTRY_OBJECT, JollyLlamaRenderer::new);
-//        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.BONE_SPIDER_REGISTRY_OBJECT, (dispatcher, context) -> new BoneSpiderRenderer(dispatcher));
+        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.BONE_SPIDER_REGISTRY_OBJECT, BoneSpiderRenderer::new);
 //        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.WANDERING_TRADER_REGISTRY_OBJECT, (dispatcher, context) -> new E2JWanderingTraderRenderer(dispatcher));
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_OBJECT, RainbowSheepRenderer::new);
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.FANCY_CHICKEN_REGISTRY_OBJECT, FancyChickenRenderer::new);
-//        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_OBJECT, (dispatcher, context) -> new BoulderingZombieRenderer(dispatcher));
-//        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_OBJECT, (dispatcher, context) -> new LobberZombieRenderer(dispatcher));
+        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_OBJECT, BoulderingZombieRenderer::new);
+        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_OBJECT, LobberZombieRenderer::new);
     }
 
     private static <E extends E2JBaseChickenEntity<E>> void registerChickenEntityRenderer(EntityType<E> entity, String identifier) {

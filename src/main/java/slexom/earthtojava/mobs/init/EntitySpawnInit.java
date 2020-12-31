@@ -58,11 +58,11 @@ public class EntitySpawnInit {
     }
 
     private static void manageMonsterEntities() {
-//        registerMonsterEntitySpawn(EntityTypesInit.BONE_SPIDER_REGISTRY_OBJECT, config.boneSpider.spawnBiomes.toArray(new String[0]), config.boneSpider);
+        registerMonsterEntitySpawn(EntityTypesInit.BONE_SPIDER_REGISTRY_OBJECT, config.boneSpider.spawnBiomes.toArray(new String[0]), config.boneSpider);
         registerMonsterEntitySpawn(EntityTypesInit.SKELETON_WOLF_REGISTRY_OBJECT, config.skeletonWolf.spawnBiomes.toArray(new String[0]), config.skeletonWolf);
-//        registerMonsterEntitySpawn(EntityTypesInit.TROPICAL_SLIME_REGISTRY_OBJECT, config.tropicalSlime.spawnBiomes.toArray(new String[0]), config.tropicalSlime);
-//        registerMonsterEntitySpawn(EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_OBJECT, config.boulderingZombie);
-//        registerMonsterEntitySpawn(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_OBJECT, config.lobberZombie);
+        registerMonsterEntitySpawn(EntityTypesInit.TROPICAL_SLIME_REGISTRY_OBJECT, config.tropicalSlime.spawnBiomes.toArray(new String[0]), config.tropicalSlime);
+        registerMonsterEntitySpawn(EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_OBJECT, config.boulderingZombie);
+        registerMonsterEntitySpawn(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_OBJECT, config.lobberZombie);
 
         // EXPERIMENTAL
         // BiomeSpawnHelper.autoSpawn(EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_OBJECT, EntityType.ZOMBIE);
