@@ -12,6 +12,7 @@ public class EntityModeLayersInit {
     public static EntityModelLayer MUDDY_PIG_ENTITY_MODEL_LAYER;
     public static EntityModelLayer RAINBOW_SHEEP_ENTITY_MODEL_LAYER;
     public static EntityModelLayer RAINBOW_SHEEP_FUR_ENTITY_MODEL_LAYER;
+    public static EntityModelLayer SKELETON_WOLF_ENTITY_MODEL_LAYER;
 
     public static void init() {
         FANCY_CHICKEN_ENTITY_MODEL_LAYER = RegisterHelper.registerEntityModelLayer(EntityTypesInit.FANCY_CHICKEN_REGISTRY_NAME, FancyChickenModel.getTexturedModelData());
@@ -21,6 +22,7 @@ public class EntityModeLayersInit {
         MUDDY_PIG_ENTITY_MODEL_LAYER = RegisterHelper.registerEntityModelLayer(EntityTypesInit.MUDDY_PIG_REGISTRY_NAME, MuddyPigModel.getTexturedModelData(Dilation.NONE));
         RAINBOW_SHEEP_ENTITY_MODEL_LAYER = RegisterHelper.registerEntityModelLayer(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_NAME, RainbowSheepModel.getTexturedModelData());
         RAINBOW_SHEEP_FUR_ENTITY_MODEL_LAYER = RegisterHelper.registerEntityModelLayer(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_NAME + "_fur", RainbowSheepWoolModel.getTexturedModelData());
+        SKELETON_WOLF_ENTITY_MODEL_LAYER = RegisterHelper.registerEntityModelLayer(EntityTypesInit.SKELETON_WOLF_REGISTRY_NAME, SkeletonWolfModel.getTexturedModelData());
     }
 
 }

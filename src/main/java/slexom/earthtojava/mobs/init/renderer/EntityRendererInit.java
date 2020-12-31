@@ -27,8 +27,6 @@ public class EntityRendererInit {
     private static void registerEntitiesRenderer() {
         registerBaseVariantEntitiesRenderer();
         registerSpecialVariantEntitiesRenderer();
-
-
     }
 
     private static void registerBaseVariantEntitiesRenderer() {
@@ -67,10 +65,10 @@ public class EntityRendererInit {
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.MOOBLOOM_REGISTRY_OBJECT, MoobloomRenderer::new);
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.MOOLIP_REGISTRY_OBJECT, MoolipRenderer::new);
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.MUDDY_PIG_REGISTRY_OBJECT, MuddyPigRenderer::new);
-//        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.SKELETON_WOLF_REGISTRY_OBJECT, (dispatcher, context) -> new SkeletonWolfRenderer(dispatcher));
-//        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.TROPICAL_SLIME_REGISTRY_OBJECT, (dispatcher, context) -> new TropicalSlimeRenderer(dispatcher));
+        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.SKELETON_WOLF_REGISTRY_OBJECT, SkeletonWolfRenderer::new);
+        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.TROPICAL_SLIME_REGISTRY_OBJECT, TropicalSlimeRenderer::new);
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT, WoolyCowRenderer::new);
-//        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT, (dispatcher, context) -> new FurnaceGolemRenderer(dispatcher));
+        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT, FurnaceGolemRenderer::new);
 //        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.MELON_GOLEM_REGISTRY_OBJECT, (dispatcher, context) -> new MelonGolemRenderer(dispatcher));
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.JUMBO_RABBIT_REGISTRY_OBJECT, JumboRabbitRenderer::new);
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.JOLLY_LLAMA_REGISTRY_OBJECT, JollyLlamaRenderer::new);
