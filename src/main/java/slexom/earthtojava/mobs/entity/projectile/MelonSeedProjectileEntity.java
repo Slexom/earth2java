@@ -20,13 +20,12 @@ import slexom.earthtojava.mobs.init.EntityTypesInit;
 
 public class MelonSeedProjectileEntity extends ThrownItemEntity {
 
-
-    public MelonSeedProjectileEntity(World worldIn, LivingEntity throwerIn) {
-        super(EntityTypesInit.MELON_SEED_PROJECTILE_REGISTRY_OBJECT, throwerIn, worldIn);
+    public MelonSeedProjectileEntity(World world, LivingEntity entity) {
+        super(EntityTypesInit.MELON_SEED_PROJECTILE_REGISTRY_OBJECT, entity, world);
     }
 
-    public MelonSeedProjectileEntity(World worldIn, double x, double y, double z) {
-        super(EntityTypesInit.MELON_SEED_PROJECTILE_REGISTRY_OBJECT, x, y, z, worldIn);
+    public MelonSeedProjectileEntity(World world, double x, double y, double z) {
+        super(EntityTypesInit.MELON_SEED_PROJECTILE_REGISTRY_OBJECT, x, y, z, world);
     }
 
     public MelonSeedProjectileEntity(EntityType<MelonSeedProjectileEntity> entityType, World world) {
@@ -41,7 +40,7 @@ public class MelonSeedProjectileEntity extends ThrownItemEntity {
     @Environment(EnvType.CLIENT)
     private ParticleEffect getParticleParameters() {
         ItemStack itemStack = this.getItem();
-        return (ParticleEffect) (itemStack.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack));
+        return itemStack.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack);
     }
 
     @Environment(EnvType.CLIENT)
@@ -66,8 +65,6 @@ public class MelonSeedProjectileEntity extends ThrownItemEntity {
             this.world.sendEntityStatus(this, (byte) 3);
             this.discard();
         }
-
     }
-
 
 }
