@@ -1,44 +1,48 @@
-//package slexom.earthtojava.mobs.client.renderer.entity;
-//
-//import net.fabricmc.api.EnvType;
-//import net.fabricmc.api.Environment;
-//import net.minecraft.client.render.OverlayTexture;
-//import net.minecraft.client.render.RenderLayer;
-//import net.minecraft.client.render.VertexConsumer;
-//import net.minecraft.client.render.VertexConsumerProvider;
-//import net.minecraft.client.render.entity.EntityRenderDispatcher;
-//import net.minecraft.client.render.entity.MobEntityRenderer;
-//import net.minecraft.client.render.entity.feature.FeatureRenderer;
-//import net.minecraft.client.render.entity.feature.FeatureRendererContext;
-//import net.minecraft.client.render.entity.model.PigEntityModel;
-//import net.minecraft.client.util.math.MatrixStack;
-//import net.minecraft.util.Identifier;
-//import slexom.earthtojava.mobs.client.renderer.entity.model.MuddyPigModel;
-//import slexom.earthtojava.mobs.entity.passive.MuddyPigEntity;
-//
-//@Environment(EnvType.CLIENT)
-//public class MuddyPigRenderer extends MobEntityRenderer<MuddyPigEntity, MuddyPigModel<MuddyPigEntity>> {
-//
-//    public MuddyPigRenderer(EntityRenderDispatcher renderManagerIn) {
-//        super(renderManagerIn, new MuddyPigModel<>(), 0.7F);
-//        this.addFeature(new SaddleLayer(this));
-//    }
-//
-//    public Identifier getTexture(MuddyPigEntity entity) {
-//        Identifier texture = new Identifier("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig.png");
-//        Identifier textureBlink = new Identifier("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_blink.png");
-//        Identifier textureDried = new Identifier("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_dried.png");
-//        Identifier textureDriedBlink = new Identifier("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_dried_blink.png");
-//        boolean blink = entity.getBlinkRemainingTicks() > 0;
-//        return entity.isInMuddyState() ?
-//                blink ?
-//                        textureBlink :
-//                        texture :
-//                blink ?
-//                        textureDriedBlink :
-//                        textureDried;
-//    }
-//
+package slexom.earthtojava.mobs.client.renderer.entity;
+
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
+import net.minecraft.client.render.OverlayTexture;
+import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.entity.EntityRenderDispatcher;
+import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.client.render.entity.feature.FeatureRenderer;
+import net.minecraft.client.render.entity.feature.FeatureRendererContext;
+import net.minecraft.client.render.entity.feature.SaddleFeatureRenderer;
+import net.minecraft.client.render.entity.model.EntityModelLayers;
+import net.minecraft.client.render.entity.model.PigEntityModel;
+import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.Identifier;
+import slexom.earthtojava.mobs.client.renderer.entity.model.MuddyPigModel;
+import slexom.earthtojava.mobs.entity.passive.MuddyPigEntity;
+import slexom.earthtojava.mobs.init.EntityModeLayersInit;
+
+@Environment(EnvType.CLIENT)
+public class MuddyPigRenderer extends MobEntityRenderer<MuddyPigEntity, MuddyPigModel<MuddyPigEntity>> {
+
+    public MuddyPigRenderer(EntityRendererFactory.Context context) {
+        super(context, new MuddyPigModel<>(context.getPart(EntityModeLayersInit.MUDDY_PIG_ENTITY_MODEL_LAYER)), 0.7F);
+        this.addFeature(new SaddleFeatureRenderer(this, new PigEntityModel(context.getPart(EntityModelLayers.PIG_SADDLE)), new Identifier("textures/entity/pig/pig_saddle.png")));
+    }
+
+    public Identifier getTexture(MuddyPigEntity entity) {
+        Identifier texture = new Identifier("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig.png");
+        Identifier textureBlink = new Identifier("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_blink.png");
+        Identifier textureDried = new Identifier("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_dried.png");
+        Identifier textureDriedBlink = new Identifier("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_dried_blink.png");
+        boolean blink = entity.getBlinkRemainingTicks() > 0;
+        return entity.isInMuddyState() ?
+                blink ?
+                        textureBlink :
+                        texture :
+                blink ?
+                        textureDriedBlink :
+                        textureDried;
+    }
+
 //    public static class SaddleLayer extends FeatureRenderer<MuddyPigEntity, MuddyPigModel<MuddyPigEntity>> {
 //        private final Identifier TEXTURE = new Identifier("textures/entity/pig/pig_saddle.png");
 //        private final PigEntityModel<MuddyPigEntity> pigModel = new PigEntityModel<>(0.5F);
@@ -57,5 +61,5 @@
 //            }
 //        }
 //    }
-//
-//}
+
+}

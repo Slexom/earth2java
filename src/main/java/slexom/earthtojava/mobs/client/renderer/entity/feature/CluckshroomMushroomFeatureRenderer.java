@@ -16,8 +16,8 @@ import slexom.earthtojava.mobs.client.renderer.entity.model.CluckshroomModel;
 import slexom.earthtojava.mobs.entity.passive.CluckshroomEntity;
 
 @Environment(EnvType.CLIENT)
-public class CluckshroomLayer<T extends CluckshroomEntity> extends FeatureRenderer<T, CluckshroomModel<T>> {
-    public CluckshroomLayer(FeatureRendererContext<T, CluckshroomModel<T>> rendererIn) {
+public class CluckshroomMushroomFeatureRenderer<T extends CluckshroomEntity> extends FeatureRenderer<T, CluckshroomModel<T>> {
+    public CluckshroomMushroomFeatureRenderer(FeatureRendererContext<T, CluckshroomModel<T>> rendererIn) {
         super(rendererIn);
     }
 

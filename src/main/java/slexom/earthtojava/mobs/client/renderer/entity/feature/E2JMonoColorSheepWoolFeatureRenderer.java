@@ -14,12 +14,12 @@ import net.minecraft.util.Identifier;
 import slexom.earthtojava.mobs.entity.base.E2JBaseMonoColorSheepEntity;
 
 @Environment(EnvType.CLIENT)
-public class E2JMonoColorSheepWoolFeature extends FeatureRenderer<E2JBaseMonoColorSheepEntity, SheepEntityModel<E2JBaseMonoColorSheepEntity>> {
+public class E2JMonoColorSheepWoolFeatureRenderer extends FeatureRenderer<E2JBaseMonoColorSheepEntity, SheepEntityModel<E2JBaseMonoColorSheepEntity>> {
     private final SheepWoolEntityModel sheepModel;
 
     private Identifier texture;
 
-    public E2JMonoColorSheepWoolFeature(FeatureRendererContext<E2JBaseMonoColorSheepEntity, SheepEntityModel<E2JBaseMonoColorSheepEntity>> featureRendererContext, EntityModelLoader entityModelLoader, String texture) {
+    public E2JMonoColorSheepWoolFeatureRenderer(FeatureRendererContext<E2JBaseMonoColorSheepEntity, SheepEntityModel<E2JBaseMonoColorSheepEntity>> featureRendererContext, EntityModelLoader entityModelLoader, String texture) {
         super(featureRendererContext);
         this.texture = new Identifier(texture);
         this.sheepModel = new SheepWoolEntityModel(entityModelLoader.getModelPart(EntityModelLayers.SHEEP_FUR));

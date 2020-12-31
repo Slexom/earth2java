@@ -7,7 +7,7 @@ import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.render.entity.model.SheepEntityModel;
 import net.minecraft.util.Identifier;
-import slexom.earthtojava.mobs.client.renderer.entity.feature.E2JMonoColorSheepWoolFeature;
+import slexom.earthtojava.mobs.client.renderer.entity.feature.E2JMonoColorSheepWoolFeatureRenderer;
 import slexom.earthtojava.mobs.entity.base.E2JBaseMonoColorSheepEntity;
 
 import java.text.MessageFormat;
@@ -21,7 +21,7 @@ public class E2JMonoColorSheepRenderer extends MobEntityRenderer<E2JBaseMonoColo
         super(context, new SheepEntityModel(context.getPart(EntityModelLayers.SHEEP)), 0.7F);
         this.registryName = registryName;
         String woolTexture = MessageFormat.format("earthtojavamobs:textures/mobs/sheep/{0}/{0}_fur.png", this.registryName, this.registryName);
-        this.addFeature(new E2JMonoColorSheepWoolFeature(this, context.getModelLoader(), woolTexture));
+        this.addFeature(new E2JMonoColorSheepWoolFeatureRenderer(this, context.getModelLoader(), woolTexture));
     }
 
     public Identifier getTexture(E2JBaseMonoColorSheepEntity entity) {

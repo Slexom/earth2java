@@ -15,11 +15,11 @@ import slexom.earthtojava.mobs.client.renderer.entity.model.HornedSheepModel;
 import slexom.earthtojava.mobs.entity.passive.HornedSheepEntity;
 
 @Environment(EnvType.CLIENT)
-public class HornedSheepWoolLayer extends FeatureRenderer<HornedSheepEntity, HornedSheepModel<HornedSheepEntity>> {
+public class HornedSheepWoolFeatureRenderer extends FeatureRenderer<HornedSheepEntity, HornedSheepModel<HornedSheepEntity>> {
     private static final Identifier TEXTURE = new Identifier("textures/entity/sheep/sheep_fur.png");
     private final SheepWoolEntityModel<HornedSheepEntity> woolEntityModel;
 
-    public HornedSheepWoolLayer(FeatureRendererContext<HornedSheepEntity, HornedSheepModel<HornedSheepEntity>>  featureRendererContext, EntityModelLoader entityModelLoader) {
+    public HornedSheepWoolFeatureRenderer(FeatureRendererContext<HornedSheepEntity, HornedSheepModel<HornedSheepEntity>>  featureRendererContext, EntityModelLoader entityModelLoader) {
         super(featureRendererContext);
         this.woolEntityModel = new SheepWoolEntityModel(entityModelLoader.getModelPart(EntityModelLayers.SHEEP_FUR));
     }

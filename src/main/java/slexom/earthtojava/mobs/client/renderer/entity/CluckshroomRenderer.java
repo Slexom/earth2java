@@ -6,7 +6,7 @@ import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
-import slexom.earthtojava.mobs.client.renderer.entity.feature.CluckshroomLayer;
+import slexom.earthtojava.mobs.client.renderer.entity.feature.CluckshroomMushroomFeatureRenderer;
 import slexom.earthtojava.mobs.client.renderer.entity.model.CluckshroomModel;
 import slexom.earthtojava.mobs.entity.passive.CluckshroomEntity;
 import net.minecraft.client.render.entity.EntityRendererFactory.Context;
@@ -16,7 +16,7 @@ public class CluckshroomRenderer extends MobEntityRenderer<CluckshroomEntity, Cl
 
     public CluckshroomRenderer(Context context) {
         super(context, new CluckshroomModel<>(context.getPart(EntityModelLayers.CHICKEN)), 0.3F);
-        this.addFeature(new CluckshroomLayer<>(this));
+        this.addFeature(new CluckshroomMushroomFeatureRenderer<>(this));
     }
 
     protected float getAnimationProgress(CluckshroomEntity chickenEntity, float f) {
