@@ -54,7 +54,7 @@ public class EntitySpawnInit {
         registerAnimalEntitySpawn(EntityTypesInit.STORMY_CHICKEN_REGISTRY_OBJECT, config.stormyChicken.spawnBiomes.toArray(new String[0]), config.stormyChicken);
         registerAnimalEntitySpawn(EntityTypesInit.SUNSET_COW_REGISTRY_OBJECT, config.sunsetCow.spawnBiomes.toArray(new String[0]), config.sunsetCow);
         registerAnimalEntitySpawn(EntityTypesInit.VESTED_RABBIT_REGISTRY_OBJECT, config.vestedRabbit.spawnBiomes.toArray(new String[0]), config.vestedRabbit);
-//        registerAnimalEntitySpawn(EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT, config.woolyCow.spawnBiomes.toArray(new String[0]), config.woolyCow);
+        registerAnimalEntitySpawn(EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT, config.woolyCow.spawnBiomes.toArray(new String[0]), config.woolyCow);
     }
 
     private static void manageMonsterEntities() {
