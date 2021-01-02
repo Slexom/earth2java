@@ -1,3 +1,6 @@
 accessWidener v1 named
 
 accessible field net/minecraft/util/collection/WeightedPicker$Entry weight I
+
+mutable field net/minecraft/client/render/entity/model/VillagerResemblingModel robe Lnet/minecraft/client/model/ModelPart;
+mutable field net/minecraft/client/render/entity/model/VillagerResemblingModel torso Lnet/minecraft/client/model/ModelPart;

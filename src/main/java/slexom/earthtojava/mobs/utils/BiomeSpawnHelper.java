@@ -62,6 +62,7 @@ public final class BiomeSpawnHelper {
     public static final String[] SUNSET_COW_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.SAVANNA);
     public static final String[] TROPICAL_SLIME_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.BEACH);
     public static final String[] VESTED_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS);
+    public static final String[] VILER_WITCH_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.SWAMP);
     public static final String[] WOOLY_COW_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.TAIGA);
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -84,6 +84,7 @@ public class EntityRendererInit {
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.FANCY_CHICKEN_REGISTRY_OBJECT, (dispatcher, context) -> new FancyChickenRenderer(dispatcher));
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_OBJECT, (dispatcher, context) -> new BoulderingZombieRenderer(dispatcher));
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_OBJECT, (dispatcher, context) -> new LobberZombieRenderer(dispatcher));
+        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.VILER_WITCH_REGISTRY_OBJECT, (dispatcher, context) -> new VilerWitchRenderer(dispatcher));
     }
 
     private static void registerChickenEntityRenderer(EntityType<?> entity, String identifier) {
