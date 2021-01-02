@@ -1,13 +1,18 @@
 package slexom.earthtojava.mobs.entity.monster;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
-import net.minecraft.entity.ai.pathing.SpiderNavigation;
+import net.minecraft.entity.ai.pathing.MobNavigation;
+import net.minecraft.entity.ai.pathing.Path;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.ZombieEntity;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import slexom.earthtojava.mobs.entity.ai.pathing.ClimberNavigation;
 import slexom.earthtojava.mobs.entity.base.E2JBaseZombieEntity;
 
 public class BoulderingZombieEntity extends E2JBaseZombieEntity {
@@ -17,9 +22,8 @@ public class BoulderingZombieEntity extends E2JBaseZombieEntity {
         super(entityType, world);
     }
 
-
     protected EntityNavigation createNavigation(World world) {
-        return new SpiderNavigation(this, world);
+        return new ClimberNavigation(this, world);
     }
 
     protected void initDataTracker() {
@@ -32,11 +36,11 @@ public class BoulderingZombieEntity extends E2JBaseZombieEntity {
     }
 
     public boolean isClimbingWall() {
-        return ((Byte) this.dataTracker.get(IS_CLIMBING) & 1) != 0;
+        return (this.dataTracker.get(IS_CLIMBING) & 1) != 0;
     }
 
     public void setClimbingWall(boolean climbing) {
-        byte b = (Byte) this.dataTracker.get(IS_CLIMBING);
+        byte b = this.dataTracker.get(IS_CLIMBING);
         if (climbing) {
             b = (byte) (b | 1);
         } else {
@@ -56,4 +60,5 @@ public class BoulderingZombieEntity extends E2JBaseZombieEntity {
     public boolean isHoldingOntoLadder() {
         return isClimbingWall() || super.isHoldingOntoLadder();
     }
+
 }
