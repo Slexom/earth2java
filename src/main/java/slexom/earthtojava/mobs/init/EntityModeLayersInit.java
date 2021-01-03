@@ -16,6 +16,8 @@ public class EntityModeLayersInit {
     public static EntityModelLayer RAINBOW_SHEEP_ENTITY_MODEL_LAYER;
     public static EntityModelLayer RAINBOW_SHEEP_FUR_ENTITY_MODEL_LAYER;
     public static EntityModelLayer SKELETON_WOLF_ENTITY_MODEL_LAYER;
+    public static EntityModelLayer VILER_WITCH_ENTITY_MODEL_LAYER;
+
     public static EntityModelLayer RAINBOW_BED_HEAD_MODEL_LAYER;
     public static EntityModelLayer RAINBOW_BED_FOOT_MODEL_LAYER;
 
@@ -30,6 +32,8 @@ public class EntityModeLayersInit {
         SKELETON_WOLF_ENTITY_MODEL_LAYER = RegisterHelper.registerEntityModelLayer(EntityTypesInit.SKELETON_WOLF_REGISTRY_NAME, SkeletonWolfModel.getTexturedModelData());
         BOULDERING_ZOMBIE_ENTITY_MODEL_LAYER = RegisterHelper.registerEntityModelLayer(EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_NAME, BoulderingZombieModel.getTexturedModelData());
         LOBBER_ZOMBIE_ENTITY_MODEL_LAYER = RegisterHelper.registerEntityModelLayer(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_NAME, LobberZombieModel.getTexturedModelData());
+        VILER_WITCH_ENTITY_MODEL_LAYER = RegisterHelper.registerEntityModelLayer(EntityTypesInit.VILER_WITCH_REGISTRY_NAME, VilerWitchModel.getTexturedModelData());
+
         RAINBOW_BED_HEAD_MODEL_LAYER = RegisterHelper.registerEntityModelLayer("rainbow_bed_head", RainbowBedBlockEntityRenderer.getHeadTexturedModelData());
         RAINBOW_BED_FOOT_MODEL_LAYER = RegisterHelper.registerEntityModelLayer("rainbow_bed_foot", RainbowBedBlockEntityRenderer.getFootTexturedModelData());
     }

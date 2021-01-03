@@ -41,9 +41,9 @@ public class BoulderingZombieModel<T extends BoulderingZombieEntity> extends Zom
         super.setAngles(livingEntity, limbAngle, limbDistance, animationProgress, headYaw, headPitch);
         if (livingEntity.isClimbingWall()) {
             this.rightArm.yaw = -0.4F;
-            this.rightArm.pitch = MathHelper.cos(animationProgress * 0.65F + (float) Math.PI) * 0.33F;
+            this.rightArm.pitch = (float) Math.PI + MathHelper.cos(animationProgress * 0.65F + (float) Math.PI) * 0.33F;
             this.leftArm.yaw = 0.4F;
-            this.leftArm.pitch = MathHelper.cos(animationProgress * 0.65F) * 0.33F;
+            this.leftArm.pitch = (float) Math.PI + MathHelper.cos(animationProgress * 0.65F) * 0.33F;
         }
     }
 

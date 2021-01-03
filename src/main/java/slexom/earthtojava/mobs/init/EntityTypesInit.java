@@ -4,10 +4,7 @@ import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import slexom.earthtojava.mobs.entity.monster.BoneSpiderEntity;
-import slexom.earthtojava.mobs.entity.monster.BoulderingZombieEntity;
-import slexom.earthtojava.mobs.entity.monster.LobberZombieEntity;
-import slexom.earthtojava.mobs.entity.monster.SkeletonWolfEntity;
+import slexom.earthtojava.mobs.entity.monster.*;
 import slexom.earthtojava.mobs.entity.passive.*;
 import slexom.earthtojava.mobs.entity.projectile.BoneShardEntity;
 import slexom.earthtojava.mobs.entity.projectile.MelonSeedProjectileEntity;
@@ -57,6 +54,7 @@ public class EntityTypesInit {
     public static final String SUNSET_COW_REGISTRY_NAME = "sunset_cow";
     public static final String TROPICAL_SLIME_REGISTRY_NAME = "tropical_slime";
     public static final String VESTED_RABBIT_REGISTRY_NAME = "vested_rabbit";
+    public static final String VILER_WITCH_REGISTRY_NAME = "viler_witch";
     public static final String WANDERING_TRADER_REGISTRY_NAME = "wandering_trader";
     public static final String WOOLY_COW_REGISTRY_NAME = "wooly_cow";
     public static EntityType<AlbinoCowEntity> ALBINO_COW_REGISTRY_OBJECT;
@@ -101,6 +99,7 @@ public class EntityTypesInit {
     public static EntityType<SunsetCowEntity> SUNSET_COW_REGISTRY_OBJECT;
     public static EntityType<TropicalSlimeEntity> TROPICAL_SLIME_REGISTRY_OBJECT;
     public static EntityType<VestedRabbitEntity> VESTED_RABBIT_REGISTRY_OBJECT;
+    public static EntityType<VilerWitchEntity> VILER_WITCH_REGISTRY_OBJECT;
     public static EntityType<WoolyCowEntity> WOOLY_COW_REGISTRY_OBJECT;
 
     public static void init() {
@@ -146,6 +145,7 @@ public class EntityTypesInit {
         SUNSET_COW_REGISTRY_OBJECT = RegisterHelper.registerEntity(SUNSET_COW_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, SunsetCowEntity::new).dimensions(cowDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         TROPICAL_SLIME_REGISTRY_OBJECT = RegisterHelper.registerEntity(TROPICAL_SLIME_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, TropicalSlimeEntity::new).dimensions(EntityDimensions.fixed(2.04F, 2.04F)).fireImmune().trackRangeBlocks(64).trackedUpdateRate(3).build());
         VESTED_RABBIT_REGISTRY_OBJECT = RegisterHelper.registerEntity(VESTED_RABBIT_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, VestedRabbitEntity::new).dimensions(rabbitDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
+        VILER_WITCH_REGISTRY_OBJECT = RegisterHelper.registerEntity(VILER_WITCH_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, VilerWitchEntity::new).dimensions(EntityDimensions.fixed(EntityType.WITCH.getWidth(),EntityType.WITCH.getHeight())).trackRangeBlocks(64).trackedUpdateRate(3).build());
         WOOLY_COW_REGISTRY_OBJECT = RegisterHelper.registerEntity(WOOLY_COW_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, WoolyCowEntity::new).dimensions(cowDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
     }
 

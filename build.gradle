@@ -30,21 +30,11 @@ dependencies {
 
     compileOnly group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
 
-    modApi("me.shedaniel.cloth:config-2:4.8.3") {
-        exclude(group: "net.fabricmc.fabric-api")
-    }
-    include("me.shedaniel.cloth:config-2:4.8.3") {
-        exclude(group: "net.fabricmc.fabric-api")
-    }
-    modApi("me.sargunvohra.mcmods:autoconfig1u:3.3.1") {
-        exclude(group: "net.fabricmc.fabric-api")
-    }
-    include("me.sargunvohra.mcmods:autoconfig1u:3.3.1") {
-        exclude(group: "net.fabricmc.fabric-api")
-    }
-    modImplementation("io.github.prospector:modmenu:1.14.6+build.31") {
-        exclude(group: "net.fabricmc.fabric-api")
-    }
+    modApi("me.shedaniel.cloth:config-2:5.0.0")
+    include("me.shedaniel.cloth:config-2:5.0.0")
+    modApi("me.sargunvohra.mcmods:autoconfig1u:3.3.1")
+    include("me.sargunvohra.mcmods:autoconfig1u:3.3.1")
+    modImplementation("io.github.prospector:modmenu:2.0.0-beta.1+build.2")
     // PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
     // You may need to force-disable transitiveness on them.
 }

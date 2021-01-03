@@ -3,6 +3,7 @@ package slexom.earthtojava.mobs.init;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.mob.WitchEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.passive.SquidEntity;
 import slexom.earthtojava.mobs.entity.base.*;
@@ -64,6 +65,8 @@ public class EntityAttributeInit {
 
         RegisterHelper.registerEntityAttributes(EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_OBJECT, E2JBaseZombieEntity.createZombieAttributes());
         RegisterHelper.registerEntityAttributes(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_OBJECT, E2JBaseZombieEntity.createZombieAttributes());
+
+        RegisterHelper.registerEntityAttributes(EntityTypesInit.VILER_WITCH_REGISTRY_OBJECT, WitchEntity.createWitchAttributes());
     }
 
     private static void registerBaseChickenAttributes(EntityType<? extends LivingEntity> entityType) {

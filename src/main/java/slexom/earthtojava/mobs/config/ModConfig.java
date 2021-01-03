@@ -60,9 +60,6 @@ public class ModConfig implements ConfigData {
     public EntityConfig fancyChicken = new EntityConfig(BiomeSpawnHelper.FANCY_CHICKEN_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig furnaceGolem = new EntityConfig(BiomeSpawnHelper.FURNACE_GOLEM_SPAWN_BIOMES, 10);
-    @ConfigEntry.Category("entities")
-    @ConfigEntry.Gui.CollapsibleObject
     public GlowSquidConfig glowSquid = new GlowSquidConfig(BiomeSpawnHelper.GLOW_SQUID_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
@@ -82,9 +79,6 @@ public class ModConfig implements ConfigData {
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig lobberZombie = new EntityConfig(BiomeSpawnHelper.LOBBER_ZOMBIE_SPAWN_BIOMES, 15);
-    @ConfigEntry.Category("entities")
-    @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig melonGolem = new EntityConfig(BiomeSpawnHelper.MELON_GOLEM_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig midnightChicken = new EntityConfig(BiomeSpawnHelper.MIDNIGHT_CHICKEN_SPAWN_BIOMES, 10);
@@ -144,6 +138,9 @@ public class ModConfig implements ConfigData {
     public EntityConfig vestedRabbit = new EntityConfig(BiomeSpawnHelper.VESTED_RABBIT_SPAWN_BIOMES, 4);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig vilerWitch = new EntityConfig(BiomeSpawnHelper.VILER_WITCH_SPAWN_BIOMES, 1,1,1);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig woolyCow = new EntityConfig(BiomeSpawnHelper.WOOLY_COW_SPAWN_BIOMES, 8);
 
     @Override
@@ -196,9 +193,9 @@ public class ModConfig implements ConfigData {
         public boolean spawn;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
         public int weight;
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 5)
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
         public int groupMin;
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 5)
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
         public int groupMax;
 
         @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
