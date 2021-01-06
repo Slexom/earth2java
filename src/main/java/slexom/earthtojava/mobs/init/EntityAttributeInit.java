@@ -30,6 +30,7 @@ public class EntityAttributeInit {
         registerBaseCowAttributes(EntityTypesInit.ASHEN_COW_REGISTRY_OBJECT);
         registerBaseCowAttributes(EntityTypesInit.COOKIE_COW_REGISTRY_OBJECT);
         registerBaseCowAttributes(EntityTypesInit.CREAM_COW_REGISTRY_OBJECT);
+        registerBaseCowAttributes(EntityTypesInit.DAIRY_COW_REGISTRY_OBJECT);
         registerBaseCowAttributes(EntityTypesInit.PINTO_COW_REGISTRY_OBJECT);
         registerBaseCowAttributes(EntityTypesInit.SUNSET_COW_REGISTRY_OBJECT);
         registerBaseCowAttributes(EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT);

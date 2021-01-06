@@ -47,6 +47,7 @@ public class EntityRendererInit {
         registerCowEntityRenderer(EntityTypesInit.ASHEN_COW_REGISTRY_OBJECT, EntityTypesInit.ASHEN_COW_REGISTRY_NAME);
         registerCowEntityRenderer(EntityTypesInit.COOKIE_COW_REGISTRY_OBJECT, EntityTypesInit.COOKIE_COW_REGISTRY_NAME);
         registerCowEntityRenderer(EntityTypesInit.CREAM_COW_REGISTRY_OBJECT, EntityTypesInit.CREAM_COW_REGISTRY_NAME);
+        registerCowEntityRenderer(EntityTypesInit.DAIRY_COW_REGISTRY_OBJECT, EntityTypesInit.DAIRY_COW_REGISTRY_NAME);
         registerCowEntityRenderer(EntityTypesInit.PINTO_COW_REGISTRY_OBJECT, EntityTypesInit.PINTO_COW_REGISTRY_NAME);
         registerCowEntityRenderer(EntityTypesInit.SUNSET_COW_REGISTRY_OBJECT, EntityTypesInit.SUNSET_COW_REGISTRY_NAME);
 
