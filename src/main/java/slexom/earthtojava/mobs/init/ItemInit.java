@@ -62,6 +62,7 @@ public class ItemInit {
     public static E2JSpawnEggItem VILER_WITCH_SPAWN_EGG;
     public static E2JSpawnEggItem WANDERING_TRADER_SPAWN_EGG;
     public static E2JSpawnEggItem WOOLY_COW_SPAWN_EGG;
+    public static E2JSpawnEggItem CREAM_COW_SPAWN_EGG;
 
     public static void init() {
         HORN = RegisterHelper.registerItem("horn", new HornItem(new Item.Settings().group(itemGroup).maxCount(64)));
@@ -87,6 +88,7 @@ public class ItemInit {
         BOULDERING_ZOMBIE_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_NAME, EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_OBJECT, 0x3a4046, 0x492320);
         BRONZED_CHICKEN_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.BRONZED_CHICKEN_REGISTRY_NAME, EntityTypesInit.BRONZED_CHICKEN_REGISTRY_OBJECT, 0x040f30, 0xb2492a);
         CLUCKSHROOM_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.CLUCKSHROOM_REGISTRY_NAME, EntityTypesInit.CLUCKSHROOM_REGISTRY_OBJECT, 0xef0000, 0xffffee);
+        CREAM_COW_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.CREAM_COW_REGISTRY_NAME, EntityTypesInit.CREAM_COW_REGISTRY_OBJECT, 0xfcbf66, 0xfff2cd);
         FANCY_CHICKEN_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.FANCY_CHICKEN_REGISTRY_NAME, EntityTypesInit.FANCY_CHICKEN_REGISTRY_OBJECT, 0xf7b035, 0x478e8b);
         FLECKED_SHEEP_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.FLECKED_SHEEP_REGISTRY_NAME, EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT, 0x2c1e17, 0x907666);
         FURNACE_GOLEM_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.FURNACE_GOLEM_REGISTRY_NAME, EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT, 0x56585a, 0xff5501);

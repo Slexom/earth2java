@@ -29,6 +29,7 @@ public class EntitySpawnInit {
         registerAnimalEntitySpawn(EntityTypesInit.BRONZED_CHICKEN_REGISTRY_OBJECT, config.bronzedChicken);
         registerAnimalEntitySpawn(EntityTypesInit.BOLD_STRIPED_RABBIT_REGISTRY_OBJECT, config.boldStripedRabbit);
         registerAnimalEntitySpawn(EntityTypesInit.COOKIE_COW_REGISTRY_OBJECT, config.cookieCow);
+        registerAnimalEntitySpawn(EntityTypesInit.CREAM_COW_REGISTRY_OBJECT, config.creamCow);
         registerAnimalEntitySpawn(EntityTypesInit.PINTO_COW_REGISTRY_OBJECT, config.pintoCow);
         registerAnimalEntitySpawn(EntityTypesInit.CLUCKSHROOM_REGISTRY_OBJECT, config.cluckshroom);
         registerAnimalEntitySpawn(EntityTypesInit.FANCY_CHICKEN_REGISTRY_OBJECT, config.fancyChicken);

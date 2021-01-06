@@ -54,6 +54,9 @@ public class ModConfig implements ConfigData {
     public EntityConfig cookieCow = new EntityConfig(BiomeSpawnHelper.COOKIE_COW_SPAWN_BIOMES, 8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig creamCow = new EntityConfig(BiomeSpawnHelper.CREAM_COW_SPAWN_BIOMES, 8);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig fleckedSheep = new EntityConfig(BiomeSpawnHelper.FLECKED_SHEEP_SPAWN_BIOMES, 12);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
