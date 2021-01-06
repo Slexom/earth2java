@@ -63,6 +63,9 @@ public class ModConfig implements ConfigData {
     public GlowSquidConfig glowSquid = new GlowSquidConfig(BiomeSpawnHelper.GLOW_SQUID_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig goldCrestedChicken = new EntityConfig(BiomeSpawnHelper.GOLD_CRESTED_CHICKEN_SPAWN_BIOMES, 10);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig harelequinRabbit = new EntityConfig(BiomeSpawnHelper.HARELEQUIN_RABBIT_SPAWN_BIOMES, 4);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject

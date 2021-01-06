@@ -28,6 +28,7 @@ public class ItemInit {
     public static E2JSpawnEggItem FLECKED_SHEEP_SPAWN_EGG;
     public static E2JSpawnEggItem FURNACE_GOLEM_SPAWN_EGG;
     public static E2JSpawnEggItem GLOW_SQUID_SPAWN_EGG;
+    public static E2JSpawnEggItem GOLD_CRESTED_CHICKEN_SPAWN_EGG;
     public static E2JSpawnEggItem HARELEQUIN_RABBIT_SPAWN_EGG;
     public static Item HORN;
     public static E2JSpawnEggItem HORNED_SHEEP_SPAWN_EGG;
@@ -90,6 +91,7 @@ public class ItemInit {
         FLECKED_SHEEP_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.FLECKED_SHEEP_REGISTRY_NAME, EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT, 0x2c1e17, 0x907666);
         FURNACE_GOLEM_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.FURNACE_GOLEM_REGISTRY_NAME, EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT, 0x56585a, 0xff5501);
         GLOW_SQUID_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.GLOW_SQUID_REGISTRY_NAME, EntityTypesInit.GLOW_SQUID_REGISTRY_OBJECT, 0x095656, 0x80ffc0);
+        GOLD_CRESTED_CHICKEN_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.GOLD_CRESTED_CHICKEN_REGISTRY_NAME, EntityTypesInit.GOLD_CRESTED_CHICKEN_REGISTRY_OBJECT, 0xd1cec2, 0xe5aa40);
         HARELEQUIN_RABBIT_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.HARELEQUIN_RABBIT_REGISTRY_NAME, EntityTypesInit.HARELEQUIN_RABBIT_REGISTRY_OBJECT, 0x1d1b1a, 0xb09984);
         HORNED_SHEEP_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.HORNED_SHEEP_REGISTRY_NAME, EntityTypesInit.HORNED_SHEEP_REGISTRY_OBJECT, 0xececec, 0x291811);
         INKY_SHEEP_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.INKY_SHEEP_REGISTRY_NAME, EntityTypesInit.INKY_SHEEP_REGISTRY_OBJECT, 0x181716, 0x8a7564);

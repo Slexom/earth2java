@@ -27,6 +27,7 @@ public class EntityTypesInit {
     public static final String FLECKED_SHEEP_REGISTRY_NAME = "flecked_sheep";
     public static final String FURNACE_GOLEM_REGISTRY_NAME = "furnace_golem";
     public static final String GLOW_SQUID_REGISTRY_NAME = "glow_squid";
+    public static final String GOLD_CRESTED_CHICKEN_REGISTRY_NAME = "gold_crested_chicken";
     public static final String HARELEQUIN_RABBIT_REGISTRY_NAME = "harelequin_rabbit";
     public static final String HORNED_SHEEP_REGISTRY_NAME = "horned_sheep";
     public static final String INKY_SHEEP_REGISTRY_NAME = "inky_sheep";
@@ -72,6 +73,7 @@ public class EntityTypesInit {
     public static EntityType<FleckedSheepEntity> FLECKED_SHEEP_REGISTRY_OBJECT;
     public static EntityType<FurnaceGolemEntity> FURNACE_GOLEM_REGISTRY_OBJECT;
     public static EntityType<GlowSquidEntity> GLOW_SQUID_REGISTRY_OBJECT;
+    public static EntityType<GoldCrestedChickenEntity> GOLD_CRESTED_CHICKEN_REGISTRY_OBJECT;
     public static EntityType<HarelequinRabbitEntity> HARELEQUIN_RABBIT_REGISTRY_OBJECT;
     public static EntityType<HornedSheepEntity> HORNED_SHEEP_REGISTRY_OBJECT;
     public static EntityType<InkySheepEntity> INKY_SHEEP_REGISTRY_OBJECT;
@@ -120,6 +122,7 @@ public class EntityTypesInit {
         FLECKED_SHEEP_REGISTRY_OBJECT = RegisterHelper.registerEntity(FLECKED_SHEEP_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, FleckedSheepEntity::new).dimensions(sheepDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         FURNACE_GOLEM_REGISTRY_OBJECT = RegisterHelper.registerEntity(FURNACE_GOLEM_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.MISC, FurnaceGolemEntity::new).dimensions(EntityDimensions.fixed(EntityType.IRON_GOLEM.getWidth(), EntityType.IRON_GOLEM.getHeight())).fireImmune().trackRangeBlocks(64).trackedUpdateRate(3).build());
         GLOW_SQUID_REGISTRY_OBJECT = RegisterHelper.registerEntity(GLOW_SQUID_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, GlowSquidEntity::new).dimensions(EntityDimensions.fixed(EntityType.SQUID.getWidth(), EntityType.SQUID.getHeight())).trackRangeBlocks(64).trackedUpdateRate(3).build());
+        GOLD_CRESTED_CHICKEN_REGISTRY_OBJECT =RegisterHelper.registerEntity(GOLD_CRESTED_CHICKEN_REGISTRY_NAME,FabricEntityTypeBuilder.create(SpawnGroup.CREATURE,GoldCrestedChickenEntity::new).dimensions(chickenDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         HARELEQUIN_RABBIT_REGISTRY_OBJECT = RegisterHelper.registerEntity(HARELEQUIN_RABBIT_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, HarelequinRabbitEntity::new).dimensions(rabbitDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         HORNED_SHEEP_REGISTRY_OBJECT = RegisterHelper.registerEntity(HORNED_SHEEP_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, HornedSheepEntity::new).dimensions(sheepDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         INKY_SHEEP_REGISTRY_OBJECT = RegisterHelper.registerEntity(INKY_SHEEP_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, InkySheepEntity::new).dimensions(sheepDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
