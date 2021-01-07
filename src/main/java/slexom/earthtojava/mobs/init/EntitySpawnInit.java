@@ -56,6 +56,7 @@ public class EntitySpawnInit {
         registerAnimalEntitySpawn(EntityTypesInit.SPOTTED_PIG_REGISTRY_OBJECT, config.spottedPig);
         registerAnimalEntitySpawn(EntityTypesInit.STORMY_CHICKEN_REGISTRY_OBJECT, config.stormyChicken);
         registerAnimalEntitySpawn(EntityTypesInit.SUNSET_COW_REGISTRY_OBJECT, config.sunsetCow);
+        registerAnimalEntitySpawn(EntityTypesInit.UMBRA_COW_REGISTRY_OBJECT, config.umbraCow);
         registerAnimalEntitySpawn(EntityTypesInit.VESTED_RABBIT_REGISTRY_OBJECT, config.vestedRabbit);
         registerAnimalEntitySpawn(EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT, config.woolyCow);
     }

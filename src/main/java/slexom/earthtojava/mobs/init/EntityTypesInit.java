@@ -57,6 +57,7 @@ public class EntityTypesInit {
     public static final String STORMY_CHICKEN_REGISTRY_NAME = "stormy_chicken";
     public static final String SUNSET_COW_REGISTRY_NAME = "sunset_cow";
     public static final String TROPICAL_SLIME_REGISTRY_NAME = "tropical_slime";
+    public static final String UMBRA_COW_REGISTRY_NAME = "umbra_cow";
     public static final String VESTED_RABBIT_REGISTRY_NAME = "vested_rabbit";
     public static final String VILER_WITCH_REGISTRY_NAME = "viler_witch";
     public static final String WANDERING_TRADER_REGISTRY_NAME = "wandering_trader";
@@ -105,6 +106,7 @@ public class EntityTypesInit {
     public static EntityType<StormyChickenEntity> STORMY_CHICKEN_REGISTRY_OBJECT;
     public static EntityType<SunsetCowEntity> SUNSET_COW_REGISTRY_OBJECT;
     public static EntityType<TropicalSlimeEntity> TROPICAL_SLIME_REGISTRY_OBJECT;
+    public static EntityType<UmbraCowEntity> UMBRA_COW_REGISTRY_OBJECT;
     public static EntityType<VestedRabbitEntity> VESTED_RABBIT_REGISTRY_OBJECT;
     public static EntityType<VilerWitchEntity> VILER_WITCH_REGISTRY_OBJECT;
     public static EntityType<E2JWanderingTraderEntity> WANDERING_TRADER_REGISTRY_OBJECT;
@@ -155,6 +157,7 @@ public class EntityTypesInit {
         STORMY_CHICKEN_REGISTRY_OBJECT = RegisterHelper.registerEntity(STORMY_CHICKEN_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, StormyChickenEntity::new).dimensions(chickenDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         SUNSET_COW_REGISTRY_OBJECT = RegisterHelper.registerEntity(SUNSET_COW_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, SunsetCowEntity::new).dimensions(cowDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         TROPICAL_SLIME_REGISTRY_OBJECT = RegisterHelper.registerEntity(TROPICAL_SLIME_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, TropicalSlimeEntity::new).dimensions(EntityDimensions.fixed(2.04F, 2.04F)).fireImmune().trackRangeBlocks(64).trackedUpdateRate(3).build());
+        UMBRA_COW_REGISTRY_OBJECT = RegisterHelper.registerEntity(UMBRA_COW_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, UmbraCowEntity::new).dimensions(cowDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         VESTED_RABBIT_REGISTRY_OBJECT = RegisterHelper.registerEntity(VESTED_RABBIT_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, VestedRabbitEntity::new).dimensions(rabbitDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         VILER_WITCH_REGISTRY_OBJECT = RegisterHelper.registerEntity(VILER_WITCH_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, VilerWitchEntity::new).dimensions(EntityDimensions.fixed(EntityType.WITCH.getWidth(), EntityType.WITCH.getHeight())).trackRangeBlocks(64).trackedUpdateRate(3).build());
         WANDERING_TRADER_REGISTRY_OBJECT = RegisterHelper.registerEntity(WANDERING_TRADER_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, E2JWanderingTraderEntity::new).dimensions(EntityDimensions.fixed(EntityType.WANDERING_TRADER.getWidth(), EntityType.WANDERING_TRADER.getHeight())).trackRangeBlocks(64).trackedUpdateRate(3).build());

@@ -144,10 +144,13 @@ public class ModConfig implements ConfigData {
     public EntityConfig tropicalSlime = new EntityConfig(BiomeSpawnHelper.TROPICAL_SLIME_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig umbraCow = new EntityConfig(BiomeSpawnHelper.UMBRA_COW_SPAWN_BIOMES, 8);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig vestedRabbit = new EntityConfig(BiomeSpawnHelper.VESTED_RABBIT_SPAWN_BIOMES, 4);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig vilerWitch = new EntityConfig(BiomeSpawnHelper.VILER_WITCH_SPAWN_BIOMES, 1,1,1);
+    public EntityConfig vilerWitch = new EntityConfig(BiomeSpawnHelper.VILER_WITCH_SPAWN_BIOMES, 1, 1, 1);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig woolyCow = new EntityConfig(BiomeSpawnHelper.WOOLY_COW_SPAWN_BIOMES, 8);

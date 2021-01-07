@@ -51,6 +51,9 @@ public class EntityRendererInit {
         registerCowEntityRenderer(EntityTypesInit.PINTO_COW_REGISTRY_OBJECT, EntityTypesInit.PINTO_COW_REGISTRY_NAME);
         registerCowEntityRenderer(EntityTypesInit.SUNSET_COW_REGISTRY_OBJECT, EntityTypesInit.SUNSET_COW_REGISTRY_NAME);
 
+        registerShearableCowEntityRenderer(EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT, EntityTypesInit.WOOLY_COW_REGISTRY_NAME);
+        registerShearableCowEntityRenderer(EntityTypesInit.UMBRA_COW_REGISTRY_OBJECT, EntityTypesInit.UMBRA_COW_REGISTRY_NAME);
+
         registerPigEntityRenderer(EntityTypesInit.PALE_PIG_REGISTRY_OBJECT, EntityTypesInit.PALE_PIG_REGISTRY_NAME);
         registerPigEntityRenderer(EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT, EntityTypesInit.PIEBALD_PIG_REGISTRY_NAME);
         registerPigEntityRenderer(EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_OBJECT, EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_NAME);
@@ -76,7 +79,6 @@ public class EntityRendererInit {
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.MUDDY_PIG_REGISTRY_OBJECT, (dispatcher, context) -> new MuddyPigRenderer(dispatcher));
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.SKELETON_WOLF_REGISTRY_OBJECT, (dispatcher, context) -> new SkeletonWolfRenderer(dispatcher));
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.TROPICAL_SLIME_REGISTRY_OBJECT, (dispatcher, context) -> new TropicalSlimeRenderer(dispatcher));
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT, (dispatcher, context) -> new WoolyCowRenderer(dispatcher));
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT, (dispatcher, context) -> new FurnaceGolemRenderer(dispatcher));
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.MELON_GOLEM_REGISTRY_OBJECT, (dispatcher, context) -> new MelonGolemRenderer(dispatcher));
         EntityRendererRegistry.INSTANCE.register(EntityTypesInit.JUMBO_RABBIT_REGISTRY_OBJECT, (dispatcher, context) -> new JumboRabbitRenderer(dispatcher, EntityTypesInit.JUMBO_RABBIT_REGISTRY_NAME));
@@ -96,6 +98,10 @@ public class EntityRendererInit {
 
     private static void registerCowEntityRenderer(EntityType<?> entity, String identifier) {
         EntityRendererRegistry.INSTANCE.register(entity, (dispatcher, context) -> new E2JCowRenderer(dispatcher, identifier));
+    }
+
+    private static void registerShearableCowEntityRenderer(EntityType<?> entity, String identifier) {
+        EntityRendererRegistry.INSTANCE.register(entity, (dispatcher, context) -> new E2JShearableCowRenderer(dispatcher, identifier));
     }
 
     private static void registerMonoColorSheepEntityRenderer(EntityType<?> entity, String identifier) {

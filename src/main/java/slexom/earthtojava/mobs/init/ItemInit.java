@@ -60,6 +60,7 @@ public class ItemInit {
     public static E2JSpawnEggItem STORMY_CHICKEN_SPAWN_EGG;
     public static E2JSpawnEggItem SUNSET_COW_SPAWN_EGG;
     public static E2JSpawnEggItem TROPICAL_SLIME_SPAWN_EGG;
+    public static E2JSpawnEggItem UMBRA_COW_SPAWN_EGG;
     public static E2JSpawnEggItem VESTED_RABBIT_SPAWN_EGG;
     public static E2JSpawnEggItem VILER_WITCH_SPAWN_EGG;
     public static E2JSpawnEggItem WANDERING_TRADER_SPAWN_EGG;
@@ -121,10 +122,11 @@ public class ItemInit {
         STORMY_CHICKEN_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.STORMY_CHICKEN_REGISTRY_NAME, EntityTypesInit.STORMY_CHICKEN_REGISTRY_OBJECT, 0x3e2525, 0xc0c0c0);
         SUNSET_COW_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.SUNSET_COW_REGISTRY_NAME, EntityTypesInit.SUNSET_COW_REGISTRY_OBJECT, 0x993d0d, 0x171514);
         TROPICAL_SLIME_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.TROPICAL_SLIME_REGISTRY_NAME, EntityTypesInit.TROPICAL_SLIME_REGISTRY_OBJECT, 0x0e496e, 0x8ed3ff);
+        UMBRA_COW_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.UMBRA_COW_REGISTRY_NAME, EntityTypesInit.UMBRA_COW_REGISTRY_OBJECT, 0x090c1a, 0x2e2c44);
         VESTED_RABBIT_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.VESTED_RABBIT_REGISTRY_NAME, EntityTypesInit.VESTED_RABBIT_REGISTRY_OBJECT, 0xdedede, 0x747474);
         VILER_WITCH_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.VILER_WITCH_REGISTRY_NAME, EntityTypesInit.VILER_WITCH_REGISTRY_OBJECT, 0x0d0e19, 0xa09280);
-        WANDERING_TRADER_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.WANDERING_TRADER_REGISTRY_NAME, EntityTypesInit.WANDERING_TRADER_REGISTRY_OBJECT, 0xcc3300, 0xff9933);
-        WOOLY_COW_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.WOOLY_COW_REGISTRY_NAME, EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT, 0x89c8cc, 0x73c480);
+        WANDERING_TRADER_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.WANDERING_TRADER_REGISTRY_NAME, EntityTypesInit.WANDERING_TRADER_REGISTRY_OBJECT, 0x89c8cc, 0x73c480);
+        WOOLY_COW_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.WOOLY_COW_REGISTRY_NAME, EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT, 0xcc3300, 0xff9933);
     }
 
 }
