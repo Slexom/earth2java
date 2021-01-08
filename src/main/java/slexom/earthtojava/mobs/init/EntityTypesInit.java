@@ -54,6 +54,7 @@ public class EntityTypesInit {
     public static final String ROTTEN_FLESH_PROJECTILE_REGISTRY_NAME = "rotten_flesh_projectile";
     public static final String SKELETON_WOLF_REGISTRY_NAME = "skeleton_wolf";
     public static final String SKEWBALD_CHICKEN_REGISTRY_NAME = "skewbald_chicken";
+    public static final String SOOTY_PIG_REGISTRY_NAME = "sooty_pig";
     public static final String SPOTTED_PIG_REGISTRY_NAME = "spotted_pig";
     public static final String STORMY_CHICKEN_REGISTRY_NAME = "stormy_chicken";
     public static final String SUNSET_COW_REGISTRY_NAME = "sunset_cow";
@@ -105,6 +106,7 @@ public class EntityTypesInit {
     public static EntityType<SkeletonWolfEntity> SKELETON_WOLF_REGISTRY_OBJECT;
     public static EntityType<SkewbaldChickenEntity> SKEWBALD_CHICKEN_REGISTRY_OBJECT;
     public static EntityType<SpottedPigEntity> SPOTTED_PIG_REGISTRY_OBJECT;
+    public static EntityType<SootyPigEntity> SOOTY_PIG_REGISTRY_OBJECT;
     public static EntityType<StormyChickenEntity> STORMY_CHICKEN_REGISTRY_OBJECT;
     public static EntityType<SunsetCowEntity> SUNSET_COW_REGISTRY_OBJECT;
     public static EntityType<TropicalSlimeEntity> TROPICAL_SLIME_REGISTRY_OBJECT;
@@ -118,7 +120,7 @@ public class EntityTypesInit {
         AMBER_CHICKEN_REGISTRY_OBJECT = RegisterHelper.registerEntity(AMBER_CHICKEN_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, AmberChickenEntity::new).dimensions(chickenDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         ASHEN_COW_REGISTRY_OBJECT = RegisterHelper.registerEntity(ASHEN_COW_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, AshenCowEntity::new).dimensions(cowDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         ALBINO_COW_REGISTRY_OBJECT = RegisterHelper.registerEntity(ALBINO_COW_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, AlbinoCowEntity::new).dimensions(cowDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
-       PINTO_COW_REGISTRY_OBJECT = RegisterHelper.registerEntity(PINTO_COW_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, PintoCowEntity::new).dimensions(cowDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
+        PINTO_COW_REGISTRY_OBJECT = RegisterHelper.registerEntity(PINTO_COW_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, PintoCowEntity::new).dimensions(cowDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         BONE_SHARD_REGISTRY_OBJECT = RegisterHelper.registerEntity(BONE_SHARD_REGISTRY_NAME, FabricEntityTypeBuilder.<BoneShardEntity>create(SpawnGroup.MISC, BoneShardEntity::new).dimensions(EntityDimensions.fixed(0.25F, 0.25F)).trackRangeBlocks(64).trackedUpdateRate(3).build());
         BOLD_STRIPED_RABBIT_REGISTRY_OBJECT = RegisterHelper.registerEntity(BOLD_STRIPED_RABBIT_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, BoldStripedRabbitEntity::new).dimensions(rabbitDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         BONE_SPIDER_REGISTRY_OBJECT = RegisterHelper.registerEntity(BONE_SPIDER_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, BoneSpiderEntity::new).dimensions(EntityDimensions.fixed(0.6F, 0.7F)).trackRangeBlocks(64).trackedUpdateRate(3).build());
@@ -156,6 +158,7 @@ public class EntityTypesInit {
         ROTTEN_FLESH_PROJECTILE_REGISTRY_OBJECT = RegisterHelper.registerEntity(ROTTEN_FLESH_PROJECTILE_REGISTRY_NAME, FabricEntityTypeBuilder.<RottenFleshProjectileEntity>create(SpawnGroup.MISC, RottenFleshProjectileEntity::new).dimensions(EntityDimensions.fixed(0.25F, 0.25F)).trackRangeBlocks(64).trackedUpdateRate(3).build());
         SKELETON_WOLF_REGISTRY_OBJECT = RegisterHelper.registerEntity(SKELETON_WOLF_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, SkeletonWolfEntity::new).dimensions(EntityDimensions.fixed(EntityType.WOLF.getWidth(), EntityType.WOLF.getHeight())).trackRangeBlocks(64).trackedUpdateRate(3).build());
         SKEWBALD_CHICKEN_REGISTRY_OBJECT = RegisterHelper.registerEntity(SKEWBALD_CHICKEN_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, SkewbaldChickenEntity::new).dimensions(chickenDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
+        SOOTY_PIG_REGISTRY_OBJECT = RegisterHelper.registerEntity(SOOTY_PIG_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, SootyPigEntity::new).dimensions(pigDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         SPOTTED_PIG_REGISTRY_OBJECT = RegisterHelper.registerEntity(SPOTTED_PIG_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, SpottedPigEntity::new).dimensions(pigDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         STORMY_CHICKEN_REGISTRY_OBJECT = RegisterHelper.registerEntity(STORMY_CHICKEN_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, StormyChickenEntity::new).dimensions(chickenDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         SUNSET_COW_REGISTRY_OBJECT = RegisterHelper.registerEntity(SUNSET_COW_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, SunsetCowEntity::new).dimensions(cowDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
