@@ -25,6 +25,7 @@ import java.util.stream.Stream;
 
 public final class BiomeSpawnHelper {
 
+    public static final String[] FRECKLED_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.SAVANNA, Biome.Category.PLAINS, Biome.Category.FOREST, Biome.Category.JUNGLE);
     public static final String[] ALBINO_COW_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS);
     public static final String[] AMBER_CHICKEN_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.DESERT, Biome.Category.SAVANNA);
     public static final String[] ASHEN_COW_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.EXTREME_HILLS);

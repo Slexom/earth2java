@@ -66,10 +66,11 @@ public class EntityRendererInit {
         registerMonoColorSheepEntityRenderer(EntityTypesInit.PATCHED_SHEEP_REGISTRY_OBJECT, EntityTypesInit.PATCHED_SHEEP_REGISTRY_NAME);
         registerMonoColorSheepEntityRenderer(EntityTypesInit.ROCKY_SHEEP_REGISTRY_OBJECT, EntityTypesInit.ROCKY_SHEEP_REGISTRY_NAME);
 
+        registerRabbitEntityRenderer(EntityTypesInit.BOLD_STRIPED_RABBIT_REGISTRY_OBJECT, EntityTypesInit.BOLD_STRIPED_RABBIT_REGISTRY_NAME);
+        registerRabbitEntityRenderer(EntityTypesInit.FRECKLED_RABBIT_REGISTRY_OBJECT, EntityTypesInit.FRECKLED_RABBIT_REGISTRY_NAME);
         registerRabbitEntityRenderer(EntityTypesInit.HARELEQUIN_RABBIT_REGISTRY_OBJECT, EntityTypesInit.HARELEQUIN_RABBIT_REGISTRY_NAME);
         registerRabbitEntityRenderer(EntityTypesInit.MUDDY_FOOT_RABBIT_REGISTRY_OBJECT, EntityTypesInit.MUDDY_FOOT_RABBIT_REGISTRY_NAME);
         registerRabbitEntityRenderer(EntityTypesInit.VESTED_RABBIT_REGISTRY_OBJECT, EntityTypesInit.VESTED_RABBIT_REGISTRY_NAME);
-        registerRabbitEntityRenderer(EntityTypesInit.BOLD_STRIPED_RABBIT_REGISTRY_OBJECT, EntityTypesInit.BOLD_STRIPED_RABBIT_REGISTRY_NAME);
     }
 
     private static void registerSpecialVariantEntitiesRenderer() {

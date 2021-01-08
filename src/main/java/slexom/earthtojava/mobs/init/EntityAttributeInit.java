@@ -18,13 +18,13 @@ public class EntityAttributeInit {
     public static void init() {
 
         registerBaseChickenAttributes(EntityTypesInit.AMBER_CHICKEN_REGISTRY_OBJECT);
-        registerBaseChickenAttributes(EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_OBJECT);
-        registerBaseChickenAttributes(EntityTypesInit.STORMY_CHICKEN_REGISTRY_OBJECT);
-        registerBaseChickenAttributes(EntityTypesInit.CLUCKSHROOM_REGISTRY_OBJECT);
         registerBaseChickenAttributes(EntityTypesInit.BRONZED_CHICKEN_REGISTRY_OBJECT);
+        registerBaseChickenAttributes(EntityTypesInit.CLUCKSHROOM_REGISTRY_OBJECT);
         registerBaseChickenAttributes(EntityTypesInit.FANCY_CHICKEN_REGISTRY_OBJECT);
-        registerBaseChickenAttributes(EntityTypesInit.SKEWBALD_CHICKEN_REGISTRY_OBJECT);
         registerBaseChickenAttributes(EntityTypesInit.GOLD_CRESTED_CHICKEN_REGISTRY_OBJECT);
+        registerBaseChickenAttributes(EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_OBJECT);
+        registerBaseChickenAttributes(EntityTypesInit.SKEWBALD_CHICKEN_REGISTRY_OBJECT);
+        registerBaseChickenAttributes(EntityTypesInit.STORMY_CHICKEN_REGISTRY_OBJECT);
 
         registerBaseCowAttributes(EntityTypesInit.ALBINO_COW_REGISTRY_OBJECT);
         registerBaseCowAttributes(EntityTypesInit.ASHEN_COW_REGISTRY_OBJECT);
@@ -32,25 +32,26 @@ public class EntityAttributeInit {
         registerBaseCowAttributes(EntityTypesInit.CREAM_COW_REGISTRY_OBJECT);
         registerBaseCowAttributes(EntityTypesInit.DAIRY_COW_REGISTRY_OBJECT);
         registerBaseCowAttributes(EntityTypesInit.PINTO_COW_REGISTRY_OBJECT);
+        registerBaseCowAttributes(EntityTypesInit.MOOBLOOM_REGISTRY_OBJECT);
+        registerBaseCowAttributes(EntityTypesInit.MOOLIP_REGISTRY_OBJECT);
         registerBaseCowAttributes(EntityTypesInit.SUNSET_COW_REGISTRY_OBJECT);
         registerBaseCowAttributes(EntityTypesInit.UMBRA_COW_REGISTRY_OBJECT);
         registerBaseCowAttributes(EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT);
-        registerBaseCowAttributes(EntityTypesInit.MOOBLOOM_REGISTRY_OBJECT);
-        registerBaseCowAttributes(EntityTypesInit.MOOLIP_REGISTRY_OBJECT);
 
-        registerBasePigAttributes(EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT);
-        registerBasePigAttributes(EntityTypesInit.PALE_PIG_REGISTRY_OBJECT);
         registerBasePigAttributes(EntityTypesInit.MOTTLED_PIG_REGISTRY_OBJECT);
         registerBasePigAttributes(EntityTypesInit.MUDDY_PIG_REGISTRY_OBJECT);
+        registerBasePigAttributes(EntityTypesInit.PALE_PIG_REGISTRY_OBJECT);
+        registerBasePigAttributes(EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT);
         registerBasePigAttributes(EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_OBJECT);
         registerBasePigAttributes(EntityTypesInit.SOOTY_PIG_REGISTRY_OBJECT);
         registerBasePigAttributes(EntityTypesInit.SPOTTED_PIG_REGISTRY_OBJECT);
 
-        registerBaseRabbitAttributes(EntityTypesInit.JUMBO_RABBIT_REGISTRY_OBJECT);
+        registerBaseRabbitAttributes(EntityTypesInit.BOLD_STRIPED_RABBIT_REGISTRY_OBJECT);
+        registerBaseRabbitAttributes(EntityTypesInit.FRECKLED_RABBIT_REGISTRY_OBJECT);
         registerBaseRabbitAttributes(EntityTypesInit.HARELEQUIN_RABBIT_REGISTRY_OBJECT);
+        registerBaseRabbitAttributes(EntityTypesInit.JUMBO_RABBIT_REGISTRY_OBJECT);
         registerBaseRabbitAttributes(EntityTypesInit.MUDDY_FOOT_RABBIT_REGISTRY_OBJECT);
         registerBaseRabbitAttributes(EntityTypesInit.VESTED_RABBIT_REGISTRY_OBJECT);
-        registerBaseRabbitAttributes(EntityTypesInit.BOLD_STRIPED_RABBIT_REGISTRY_OBJECT);
 
         registerBaseOneColorSheepAttributes(EntityTypesInit.INKY_SHEEP_REGISTRY_OBJECT);
         registerBaseOneColorSheepAttributes(EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT);

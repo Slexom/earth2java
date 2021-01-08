@@ -27,6 +27,7 @@ public class EntityTypesInit {
     public static final String DAIRY_COW_REGISTRY_NAME = "dairy_cow";
     public static final String FANCY_CHICKEN_REGISTRY_NAME = "fancy_chicken";
     public static final String FLECKED_SHEEP_REGISTRY_NAME = "flecked_sheep";
+    public static final String FRECKLED_RABBIT_REGISTRY_NAME = "freckled_rabbit";
     public static final String FURNACE_GOLEM_REGISTRY_NAME = "furnace_golem";
     public static final String GLOW_SQUID_REGISTRY_NAME = "glow_squid";
     public static final String GOLD_CRESTED_CHICKEN_REGISTRY_NAME = "gold_crested_chicken";
@@ -78,6 +79,7 @@ public class EntityTypesInit {
     public static EntityType<DairyCowEntity> DAIRY_COW_REGISTRY_OBJECT;
     public static EntityType<FancyChickenEntity> FANCY_CHICKEN_REGISTRY_OBJECT;
     public static EntityType<FleckedSheepEntity> FLECKED_SHEEP_REGISTRY_OBJECT;
+    public static EntityType<FreckledRabbitEntity> FRECKLED_RABBIT_REGISTRY_OBJECT;
     public static EntityType<FurnaceGolemEntity> FURNACE_GOLEM_REGISTRY_OBJECT;
     public static EntityType<GlowSquidEntity> GLOW_SQUID_REGISTRY_OBJECT;
     public static EntityType<GoldCrestedChickenEntity> GOLD_CRESTED_CHICKEN_REGISTRY_OBJECT;
