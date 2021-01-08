@@ -25,7 +25,6 @@ import java.util.stream.Stream;
 
 public final class BiomeSpawnHelper {
 
-    public static final String[] FRECKLED_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.SAVANNA, Biome.Category.PLAINS, Biome.Category.FOREST, Biome.Category.JUNGLE);
     public static final String[] ALBINO_COW_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS);
     public static final String[] AMBER_CHICKEN_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.DESERT, Biome.Category.SAVANNA);
     public static final String[] ASHEN_COW_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.EXTREME_HILLS);
@@ -39,6 +38,7 @@ public final class BiomeSpawnHelper {
     public static final String[] DAIRY_COW_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.FOREST, Biome.Category.JUNGLE, Biome.Category.EXTREME_HILLS);
     public static final String[] FANCY_CHICKEN_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.FOREST);
     public static final String[] FLECKED_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS, Biome.Category.TAIGA, Biome.Category.FOREST);
+    public static final String[] FRECKLED_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.SAVANNA, Biome.Category.PLAINS, Biome.Category.FOREST, Biome.Category.JUNGLE);
     public static final String[] GLOW_SQUID_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.OCEAN, Biome.Category.RIVER, Biome.Category.SWAMP);
     public static final String[] GOLD_CRESTED_CHICKEN_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS, Biome.Category.FOREST, Biome.Category.SAVANNA);
     public static final String[] HARELEQUIN_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS);
