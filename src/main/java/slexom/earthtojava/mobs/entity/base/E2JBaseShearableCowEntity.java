@@ -27,7 +27,7 @@ public class E2JBaseShearableCowEntity<T extends E2JBaseCowEntity<T>> extends E2
 
     private int eatGrassTimer;
     private EatGrassGoal eatGrassGoal;
-    private ItemStack wool;
+    private final ItemStack wool;
 
     public E2JBaseShearableCowEntity(EntityType<? extends E2JBaseShearableCowEntity> type, World world, ItemStack wool) {
         super(type, world);
@@ -103,7 +103,6 @@ public class E2JBaseShearableCowEntity<T extends E2JBaseCowEntity<T>> extends E2
             return super.interactMob(player, hand);
         }
     }
-
 
     public void sheared(SoundCategory shearedSoundCategory) {
         this.world.playSoundFromEntity( null, this, SoundEvents.ENTITY_SHEEP_SHEAR, shearedSoundCategory, 1.0F, 1.0F);

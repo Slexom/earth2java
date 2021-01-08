@@ -41,6 +41,7 @@ public class EntityTypesInit {
     public static final String MIDNIGHT_CHICKEN_REGISTRY_NAME = "midnight_chicken";
     public static final String MOOBLOOM_REGISTRY_NAME = "moobloom";
     public static final String MOOLIP_REGISTRY_NAME = "moolip";
+    public static final String MOTTLED_PIG_REGISTRY_NAME = "mottled_pig";
     public static final String MUDDY_FOOT_RABBIT_REGISTRY_NAME = "muddy_foot_rabbit";
     public static final String MUDDY_PIG_REGISTRY_NAME = "muddy_pig";
     public static final String PALE_PIG_REGISTRY_NAME = "pale_pig";
@@ -90,6 +91,7 @@ public class EntityTypesInit {
     public static EntityType<MidnightChickenEntity> MIDNIGHT_CHICKEN_REGISTRY_OBJECT;
     public static EntityType<MoobloomEntity> MOOBLOOM_REGISTRY_OBJECT;
     public static EntityType<MoolipEntity> MOOLIP_REGISTRY_OBJECT;
+    public static EntityType<MottledPigEntity> MOTTLED_PIG_REGISTRY_OBJECT;
     public static EntityType<MuddyFootRabbitEntity> MUDDY_FOOT_RABBIT_REGISTRY_OBJECT;
     public static EntityType<MuddyPigEntity> MUDDY_PIG_REGISTRY_OBJECT;
     public static EntityType<PalePigEntity> PALE_PIG_REGISTRY_OBJECT;
@@ -142,6 +144,7 @@ public class EntityTypesInit {
         MIDNIGHT_CHICKEN_REGISTRY_OBJECT = RegisterHelper.registerEntity(MIDNIGHT_CHICKEN_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MidnightChickenEntity::new).dimensions(chickenDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         MOOBLOOM_REGISTRY_OBJECT = RegisterHelper.registerEntity(MOOBLOOM_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MoobloomEntity::new).dimensions(cowDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         MOOLIP_REGISTRY_OBJECT = RegisterHelper.registerEntity(MOOLIP_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MoolipEntity::new).dimensions(cowDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
+        MOTTLED_PIG_REGISTRY_OBJECT = RegisterHelper.registerEntity(MOTTLED_PIG_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MottledPigEntity::new).dimensions(pigDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         MUDDY_FOOT_RABBIT_REGISTRY_OBJECT = RegisterHelper.registerEntity(MUDDY_FOOT_RABBIT_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MuddyFootRabbitEntity::new).dimensions(rabbitDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         MUDDY_PIG_REGISTRY_OBJECT = RegisterHelper.registerEntity(MUDDY_PIG_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MuddyPigEntity::new).dimensions(pigDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         PALE_PIG_REGISTRY_OBJECT = RegisterHelper.registerEntity(PALE_PIG_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, PalePigEntity::new).dimensions(pigDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());

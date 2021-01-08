@@ -54,6 +54,7 @@ public class EntityRendererInit {
         registerShearableCowEntityRenderer(EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT, EntityTypesInit.WOOLY_COW_REGISTRY_NAME);
         registerShearableCowEntityRenderer(EntityTypesInit.UMBRA_COW_REGISTRY_OBJECT, EntityTypesInit.UMBRA_COW_REGISTRY_NAME);
 
+        registerPigEntityRenderer(EntityTypesInit.MOTTLED_PIG_REGISTRY_OBJECT, EntityTypesInit.MOTTLED_PIG_REGISTRY_NAME);
         registerPigEntityRenderer(EntityTypesInit.PALE_PIG_REGISTRY_OBJECT, EntityTypesInit.PALE_PIG_REGISTRY_NAME);
         registerPigEntityRenderer(EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT, EntityTypesInit.PIEBALD_PIG_REGISTRY_NAME);
         registerPigEntityRenderer(EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_OBJECT, EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_NAME);

@@ -49,12 +49,13 @@ public final class BiomeSpawnHelper {
     public static final String[] MIDNIGHT_CHICKEN_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.FOREST, Biome.Category.JUNGLE);
     public static final String[] MOOBLOOM_SPAWN_BIOMES = getBiomesListFromBiomes(new String[]{"minecraft:flower_forest"});
     public static final String[] MOOLIP_SPAWN_BIOMES = getBiomesListFromBiomes(new String[]{"minecraft:flower_forest"});
+    public static final String[] MOTTLED_PIG_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS, Biome.Category.FOREST);
     public static final String[] MUDDY_FOOT_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS);
     public static final String[] MUDDY_PIG_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS, Biome.Category.RIVER);
     public static final String[] PALE_PIG_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.TAIGA, Biome.Category.ICY);
     public static final String[] PATCHED_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS);
     public static final String[] PIEBALD_PIG_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.FOREST, Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS, Biome.Category.TAIGA, Biome.Category.SAVANNA);
-    public static final String[] PINK_FOOTED_PIG_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS);
+    public static final String[] PINK_FOOTED_PIG_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.FOREST);
     public static final String[] PINTO_COW_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.TAIGA, Biome.Category.EXTREME_HILLS);
     public static final String[] RAINBOW_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.FOREST);
     public static final String[] ROCKY_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS);

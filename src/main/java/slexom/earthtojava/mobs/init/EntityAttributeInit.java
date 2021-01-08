@@ -40,9 +40,10 @@ public class EntityAttributeInit {
 
         registerBasePigAttributes(EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT);
         registerBasePigAttributes(EntityTypesInit.PALE_PIG_REGISTRY_OBJECT);
+        registerBasePigAttributes(EntityTypesInit.MOTTLED_PIG_REGISTRY_OBJECT);
         registerBasePigAttributes(EntityTypesInit.MUDDY_PIG_REGISTRY_OBJECT);
-        registerBasePigAttributes(EntityTypesInit.SPOTTED_PIG_REGISTRY_OBJECT);
         registerBasePigAttributes(EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_OBJECT);
+        registerBasePigAttributes(EntityTypesInit.SPOTTED_PIG_REGISTRY_OBJECT);
 
         registerBaseRabbitAttributes(EntityTypesInit.JUMBO_RABBIT_REGISTRY_OBJECT);
         registerBaseRabbitAttributes(EntityTypesInit.HARELEQUIN_RABBIT_REGISTRY_OBJECT);

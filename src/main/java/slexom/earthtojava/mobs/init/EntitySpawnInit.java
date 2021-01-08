@@ -44,6 +44,7 @@ public class EntitySpawnInit {
         registerAnimalEntitySpawn(EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_OBJECT, config.midnightChicken);
         registerAnimalEntitySpawn(EntityTypesInit.MOOBLOOM_REGISTRY_OBJECT, config.moobloom);
         registerAnimalEntitySpawn(EntityTypesInit.MOOLIP_REGISTRY_OBJECT, config.moolip);
+        registerAnimalEntitySpawn(EntityTypesInit.MOTTLED_PIG_REGISTRY_OBJECT, config.mottledPig);
         registerAnimalEntitySpawn(EntityTypesInit.MUDDY_PIG_REGISTRY_OBJECT, config.muddyPig);
         registerAnimalEntitySpawn(EntityTypesInit.MUDDY_FOOT_RABBIT_REGISTRY_OBJECT, config.muddyFootRabbit);
         registerAnimalEntitySpawn(EntityTypesInit.PALE_PIG_REGISTRY_OBJECT, config.palePig);
