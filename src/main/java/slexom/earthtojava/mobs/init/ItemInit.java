@@ -60,6 +60,7 @@ public class ItemInit {
     public static E2JSpawnEggItem STORMY_CHICKEN_SPAWN_EGG;
     public static E2JSpawnEggItem SUNSET_COW_SPAWN_EGG;
     public static E2JSpawnEggItem TROPICAL_SLIME_SPAWN_EGG;
+    public static E2JSpawnEggItem FUZZY_SHEEP_SPAWN_EGG;
     public static E2JSpawnEggItem UMBRA_COW_SPAWN_EGG;
     public static E2JSpawnEggItem VESTED_RABBIT_SPAWN_EGG;
     public static E2JSpawnEggItem VILER_WITCH_SPAWN_EGG;
@@ -98,6 +99,7 @@ public class ItemInit {
         FANCY_CHICKEN_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.FANCY_CHICKEN_REGISTRY_NAME, EntityTypesInit.FANCY_CHICKEN_REGISTRY_OBJECT, 0xf7b035, 0x478e8b);
         FLECKED_SHEEP_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.FLECKED_SHEEP_REGISTRY_NAME, EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT, 0x2c1e17, 0x907666);
         FRECKLED_RABBIT_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.FRECKLED_RABBIT_REGISTRY_NAME, EntityTypesInit.FRECKLED_RABBIT_REGISTRY_OBJECT, 0xf6f1e8, 0xab9e8d);
+        FUZZY_SHEEP_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.FUZZY_SHEEP_REGISTRY_NAME, EntityTypesInit.FUZZY_SHEEP_REGISTRY_OBJECT, 0xf8f6f5, 0x3d312b);
         FURNACE_GOLEM_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.FURNACE_GOLEM_REGISTRY_NAME, EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT, 0x56585a, 0xff5501);
         GLOW_SQUID_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.GLOW_SQUID_REGISTRY_NAME, EntityTypesInit.GLOW_SQUID_REGISTRY_OBJECT, 0x095656, 0x80ffc0);
         GOLD_CRESTED_CHICKEN_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.GOLD_CRESTED_CHICKEN_REGISTRY_NAME, EntityTypesInit.GOLD_CRESTED_CHICKEN_REGISTRY_OBJECT, 0xd1cec2, 0xe5aa40);

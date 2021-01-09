@@ -60,13 +60,16 @@ public class ModConfig implements ConfigData {
     public EntityConfig dairyCow = new EntityConfig(BiomeSpawnHelper.DAIRY_COW_SPAWN_BIOMES, 8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig fancyChicken = new EntityConfig(BiomeSpawnHelper.FANCY_CHICKEN_SPAWN_BIOMES, 10);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig fleckedSheep = new EntityConfig(BiomeSpawnHelper.FLECKED_SHEEP_SPAWN_BIOMES, 12);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig freckledRabbit = new EntityConfig(BiomeSpawnHelper.FRECKLED_RABBIT_SPAWN_BIOMES, 4);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig fancyChicken = new EntityConfig(BiomeSpawnHelper.FANCY_CHICKEN_SPAWN_BIOMES, 10);
+    public EntityConfig fuzzySheep = new EntityConfig(BiomeSpawnHelper.FUZZY_SHEEP_SPAWN_BIOMES, 12);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
     public GlowSquidConfig glowSquid = new GlowSquidConfig(BiomeSpawnHelper.GLOW_SQUID_SPAWN_BIOMES, 10);

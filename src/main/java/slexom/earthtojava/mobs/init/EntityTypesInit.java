@@ -29,6 +29,7 @@ public class EntityTypesInit {
     public static final String FLECKED_SHEEP_REGISTRY_NAME = "flecked_sheep";
     public static final String FRECKLED_RABBIT_REGISTRY_NAME = "freckled_rabbit";
     public static final String FURNACE_GOLEM_REGISTRY_NAME = "furnace_golem";
+    public static final String FUZZY_SHEEP_REGISTRY_NAME = "fuzzy_sheep";
     public static final String GLOW_SQUID_REGISTRY_NAME = "glow_squid";
     public static final String GOLD_CRESTED_CHICKEN_REGISTRY_NAME = "gold_crested_chicken";
     public static final String HARELEQUIN_RABBIT_REGISTRY_NAME = "harelequin_rabbit";
@@ -81,6 +82,7 @@ public class EntityTypesInit {
     public static EntityType<FleckedSheepEntity> FLECKED_SHEEP_REGISTRY_OBJECT;
     public static EntityType<FreckledRabbitEntity> FRECKLED_RABBIT_REGISTRY_OBJECT;
     public static EntityType<FurnaceGolemEntity> FURNACE_GOLEM_REGISTRY_OBJECT;
+    public static EntityType<FuzzySheepEntity> FUZZY_SHEEP_REGISTRY_OBJECT;
     public static EntityType<GlowSquidEntity> GLOW_SQUID_REGISTRY_OBJECT;
     public static EntityType<GoldCrestedChickenEntity> GOLD_CRESTED_CHICKEN_REGISTRY_OBJECT;
     public static EntityType<HarelequinRabbitEntity> HARELEQUIN_RABBIT_REGISTRY_OBJECT;
@@ -107,8 +109,8 @@ public class EntityTypesInit {
     public static EntityType<RottenFleshProjectileEntity> ROTTEN_FLESH_PROJECTILE_REGISTRY_OBJECT;
     public static EntityType<SkeletonWolfEntity> SKELETON_WOLF_REGISTRY_OBJECT;
     public static EntityType<SkewbaldChickenEntity> SKEWBALD_CHICKEN_REGISTRY_OBJECT;
-    public static EntityType<SpottedPigEntity> SPOTTED_PIG_REGISTRY_OBJECT;
     public static EntityType<SootyPigEntity> SOOTY_PIG_REGISTRY_OBJECT;
+    public static EntityType<SpottedPigEntity> SPOTTED_PIG_REGISTRY_OBJECT;
     public static EntityType<StormyChickenEntity> STORMY_CHICKEN_REGISTRY_OBJECT;
     public static EntityType<SunsetCowEntity> SUNSET_COW_REGISTRY_OBJECT;
     public static EntityType<TropicalSlimeEntity> TROPICAL_SLIME_REGISTRY_OBJECT;
@@ -136,6 +138,7 @@ public class EntityTypesInit {
         FLECKED_SHEEP_REGISTRY_OBJECT = RegisterHelper.registerEntity(FLECKED_SHEEP_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, FleckedSheepEntity::new).dimensions(sheepDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         FRECKLED_RABBIT_REGISTRY_OBJECT = RegisterHelper.registerEntity(FRECKLED_RABBIT_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, FreckledRabbitEntity::new).dimensions(rabbitDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         FURNACE_GOLEM_REGISTRY_OBJECT = RegisterHelper.registerEntity(FURNACE_GOLEM_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.MISC, FurnaceGolemEntity::new).dimensions(EntityDimensions.fixed(EntityType.IRON_GOLEM.getWidth(), EntityType.IRON_GOLEM.getHeight())).fireImmune().trackRangeBlocks(64).trackedUpdateRate(3).build());
+        FUZZY_SHEEP_REGISTRY_OBJECT = RegisterHelper.registerEntity(FUZZY_SHEEP_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, FuzzySheepEntity::new).dimensions(sheepDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         GLOW_SQUID_REGISTRY_OBJECT = RegisterHelper.registerEntity(GLOW_SQUID_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, GlowSquidEntity::new).dimensions(EntityDimensions.fixed(EntityType.SQUID.getWidth(), EntityType.SQUID.getHeight())).trackRangeBlocks(64).trackedUpdateRate(3).build());
         GOLD_CRESTED_CHICKEN_REGISTRY_OBJECT = RegisterHelper.registerEntity(GOLD_CRESTED_CHICKEN_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, GoldCrestedChickenEntity::new).dimensions(chickenDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         HARELEQUIN_RABBIT_REGISTRY_OBJECT = RegisterHelper.registerEntity(HARELEQUIN_RABBIT_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, HarelequinRabbitEntity::new).dimensions(rabbitDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
