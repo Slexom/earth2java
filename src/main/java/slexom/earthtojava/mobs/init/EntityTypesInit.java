@@ -38,6 +38,7 @@ public class EntityTypesInit {
     public static final String JOLLY_LLAMA_REGISTRY_NAME = "jolly_llama";
     public static final String JUMBO_RABBIT_REGISTRY_NAME = "jumbo_rabbit";
     public static final String LOBBER_ZOMBIE_REGISTRY_NAME = "lobber_zombie";
+    public static final String LONG_NOSED_SHEEP_REGISTRY_NAME = "long_nosed_sheep";
     public static final String MELON_GOLEM_REGISTRY_NAME = "melon_golem";
     public static final String MELON_SEED_PROJECTILE_REGISTRY_NAME = "melon_seed_projectile";
     public static final String MIDNIGHT_CHICKEN_REGISTRY_NAME = "midnight_chicken";
@@ -91,6 +92,7 @@ public class EntityTypesInit {
     public static EntityType<JollyLlamaEntity> JOLLY_LLAMA_REGISTRY_OBJECT;
     public static EntityType<JumboRabbitEntity> JUMBO_RABBIT_REGISTRY_OBJECT;
     public static EntityType<LobberZombieEntity> LOBBER_ZOMBIE_REGISTRY_OBJECT;
+    public static EntityType<LongNosedSheepEntity> LONG_NOSED_SHEEP_REGISTRY_OBJECT;
     public static EntityType<MelonGolemEntity> MELON_GOLEM_REGISTRY_OBJECT;
     public static EntityType<MelonSeedProjectileEntity> MELON_SEED_PROJECTILE_REGISTRY_OBJECT;
     public static EntityType<MidnightChickenEntity> MIDNIGHT_CHICKEN_REGISTRY_OBJECT;
@@ -147,6 +149,7 @@ public class EntityTypesInit {
         JOLLY_LLAMA_REGISTRY_OBJECT = RegisterHelper.registerEntity(JOLLY_LLAMA_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, JollyLlamaEntity::new).dimensions(EntityDimensions.fixed(EntityType.LLAMA.getWidth(), EntityType.LLAMA.getHeight())).trackRangeBlocks(64).trackedUpdateRate(3).build());
         JUMBO_RABBIT_REGISTRY_OBJECT = RegisterHelper.registerEntity(JUMBO_RABBIT_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, JumboRabbitEntity::new).dimensions(EntityDimensions.fixed(0.8F, 1.0F)).trackRangeBlocks(64).trackedUpdateRate(3).build());
         LOBBER_ZOMBIE_REGISTRY_OBJECT = RegisterHelper.registerEntity(LOBBER_ZOMBIE_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, LobberZombieEntity::new).dimensions(EntityDimensions.fixed(EntityType.ZOMBIE.getWidth(), EntityType.ZOMBIE.getHeight())).trackRangeBlocks(64).trackedUpdateRate(3).build());
+        LONG_NOSED_SHEEP_REGISTRY_OBJECT = RegisterHelper.registerEntity(LONG_NOSED_SHEEP_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, LongNosedSheepEntity::new).dimensions(sheepDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         MELON_GOLEM_REGISTRY_OBJECT = RegisterHelper.registerEntity(MELON_GOLEM_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.MISC, MelonGolemEntity::new).dimensions(EntityDimensions.fixed(EntityType.SNOW_GOLEM.getWidth(), EntityType.SNOW_GOLEM.getHeight())).trackRangeBlocks(64).trackedUpdateRate(3).build());
         MELON_SEED_PROJECTILE_REGISTRY_OBJECT = RegisterHelper.registerEntity(MELON_SEED_PROJECTILE_REGISTRY_NAME, FabricEntityTypeBuilder.<MelonSeedProjectileEntity>create(SpawnGroup.MISC, MelonSeedProjectileEntity::new).dimensions(EntityDimensions.fixed(0.25F, 0.25F)).trackRangeBlocks(64).trackedUpdateRate(3).build());
         MIDNIGHT_CHICKEN_REGISTRY_OBJECT = RegisterHelper.registerEntity(MIDNIGHT_CHICKEN_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MidnightChickenEntity::new).dimensions(chickenDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());

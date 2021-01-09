@@ -43,6 +43,7 @@ public class EntitySpawnInit {
         registerAnimalEntitySpawn(EntityTypesInit.INKY_SHEEP_REGISTRY_OBJECT, config.inkySheep);
         registerAnimalEntitySpawn(EntityTypesInit.JOLLY_LLAMA_REGISTRY_OBJECT, config.jollyLlama);
         registerAnimalEntitySpawn(EntityTypesInit.JUMBO_RABBIT_REGISTRY_OBJECT, config.jumboRabbit);
+        registerAnimalEntitySpawn(EntityTypesInit.LONG_NOSED_SHEEP_REGISTRY_OBJECT, config.longNosedSheep);
         registerAnimalEntitySpawn(EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_OBJECT, config.midnightChicken);
         registerAnimalEntitySpawn(EntityTypesInit.MOOBLOOM_REGISTRY_OBJECT, config.moobloom);
         registerAnimalEntitySpawn(EntityTypesInit.MOOLIP_REGISTRY_OBJECT, config.moolip);

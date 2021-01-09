@@ -56,6 +56,7 @@ public class EntityAttributeInit {
         registerBaseOneColorSheepAttributes(EntityTypesInit.INKY_SHEEP_REGISTRY_OBJECT);
         registerBaseOneColorSheepAttributes(EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT);
         registerBaseOneColorSheepAttributes(EntityTypesInit.FUZZY_SHEEP_REGISTRY_OBJECT);
+        registerBaseOneColorSheepAttributes(EntityTypesInit.LONG_NOSED_SHEEP_REGISTRY_OBJECT);
         registerBaseOneColorSheepAttributes(EntityTypesInit.PATCHED_SHEEP_REGISTRY_OBJECT);
         registerBaseOneColorSheepAttributes(EntityTypesInit.ROCKY_SHEEP_REGISTRY_OBJECT);
         registerBaseOneColorSheepAttributes(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_OBJECT);

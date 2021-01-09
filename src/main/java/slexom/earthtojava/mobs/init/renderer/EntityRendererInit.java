@@ -64,6 +64,7 @@ public class EntityRendererInit {
         registerMonoColorSheepEntityRenderer(EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT, EntityTypesInit.FLECKED_SHEEP_REGISTRY_NAME);
         registerMonoColorSheepEntityRenderer(EntityTypesInit.FUZZY_SHEEP_REGISTRY_OBJECT, EntityTypesInit.FUZZY_SHEEP_REGISTRY_NAME);
         registerMonoColorSheepEntityRenderer(EntityTypesInit.INKY_SHEEP_REGISTRY_OBJECT, EntityTypesInit.INKY_SHEEP_REGISTRY_NAME);
+        registerMonoColorSheepEntityRenderer(EntityTypesInit.LONG_NOSED_SHEEP_REGISTRY_OBJECT, EntityTypesInit.LONG_NOSED_SHEEP_REGISTRY_NAME);
         registerMonoColorSheepEntityRenderer(EntityTypesInit.PATCHED_SHEEP_REGISTRY_OBJECT, EntityTypesInit.PATCHED_SHEEP_REGISTRY_NAME);
         registerMonoColorSheepEntityRenderer(EntityTypesInit.ROCKY_SHEEP_REGISTRY_OBJECT, EntityTypesInit.ROCKY_SHEEP_REGISTRY_NAME);
 

@@ -69,6 +69,7 @@ public class ItemInit {
     public static E2JSpawnEggItem MOTTLED_PIG_SPAWN_EGG;
     public static E2JSpawnEggItem SOOTY_PIG_SPAWN_EGG;
     public static E2JSpawnEggItem FRECKLED_RABBIT_SPAWN_EGG;
+    public static E2JSpawnEggItem LONG_NOSED_SHEEP_SPAWN_EGG;
 
     public static void init() {
         HORN = RegisterHelper.registerItem("horn", new HornItem(new Item.Settings().group(itemGroup).maxCount(64)));
@@ -109,6 +110,7 @@ public class ItemInit {
         JOLLY_LLAMA_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.JOLLY_LLAMA_REGISTRY_NAME, EntityTypesInit.JOLLY_LLAMA_REGISTRY_OBJECT, 0x5f3425, 0x3b7e3e);
         JUMBO_RABBIT_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.JUMBO_RABBIT_REGISTRY_NAME, EntityTypesInit.JUMBO_RABBIT_REGISTRY_OBJECT, 0xb57766, 0xf7d1c0);
         LOBBER_ZOMBIE_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_NAME, EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_OBJECT, 0x8e9c7e, 0x607c17);
+        LONG_NOSED_SHEEP_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.LONG_NOSED_SHEEP_REGISTRY_NAME, EntityTypesInit.LONG_NOSED_SHEEP_REGISTRY_OBJECT, 0x2c231e, 0x9e8061);
         MELON_GOLEM_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.MELON_GOLEM_REGISTRY_NAME, EntityTypesInit.MELON_GOLEM_REGISTRY_OBJECT, 0xeeffff, 0x52811c);
         MIDNIGHT_CHICKEN_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_NAME, EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_OBJECT, 0x06050B, 0x17225a);
         MOOBLOOM_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.MOOBLOOM_REGISTRY_NAME, EntityTypesInit.MOOBLOOM_REGISTRY_OBJECT, 0xfaca00, 0xf7edc1);

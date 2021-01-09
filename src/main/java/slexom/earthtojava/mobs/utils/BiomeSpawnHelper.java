@@ -48,6 +48,7 @@ public final class BiomeSpawnHelper {
     public static final String[] JOLLY_LLAMA_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.TAIGA, Biome.Category.ICY);
     public static final String[] JUMBO_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS);
     public static final String[] LOBBER_ZOMBIE_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.SWAMP);
+    public static final String[] LONG_NOSED_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.SAVANNA, Biome.Category.DESERT);
     public static final String[] MIDNIGHT_CHICKEN_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.FOREST, Biome.Category.JUNGLE);
     public static final String[] MOOBLOOM_SPAWN_BIOMES = getBiomesListFromBiomes(new String[]{"minecraft:flower_forest"});
     public static final String[] MOOLIP_SPAWN_BIOMES = getBiomesListFromBiomes(new String[]{"minecraft:flower_forest"});

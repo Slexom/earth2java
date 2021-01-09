@@ -96,6 +96,9 @@ public class ModConfig implements ConfigData {
     public EntityConfig lobberZombie = new EntityConfig(BiomeSpawnHelper.LOBBER_ZOMBIE_SPAWN_BIOMES, 15);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig longNosedSheep = new EntityConfig(BiomeSpawnHelper.LONG_NOSED_SHEEP_SPAWN_BIOMES, 12);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig midnightChicken = new EntityConfig(BiomeSpawnHelper.MIDNIGHT_CHICKEN_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
