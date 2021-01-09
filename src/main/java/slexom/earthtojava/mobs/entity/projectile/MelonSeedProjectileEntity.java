@@ -10,6 +10,8 @@ import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.network.Packet;
+import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
@@ -19,14 +21,13 @@ import net.minecraft.world.World;
 import slexom.earthtojava.mobs.init.EntityTypesInit;
 
 public class MelonSeedProjectileEntity extends ThrownItemEntity {
-
-
-    public MelonSeedProjectileEntity(World worldIn, LivingEntity throwerIn) {
-        super(EntityTypesInit.MELON_SEED_PROJECTILE_REGISTRY_OBJECT, throwerIn, worldIn);
+    
+    public MelonSeedProjectileEntity(World world, LivingEntity owner) {
+        super(EntityTypesInit.MELON_SEED_PROJECTILE_REGISTRY_OBJECT, owner, world);
     }
 
-    public MelonSeedProjectileEntity(World worldIn, double x, double y, double z) {
-        super(EntityTypesInit.MELON_SEED_PROJECTILE_REGISTRY_OBJECT, x, y, z, worldIn);
+    public MelonSeedProjectileEntity(World world, double x, double y, double z) {
+        super(EntityTypesInit.MELON_SEED_PROJECTILE_REGISTRY_OBJECT, x, y, z, world);
     }
 
     public MelonSeedProjectileEntity(EntityType<MelonSeedProjectileEntity> entityType, World world) {
@@ -41,7 +42,7 @@ public class MelonSeedProjectileEntity extends ThrownItemEntity {
     @Environment(EnvType.CLIENT)
     private ParticleEffect getParticleParameters() {
         ItemStack itemStack = this.getItem();
-        return (ParticleEffect) (itemStack.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack));
+        return itemStack.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack);
     }
 
     @Environment(EnvType.CLIENT)
@@ -66,8 +67,8 @@ public class MelonSeedProjectileEntity extends ThrownItemEntity {
             this.world.sendEntityStatus(this, (byte) 3);
             this.remove();
         }
-
     }
-
-
+    public Packet<?> createSpawnPacket() {
+        return new EntitySpawnS2CPacket(this);
+    }
 }

@@ -21,13 +21,12 @@ import slexom.earthtojava.mobs.init.ItemInit;
 
 public class RottenFleshProjectileEntity extends ThrownItemEntity {
 
-
-    public RottenFleshProjectileEntity(World worldIn, LivingEntity throwerIn) {
-        super(EntityTypesInit.ROTTEN_FLESH_PROJECTILE_REGISTRY_OBJECT, throwerIn, worldIn);
+    public RottenFleshProjectileEntity(World world, LivingEntity owner) {
+        super(EntityTypesInit.ROTTEN_FLESH_PROJECTILE_REGISTRY_OBJECT, owner, world);
     }
 
-    public RottenFleshProjectileEntity(World worldIn, double x, double y, double z) {
-        super(EntityTypesInit.ROTTEN_FLESH_PROJECTILE_REGISTRY_OBJECT, x, y, z, worldIn);
+    public RottenFleshProjectileEntity(World world, double x, double y, double z) {
+        super(EntityTypesInit.ROTTEN_FLESH_PROJECTILE_REGISTRY_OBJECT, x, y, z, world);
     }
 
     public RottenFleshProjectileEntity(EntityType<RottenFleshProjectileEntity> entityType, World world) {
@@ -42,7 +41,7 @@ public class RottenFleshProjectileEntity extends ThrownItemEntity {
     @Environment(EnvType.CLIENT)
     private ParticleEffect getParticleParameters() {
         ItemStack itemStack = this.getItem();
-        return (ParticleEffect) (itemStack.isEmpty() ? ParticleTypes.SPIT : new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack));
+        return itemStack.isEmpty() ? ParticleTypes.SPIT : new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack);
     }
 
     @Environment(EnvType.CLIENT)
@@ -67,7 +66,6 @@ public class RottenFleshProjectileEntity extends ThrownItemEntity {
             this.world.sendEntityStatus(this, (byte) 3);
             this.remove();
         }
-
     }
 
 }

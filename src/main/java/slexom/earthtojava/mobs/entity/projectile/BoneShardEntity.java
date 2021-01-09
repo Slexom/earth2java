@@ -21,12 +21,12 @@ import slexom.earthtojava.mobs.init.ItemInit;
 public class BoneShardEntity extends ThrownItemEntity {
 
 
-    public BoneShardEntity(World worldIn, LivingEntity throwerIn) {
-        super(EntityTypesInit.BONE_SHARD_REGISTRY_OBJECT, throwerIn, worldIn);
+    public BoneShardEntity(World world, LivingEntity owner) {
+        super(EntityTypesInit.BONE_SHARD_REGISTRY_OBJECT, owner, world);
     }
 
-    public BoneShardEntity(World worldIn, double x, double y, double z) {
-        super(EntityTypesInit.BONE_SHARD_REGISTRY_OBJECT, x, y, z, worldIn);
+    public BoneShardEntity(World world, double x, double y, double z) {
+        super(EntityTypesInit.BONE_SHARD_REGISTRY_OBJECT, x, y, z, world);
     }
 
     public BoneShardEntity(EntityType<BoneShardEntity> entityType, World world) {
@@ -41,7 +41,7 @@ public class BoneShardEntity extends ThrownItemEntity {
     @Environment(EnvType.CLIENT)
     private ParticleEffect getParticleParameters() {
         ItemStack itemStack = this.getItem();
-        return (ParticleEffect) (itemStack.isEmpty() ? ParticleTypes.SPIT : new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack));
+        return itemStack.isEmpty() ? ParticleTypes.SPIT : new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack);
     }
 
     @Environment(EnvType.CLIENT)
