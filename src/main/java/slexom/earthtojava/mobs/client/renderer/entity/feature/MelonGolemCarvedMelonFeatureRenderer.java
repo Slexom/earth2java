@@ -32,7 +32,7 @@ public class MelonGolemCarvedMelonFeatureRenderer extends FeatureRenderer<MelonG
             ItemStack headBlink = new ItemStack(BlockInit.MELON_GOLEM_HEAD_BLINK);
             ItemStack headShoot = new ItemStack(BlockInit.MELON_GOLEM_HEAD_SHOOT);
             ItemStack itemstack = entity.isShooting() ? headShoot : entity.getBlinkRemainingTicks() > 0 ? headBlink : head;
-            MinecraftClient.getInstance().getItemRenderer().renderItem(entity, itemstack, ModelTransformation.Mode.HEAD, false, matrices, vertexConsumers, entity.world, light, LivingEntityRenderer.getOverlay(entity, 0.0F),entity.getEntityId());
+            MinecraftClient.getInstance().getItemRenderer().renderItem(entity, itemstack, ModelTransformation.Mode.HEAD, false, matrices, vertexConsumers, entity.world, light, LivingEntityRenderer.getOverlay(entity, 0.0F), entity.getId());
             matrices.pop();
         }
     }

@@ -5,6 +5,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.RangedAttackMob;
 import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.HostileEntity;
@@ -13,6 +14,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import slexom.earthtojava.mobs.entity.ai.goal.BoneSpiderMeleeAttackGoal;
+import slexom.earthtojava.mobs.entity.ai.pathing.ClimberNavigation;
 import slexom.earthtojava.mobs.entity.base.E2JBaseSpiderEntity;
 import slexom.earthtojava.mobs.entity.projectile.BoneShardEntity;
 
@@ -20,6 +22,10 @@ public class BoneSpiderEntity extends E2JBaseSpiderEntity<BoneSpiderEntity> impl
 
     public BoneSpiderEntity(EntityType<BoneSpiderEntity> type, World worldIn) {
         super(type, worldIn);
+    }
+
+    protected EntityNavigation createNavigation(World world) {
+        return new ClimberNavigation(this, world);
     }
 
     @Override

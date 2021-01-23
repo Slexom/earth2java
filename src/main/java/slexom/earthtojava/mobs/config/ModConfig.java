@@ -54,13 +54,25 @@ public class ModConfig implements ConfigData {
     public EntityConfig cookieCow = new EntityConfig(BiomeSpawnHelper.COOKIE_COW_SPAWN_BIOMES, 8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig fleckedSheep = new EntityConfig(BiomeSpawnHelper.FLECKED_SHEEP_SPAWN_BIOMES, 12);
+    public EntityConfig creamCow = new EntityConfig(BiomeSpawnHelper.CREAM_COW_SPAWN_BIOMES, 8);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig dairyCow = new EntityConfig(BiomeSpawnHelper.DAIRY_COW_SPAWN_BIOMES, 8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig fancyChicken = new EntityConfig(BiomeSpawnHelper.FANCY_CHICKEN_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public GlowSquidConfig glowSquid = new GlowSquidConfig(BiomeSpawnHelper.GLOW_SQUID_SPAWN_BIOMES, 10);
+    public EntityConfig fleckedSheep = new EntityConfig(BiomeSpawnHelper.FLECKED_SHEEP_SPAWN_BIOMES, 12);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig freckledRabbit = new EntityConfig(BiomeSpawnHelper.FRECKLED_RABBIT_SPAWN_BIOMES, 4);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig fuzzySheep = new EntityConfig(BiomeSpawnHelper.FUZZY_SHEEP_SPAWN_BIOMES, 12);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig goldCrestedChicken = new EntityConfig(BiomeSpawnHelper.GOLD_CRESTED_CHICKEN_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig harelequinRabbit = new EntityConfig(BiomeSpawnHelper.HARELEQUIN_RABBIT_SPAWN_BIOMES, 4);
@@ -81,6 +93,9 @@ public class ModConfig implements ConfigData {
     public EntityConfig lobberZombie = new EntityConfig(BiomeSpawnHelper.LOBBER_ZOMBIE_SPAWN_BIOMES, 15);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig longNosedSheep = new EntityConfig(BiomeSpawnHelper.LONG_NOSED_SHEEP_SPAWN_BIOMES, 12);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig midnightChicken = new EntityConfig(BiomeSpawnHelper.MIDNIGHT_CHICKEN_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
@@ -88,6 +103,9 @@ public class ModConfig implements ConfigData {
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig moolip = new EntityConfig(BiomeSpawnHelper.MOOLIP_SPAWN_BIOMES, 8);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig mottledPig = new EntityConfig(BiomeSpawnHelper.MOTTLED_PIG_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig muddyPig = new EntityConfig(BiomeSpawnHelper.MUDDY_PIG_SPAWN_BIOMES, 10);
@@ -123,6 +141,9 @@ public class ModConfig implements ConfigData {
     public EntityConfig skewbaldChicken = new EntityConfig(BiomeSpawnHelper.SKEWBALD_CHICKEN_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig sootyPig = new EntityConfig(BiomeSpawnHelper.SOOTY_PIG_SPAWN_BIOMES, 10);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig spottedPig = new EntityConfig(BiomeSpawnHelper.SPOTTED_PIG_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
@@ -135,10 +156,13 @@ public class ModConfig implements ConfigData {
     public EntityConfig tropicalSlime = new EntityConfig(BiomeSpawnHelper.TROPICAL_SLIME_SPAWN_BIOMES, 10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
+    public EntityConfig umbraCow = new EntityConfig(BiomeSpawnHelper.UMBRA_COW_SPAWN_BIOMES, 8);
+    @ConfigEntry.Category("entities")
+    @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig vestedRabbit = new EntityConfig(BiomeSpawnHelper.VESTED_RABBIT_SPAWN_BIOMES, 4);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig vilerWitch = new EntityConfig(BiomeSpawnHelper.VILER_WITCH_SPAWN_BIOMES, 1,1,1);
+    public EntityConfig vilerWitch = new EntityConfig(BiomeSpawnHelper.VILER_WITCH_SPAWN_BIOMES, 1, 1, 1);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
     public EntityConfig woolyCow = new EntityConfig(BiomeSpawnHelper.WOOLY_COW_SPAWN_BIOMES, 8);
@@ -148,17 +172,6 @@ public class ModConfig implements ConfigData {
         if (modWanderingTrader.currencyItem == null) {
             modWanderingTrader.currencyItem = "earthtojavamobs:ruby";
             printCorrectionMessage("modWanderingTrader.currencyItem", "null", "earthtojavamobs:ruby");
-        }
-        if (glowSquid.spawnHeight == null) {
-            GlowSquidConfig.SpawnHeightConfig spawnHeightConfig = new GlowSquidConfig.SpawnHeightConfig();
-            spawnHeightConfig.spawnHeightMin = 20;
-            spawnHeightConfig.spawnHeightMax = 45;
-            glowSquid.spawnHeight = spawnHeightConfig;
-            printCorrectionMessage("glowSquid.spawnHeight", "null", "\n" +
-                    "\"spawnHeight\": {\n" +
-                    "  \"spawnHeightMin\": 20,\n" +
-                    "  \"spawnHeightMax\": 45\n" +
-                    "}");
         }
     }
 

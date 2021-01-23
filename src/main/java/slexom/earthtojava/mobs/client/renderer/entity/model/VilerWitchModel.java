@@ -90,7 +90,7 @@ public class VilerWitchModel<T extends Entity> extends VillagerResemblingModel<T
     public void setAngles(T entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
         super.setAngles(entity, limbAngle, limbDistance, animationProgress, headYaw, headPitch);
         this.nose.setPivot(0.0F, -2.0F, 0.0F);
-        float f = 0.01F * (float) (entity.getEntityId() % 10);
+        float f = 0.01F * (float) (entity.getId() % 10);
         this.nose.pitch = MathHelper.sin((float) entity.age * f) * 4.5F * 0.017453292F;
         this.nose.yaw = 0.0F;
         this.nose.roll = MathHelper.cos((float) entity.age * f) * 2.5F * 0.017453292F;

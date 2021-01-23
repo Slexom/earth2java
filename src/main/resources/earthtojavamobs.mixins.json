@@ -10,8 +10,9 @@
     ],
     "client": [
         "BuiltinModelItemRendererMixin",
-        "MudFogMixin",
-        "EntityModelLoaderMixin"
+        "ClientPlayNetworkHandlerMixin",
+        "EntityModelLoaderMixin",
+        "MudFogMixin"
     ],
     "injectors": {
         "defaultRequire": 1

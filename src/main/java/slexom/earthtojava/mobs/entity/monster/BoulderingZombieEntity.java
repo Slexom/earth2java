@@ -8,6 +8,7 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.world.World;
+import slexom.earthtojava.mobs.entity.ai.pathing.ClimberNavigation;
 import slexom.earthtojava.mobs.entity.base.E2JBaseZombieEntity;
 
 public class BoulderingZombieEntity extends E2JBaseZombieEntity {
@@ -19,7 +20,7 @@ public class BoulderingZombieEntity extends E2JBaseZombieEntity {
 
 
     protected EntityNavigation createNavigation(World world) {
-        return new SpiderNavigation(this, world);
+        return new ClimberNavigation(this, world);
     }
 
     protected void initDataTracker() {

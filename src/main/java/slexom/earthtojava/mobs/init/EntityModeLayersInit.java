@@ -13,13 +13,12 @@ public class EntityModeLayersInit {
     public static EntityModelLayer JUMBO_RABBIT_ENTITY_MODEL_LAYER;
     public static EntityModelLayer LOBBER_ZOMBIE_ENTITY_MODEL_LAYER;
     public static EntityModelLayer MUDDY_PIG_ENTITY_MODEL_LAYER;
+    public static EntityModelLayer RAINBOW_BED_FOOT_MODEL_LAYER;
+    public static EntityModelLayer RAINBOW_BED_HEAD_MODEL_LAYER;
     public static EntityModelLayer RAINBOW_SHEEP_ENTITY_MODEL_LAYER;
     public static EntityModelLayer RAINBOW_SHEEP_FUR_ENTITY_MODEL_LAYER;
     public static EntityModelLayer SKELETON_WOLF_ENTITY_MODEL_LAYER;
     public static EntityModelLayer VILER_WITCH_ENTITY_MODEL_LAYER;
-
-    public static EntityModelLayer RAINBOW_BED_HEAD_MODEL_LAYER;
-    public static EntityModelLayer RAINBOW_BED_FOOT_MODEL_LAYER;
 
     public static void init() {
         FANCY_CHICKEN_ENTITY_MODEL_LAYER = RegisterHelper.registerEntityModelLayer(EntityTypesInit.FANCY_CHICKEN_REGISTRY_NAME, FancyChickenModel.getTexturedModelData());

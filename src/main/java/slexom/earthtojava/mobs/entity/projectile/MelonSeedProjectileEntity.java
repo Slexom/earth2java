@@ -20,8 +20,8 @@ import slexom.earthtojava.mobs.init.EntityTypesInit;
 
 public class MelonSeedProjectileEntity extends ThrownItemEntity {
 
-    public MelonSeedProjectileEntity(World world, LivingEntity entity) {
-        super(EntityTypesInit.MELON_SEED_PROJECTILE_REGISTRY_OBJECT, entity, world);
+    public MelonSeedProjectileEntity(World world, LivingEntity owner) {
+        super(EntityTypesInit.MELON_SEED_PROJECTILE_REGISTRY_OBJECT, owner, world);
     }
 
     public MelonSeedProjectileEntity(World world, double x, double y, double z) {

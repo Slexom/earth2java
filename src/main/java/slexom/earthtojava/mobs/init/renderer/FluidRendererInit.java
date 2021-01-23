@@ -26,7 +26,6 @@ import java.util.function.Function;
 public class FluidRendererInit {
 
     public static void init() {
-
         BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getSolid(), FluidInit.MUD_FLUID_FLOWING, FluidInit.MUD_FLUID_STILL);
         setupFluidRendering(FluidInit.MUD_FLUID_STILL, FluidInit.MUD_FLUID_FLOWING, 0x472804);
     }
