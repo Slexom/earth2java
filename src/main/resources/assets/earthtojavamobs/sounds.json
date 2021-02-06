@@ -56,5 +56,18 @@
             "earthtojavamobs:mob/fancy_chicken/flee_01",
             "earthtojavamobs:mob/fancy_chicken/flee_02"
         ]
+    },
+    "entity.rainbow_sheep.ambient": {
+        "sounds": [
+            "earthtojavamobs:mob/rainbow_sheep/say_01",
+            "earthtojavamobs:mob/rainbow_sheep/say_02",
+            "earthtojavamobs:mob/rainbow_sheep/say_03"
+        ]
+    },
+    "entity.rainbow_sheep.death": {
+        "sounds": [
+            "earthtojavamobs:mob/rainbow_sheep/death_01",
+            "earthtojavamobs:mob/rainbow_sheep/death_02"
+        ]
     }
 }
