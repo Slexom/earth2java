@@ -1,1 +1,34 @@
-{}
+{
+    "entity.bone_spider.ambient": {
+        "sounds": [
+            "earthtojavamobs:mob/bone_spider/say_01",
+            "earthtojavamobs:mob/bone_spider/say_02",
+            "earthtojavamobs:mob/bone_spider/say_03"
+        ]
+    },
+    "entity.bone_spider.death": {
+        "sounds": [
+            "earthtojavamobs:mob/bone_spider/death_01",
+            "earthtojavamobs:mob/bone_spider/death_02"
+        ]
+    },
+    "entity.bone_spider.walk": {
+        "sounds": [
+            "earthtojavamobs:mob/bone_spider/walk_01",
+            "earthtojavamobs:mob/bone_spider/walk_02",
+            "earthtojavamobs:mob/bone_spider/walk_03"
+        ]
+    },
+    "entity.bone_spider.spit": {
+        "sounds": [
+            "earthtojavamobs:mob/bone_spider/spit_01",
+            "earthtojavamobs:mob/bone_spider/spit_02",
+            "earthtojavamobs:mob/bone_spider/spit_03"
+        ]
+    },
+    "entity.bone_spider.bone.stab": {
+        "sounds": [
+            "earthtojavamobs:mob/bone_spider/bone/stab"
+        ]
+    }
+}
