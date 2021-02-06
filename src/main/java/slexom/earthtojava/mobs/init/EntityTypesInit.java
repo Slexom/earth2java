@@ -64,7 +64,6 @@ public class EntityTypesInit {
     public static final String UMBRA_COW_REGISTRY_NAME = "umbra_cow";
     public static final String VESTED_RABBIT_REGISTRY_NAME = "vested_rabbit";
     public static final String VILER_WITCH_REGISTRY_NAME = "viler_witch";
-    public static final String WANDERING_TRADER_REGISTRY_NAME = "wandering_trader";
     public static final String WOOLY_COW_REGISTRY_NAME = "wooly_cow";
     public static EntityType<AlbinoCowEntity> ALBINO_COW_REGISTRY_OBJECT;
     public static EntityType<AmberChickenEntity> AMBER_CHICKEN_REGISTRY_OBJECT;
