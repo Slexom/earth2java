@@ -86,7 +86,7 @@ public class MudFluid extends FlowableFluid {
 
     @Override
     protected BlockState toBlockState(FluidState state) {
-        return BlockInit.MUD_BLOCK.getDefaultState().with(FluidBlock.LEVEL, method_15741(state));
+        return BlockInit.MUD_BLOCK.getDefaultState().with(FluidBlock.LEVEL, getBlockStateLevel(state));
     }
 
     @Override
@@ -96,7 +96,7 @@ public class MudFluid extends FlowableFluid {
 
     @Override
     public int getLevel(FluidState state) {
-        return (Integer) state.get(LEVEL);
+        return state.get(LEVEL);
     }
 
     private void playExtinguishEvent(WorldAccess world, BlockPos pos) {

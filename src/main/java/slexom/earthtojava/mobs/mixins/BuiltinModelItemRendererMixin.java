@@ -26,7 +26,7 @@ public class BuiltinModelItemRendererMixin {
 
     @Shadow
     @Final
-    private BlockEntityRenderDispatcher field_27738;
+    private BlockEntityRenderDispatcher blockEntityRenderDispatcher;
 
     @Inject(at = @At("HEAD"), method = "render", cancellable = true)
     private void rainbowBed(ItemStack stack, ModelTransformation.Mode mode, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, CallbackInfo ci) {
@@ -35,7 +35,7 @@ public class BuiltinModelItemRendererMixin {
             Block block = ((BlockItem) item).getBlock();
             if (block instanceof RainbowBedBlock) {
                 BlockState blockState = block.getDefaultState();
-                this.field_27738.renderEntity((BlockEntity) BlockEntityTypeInit.RAINBOW_BED.instantiate(BlockPos.ORIGIN, blockState), matrices, vertexConsumers, light, overlay);
+                this.blockEntityRenderDispatcher.renderEntity((BlockEntity) BlockEntityTypeInit.RAINBOW_BED.instantiate(BlockPos.ORIGIN, blockState), matrices, vertexConsumers, light, overlay);
                 ci.cancel();
             }
         }
