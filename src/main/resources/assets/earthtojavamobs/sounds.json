@@ -30,5 +30,31 @@
         "sounds": [
             "earthtojavamobs:mob/bone_spider/bone/stab"
         ]
+    },
+    "entity.fancy_chicken.ambient": {
+        "sounds": [
+            "earthtojavamobs:mob/fancy_chicken/say_01",
+            "earthtojavamobs:mob/fancy_chicken/say_02",
+            "earthtojavamobs:mob/fancy_chicken/say_03",
+            "earthtojavamobs:mob/fancy_chicken/say_04"
+        ]
+    },
+    "entity.fancy_chicken.hurt": {
+        "sounds": [
+            "earthtojavamobs:mob/fancy_chicken/hurt_01",
+            "earthtojavamobs:mob/fancy_chicken/hurt_02"
+        ]
+    },
+    "entity.fancy_chicken.death": {
+        "sounds": [
+            "earthtojavamobs:mob/fancy_chicken/death_01",
+            "earthtojavamobs:mob/fancy_chicken/death_02"
+        ]
+    },
+    "entity.fancy_chicken.flee": {
+        "sounds": [
+            "earthtojavamobs:mob/fancy_chicken/flee_01",
+            "earthtojavamobs:mob/fancy_chicken/flee_02"
+        ]
     }
 }
