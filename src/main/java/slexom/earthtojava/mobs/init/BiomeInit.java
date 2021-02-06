@@ -24,14 +24,9 @@ public class BiomeInit {
     }
 
     private static void handleBiome(Biome biome) {
-        addOres(biome);
         addMudLake(biome);
         addButtercup(biome);
         addPinkDaisy(biome);
-    }
-
-    private static void addOres(Biome biome) {
-        addRubyOre(biome);
     }
 
     private static boolean isInOverworld(Biome biome) {
@@ -40,14 +35,6 @@ public class BiomeInit {
 
     private static boolean isMushroom(Biome biome) {
         return biome.getCategory() == Biome.Category.MUSHROOM;
-    }
-
-    private static void addRubyOre(Biome biome) {
-        if (config.rubyOre.canGenerate) {
-            if (isInOverworld(biome)) {
-                addFeature(biome, GenerationStep.Feature.UNDERGROUND_DECORATION, FeatureInit.ORE_RUBY_CONFIGURED_FEATURE);
-            }
-        }
     }
 
     private static void addMudLake(Biome biome) {
@@ -67,19 +54,6 @@ public class BiomeInit {
             addFeature(biome, GenerationStep.Feature.VEGETAL_DECORATION, FeatureInit.FLOWER_PINK_DAISY_CONFIGURED_FEATURE);
         }
     }
-
-//    private static void addFeature(Biome biome, GenerationStep.Feature step, ConfiguredFeature<?, ?> feature) {
-//        List<List<Supplier<ConfiguredFeature<?, ?>>>> features = biome.getGenerationSettings().getFeatures();
-//        if (!(features instanceof ArrayList)) features = new ArrayList<>(features);
-//        int index = step.ordinal();
-//        for (int i = 0; i <= index; i++) {
-//            if (features.size() <= i) features.add(new ArrayList<>());
-//            else if (!(features.get(i) instanceof ArrayList)) features.set(i, new ArrayList<>(features.get(i)));
-//        }
-//        features.get(index).add(() -> feature);
-//        ((ExtendedGenerationSettings) biome.getGenerationSettings()).setFeatures(features);
-//    }
-
 
     public static void addFeature(Biome biome, GenerationStep.Feature step, ConfiguredFeature<?, ?> feature) {
         GenerationSettingsAccessor generationSettingsAccessor = (GenerationSettingsAccessor) biome.getGenerationSettings();

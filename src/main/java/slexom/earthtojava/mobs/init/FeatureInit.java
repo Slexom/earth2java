@@ -21,13 +21,11 @@ public class FeatureInit {
     public static ConfiguredFeature<?, ?> FLOWER_BUTTERCUP_CONFIGURED_FEATURE;
     public static ConfiguredFeature<?, ?> FLOWER_PINK_DAISY_CONFIGURED_FEATURE;
     public static ConfiguredFeature<?, ?> MUD_LAKE_CONFIGURED_FEATURE;
-    public static ConfiguredFeature<?, ?> ORE_RUBY_CONFIGURED_FEATURE;
 
     public static void init() {
         FLOWER_BUTTERCUP_CONFIGURED_FEATURE = Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Earth2JavaMod.MOD_ID, "flower_buttercup"), (Feature.FLOWER.configure((new RandomPatchFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.BUTTERCUP.getDefaultState()), SimpleBlockPlacer.INSTANCE)).tries(64).build()).decorate(ConfiguredFeatures.Decorators.SPREAD_32_ABOVE).decorate(ConfiguredFeatures.Decorators.HEIGHTMAP).spreadHorizontally()).decorate(Decorator.COUNT_NOISE.configure(new CountNoiseDecoratorConfig(-0.8D, 15, 4))));
         FLOWER_PINK_DAISY_CONFIGURED_FEATURE = Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Earth2JavaMod.MOD_ID, "flower_pink_daisy"), (Feature.FLOWER.configure((new RandomPatchFeatureConfig.Builder(new SimpleBlockStateProvider(BlockInit.PINK_DAISY.getDefaultState()), SimpleBlockPlacer.INSTANCE)).tries(64).build()).decorate(ConfiguredFeatures.Decorators.SPREAD_32_ABOVE).decorate(ConfiguredFeatures.Decorators.HEIGHTMAP).spreadHorizontally()).decorate(Decorator.COUNT_NOISE.configure(new CountNoiseDecoratorConfig(-0.8D, 15, 4))));
         MUD_LAKE_CONFIGURED_FEATURE = Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Earth2JavaMod.MOD_ID, "lake_mud"), Feature.LAKE.configure(new SingleStateFeatureConfig(BlockInit.MUD_BLOCK.getDefaultState())).decorate(Decorator.WATER_LAKE.configure(new ChanceDecoratorConfig(config.mudLakeConfig.mudLakeFrequency))));
-        ORE_RUBY_CONFIGURED_FEATURE = Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(Earth2JavaMod.MOD_ID, "ruby_ore"), Feature.ORE.configure(new OreFeatureConfig(OreFeatureConfig.Rules.BASE_STONE_OVERWORLD, BlockInit.RUBY_ORE.getDefaultState(), 8)).decorate(Decorator.EMERALD_ORE.configure(DecoratorConfig.DEFAULT)));
     }
 
 }

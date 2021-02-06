@@ -52,7 +52,6 @@ public class ItemInit {
     public static BedItem RAINBOW_BED;
     public static E2JSpawnEggItem RAINBOW_SHEEP_SPAWN_EGG;
     public static E2JSpawnEggItem ROCKY_SHEEP_SPAWN_EGG;
-    public static Item RUBY;
     public static E2JSpawnEggItem SKELETON_WOLF_SPAWN_EGG;
     public static E2JSpawnEggItem SKEWBALD_CHICKEN_SPAWN_EGG;
     public static E2JSpawnEggItem SPOTTED_PIG_SPAWN_EGG;
@@ -75,7 +74,6 @@ public class ItemInit {
         FANCY_FEATHER = RegisterHelper.registerItem("fancy_feather", new FancyFeatherItem(new Item.Settings().group(itemGroup).maxCount(64)));
         MUD_BUCKET = RegisterHelper.registerItem("mud_fluid_bucket", new MudBucketItem(FluidInit.MUD_FLUID_STILL, new Item.Settings().recipeRemainder(Items.BUCKET).maxCount(1).group(itemGroup)));
         BONE_SHARD = RegisterHelper.registerItem("bone_shard", new BoneShardItem(new Item.Settings().group(null).maxCount(16)));
-        RUBY = RegisterHelper.registerItem("ruby", new Item(new Item.Settings().group(itemGroup).maxCount(64)));
         RAINBOW_BED = (BedItem) RegisterHelper.registerItem("rainbow_bed", new BedItem(BlockInit.RAINBOW_BED, (new Item.Settings()).maxCount(1).group(ItemGroup.DECORATIONS)));
         registerSpawnEggs();
     }
