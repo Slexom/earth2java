@@ -17,6 +17,7 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 import slexom.earthtojava.mobs.init.EntityTypesInit;
 import slexom.earthtojava.mobs.init.ItemInit;
+import slexom.earthtojava.mobs.init.SoundEventsInit;
 
 public class BoneShardEntity extends ThrownItemEntity {
 
@@ -56,6 +57,7 @@ public class BoneShardEntity extends ThrownItemEntity {
 
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
+        this.playSound(SoundEventsInit.BONE_SPIDER_BONE_STAB, 1.0F, 1.0F );
         Entity entity = entityHitResult.getEntity();
         entity.damage(DamageSource.thrownProjectile(this, this.getOwner()), 10.0F);
     }

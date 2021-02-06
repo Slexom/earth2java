@@ -1,5 +1,6 @@
 package slexom.earthtojava.mobs.entity.monster;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -10,18 +11,25 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import slexom.earthtojava.mobs.entity.ai.goal.BoneSpiderMeleeAttackGoal;
 import slexom.earthtojava.mobs.entity.ai.pathing.ClimberNavigation;
 import slexom.earthtojava.mobs.entity.base.E2JBaseSpiderEntity;
 import slexom.earthtojava.mobs.entity.projectile.BoneShardEntity;
+import slexom.earthtojava.mobs.init.SoundEventsInit;
 
 public class BoneSpiderEntity extends E2JBaseSpiderEntity<BoneSpiderEntity> implements RangedAttackMob {
 
     public BoneSpiderEntity(EntityType<BoneSpiderEntity> type, World worldIn) {
         super(type, worldIn);
+    }
+
+    public static DefaultAttributeContainer.Builder createBoneSpiderAttributes() {
+        return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 32.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3D);
     }
 
     protected EntityNavigation createNavigation(World world) {
@@ -41,10 +49,6 @@ public class BoneSpiderEntity extends E2JBaseSpiderEntity<BoneSpiderEntity> impl
         this.targetSelector.add(2, new FollowTargetGoal(this, PlayerEntity.class, true));
     }
 
-    public static DefaultAttributeContainer.Builder createBoneSpiderAttributes() {
-        return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 32.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3D);
-    }
-
     @Override
     public EntityGroup getGroup() {
         return EntityGroup.ARTHROPOD;
@@ -59,8 +63,19 @@ public class BoneSpiderEntity extends E2JBaseSpiderEntity<BoneSpiderEntity> impl
         double d3 = target.getZ() - this.getZ();
         float f = MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.2F;
         boneShard.setVelocity(d1, d2 + (double) f, d3, 1.6F, 8.0F);
-        this.playSound(SoundEvents.ITEM_CROSSBOW_SHOOT, 1.0F, 1.2F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
+        this.playSound(SoundEventsInit.BONE_SPIDER_SPIT, 1.0F, 1.2F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
         this.world.spawnEntity(boneShard);
     }
 
+    protected SoundEvent getAmbientSound() {
+        return SoundEventsInit.BONE_SPIDER_AMBIENT;
+    }
+
+    protected SoundEvent getDeathSound() {
+        return SoundEventsInit.BONE_SPIDER_DEATH;
+    }
+
+    protected void playStepSound(BlockPos pos, BlockState state) {
+        this.playSound(SoundEventsInit.BONE_SPIDER_WALK, 0.15F, 1.0F);
+    }
 }

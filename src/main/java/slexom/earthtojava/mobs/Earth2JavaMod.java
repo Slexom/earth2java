@@ -27,6 +27,7 @@ public class Earth2JavaMod implements ModInitializer {
     public void onInitialize() {
         AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
         ModEvents.init();
+        SoundEventsInit.init();
         FluidInit.init();
         BlockInit.init();
         BlockEntityTypeInit.init();

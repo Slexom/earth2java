@@ -9,6 +9,7 @@ import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.resource.language.I18n;
+import net.minecraft.client.sound.Sound;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -17,6 +18,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -74,4 +76,10 @@ public class RegisterHelper {
         E2J_MODEL_LAYERS.put(entityModelLayer, modelPart);
         return entityModelLayer;
     }
+
+    public static SoundEvent registerSoundEvent(String registryName) {
+        final Identifier identifier = new Identifier(Earth2JavaMod.MOD_ID, registryName);
+        return Registry.register(Registry.SOUND_EVENT, identifier, new SoundEvent(identifier));
+    }
+
 }
