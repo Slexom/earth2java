@@ -69,5 +69,29 @@
             "earthtojavamobs:mob/rainbow_sheep/death_01",
             "earthtojavamobs:mob/rainbow_sheep/death_02"
         ]
+    },
+    "entity.jumbo_rabbit.ambient": {
+        "sounds": [
+            "earthtojavamobs:mob/jumbo_rabbit/ambient_01",
+            "earthtojavamobs:mob/jumbo_rabbit/ambient_02",
+            "earthtojavamobs:mob/jumbo_rabbit/ambient_03",
+            "earthtojavamobs:mob/jumbo_rabbit/ambient_04"
+        ]
+    },
+    "entity.jumbo_rabbit.jump": {
+        "sounds": [
+            "earthtojavamobs:mob/jumbo_rabbit/jump_01",
+            "earthtojavamobs:mob/jumbo_rabbit/jump_02",
+            "earthtojavamobs:mob/jumbo_rabbit/jump_03",
+            "earthtojavamobs:mob/jumbo_rabbit/jump_04"
+        ]
+    },
+    "entity.jumbo_rabbit.hurt": {
+        "sounds": [
+            "earthtojavamobs:mob/jumbo_rabbit/hurt_01",
+            "earthtojavamobs:mob/jumbo_rabbit/hurt_02",
+            "earthtojavamobs:mob/jumbo_rabbit/hurt_03",
+            "earthtojavamobs:mob/jumbo_rabbit/hurt_04"
+        ]
     }
 }
