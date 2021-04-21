@@ -24,6 +24,10 @@ public class BlockInit {
     public static Block RAINBOW_CARPET;
     public static Block RAINBOW_WOOL;
 
+    public static void flammableBlock(Block block, int encouragement, int flammability) {
+        FireBlock fire = (FireBlock) Blocks.FIRE;
+        fire.registerFlammableBlock(block, encouragement, flammability);
+    }
 
     public static void init() {
         BUTTERCUP = RegisterHelper.registerBlock("buttercup", new FlowerBlock(StatusEffects.JUMP_BOOST, 5, AbstractBlock.Settings.of(Material.PLANT).noCollision().strength(0.0F).sounds(BlockSoundGroup.GRASS)), true);
@@ -38,5 +42,11 @@ public class BlockInit {
         RAINBOW_BED = RegisterHelper.registerBlock("rainbow_bed", new RainbowBedBlock(DyeColor.WHITE, AbstractBlock.Settings.of(Material.WOOL).sounds(BlockSoundGroup.WOOD).strength(0.2F).nonOpaque()), false);
         RAINBOW_CARPET = RegisterHelper.registerBlock("rainbow_carpet", new RainbowCarpetBlock(DyeColor.WHITE, AbstractBlock.Settings.of(Material.CARPET, MapColor.WHITE).strength(0.1F).sounds(BlockSoundGroup.WOOL)), true);
         RAINBOW_WOOL = RegisterHelper.registerBlock("rainbow_wool", new Block(AbstractBlock.Settings.of(Material.WOOL, MapColor.WHITE).strength(0.8F).sounds(BlockSoundGroup.WOOL)), true);
+
+        //Flammables
+        flammableBlock(BUTTERCUP, 60, 100);
+        flammableBlock(PINK_DAISY, 60, 100);
+        flammableBlock(RAINBOW_CARPET, 60, 20);
+        flammableBlock(RAINBOW_WOOL, 30, 60);
     }
 }
