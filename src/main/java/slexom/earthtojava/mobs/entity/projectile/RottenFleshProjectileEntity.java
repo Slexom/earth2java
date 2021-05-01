@@ -18,6 +18,7 @@ import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 import slexom.earthtojava.mobs.init.EntityTypesInit;
 import slexom.earthtojava.mobs.init.ItemInit;
+import slexom.earthtojava.mobs.init.SoundEventsInit;
 
 public class RottenFleshProjectileEntity extends ThrownItemEntity {
 
@@ -56,6 +57,7 @@ public class RottenFleshProjectileEntity extends ThrownItemEntity {
 
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
+        this.playSound(SoundEventsInit.LOBBER_ZOMBIE_PROJECTILE_SOUND, 1.0F, 1.0F );
         Entity entity = entityHitResult.getEntity();
         entity.damage(DamageSource.thrownProjectile(this, this.getOwner()), 10.0F);
     }
