@@ -24,9 +24,13 @@ public class BlockInit {
     public static Block RUBY_BLOCK;
     public static Block RUBY_ORE;
 
+    public static void flammableBlock(Block block, int encouragement, int flammability) {
+        FireBlock fire = (FireBlock) Blocks.FIRE;
+        fire.registerFlammableBlock(block, encouragement, flammability);
+    }
 
     public static void init() {
-
+        // Base Blocks
         BUTTERCUP = RegisterHelper.registerBlock("buttercup", new FlowerBlock(StatusEffects.JUMP_BOOST, 5, AbstractBlock.Settings.of(Material.PLANT).noCollision().strength(0.0F).sounds(BlockSoundGroup.GRASS)), true);
         PINK_DAISY = RegisterHelper.registerBlock("pink_daisy", new FlowerBlock(StatusEffects.JUMP_BOOST, 5, AbstractBlock.Settings.of(Material.PLANT).noCollision().strength(0.0F).sounds(BlockSoundGroup.GRASS)), true);
         CARVED_MELON = RegisterHelper.registerBlock("carved_melon", new CarvedMelonBlock(AbstractBlock.Settings.of(Material.GOURD, MaterialColor.LIME).strength(1.0F).sounds(BlockSoundGroup.WOOD)), true);
@@ -42,5 +46,11 @@ public class BlockInit {
         RAINBOW_WOOL = RegisterHelper.registerBlock("rainbow_wool", new Block(AbstractBlock.Settings.of(Material.WOOL, MaterialColor.WHITE).strength(0.8F).sounds(BlockSoundGroup.WOOL)), true);
         RUBY_BLOCK = RegisterHelper.registerBlock("ruby_block", new Block(AbstractBlock.Settings.of(Material.METAL, MaterialColor.RED).requiresTool().strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL)), true);
         RUBY_ORE = RegisterHelper.registerBlock("ruby_ore", new RubyOreBlock(AbstractBlock.Settings.of(Material.STONE).requiresTool().strength(3.0F, 3.0F)), true);
+
+        //Flammables
+        flammableBlock(BUTTERCUP, 60, 100);
+        flammableBlock(PINK_DAISY, 60, 100);
+        flammableBlock(RAINBOW_CARPET, 60, 20);
+        flammableBlock(RAINBOW_WOOL, 30, 60);
     }
 }
