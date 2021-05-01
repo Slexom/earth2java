@@ -6,17 +6,15 @@
             "earthtojavamobs:mob/bone_spider/say_03"
         ]
     },
+    "entity.bone_spider.bone.stab": {
+        "sounds": [
+            "earthtojavamobs:mob/bone_spider/bone/stab"
+        ]
+    },
     "entity.bone_spider.death": {
         "sounds": [
             "earthtojavamobs:mob/bone_spider/death_01",
             "earthtojavamobs:mob/bone_spider/death_02"
-        ]
-    },
-    "entity.bone_spider.walk": {
-        "sounds": [
-            "earthtojavamobs:mob/bone_spider/walk_01",
-            "earthtojavamobs:mob/bone_spider/walk_02",
-            "earthtojavamobs:mob/bone_spider/walk_03"
         ]
     },
     "entity.bone_spider.spit": {
@@ -26,9 +24,11 @@
             "earthtojavamobs:mob/bone_spider/spit_03"
         ]
     },
-    "entity.bone_spider.bone.stab": {
+    "entity.bone_spider.walk": {
         "sounds": [
-            "earthtojavamobs:mob/bone_spider/bone/stab"
+            "earthtojavamobs:mob/bone_spider/walk_01",
+            "earthtojavamobs:mob/bone_spider/walk_02",
+            "earthtojavamobs:mob/bone_spider/walk_03"
         ]
     },
     "entity.fancy_chicken.ambient": {
@@ -37,12 +37,6 @@
             "earthtojavamobs:mob/fancy_chicken/say_02",
             "earthtojavamobs:mob/fancy_chicken/say_03",
             "earthtojavamobs:mob/fancy_chicken/say_04"
-        ]
-    },
-    "entity.fancy_chicken.hurt": {
-        "sounds": [
-            "earthtojavamobs:mob/fancy_chicken/hurt_01",
-            "earthtojavamobs:mob/fancy_chicken/hurt_02"
         ]
     },
     "entity.fancy_chicken.death": {
@@ -57,6 +51,104 @@
             "earthtojavamobs:mob/fancy_chicken/flee_02"
         ]
     },
+    "entity.fancy_chicken.hurt": {
+        "sounds": [
+            "earthtojavamobs:mob/fancy_chicken/hurt_01",
+            "earthtojavamobs:mob/fancy_chicken/hurt_02"
+        ]
+    },
+    "entity.furnace_golem.aggro": {
+        "sounds": [
+            "earthtojavamobs:mob/furnace_golem/aggro_01",
+            "earthtojavamobs:mob/furnace_golem/aggro_02",
+            "earthtojavamobs:mob/furnace_golem/aggro_03",
+            "earthtojavamobs:mob/furnace_golem/aggro_04",
+            "earthtojavamobs:mob/furnace_golem/aggro_05",
+            "earthtojavamobs:mob/furnace_golem/aggro_06"
+        ]
+    },
+    "entity.furnace_golem.attack": {
+        "sounds": [
+            "earthtojavamobs:mob/furnace_golem/attack_01"
+        ]
+    },
+    "entity.jumbo_rabbit.ambient": {
+        "sounds": [
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/ambient_01",
+                "volume": 0.4
+            },
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/ambient_02",
+                "volume": 0.4
+            },
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/ambient_03",
+                "volume": 0.4
+            },
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/ambient_04",
+                "volume": 0.4
+            }
+        ]
+    },
+    "entity.jumbo_rabbit.hurt": {
+        "sounds": [
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/hurt_01",
+                "volume": 0.5
+            },
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/hurt_02",
+                "volume": 0.5
+            },
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/hurt_03",
+                "volume": 0.5
+            },
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/hurt_04",
+                "volume": 0.5
+            }
+        ]
+    },
+    "entity.jumbo_rabbit.jump": {
+        "sounds": [
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/jump_01",
+                "volume": 0.2
+            },
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/jump_02",
+                "volume": 0.2
+            },
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/jump_03",
+                "volume": 0.2
+            },
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/jump_04",
+                "volume": 0.2
+            }
+        ]
+    },
+    "entity.lobber_zombie.attack": {
+        "sounds": [
+            "earthtojavamobs:mob/lobber_zombie/throw_01",
+            "earthtojavamobs:mob/lobber_zombie/throw_02",
+            "earthtojavamobs:mob/lobber_zombie/throw_03",
+            "earthtojavamobs:mob/lobber_zombie/throw_04",
+            "earthtojavamobs:mob/lobber_zombie/throw_05",
+            "earthtojavamobs:mob/lobber_zombie/throw_06"
+        ]
+    },
+    "entity.lobber_zombie.projectile.sounds": {
+        "sounds": [
+            "earthtojavamobs:mob/lobber_zombie/projectile/sound_01",
+            "earthtojavamobs:mob/lobber_zombie/projectile/sound_02",
+            "earthtojavamobs:mob/lobber_zombie/projectile/sound_03"
+        ]
+    },
     "entity.rainbow_sheep.ambient": {
         "sounds": [
             "earthtojavamobs:mob/rainbow_sheep/say_01",
@@ -68,30 +160,6 @@
         "sounds": [
             "earthtojavamobs:mob/rainbow_sheep/death_01",
             "earthtojavamobs:mob/rainbow_sheep/death_02"
-        ]
-    },
-    "entity.jumbo_rabbit.ambient": {
-        "sounds": [
-            "earthtojavamobs:mob/jumbo_rabbit/ambient_01",
-            "earthtojavamobs:mob/jumbo_rabbit/ambient_02",
-            "earthtojavamobs:mob/jumbo_rabbit/ambient_03",
-            "earthtojavamobs:mob/jumbo_rabbit/ambient_04"
-        ]
-    },
-    "entity.jumbo_rabbit.jump": {
-        "sounds": [
-            "earthtojavamobs:mob/jumbo_rabbit/jump_01",
-            "earthtojavamobs:mob/jumbo_rabbit/jump_02",
-            "earthtojavamobs:mob/jumbo_rabbit/jump_03",
-            "earthtojavamobs:mob/jumbo_rabbit/jump_04"
-        ]
-    },
-    "entity.jumbo_rabbit.hurt": {
-        "sounds": [
-            "earthtojavamobs:mob/jumbo_rabbit/hurt_01",
-            "earthtojavamobs:mob/jumbo_rabbit/hurt_02",
-            "earthtojavamobs:mob/jumbo_rabbit/hurt_03",
-            "earthtojavamobs:mob/jumbo_rabbit/hurt_04"
         ]
     }
 }

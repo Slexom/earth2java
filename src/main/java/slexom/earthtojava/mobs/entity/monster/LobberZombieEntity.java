@@ -18,6 +18,7 @@ import slexom.earthtojava.mobs.entity.base.E2JBaseZombieEntity;
 import slexom.earthtojava.mobs.entity.passive.FurnaceGolemEntity;
 import slexom.earthtojava.mobs.entity.passive.MelonGolemEntity;
 import slexom.earthtojava.mobs.entity.projectile.RottenFleshProjectileEntity;
+import slexom.earthtojava.mobs.init.SoundEventsInit;
 
 public class LobberZombieEntity extends E2JBaseZombieEntity implements RangedAttackMob {
 
@@ -49,7 +50,7 @@ public class LobberZombieEntity extends E2JBaseZombieEntity implements RangedAtt
         float f = MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.2F;
         rottenFleshProjectileEntity.setVelocity(d1, d2 + (double) f, d3, 1.6F, 12.0F);
         this.swingHand(Hand.MAIN_HAND);
-        this.playSound(SoundEvents.ENTITY_SNOW_GOLEM_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
+        this.playSound(SoundEventsInit.LOBBER_ZOMBIE_ATTACK, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
         this.world.spawnEntity(rottenFleshProjectileEntity);
     }
 }

@@ -14,12 +14,12 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import slexom.earthtojava.mobs.entity.ai.goal.FurnaceGolemDefendVillageTargetGoal;
 import slexom.earthtojava.mobs.entity.ai.goal.FurnaceGolemFollowTargetGoal;
+import slexom.earthtojava.mobs.init.SoundEventsInit;
 
 import java.util.Random;
 
@@ -62,7 +62,7 @@ public class FurnaceGolemEntity extends IronGolemEntity {
             entityIn.setVelocity(entityIn.getVelocity().add(0.0D, 0.4D, 0.0D));
             this.dealDamage(this, entityIn);
         }
-        this.playSound(SoundEvents.ENTITY_IRON_GOLEM_ATTACK, 1.0F, 1.0F);
+        this.playSound(SoundEventsInit.FURNACE_GOLEM_ATTACK, 1.0F, 1.0F);
         return flag;
     }
 
@@ -84,7 +84,6 @@ public class FurnaceGolemEntity extends IronGolemEntity {
         if (this.isInsideWaterOrBubbleColumn()) {
             this.damage(DamageSource.DROWN, 5.0F);
         }
-
         if (this.remainingTick > 0) {
             --this.remainingTick;
         }

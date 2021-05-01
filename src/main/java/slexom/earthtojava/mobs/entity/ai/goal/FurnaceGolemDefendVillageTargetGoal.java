@@ -1,9 +1,9 @@
 package slexom.earthtojava.mobs.entity.ai.goal;
 
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.TrackIronGolemTargetGoal;
 import slexom.earthtojava.mobs.entity.passive.FurnaceGolemEntity;
+import slexom.earthtojava.mobs.init.SoundEventsInit;
 
 import java.util.EnumSet;
 
@@ -19,6 +19,7 @@ public class FurnaceGolemDefendVillageTargetGoal extends TrackIronGolemTargetGoa
 
     @Override
     public void start() {
+        this.golem.playSound(SoundEventsInit.FURNACE_GOLEM_AGGRO, 1.0F, 1.0F);
         this.golem.setAngry(true);
         this.golem.setTarget(this.villageAgressorTarget);
         super.start();
