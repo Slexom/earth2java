@@ -96,12 +96,12 @@ public class SkeletonWolfEntity extends HostileEntity implements Angerable {
 
     public void writeCustomDataToNbt(NbtCompound compound) {
         super.writeCustomDataToNbt(compound);
-        compound.putBoolean("Angry", this.isAngry());
+        this.writeAngerToNbt(compound);
     }
 
     public void readCustomDataFromNbt(NbtCompound compound) {
         super.readCustomDataFromNbt(compound);
-        this.setAngry(compound.getBoolean("Angry"));
+        this.readAngerFromNbt(this.world, compound);
     }
 
     @Environment(EnvType.CLIENT)
