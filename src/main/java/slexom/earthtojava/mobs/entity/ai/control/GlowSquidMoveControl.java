@@ -23,7 +23,7 @@ public class GlowSquidMoveControl extends MoveControl {
             double dy = this.targetY - glowSquidEntity.getY();
             double dz = this.targetZ - glowSquidEntity.getZ();
             dy = dy / (double) MathHelper.sqrt(dx * dx + dy * dy + dz * dz);
-            glowSquidEntity.yaw = this.changeAngle(glowSquidEntity.yaw, (float) (MathHelper.atan2(dz, dx) * (double) (180 / (float) Math.PI)) - 90, 90);
+            glowSquidEntity.yaw = this.wrapDegrees(glowSquidEntity.yaw, (float) (MathHelper.atan2(dz, dx) * (double) (180 / (float) Math.PI)) - 90, 90);
             glowSquidEntity.bodyYaw = glowSquidEntity.yaw;
             glowSquidEntity.setMovementSpeed(MathHelper.lerp(0.125f, glowSquidEntity.getMovementSpeed(),
                     (float) (this.speed * glowSquidEntity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).getValue())));

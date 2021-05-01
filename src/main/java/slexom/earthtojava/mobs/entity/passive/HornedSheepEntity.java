@@ -16,12 +16,12 @@ import net.minecraft.entity.mob.Angerable;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.IntRange;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.World;
 import slexom.earthtojava.mobs.entity.ai.goal.HornedSheepFollowTargetGoal;
 import slexom.earthtojava.mobs.entity.ai.goal.HornedSheepMeleeAttackGoal;
@@ -36,12 +36,20 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> imp
 
     private static final TrackedData<Byte> DATA_FLAGS_ID = DataTracker.registerData(HornedSheepEntity.class, TrackedDataHandlerRegistry.BYTE);
     private static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(HornedSheepEntity.class, TrackedDataHandlerRegistry.INTEGER);
-    private static final IntRange field_234180_bw_ = Durations.betweenSeconds(20, 39);
+    private static final UniformIntProvider ANGER_TIME_RANGE = Durations.betweenSeconds(20, 39);
     private EatGrassGoal eatGrassGoal;
     private UUID lastHurtBy;
 
     public HornedSheepEntity(EntityType<? extends HornedSheepEntity> type, World world) {
         super(type, world);
+    }
+
+    public static DefaultAttributeContainer.Builder createHornedSheepAttributes() {
+        return MobEntity.createMobAttributes()
+                .add(EntityAttributes.GENERIC_MAX_HEALTH, 8.0D)
+                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 48.0D)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.23D)
+                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2.0D);
     }
 
     protected void initDataTracker() {
@@ -65,22 +73,14 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> imp
         this.targetSelector.add(2, new HornedSheepFollowTargetGoal(this));
     }
 
-    public static DefaultAttributeContainer.Builder createHornedSheepAttributes() {
-        return MobEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 8.0D)
-                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 48.0D)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.23D)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2.0D);
+    public void writeCustomDataToNbt(NbtCompound compound) {
+        super.writeCustomDataToNbt(compound);
+        this.writeAngerToNbt(compound);
     }
 
-    public void writeCustomDataToTag(CompoundTag compound) {
-        super.writeCustomDataToTag(compound);
-        this.angerToTag(compound);
-    }
-
-    public void readCustomDataFromTag(CompoundTag compound) {
-        super.readCustomDataFromTag(compound);
-        this.angerFromTag((ServerWorld) this.world, compound);
+    public void readCustomDataFromNbt(NbtCompound compound) {
+        super.readCustomDataFromNbt(compound);
+        this.readAngerFromNbt((ServerWorld) this.world, compound);
     }
 
     public boolean tryAttack(Entity entityIn) {
@@ -230,7 +230,7 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> imp
 
     @Override
     public void chooseRandomAngerTime() {
-        this.setAngerTime(field_234180_bw_.choose(this.random));
+        this.setAngerTime(ANGER_TIME_RANGE.get(this.random));
     }
 
 

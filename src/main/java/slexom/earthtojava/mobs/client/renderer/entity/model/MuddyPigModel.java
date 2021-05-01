@@ -4,7 +4,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.QuadrupedEntityModel;
-import net.minecraft.client.util.math.Dilation;
 import slexom.earthtojava.mobs.entity.passive.MuddyPigEntity;
 
 @Environment(EnvType.CLIENT)

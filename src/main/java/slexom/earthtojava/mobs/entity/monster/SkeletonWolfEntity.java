@@ -19,7 +19,7 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -82,13 +82,13 @@ public class SkeletonWolfEntity extends HostileEntity {
         this.dataTracker.startTracking(ANGRY, false);
     }
 
-    public void writeCustomDataToTag(CompoundTag compound) {
-        super.writeCustomDataToTag(compound);
+    public void writeCustomDataToNbt(NbtCompound compound) {
+        super.writeCustomDataToNbt(compound);
         compound.putBoolean("Angry", this.isAngry());
     }
 
-    public void readCustomDataFromTag(CompoundTag compound) {
-        super.readCustomDataFromTag(compound);
+    public void readCustomDataFromNbt(NbtCompound compound) {
+        super.readCustomDataFromNbt(compound);
         this.setAngry(compound.getBoolean("Angry"));
     }
 

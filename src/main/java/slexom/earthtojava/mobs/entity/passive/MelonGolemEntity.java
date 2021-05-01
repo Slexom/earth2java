@@ -20,7 +20,7 @@ import net.minecraft.entity.passive.GolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -70,13 +70,13 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob, Sh
         this.dataTracker.startTracking(SHOOTING_TICKS, 0);
     }
 
-    public void writeCustomDataToTag(CompoundTag compound) {
-        super.writeCustomDataToTag(compound);
+    public void writeCustomDataToNbt(NbtCompound compound) {
+        super.writeCustomDataToNbt(compound);
         compound.putBoolean("Pumpkin", this.isMelonEquipped());
     }
 
-    public void readCustomDataFromTag(CompoundTag compound) {
-        super.readCustomDataFromTag(compound);
+    public void readCustomDataFromNbt(NbtCompound compound) {
+        super.readCustomDataFromNbt(compound);
         if (compound.contains("Pumpkin")) {
             this.setMelonEquipped(compound.getBoolean("Pumpkin"));
         }

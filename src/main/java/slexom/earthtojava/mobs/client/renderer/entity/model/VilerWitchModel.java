@@ -2,7 +2,6 @@ package slexom.earthtojava.mobs.client.renderer.entity.model;
 
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.VillagerResemblingModel;
-import net.minecraft.client.util.math.Dilation;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 

@@ -31,7 +31,7 @@ public class MudBucketRecipe extends ShapelessRecipe {
     }
 
     @Override
-    public DefaultedList<ItemStack> getRemainingStacks(CraftingInventory inv) {
+    public DefaultedList<ItemStack> getRemainder(CraftingInventory inv) {
         final DefaultedList<ItemStack> remainingItems = DefaultedList.ofSize(inv.size(), ItemStack.EMPTY);
         for (int i = 0; i < remainingItems.size(); ++i) {
             ItemStack itemstack = inv.getStack(i);

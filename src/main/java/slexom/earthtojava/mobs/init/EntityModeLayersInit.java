@@ -1,7 +1,7 @@
 package slexom.earthtojava.mobs.init;
 
+import net.minecraft.client.model.Dilation;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
-import net.minecraft.client.util.math.Dilation;
 import slexom.earthtojava.mobs.client.renderer.block.entity.RainbowBedBlockEntityRenderer;
 import slexom.earthtojava.mobs.client.renderer.entity.model.*;
 

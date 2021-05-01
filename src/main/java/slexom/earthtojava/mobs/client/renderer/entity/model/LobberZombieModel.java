@@ -2,7 +2,6 @@ package slexom.earthtojava.mobs.client.renderer.entity.model;
 
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.ZombieEntityModel;
-import net.minecraft.client.util.math.Dilation;
 import slexom.earthtojava.mobs.entity.monster.LobberZombieEntity;
 
 public class LobberZombieModel<T extends LobberZombieEntity> extends ZombieEntityModel<T> {

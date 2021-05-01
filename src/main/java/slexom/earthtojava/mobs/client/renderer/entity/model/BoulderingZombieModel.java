@@ -3,8 +3,7 @@ package slexom.earthtojava.mobs.client.renderer.entity.model;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.ZombieEntityModel;
-import net.minecraft.client.util.math.Dilation;
-import net.minecraft.util.math.MathHelper;
+ import net.minecraft.util.math.MathHelper;
 import slexom.earthtojava.mobs.entity.monster.BoulderingZombieEntity;
 
 public class BoulderingZombieModel<T extends BoulderingZombieEntity> extends ZombieEntityModel<T> {
