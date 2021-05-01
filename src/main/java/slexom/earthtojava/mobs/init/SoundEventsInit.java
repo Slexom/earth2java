@@ -21,7 +21,11 @@ public class SoundEventsInit {
     public static final String JUMBO_RABBIT_HURT_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.JUMBO_RABBIT_REGISTRY_NAME, "hurt");
     public static final String JUMBO_RABBIT_JUMP_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.JUMBO_RABBIT_REGISTRY_NAME, "jump");
     public static final String LOBBER_ZOMBIE_ATTACK_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_NAME, "attack");
-    public static final String LOBBER_ZOMBIE_PROJECTILE_SOUND_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_NAME, "projectile.sounds");
+    public static final String LOBBER_ZOMBIE_ROTTEN_FLESH_HIT_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_NAME, "rotten_flesh.hit");
+    public static final String MELON_GOLEM_AGGRO_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.MELON_GOLEM_REGISTRY_NAME, "aggro");
+    public static final String MELON_GOLEM_ATTACK_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.MELON_GOLEM_REGISTRY_NAME, "attack");
+    public static final String MELON_GOLEM_CHARGE_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.MELON_GOLEM_REGISTRY_NAME, "charge");
+    public static final String MELON_GOLEM_SEED_HIT_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.MELON_GOLEM_REGISTRY_NAME, "seed.hit");
     public static final String RAINBOW_SHEEP_AMBIENT_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_NAME, "ambient");
     public static final String RAINBOW_SHEEP_DEATH_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_NAME, "death");
     public static SoundEvent BONE_SPIDER_AMBIENT;
@@ -40,6 +44,10 @@ public class SoundEventsInit {
     public static SoundEvent JUMBO_RABBIT_JUMP;
     public static SoundEvent LOBBER_ZOMBIE_ATTACK;
     public static SoundEvent LOBBER_ZOMBIE_PROJECTILE_SOUND;
+    public static SoundEvent MELON_GOLEM_AGGRO;
+    public static SoundEvent MELON_GOLEM_ATTACK;
+    public static SoundEvent MELON_GOLEM_CHARGE;
+    public static SoundEvent MELON_GOLEM_SEED_HIT;
     public static SoundEvent RAINBOW_SHEEP_AMBIENT;
     public static SoundEvent RAINBOW_SHEEP_DEATH;
 
@@ -59,7 +67,11 @@ public class SoundEventsInit {
         JUMBO_RABBIT_HURT = RegisterHelper.registerSoundEvent(JUMBO_RABBIT_HURT_REGISTRY_NAME);
         JUMBO_RABBIT_JUMP = RegisterHelper.registerSoundEvent(JUMBO_RABBIT_JUMP_REGISTRY_NAME);
         LOBBER_ZOMBIE_ATTACK = RegisterHelper.registerSoundEvent(LOBBER_ZOMBIE_ATTACK_REGISTRY_NAME);
-        LOBBER_ZOMBIE_PROJECTILE_SOUND = RegisterHelper.registerSoundEvent(LOBBER_ZOMBIE_PROJECTILE_SOUND_REGISTRY_NAME);
+        LOBBER_ZOMBIE_PROJECTILE_SOUND = RegisterHelper.registerSoundEvent(LOBBER_ZOMBIE_ROTTEN_FLESH_HIT_REGISTRY_NAME);
+        MELON_GOLEM_AGGRO = RegisterHelper.registerSoundEvent(MELON_GOLEM_AGGRO_REGISTRY_NAME);
+        MELON_GOLEM_ATTACK = RegisterHelper.registerSoundEvent(MELON_GOLEM_ATTACK_REGISTRY_NAME);
+        MELON_GOLEM_CHARGE = RegisterHelper.registerSoundEvent(MELON_GOLEM_CHARGE_REGISTRY_NAME);
+        MELON_GOLEM_SEED_HIT = RegisterHelper.registerSoundEvent(MELON_GOLEM_SEED_HIT_REGISTRY_NAME);
         RAINBOW_SHEEP_AMBIENT = RegisterHelper.registerSoundEvent(RAINBOW_SHEEP_AMBIENT_REGISTRY_NAME);
         RAINBOW_SHEEP_DEATH = RegisterHelper.registerSoundEvent(RAINBOW_SHEEP_DEATH_REGISTRY_NAME);
     }

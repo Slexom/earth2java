@@ -23,7 +23,7 @@ import java.util.function.Predicate;
 
 public class CarvedMelonBlock extends HorizontalFacingBlock {
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
-    private static final Predicate<BlockState> IS_MELON = (p_210301_0_) -> p_210301_0_ != null && (p_210301_0_.getBlock() == BlockInit.CARVED_MELON || p_210301_0_.getBlock() == BlockInit.MELON_LANTERN);
+    private static final Predicate<BlockState> IS_MELON = (blockState) -> blockState != null && (blockState.getBlock() == BlockInit.CARVED_MELON || blockState.getBlock() == BlockInit.MELON_LANTERN);
     @Nullable
     private BlockPattern snowmanBasePattern;
     @Nullable

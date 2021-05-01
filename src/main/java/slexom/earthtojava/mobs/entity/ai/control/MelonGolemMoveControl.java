@@ -35,7 +35,7 @@ public class MelonGolemMoveControl extends MoveControl {
         } else {
             this.state = State.WAIT;
             if (this.entity.isOnGround()) {
-                this.entity.setMovementSpeed((float) (this.speed * this.entity.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED)));
+                this.entity.setMovementSpeed((float) (this.entity.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED)));
                 if (this.jumpDelay-- <= 0) {
                     this.jumpDelay = this.melonGolem.getJumpDelay();
                     if (this.jumpOften) {
@@ -49,7 +49,7 @@ public class MelonGolemMoveControl extends MoveControl {
                     this.entity.setMovementSpeed(0.0F);
                 }
             } else {
-                this.entity.setMovementSpeed((float) (this.speed * this.entity.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED)));
+                this.entity.setMovementSpeed((float) (this.entity.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED)));
             }
 
         }
