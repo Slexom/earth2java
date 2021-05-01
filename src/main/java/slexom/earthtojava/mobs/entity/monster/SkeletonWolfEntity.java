@@ -7,7 +7,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ai.Durations;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -15,25 +15,31 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.mob.Angerable;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.World;
+import slexom.earthtojava.mobs.init.SoundEventsInit;
 
 import javax.annotation.Nullable;
+import java.util.UUID;
 
-public class SkeletonWolfEntity extends HostileEntity {
+public class SkeletonWolfEntity extends HostileEntity implements Angerable {
 
-    protected static final TrackedData<Boolean> ANGRY = DataTracker.registerData(SkeletonWolfEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+    protected static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(WolfEntity.class, TrackedDataHandlerRegistry.INTEGER);
+    private static final UniformIntProvider ANGER_TIME_RANGE = Durations.betweenSeconds(20, 39);
 
     private float headRotationCourse;
     private float headRotationCourseOld;
+    private UUID targetUuid;
 
     public SkeletonWolfEntity(EntityType<SkeletonWolfEntity> type, World world) {
         super(type, world);
@@ -62,24 +68,30 @@ public class SkeletonWolfEntity extends HostileEntity {
     }
 
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.ENTITY_SKELETON_AMBIENT;
+        if (this.hasAngerTime()) {
+            return SoundEventsInit.SKELETON_WOLF_GROWL;
+        } else if (this.random.nextInt(3) == 0 && this.getHealth() < 10.0F) {
+            return SoundEventsInit.SKELETON_WOLF_WHINE;
+        } else {
+            return SoundEventsInit.SKELETON_WOLF_AMBIENT;
+        }
     }
 
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-        return SoundEvents.ENTITY_SKELETON_HURT;
+        return SoundEventsInit.SKELETON_WOLF_HURT;
     }
 
     protected SoundEvent getDeathSound() {
-        return SoundEvents.ENTITY_SKELETON_DEATH;
+        return SoundEventsInit.SKELETON_WOLF_DEATH;
     }
 
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(SoundEvents.ENTITY_SKELETON_STEP, 0.35F, 1.0F);
+        this.playSound(SoundEventsInit.SKELETON_WOLF_STEP, 0.35F, 1.0F);
     }
 
     protected void initDataTracker() {
         super.initDataTracker();
-        this.dataTracker.startTracking(ANGRY, false);
+        this.dataTracker.startTracking(ANGER_TIME, 0);
     }
 
     public void writeCustomDataToNbt(NbtCompound compound) {
@@ -102,25 +114,37 @@ public class SkeletonWolfEntity extends HostileEntity {
     }
 
     public boolean isAngry() {
-        return this.dataTracker.get(ANGRY);
+        return this.getAngerTime() > 0;
     }
 
-    public void setAngry(boolean angry) {
-        this.dataTracker.set(ANGRY, angry);
+    public int getAngerTime() {
+        return this.dataTracker.get(ANGER_TIME);
     }
 
-    public void setTarget(@Nullable LivingEntity entitylivingbaseIn) {
-        super.setTarget(entitylivingbaseIn);
-        this.setAngry(entitylivingbaseIn != null);
+    public void setAngerTime(int ticks) {
+        this.dataTracker.set(ANGER_TIME, ticks);
+    }
+
+    public void chooseRandomAngerTime() {
+        this.setAngerTime(ANGER_TIME_RANGE.get(this.random));
+    }
+
+    @Nullable
+    public UUID getAngryAt() {
+        return this.targetUuid;
+    }
+
+    public void setAngryAt(@Nullable UUID uuid) {
+        this.targetUuid = uuid;
     }
 
     public void tickMovement() {
+        super.tickMovement();
         if (this.isAlive() && this.isAffectedByDaylight()) {
             this.setOnFireFor(8);
         }
-        super.tickMovement();
-        if (!this.world.isClient && this.getTarget() == null && this.isAngry()) {
-            this.setAngry(false);
+        if (!this.world.isClient) {
+            this.tickAngerLogic((ServerWorld) this.world, true);
         }
     }
 

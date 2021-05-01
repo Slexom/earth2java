@@ -184,5 +184,61 @@
             "earthtojavamobs:mob/melon_golem/seed/seed_02",
             "earthtojavamobs:mob/melon_golem/seed/seed_03"
         ]
+    },
+    "entity.skeleton_wolf.ambient": {
+        "sounds": [
+            "earthtojavamobs:mob/skeleton_wolf/bark_01",
+            "earthtojavamobs:mob/skeleton_wolf/bark_02",
+            "earthtojavamobs:mob/skeleton_wolf/bark_03"
+        ]
+    },
+    "entity.skeleton_wolf.death": {
+        "sounds": [
+            "earthtojavamobs:mob/skeleton_wolf/death_01"
+        ]
+    },
+    "entity.skeleton_wolf.growl": {
+        "sounds": [
+            "earthtojavamobs:mob/skeleton_wolf/growl_01",
+            "earthtojavamobs:mob/skeleton_wolf/growl_02",
+            "earthtojavamobs:mob/skeleton_wolf/growl_03"
+        ]
+    },
+    "entity.skeleton_wolf.howl": {
+        "sounds": [
+            "earthtojavamobs:mob/skeleton_wolf/howl_01",
+            "earthtojavamobs:mob/skeleton_wolf/howl_02"
+        ]
+    },
+    "entity.skeleton_wolf.hurt": {
+        "sounds": [
+            "earthtojavamobs:mob/skeleton_wolf/hurt_01",
+            "earthtojavamobs:mob/skeleton_wolf/hurt_02",
+            "earthtojavamobs:mob/skeleton_wolf/hurt_03"
+        ]
+    },
+    "entity.skeleton_wolf.pant": {
+        "sounds": [
+            "earthtojavamobs:mob/skeleton_wolf/panting_01"
+        ]
+    },
+    "entity.skeleton_wolf.shake": {
+        "sounds": [
+            "earthtojavamobs:mob/skeleton_wolf/shake_01"
+        ]
+    },
+    "entity.skeleton_wolf.step": {
+        "sounds": [
+            "earthtojavamobs:mob/skeleton_wolf/step_01",
+            "earthtojavamobs:mob/skeleton_wolf/step_02",
+            "earthtojavamobs:mob/skeleton_wolf/step_03",
+            "earthtojavamobs:mob/skeleton_wolf/step_04",
+            "earthtojavamobs:mob/skeleton_wolf/step_05"
+        ]
+    },
+    "entity.skeleton_wolf.whine": {
+        "sounds": [
+            "earthtojavamobs:mob/skeleton_wolf/whine_01"
+        ]
     }
 }
