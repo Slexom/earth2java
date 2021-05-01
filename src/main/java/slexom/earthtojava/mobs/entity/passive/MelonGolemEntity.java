@@ -5,9 +5,10 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.Shearable;
 import net.minecraft.entity.ai.RangedAttackMob;
-import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.goal.FollowTargetGoal;
+import net.minecraft.entity.ai.goal.LookAroundGoal;
+import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
@@ -18,27 +19,25 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.passive.GolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import slexom.earthtojava.mobs.entity.ai.control.MelonGolemMoveControl;
 import slexom.earthtojava.mobs.entity.ai.goal.MelonGolemFaceRandomGoal;
 import slexom.earthtojava.mobs.entity.ai.goal.MelonGolemHopGoal;
 import slexom.earthtojava.mobs.entity.ai.goal.MelonGolemProjectileAttackGoal;
 import slexom.earthtojava.mobs.entity.projectile.MelonSeedProjectileEntity;
+import slexom.earthtojava.mobs.init.SoundEventsInit;
 
 import javax.annotation.Nullable;
 import java.util.Random;
 
-public class MelonGolemEntity extends GolemEntity implements RangedAttackMob, Shearable {
+public class MelonGolemEntity extends GolemEntity implements RangedAttackMob {
     private static final TrackedData<Byte> MELON_EQUIPPED = DataTracker.registerData(MelonGolemEntity.class, TrackedDataHandlerRegistry.BYTE);
     private static final TrackedData<Integer> SHOOTING_TICKS = DataTracker.registerData(MelonGolemEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private int lastBlink = 0;
@@ -80,7 +79,6 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob, Sh
         if (compound.contains("Pumpkin")) {
             this.setMelonEquipped(compound.getBoolean("Pumpkin"));
         }
-
     }
 
     public void tickMovement() {
@@ -95,15 +93,16 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob, Sh
             if (this.world.getBiome(new BlockPos(i, 0, k)).getTemperature(new BlockPos(i, j, k)) > 1.0F) {
                 this.damage(DamageSource.ON_FIRE, 1.0F);
             }
-
-            BlockState blockState = Blocks.SNOW.getDefaultState();
-            for (int l = 0; l < 4; ++l) {
-                i = MathHelper.floor(this.getX() + (double) ((float) (l % 2 * 2 - 1) * 0.25F));
-                j = MathHelper.floor(this.getY());
-                k = MathHelper.floor(this.getZ() + (double) ((float) (l / 2 % 2 * 2 - 1) * 0.25F));
-                BlockPos blockPos = new BlockPos(i, j, k);
-                if (this.world.getBlockState(blockPos).isAir() && this.world.getBiome(blockPos).getTemperature(blockPos) < 0.8F && blockState.canPlaceAt(this.world, blockPos)) {
-                    this.world.setBlockState(blockPos, blockState);
+            if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
+                BlockState blockState = Blocks.SNOW.getDefaultState();
+                for (int l = 0; l < 4; ++l) {
+                    i = MathHelper.floor(this.getX() + (double) ((float) (l % 2 * 2 - 1) * 0.25F));
+                    j = MathHelper.floor(this.getY());
+                    k = MathHelper.floor(this.getZ() + (double) ((float) (l / 2 % 2 * 2 - 1) * 0.25F));
+                    BlockPos blockPos = new BlockPos(i, j, k);
+                    if (this.world.getBlockState(blockPos).isAir() && this.world.getBiome(blockPos).getTemperature(blockPos) < 0.8F && blockState.canPlaceAt(this.world, blockPos)) {
+                        this.world.setBlockState(blockPos, blockState);
+                    }
                 }
             }
         }
@@ -143,7 +142,7 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob, Sh
         double d3 = target.getZ() - this.getZ();
         float f = MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.2F;
         melonSeedEntity.setVelocity(d1, d2 + (double) f, d3, 1.6F, 12.0F);
-        this.playSound(SoundEvents.ENTITY_SNOW_GOLEM_SHOOT, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
+        this.playSound(SoundEventsInit.MELON_GOLEM_ATTACK, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
         this.world.spawnEntity(melonSeedEntity);
     }
 
@@ -180,33 +179,13 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob, Sh
     }
 
     public int getJumpDelay() {
-        return this.random.nextInt(20) + 10;
+        return this.random.nextInt(20) + 5;
     }
 
-    public ActionResult interactMob(PlayerEntity player, Hand hand) {
-        ItemStack itemStack = player.getStackInHand(hand);
-        if (itemStack.getItem() == Items.SHEARS) {
-            if (!this.world.isClient && this.isShearable()) {
-                this.sheared(SoundCategory.PLAYERS);
-                itemStack.damage(1, player, ((playerEntity) -> playerEntity.sendToolBreakStatus(hand)));
-                return ActionResult.SUCCESS;
-            } else {
-                return ActionResult.CONSUME;
-            }
-        } else {
-            return super.interactMob(player, hand);
-        }
-    }
-
-    @Override
-    public boolean isShearable() {
-        return this.isMelonEquipped();
-    }
-
-    @Override
-    public void sheared(SoundCategory shearedSoundCategory) {
-        this.world.playSoundFromEntity(null, this, SoundEvents.ENTITY_SHEEP_SHEAR, shearedSoundCategory, 1.0F, 1.0F);
-        this.setMelonEquipped(false);
+    protected void jump() {
+        Vec3d vec3d = this.getVelocity();
+        this.setVelocity(vec3d.x, (double) this.getJumpVelocity() * 0.1D, vec3d.z);
+        this.velocityDirty = true;
     }
 
 }

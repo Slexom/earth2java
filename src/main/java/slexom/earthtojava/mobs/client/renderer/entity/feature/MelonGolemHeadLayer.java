@@ -17,8 +17,8 @@ import slexom.earthtojava.mobs.init.BlockInit;
 
 @Environment(EnvType.CLIENT)
 public class MelonGolemHeadLayer extends FeatureRenderer<MelonGolemEntity, SnowGolemEntityModel<MelonGolemEntity>> {
-    public MelonGolemHeadLayer(FeatureRendererContext<MelonGolemEntity, SnowGolemEntityModel<MelonGolemEntity>> p_i50922_1_) {
-        super(p_i50922_1_);
+    public MelonGolemHeadLayer(FeatureRendererContext<MelonGolemEntity, SnowGolemEntityModel<MelonGolemEntity>> context) {
+        super(context);
     }
 
     public void render(MatrixStack matrixStackIn, VertexConsumerProvider bufferIn, int packedLightIn, MelonGolemEntity entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {

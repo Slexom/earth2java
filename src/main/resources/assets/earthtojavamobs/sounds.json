@@ -142,7 +142,7 @@
             "earthtojavamobs:mob/lobber_zombie/throw_06"
         ]
     },
-    "entity.lobber_zombie.projectile.sounds": {
+    "entity.lobber_zombie.rotten_flesh.hit": {
         "sounds": [
             "earthtojavamobs:mob/lobber_zombie/projectile/sound_01",
             "earthtojavamobs:mob/lobber_zombie/projectile/sound_02",
@@ -160,6 +160,29 @@
         "sounds": [
             "earthtojavamobs:mob/rainbow_sheep/death_01",
             "earthtojavamobs:mob/rainbow_sheep/death_02"
+        ]
+    },
+    "entity.melon_golem.aggro": {
+        "sounds": [
+            "earthtojavamobs:mob/melon_golem/aggro_01"
+        ]
+    },
+    "entity.melon_golem.attack": {
+        "sounds": [
+            "earthtojavamobs:mob/melon_golem/spit_01"
+        ]
+    },
+    "entity.melon_golem.charge": {
+        "sounds": [
+            "earthtojavamobs:mob/melon_golem/charge_01",
+            "earthtojavamobs:mob/melon_golem/charge_02"
+        ]
+    },
+    "entity.melon_golem.seed.hit": {
+        "sounds": [
+            "earthtojavamobs:mob/melon_golem/seed/seed_01",
+            "earthtojavamobs:mob/melon_golem/seed/seed_02",
+            "earthtojavamobs:mob/melon_golem/seed/seed_03"
         ]
     }
 }

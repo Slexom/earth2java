@@ -31,8 +31,8 @@ public class BlockInit {
         PINK_DAISY = RegisterHelper.registerBlock("pink_daisy", new FlowerBlock(StatusEffects.JUMP_BOOST, 5, AbstractBlock.Settings.of(Material.PLANT).noCollision().strength(0.0F).sounds(BlockSoundGroup.GRASS)), true);
         CARVED_MELON = RegisterHelper.registerBlock("carved_melon", new CarvedMelonBlock(AbstractBlock.Settings.of(Material.GOURD, MaterialColor.LIME).strength(1.0F).sounds(BlockSoundGroup.WOOD)), true);
         //FLOWER_POT = RegisterHelper.registerBlock("flower_pot", () -> new E2JFlowerPotBlock(null, Blocks.AIR, AbstractBlock.Settings.of(Material.SUPPORTED).strength(0.0f).nonOpaque()), true);
-        MELON_GOLEM_HEAD_BLINK = RegisterHelper.registerBlock("melon_golem_blink", new CarvedMelonBlock(AbstractBlock.Settings.of(Material.GOURD, MaterialColor.LIME).strength(1.0F).sounds(BlockSoundGroup.WOOD)), false);
-        MELON_GOLEM_HEAD_SHOOT = RegisterHelper.registerBlock("melon_golem_shoot", new CarvedMelonBlock(AbstractBlock.Settings.of(Material.GOURD, MaterialColor.LIME).strength(1.0F).sounds(BlockSoundGroup.WOOD)), false);
+        MELON_GOLEM_HEAD_BLINK = RegisterHelper.registerBlock("melon_golem_blink", new CarvedMelonBlock(AbstractBlock.Settings.of(Material.GOURD, MaterialColor.LIME).strength(1.0F).sounds(BlockSoundGroup.WOOD)), true);
+        MELON_GOLEM_HEAD_SHOOT = RegisterHelper.registerBlock("melon_golem_shoot", new CarvedMelonBlock(AbstractBlock.Settings.of(Material.GOURD, MaterialColor.LIME).strength(1.0F).sounds(BlockSoundGroup.WOOD)), true);
         MELON_LANTERN = RegisterHelper.registerBlock("melon_lantern", new CarvedMelonBlock(AbstractBlock.Settings.of(Material.GOURD, MaterialColor.LIME).strength(1.0F).sounds(BlockSoundGroup.WOOD).luminance((state) -> 15)), true);
         MUD_BLOCK = RegisterHelper.registerBlock("mud_fluid", new MudBlock(FluidInit.MUD_FLUID_STILL, AbstractBlock.Settings.of(Material.WATER, MaterialColor.BROWN).noCollision().strength(100.0F).dropsNothing()), false);
         POTTED_BUTTERCUP = RegisterHelper.registerBlock("potted_buttercup", new FlowerPotBlock(BUTTERCUP, AbstractBlock.Settings.of(Material.SUPPORTED).breakInstantly().nonOpaque()), false);

@@ -19,6 +19,7 @@ import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 import slexom.earthtojava.mobs.init.EntityTypesInit;
+import slexom.earthtojava.mobs.init.SoundEventsInit;
 
 public class MelonSeedProjectileEntity extends ThrownItemEntity {
     
@@ -57,6 +58,7 @@ public class MelonSeedProjectileEntity extends ThrownItemEntity {
 
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
+        this.playSound(SoundEventsInit.MELON_GOLEM_SEED_HIT, 1.0F, 1.0F );
         Entity entity = entityHitResult.getEntity();
         entity.damage(DamageSource.thrownProjectile(this, this.getOwner()), 10.0F);
     }
