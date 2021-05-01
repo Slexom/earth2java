@@ -51,10 +51,10 @@ public class MudFogMixin {
         BlockPos blockPos = camera.getBlockPos();
         FluidState fluidState = world.getFluidState(blockPos);
         if (fluidState.isIn(TagRegistry.fluid(mudTag))) {
-            RenderSystem.fogStart(0.0F);
-            RenderSystem.fogEnd(1.0F);
-            RenderSystem.fogMode(GlStateManager.FogMode.LINEAR);
-            RenderSystem.setupNvFogDistance();
+            RenderSystem.setShaderFogStart(0.0F);
+            RenderSystem.setShaderFogEnd(1.0F);
+            // RenderSystem.fogMode(GlStateManager.FogMode.LINEAR);
+            // RenderSystem.setupNvFogDistance();
             ci.cancel();
         }
     }

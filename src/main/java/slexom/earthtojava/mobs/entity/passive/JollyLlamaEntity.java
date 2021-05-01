@@ -77,7 +77,7 @@ public class JollyLlamaEntity extends E2JBaseLlamaEntity {
             float f = ((float)(this.eatFernTimer - 4) - delta) / 32.0F;
             return 0.62831855F + 0.21991149F * MathHelper.sin(f * 28.7F);
         } else {
-            return this.eatFernTimer > 0 ? 0.62831855F : this.pitch * 0.017453292F;
+            return this.eatFernTimer > 0 ? 0.62831855F : this.getPitch() * 0.017453292F;
         }
     }
 

@@ -13,7 +13,7 @@ public class TropicalSlimeMoveController extends MoveControl {
     public TropicalSlimeMoveController(TropicalSlimeEntity slimeIn) {
         super(slimeIn);
         this.slime = slimeIn;
-        this.yRot = 180.0F * slimeIn.yaw / (float) Math.PI;
+        this.yRot = 180.0F * slimeIn.getYaw() / (float) Math.PI;
     }
 
     public void look(float yRotIn, boolean aggressive) {
@@ -27,9 +27,9 @@ public class TropicalSlimeMoveController extends MoveControl {
     }
 
     public void tick() {
-        this.entity.yaw = this.wrapDegrees(this.entity.yaw, this.yRot, 90.0F);
-        this.entity.headYaw = this.entity.yaw;
-        this.entity.bodyYaw = this.entity.yaw;
+        this.entity.setYaw(this.wrapDegrees(this.entity.getYaw(), this.yRot, 90.0F));
+        this.entity.headYaw = this.entity.getYaw();
+        this.entity.bodyYaw = this.entity.getYaw();
         if (this.state != State.MOVE_TO) {
             this.entity.setForwardSpeed(0.0F);
         } else {

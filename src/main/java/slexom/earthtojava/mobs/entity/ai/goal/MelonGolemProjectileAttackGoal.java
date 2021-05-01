@@ -27,6 +27,6 @@ public class MelonGolemProjectileAttackGoal extends ProjectileAttackGoal {
     @Override
     public void tick() {
         super.tick();
-        ((MelonGolemMoveControl) this.melonGolemEntity.getMoveControl()).setDirection(this.melonGolemEntity.yaw, true);
+        ((MelonGolemMoveControl) this.melonGolemEntity.getMoveControl()).setDirection(this.melonGolemEntity.getYaw(), true);
     }
 }

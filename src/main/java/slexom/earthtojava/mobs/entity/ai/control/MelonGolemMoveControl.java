@@ -13,7 +13,7 @@ public class MelonGolemMoveControl extends MoveControl {
     public MelonGolemMoveControl(MelonGolemEntity entity) {
         super(entity);
         this.melonGolem = entity;
-        this.targetYaw = 180.0F * entity.yaw / (float) Math.PI;
+        this.targetYaw = 180.0F * entity.getYaw() / (float) Math.PI;
     }
 
     public void setDirection(float targetYaw, boolean jumpOften) {
@@ -27,9 +27,9 @@ public class MelonGolemMoveControl extends MoveControl {
     }
 
     public void tick() {
-        this.entity.yaw = this.wrapDegrees(this.entity.yaw, this.targetYaw, 90.0F);
-        this.entity.headYaw = this.entity.yaw;
-        this.entity.bodyYaw = this.entity.yaw;
+        this.entity.setYaw(this.wrapDegrees(this.entity.getYaw(), this.targetYaw, 90.0F));
+        this.entity.headYaw = this.entity.getYaw();
+        this.entity.bodyYaw = this.entity.getYaw();
         if (this.state != State.MOVE_TO) {
             this.entity.setForwardSpeed(0.0F);
         } else {

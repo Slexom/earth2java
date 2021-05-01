@@ -49,7 +49,7 @@ public class MoolipEntity extends E2JBaseCowEntity<MoolipEntity> implements Shea
             ((ServerWorld) this.world).spawnParticles(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
             this.remove(RemovalReason.KILLED);
             CowEntity cowEntity = (CowEntity) EntityType.COW.create(this.world);
-            cowEntity.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.yaw, this.pitch);
+            cowEntity.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch());
             cowEntity.setHealth(this.getHealth());
             cowEntity.bodyYaw = this.bodyYaw;
             if (this.hasCustomName()) {

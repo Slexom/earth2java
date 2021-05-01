@@ -13,6 +13,7 @@ import net.minecraft.entity.mob.WaterCreatureEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.world.biome.Biome;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -157,17 +158,17 @@ public final class BiomeSpawnHelper {
         return Arrays.stream(ary).collect(Collectors.toList());
     }
 
+    @ApiStatus.Experimental
     public static void autoSpawn(EntityType<? extends Entity> entity, EntityType<? extends Entity> baseEntity) {
         BuiltinRegistries.BIOME.stream().forEach(biome -> {
             biome
                     .getSpawnSettings()
                     .getSpawnEntries(SpawnGroup.MONSTER)
+                    .getEntries()
                     .stream()
                     .filter(spawnEntry -> spawnEntry.type.equals(baseEntity))
                     .findFirst()
                     .ifPresent(spawnEntry -> {
-                        System.out.println(spawnEntry)
-                        ;
                         Predicate<BiomeSelectionContext> predicate = BiomeSelectors.includeByKey(BuiltinRegistries.BIOME.getKey(biome).get());
                         BiomeModifications.addSpawn(predicate, SpawnGroup.MONSTER, entity, 10, spawnEntry.minGroupSize, spawnEntry.maxGroupSize);
                     });

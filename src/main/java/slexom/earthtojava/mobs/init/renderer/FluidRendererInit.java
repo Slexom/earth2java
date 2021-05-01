@@ -42,15 +42,15 @@ public class FluidRendererInit {
         final Sprite[] fluidSprites = {null, null};
         ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(new SimpleSynchronousResourceReloadListener() {
             @Override
-            public Identifier getFabricId() {
-                return listenerId;
-            }
-
-            @Override
-            public void apply(ResourceManager resourceManager) {
+            public void reload(ResourceManager manager) {
                 final Function<Identifier, Sprite> atlas = MinecraftClient.getInstance().getSpriteAtlas(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE);
                 fluidSprites[0] = atlas.apply(stillSpriteId);
                 fluidSprites[1] = atlas.apply(flowingSpriteId);
+            }
+
+            @Override
+            public Identifier getFabricId() {
+                return listenerId;
             }
         });
 

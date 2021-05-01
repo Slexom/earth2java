@@ -50,50 +50,48 @@ public class MudBucketRecipe extends ShapelessRecipe {
 
         private static DefaultedList<Ingredient> getIngredients(JsonArray json) {
             DefaultedList<Ingredient> defaultedList = DefaultedList.of();
-
             for (int i = 0; i < json.size(); ++i) {
                 Ingredient ingredient = Ingredient.fromJson(json.get(i));
                 if (!ingredient.isEmpty()) {
                     defaultedList.add(ingredient);
                 }
             }
-
             return defaultedList;
         }
 
-        public MudBucketRecipe read(Identifier recipeID, JsonObject json) {
-            String string = JsonHelper.getString(json, "group", "");
-            DefaultedList<Ingredient> defaultedList = getIngredients(JsonHelper.getArray(json, "ingredients"));
+        public MudBucketRecipe read(Identifier identifier, JsonObject jsonObject) {
+            String string = JsonHelper.getString(jsonObject, "group", "");
+            DefaultedList<Ingredient> defaultedList = getIngredients(JsonHelper.getArray(jsonObject, "ingredients"));
             if (defaultedList.isEmpty()) {
                 throw new JsonParseException("No ingredients for shapeless recipe");
             } else if (defaultedList.size() > 9) {
                 throw new JsonParseException("Too many ingredients for shapeless recipe");
             } else {
-                ItemStack itemStack = ShapedRecipe.getItemStack(JsonHelper.getObject(json, "result"));
-                return new MudBucketRecipe(recipeID, string, itemStack, defaultedList);
+                ItemStack itemStack = ShapedRecipe.outputFromJson(JsonHelper.getObject(jsonObject, "result"));
+                return new MudBucketRecipe(identifier, string, itemStack, defaultedList);
             }
         }
 
         @Override
-        public MudBucketRecipe read(Identifier recipeID, PacketByteBuf buffer) {
-            final String group = buffer.readString(Short.MAX_VALUE);
-            final int numIngredients = buffer.readVarInt();
+        public MudBucketRecipe read(Identifier identifier, PacketByteBuf packetByteBuf) {
+            final String group = packetByteBuf.readString();
+            final int numIngredients = packetByteBuf.readVarInt();
             final DefaultedList<Ingredient> ingredients = DefaultedList.ofSize(numIngredients, Ingredient.EMPTY);
             for (int j = 0; j < ingredients.size(); ++j) {
-                ingredients.set(j, Ingredient.fromPacket(buffer));
+                ingredients.set(j, Ingredient.fromPacket(packetByteBuf));
             }
-            final ItemStack result = buffer.readItemStack();
-            return new MudBucketRecipe(recipeID, group, result, ingredients);
+            final ItemStack result = packetByteBuf.readItemStack();
+            return new MudBucketRecipe(identifier, group, result, ingredients);
         }
 
         @Override
-        public void write(PacketByteBuf buffer, MudBucketRecipe recipe) {
-            buffer.writeString(recipe.group);
-            buffer.writeVarInt(recipe.getPreviewInputs().size());
-            for (final Ingredient ingredient : recipe.getPreviewInputs()) {
-                ingredient.write(buffer);
+        public void write(PacketByteBuf packetByteBuf, MudBucketRecipe recipe) {
+            packetByteBuf.writeString(recipe.group);
+            packetByteBuf.writeVarInt(recipe.input.size());
+            for (final Ingredient ingredient : recipe.input) {
+                ingredient.write(packetByteBuf);
             }
-            buffer.writeItemStack(recipe.getOutput());
+            packetByteBuf.writeItemStack(recipe.getOutput());
         }
     }
 }

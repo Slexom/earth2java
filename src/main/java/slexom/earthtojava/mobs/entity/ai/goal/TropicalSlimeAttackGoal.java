@@ -48,6 +48,6 @@ public class TropicalSlimeAttackGoal extends Goal {
 
     public void tick() {
         this.slime.lookAtEntity(this.slime.getTarget(), 10.0F, 10.0F);
-        ((TropicalSlimeMoveController) this.slime.getMoveControl()).look(this.slime.yaw, this.slime.canDamagePlayer());
+        ((TropicalSlimeMoveController) this.slime.getMoveControl()).look(this.slime.getYaw(), this.slime.canDamagePlayer());
     }
 }

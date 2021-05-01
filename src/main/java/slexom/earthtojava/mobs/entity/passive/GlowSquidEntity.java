@@ -43,7 +43,7 @@ public class GlowSquidEntity extends SquidEntity {
             ((ServerWorld) this.world).spawnParticles(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
             this.discard();
             net.minecraft.entity.passive.GlowSquidEntity vanillaGlowSquid = EntityType.GLOW_SQUID.create(this.world);
-            vanillaGlowSquid.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.yaw, this.pitch);
+            vanillaGlowSquid.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch());
             vanillaGlowSquid.setHealth(this.getHealth());
             vanillaGlowSquid.bodyYaw = this.bodyYaw;
             if (this.hasCustomName()) {

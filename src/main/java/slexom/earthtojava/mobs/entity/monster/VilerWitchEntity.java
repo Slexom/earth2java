@@ -77,7 +77,7 @@ public class VilerWitchEntity extends WitchEntity {
             } else {
                 potionEntity.setItem(PotionUtil.setPotion(new ItemStack(Items.SPLASH_POTION), potion));
             }
-            potionEntity.pitch -= -20.0F;
+            potionEntity.setPitch(potionEntity.getPitch() - -20.0F);
             potionEntity.setVelocity(d, e + (double) (g * 0.2F), f, 0.75F, 8.0F);
             if (!this.isSilent()) {
                 this.world.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_WITCH_THROW, this.getSoundCategory(), 1.0F, 0.8F + this.random.nextFloat() * 0.4F);

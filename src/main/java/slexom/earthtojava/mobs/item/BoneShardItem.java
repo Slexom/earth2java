@@ -23,7 +23,7 @@ public class BoneShardItem extends E2JItem {
         if (!world.isClient) {
             BoneShardEntity boneShardEntity = new BoneShardEntity(world, user);
             boneShardEntity.setItem(itemStack);
-            boneShardEntity.setProperties(user, user.pitch, user.yaw, 0.0F, 1.5F, 1.0F);
+            boneShardEntity.setProperties(user, user.getPitch(), user.getYaw(), 0.0F, 1.5F, 1.0F);
             world.spawnEntity(boneShardEntity);
         }
         user.incrementStat(Stats.USED.getOrCreateStat(this));
