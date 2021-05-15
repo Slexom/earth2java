@@ -31,6 +31,11 @@
             "earthtojavamobs:mob/bone_spider/walk_03"
         ]
     },
+    "entity.cluckshroom.lay_mushroom": {
+        "sounds": [
+            "earthtojavamobs:mob/cluckshroom/lay_mushroom"
+        ]
+    },
     "entity.fancy_chicken.ambient": {
         "sounds": [
             "earthtojavamobs:mob/fancy_chicken/say_01",
@@ -144,22 +149,9 @@
     },
     "entity.lobber_zombie.rotten_flesh.hit": {
         "sounds": [
-            "earthtojavamobs:mob/lobber_zombie/projectile/sound_01",
-            "earthtojavamobs:mob/lobber_zombie/projectile/sound_02",
-            "earthtojavamobs:mob/lobber_zombie/projectile/sound_03"
-        ]
-    },
-    "entity.rainbow_sheep.ambient": {
-        "sounds": [
-            "earthtojavamobs:mob/rainbow_sheep/say_01",
-            "earthtojavamobs:mob/rainbow_sheep/say_02",
-            "earthtojavamobs:mob/rainbow_sheep/say_03"
-        ]
-    },
-    "entity.rainbow_sheep.death": {
-        "sounds": [
-            "earthtojavamobs:mob/rainbow_sheep/death_01",
-            "earthtojavamobs:mob/rainbow_sheep/death_02"
+            "earthtojavamobs:mob/lobber_zombie/rotten_flesh/sound_01",
+            "earthtojavamobs:mob/lobber_zombie/rotten_flesh/sound_02",
+            "earthtojavamobs:mob/lobber_zombie/rotten_flesh/sound_03"
         ]
     },
     "entity.melon_golem.aggro": {
@@ -183,6 +175,29 @@
             "earthtojavamobs:mob/melon_golem/seed/seed_01",
             "earthtojavamobs:mob/melon_golem/seed/seed_02",
             "earthtojavamobs:mob/melon_golem/seed/seed_03"
+        ]
+    },
+    "entity.moobloom.plant": {
+        "sounds": [
+            "earthtojavamobs:mob/moobloom/plant"
+        ]
+    },
+    "entity.moolip.plant": {
+        "sounds": [
+            "earthtojavamobs:mob/moolip/plant"
+        ]
+    },
+    "entity.rainbow_sheep.ambient": {
+        "sounds": [
+            "earthtojavamobs:mob/rainbow_sheep/say_01",
+            "earthtojavamobs:mob/rainbow_sheep/say_02",
+            "earthtojavamobs:mob/rainbow_sheep/say_03"
+        ]
+    },
+    "entity.rainbow_sheep.death": {
+        "sounds": [
+            "earthtojavamobs:mob/rainbow_sheep/death_01",
+            "earthtojavamobs:mob/rainbow_sheep/death_02"
         ]
     },
     "entity.skeleton_wolf.ambient": {
@@ -239,6 +254,13 @@
     "entity.skeleton_wolf.whine": {
         "sounds": [
             "earthtojavamobs:mob/skeleton_wolf/whine_01"
+        ]
+    },
+    "entity.viler_witch.casting": {
+        "sounds": [
+            "earthtojavamobs:mob/viler_witch/casting_01",
+            "earthtojavamobs:mob/viler_witch/casting_02",
+            "earthtojavamobs:mob/viler_witch/casting_03"
         ]
     }
 }
