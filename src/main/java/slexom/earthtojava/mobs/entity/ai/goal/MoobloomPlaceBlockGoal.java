@@ -10,6 +10,7 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import slexom.earthtojava.mobs.entity.passive.MoobloomEntity;
 import slexom.earthtojava.mobs.init.BlockInit;
+import slexom.earthtojava.mobs.init.SoundEventsInit;
 
 public class MoobloomPlaceBlockGoal extends Goal {
     private final MoobloomEntity moobloom;
@@ -37,6 +38,7 @@ public class MoobloomPlaceBlockGoal extends Goal {
         BlockPos blockDownPos = blockPos.down();
         BlockState blockDownState = world.getBlockState(blockDownPos);
         if (canPlace(world, blockState, blockPos, blockDownState, blockDownPos)) {
+            this.moobloom.playSound(SoundEventsInit.MOOBLOOM_PLANT, 1.0f, 1.0f);
             world.removeBlock(blockPos, false);
             world.setBlockState(blockPos, blockState, 3);
         }

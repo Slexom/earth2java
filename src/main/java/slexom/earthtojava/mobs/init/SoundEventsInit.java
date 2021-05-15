@@ -6,12 +6,12 @@ import java.text.MessageFormat;
 
 public class SoundEventsInit {
 
-
     public static final String BONE_SPIDER_AMBIENT_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.BONE_SPIDER_REGISTRY_NAME, "ambient");
     public static final String BONE_SPIDER_BONE_STAB_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.BONE_SPIDER_REGISTRY_NAME, "bone.stab");
     public static final String BONE_SPIDER_DEATH_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.BONE_SPIDER_REGISTRY_NAME, "death");
     public static final String BONE_SPIDER_SPIT_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.BONE_SPIDER_REGISTRY_NAME, "spit");
     public static final String BONE_SPIDER_WALK_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.BONE_SPIDER_REGISTRY_NAME, "walk");
+    public static final String CLUCKSHROOM_LAY_MUSHROOM_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.CLUCKSHROOM_REGISTRY_NAME, "lay_mushroom");
     public static final String FANCY_CHICKEN_AMBIENT_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.FANCY_CHICKEN_REGISTRY_NAME, "ambient");
     public static final String FANCY_CHICKEN_DEATH_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.FANCY_CHICKEN_REGISTRY_NAME, "death");
     public static final String FANCY_CHICKEN_FLEE_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.FANCY_CHICKEN_REGISTRY_NAME, "flee");
@@ -27,6 +27,8 @@ public class SoundEventsInit {
     public static final String MELON_GOLEM_ATTACK_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.MELON_GOLEM_REGISTRY_NAME, "attack");
     public static final String MELON_GOLEM_CHARGE_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.MELON_GOLEM_REGISTRY_NAME, "charge");
     public static final String MELON_GOLEM_SEED_HIT_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.MELON_GOLEM_REGISTRY_NAME, "seed.hit");
+    public static final String MOOBLOOM_PLANT_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.MOOBLOOM_REGISTRY_NAME, "plant");
+    public static final String MOOLIP_PLANT_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.MOOLIP_REGISTRY_NAME, "plant");
     public static final String RAINBOW_SHEEP_AMBIENT_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_NAME, "ambient");
     public static final String RAINBOW_SHEEP_DEATH_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_NAME, "death");
     public static final String SKELETON_WOLF_AMBIENT_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.SKELETON_WOLF_REGISTRY_NAME, "ambient");
@@ -38,11 +40,13 @@ public class SoundEventsInit {
     public static final String SKELETON_WOLF_SHAKE_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.SKELETON_WOLF_REGISTRY_NAME, "shake");
     public static final String SKELETON_WOLF_STEP_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.SKELETON_WOLF_REGISTRY_NAME, "step");
     public static final String SKELETON_WOLF_WHINE_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.SKELETON_WOLF_REGISTRY_NAME, "whine");
+    public static final String VILER_WITCH_CASTING_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.VILER_WITCH_REGISTRY_NAME, "casting");
     public static SoundEvent BONE_SPIDER_AMBIENT;
     public static SoundEvent BONE_SPIDER_BONE_STAB;
     public static SoundEvent BONE_SPIDER_DEATH;
     public static SoundEvent BONE_SPIDER_SPIT;
     public static SoundEvent BONE_SPIDER_WALK;
+    public static SoundEvent CLUCKSHROOM_LAY_MUSHROOM;
     public static SoundEvent FANCY_CHICKEN_AMBIENT;
     public static SoundEvent FANCY_CHICKEN_DEATH;
     public static SoundEvent FANCY_CHICKEN_FLEE;
@@ -58,6 +62,8 @@ public class SoundEventsInit {
     public static SoundEvent MELON_GOLEM_ATTACK;
     public static SoundEvent MELON_GOLEM_CHARGE;
     public static SoundEvent MELON_GOLEM_SEED_HIT;
+    public static SoundEvent MOOBLOOM_PLANT;
+    public static SoundEvent MOOLIP_PLANT;
     public static SoundEvent RAINBOW_SHEEP_AMBIENT;
     public static SoundEvent RAINBOW_SHEEP_DEATH;
     public static SoundEvent SKELETON_WOLF_AMBIENT;
@@ -69,6 +75,7 @@ public class SoundEventsInit {
     public static SoundEvent SKELETON_WOLF_SHAKE;
     public static SoundEvent SKELETON_WOLF_STEP;
     public static SoundEvent SKELETON_WOLF_WHINE;
+    public static SoundEvent VILER_WITCH_CASTING;
 
     public static void init() {
         BONE_SPIDER_AMBIENT = RegisterHelper.registerSoundEvent(BONE_SPIDER_AMBIENT_REGISTRY_NAME);
@@ -76,6 +83,7 @@ public class SoundEventsInit {
         BONE_SPIDER_DEATH = RegisterHelper.registerSoundEvent(BONE_SPIDER_DEATH_REGISTRY_NAME);
         BONE_SPIDER_WALK = RegisterHelper.registerSoundEvent(BONE_SPIDER_WALK_REGISTRY_NAME);
         BONE_SPIDER_SPIT = RegisterHelper.registerSoundEvent(BONE_SPIDER_SPIT_REGISTRY_NAME);
+        CLUCKSHROOM_LAY_MUSHROOM = RegisterHelper.registerSoundEvent(CLUCKSHROOM_LAY_MUSHROOM_REGISTRY_NAME);
         FANCY_CHICKEN_AMBIENT = RegisterHelper.registerSoundEvent(FANCY_CHICKEN_AMBIENT_REGISTRY_NAME);
         FANCY_CHICKEN_DEATH = RegisterHelper.registerSoundEvent(FANCY_CHICKEN_DEATH_REGISTRY_NAME);
         FANCY_CHICKEN_HURT = RegisterHelper.registerSoundEvent(FANCY_CHICKEN_HURT_REGISTRY_NAME);
@@ -91,6 +99,8 @@ public class SoundEventsInit {
         MELON_GOLEM_ATTACK = RegisterHelper.registerSoundEvent(MELON_GOLEM_ATTACK_REGISTRY_NAME);
         MELON_GOLEM_CHARGE = RegisterHelper.registerSoundEvent(MELON_GOLEM_CHARGE_REGISTRY_NAME);
         MELON_GOLEM_SEED_HIT = RegisterHelper.registerSoundEvent(MELON_GOLEM_SEED_HIT_REGISTRY_NAME);
+        MOOBLOOM_PLANT = RegisterHelper.registerSoundEvent(MOOBLOOM_PLANT_REGISTRY_NAME);
+        MOOLIP_PLANT = RegisterHelper.registerSoundEvent(MOOLIP_PLANT_REGISTRY_NAME);
         RAINBOW_SHEEP_AMBIENT = RegisterHelper.registerSoundEvent(RAINBOW_SHEEP_AMBIENT_REGISTRY_NAME);
         RAINBOW_SHEEP_DEATH = RegisterHelper.registerSoundEvent(RAINBOW_SHEEP_DEATH_REGISTRY_NAME);
         SKELETON_WOLF_AMBIENT = RegisterHelper.registerSoundEvent(SKELETON_WOLF_AMBIENT_REGISTRY_NAME);
@@ -102,6 +112,7 @@ public class SoundEventsInit {
         SKELETON_WOLF_SHAKE = RegisterHelper.registerSoundEvent(SKELETON_WOLF_SHAKE_REGISTRY_NAME);
         SKELETON_WOLF_STEP = RegisterHelper.registerSoundEvent(SKELETON_WOLF_STEP_REGISTRY_NAME);
         SKELETON_WOLF_WHINE = RegisterHelper.registerSoundEvent(SKELETON_WOLF_WHINE_REGISTRY_NAME);
+        VILER_WITCH_CASTING = RegisterHelper.registerSoundEvent(VILER_WITCH_CASTING_REGISTRY_NAME);
     }
 
     private static String getEntitySoundEventName(String registryName, String type) {

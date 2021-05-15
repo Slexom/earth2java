@@ -9,6 +9,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import slexom.earthtojava.mobs.entity.passive.MoolipEntity;
+import slexom.earthtojava.mobs.init.SoundEventsInit;
 
 public class MoolipPlaceBlockGoal extends Goal {
     private final MoolipEntity moolip;
@@ -43,6 +44,7 @@ public class MoolipPlaceBlockGoal extends Goal {
         BlockPos blockDownPos = blockPos.down();
         BlockState blockDownState = world.getBlockState(blockDownPos);
         if (canPlace(world, blockState, blockPos, blockDownState, blockDownPos)) {
+            this.moolip.playSound(SoundEventsInit.MOOLIP_PLANT, 1.0f, 1.0f);
             world.removeBlock(blockPos, false);
             world.setBlockState(blockPos, blockState, 3);
         }

@@ -9,6 +9,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import slexom.earthtojava.mobs.entity.passive.CluckshroomEntity;
+import slexom.earthtojava.mobs.init.SoundEventsInit;
 
 public class CluckshroomPlaceBlockGoal extends Goal {
     private final CluckshroomEntity cluckshroom;
@@ -36,6 +37,7 @@ public class CluckshroomPlaceBlockGoal extends Goal {
         BlockPos blockDownPos = blockPos.down();
         BlockState blockDownState = world.getBlockState(blockDownPos);
         if (canPlace(world, blockState, blockPos, blockDownState, blockDownPos)) {
+            this.cluckshroom.playSound(SoundEventsInit.CLUCKSHROOM_LAY_MUSHROOM, 1.0f, 1.0f);
             world.removeBlock(blockPos, false);
             world.setBlockState(blockPos, blockState, 3);
         }
