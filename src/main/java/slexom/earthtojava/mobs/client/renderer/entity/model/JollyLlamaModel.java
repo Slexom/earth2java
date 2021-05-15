@@ -1,6 +1,8 @@
 package slexom.earthtojava.mobs.client.renderer.entity.model;
 
 import com.google.common.collect.ImmutableList;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModel;
@@ -8,6 +10,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.MathHelper;
 import slexom.earthtojava.mobs.entity.passive.JollyLlamaEntity;
 
+@Environment(EnvType.CLIENT)
 public class JollyLlamaModel extends EntityModel<JollyLlamaEntity> {
     private final ModelPart head;
     private final ModelPart torso;

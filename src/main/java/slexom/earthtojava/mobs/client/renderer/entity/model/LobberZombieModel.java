@@ -1,9 +1,12 @@
 package slexom.earthtojava.mobs.client.renderer.entity.model;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.ZombieEntityModel;
 import slexom.earthtojava.mobs.entity.monster.LobberZombieEntity;
 
+@Environment(EnvType.CLIENT)
 public class LobberZombieModel<T extends LobberZombieEntity> extends ZombieEntityModel<T> {
 
     public LobberZombieModel(float scale, boolean bl) {

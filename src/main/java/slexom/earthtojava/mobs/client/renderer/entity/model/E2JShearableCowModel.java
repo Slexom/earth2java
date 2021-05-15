@@ -1,8 +1,11 @@
 package slexom.earthtojava.mobs.client.renderer.entity.model;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.model.CowEntityModel;
 import slexom.earthtojava.mobs.entity.base.E2JBaseShearableCowEntity;
 
+@Environment(EnvType.CLIENT)
 public class E2JShearableCowModel<T extends E2JBaseShearableCowEntity> extends CowEntityModel<T> {
     private float headPitchModifier;
 
