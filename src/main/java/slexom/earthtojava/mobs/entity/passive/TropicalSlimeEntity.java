@@ -156,7 +156,7 @@ public class TropicalSlimeEntity extends HostileEntity {
             int i = this.size;
             if (this.squaredDistanceTo(entityIn) < 0.6D * (double) i * 0.6D * (double) i && this.canSee(entityIn) && entityIn.damage(DamageSource.mob(this), this.func_225512_er_())) {
                 this.playSound(SoundEvents.ENTITY_SLIME_ATTACK, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
-                this.dealDamage(this, entityIn);
+                this.applyDamageEffects(this, entityIn);
             }
         }
 

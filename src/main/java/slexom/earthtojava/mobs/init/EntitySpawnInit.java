@@ -1,11 +1,10 @@
 package slexom.earthtojava.mobs.init;
 
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.fabric.mixin.object.builder.SpawnRestrictionAccessor;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.entity.mob.HostileEntity;
-import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.world.Heightmap;
 import slexom.earthtojava.mobs.config.ModConfig;

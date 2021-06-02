@@ -12,9 +12,7 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import slexom.earthtojava.mobs.entity.ai.goal.BoneSpiderMeleeAttackGoal;
 import slexom.earthtojava.mobs.entity.ai.pathing.ClimberNavigation;
@@ -57,12 +55,12 @@ public class BoneSpiderEntity extends E2JBaseSpiderEntity<BoneSpiderEntity> impl
     @Override
     public void attack(LivingEntity target, float distanceFactor) {
         BoneShardEntity boneShard = new BoneShardEntity(this.world, this);
-        double d0 = target.getEyeY() - (double) 1.1F;
+        double d0 = target.getEyeY() - 1.1D;
         double d1 = target.getX() - this.getX();
         double d2 = d0 - boneShard.getY();
         double d3 = target.getZ() - this.getZ();
-        float f = MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.2F;
-        boneShard.setVelocity(d1, d2 + (double) f, d3, 1.6F, 8.0F);
+        double f = Math.sqrt(d1 * d1 + d3 * d3) * 0.2D;
+        boneShard.setVelocity(d1, d2 + f, d3, 1.6F, 8.0F);
         this.playSound(SoundEventsInit.BONE_SPIDER_SPIT, 1.0F, 1.2F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
         this.world.spawnEntity(boneShard);
     }

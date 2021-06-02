@@ -137,12 +137,12 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob {
     public void attack(LivingEntity target, float distanceFactor) {
         this.setShootingTicks();
         MelonSeedProjectileEntity melonSeedEntity = new MelonSeedProjectileEntity(this.world, this);
-        double d0 = target.getEyeY() - (double) 1.1F;
+        double d0 = target.getEyeY() - 1.1D;
         double d1 = target.getX() - this.getX();
         double d2 = d0 - melonSeedEntity.getY();
         double d3 = target.getZ() - this.getZ();
-        float f = MathHelper.sqrt(d1 * d1 + d3 * d3) * 0.2F;
-        melonSeedEntity.setVelocity(d1, d2 + (double) f, d3, 1.6F, 12.0F);
+        double f = Math.sqrt(d1 * d1 + d3 * d3) * 0.2D;
+        melonSeedEntity.setVelocity(d1, d2 +  f, d3, 1.6F, 12.0F);
         this.playSound(SoundEventsInit.MELON_GOLEM_ATTACK, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
         this.world.spawnEntity(melonSeedEntity);
     }

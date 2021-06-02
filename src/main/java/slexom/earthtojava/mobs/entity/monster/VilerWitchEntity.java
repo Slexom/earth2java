@@ -54,7 +54,7 @@ public class VilerWitchEntity extends WitchEntity {
             double d = target.getX() + vec3d.x - this.getX();
             double e = target.getEyeY() - 1.100000023841858D - this.getY();
             double f = target.getZ() + vec3d.z - this.getZ();
-            float g = MathHelper.sqrt(d * d + f * f);
+            double g = Math.sqrt(d * d + f * f);
             Potion potion = Potions.HARMING;
             if (target instanceof RaiderEntity) {
                 if (target.getHealth() <= 4.0F) {
@@ -63,11 +63,11 @@ public class VilerWitchEntity extends WitchEntity {
                     potion = Potions.REGENERATION;
                 }
                 this.setTarget(null);
-            } else if (g >= 8.0F && !target.hasStatusEffect(StatusEffects.SLOWNESS)) {
+            } else if (g >= 8.0D && !target.hasStatusEffect(StatusEffects.SLOWNESS)) {
                 potion = Potions.SLOWNESS;
             } else if (target.getHealth() >= 8.0F && !target.hasStatusEffect(StatusEffects.POISON)) {
                 potion = Potions.POISON;
-            } else if (g <= 3.0F && !target.hasStatusEffect(StatusEffects.WEAKNESS) && this.random.nextFloat() < 0.25F) {
+            } else if (g <= 3.0D && !target.hasStatusEffect(StatusEffects.WEAKNESS) && this.random.nextFloat() < 0.25F) {
                 potion = Potions.WEAKNESS;
             }
 
@@ -78,7 +78,7 @@ public class VilerWitchEntity extends WitchEntity {
                 potionEntity.setItem(PotionUtil.setPotion(new ItemStack(Items.SPLASH_POTION), potion));
             }
             potionEntity.setPitch(potionEntity.getPitch() - -20.0F);
-            potionEntity.setVelocity(d, e + (double) (g * 0.2F), f, 0.75F, 8.0F);
+            potionEntity.setVelocity(d, e +  (g * 0.2D), f, 0.75F, 8.0F);
             if (!this.isSilent()) {
                 this.world.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_WITCH_THROW, this.getSoundCategory(), 1.0F, 0.8F + this.random.nextFloat() * 0.4F);
             }

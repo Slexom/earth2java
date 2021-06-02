@@ -1,7 +1,7 @@
 package slexom.earthtojava.mobs.init;
 
 import com.google.common.collect.Lists;
-import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
+import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.fabricmc.fabric.mixin.biome.modification.GenerationSettingsAccessor;
 import net.minecraft.util.registry.BuiltinRegistries;

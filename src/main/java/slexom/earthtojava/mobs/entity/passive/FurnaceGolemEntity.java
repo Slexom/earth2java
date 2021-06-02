@@ -60,7 +60,7 @@ public class FurnaceGolemEntity extends IronGolemEntity {
         boolean flag = entityIn.damage(DamageSource.ON_FIRE, f1);
         if (flag) {
             entityIn.setVelocity(entityIn.getVelocity().add(0.0D, 0.4D, 0.0D));
-            this.dealDamage(this, entityIn);
+            this.applyDamageEffects(this, entityIn);
         }
         this.playSound(SoundEventsInit.FURNACE_GOLEM_ATTACK, 1.0F, 1.0F);
         return flag;

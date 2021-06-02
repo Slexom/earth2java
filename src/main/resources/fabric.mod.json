@@ -9,7 +9,8 @@
     ],
     "contact": {
         "homepage": "https://www.curseforge.com/minecraft/mc-mods/earth2java-fabric",
-        "issues": "https://www.curseforge.com/minecraft/mc-mods/earth2java-fabric/issues"
+        "sources": "https://github.com/Slexom/earth2java",
+        "issues": "https://github.com/Slexom/earth2java/issues"
     },
     "license": "MIT License",
     "icon": "assets/earthtojavamobs/logo.png",
@@ -28,19 +29,16 @@
     "mixins": [
         "earthtojavamobs.mixins.json"
     ],
+    "accessWidener": "e2j.accesswidener",
     "depends": {
         "fabricloader": ">=0.7.4",
         "fabric": "*",
-        "minecraft": "1.17-alpha.21.17.a"
-    },
-    "suggests": {
-        "flamingo": "*"
+        "minecraft": "1.17.x"
     },
     "custom": {
         "modupdater": {
             "strategy": "curseforge",
             "projectID": 398022
         }
-    },
-    "accessWidener": "e2j.accesswidener"
+    }
 }

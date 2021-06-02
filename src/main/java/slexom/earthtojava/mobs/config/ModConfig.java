@@ -1,10 +1,9 @@
 package slexom.earthtojava.mobs.config;
 
 
-import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
-import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
-import me.sargunvohra.mcmods.autoconfig1u.annotation.ConfigEntry;
-import me.sargunvohra.mcmods.autoconfig1u.shadowed.blue.endless.jankson.Comment;
+import me.shedaniel.autoconfig.ConfigData;
+import me.shedaniel.autoconfig.annotation.Config;
+import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import slexom.earthtojava.mobs.Earth2JavaMod;
 import slexom.earthtojava.mobs.utils.BiomeSpawnHelper;
 
@@ -14,13 +13,6 @@ import java.util.List;
 @Config(name = Earth2JavaMod.MOD_ID)
 public class ModConfig implements ConfigData {
 
-    @ConfigEntry.Category("default")
-    @ConfigEntry.Gui.CollapsibleObject
-    public WanderingTraderConfig modWanderingTrader = new WanderingTraderConfig(false, 4, 20);
-
-    @ConfigEntry.Category("generation")
-    @ConfigEntry.Gui.CollapsibleObject
-    public OreConfig rubyOre = new OreConfig(false, 0, 0, 2, 8);
     @ConfigEntry.Category("generation")
     @ConfigEntry.Gui.CollapsibleObject
     public MudLakeConfig mudLakeConfig = new MudLakeConfig(true, 25);
@@ -169,10 +161,7 @@ public class ModConfig implements ConfigData {
 
     @Override
     public void validatePostLoad() throws ValidationException {
-        if (modWanderingTrader.currencyItem == null) {
-            modWanderingTrader.currencyItem = "earthtojavamobs:ruby";
-            printCorrectionMessage("modWanderingTrader.currencyItem", "null", "earthtojavamobs:ruby");
-        }
+
     }
 
     private void printCorrectionMessage(String field, String old, String corrected) {
@@ -202,62 +191,6 @@ public class ModConfig implements ConfigData {
         }
     }
 
-    public static class GlowSquidConfig {
-        public boolean spawn;
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
-        public int weight;
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
-        public int groupMin;
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
-        public int groupMax;
-
-        @ConfigEntry.Gui.CollapsibleObject(startExpanded = true)
-        public SpawnHeightConfig spawnHeight;
-        public List<String> spawnBiomes;
-
-        GlowSquidConfig(String[] spawnBiomes, int weight, int groupMin, int groupMax) {
-            this.spawnBiomes = BiomeSpawnHelper.convertForConfig(spawnBiomes);
-            this.spawn = true;
-            this.weight = weight;
-            this.groupMin = groupMin;
-            this.groupMax = groupMax;
-            this.spawnHeight = new SpawnHeightConfig();
-        }
-
-        GlowSquidConfig(String[] spawnBiomes, int weight) {
-            this(spawnBiomes, weight, 2, 4);
-        }
-
-        public static class SpawnHeightConfig {
-            @ConfigEntry.BoundedDiscrete(min = 1, max = 255)
-            public int spawnHeightMin;
-            @ConfigEntry.BoundedDiscrete(min = 1, max = 255)
-            public int spawnHeightMax;
-
-            SpawnHeightConfig() {
-                this.spawnHeightMin = 20;
-                this.spawnHeightMax = 45;
-            }
-        }
-    }
-
-    public static class OreConfig {
-        public boolean canGenerate;
-        public int topOffset;
-        public int bottomOffset;
-        public int count;
-        public int maximum;
-
-        OreConfig(boolean canGenerate, int bottomOffset, int topOffset, int count, int maximum) {
-            this.canGenerate = canGenerate;
-            this.topOffset = topOffset;
-            this.bottomOffset = bottomOffset;
-            this.count = count;
-            this.maximum = maximum;
-        }
-
-    }
-
     public static class MudLakeConfig {
         public boolean canGenerate;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
@@ -269,26 +202,4 @@ public class ModConfig implements ConfigData {
         }
     }
 
-    public static class WanderingTraderConfig {
-        public boolean canSpawn;
-        @Comment("Game days between spawn")
-        public int delay;
-        public int chance;
-        public String currencyItem;
-
-        WanderingTraderConfig(boolean canSpawn, int delay, int chance, String currencyItem) {
-            this.canSpawn = canSpawn;
-            this.delay = delay;
-            this.chance = chance;
-            this.currencyItem = currencyItem;
-        }
-
-        WanderingTraderConfig(boolean canSpawn, int delay, int chance) {
-            this.canSpawn = canSpawn;
-            this.delay = delay;
-            this.chance = chance;
-            this.currencyItem = "earthtojavamobs:ruby";
-        }
-
-    }
 }

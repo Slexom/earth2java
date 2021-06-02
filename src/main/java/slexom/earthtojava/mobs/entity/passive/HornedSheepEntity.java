@@ -86,7 +86,7 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> imp
     public boolean tryAttack(Entity entityIn) {
         boolean flag = entityIn.damage(DamageSource.mob(this), (float) ((int) this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).getValue()));
         if (flag) {
-            this.dealDamage(this, entityIn);
+            this.applyDamageEffects(this, entityIn);
         }
         return flag;
     }
