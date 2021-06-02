@@ -1,9 +1,12 @@
 package slexom.earthtojava.mobs.client.renderer.entity.model;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.QuadrupedEntityModel;
 import slexom.earthtojava.mobs.entity.passive.RainbowSheepEntity;
 
+@Environment(EnvType.CLIENT)
 public class RainbowSheepWoolModel<T extends RainbowSheepEntity> extends QuadrupedEntityModel<T> {
     private float headRotationAngleX;
 

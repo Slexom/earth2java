@@ -1,11 +1,14 @@
 package slexom.earthtojava.mobs.client.renderer.entity.model;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.ZombieEntityModel;
- import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import slexom.earthtojava.mobs.entity.monster.BoulderingZombieEntity;
 
+@Environment(EnvType.CLIENT)
 public class BoulderingZombieModel<T extends BoulderingZombieEntity> extends ZombieEntityModel<T> {
     public BoulderingZombieModel(ModelPart modelPart) {
         super(modelPart);

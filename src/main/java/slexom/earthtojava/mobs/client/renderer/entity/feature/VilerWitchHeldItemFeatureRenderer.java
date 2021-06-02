@@ -6,14 +6,14 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.feature.VillagerHeldItemFeatureRenderer;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.math.Vec3f;
 import slexom.earthtojava.mobs.client.renderer.entity.model.VilerWitchModel;
+import slexom.earthtojava.mobs.entity.monster.VilerWitchEntity;
 
 @Environment(EnvType.CLIENT)
-public class VilerWitchHeldItemFeatureRenderer<T extends LivingEntity> extends VillagerHeldItemFeatureRenderer<T, VilerWitchModel<T>> {
+public class VilerWitchHeldItemFeatureRenderer<T extends VilerWitchEntity> extends VillagerHeldItemFeatureRenderer<T, VilerWitchModel<T>> {
     public VilerWitchHeldItemFeatureRenderer(FeatureRendererContext<T, VilerWitchModel<T>> featureRendererContext) {
         super(featureRendererContext);
     }

@@ -1,11 +1,10 @@
 package slexom.earthtojava.mobs.client.renderer.entity;
 
-import net.minecraft.client.render.entity.EntityRenderDispatcher;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import slexom.earthtojava.mobs.client.renderer.entity.model.JollyLlamaModel;
 import slexom.earthtojava.mobs.entity.passive.JollyLlamaEntity;
 import slexom.earthtojava.mobs.init.EntityModeLayersInit;

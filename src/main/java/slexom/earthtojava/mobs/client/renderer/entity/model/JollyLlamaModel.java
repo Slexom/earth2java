@@ -1,6 +1,8 @@
 package slexom.earthtojava.mobs.client.renderer.entity.model;
 
 import com.google.common.collect.ImmutableList;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModel;
@@ -8,6 +10,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.MathHelper;
 import slexom.earthtojava.mobs.entity.passive.JollyLlamaEntity;
 
+@Environment(EnvType.CLIENT)
 public class JollyLlamaModel extends EntityModel<JollyLlamaEntity> {
     private final ModelPart head;
     private final ModelPart body;
@@ -29,10 +32,10 @@ public class JollyLlamaModel extends EntityModel<JollyLlamaEntity> {
         ModelData modelData = new ModelData();
         ModelPartData modelPartData = modelData.getRoot();
         modelPartData.addChild("head", ModelPartBuilder.create().uv(0, 0).cuboid(-2.0F, -14.0F, -10.0F, 4.0F, 4.0F, 9.0F, dilation).uv(0, 14).cuboid("neck", -4.0F, -16.0F, -6.0F, 8.0F, 18.0F, 6.0F, dilation).uv(17, 0).cuboid("ear", -4.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, dilation).uv(17, 0).cuboid("ear", 1.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, dilation)
-                        .uv(96, 16).cuboid("bells",-4.5F, -16.0F, -6.5F, 9.0F, 18.0F, 7.0F, dilation)
-                        .uv(96, 0).cuboid("berries",-2.5F, -14.05F, -10.5F, 5.0F, 5.0F, 10.0F, dilation)
-                        .uv(0, 47).cuboid("horn_left",4.5F, -30.0F, -2.0F, 8.0F, 16.0F, 1.0F, dilation)
-                        .uv(0, 47).mirrored().cuboid("horn_right",-12.5F, -30.0F, -2.0F, 8.0F, 16.0F, 1.0F, dilation),
+                        .uv(96, 16).cuboid("bells", -4.5F, -16.0F, -6.5F, 9.0F, 18.0F, 7.0F, dilation)
+                        .uv(96, 0).cuboid("berries", -2.5F, -14.05F, -10.5F, 5.0F, 5.0F, 10.0F, dilation)
+                        .uv(0, 47).cuboid("horn_left", 4.5F, -30.0F, -2.0F, 8.0F, 16.0F, 1.0F, dilation)
+                        .uv(0, 47).mirrored().cuboid("horn_right", -12.5F, -30.0F, -2.0F, 8.0F, 16.0F, 1.0F, dilation),
                 ModelTransform.pivot(0.0F, 7.0F, -6.0F));
         modelPartData.addChild("body", ModelPartBuilder.create().uv(29, 0).cuboid(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F, dilation), ModelTransform.of(0.0F, 5.0F, 2.0F, 1.5707964F, 0.0F, 0.0F));
         ModelPartBuilder modelPartBuilder = ModelPartBuilder.create().uv(29, 29).cuboid(-2.0F, 0.0F, -2.0F, 4.0F, 14.0F, 4.0F, dilation);

@@ -1,10 +1,13 @@
 package slexom.earthtojava.mobs.client.renderer.entity.model;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.VillagerResemblingModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 
+@Environment(EnvType.CLIENT)
 public class VilerWitchModel<T extends Entity> extends VillagerResemblingModel<T> {
 
     private boolean liftingNose;

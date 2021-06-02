@@ -1,14 +1,11 @@
 package slexom.earthtojava.mobs.client.renderer.entity;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
-import net.minecraft.client.render.entity.feature.WitchHeldItemFeatureRenderer;
-import net.minecraft.client.render.entity.model.WitchEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.mob.WitchEntity;
 import net.minecraft.util.Identifier;
 import slexom.earthtojava.mobs.client.renderer.entity.feature.VilerWitchHeldItemFeatureRenderer;
 import slexom.earthtojava.mobs.client.renderer.entity.model.VilerWitchModel;
@@ -18,6 +15,7 @@ import slexom.earthtojava.mobs.init.EntityTypesInit;
 
 import java.text.MessageFormat;
 
+@Environment(EnvType.CLIENT)
 public class VilerWitchRenderer extends MobEntityRenderer<VilerWitchEntity, VilerWitchModel<VilerWitchEntity>> {
 
     private final String registryName;
@@ -30,7 +28,7 @@ public class VilerWitchRenderer extends MobEntityRenderer<VilerWitchEntity, Vile
 
     public void render(VilerWitchEntity witchEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
         this.model.setLiftingNose(!witchEntity.getMainHandStack().isEmpty());
-        super.render( witchEntity, f, g, matrixStack, vertexConsumerProvider, i);
+        super.render(witchEntity, f, g, matrixStack, vertexConsumerProvider, i);
     }
 
     public Identifier getTexture(VilerWitchEntity entity) {

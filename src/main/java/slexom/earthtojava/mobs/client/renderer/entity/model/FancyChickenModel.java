@@ -1,10 +1,13 @@
 package slexom.earthtojava.mobs.client.renderer.entity.model;
 
 import com.google.common.collect.ImmutableList;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.ChickenEntityModel;
 import slexom.earthtojava.mobs.entity.passive.FancyChickenEntity;
 
+@Environment(EnvType.CLIENT)
 public class FancyChickenModel<T extends FancyChickenEntity> extends ChickenEntityModel<T> {
 
     private final ModelPart tail;
