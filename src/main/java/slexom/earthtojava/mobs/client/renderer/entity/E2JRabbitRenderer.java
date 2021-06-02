@@ -28,7 +28,7 @@ public class E2JRabbitRenderer extends MobEntityRenderer<E2JBaseRabbitEntity<? e
         String resourceTextureBlink = MessageFormat.format("earthtojavamobs:textures/mobs/rabbit/{0}/{0}_blink.png", this.registryName);
         Identifier texture = new Identifier(resourceTexture);
         Identifier textureBlink = new Identifier(resourceTextureBlink);
-        return entity.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
+        return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
     }
 
 }

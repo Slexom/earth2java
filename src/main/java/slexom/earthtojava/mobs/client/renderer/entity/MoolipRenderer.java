@@ -21,6 +21,6 @@ public class MoolipRenderer extends MobEntityRenderer<MoolipEntity, CowEntityMod
     public Identifier getTexture(MoolipEntity entity) {
         Identifier texture = new Identifier("earthtojavamobs:textures/mobs/cow/moolip/moolip.png");
         Identifier textureBlink = new Identifier("earthtojavamobs:textures/mobs/cow/moolip/moolip_blink.png");
-        return entity.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
+        return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
     }
 }

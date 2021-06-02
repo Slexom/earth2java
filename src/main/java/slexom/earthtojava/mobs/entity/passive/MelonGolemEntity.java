@@ -27,6 +27,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
+import slexom.earthtojava.mobs.entity.BlinkManager;
 import slexom.earthtojava.mobs.entity.ai.control.MelonGolemMoveControl;
 import slexom.earthtojava.mobs.entity.ai.goal.MelonGolemFaceRandomGoal;
 import slexom.earthtojava.mobs.entity.ai.goal.MelonGolemHopGoal;
@@ -35,18 +36,16 @@ import slexom.earthtojava.mobs.entity.projectile.MelonSeedProjectileEntity;
 import slexom.earthtojava.mobs.init.SoundEventsInit;
 
 import javax.annotation.Nullable;
-import java.util.Random;
 
 public class MelonGolemEntity extends GolemEntity implements RangedAttackMob {
     private static final TrackedData<Byte> MELON_EQUIPPED = DataTracker.registerData(MelonGolemEntity.class, TrackedDataHandlerRegistry.BYTE);
     private static final TrackedData<Integer> SHOOTING_TICKS = DataTracker.registerData(MelonGolemEntity.class, TrackedDataHandlerRegistry.INTEGER);
-    private int lastBlink = 0;
-    private int nextBlinkInterval = new Random().nextInt(740) + 60;
-    private int remainingTick = 0;
-    private int internalBlinkTick = 0;
+
+    public BlinkManager blinkManager;
 
     public MelonGolemEntity(EntityType<? extends MelonGolemEntity> type, World worldIn) {
         super(type, worldIn);
+        blinkManager = new BlinkManager();
         this.moveControl = new MelonGolemMoveControl(this);
     }
 
@@ -111,19 +110,7 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob {
         if (currentShootingTicks > 0) {
             this.dataTracker.set(SHOOTING_TICKS, --currentShootingTicks);
         }
-        if (this.remainingTick > 0) {
-            --this.remainingTick;
-        }
-        if (this.internalBlinkTick == (this.lastBlink + this.nextBlinkInterval)) {
-            this.lastBlink = this.internalBlinkTick;
-            this.nextBlinkInterval = new Random().nextInt(740) + 60;
-            this.remainingTick = 4;
-        }
-        ++this.internalBlinkTick;
-    }
-
-    public int getBlinkRemainingTicks() {
-        return this.remainingTick;
+        blinkManager.tickBlink();
     }
 
     public boolean isShooting() {
@@ -142,7 +129,7 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob {
         double d2 = d0 - melonSeedEntity.getY();
         double d3 = target.getZ() - this.getZ();
         double f = Math.sqrt(d1 * d1 + d3 * d3) * 0.2D;
-        melonSeedEntity.setVelocity(d1, d2 +  f, d3, 1.6F, 12.0F);
+        melonSeedEntity.setVelocity(d1, d2 + f, d3, 1.6F, 12.0F);
         this.playSound(SoundEventsInit.MELON_GOLEM_ATTACK, 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
         this.world.spawnEntity(melonSeedEntity);
     }

@@ -29,6 +29,6 @@ public class E2JMonoColorSheepRenderer extends MobEntityRenderer<E2JBaseMonoColo
         String textureBlinkString = MessageFormat.format("earthtojavamobs:textures/mobs/sheep/{0}/{0}_blink.png", this.registryName, this.registryName);
         Identifier texture = new Identifier(textureString);
         Identifier textureBlink = new Identifier(textureBlinkString);
-        return entity.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
+        return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
     }
 }

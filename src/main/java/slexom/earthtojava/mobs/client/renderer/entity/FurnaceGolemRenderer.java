@@ -35,7 +35,7 @@ public class FurnaceGolemRenderer extends MobEntityRenderer<FurnaceGolemEntity, 
         Identifier texture = new Identifier("earthtojavamobs:textures/mobs/iron_golem/furnace_golem/furnace_golem.png");
         Identifier textureBlink = new Identifier("earthtojavamobs:textures/mobs/iron_golem/furnace_golem/furnace_golem_blink.png");
         Identifier textureAngry = new Identifier("earthtojavamobs:textures/mobs/iron_golem/furnace_golem/furnace_golem_angry.png");
-        return entity.isAngry() ? textureAngry : entity.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
+        return entity.isAngry() ? textureAngry : entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
     }
 
 }

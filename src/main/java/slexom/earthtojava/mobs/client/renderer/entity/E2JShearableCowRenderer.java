@@ -34,7 +34,7 @@ public class E2JShearableCowRenderer extends MobEntityRenderer<E2JBaseShearableC
         Identifier textureBlink = new Identifier(resourceTextureBlink);
         Identifier textureSheared = new Identifier(resourceTextureSheared);
         Identifier textureShearedBlink = new Identifier(resourceTextureShearedBlink);
-        boolean blink = entity.getBlinkRemainingTicks() > 0;
+        boolean blink = entity.blinkManager.getBlinkRemainingTicks() > 0;
         return entity.isSheared() ? blink ? textureShearedBlink : textureSheared : blink ? textureBlink : texture;
     }
 }

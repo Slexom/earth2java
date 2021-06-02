@@ -33,6 +33,6 @@ public class E2JSpiderRenderer extends MobEntityRenderer<E2JBaseSpiderEntity<? e
         String resourceTextureBlink = MessageFormat.format("earthtojavamobs:textures/mobs/spider/{0}/{0}_blink.png", this.registryName);
         Identifier texture = new Identifier(resourceTexture);
         Identifier textureBlink = new Identifier(resourceTextureBlink);
-        return entity.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
+        return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
     }
 }

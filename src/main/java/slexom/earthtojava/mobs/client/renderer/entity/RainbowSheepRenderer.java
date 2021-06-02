@@ -21,6 +21,6 @@ public class RainbowSheepRenderer extends MobEntityRenderer<RainbowSheepEntity, 
     public Identifier getTexture(RainbowSheepEntity entity) {
         Identifier texture = new Identifier("earthtojavamobs:textures/mobs/sheep/rainbow_sheep/rainbow_sheep.png");
         Identifier textureBlink = new Identifier("earthtojavamobs:textures/mobs/sheep/rainbow_sheep/rainbow_sheep_blink.png");
-        return entity.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
+        return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
     }
 }

@@ -21,6 +21,6 @@ public class HornedSheepRenderer extends MobEntityRenderer<HornedSheepEntity, Ho
     public Identifier getTexture(HornedSheepEntity entity) {
         Identifier texture = new Identifier("earthtojavamobs:textures/mobs/sheep/horned_sheep/horned_sheep.png");
         Identifier textureBlink = new Identifier("earthtojavamobs:textures/mobs/sheep/horned_sheep/horned_sheep_blink.png");
-        return entity.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
+        return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
     }
 }

@@ -25,7 +25,7 @@ public class LobberZombieRenderer extends ZombieBaseEntityRenderer<LobberZombieE
     public Identifier getTexture(LobberZombieEntity entity) {
         Identifier texture = new Identifier("earthtojavamobs:textures/mobs/zombie/lobber_zombie/lobber_zombie.png");
         Identifier textureBlink = new Identifier("earthtojavamobs:textures/mobs/zombie/lobber_zombie/lobber_zombie_blink.png");
-        return entity.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
+        return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
     }
 
 }

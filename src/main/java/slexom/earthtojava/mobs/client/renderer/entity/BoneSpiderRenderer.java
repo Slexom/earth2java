@@ -31,7 +31,7 @@ public class BoneSpiderRenderer extends E2JSpiderRenderer {
         }
 
         public void render(MatrixStack matrixStackIn, VertexConsumerProvider bufferIn, int packedLightIn, T entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-            float alpha = entitylivingbaseIn.getBlinkRemainingTicks() == 0 ? 1.0F : 0.0F;
+            float alpha = entitylivingbaseIn.blinkManager.getBlinkRemainingTicks() == 0 ? 1.0F : 0.0F;
             VertexConsumer ivertexbuilder = bufferIn.getBuffer(this.getEyesTexture());
             this.getContextModel().render(matrixStackIn, ivertexbuilder, 15728640, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, alpha);
         }

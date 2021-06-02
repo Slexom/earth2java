@@ -30,7 +30,7 @@ public class E2JPigRenderer extends MobEntityRenderer<E2JBasePigEntity<? extends
         String resourceTextureBlink = MessageFormat.format("earthtojavamobs:textures/mobs/pig/{0}/{0}_blink.png", this.registryName);
         Identifier texture = new Identifier(resourceTexture);
         Identifier textureBlink = new Identifier(resourceTextureBlink);
-        return entity.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
+        return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
     }
 
 }

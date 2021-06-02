@@ -6,18 +6,17 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.SpiderEntity;
 import net.minecraft.world.World;
+import slexom.earthtojava.mobs.entity.BlinkManager;
 
 import java.util.Random;
 
 public class E2JBaseSpiderEntity<T extends SpiderEntity> extends SpiderEntity {
 
-    private int lastBlink = 0;
-    private int nextBlinkInterval = new Random().nextInt(760) + 60;
-    private int remainingTick = 0;
-    private int internalBlinkTick = 0;
+    public BlinkManager blinkManager;
 
     public E2JBaseSpiderEntity(EntityType<? extends SpiderEntity> type, World worldIn) {
         super(type, worldIn);
+        blinkManager = new BlinkManager();
         experiencePoints = 3;
         setAiDisabled(false);
     }
@@ -29,20 +28,7 @@ public class E2JBaseSpiderEntity<T extends SpiderEntity> extends SpiderEntity {
     @Override
     public void tickMovement() {
         super.tickMovement();
-        if (this.remainingTick > 0) {
-            --this.remainingTick;
-        }
-        if (this.internalBlinkTick == (this.lastBlink + this.nextBlinkInterval)) {
-            this.lastBlink = this.internalBlinkTick;
-            this.nextBlinkInterval = new Random().nextInt(740) + 60;
-            this.remainingTick = 4;
-        }
-        ++this.internalBlinkTick;
+        blinkManager.tickBlink();
     }
-
-    public int getBlinkRemainingTicks() {
-        return this.remainingTick;
-    }
-
 
 }

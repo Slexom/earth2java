@@ -22,7 +22,7 @@ public class WoolyCowRenderer extends MobEntityRenderer<WoolyCowEntity, CowEntit
         Identifier textureBlink = new Identifier("earthtojavamobs:textures/mobs/cow/wooly_cow/wooly_cow_blink.png");
         Identifier textureSheared = new Identifier("earthtojavamobs:textures/mobs/cow/wooly_cow/wooly_cow_sheared.png");
         Identifier textureShearedBlink = new Identifier("earthtojavamobs:textures/mobs/cow/wooly_cow/wooly_cow_sheared_blink.png");
-        boolean blink = entity.getBlinkRemainingTicks() > 0;
+        boolean blink = entity.blinkManager.getBlinkRemainingTicks() > 0;
         return entity.isSheared() ? blink ? textureShearedBlink : textureSheared : blink ? textureBlink : texture;
     }
 

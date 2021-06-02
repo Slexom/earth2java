@@ -17,6 +17,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import slexom.earthtojava.mobs.entity.BlinkManager;
 import slexom.earthtojava.mobs.entity.ai.goal.FurnaceGolemDefendVillageTargetGoal;
 import slexom.earthtojava.mobs.entity.ai.goal.FurnaceGolemFollowTargetGoal;
 import slexom.earthtojava.mobs.init.SoundEventsInit;
@@ -27,13 +28,11 @@ public class FurnaceGolemEntity extends IronGolemEntity {
     public static final TrackedData<Boolean> IS_ANGRY = DataTracker.registerData(FurnaceGolemEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private int attackTimer;
 
-    private int lastBlink = 0;
-    private int nextBlinkInterval = new Random().nextInt(760) + 60;
-    private int remainingTick = 0;
-    private int internalBlinkTick = 0;
+    public BlinkManager blinkManager;
 
     public FurnaceGolemEntity(EntityType<? extends IronGolemEntity> type, World worldIn) {
         super(type, worldIn);
+        blinkManager = new BlinkManager();
         experiencePoints = 5;
         setAiDisabled(false);
     }
@@ -84,19 +83,7 @@ public class FurnaceGolemEntity extends IronGolemEntity {
         if (this.isInsideWaterOrBubbleColumn()) {
             this.damage(DamageSource.DROWN, 5.0F);
         }
-        if (this.remainingTick > 0) {
-            --this.remainingTick;
-        }
-        if (this.internalBlinkTick == (this.lastBlink + this.nextBlinkInterval)) {
-            this.lastBlink = this.internalBlinkTick;
-            this.nextBlinkInterval = new Random().nextInt(740) + 60;
-            this.remainingTick = 4;
-        }
-        ++this.internalBlinkTick;
-    }
-
-    public int getBlinkRemainingTicks() {
-        return this.remainingTick;
+        blinkManager.tickBlink();
     }
 
     protected void initDataTracker() {

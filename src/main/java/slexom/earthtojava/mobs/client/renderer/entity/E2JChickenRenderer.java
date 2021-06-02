@@ -32,7 +32,7 @@ public class E2JChickenRenderer extends MobEntityRenderer<E2JBaseChickenEntity, 
         String resourceTextureBlink = MessageFormat.format("earthtojavamobs:textures/mobs/chicken/{0}/{0}_blink.png", this.registryName);
         Identifier texture = new Identifier(resourceTexture);
         Identifier textureBlink = new Identifier(resourceTextureBlink);
-        return entity.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
+        return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
     }
 
 

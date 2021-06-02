@@ -28,6 +28,6 @@ public class E2JCowRenderer extends MobEntityRenderer<E2JBaseCowEntity<? extends
         String resourceTextureBlink = MessageFormat.format("earthtojavamobs:textures/mobs/cow/{0}/{0}_blink.png", this.registryName);
         Identifier texture = new Identifier(resourceTexture);
         Identifier textureBlink = new Identifier(resourceTextureBlink);
-        return entity.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
+        return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
     }
 }

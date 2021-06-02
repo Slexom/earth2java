@@ -29,6 +29,6 @@ public class CluckshroomRenderer extends MobEntityRenderer<CluckshroomEntity, Cl
     public Identifier getTexture(CluckshroomEntity entity) {
         Identifier texture = new Identifier("earthtojavamobs:textures/mobs/chicken/cluck_shroom/cluck_shroom.png");
         Identifier textureBlink = new Identifier("earthtojavamobs:textures/mobs/chicken/cluck_shroom/cluck_shroom_blink.png");
-        return entity.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
+        return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
     }
 }

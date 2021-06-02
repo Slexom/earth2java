@@ -25,7 +25,7 @@ public class BoulderingZombieRenderer extends ZombieBaseEntityRenderer<Boulderin
     public Identifier getTexture(BoulderingZombieEntity entity) {
         Identifier texture = new Identifier("earthtojavamobs:textures/mobs/zombie/bouldering_zombie/bouldering_zombie.png");
         Identifier textureBlink = new Identifier("earthtojavamobs:textures/mobs/zombie/bouldering_zombie/bouldering_zombie_blink.png");
-        return entity.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
+        return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
     }
 
 }

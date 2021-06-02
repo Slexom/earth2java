@@ -33,7 +33,7 @@ public class MuddyPigRenderer extends MobEntityRenderer<MuddyPigEntity, MuddyPig
         Identifier textureBlink = new Identifier("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_blink.png");
         Identifier textureDried = new Identifier("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_dried.png");
         Identifier textureDriedBlink = new Identifier("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_dried_blink.png");
-        boolean blink = entity.getBlinkRemainingTicks() > 0;
+        boolean blink = entity.blinkManager.getBlinkRemainingTicks() > 0;
         return entity.isInMuddyState() ?
                 blink ?
                         textureBlink :

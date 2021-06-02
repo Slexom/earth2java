@@ -21,7 +21,7 @@ public class MoobloomRenderer extends MobEntityRenderer<MoobloomEntity, CowEntit
     public Identifier getTexture(MoobloomEntity entity) {
         Identifier texture = new Identifier("earthtojavamobs:textures/mobs/cow/moobloom/moobloom.png");
         Identifier textureBlink = new Identifier("earthtojavamobs:textures/mobs/cow/moobloom/moobloom_blink.png");
-        return entity.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
+        return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
     }
 
 }

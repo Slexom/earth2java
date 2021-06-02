@@ -16,44 +16,31 @@ import net.minecraft.potion.Potions;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import slexom.earthtojava.mobs.entity.BlinkManager;
 import slexom.earthtojava.mobs.init.SoundEventsInit;
 
 import java.util.Random;
 
 public class VilerWitchEntity extends WitchEntity {
 
-    private int lastBlink = 0;
-    private int nextBlinkInterval = new Random().nextInt(760) + 60;
-    private int remainingTick = 0;
-    private int internalBlinkTick = 0;
+
+    public BlinkManager blinkManager;
 
     private int castingTicks = 0;
 
     public VilerWitchEntity(EntityType<? extends WitchEntity> entityType, World world) {
         super(entityType, world);
+        blinkManager = new BlinkManager();
     }
 
 
     @Override
     public void tickMovement() {
         super.tickMovement();
-        if (this.remainingTick > 0) {
-            --this.remainingTick;
-        }
-        if (this.internalBlinkTick == (this.lastBlink + this.nextBlinkInterval)) {
-            this.lastBlink = this.internalBlinkTick;
-            this.nextBlinkInterval = new Random().nextInt(740) + 60;
-            this.remainingTick = 4;
-        }
-        ++this.internalBlinkTick;
-
+        blinkManager.tickBlink();
         if (this.castingTicks > 0) {
             --this.castingTicks;
         }
-    }
-
-    public int getBlinkRemainingTicks() {
-        return this.remainingTick;
     }
 
     @Environment(EnvType.CLIENT)
