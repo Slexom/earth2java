@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '0.8-SNAPSHOT'
+    id 'fabric-loom' version '0.9.+'
     id 'maven-publish'
 }
 
@@ -16,8 +16,8 @@ repositories {
 }
 
 
-minecraft {
-    accessWidener "src/main/resources/e2j.accesswidener"
+loom {
+    accessWidenerPath = file("src/main/resources/e2j.accesswidener")
 }
 
 dependencies {
