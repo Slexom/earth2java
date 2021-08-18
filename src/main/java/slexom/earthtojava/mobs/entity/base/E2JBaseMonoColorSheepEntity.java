@@ -29,8 +29,13 @@ public class E2JBaseMonoColorSheepEntity<T extends E2JBaseSheepEntity<T>> extend
         setAiDisabled(false);
     }
 
+    @Override
     public Identifier getLootTableId() {
-        return this.getType().getLootTableId();
+        if (this.isSheared()) {
+            return new Identifier("minecraft", "entities/sheep");
+        } else {
+            return this.getType().getLootTableId();
+        }
     }
 
     protected void initDataTracker() {
@@ -73,7 +78,7 @@ public class E2JBaseMonoColorSheepEntity<T extends E2JBaseSheepEntity<T>> extend
     }
 
     public void sheared(SoundCategory shearedSoundCategory) {
-        this.world.playSoundFromEntity((PlayerEntity) null, this, SoundEvents.ENTITY_SHEEP_SHEAR, shearedSoundCategory, 1.0F, 1.0F);
+        this.world.playSoundFromEntity(null, this, SoundEvents.ENTITY_SHEEP_SHEAR, shearedSoundCategory, 1.0F, 1.0F);
         this.setSheared(true);
         int i = 1 + this.random.nextInt(3);
         for (int j = 0; j < i; ++j) {
