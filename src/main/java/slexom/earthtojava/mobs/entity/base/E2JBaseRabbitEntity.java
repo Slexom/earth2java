@@ -32,7 +32,7 @@ public class E2JBaseRabbitEntity<T extends RabbitEntity> extends RabbitEntity {
     }
 
     @Override
-    public T createChild(ServerWorld world, PassiveEntity ageable) {
+    public T createChild(ServerWorld world, PassiveEntity passiveEntity) {
         return (T) getType().create(world);
     }
 

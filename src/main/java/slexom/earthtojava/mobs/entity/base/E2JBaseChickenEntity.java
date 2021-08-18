@@ -34,7 +34,7 @@ public class E2JBaseChickenEntity<T extends ChickenEntity> extends ChickenEntity
     }
 
     @Override
-    public T createChild(ServerWorld world, PassiveEntity ageable) {
+    public T createChild(ServerWorld world, PassiveEntity passiveEntity) {
         return (T) getType().create(world);
     }
 
