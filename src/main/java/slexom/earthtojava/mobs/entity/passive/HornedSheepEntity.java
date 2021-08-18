@@ -80,11 +80,11 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> imp
 
     public void readCustomDataFromNbt(NbtCompound compound) {
         super.readCustomDataFromNbt(compound);
-        this.readAngerFromNbt((ServerWorld) this.world, compound);
+        this.readAngerFromNbt(this.world, compound);
     }
 
     public boolean tryAttack(Entity entityIn) {
-        boolean flag = entityIn.damage(DamageSource.mob(this), (float) ((int) this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).getValue()));
+        boolean flag = entityIn.damage(DamageSource.mob(this), (float) ((int) this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE) ));
         if (flag) {
             this.applyDamageEffects(this, entityIn);
         }
