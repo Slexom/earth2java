@@ -1,7 +1,7 @@
 ## Earth2Java
 
-![Version 1.7.1](https://img.shields.io/badge/Version-1.7.1-brightgreen)
-![MC 1.17.0](https://img.shields.io/badge/MC-1.17.0-blue)
+![Version 1.7.2](https://img.shields.io/badge/Version-1.7.2-brightgreen)
+![MC 1.17.0](https://img.shields.io/badge/MC-1.17.x-blue)
 
 ![License MIT](https://img.shields.io/badge/License-MIT-blue)
 [![CurseForge Downloads](https://img.shields.io/badge/dynamic/json?color=f16436&label=CurseForge&query=%24.downloadCount&suffix=%20Downloads&url=https%3A%2F%2Faddons-ecs.forgesvc.net%2Fapi%2Fv2%2Faddon%2F398022)](https://www.curseforge.com/minecraft/mc-mods/earth2java-fabric)
