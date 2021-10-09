@@ -8,13 +8,13 @@ import net.minecraft.util.Identifier;
 import slexom.earthtojava.mobs.client.renderer.entity.feature.HornedSheepWoolFeatureRenderer;
 import slexom.earthtojava.mobs.client.renderer.entity.model.HornedSheepModel;
 import slexom.earthtojava.mobs.entity.passive.HornedSheepEntity;
-import slexom.earthtojava.mobs.init.EntityModeLayersInit;
+import slexom.earthtojava.mobs.init.EntityModelLayersInit;
 
 @Environment(EnvType.CLIENT)
 public class HornedSheepRenderer extends MobEntityRenderer<HornedSheepEntity, HornedSheepModel<HornedSheepEntity>> {
 
     public HornedSheepRenderer(EntityRendererFactory.Context context) {
-        super(context, new HornedSheepModel<>(context.getPart(EntityModeLayersInit.HORNED_SHEEP_ENTITY_MODEL_LAYER)), 0.7F);
+        super(context, new HornedSheepModel<>(context.getPart(EntityModelLayersInit.HORNED_SHEEP_ENTITY_MODEL_LAYER)), 0.7F);
         this.addFeature(new HornedSheepWoolFeatureRenderer(this, context.getModelLoader()));
     }
 

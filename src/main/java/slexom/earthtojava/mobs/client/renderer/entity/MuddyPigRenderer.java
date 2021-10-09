@@ -2,29 +2,21 @@ package slexom.earthtojava.mobs.client.renderer.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.OverlayTexture;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
-import net.minecraft.client.render.entity.feature.FeatureRenderer;
-import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.feature.SaddleFeatureRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.render.entity.model.PigEntityModel;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import slexom.earthtojava.mobs.client.renderer.entity.model.MuddyPigModel;
 import slexom.earthtojava.mobs.entity.passive.MuddyPigEntity;
-import slexom.earthtojava.mobs.init.EntityModeLayersInit;
+import slexom.earthtojava.mobs.init.EntityModelLayersInit;
 
 @Environment(EnvType.CLIENT)
 public class MuddyPigRenderer extends MobEntityRenderer<MuddyPigEntity, MuddyPigModel<MuddyPigEntity>> {
 
     public MuddyPigRenderer(EntityRendererFactory.Context context) {
-        super(context, new MuddyPigModel<>(context.getPart(EntityModeLayersInit.MUDDY_PIG_ENTITY_MODEL_LAYER)), 0.7F);
+        super(context, new MuddyPigModel<>(context.getPart(EntityModelLayersInit.MUDDY_PIG_ENTITY_MODEL_LAYER)), 0.7F);
         this.addFeature(new SaddleFeatureRenderer(this, new PigEntityModel(context.getPart(EntityModelLayers.PIG_SADDLE)), new Identifier("textures/entity/pig/pig_saddle.png")));
     }
 

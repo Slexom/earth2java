@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 import slexom.earthtojava.mobs.client.renderer.entity.feature.VilerWitchHeldItemFeatureRenderer;
 import slexom.earthtojava.mobs.client.renderer.entity.model.VilerWitchModel;
 import slexom.earthtojava.mobs.entity.monster.VilerWitchEntity;
-import slexom.earthtojava.mobs.init.EntityModeLayersInit;
+import slexom.earthtojava.mobs.init.EntityModelLayersInit;
 import slexom.earthtojava.mobs.init.EntityTypesInit;
 
 import java.text.MessageFormat;
@@ -21,7 +21,7 @@ public class VilerWitchRenderer extends MobEntityRenderer<VilerWitchEntity, Vile
     private final String registryName;
 
     public VilerWitchRenderer(EntityRendererFactory.Context context) {
-        super(context, new VilerWitchModel<>(context.getPart(EntityModeLayersInit.VILER_WITCH_ENTITY_MODEL_LAYER)), 0.5F);
+        super(context, new VilerWitchModel<>(context.getPart(EntityModelLayersInit.VILER_WITCH_ENTITY_MODEL_LAYER)), 0.5F);
         this.addFeature(new VilerWitchHeldItemFeatureRenderer<>(this));
         this.registryName = EntityTypesInit.VILER_WITCH_REGISTRY_NAME;
     }

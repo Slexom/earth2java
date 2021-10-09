@@ -8,12 +8,12 @@ import net.minecraft.util.Identifier;
 import slexom.earthtojava.mobs.client.renderer.entity.feature.RainbowSheepWoolFeatureRenderer;
 import slexom.earthtojava.mobs.client.renderer.entity.model.RainbowSheepModel;
 import slexom.earthtojava.mobs.entity.passive.RainbowSheepEntity;
-import slexom.earthtojava.mobs.init.EntityModeLayersInit;
+import slexom.earthtojava.mobs.init.EntityModelLayersInit;
 
 @Environment(EnvType.CLIENT)
 public class RainbowSheepRenderer extends MobEntityRenderer<RainbowSheepEntity, RainbowSheepModel<RainbowSheepEntity>> {
     public RainbowSheepRenderer(EntityRendererFactory.Context context) {
-        super(context, new RainbowSheepModel<>(context.getPart(EntityModeLayersInit.RAINBOW_SHEEP_ENTITY_MODEL_LAYER)), 0.7F);
+        super(context, new RainbowSheepModel<>(context.getPart(EntityModelLayersInit.RAINBOW_SHEEP_ENTITY_MODEL_LAYER)), 0.7F);
         this.addFeature(new RainbowSheepWoolFeatureRenderer(this, context.getModelLoader()));
     }
 

@@ -7,13 +7,13 @@ import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
 import slexom.earthtojava.mobs.client.renderer.entity.model.JollyLlamaModel;
 import slexom.earthtojava.mobs.entity.passive.JollyLlamaEntity;
-import slexom.earthtojava.mobs.init.EntityModeLayersInit;
+import slexom.earthtojava.mobs.init.EntityModelLayersInit;
 
 @Environment(EnvType.CLIENT)
 public class JollyLlamaRenderer extends MobEntityRenderer<JollyLlamaEntity, JollyLlamaModel> {
 
     public JollyLlamaRenderer(EntityRendererFactory.Context context) {
-        super(context, new JollyLlamaModel(context.getPart(EntityModeLayersInit.JOLLY_LLAMA_ENTITY_MODEL_LAYER)), 0.7F);
+        super(context, new JollyLlamaModel(context.getPart(EntityModelLayersInit.JOLLY_LLAMA_ENTITY_MODEL_LAYER)), 0.7F);
     }
 
     @Override

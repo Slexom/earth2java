@@ -3,14 +3,13 @@ package slexom.earthtojava.mobs.client.renderer.entity.feature;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
-import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.render.entity.model.EntityModelLoader;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import slexom.earthtojava.mobs.client.renderer.entity.model.RainbowSheepModel;
 import slexom.earthtojava.mobs.client.renderer.entity.model.RainbowSheepWoolModel;
 import slexom.earthtojava.mobs.entity.passive.RainbowSheepEntity;
-import slexom.earthtojava.mobs.init.EntityModeLayersInit;
+import slexom.earthtojava.mobs.init.EntityModelLayersInit;
 
 public class RainbowSheepWoolFeatureRenderer extends FeatureRenderer<RainbowSheepEntity, RainbowSheepModel<RainbowSheepEntity>> {
     private static final Identifier TEXTURE = new Identifier("earthtojavamobs:textures/mobs/sheep/rainbow_sheep/rainbow_sheep_fur.png");
@@ -18,7 +17,7 @@ public class RainbowSheepWoolFeatureRenderer extends FeatureRenderer<RainbowShee
 
     public RainbowSheepWoolFeatureRenderer(FeatureRendererContext<RainbowSheepEntity, RainbowSheepModel<RainbowSheepEntity>> featureRendererContext, EntityModelLoader entityModelLoader) {
         super(featureRendererContext);
-        this. sheepModel = new RainbowSheepWoolModel<>(entityModelLoader.getModelPart(EntityModeLayersInit.RAINBOW_SHEEP_FUR_ENTITY_MODEL_LAYER));
+        this. sheepModel = new RainbowSheepWoolModel<>(entityModelLoader.getModelPart(EntityModelLayersInit.RAINBOW_SHEEP_FUR_ENTITY_MODEL_LAYER));
     }
 
     public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, RainbowSheepEntity entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {

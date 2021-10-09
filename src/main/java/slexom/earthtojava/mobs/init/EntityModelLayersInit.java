@@ -5,7 +5,7 @@ import net.minecraft.client.render.entity.model.EntityModelLayer;
 import slexom.earthtojava.mobs.client.renderer.block.entity.RainbowBedBlockEntityRenderer;
 import slexom.earthtojava.mobs.client.renderer.entity.model.*;
 
-public class EntityModeLayersInit {
+public class EntityModelLayersInit {
     public static EntityModelLayer BOULDERING_ZOMBIE_ENTITY_MODEL_LAYER;
     public static EntityModelLayer FANCY_CHICKEN_ENTITY_MODEL_LAYER;
     public static EntityModelLayer HORNED_SHEEP_ENTITY_MODEL_LAYER;
@@ -18,6 +18,7 @@ public class EntityModeLayersInit {
     public static EntityModelLayer RAINBOW_SHEEP_ENTITY_MODEL_LAYER;
     public static EntityModelLayer RAINBOW_SHEEP_FUR_ENTITY_MODEL_LAYER;
     public static EntityModelLayer SKELETON_WOLF_ENTITY_MODEL_LAYER;
+    public static EntityModelLayer SOOTY_PIG_ENTITY_MODEL_LAYER;
     public static EntityModelLayer VILER_WITCH_ENTITY_MODEL_LAYER;
 
     public static void init() {
@@ -32,7 +33,7 @@ public class EntityModeLayersInit {
         BOULDERING_ZOMBIE_ENTITY_MODEL_LAYER = RegisterHelper.registerEntityModelLayer(EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_NAME, BoulderingZombieModel.getTexturedModelData());
         LOBBER_ZOMBIE_ENTITY_MODEL_LAYER = RegisterHelper.registerEntityModelLayer(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_NAME, LobberZombieModel.getTexturedModelData());
         VILER_WITCH_ENTITY_MODEL_LAYER = RegisterHelper.registerEntityModelLayer(EntityTypesInit.VILER_WITCH_REGISTRY_NAME, VilerWitchModel.getTexturedModelData());
-
+        SOOTY_PIG_ENTITY_MODEL_LAYER = RegisterHelper.registerEntityModelLayer(EntityTypesInit.SOOTY_PIG_REGISTRY_NAME, SootyPigModel.getTexturedModelData(Dilation.NONE));
         RAINBOW_BED_HEAD_MODEL_LAYER = RegisterHelper.registerEntityModelLayer("rainbow_bed_head", RainbowBedBlockEntityRenderer.getHeadTexturedModelData());
         RAINBOW_BED_FOOT_MODEL_LAYER = RegisterHelper.registerEntityModelLayer("rainbow_bed_foot", RainbowBedBlockEntityRenderer.getFootTexturedModelData());
     }

@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import slexom.earthtojava.mobs.client.renderer.entity.model.FancyChickenModel;
 import slexom.earthtojava.mobs.entity.passive.FancyChickenEntity;
-import slexom.earthtojava.mobs.init.EntityModeLayersInit;
+import slexom.earthtojava.mobs.init.EntityModelLayersInit;
 import slexom.earthtojava.mobs.init.EntityTypesInit;
 
 import java.text.MessageFormat;
@@ -18,7 +18,7 @@ public class FancyChickenRenderer extends MobEntityRenderer<FancyChickenEntity, 
     private final String registryName = EntityTypesInit.FANCY_CHICKEN_REGISTRY_NAME;
 
     public FancyChickenRenderer(EntityRendererFactory.Context context) {
-        super(context, new FancyChickenModel<>(context.getPart(EntityModeLayersInit.FANCY_CHICKEN_ENTITY_MODEL_LAYER)), 0.3F);
+        super(context, new FancyChickenModel<>(context.getPart(EntityModelLayersInit.FANCY_CHICKEN_ENTITY_MODEL_LAYER)), 0.3F);
     }
 
     protected float getAnimationProgress(FancyChickenEntity chickenEntity, float f) {

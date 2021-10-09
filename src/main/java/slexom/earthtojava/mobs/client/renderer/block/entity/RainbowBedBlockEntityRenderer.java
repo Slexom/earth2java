@@ -15,7 +15,6 @@ import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.block.entity.LightmapCoordinatesRetriever;
-import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
@@ -25,7 +24,7 @@ import net.minecraft.world.World;
 import slexom.earthtojava.mobs.block.RainbowBedBlock;
 import slexom.earthtojava.mobs.block.entity.RainbowBedBlockEntity;
 import slexom.earthtojava.mobs.init.BlockEntityTypeInit;
-import slexom.earthtojava.mobs.init.EntityModeLayersInit;
+import slexom.earthtojava.mobs.init.EntityModelLayersInit;
 
 @Environment(EnvType.CLIENT)
 public class RainbowBedBlockEntityRenderer implements BlockEntityRenderer<RainbowBedBlockEntity> {
@@ -33,8 +32,8 @@ public class RainbowBedBlockEntityRenderer implements BlockEntityRenderer<Rainbo
     private final ModelPart foot;
 
     public RainbowBedBlockEntityRenderer(BlockEntityRendererFactory.Context context) {
-        this.head = context.getLayerModelPart(EntityModeLayersInit.RAINBOW_BED_HEAD_MODEL_LAYER);
-        this.foot = context.getLayerModelPart(EntityModeLayersInit.RAINBOW_BED_FOOT_MODEL_LAYER);
+        this.head = context.getLayerModelPart(EntityModelLayersInit.RAINBOW_BED_HEAD_MODEL_LAYER);
+        this.foot = context.getLayerModelPart(EntityModelLayersInit.RAINBOW_BED_FOOT_MODEL_LAYER);
     }
 
     public static TexturedModelData getHeadTexturedModelData() {

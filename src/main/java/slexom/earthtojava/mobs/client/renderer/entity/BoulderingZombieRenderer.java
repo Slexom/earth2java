@@ -9,13 +9,13 @@ import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.util.Identifier;
 import slexom.earthtojava.mobs.client.renderer.entity.model.BoulderingZombieModel;
 import slexom.earthtojava.mobs.entity.monster.BoulderingZombieEntity;
-import slexom.earthtojava.mobs.init.EntityModeLayersInit;
+import slexom.earthtojava.mobs.init.EntityModelLayersInit;
 
 @Environment(EnvType.CLIENT)
 public class BoulderingZombieRenderer extends ZombieBaseEntityRenderer<BoulderingZombieEntity, BoulderingZombieModel<BoulderingZombieEntity>> {
 
     public BoulderingZombieRenderer(EntityRendererFactory.Context context) {
-        this(context, EntityModeLayersInit.BOULDERING_ZOMBIE_ENTITY_MODEL_LAYER, EntityModelLayers.ZOMBIE_INNER_ARMOR, EntityModelLayers.ZOMBIE_OUTER_ARMOR);
+        this(context, EntityModelLayersInit.BOULDERING_ZOMBIE_ENTITY_MODEL_LAYER, EntityModelLayers.ZOMBIE_INNER_ARMOR, EntityModelLayers.ZOMBIE_OUTER_ARMOR);
     }
 
     public BoulderingZombieRenderer(EntityRendererFactory.Context ctx, EntityModelLayer layer, EntityModelLayer legsArmorLayer, EntityModelLayer bodyArmorLayer) {
