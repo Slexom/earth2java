@@ -4,6 +4,7 @@
     "package": "slexom.earthtojava.mobs.mixins",
     "compatibilityLevel": "JAVA_16",
     "mixins": [
+        "CatEntityRendererMixin",
         "DyeItemMixin",
         "EggEntityMixin",
         "SpawnFurnaceGolem"
