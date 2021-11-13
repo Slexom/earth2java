@@ -7,6 +7,7 @@
         "CatEntityRendererMixin",
         "DyeItemMixin",
         "EggEntityMixin",
+        "GenerationSettingsAccessor",
         "SpawnFurnaceGolem"
     ],
     "client": [

@@ -44,7 +44,7 @@ public class BoneSpiderEntity extends E2JBaseSpiderEntity<BoneSpiderEntity> impl
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(6, new LookAroundGoal(this));
         this.targetSelector.add(1, new RevengeGoal(this));
-        this.targetSelector.add(2, new FollowTargetGoal(this, PlayerEntity.class, true));
+        this.targetSelector.add(2, new ActiveTargetGoal(this, PlayerEntity.class, true));
     }
 
     @Override

@@ -19,7 +19,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import slexom.earthtojava.mobs.entity.BlinkManager;
 import slexom.earthtojava.mobs.entity.ai.goal.FurnaceGolemDefendVillageTargetGoal;
-import slexom.earthtojava.mobs.entity.ai.goal.FurnaceGolemFollowTargetGoal;
+import slexom.earthtojava.mobs.entity.ai.goal.FurnaceGolemActiveTargetGoal;
 import slexom.earthtojava.mobs.init.SoundEventsInit;
 
 import java.util.Random;
@@ -48,7 +48,7 @@ public class FurnaceGolemEntity extends IronGolemEntity {
         this.goalSelector.add(8, new LookAroundGoal(this));
         this.targetSelector.add(1, new FurnaceGolemDefendVillageTargetGoal(this));
         this.targetSelector.add(2, new RevengeGoal(this));
-        this.targetSelector.add(3, new FurnaceGolemFollowTargetGoal(this, MobEntity.class, 5, false, false, (p_213619_0_) -> p_213619_0_ instanceof Monster && !(p_213619_0_ instanceof CreeperEntity) && !(p_213619_0_ instanceof TropicalSlimeEntity)));
+        this.targetSelector.add(3, new FurnaceGolemActiveTargetGoal(this, MobEntity.class, 5, false, false, (p_213619_0_) -> p_213619_0_ instanceof Monster && !(p_213619_0_ instanceof CreeperEntity) && !(p_213619_0_ instanceof TropicalSlimeEntity)));
     }
 
     public boolean tryAttack(Entity entityIn) {

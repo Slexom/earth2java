@@ -29,12 +29,12 @@ public class LobberZombieEntity extends E2JBaseZombieEntity implements RangedAtt
         this.goalSelector.add(6, new MoveThroughVillageGoal(this, 1.0D, true, 4, this::canBreakDoors));
         this.goalSelector.add(7, new WanderAroundFarGoal(this, 1.0D));
         this.targetSelector.add(1, (new RevengeGoal(this)).setGroupRevenge(ZombifiedPiglinEntity.class));
-        this.targetSelector.add(2, new FollowTargetGoal(this, PlayerEntity.class, true));
-        this.targetSelector.add(3, new FollowTargetGoal(this, MerchantEntity.class, false));
-        this.targetSelector.add(3, new FollowTargetGoal(this, IronGolemEntity.class, true));
-        this.targetSelector.add(3, new FollowTargetGoal(this, FurnaceGolemEntity.class, true));
-        this.targetSelector.add(3, new FollowTargetGoal(this, MelonGolemEntity.class, true));
-        this.targetSelector.add(5, new FollowTargetGoal(this, TurtleEntity.class, 10, true, false, TurtleEntity.BABY_TURTLE_ON_LAND_FILTER));
+        this.targetSelector.add(2, new ActiveTargetGoal(this, PlayerEntity.class, true));
+        this.targetSelector.add(3, new ActiveTargetGoal(this, MerchantEntity.class, false));
+        this.targetSelector.add(3, new ActiveTargetGoal(this, IronGolemEntity.class, true));
+        this.targetSelector.add(3, new ActiveTargetGoal(this, FurnaceGolemEntity.class, true));
+        this.targetSelector.add(3, new ActiveTargetGoal(this, MelonGolemEntity.class, true));
+        this.targetSelector.add(5, new ActiveTargetGoal(this, TurtleEntity.class, 10, true, false, TurtleEntity.BABY_TURTLE_ON_LAND_FILTER));
     }
 
 

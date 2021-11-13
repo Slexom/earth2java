@@ -4,7 +4,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.Shearable;
-import net.minecraft.entity.ai.Durations;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -18,12 +17,12 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.TimeHelper;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.entity.ai.goal.HornedSheepFollowTargetGoal;
+import slexom.earthtojava.mobs.entity.ai.goal.HornedSheepActiveTargetGoal;
 import slexom.earthtojava.mobs.entity.ai.goal.HornedSheepMeleeAttackGoal;
 import slexom.earthtojava.mobs.entity.ai.goal.HornedSheepRevengeGoal;
 import slexom.earthtojava.mobs.entity.base.E2JBaseSheepEntity;
@@ -36,7 +35,7 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> imp
 
     private static final TrackedData<Byte> DATA_FLAGS_ID = DataTracker.registerData(HornedSheepEntity.class, TrackedDataHandlerRegistry.BYTE);
     private static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(HornedSheepEntity.class, TrackedDataHandlerRegistry.INTEGER);
-    private static final UniformIntProvider ANGER_TIME_RANGE = Durations.betweenSeconds(20, 39);
+    private static final UniformIntProvider ANGER_TIME_RANGE = TimeHelper.betweenSeconds(20, 39);
     private EatGrassGoal eatGrassGoal;
     private UUID lastHurtBy;
 
@@ -70,7 +69,7 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> imp
         this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(8, new LookAroundGoal(this));
         this.targetSelector.add(1, (new HornedSheepRevengeGoal(this)).setGroupRevenge());
-        this.targetSelector.add(2, new HornedSheepFollowTargetGoal(this));
+        this.targetSelector.add(2, new HornedSheepActiveTargetGoal(this));
     }
 
     public void writeCustomDataToNbt(NbtCompound compound) {
@@ -84,7 +83,7 @@ public class HornedSheepEntity extends E2JBaseSheepEntity<HornedSheepEntity> imp
     }
 
     public boolean tryAttack(Entity entityIn) {
-        boolean flag = entityIn.damage(DamageSource.mob(this), (float) ((int) this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE) ));
+        boolean flag = entityIn.damage(DamageSource.mob(this), (float) ((int) this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE)));
         if (flag) {
             this.applyDamageEffects(this, entityIn);
         }
