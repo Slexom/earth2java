@@ -1,6 +1,5 @@
 package slexom.earthtojava.mobs.entity.ai.goal;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.ai.goal.Goal;
@@ -9,6 +8,8 @@ import net.minecraft.predicate.block.BlockStatePredicate;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
+import slexom.earthtojava.mobs.init.SoundEventsInit;
 
 import java.util.EnumSet;
 import java.util.function.Predicate;
@@ -56,10 +57,12 @@ public class JollyLlamaEatFernGoal extends Goal {
         if (this.timer == 4) {
             BlockPos blockPos = this.mob.getBlockPos();
             if (FERN_PREDICATE.test(this.world.getBlockState(blockPos))) {
+                this.mob.playSound(SoundEventsInit.JOLLY_LLAMA_DETECT_FERN, 1.0f, 1.0f);
                 if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
                     this.world.breakBlock(blockPos, false);
                 }
                 this.mob.onEatingGrass();
+                this.mob.emitGameEvent(GameEvent.EAT, this.mob.getCameraBlockPos());
             }
         }
     }

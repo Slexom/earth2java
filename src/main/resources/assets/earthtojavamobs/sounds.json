@@ -77,6 +77,31 @@
             "earthtojavamobs:mob/furnace_golem/attack_01"
         ]
     },
+    "entity.jolly_llama.bell": {
+        "sounds": [
+            "earthtojavamobs:mob/jolly_llama/bell_01",
+            "earthtojavamobs:mob/jolly_llama/bell_02"
+        ]
+    },
+    "entity.jolly_llama.detect_fern": {
+        "sounds": [
+            "earthtojavamobs:mob/jolly_llama/detect_fern_01",
+            "earthtojavamobs:mob/jolly_llama/detect_fern_02",
+            "earthtojavamobs:mob/jolly_llama/detect_fern_03"
+        ]
+    },
+    "entity.jolly_llama.eat": {
+        "sounds": [
+            "earthtojavamobs:mob/jolly_llama/eat_01",
+            "earthtojavamobs:mob/jolly_llama/eat_02",
+            "earthtojavamobs:mob/jolly_llama/eat_03"
+        ]
+    },
+    "entity.jolly_llama.prance": {
+        "sounds": [
+            "earthtojavamobs:mob/jolly_llama/prance_01"
+        ]
+    },
     "entity.jumbo_rabbit.ambient": {
         "sounds": [
             {

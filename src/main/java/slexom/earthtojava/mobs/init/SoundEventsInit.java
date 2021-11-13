@@ -18,6 +18,10 @@ public class SoundEventsInit {
     public static final String FANCY_CHICKEN_HURT_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.FANCY_CHICKEN_REGISTRY_NAME, "hurt");
     public static final String FURNACE_GOLEM_AGGRO_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.FURNACE_GOLEM_REGISTRY_NAME, "aggro");
     public static final String FURNACE_GOLEM_ATTACK_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.FURNACE_GOLEM_REGISTRY_NAME, "attack");
+    public static final String JOLLY_LLAMA_BELL_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.JOLLY_LLAMA_REGISTRY_NAME, "bell");
+    public static final String JOLLY_LLAMA_DETECT_FERN_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.JOLLY_LLAMA_REGISTRY_NAME, "detect_fern");
+    public static final String JOLLY_LLAMA_EAT_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.JOLLY_LLAMA_REGISTRY_NAME, "eat");
+    public static final String JOLLY_LLAMA_PRANCE_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.JOLLY_LLAMA_REGISTRY_NAME, "prance");
     public static final String JUMBO_RABBIT_AMBIENT_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.JUMBO_RABBIT_REGISTRY_NAME, "ambient");
     public static final String JUMBO_RABBIT_HURT_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.JUMBO_RABBIT_REGISTRY_NAME, "hurt");
     public static final String JUMBO_RABBIT_JUMP_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.JUMBO_RABBIT_REGISTRY_NAME, "jump");
@@ -53,6 +57,10 @@ public class SoundEventsInit {
     public static SoundEvent FANCY_CHICKEN_HURT;
     public static SoundEvent FURNACE_GOLEM_AGGRO;
     public static SoundEvent FURNACE_GOLEM_ATTACK;
+    public static SoundEvent JOLLY_LLAMA_BELL;
+    public static SoundEvent JOLLY_LLAMA_DETECT_FERN;
+    public static SoundEvent JOLLY_LLAMA_EAT;
+    public static SoundEvent JOLLY_LLAMA_PRANCE;
     public static SoundEvent JUMBO_RABBIT_AMBIENT;
     public static SoundEvent JUMBO_RABBIT_HURT;
     public static SoundEvent JUMBO_RABBIT_JUMP;
@@ -90,6 +98,10 @@ public class SoundEventsInit {
         FANCY_CHICKEN_FLEE = RegisterHelper.registerSoundEvent(FANCY_CHICKEN_FLEE_REGISTRY_NAME);
         FURNACE_GOLEM_AGGRO = RegisterHelper.registerSoundEvent(FURNACE_GOLEM_AGGRO_REGISTRY_NAME);
         FURNACE_GOLEM_ATTACK = RegisterHelper.registerSoundEvent(FURNACE_GOLEM_ATTACK_REGISTRY_NAME);
+        JOLLY_LLAMA_BELL = RegisterHelper.registerSoundEvent(JOLLY_LLAMA_BELL_REGISTRY_NAME);
+        JOLLY_LLAMA_DETECT_FERN = RegisterHelper.registerSoundEvent(JOLLY_LLAMA_DETECT_FERN_REGISTRY_NAME);
+        JOLLY_LLAMA_EAT = RegisterHelper.registerSoundEvent(JOLLY_LLAMA_EAT_REGISTRY_NAME);
+        JOLLY_LLAMA_PRANCE = RegisterHelper.registerSoundEvent(JOLLY_LLAMA_PRANCE_REGISTRY_NAME);
         JUMBO_RABBIT_AMBIENT = RegisterHelper.registerSoundEvent(JUMBO_RABBIT_AMBIENT_REGISTRY_NAME);
         JUMBO_RABBIT_HURT = RegisterHelper.registerSoundEvent(JUMBO_RABBIT_HURT_REGISTRY_NAME);
         JUMBO_RABBIT_JUMP = RegisterHelper.registerSoundEvent(JUMBO_RABBIT_JUMP_REGISTRY_NAME);

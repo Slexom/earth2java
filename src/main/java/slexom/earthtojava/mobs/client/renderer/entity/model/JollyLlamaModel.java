@@ -18,6 +18,7 @@ public class JollyLlamaModel extends EntityModel<JollyLlamaEntity> {
     private final ModelPart backLeftLeg;
     private final ModelPart frontRightLeg;
     private final ModelPart frontLeftLeg;
+    private float headPitchModifier;
 
     public JollyLlamaModel(ModelPart root) {
         this.head = root.getChild("head");
@@ -46,13 +47,13 @@ public class JollyLlamaModel extends EntityModel<JollyLlamaEntity> {
         return TexturedModelData.of(modelData, 128, 64);
     }
 
-    public void setAngles(JollyLlamaEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setAngles(JollyLlamaEntity  entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
         this.head.pitch = headPitch * ((float) Math.PI / 180F);
-        this.head.yaw = netHeadYaw * ((float) Math.PI / 180F);
-        this.backRightLeg.pitch = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-        this.backLeftLeg.pitch = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
-        this.frontRightLeg.pitch = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
-        this.frontLeftLeg.pitch = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+        this.head.yaw = headYaw * ((float) Math.PI / 180F);
+        this.backRightLeg.pitch = MathHelper.cos(limbAngle * 0.6662F) * 1.4F * limbDistance;
+        this.backLeftLeg.pitch = MathHelper.cos(limbAngle * 0.6662F + (float) Math.PI) * 1.4F * limbDistance;
+        this.frontRightLeg.pitch = MathHelper.cos(limbAngle * 0.6662F + (float) Math.PI) * 1.4F * limbDistance;
+        this.frontLeftLeg.pitch = MathHelper.cos(limbAngle * 0.6662F) * 1.4F * limbDistance;
     }
 
     public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, float red, float green, float blue, float alpha) {
@@ -81,4 +82,9 @@ public class JollyLlamaModel extends EntityModel<JollyLlamaEntity> {
         }
     }
 
+    public void animateModel(JollyLlamaEntity entity,  float limbAngle, float limbDistance, float tickDelta) {
+        super.animateModel(entity, limbAngle, limbDistance, tickDelta);
+        this.head.pivotY = 6.0F + entity.getNeckAngle(tickDelta) * 9.0F;
+        this.headPitchModifier = entity.getHeadAngle(tickDelta);
+    }
 }
