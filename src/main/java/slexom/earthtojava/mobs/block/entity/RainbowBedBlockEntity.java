@@ -24,7 +24,7 @@ public class RainbowBedBlockEntity extends BlockEntity {
     }
 
     public BlockEntityUpdateS2CPacket toUpdatePacket() {
-        return new BlockEntityUpdateS2CPacket(this.pos, 11, this.toInitialChunkDataNbt());
+        return new BlockEntityUpdateS2CPacket(this.pos, this, this.toInitialChunkDataNbt());
     }
 
     @Environment(EnvType.CLIENT)

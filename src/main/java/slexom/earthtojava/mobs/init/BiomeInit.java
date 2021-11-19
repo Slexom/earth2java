@@ -2,12 +2,19 @@ package slexom.earthtojava.mobs.init;
 
 import com.google.common.collect.Lists;
 import me.shedaniel.autoconfig.AutoConfig;
+import net.fabricmc.fabric.api.biome.v1.BiomeModificationContext;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
-import net.fabricmc.fabric.mixin.biome.modification.GenerationSettingsAccessor;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
+import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.PlacedFeature;
+import slexom.earthtojava.mobs.Earth2JavaMod;
 import slexom.earthtojava.mobs.config.ModConfig;
 
 import java.util.ArrayList;
@@ -20,13 +27,17 @@ public class BiomeInit {
 
     public static void init() {
         BuiltinRegistries.BIOME.forEach(BiomeInit::handleBiome);
+
+        BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.PLAINS), GenerationStep.Feature.VEGETAL_DECORATION, RegistryKey.of(BuiltinRegistries.PLACED_FEATURE.getKey(),  new Identifier(Earth2JavaMod.MOD_ID, "e2j_flowers")) );
+
+
+
         RegistryEntryAddedCallback.event(BuiltinRegistries.BIOME).register((i, identifier, biome) -> handleBiome(biome));
     }
 
     private static void handleBiome(Biome biome) {
         addMudLake(biome);
-        addButtercup(biome);
-        addPinkDaisy(biome);
+
     }
 
     private static boolean isInOverworld(Biome biome) {
@@ -43,29 +54,10 @@ public class BiomeInit {
         }
     }
 
-    private static void addButtercup(Biome biome) {
-        if (isInOverworld(biome) && biome.getCategory() == Biome.Category.PLAINS) {
-            addFeature(biome, GenerationStep.Feature.VEGETAL_DECORATION, FeatureInit.FLOWER_BUTTERCUP_CONFIGURED_FEATURE);
-        }
-    }
 
-    private static void addPinkDaisy(Biome biome) {
-        if (isInOverworld(biome) && biome.getCategory() == Biome.Category.PLAINS) {
-            addFeature(biome, GenerationStep.Feature.VEGETAL_DECORATION, FeatureInit.FLOWER_PINK_DAISY_CONFIGURED_FEATURE);
-        }
-    }
 
-    public static void addFeature(Biome biome, GenerationStep.Feature step, ConfiguredFeature<?, ?> feature) {
-        GenerationSettingsAccessor generationSettingsAccessor = (GenerationSettingsAccessor) biome.getGenerationSettings();
-        int stepIndex = step.ordinal();
-        List<List<Supplier<ConfiguredFeature<?, ?>>>> featuresByStep = new ArrayList<>(generationSettingsAccessor.fabric_getFeatures());
-        while (featuresByStep.size() <= stepIndex) {
-            featuresByStep.add(Lists.newArrayList());
-        }
-        List<Supplier<ConfiguredFeature<?, ?>>> features = new ArrayList<>(featuresByStep.get(stepIndex));
-        features.add(() -> feature);
-        featuresByStep.set(stepIndex, features);
-        generationSettingsAccessor.fabric_setFeatures(featuresByStep);
-    }
+
+
+
 
 }
