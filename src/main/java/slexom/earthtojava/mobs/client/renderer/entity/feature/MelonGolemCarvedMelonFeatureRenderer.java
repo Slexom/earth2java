@@ -24,7 +24,7 @@ public class MelonGolemCarvedMelonFeatureRenderer extends FeatureRenderer<MelonG
     public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, MelonGolemEntity entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
         if (!entity.isInvisible() && entity.isMelonEquipped()) {
             matrices.push();
-            this.getContextModel().getTopSnowball().rotate(matrices);
+            this.getContextModel().getHead().rotate(matrices);
             matrices.translate(0.0D, -0.34375D, 0.0D);
             matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0F));
             matrices.scale(0.625F, -0.625F, -0.625F);
