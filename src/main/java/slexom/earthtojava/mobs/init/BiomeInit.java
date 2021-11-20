@@ -3,7 +3,6 @@ package slexom.earthtojava.mobs.init;
 import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.RegistryKey;
@@ -17,32 +16,8 @@ public class BiomeInit {
 
 
     public static void init() {
-      //  BuiltinRegistries.BIOME.forEach(BiomeInit::handleBiome);
-
         BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.PLAINS), GenerationStep.Feature.VEGETAL_DECORATION, RegistryKey.of(BuiltinRegistries.PLACED_FEATURE.getKey(), new Identifier(Earth2JavaMod.MOD_ID, "e2j_flowers")));
-
-
-        RegistryEntryAddedCallback.event(BuiltinRegistries.BIOME).register((i, identifier, biome) -> handleBiome(biome));
+        BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.FOREST), GenerationStep.Feature.LAKES, RegistryKey.of(BuiltinRegistries.PLACED_FEATURE.getKey(), new Identifier(Earth2JavaMod.MOD_ID, "lake_mud")));
     }
-
-    private static void handleBiome(Biome biome) {
-        addMudLake(biome);
-
-    }
-
-    private static boolean isInOverworld(Biome biome) {
-        return biome.getCategory() != Biome.Category.NETHER && biome.getCategory() != Biome.Category.THEEND;
-    }
-
-    private static boolean isMushroom(Biome biome) {
-        return biome.getCategory() == Biome.Category.MUSHROOM;
-    }
-
-    private static void addMudLake(Biome biome) {
-        if (isInOverworld(biome) && !isMushroom(biome) && config.mudLakeConfig.canGenerate) {
-            //  addFeature(biome, GenerationStep.Feature.LAKES, FeatureInit.MUD_LAKE_CONFIGURED_FEATURE);
-        }
-    }
-
 
 }
