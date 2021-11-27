@@ -87,12 +87,16 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob {
             int i = MathHelper.floor(this.getX());
             int j = MathHelper.floor(this.getY());
             int k = MathHelper.floor(this.getZ());
+            BlockPos position = new BlockPos(i, j, k);
+
             if (this.isInsideWaterOrBubbleColumn()) {
                 this.damage(DamageSource.DROWN, 1.0F);
             }
-            if (this.world.getBiome(new BlockPos(i, 0, k)).getTemperature(new BlockPos(i, j, k)) > 1.0F) {
+
+            if (this.world.getBiome(position).isHot(position)) {
                 this.damage(DamageSource.ON_FIRE, 1.0F);
             }
+
             if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
                 BlockState blockState = Blocks.SNOW.getDefaultState();
                 for (int l = 0; l < 4; ++l) {
@@ -100,7 +104,7 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob {
                     j = MathHelper.floor(this.getY());
                     k = MathHelper.floor(this.getZ() + (double) ((float) (l / 2 % 2 * 2 - 1) * 0.25F));
                     BlockPos blockPos = new BlockPos(i, j, k);
-                    if (this.world.getBlockState(blockPos).isAir() && this.world.getBiome(blockPos).getTemperature(blockPos) < 0.8F && blockState.canPlaceAt(this.world, blockPos)) {
+                    if (this.world.getBlockState(blockPos).isAir() && blockState.canPlaceAt(this.world, blockPos)) {
                         this.world.setBlockState(blockPos, blockState);
                     }
                 }

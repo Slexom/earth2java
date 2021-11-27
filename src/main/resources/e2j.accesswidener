@@ -3,6 +3,5 @@ accessWidener v1 named
 accessible field net/minecraft/client/render/entity/model/ChickenEntityModel head Lnet/minecraft/client/model/ModelPart;
 
 accessible class net/minecraft/block/entity/BlockEntityType$BlockEntityFactory
-accessible class net/minecraft/world/gen/feature/ConfiguredFeatures$Decorators
 
 accessible method net/minecraft/block/FireBlock registerFlammableBlock (Lnet/minecraft/block/Block;II)V
