@@ -11,16 +11,15 @@ import net.minecraft.world.World;
 import slexom.earthtojava.mobs.entity.BlinkManager;
 import slexom.earthtojava.mobs.entity.EntityVariantManager;
 
-import java.util.Random;
-
 public class E2JBaseChickenEntity extends ChickenEntity {
 
     public BlinkManager blinkManager;
-    private EntityVariantManager<E2JBaseChickenEntity> variantManager;
+    private final EntityVariantManager<E2JBaseChickenEntity> variantManager;
 
     public E2JBaseChickenEntity(EntityType<? extends ChickenEntity> type, World worldIn) {
         super(type, worldIn);
         blinkManager = new BlinkManager();
+        variantManager = new EntityVariantManager<>();
         experiencePoints = 3;
         setAiDisabled(false);
     }

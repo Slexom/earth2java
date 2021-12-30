@@ -57,7 +57,6 @@ public class EntityRendererInit {
         registerPigEntityRenderer(EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT, EntityTypesInit.PIEBALD_PIG_REGISTRY_NAME);
         registerPigEntityRenderer(EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_OBJECT, EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_NAME);
         registerPigEntityRenderer(EntityTypesInit.SPOTTED_PIG_REGISTRY_OBJECT, EntityTypesInit.SPOTTED_PIG_REGISTRY_NAME);
-        registerPigEntityRenderer(EntityTypesInit.SOOTY_PIG_REGISTRY_OBJECT, EntityTypesInit.SOOTY_PIG_REGISTRY_NAME);
 
         registerMonoColorSheepEntityRenderer(EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT, EntityTypesInit.FLECKED_SHEEP_REGISTRY_NAME);
         registerMonoColorSheepEntityRenderer(EntityTypesInit.FUZZY_SHEEP_REGISTRY_OBJECT, EntityTypesInit.FUZZY_SHEEP_REGISTRY_NAME);
@@ -94,13 +93,14 @@ public class EntityRendererInit {
         EntityRendererRegistry.register(EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_OBJECT, BoulderingZombieRenderer::new);
         EntityRendererRegistry.register(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_OBJECT, LobberZombieRenderer::new);
         EntityRendererRegistry.register(EntityTypesInit.VILER_WITCH_REGISTRY_OBJECT, VilerWitchRenderer::new);
-     }
+        EntityRendererRegistry.register(EntityTypesInit.SOOTY_PIG_REGISTRY_OBJECT, SootyPigRenderer::new);
+    }
 
     private static <E extends E2JBaseChickenEntity> void registerChickenEntityRenderer(EntityType<E> entity, String identifier) {
         EntityRendererRegistry.register(entity, (context) -> new E2JChickenRenderer(context, identifier));
     }
 
-    private static <E extends E2JBaseCowEntity<E>> void registerCowEntityRenderer(EntityType<E> entity, String identifier) {
+    private static <E extends E2JBaseCowEntity> void registerCowEntityRenderer(EntityType<E> entity, String identifier) {
         EntityRendererRegistry.register(entity, (context) -> new E2JCowRenderer(context, identifier));
     }
 

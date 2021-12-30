@@ -9,16 +9,17 @@ import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import slexom.earthtojava.mobs.entity.BlinkManager;
+import slexom.earthtojava.mobs.entity.EntityVariantManager;
 
-import java.util.Random;
-
-public class E2JBaseCowEntity<T extends CowEntity> extends CowEntity {
+public class E2JBaseCowEntity extends CowEntity {
 
     public BlinkManager blinkManager;
+    private final EntityVariantManager<E2JBaseCowEntity> variantManager;
 
     public E2JBaseCowEntity(EntityType<? extends CowEntity> type, World worldIn) {
         super(type, worldIn);
         blinkManager = new BlinkManager();
+        variantManager = new EntityVariantManager<>();
         experiencePoints = 3;
         setAiDisabled(false);
     }
@@ -34,8 +35,8 @@ public class E2JBaseCowEntity<T extends CowEntity> extends CowEntity {
     }
 
     @Override
-    public T createChild(ServerWorld world, PassiveEntity passiveEntity) {
-        return (T) getType().create(world);
+    public E2JBaseCowEntity createChild(ServerWorld world, PassiveEntity other) {
+        return variantManager.getChild(this, other).create(world);
     }
 
 

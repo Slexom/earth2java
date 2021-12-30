@@ -19,7 +19,7 @@ import slexom.earthtojava.mobs.entity.ai.goal.MoobloomPlaceBlockGoal;
 import slexom.earthtojava.mobs.entity.base.E2JBaseCowEntity;
 import slexom.earthtojava.mobs.init.BlockInit;
 
-public class MoobloomEntity extends E2JBaseCowEntity<MoobloomEntity> implements Shearable {
+public class MoobloomEntity extends E2JBaseCowEntity implements Shearable {
 
     public MoobloomEntity(EntityType<MoobloomEntity> type, World world) {
         super(type, world);

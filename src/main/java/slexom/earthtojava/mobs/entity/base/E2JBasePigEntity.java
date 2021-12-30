@@ -16,11 +16,12 @@ import slexom.earthtojava.mobs.entity.EntityVariantManager;
 public class E2JBasePigEntity extends PigEntity {
 
     public BlinkManager blinkManager;
-    private EntityVariantManager<E2JBasePigEntity> variantManager;
+    private final EntityVariantManager<E2JBasePigEntity> variantManager;
 
-    public E2JBasePigEntity(EntityType<? extends E2JBasePigEntity> type, World worldIn) {
+    public E2JBasePigEntity(EntityType<? extends PigEntity> type, World worldIn) {
         super(type, worldIn);
         blinkManager = new BlinkManager();
+        variantManager = new EntityVariantManager<>();
         experiencePoints = 3;
         setAiDisabled(false);
     }

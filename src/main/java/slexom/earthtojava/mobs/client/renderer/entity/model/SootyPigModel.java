@@ -4,10 +4,10 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.QuadrupedEntityModel;
-import slexom.earthtojava.mobs.entity.passive.SootyPigEntity;
+import slexom.earthtojava.mobs.entity.base.E2JBasePigEntity;
 
 @Environment(EnvType.CLIENT)
-public class SootyPigModel extends QuadrupedEntityModel<SootyPigEntity> {
+public class SootyPigModel extends QuadrupedEntityModel<E2JBasePigEntity> {
     public SootyPigModel(ModelPart root) {
         super(root, false, 4.0F, 4.0F, 2.0F, 2.0F, 24);
     }
