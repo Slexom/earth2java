@@ -5,7 +5,7 @@ import net.minecraft.world.World;
 import slexom.earthtojava.mobs.entity.base.E2JBasePigEntity;
 
 
-public class PinkFootedPigEntity extends E2JBasePigEntity<PinkFootedPigEntity> {
+public class PinkFootedPigEntity extends E2JBasePigEntity {
 
     public PinkFootedPigEntity(EntityType<PinkFootedPigEntity> type, World world) {
         super(type, world);

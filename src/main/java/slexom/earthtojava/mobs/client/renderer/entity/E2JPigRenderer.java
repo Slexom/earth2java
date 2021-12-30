@@ -14,7 +14,7 @@ import slexom.earthtojava.mobs.entity.base.E2JBasePigEntity;
 import java.text.MessageFormat;
 
 @Environment(EnvType.CLIENT)
-public class E2JPigRenderer extends MobEntityRenderer<E2JBasePigEntity<? extends PigEntity>, PigEntityModel<E2JBasePigEntity<? extends PigEntity>>> {
+public class E2JPigRenderer extends MobEntityRenderer<E2JBasePigEntity, PigEntityModel<E2JBasePigEntity>> {
 
     private final String registryName;
 
@@ -25,7 +25,7 @@ public class E2JPigRenderer extends MobEntityRenderer<E2JBasePigEntity<? extends
     }
 
     @Override
-    public Identifier getTexture(E2JBasePigEntity<? extends PigEntity> entity) {
+    public Identifier getTexture(E2JBasePigEntity entity) {
         String resourceTexture = MessageFormat.format("earthtojavamobs:textures/mobs/pig/{0}/{0}.png", this.registryName);
         String resourceTextureBlink = MessageFormat.format("earthtojavamobs:textures/mobs/pig/{0}/{0}_blink.png", this.registryName);
         Identifier texture = new Identifier(resourceTexture);

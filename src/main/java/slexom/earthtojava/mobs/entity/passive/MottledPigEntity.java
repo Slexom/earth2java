@@ -5,7 +5,7 @@ import net.minecraft.world.World;
 import slexom.earthtojava.mobs.entity.base.E2JBasePigEntity;
 
 
-public class MottledPigEntity extends E2JBasePigEntity<MottledPigEntity> {
+public class MottledPigEntity extends E2JBasePigEntity {
 
     public MottledPigEntity(EntityType<MottledPigEntity> type, World world) {
         super(type, world);

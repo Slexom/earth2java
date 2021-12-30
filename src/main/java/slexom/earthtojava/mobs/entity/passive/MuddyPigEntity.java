@@ -20,7 +20,7 @@ import slexom.earthtojava.mobs.entity.base.E2JBasePigEntity;
 import slexom.earthtojava.mobs.init.BlockInit;
 
 
-public class MuddyPigEntity extends E2JBasePigEntity<MuddyPigEntity> {
+public class MuddyPigEntity extends E2JBasePigEntity {
 
     private static final TrackedData<Boolean> MUDDY_STATE = DataTracker.registerData(MuddyPigEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final Ingredient TEMPTATION_ITEMS = Ingredient.ofItems(Items.CARROT, Items.POTATO, Items.BEETROOT);

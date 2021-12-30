@@ -1,7 +1,7 @@
 package slexom.earthtojava.mobs.init.renderer;
 
-import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
-import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.entity.EntityType;
 import slexom.earthtojava.mobs.client.renderer.entity.*;
@@ -19,13 +19,13 @@ public class EntityRendererInit {
     }
 
     private static void registerBlockEntityRenderer() {
-        BlockEntityRendererRegistry.INSTANCE.register(BlockEntityTypeInit.RAINBOW_BED, RainbowBedBlockEntityRenderer::new);
+        BlockEntityRendererRegistry.register(BlockEntityTypeInit.RAINBOW_BED, RainbowBedBlockEntityRenderer::new);
     }
 
     private static void registerProjectileRenderer() {
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.MELON_SEED_PROJECTILE_REGISTRY_OBJECT, FlyingItemEntityRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.BONE_SHARD_REGISTRY_OBJECT, FlyingItemEntityRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.ROTTEN_FLESH_PROJECTILE_REGISTRY_OBJECT, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.MELON_SEED_PROJECTILE_REGISTRY_OBJECT, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.BONE_SHARD_REGISTRY_OBJECT, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.ROTTEN_FLESH_PROJECTILE_REGISTRY_OBJECT, FlyingItemEntityRenderer::new);
     }
 
     private static void registerEntitiesRenderer() {
@@ -57,6 +57,7 @@ public class EntityRendererInit {
         registerPigEntityRenderer(EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT, EntityTypesInit.PIEBALD_PIG_REGISTRY_NAME);
         registerPigEntityRenderer(EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_OBJECT, EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_NAME);
         registerPigEntityRenderer(EntityTypesInit.SPOTTED_PIG_REGISTRY_OBJECT, EntityTypesInit.SPOTTED_PIG_REGISTRY_NAME);
+        registerPigEntityRenderer(EntityTypesInit.SOOTY_PIG_REGISTRY_OBJECT, EntityTypesInit.SOOTY_PIG_REGISTRY_NAME);
 
         registerMonoColorSheepEntityRenderer(EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT, EntityTypesInit.FLECKED_SHEEP_REGISTRY_NAME);
         registerMonoColorSheepEntityRenderer(EntityTypesInit.FUZZY_SHEEP_REGISTRY_OBJECT, EntityTypesInit.FUZZY_SHEEP_REGISTRY_NAME);
@@ -74,54 +75,53 @@ public class EntityRendererInit {
     }
 
     private static void registerSpecialVariantEntitiesRenderer() {
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.CLUCKSHROOM_REGISTRY_OBJECT, CluckshroomRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.GLOW_SQUID_REGISTRY_OBJECT, GlowSquidRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.HORNED_SHEEP_REGISTRY_OBJECT, HornedSheepRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.MOOBLOOM_REGISTRY_OBJECT, MoobloomRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.MOOLIP_REGISTRY_OBJECT, MoolipRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.MUDDY_PIG_REGISTRY_OBJECT, MuddyPigRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.SKELETON_WOLF_REGISTRY_OBJECT, SkeletonWolfRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.TROPICAL_SLIME_REGISTRY_OBJECT, TropicalSlimeRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT, WoolyCowRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT, FurnaceGolemRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.MELON_GOLEM_REGISTRY_OBJECT, MelonGolemRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.JUMBO_RABBIT_REGISTRY_OBJECT, JumboRabbitRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.JOLLY_LLAMA_REGISTRY_OBJECT, JollyLlamaRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.BONE_SPIDER_REGISTRY_OBJECT, BoneSpiderRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_OBJECT, RainbowSheepRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.FANCY_CHICKEN_REGISTRY_OBJECT, FancyChickenRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_OBJECT, BoulderingZombieRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_OBJECT, LobberZombieRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.VILER_WITCH_REGISTRY_OBJECT, VilerWitchRenderer::new);
-        EntityRendererRegistry.INSTANCE.register(EntityTypesInit.SOOTY_PIG_REGISTRY_OBJECT, SootyPigRenderer::new);
-    }
+        EntityRendererRegistry.register(EntityTypesInit.CLUCKSHROOM_REGISTRY_OBJECT, CluckshroomRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.GLOW_SQUID_REGISTRY_OBJECT, GlowSquidRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.HORNED_SHEEP_REGISTRY_OBJECT, HornedSheepRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.MOOBLOOM_REGISTRY_OBJECT, MoobloomRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.MOOLIP_REGISTRY_OBJECT, MoolipRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.MUDDY_PIG_REGISTRY_OBJECT, MuddyPigRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.SKELETON_WOLF_REGISTRY_OBJECT, SkeletonWolfRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.TROPICAL_SLIME_REGISTRY_OBJECT, TropicalSlimeRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT, WoolyCowRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT, FurnaceGolemRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.MELON_GOLEM_REGISTRY_OBJECT, MelonGolemRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.JUMBO_RABBIT_REGISTRY_OBJECT, JumboRabbitRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.JOLLY_LLAMA_REGISTRY_OBJECT, JollyLlamaRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.BONE_SPIDER_REGISTRY_OBJECT, BoneSpiderRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_OBJECT, RainbowSheepRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.FANCY_CHICKEN_REGISTRY_OBJECT, FancyChickenRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_OBJECT, BoulderingZombieRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_OBJECT, LobberZombieRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.VILER_WITCH_REGISTRY_OBJECT, VilerWitchRenderer::new);
+     }
 
     private static <E extends E2JBaseChickenEntity<E>> void registerChickenEntityRenderer(EntityType<E> entity, String identifier) {
-        EntityRendererRegistry.INSTANCE.register(entity, (context) -> new E2JChickenRenderer(context, identifier));
+        EntityRendererRegistry.register(entity, (context) -> new E2JChickenRenderer(context, identifier));
     }
 
     private static <E extends E2JBaseCowEntity<E>> void registerCowEntityRenderer(EntityType<E> entity, String identifier) {
-        EntityRendererRegistry.INSTANCE.register(entity, (context) -> new E2JCowRenderer(context, identifier));
+        EntityRendererRegistry.register(entity, (context) -> new E2JCowRenderer(context, identifier));
     }
 
     private static <E extends E2JBaseShearableCowEntity<E>> void registerShearableCowEntityRenderer(EntityType<E> entity, String identifier) {
-        EntityRendererRegistry.INSTANCE.register(entity, ( context) -> new E2JShearableCowRenderer(context, identifier));
+        EntityRendererRegistry.register(entity, ( context) -> new E2JShearableCowRenderer(context, identifier));
     }
 
     private static <E extends E2JBaseMonoColorSheepEntity<E>> void registerMonoColorSheepEntityRenderer(EntityType<E> entity, String identifier) {
-        EntityRendererRegistry.INSTANCE.register(entity, (context) -> new E2JMonoColorSheepRenderer(context, identifier));
+        EntityRendererRegistry.register(entity, (context) -> new E2JMonoColorSheepRenderer(context, identifier));
     }
 
-    private static <E extends E2JBasePigEntity<E>> void registerPigEntityRenderer(EntityType<E> entity, String identifier) {
-        EntityRendererRegistry.INSTANCE.register(entity, (context) -> new E2JPigRenderer(context, identifier));
+    private static <E extends E2JBasePigEntity> void registerPigEntityRenderer(EntityType<E> entity, String identifier) {
+        EntityRendererRegistry.register(entity, (context) -> new E2JPigRenderer(context, identifier));
     }
 
     private static <E extends E2JBaseRabbitEntity<E>> void registerRabbitEntityRenderer(EntityType<E> entity, String identifier) {
-        EntityRendererRegistry.INSTANCE.register(entity, (context) -> new E2JRabbitRenderer(context, identifier));
+        EntityRendererRegistry.register(entity, (context) -> new E2JRabbitRenderer(context, identifier));
     }
 
 //    private static void registerZombieEntityRenderer(EntityType<?> entity, String identifier) {
-//        EntityRendererRegistry.INSTANCE.register(entity, (dispatcher, context) -> new E2JZombieRenderer(dispatcher, identifier));
+//        EntityRendererRegistry.register(entity, (dispatcher, context) -> new E2JZombieRenderer(dispatcher, identifier));
 //    }
 
 }
