@@ -1,6 +1,5 @@
 package slexom.earthtojava.mobs.events;
 
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -8,7 +7,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;

@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
 import java.util.UUID;
 
 
-public class HornedSheepEntity extends E2JBaseSheepEntity  implements Angerable, Shearable {
+public class HornedSheepEntity extends E2JBaseSheepEntity implements Angerable, Shearable {
 
     private static final TrackedData<Byte> DATA_FLAGS_ID = DataTracker.registerData(HornedSheepEntity.class, TrackedDataHandlerRegistry.BYTE);
     private static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(HornedSheepEntity.class, TrackedDataHandlerRegistry.INTEGER);

@@ -1,9 +1,8 @@
 package slexom.earthtojava.mobs.client.renderer.entity;
 
-import net.minecraft.client.render.entity.EntityRendererFactory.Context;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.entity.EntityRenderDispatcher;
+import net.minecraft.client.render.entity.EntityRendererFactory.Context;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.render.entity.model.SpiderEntityModel;

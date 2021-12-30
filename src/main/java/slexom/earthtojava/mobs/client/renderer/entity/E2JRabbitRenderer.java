@@ -6,7 +6,6 @@ import net.minecraft.client.render.entity.EntityRendererFactory.Context;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.render.entity.model.RabbitEntityModel;
-import net.minecraft.entity.passive.RabbitEntity;
 import net.minecraft.util.Identifier;
 import slexom.earthtojava.mobs.entity.base.E2JBaseRabbitEntity;
 

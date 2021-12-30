@@ -8,7 +8,7 @@ import net.minecraft.world.World;
 import slexom.earthtojava.mobs.entity.BlinkManager;
 
 public class E2JBaseLlamaEntity extends LlamaEntity {
-    
+
     public BlinkManager blinkManager;
 
     public E2JBaseLlamaEntity(EntityType<? extends LlamaEntity> type, World worldIn) {

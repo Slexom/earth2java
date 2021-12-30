@@ -10,7 +10,6 @@ import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.math.BlockPos;
 import slexom.earthtojava.mobs.init.BlockEntityTypeInit;
-import slexom.earthtojava.mobs.init.EntityTypesInit;
 
 public class RainbowBedBlockEntity extends BlockEntity {
     private DyeColor color;

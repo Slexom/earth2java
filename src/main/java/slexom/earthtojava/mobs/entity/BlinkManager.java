@@ -9,7 +9,7 @@ public class BlinkManager {
     private int remainingTick = 0;
     private int internalBlinkTick = 0;
 
-    public void tickBlink(){
+    public void tickBlink() {
         if (this.remainingTick > 0) {
             --this.remainingTick;
         }

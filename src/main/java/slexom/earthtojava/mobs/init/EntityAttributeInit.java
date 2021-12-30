@@ -64,7 +64,6 @@ public class EntityAttributeInit {
         RegisterHelper.registerEntityAttributes(EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT, IronGolemEntity.createIronGolemAttributes());
         RegisterHelper.registerEntityAttributes(EntityTypesInit.MELON_GOLEM_REGISTRY_OBJECT, MelonGolemEntity.createMelonGolemAttributes());
         RegisterHelper.registerEntityAttributes(EntityTypesInit.TROPICAL_SLIME_REGISTRY_OBJECT, HostileEntity.createHostileAttributes());
-        RegisterHelper.registerEntityAttributes(EntityTypesInit.GLOW_SQUID_REGISTRY_OBJECT, SquidEntity.createSquidAttributes());
 
         RegisterHelper.registerEntityAttributes(EntityTypesInit.BONE_SPIDER_REGISTRY_OBJECT, BoneSpiderEntity.createBoneSpiderAttributes());
 

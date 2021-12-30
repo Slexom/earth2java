@@ -13,7 +13,6 @@ import net.minecraft.item.Items;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import slexom.earthtojava.mobs.entity.BlinkManager;
@@ -79,7 +78,7 @@ public class VilerWitchEntity extends WitchEntity {
                 potionEntity.setItem(PotionUtil.setPotion(new ItemStack(Items.SPLASH_POTION), potion));
             }
             potionEntity.setPitch(potionEntity.getPitch() - -20.0F);
-            potionEntity.setVelocity(d, e +  (g * 0.2D), f, 0.75F, 8.0F);
+            potionEntity.setVelocity(d, e + (g * 0.2D), f, 0.75F, 8.0F);
             if (!this.isSilent()) {
                 this.world.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEventsInit.VILER_WITCH_CASTING, this.getSoundCategory(), 1.0F, 0.8F + this.random.nextFloat() * 0.4F);
             }

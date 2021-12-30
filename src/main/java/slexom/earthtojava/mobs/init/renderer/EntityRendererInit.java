@@ -4,8 +4,8 @@ import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.entity.EntityType;
-import slexom.earthtojava.mobs.client.renderer.entity.*;
 import slexom.earthtojava.mobs.client.renderer.block.entity.RainbowBedBlockEntityRenderer;
+import slexom.earthtojava.mobs.client.renderer.entity.*;
 import slexom.earthtojava.mobs.entity.base.*;
 import slexom.earthtojava.mobs.init.BlockEntityTypeInit;
 import slexom.earthtojava.mobs.init.EntityTypesInit;
@@ -75,7 +75,6 @@ public class EntityRendererInit {
 
     private static void registerSpecialVariantEntitiesRenderer() {
         EntityRendererRegistry.register(EntityTypesInit.CLUCKSHROOM_REGISTRY_OBJECT, CluckshroomRenderer::new);
-        EntityRendererRegistry.register(EntityTypesInit.GLOW_SQUID_REGISTRY_OBJECT, GlowSquidRenderer::new);
         EntityRendererRegistry.register(EntityTypesInit.HORNED_SHEEP_REGISTRY_OBJECT, HornedSheepRenderer::new);
         EntityRendererRegistry.register(EntityTypesInit.MOOBLOOM_REGISTRY_OBJECT, MoobloomRenderer::new);
         EntityRendererRegistry.register(EntityTypesInit.MOOLIP_REGISTRY_OBJECT, MoolipRenderer::new);
@@ -105,7 +104,7 @@ public class EntityRendererInit {
     }
 
     private static <E extends E2JBaseShearableCowEntity<E>> void registerShearableCowEntityRenderer(EntityType<E> entity, String identifier) {
-        EntityRendererRegistry.register(entity, ( context) -> new E2JShearableCowRenderer(context, identifier));
+        EntityRendererRegistry.register(entity, (context) -> new E2JShearableCowRenderer(context, identifier));
     }
 
     private static <E extends E2JBaseMonoColorSheepEntity> void registerMonoColorSheepEntityRenderer(EntityType<E> entity, String identifier) {

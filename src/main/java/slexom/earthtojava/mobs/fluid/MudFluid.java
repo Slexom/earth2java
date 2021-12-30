@@ -53,7 +53,7 @@ public class MudFluid extends FlowableFluid {
     @Override
     protected void beforeBreakingBlock(WorldAccess world, BlockPos pos, BlockState state) {
         BlockEntity blockEntity = state.hasBlockEntity() ? world.getBlockEntity(pos) : null;
-        Block.dropStacks(state, world , pos, blockEntity);
+        Block.dropStacks(state, world, pos, blockEntity);
     }
 
 

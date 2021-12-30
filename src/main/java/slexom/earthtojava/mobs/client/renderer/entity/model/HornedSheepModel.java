@@ -14,9 +14,8 @@ public class HornedSheepModel<T extends HornedSheepEntity> extends SheepEntityMo
 
     public HornedSheepModel(ModelPart root) {
         super(root);
-       // this.hornLeft = root.getChild("horn_left");
-       // this.hornRight = root.getChild("horn_right");
-
+        // this.hornLeft = root.getChild("horn_left");
+        // this.hornRight = root.getChild("horn_right");
 
 
     }

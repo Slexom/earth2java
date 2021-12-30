@@ -51,9 +51,9 @@ public class Utils {
 
     public static List<String> breakLine(String input, int maxLineLength) {
         List<String> res = new ArrayList<>();
-        Pattern pattern = Pattern.compile("\\b.{1," + (maxLineLength-1) + "}\\b\\W?");
+        Pattern pattern = Pattern.compile("\\b.{1," + (maxLineLength - 1) + "}\\b\\W?");
         Matcher matcher = pattern.matcher(input);
-        while(matcher.find()) {
+        while (matcher.find()) {
             res.add(matcher.group());
         }
         return res;

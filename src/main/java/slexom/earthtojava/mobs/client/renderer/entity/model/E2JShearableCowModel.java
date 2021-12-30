@@ -2,7 +2,7 @@ package slexom.earthtojava.mobs.client.renderer.entity.model;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.model.*;
+import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.CowEntityModel;
 import slexom.earthtojava.mobs.entity.base.E2JBaseShearableCowEntity;
 

@@ -8,8 +8,6 @@ import net.minecraft.entity.mob.SpiderEntity;
 import net.minecraft.world.World;
 import slexom.earthtojava.mobs.entity.BlinkManager;
 
-import java.util.Random;
-
 public class E2JBaseSpiderEntity<T extends SpiderEntity> extends SpiderEntity {
 
     public BlinkManager blinkManager;

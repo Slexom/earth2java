@@ -1,6 +1,5 @@
 package slexom.earthtojava.mobs.entity.passive;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.Shearable;

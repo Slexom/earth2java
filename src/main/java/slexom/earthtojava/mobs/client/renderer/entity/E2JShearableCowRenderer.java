@@ -1,17 +1,13 @@
 package slexom.earthtojava.mobs.client.renderer.entity;
 
-import net.minecraft.client.render.entity.EntityRenderDispatcher;
-import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.render.entity.MobEntityRenderer;
-import net.minecraft.client.render.entity.model.CowEntityModel;
-import net.minecraft.client.render.entity.model.EntityModelLayers;
-import net.minecraft.util.Identifier;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.client.render.entity.model.EntityModelLayers;
+import net.minecraft.util.Identifier;
 import slexom.earthtojava.mobs.client.renderer.entity.model.E2JShearableCowModel;
 import slexom.earthtojava.mobs.entity.base.E2JBaseShearableCowEntity;
-import slexom.earthtojava.mobs.entity.passive.UmbraCowEntity;
-import slexom.earthtojava.mobs.entity.passive.WoolyCowEntity;
 
 import java.text.MessageFormat;
 
@@ -21,7 +17,7 @@ public class E2JShearableCowRenderer extends MobEntityRenderer<E2JBaseShearableC
     private final String registryName;
 
     public E2JShearableCowRenderer(EntityRendererFactory.Context context, String registryName) {
-        super(context, new E2JShearableCowModel<>(context.getPart(EntityModelLayers.COW)),0.7F);
+        super(context, new E2JShearableCowModel<>(context.getPart(EntityModelLayers.COW)), 0.7F);
         this.registryName = registryName;
     }
 

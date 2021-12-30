@@ -19,7 +19,7 @@ public class HornedSheepWoolFeatureRenderer extends FeatureRenderer<HornedSheepE
     private static final Identifier TEXTURE = new Identifier("textures/entity/sheep/sheep_fur.png");
     private final SheepWoolEntityModel<HornedSheepEntity> woolEntityModel;
 
-    public HornedSheepWoolFeatureRenderer(FeatureRendererContext<HornedSheepEntity, HornedSheepModel<HornedSheepEntity>>  featureRendererContext, EntityModelLoader entityModelLoader) {
+    public HornedSheepWoolFeatureRenderer(FeatureRendererContext<HornedSheepEntity, HornedSheepModel<HornedSheepEntity>> featureRendererContext, EntityModelLoader entityModelLoader) {
         super(featureRendererContext);
         this.woolEntityModel = new SheepWoolEntityModel(entityModelLoader.getModelPart(EntityModelLayers.SHEEP_FUR));
     }

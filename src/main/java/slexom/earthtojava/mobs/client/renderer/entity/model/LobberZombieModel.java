@@ -12,6 +12,7 @@ public class LobberZombieModel<T extends LobberZombieEntity> extends ZombieEntit
     public LobberZombieModel(ModelPart modelPart) {
         super(modelPart);
     }
+
     public static ModelData getModelData(Dilation dilation, float pivotOffsetY) {
         ModelData modelData = new ModelData();
         ModelPartData modelPartData = modelData.getRoot();

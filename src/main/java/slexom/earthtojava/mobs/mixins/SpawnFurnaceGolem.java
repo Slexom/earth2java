@@ -26,7 +26,7 @@ public class SpawnFurnaceGolem {
 
     @Final
     @Shadow
-    private static Predicate<BlockState> IS_GOLEM_HEAD_PREDICATE ;
+    private static Predicate<BlockState> IS_GOLEM_HEAD_PREDICATE;
 
     private BlockPattern furnaceGolemPattern;
 

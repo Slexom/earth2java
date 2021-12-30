@@ -1,6 +1,5 @@
 package slexom.earthtojava.mobs.mixins;
 
-import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.client.render.BackgroundRenderer;

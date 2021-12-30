@@ -1,7 +1,6 @@
 package slexom.earthtojava.mobs.init;
 
 import net.minecraft.fluid.FlowableFluid;
-import net.minecraft.fluid.Fluid;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import slexom.earthtojava.mobs.Earth2JavaMod;

@@ -57,7 +57,7 @@ public class BoneShardEntity extends ThrownItemEntity {
 
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
-        this.playSound(SoundEventsInit.BONE_SPIDER_BONE_STAB, 1.0F, 1.0F );
+        this.playSound(SoundEventsInit.BONE_SPIDER_BONE_STAB, 1.0F, 1.0F);
         Entity entity = entityHitResult.getEntity();
         entity.damage(DamageSource.thrownProjectile(this, this.getOwner()), 10.0F);
     }

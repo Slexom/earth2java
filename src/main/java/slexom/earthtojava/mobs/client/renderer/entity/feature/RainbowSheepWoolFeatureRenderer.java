@@ -17,7 +17,7 @@ public class RainbowSheepWoolFeatureRenderer extends FeatureRenderer<RainbowShee
 
     public RainbowSheepWoolFeatureRenderer(FeatureRendererContext<RainbowSheepEntity, RainbowSheepModel<RainbowSheepEntity>> featureRendererContext, EntityModelLoader entityModelLoader) {
         super(featureRendererContext);
-        this. sheepModel = new RainbowSheepWoolModel<>(entityModelLoader.getModelPart(EntityModelLayersInit.RAINBOW_SHEEP_FUR_ENTITY_MODEL_LAYER));
+        this.sheepModel = new RainbowSheepWoolModel<>(entityModelLoader.getModelPart(EntityModelLayersInit.RAINBOW_SHEEP_FUR_ENTITY_MODEL_LAYER));
     }
 
     public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, RainbowSheepEntity entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {

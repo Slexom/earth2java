@@ -47,7 +47,7 @@ public class JollyLlamaModel extends EntityModel<JollyLlamaEntity> {
         return TexturedModelData.of(modelData, 128, 64);
     }
 
-    public void setAngles(JollyLlamaEntity  entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
+    public void setAngles(JollyLlamaEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
         this.head.pitch = headPitch * ((float) Math.PI / 180F);
         this.head.yaw = headYaw * ((float) Math.PI / 180F);
         this.backRightLeg.pitch = MathHelper.cos(limbAngle * 0.6662F) * 1.4F * limbDistance;
@@ -82,7 +82,7 @@ public class JollyLlamaModel extends EntityModel<JollyLlamaEntity> {
         }
     }
 
-    public void animateModel(JollyLlamaEntity entity,  float limbAngle, float limbDistance, float tickDelta) {
+    public void animateModel(JollyLlamaEntity entity, float limbAngle, float limbDistance, float tickDelta) {
         super.animateModel(entity, limbAngle, limbDistance, tickDelta);
         this.head.pivotY = 6.0F + entity.getNeckAngle(tickDelta) * 9.0F;
         this.headPitchModifier = entity.getHeadAngle(tickDelta);

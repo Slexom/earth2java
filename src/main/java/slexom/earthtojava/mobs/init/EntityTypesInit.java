@@ -85,7 +85,6 @@ public class EntityTypesInit {
     public static EntityType<E2JBaseRabbitEntity> FRECKLED_RABBIT_REGISTRY_OBJECT;
     public static EntityType<FurnaceGolemEntity> FURNACE_GOLEM_REGISTRY_OBJECT;
     public static EntityType<E2JBaseMonoColorSheepEntity> FUZZY_SHEEP_REGISTRY_OBJECT;
-    public static EntityType<GlowSquidEntity> GLOW_SQUID_REGISTRY_OBJECT;
     public static EntityType<E2JBaseChickenEntity> GOLD_CRESTED_CHICKEN_REGISTRY_OBJECT;
     public static EntityType<E2JBaseRabbitEntity> HARELEQUIN_RABBIT_REGISTRY_OBJECT;
     public static EntityType<HornedSheepEntity> HORNED_SHEEP_REGISTRY_OBJECT;
@@ -164,7 +163,6 @@ public class EntityTypesInit {
         CLUCKSHROOM_REGISTRY_OBJECT = RegisterHelper.registerEntity(CLUCKSHROOM_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, CluckshroomEntity::new).dimensions(chickenDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         FANCY_CHICKEN_REGISTRY_OBJECT = RegisterHelper.registerEntity(FANCY_CHICKEN_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, FancyChickenEntity::new).dimensions(chickenDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         FURNACE_GOLEM_REGISTRY_OBJECT = RegisterHelper.registerEntity(FURNACE_GOLEM_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.MISC, FurnaceGolemEntity::new).dimensions(EntityDimensions.fixed(EntityType.IRON_GOLEM.getWidth(), EntityType.IRON_GOLEM.getHeight())).fireImmune().trackRangeBlocks(64).trackedUpdateRate(3).build());
-        GLOW_SQUID_REGISTRY_OBJECT = RegisterHelper.registerEntity(GLOW_SQUID_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, GlowSquidEntity::new).dimensions(EntityDimensions.fixed(EntityType.SQUID.getWidth(), EntityType.SQUID.getHeight())).trackRangeBlocks(64).trackedUpdateRate(3).build());
         HORNED_SHEEP_REGISTRY_OBJECT = RegisterHelper.registerEntity(HORNED_SHEEP_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, HornedSheepEntity::new).dimensions(sheepDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         JOLLY_LLAMA_REGISTRY_OBJECT = RegisterHelper.registerEntity(JOLLY_LLAMA_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, JollyLlamaEntity::new).dimensions(EntityDimensions.fixed(EntityType.LLAMA.getWidth(), EntityType.LLAMA.getHeight())).trackRangeBlocks(64).trackedUpdateRate(3).build());
         JUMBO_RABBIT_REGISTRY_OBJECT = RegisterHelper.registerEntity(JUMBO_RABBIT_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, JumboRabbitEntity::new).dimensions(EntityDimensions.fixed(0.8F, 1.0F)).trackRangeBlocks(64).trackedUpdateRate(3).build());
