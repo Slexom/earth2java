@@ -9,12 +9,14 @@ import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import slexom.earthtojava.mobs.entity.BlinkManager;
+import slexom.earthtojava.mobs.entity.EntityVariantManager;
 
 import java.util.Random;
 
-public class E2JBaseChickenEntity<T extends ChickenEntity> extends ChickenEntity {
+public class E2JBaseChickenEntity extends ChickenEntity {
 
     public BlinkManager blinkManager;
+    private EntityVariantManager<E2JBaseChickenEntity> variantManager;
 
     public E2JBaseChickenEntity(EntityType<? extends ChickenEntity> type, World worldIn) {
         super(type, worldIn);
@@ -34,8 +36,8 @@ public class E2JBaseChickenEntity<T extends ChickenEntity> extends ChickenEntity
     }
 
     @Override
-    public T createChild(ServerWorld world, PassiveEntity passiveEntity) {
-        return (T) getType().create(world);
+    public E2JBaseChickenEntity createChild(ServerWorld world, PassiveEntity other) {
+        return variantManager.getChild(this, other).create(world);
     }
 
 }

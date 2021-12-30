@@ -9,7 +9,7 @@ import slexom.earthtojava.mobs.entity.ai.goal.FancyChickenFleeFromPigEntityGoal;
 import slexom.earthtojava.mobs.entity.base.E2JBaseChickenEntity;
 import slexom.earthtojava.mobs.init.SoundEventsInit;
 
-public class FancyChickenEntity extends E2JBaseChickenEntity<FancyChickenEntity> {
+public class FancyChickenEntity extends E2JBaseChickenEntity {
 
     public FancyChickenEntity(EntityType<FancyChickenEntity> type, World world) {
         super(type, world);

@@ -96,7 +96,7 @@ public class EntityRendererInit {
         EntityRendererRegistry.register(EntityTypesInit.VILER_WITCH_REGISTRY_OBJECT, VilerWitchRenderer::new);
      }
 
-    private static <E extends E2JBaseChickenEntity<E>> void registerChickenEntityRenderer(EntityType<E> entity, String identifier) {
+    private static <E extends E2JBaseChickenEntity> void registerChickenEntityRenderer(EntityType<E> entity, String identifier) {
         EntityRendererRegistry.register(entity, (context) -> new E2JChickenRenderer(context, identifier));
     }
 
@@ -119,9 +119,5 @@ public class EntityRendererInit {
     private static <E extends E2JBaseRabbitEntity<E>> void registerRabbitEntityRenderer(EntityType<E> entity, String identifier) {
         EntityRendererRegistry.register(entity, (context) -> new E2JRabbitRenderer(context, identifier));
     }
-
-//    private static void registerZombieEntityRenderer(EntityType<?> entity, String identifier) {
-//        EntityRendererRegistry.register(entity, (dispatcher, context) -> new E2JZombieRenderer(dispatcher, identifier));
-//    }
 
 }

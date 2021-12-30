@@ -8,7 +8,7 @@ import slexom.earthtojava.mobs.entity.ai.goal.CluckshroomPlaceBlockGoal;
 import slexom.earthtojava.mobs.entity.base.E2JBaseChickenEntity;
 
 
-public class CluckshroomEntity extends E2JBaseChickenEntity<CluckshroomEntity> {
+public class CluckshroomEntity extends E2JBaseChickenEntity{
 
     public CluckshroomEntity(EntityType<CluckshroomEntity> type, World world) {
         super(type, world);
