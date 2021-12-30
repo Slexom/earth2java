@@ -8,7 +8,7 @@ import net.minecraft.client.render.entity.model.SheepEntityModel;
 import slexom.earthtojava.mobs.entity.base.E2JBaseMonoColorSheepEntity;
 
 @Environment(EnvType.CLIENT)
-public class RainbowSheepModel<T extends E2JBaseMonoColorSheepEntity<T>> extends SheepEntityModel<T> {
+public class RainbowSheepModel<T extends E2JBaseMonoColorSheepEntity> extends SheepEntityModel<T> {
 
     public RainbowSheepModel(ModelPart root) {
         super(root);

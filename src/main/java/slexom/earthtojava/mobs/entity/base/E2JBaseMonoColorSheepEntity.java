@@ -17,7 +17,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 
-public class E2JBaseMonoColorSheepEntity<T extends E2JBaseSheepEntity<T>> extends E2JBaseSheepEntity<T> implements Shearable {
+public class E2JBaseMonoColorSheepEntity extends E2JBaseSheepEntity implements Shearable {
 
     private static final TrackedData<Byte> isSheared = DataTracker.registerData(E2JBaseMonoColorSheepEntity.class, TrackedDataHandlerRegistry.BYTE);
     private final ItemStack wool;

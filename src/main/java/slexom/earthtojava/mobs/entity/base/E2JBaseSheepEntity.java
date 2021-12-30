@@ -9,14 +9,17 @@ import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import slexom.earthtojava.mobs.entity.BlinkManager;
+import slexom.earthtojava.mobs.entity.EntityVariantManager;
 
-public class E2JBaseSheepEntity<T extends SheepEntity> extends SheepEntity {
+public class E2JBaseSheepEntity extends SheepEntity {
 
     public BlinkManager blinkManager;
+    private final EntityVariantManager<E2JBaseSheepEntity> variantManager;
 
     public E2JBaseSheepEntity(EntityType<? extends SheepEntity> type, World worldIn) {
         super(type, worldIn);
         blinkManager = new BlinkManager();
+        variantManager = new EntityVariantManager<>();
         experiencePoints = 3;
         setAiDisabled(false);
     }
@@ -32,8 +35,8 @@ public class E2JBaseSheepEntity<T extends SheepEntity> extends SheepEntity {
     }
 
     @Override
-    public T createChild(ServerWorld world, PassiveEntity passiveEntity) {
-        return (T) getType().create(world);
+    public E2JBaseSheepEntity createChild(ServerWorld world, PassiveEntity other) {
+        return variantManager.getChild(this, other).create(world);
     }
 
 }

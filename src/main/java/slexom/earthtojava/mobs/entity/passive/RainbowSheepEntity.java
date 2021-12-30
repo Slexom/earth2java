@@ -8,7 +8,7 @@ import slexom.earthtojava.mobs.entity.base.E2JBaseMonoColorSheepEntity;
 import slexom.earthtojava.mobs.init.BlockInit;
 import slexom.earthtojava.mobs.init.SoundEventsInit;
 
-public class RainbowSheepEntity extends E2JBaseMonoColorSheepEntity<RainbowSheepEntity> {
+public class RainbowSheepEntity extends E2JBaseMonoColorSheepEntity {
 
     public RainbowSheepEntity(EntityType<? extends RainbowSheepEntity> type, World world) {
         super(type, world, new ItemStack(BlockInit.RAINBOW_WOOL));

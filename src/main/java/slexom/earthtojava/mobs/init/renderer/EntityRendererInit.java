@@ -108,7 +108,7 @@ public class EntityRendererInit {
         EntityRendererRegistry.register(entity, ( context) -> new E2JShearableCowRenderer(context, identifier));
     }
 
-    private static <E extends E2JBaseMonoColorSheepEntity<E>> void registerMonoColorSheepEntityRenderer(EntityType<E> entity, String identifier) {
+    private static <E extends E2JBaseMonoColorSheepEntity> void registerMonoColorSheepEntityRenderer(EntityType<E> entity, String identifier) {
         EntityRendererRegistry.register(entity, (context) -> new E2JMonoColorSheepRenderer(context, identifier));
     }
 

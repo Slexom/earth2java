@@ -1,17 +1,12 @@
 package slexom.earthtojava.mobs.init;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
-import net.minecraft.entity.Entity;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
-import slexom.earthtojava.mobs.Earth2JavaMod;
-import slexom.earthtojava.mobs.entity.base.E2JBaseChickenEntity;
-import slexom.earthtojava.mobs.entity.base.E2JBaseCowEntity;
-import slexom.earthtojava.mobs.entity.base.E2JBasePigEntity;
-import slexom.earthtojava.mobs.entity.base.E2JBaseRabbitEntity;
+import net.minecraft.item.ItemStack;
+import slexom.earthtojava.mobs.entity.base.*;
 import slexom.earthtojava.mobs.entity.monster.*;
 import slexom.earthtojava.mobs.entity.passive.*;
 import slexom.earthtojava.mobs.entity.projectile.BoneShardEntity;
@@ -86,19 +81,19 @@ public class EntityTypesInit {
     public static EntityType<E2JBaseCowEntity> CREAM_COW_REGISTRY_OBJECT;
     public static EntityType<E2JBaseCowEntity> DAIRY_COW_REGISTRY_OBJECT;
     public static EntityType<FancyChickenEntity> FANCY_CHICKEN_REGISTRY_OBJECT;
-    public static EntityType<FleckedSheepEntity> FLECKED_SHEEP_REGISTRY_OBJECT;
+    public static EntityType<E2JBaseMonoColorSheepEntity> FLECKED_SHEEP_REGISTRY_OBJECT;
     public static EntityType<E2JBaseRabbitEntity> FRECKLED_RABBIT_REGISTRY_OBJECT;
     public static EntityType<FurnaceGolemEntity> FURNACE_GOLEM_REGISTRY_OBJECT;
-    public static EntityType<FuzzySheepEntity> FUZZY_SHEEP_REGISTRY_OBJECT;
+    public static EntityType<E2JBaseMonoColorSheepEntity> FUZZY_SHEEP_REGISTRY_OBJECT;
     public static EntityType<GlowSquidEntity> GLOW_SQUID_REGISTRY_OBJECT;
     public static EntityType<E2JBaseChickenEntity> GOLD_CRESTED_CHICKEN_REGISTRY_OBJECT;
     public static EntityType<E2JBaseRabbitEntity> HARELEQUIN_RABBIT_REGISTRY_OBJECT;
     public static EntityType<HornedSheepEntity> HORNED_SHEEP_REGISTRY_OBJECT;
-    public static EntityType<InkySheepEntity> INKY_SHEEP_REGISTRY_OBJECT;
+    public static EntityType<E2JBaseMonoColorSheepEntity> INKY_SHEEP_REGISTRY_OBJECT;
     public static EntityType<JollyLlamaEntity> JOLLY_LLAMA_REGISTRY_OBJECT;
     public static EntityType<JumboRabbitEntity> JUMBO_RABBIT_REGISTRY_OBJECT;
     public static EntityType<LobberZombieEntity> LOBBER_ZOMBIE_REGISTRY_OBJECT;
-    public static EntityType<LongNosedSheepEntity> LONG_NOSED_SHEEP_REGISTRY_OBJECT;
+    public static EntityType<E2JBaseMonoColorSheepEntity> LONG_NOSED_SHEEP_REGISTRY_OBJECT;
     public static EntityType<MelonGolemEntity> MELON_GOLEM_REGISTRY_OBJECT;
     public static EntityType<MelonSeedProjectileEntity> MELON_SEED_PROJECTILE_REGISTRY_OBJECT;
     public static EntityType<E2JBaseChickenEntity> MIDNIGHT_CHICKEN_REGISTRY_OBJECT;
@@ -108,12 +103,12 @@ public class EntityTypesInit {
     public static EntityType<E2JBaseRabbitEntity> MUDDY_FOOT_RABBIT_REGISTRY_OBJECT;
     public static EntityType<MuddyPigEntity> MUDDY_PIG_REGISTRY_OBJECT;
     public static EntityType<E2JBasePigEntity> PALE_PIG_REGISTRY_OBJECT;
-    public static EntityType<PatchedSheepEntity> PATCHED_SHEEP_REGISTRY_OBJECT;
+    public static EntityType<E2JBaseMonoColorSheepEntity> PATCHED_SHEEP_REGISTRY_OBJECT;
     public static EntityType<E2JBasePigEntity> PIEBALD_PIG_REGISTRY_OBJECT;
     public static EntityType<E2JBasePigEntity> PINK_FOOTED_PIG_REGISTRY_OBJECT;
     public static EntityType<E2JBaseCowEntity> PINTO_COW_REGISTRY_OBJECT;
     public static EntityType<RainbowSheepEntity> RAINBOW_SHEEP_REGISTRY_OBJECT;
-    public static EntityType<RockySheepEntity> ROCKY_SHEEP_REGISTRY_OBJECT;
+    public static EntityType<E2JBaseMonoColorSheepEntity> ROCKY_SHEEP_REGISTRY_OBJECT;
     public static EntityType<RottenFleshProjectileEntity> ROTTEN_FLESH_PROJECTILE_REGISTRY_OBJECT;
     public static EntityType<SkeletonWolfEntity> SKELETON_WOLF_REGISTRY_OBJECT;
     public static EntityType<E2JBaseChickenEntity> SKEWBALD_CHICKEN_REGISTRY_OBJECT;
@@ -135,53 +130,55 @@ public class EntityTypesInit {
         DAIRY_COW_REGISTRY_OBJECT = registerBaseCowEntity(DAIRY_COW_REGISTRY_NAME);
         PINTO_COW_REGISTRY_OBJECT = registerBaseCowEntity(PINTO_COW_REGISTRY_NAME);
         SUNSET_COW_REGISTRY_OBJECT = registerBaseCowEntity(SUNSET_COW_REGISTRY_NAME);
-        
+
         AMBER_CHICKEN_REGISTRY_OBJECT = registerBaseChickenEntity(AMBER_CHICKEN_REGISTRY_NAME);
         BRONZED_CHICKEN_REGISTRY_OBJECT = registerBaseChickenEntity(BRONZED_CHICKEN_REGISTRY_NAME);
+        GOLD_CRESTED_CHICKEN_REGISTRY_OBJECT = registerBaseChickenEntity(GOLD_CRESTED_CHICKEN_REGISTRY_NAME);
+        MIDNIGHT_CHICKEN_REGISTRY_OBJECT = registerBaseChickenEntity(MIDNIGHT_CHICKEN_REGISTRY_NAME);
+        SKEWBALD_CHICKEN_REGISTRY_OBJECT = registerBaseChickenEntity(SKEWBALD_CHICKEN_REGISTRY_NAME);
+        STORMY_CHICKEN_REGISTRY_OBJECT = registerBaseChickenEntity(STORMY_CHICKEN_REGISTRY_NAME);
+
+        MOTTLED_PIG_REGISTRY_OBJECT = registerBasePigEntity(MOTTLED_PIG_REGISTRY_NAME);
+        PALE_PIG_REGISTRY_OBJECT = registerBasePigEntity(PALE_PIG_REGISTRY_NAME);
+        PIEBALD_PIG_REGISTRY_OBJECT = registerBasePigEntity(PIEBALD_PIG_REGISTRY_NAME);
+        PINK_FOOTED_PIG_REGISTRY_OBJECT = registerBasePigEntity(PINK_FOOTED_PIG_REGISTRY_NAME);
+        SOOTY_PIG_REGISTRY_OBJECT = registerBasePigEntity(SOOTY_PIG_REGISTRY_NAME);
+        SPOTTED_PIG_REGISTRY_OBJECT = registerBasePigEntity(SPOTTED_PIG_REGISTRY_NAME);
+
+        BOLD_STRIPED_RABBIT_REGISTRY_OBJECT = registerBaseRabbitEntity(BOLD_STRIPED_RABBIT_REGISTRY_NAME);
+        FRECKLED_RABBIT_REGISTRY_OBJECT = registerBaseRabbitEntity(FRECKLED_RABBIT_REGISTRY_NAME);
+        HARELEQUIN_RABBIT_REGISTRY_OBJECT = registerBaseRabbitEntity(HARELEQUIN_RABBIT_REGISTRY_NAME);
+        MUDDY_FOOT_RABBIT_REGISTRY_OBJECT = registerBaseRabbitEntity(MUDDY_FOOT_RABBIT_REGISTRY_NAME);
+        VESTED_RABBIT_REGISTRY_OBJECT = registerBaseRabbitEntity(VESTED_RABBIT_REGISTRY_NAME);
+
+        FLECKED_SHEEP_REGISTRY_OBJECT = registerBaseMonoColorSheepEntity(FLECKED_SHEEP_REGISTRY_NAME, new ItemStack(Blocks.BROWN_WOOL));
+        FUZZY_SHEEP_REGISTRY_OBJECT = registerBaseMonoColorSheepEntity(FUZZY_SHEEP_REGISTRY_NAME, new ItemStack(Blocks.WHITE_WOOL));
+        INKY_SHEEP_REGISTRY_OBJECT = registerBaseMonoColorSheepEntity(INKY_SHEEP_REGISTRY_NAME, new ItemStack(Blocks.BLACK_WOOL));
+        LONG_NOSED_SHEEP_REGISTRY_OBJECT = registerBaseMonoColorSheepEntity(LONG_NOSED_SHEEP_REGISTRY_NAME, new ItemStack(Blocks.BROWN_WOOL));
+        PATCHED_SHEEP_REGISTRY_OBJECT = registerBaseMonoColorSheepEntity(PATCHED_SHEEP_REGISTRY_NAME, new ItemStack(Blocks.WHITE_WOOL));
+        ROCKY_SHEEP_REGISTRY_OBJECT = registerBaseMonoColorSheepEntity(ROCKY_SHEEP_REGISTRY_NAME, new ItemStack(Blocks.GRAY_WOOL));
 
         BONE_SHARD_REGISTRY_OBJECT = RegisterHelper.registerEntity(BONE_SHARD_REGISTRY_NAME, FabricEntityTypeBuilder.<BoneShardEntity>create(SpawnGroup.MISC, BoneShardEntity::new).dimensions(EntityDimensions.fixed(0.25F, 0.25F)).trackRangeBlocks(64).trackedUpdateRate(3).build());
-        BOLD_STRIPED_RABBIT_REGISTRY_OBJECT = registerBaseRabbitEntity(BOLD_STRIPED_RABBIT_REGISTRY_NAME);
         BONE_SPIDER_REGISTRY_OBJECT = RegisterHelper.registerEntity(BONE_SPIDER_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, BoneSpiderEntity::new).dimensions(EntityDimensions.fixed(0.6F, 0.7F)).trackRangeBlocks(64).trackedUpdateRate(3).build());
         BOULDERING_ZOMBIE_REGISTRY_OBJECT = RegisterHelper.registerEntity(BOULDERING_ZOMBIE_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, BoulderingZombieEntity::new).dimensions(EntityDimensions.fixed(EntityType.ZOMBIE.getWidth(), EntityType.ZOMBIE.getHeight())).trackRangeBlocks(64).trackedUpdateRate(3).build());
-
         CLUCKSHROOM_REGISTRY_OBJECT = RegisterHelper.registerEntity(CLUCKSHROOM_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, CluckshroomEntity::new).dimensions(chickenDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         FANCY_CHICKEN_REGISTRY_OBJECT = RegisterHelper.registerEntity(FANCY_CHICKEN_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, FancyChickenEntity::new).dimensions(chickenDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
-        FLECKED_SHEEP_REGISTRY_OBJECT = RegisterHelper.registerEntity(FLECKED_SHEEP_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, FleckedSheepEntity::new).dimensions(sheepDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
-        FRECKLED_RABBIT_REGISTRY_OBJECT = registerBaseRabbitEntity(FRECKLED_RABBIT_REGISTRY_NAME);
         FURNACE_GOLEM_REGISTRY_OBJECT = RegisterHelper.registerEntity(FURNACE_GOLEM_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.MISC, FurnaceGolemEntity::new).dimensions(EntityDimensions.fixed(EntityType.IRON_GOLEM.getWidth(), EntityType.IRON_GOLEM.getHeight())).fireImmune().trackRangeBlocks(64).trackedUpdateRate(3).build());
-        FUZZY_SHEEP_REGISTRY_OBJECT = RegisterHelper.registerEntity(FUZZY_SHEEP_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, FuzzySheepEntity::new).dimensions(sheepDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         GLOW_SQUID_REGISTRY_OBJECT = RegisterHelper.registerEntity(GLOW_SQUID_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.WATER_CREATURE, GlowSquidEntity::new).dimensions(EntityDimensions.fixed(EntityType.SQUID.getWidth(), EntityType.SQUID.getHeight())).trackRangeBlocks(64).trackedUpdateRate(3).build());
-        GOLD_CRESTED_CHICKEN_REGISTRY_OBJECT = registerBaseChickenEntity(GOLD_CRESTED_CHICKEN_REGISTRY_NAME);
-        HARELEQUIN_RABBIT_REGISTRY_OBJECT = registerBaseRabbitEntity(HARELEQUIN_RABBIT_REGISTRY_NAME);
         HORNED_SHEEP_REGISTRY_OBJECT = RegisterHelper.registerEntity(HORNED_SHEEP_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, HornedSheepEntity::new).dimensions(sheepDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
-        INKY_SHEEP_REGISTRY_OBJECT = RegisterHelper.registerEntity(INKY_SHEEP_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, InkySheepEntity::new).dimensions(sheepDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         JOLLY_LLAMA_REGISTRY_OBJECT = RegisterHelper.registerEntity(JOLLY_LLAMA_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, JollyLlamaEntity::new).dimensions(EntityDimensions.fixed(EntityType.LLAMA.getWidth(), EntityType.LLAMA.getHeight())).trackRangeBlocks(64).trackedUpdateRate(3).build());
         JUMBO_RABBIT_REGISTRY_OBJECT = RegisterHelper.registerEntity(JUMBO_RABBIT_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, JumboRabbitEntity::new).dimensions(EntityDimensions.fixed(0.8F, 1.0F)).trackRangeBlocks(64).trackedUpdateRate(3).build());
         LOBBER_ZOMBIE_REGISTRY_OBJECT = RegisterHelper.registerEntity(LOBBER_ZOMBIE_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, LobberZombieEntity::new).dimensions(EntityDimensions.fixed(EntityType.ZOMBIE.getWidth(), EntityType.ZOMBIE.getHeight())).trackRangeBlocks(64).trackedUpdateRate(3).build());
-        LONG_NOSED_SHEEP_REGISTRY_OBJECT = RegisterHelper.registerEntity(LONG_NOSED_SHEEP_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, LongNosedSheepEntity::new).dimensions(sheepDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         MELON_GOLEM_REGISTRY_OBJECT = RegisterHelper.registerEntity(MELON_GOLEM_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.MISC, MelonGolemEntity::new).dimensions(EntityDimensions.fixed(EntityType.SNOW_GOLEM.getWidth(), EntityType.SNOW_GOLEM.getHeight())).trackRangeBlocks(64).trackedUpdateRate(3).build());
         MELON_SEED_PROJECTILE_REGISTRY_OBJECT = RegisterHelper.registerEntity(MELON_SEED_PROJECTILE_REGISTRY_NAME, FabricEntityTypeBuilder.<MelonSeedProjectileEntity>create(SpawnGroup.MISC, MelonSeedProjectileEntity::new).dimensions(EntityDimensions.fixed(0.25F, 0.25F)).trackRangeBlocks(64).trackedUpdateRate(3).build());
-        MIDNIGHT_CHICKEN_REGISTRY_OBJECT = registerBaseChickenEntity(MIDNIGHT_CHICKEN_REGISTRY_NAME);
         MOOBLOOM_REGISTRY_OBJECT = RegisterHelper.registerEntity(MOOBLOOM_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MoobloomEntity::new).dimensions(cowDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         MOOLIP_REGISTRY_OBJECT = RegisterHelper.registerEntity(MOOLIP_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MoolipEntity::new).dimensions(cowDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
-        MOTTLED_PIG_REGISTRY_OBJECT = registerBasePigEntity(MOTTLED_PIG_REGISTRY_NAME);
-        MUDDY_FOOT_RABBIT_REGISTRY_OBJECT = registerBaseRabbitEntity(MUDDY_FOOT_RABBIT_REGISTRY_NAME);
         MUDDY_PIG_REGISTRY_OBJECT = RegisterHelper.registerEntity(MUDDY_PIG_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, MuddyPigEntity::new).dimensions(pigDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
-        PALE_PIG_REGISTRY_OBJECT = registerBasePigEntity(PALE_PIG_REGISTRY_NAME);
-        PATCHED_SHEEP_REGISTRY_OBJECT = RegisterHelper.registerEntity(PATCHED_SHEEP_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, PatchedSheepEntity::new).dimensions(sheepDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
-        PIEBALD_PIG_REGISTRY_OBJECT = registerBasePigEntity(PIEBALD_PIG_REGISTRY_NAME);
-        PINK_FOOTED_PIG_REGISTRY_OBJECT = registerBasePigEntity(PINK_FOOTED_PIG_REGISTRY_NAME);
         RAINBOW_SHEEP_REGISTRY_OBJECT = RegisterHelper.registerEntity(RAINBOW_SHEEP_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, RainbowSheepEntity::new).dimensions(sheepDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
-        ROCKY_SHEEP_REGISTRY_OBJECT = RegisterHelper.registerEntity(ROCKY_SHEEP_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, RockySheepEntity::new).dimensions(sheepDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
         ROTTEN_FLESH_PROJECTILE_REGISTRY_OBJECT = RegisterHelper.registerEntity(ROTTEN_FLESH_PROJECTILE_REGISTRY_NAME, FabricEntityTypeBuilder.<RottenFleshProjectileEntity>create(SpawnGroup.MISC, RottenFleshProjectileEntity::new).dimensions(EntityDimensions.fixed(0.25F, 0.25F)).trackRangeBlocks(64).trackedUpdateRate(3).build());
         SKELETON_WOLF_REGISTRY_OBJECT = RegisterHelper.registerEntity(SKELETON_WOLF_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, SkeletonWolfEntity::new).dimensions(EntityDimensions.fixed(EntityType.WOLF.getWidth(), EntityType.WOLF.getHeight())).trackRangeBlocks(64).trackedUpdateRate(3).build());
-        SKEWBALD_CHICKEN_REGISTRY_OBJECT = registerBaseChickenEntity(SKEWBALD_CHICKEN_REGISTRY_NAME);
-        SOOTY_PIG_REGISTRY_OBJECT = registerBasePigEntity(SOOTY_PIG_REGISTRY_NAME);
-        SPOTTED_PIG_REGISTRY_OBJECT = registerBasePigEntity(SPOTTED_PIG_REGISTRY_NAME);
-        STORMY_CHICKEN_REGISTRY_OBJECT = registerBaseChickenEntity(STORMY_CHICKEN_REGISTRY_NAME);
         TROPICAL_SLIME_REGISTRY_OBJECT = RegisterHelper.registerEntity(TROPICAL_SLIME_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, TropicalSlimeEntity::new).dimensions(EntityDimensions.fixed(2.04F, 2.04F)).fireImmune().trackRangeBlocks(64).trackedUpdateRate(3).build());
         UMBRA_COW_REGISTRY_OBJECT = RegisterHelper.registerEntity(UMBRA_COW_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, UmbraCowEntity::new).dimensions(cowDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
-        VESTED_RABBIT_REGISTRY_OBJECT = registerBaseRabbitEntity(VESTED_RABBIT_REGISTRY_NAME);
         VILER_WITCH_REGISTRY_OBJECT = RegisterHelper.registerEntity(VILER_WITCH_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, VilerWitchEntity::new).dimensions(EntityDimensions.fixed(EntityType.WITCH.getWidth(), EntityType.WITCH.getHeight())).trackRangeBlocks(64).trackedUpdateRate(3).build());
         WOOLY_COW_REGISTRY_OBJECT = RegisterHelper.registerEntity(WOOLY_COW_REGISTRY_NAME, FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, WoolyCowEntity::new).dimensions(cowDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build());
     }
@@ -200,11 +197,17 @@ public class EntityTypesInit {
         EntityType<E2JBasePigEntity> entityType = FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, E2JBasePigEntity::new).dimensions(pigDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build();
         return RegisterHelper.registerEntity(registryName, entityType);
     }
-    
+
     private static EntityType<E2JBaseRabbitEntity> registerBaseRabbitEntity(String registryName) {
         EntityType<E2JBaseRabbitEntity> entityType = FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, E2JBaseRabbitEntity::new).dimensions(rabbitDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build();
         return RegisterHelper.registerEntity(registryName, entityType);
     }
+
+    private static EntityType<E2JBaseMonoColorSheepEntity> registerBaseMonoColorSheepEntity(String registryName, ItemStack wool) {
+        EntityType<E2JBaseMonoColorSheepEntity> entityType = FabricEntityTypeBuilder.<E2JBaseMonoColorSheepEntity>create(SpawnGroup.CREATURE, (type, world) -> new E2JBaseMonoColorSheepEntity(type, world, wool)).dimensions(sheepDimensions()).trackRangeBlocks(64).trackedUpdateRate(3).build();
+        return RegisterHelper.registerEntity(registryName, entityType);
+    }
+
 
     private static EntityDimensions chickenDimensions() {
         return EntityDimensions.fixed(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight());
