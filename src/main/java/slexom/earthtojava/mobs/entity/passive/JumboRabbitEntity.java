@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 import slexom.earthtojava.mobs.entity.base.E2JBaseRabbitEntity;
 import slexom.earthtojava.mobs.init.SoundEventsInit;
 
-public class JumboRabbitEntity extends E2JBaseRabbitEntity<JumboRabbitEntity> {
+public class JumboRabbitEntity extends E2JBaseRabbitEntity {
 
     public JumboRabbitEntity(EntityType<JumboRabbitEntity> type, World world) {
         super(type, world);

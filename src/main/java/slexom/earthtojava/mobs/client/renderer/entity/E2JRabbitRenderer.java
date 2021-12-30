@@ -13,7 +13,7 @@ import slexom.earthtojava.mobs.entity.base.E2JBaseRabbitEntity;
 import java.text.MessageFormat;
 
 @Environment(EnvType.CLIENT)
-public class E2JRabbitRenderer extends MobEntityRenderer<E2JBaseRabbitEntity<? extends RabbitEntity>, RabbitEntityModel<E2JBaseRabbitEntity<? extends RabbitEntity>>> {
+public class E2JRabbitRenderer extends MobEntityRenderer<E2JBaseRabbitEntity, RabbitEntityModel<E2JBaseRabbitEntity>> {
 
     private final String registryName;
 
@@ -23,7 +23,7 @@ public class E2JRabbitRenderer extends MobEntityRenderer<E2JBaseRabbitEntity<? e
     }
 
     @Override
-    public Identifier getTexture(E2JBaseRabbitEntity<? extends RabbitEntity> entity) {
+    public Identifier getTexture(E2JBaseRabbitEntity entity) {
         String resourceTexture = MessageFormat.format("earthtojavamobs:textures/mobs/rabbit/{0}/{0}.png", this.registryName);
         String resourceTextureBlink = MessageFormat.format("earthtojavamobs:textures/mobs/rabbit/{0}/{0}_blink.png", this.registryName);
         Identifier texture = new Identifier(resourceTexture);

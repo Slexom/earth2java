@@ -9,14 +9,17 @@ import net.minecraft.entity.passive.RabbitEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import slexom.earthtojava.mobs.entity.BlinkManager;
+import slexom.earthtojava.mobs.entity.EntityVariantManager;
 
-public class E2JBaseRabbitEntity<T extends RabbitEntity> extends RabbitEntity {
+public class E2JBaseRabbitEntity extends RabbitEntity {
 
     public BlinkManager blinkManager;
+    private final EntityVariantManager<E2JBaseRabbitEntity> variantManager;
 
     public E2JBaseRabbitEntity(EntityType<? extends RabbitEntity> type, World worldIn) {
         super(type, worldIn);
         blinkManager = new BlinkManager();
+        variantManager = new EntityVariantManager<>();
         experiencePoints = 3;
         setAiDisabled(false);
     }
@@ -32,8 +35,8 @@ public class E2JBaseRabbitEntity<T extends RabbitEntity> extends RabbitEntity {
     }
 
     @Override
-    public T createChild(ServerWorld world, PassiveEntity passiveEntity) {
-        return (T) getType().create(world);
+    public E2JBaseRabbitEntity createChild(ServerWorld world, PassiveEntity other) {
+        return variantManager.getChild(this, other).create(world);
     }
 
 }

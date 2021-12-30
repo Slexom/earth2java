@@ -116,7 +116,7 @@ public class EntityRendererInit {
         EntityRendererRegistry.register(entity, (context) -> new E2JPigRenderer(context, identifier));
     }
 
-    private static <E extends E2JBaseRabbitEntity<E>> void registerRabbitEntityRenderer(EntityType<E> entity, String identifier) {
+    private static <E extends E2JBaseRabbitEntity> void registerRabbitEntityRenderer(EntityType<E> entity, String identifier) {
         EntityRendererRegistry.register(entity, (context) -> new E2JRabbitRenderer(context, identifier));
     }
 
