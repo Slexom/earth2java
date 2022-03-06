@@ -22,8 +22,15 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.FeatureConfig;
+import net.minecraft.world.gen.feature.PlacedFeature;
+import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import slexom.earthtojava.mobs.Earth2JavaMod;
 import slexom.earthtojava.mobs.utils.Utils;
 
@@ -78,6 +85,18 @@ public class RegisterHelper {
     public static SoundEvent registerSoundEvent(String registryName) {
         final Identifier identifier = new Identifier(Earth2JavaMod.MOD_ID, registryName);
         return Registry.register(Registry.SOUND_EVENT, identifier, new SoundEvent(identifier));
+    }
+
+
+    public static <FC extends FeatureConfig, F extends Feature<FC>> ConfiguredFeature<FC, F> registerConfiguredFeature(String registryName, F feature, FC config) {
+        final Identifier identifier = new Identifier(Earth2JavaMod.MOD_ID, registryName);
+        return Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, identifier, new ConfiguredFeature<>(feature, config));
+    }
+
+
+    public static PlacedFeature registerPlacedFeature(String registryName, ConfiguredFeature<?, ?> configuredFeature, PlacementModifier... placementModifiers) {
+        return Registry.register(BuiltinRegistries.PLACED_FEATURE, new Identifier(Earth2JavaMod.MOD_ID, registryName), new PlacedFeature(RegistryEntry.of(configuredFeature), List.of(placementModifiers)));
+
     }
 
 }

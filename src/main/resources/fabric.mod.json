@@ -31,10 +31,10 @@
     ],
     "accessWidener": "e2j.accesswidener",
     "depends": {
-        "fabricloader": ">=0.11.3",
+        "fabricloader": ">=0.13.3",
         "fabric": "*",
-        "minecraft": "1.18.x",
-        "java": ">=16"
+        "minecraft": "1.18.2",
+        "java": ">=17"
     },
     "custom": {
         "modupdater": {
