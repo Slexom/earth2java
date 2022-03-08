@@ -12,6 +12,7 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.WaterCreatureEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.util.registry.BuiltinRegistries;
+import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.biome.Biome;
 import org.jetbrains.annotations.ApiStatus;
 
@@ -89,6 +90,10 @@ public final class BiomeSpawnHelper {
     private static void setSpawnBiomes(EntityType<?> entity, String[] spawnBiomes, int weight, int minGroupSize, int maxGroupSize, SpawnGroup classification) {
         List<String> blackList = Arrays.stream(spawnBiomes).filter(id -> id.contains("!")).collect(Collectors.toList());
         List<String> spawnList = expandSpawnList(Arrays.stream(spawnBiomes).filter(id -> !id.contains("!")).collect(Collectors.toList()));
+
+     System.out.println(spawnList);
+
+
         blackList.replaceAll(s -> s.replace("!", ""));
         spawnList.removeAll(blackList);
         addEntityToBiomes(entity, spawnList, minGroupSize, maxGroupSize, classification, weight);
@@ -107,8 +112,8 @@ public final class BiomeSpawnHelper {
         });
         for (String biomeCategory : biomeCategories) {
             BuiltinRegistries.BIOME.forEach(biome -> {
-                if (biome.getCategory().toString().equalsIgnoreCase(biomeCategory)) {
-                    biomesFromCategories.add(BuiltinRegistries.BIOME.getId(biome).toString());
+                if (Biome.getCategory(RegistryEntry.of(biome)).toString().equalsIgnoreCase(biomeCategory)) {
+                    biomesFromCategories.add(BuiltinRegistries.BIOME.getKey(biome).toString());
                 }
             });
         }

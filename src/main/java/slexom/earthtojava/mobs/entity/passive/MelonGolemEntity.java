@@ -93,7 +93,7 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob {
                 this.damage(DamageSource.DROWN, 1.0F);
             }
 
-            if (this.world.getBiome(position).isHot(position)) {
+            if (this.world.getBiome(position).value().isHot(position)) {
                 this.damage(DamageSource.ON_FIRE, 1.0F);
             }
 

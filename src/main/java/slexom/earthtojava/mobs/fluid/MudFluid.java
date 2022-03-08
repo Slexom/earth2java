@@ -12,9 +12,11 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.item.Item;
 import net.minecraft.state.StateManager;
 import net.minecraft.tag.FluidTags;
+import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
@@ -71,7 +73,8 @@ public class MudFluid extends FlowableFluid {
     @Override
     public boolean canBeReplacedWith(FluidState state, BlockView world, BlockPos pos, Fluid fluid, Direction direction) {
         Identifier mudTag = new Identifier(Earth2JavaMod.MOD_ID, "mud");
-        return direction == Direction.DOWN && !fluid.isIn(TagRegistry.fluid(mudTag));
+        TagKey<Fluid> mudTagKey = TagKey.of(Registry.FLUID_KEY, mudTag);
+        return direction == Direction.DOWN && !fluid.isIn(mudTagKey);
     }
 
     @Override
@@ -106,7 +109,8 @@ public class MudFluid extends FlowableFluid {
     @Override
     protected void flow(WorldAccess worldIn, BlockPos pos, BlockState blockStateIn, Direction direction, FluidState fluidStateIn) {
         Identifier mudTag = new Identifier(Earth2JavaMod.MOD_ID, "mud");
-        if (this.getFlowing().isIn(TagRegistry.fluid(mudTag))) {
+        TagKey<Fluid> mudTagKey = TagKey.of(Registry.FLUID_KEY, mudTag);
+        if (this.getFlowing().isIn(mudTagKey)) {
             boolean flag = false;
             for (Direction dir : Direction.values()) {
                 if (worldIn.getFluidState(pos.offset(dir)).isIn(FluidTags.LAVA)) {
