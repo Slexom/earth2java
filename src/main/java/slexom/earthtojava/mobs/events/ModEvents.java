@@ -1,6 +1,7 @@
 package slexom.earthtojava.mobs.events;
 
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -31,7 +32,7 @@ public class ModEvents {
             if (block == Blocks.MELON) {
                 BlockPos pos = hitResult.getBlockPos();
                 ItemStack itemStack = player.getStackInHand(hand);
-                if (itemStack.getItem() == Items.SHEARS) {
+                if (FabricToolTags.SHEARS.values().contains(itemStack.getItem())) {
                     Direction direction = hitResult.getSide();
                     Direction direction2 = direction.getAxis() == Direction.Axis.Y ? player.getHorizontalFacing().getOpposite() : direction;
                     world.playSound(null, pos, SoundEvents.BLOCK_PUMPKIN_CARVE, SoundCategory.BLOCKS, 1.0F, 1.0F);

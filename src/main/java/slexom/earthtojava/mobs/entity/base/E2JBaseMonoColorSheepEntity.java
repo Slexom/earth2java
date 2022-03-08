@@ -1,5 +1,6 @@
 package slexom.earthtojava.mobs.entity.base;
 
+import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.Shearable;
@@ -62,7 +63,7 @@ public class E2JBaseMonoColorSheepEntity extends E2JBaseSheepEntity implements S
 
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemStack = player.getStackInHand(hand);
-        if (itemStack.getItem() == Items.SHEARS) {
+        if (FabricToolTags.SHEARS.values().contains(itemStack.getItem())) {
             if (!this.world.isClient && this.isShearable()) {
                 this.sheared(SoundCategory.PLAYERS);
                 itemStack.damage(1, player, (playerEntity) -> {
