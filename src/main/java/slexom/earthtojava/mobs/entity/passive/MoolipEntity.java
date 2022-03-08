@@ -1,13 +1,12 @@
 package slexom.earthtojava.mobs.entity.passive;
 
-import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.Shearable;
 import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.item.ShearsItem;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -33,7 +32,7 @@ public class MoolipEntity extends E2JBaseCowEntity implements Shearable {
 
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemStack = player.getStackInHand(hand);
-        if (FabricToolTags.SHEARS.values().contains(itemStack.getItem()) && this.isShearable()) {
+        if (itemStack.getItem() instanceof ShearsItem && this.isShearable()) {
             this.sheared(SoundCategory.PLAYERS);
             if (!this.world.isClient) {
                 itemStack.damage(1, player, ((playerEntity) -> playerEntity.sendToolBreakStatus(hand)));

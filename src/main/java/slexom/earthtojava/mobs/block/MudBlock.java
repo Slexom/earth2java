@@ -1,6 +1,5 @@
 package slexom.earthtojava.mobs.block;
 
-import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidBlock;
@@ -35,7 +34,7 @@ public class MudBlock extends FluidBlock {
 
     public boolean receiveNeighborFluids(World world, BlockPos pos, BlockState state) {
         Identifier mudTag = new Identifier(Earth2JavaMod.MOD_ID, "mud");
-        TagKey<Fluid> mudTagKey =   TagKey.of(Registry.FLUID_KEY, mudTag);
+        TagKey<Fluid> mudTagKey = TagKey.of(Registry.FLUID_KEY, mudTag);
         if (this.fluid.isIn(mudTagKey)) {
             boolean flag = false;
             for (Direction direction : Direction.values()) {
