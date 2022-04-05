@@ -11,15 +11,16 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.WaterCreatureEntity;
 import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.tag.TagKey;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
-import net.minecraft.util.registry.RegistryEntry;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 import org.jetbrains.annotations.ApiStatus;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -84,62 +85,61 @@ public final class BiomeSpawnHelper {
     }
 
     public static String[] getBiomesListFromBiomeCategories(Biome.Category... types) {
-        return Stream.of(types).flatMap(Stream::of).map(Biome.Category::getName).toArray(String[]::new);
+        return Stream.of(types).map(Biome.Category::getName).toArray(String[]::new);
     }
 
     private static void setSpawnBiomes(EntityType<?> entity, String[] spawnBiomes, int weight, int minGroupSize, int maxGroupSize, SpawnGroup classification) {
-        List<String> blackList = Arrays.stream(spawnBiomes).filter(id -> id.contains("!")).collect(Collectors.toList());
-        List<String> spawnList = expandSpawnList(Arrays.stream(spawnBiomes).filter(id -> !id.contains("!")).collect(Collectors.toList()));
+        List<String> biomeTagKeysIdentifiers = Arrays.stream(spawnBiomes).filter(BiomeSpawnHelper::isBiomeTag).collect(Collectors.toList());
+        List<String> biomeCategoryIdentifiers = Arrays.stream(spawnBiomes).filter(BiomeSpawnHelper::isBiomeCategory).collect(Collectors.toList());
+        List<String> biomeIdentifierString = Arrays.stream(spawnBiomes).filter(id -> !isBiomeTag(id) && !isBiomeCategory(id)).collect(Collectors.toList());
 
-     System.out.println(spawnList);
+        List<TagKey<Biome>> biomeTagKeys = getBiomeTagKeys(biomeTagKeysIdentifiers);
+        List<Biome.Category> biomeCategories = getBiomeCategories(biomeCategoryIdentifiers);
+        List<Identifier> biomeIdentifiers = getBiomeRegistryKeys(biomeIdentifierString);
 
-
-        blackList.replaceAll(s -> s.replace("!", ""));
-        spawnList.removeAll(blackList);
-        addEntityToBiomes(entity, spawnList, minGroupSize, maxGroupSize, classification, weight);
+        addEntityToBiomeCategories(entity, biomeCategories, minGroupSize, maxGroupSize, classification, weight);
+        addEntityToBiomeTagKeys(entity, biomeTagKeys, minGroupSize, maxGroupSize, classification, weight);
+        addEntityToBiomes(entity, biomeIdentifiers, minGroupSize, maxGroupSize, classification, weight);
     }
 
-    private static List<String> expandSpawnList(List<String> spawnList) {
-        List<String> biomes = new ArrayList<>(Collections.emptyList());
-        List<String> biomeCategories = new ArrayList<>(Collections.emptyList());
-        List<String> biomesFromCategories = new ArrayList<>(Collections.emptyList());
-        spawnList.forEach(identifier -> {
-            if (isBiomeCategory(identifier)) {
-                biomeCategories.add(identifier);
-            } else {
-                biomes.add(identifier);
-            }
-        });
-        for (String biomeCategory : biomeCategories) {
-            BuiltinRegistries.BIOME.forEach(biome -> {
-                if (Biome.getCategory(RegistryEntry.of(biome)).toString().equalsIgnoreCase(biomeCategory)) {
-                    biomesFromCategories.add(BuiltinRegistries.BIOME.getKey(biome).toString());
-                }
-            });
-        }
-        return Stream.concat(biomes.stream(), biomesFromCategories.stream()).collect(Collectors.toList());
+    private static List<Biome.Category> getBiomeCategories(List<String> categories) {
+        return categories.stream().map(Biome.Category::byName).toList();
+    }
+
+    private static List<Identifier> getBiomeRegistryKeys(List<String> categories) {
+        return categories.stream().map(Identifier::new).toList();
+    }
+
+    private static List<TagKey<Biome>> getBiomeTagKeys(List<String> tagKeys) {
+        return tagKeys.stream().map(identifier -> TagKey.of(Registry.BIOME_KEY, new Identifier(identifier))).toList();
     }
 
     private static boolean isBiomeCategory(String identifier) {
         return identifier.split(":").length == 1;
     }
 
-    private static void addEntityToBiomes(EntityType<?> entity, List<String> spawnList, int minGroupSize, int maxGroupSize, SpawnGroup classification, int weight) {
-        for (String identifier : spawnList) {
-            BuiltinRegistries.BIOME.stream()
-                    .filter(biome -> BuiltinRegistries.BIOME.getId(biome).toString().equals(identifier))
-                    .findFirst()
-                    .ifPresent(biome -> {
-                        Predicate<BiomeSelectionContext> predicate = BiomeSelectors.includeByKey(BuiltinRegistries.BIOME.getKey(biome).get());
-                        BiomeModifications.addSpawn(predicate, classification, entity, weight, minGroupSize, maxGroupSize);
-                    });
-            RegistryEntryAddedCallback.event(BuiltinRegistries.BIOME).register((i, registryName, biome) -> {
-                if (registryName.toString().equals(identifier)) {
-                    Predicate<BiomeSelectionContext> predicate = BiomeSelectors.includeByKey(BuiltinRegistries.BIOME.getKey(biome).get());
-                    BiomeModifications.addSpawn(predicate, classification, entity, weight, minGroupSize, maxGroupSize);
-                }
-            });
+    private static boolean isBiomeTag(String identifier) {
+        return identifier.contains("is_") || identifier.contains("has_");
+    }
 
+    private static void addEntityToBiomeTagKeys(EntityType<?> entity, List<TagKey<Biome>> biomeTagKeys, int minGroupSize, int maxGroupSize, SpawnGroup classification, int weight) {
+        for (TagKey<Biome> tagKey : biomeTagKeys) {
+            Predicate<BiomeSelectionContext> predicate = BiomeSelectors.tag(tagKey);
+            BiomeModifications.addSpawn(predicate, classification, entity, weight, minGroupSize, maxGroupSize);
+        }
+    }
+
+    private static void addEntityToBiomeCategories(EntityType<?> entity, List<Biome.Category> biomeCategories, int minGroupSize, int maxGroupSize, SpawnGroup classification, int weight) {
+        for (Biome.Category category : biomeCategories) {
+            Predicate<BiomeSelectionContext> predicate = BiomeSelectors.categories(category);
+            BiomeModifications.addSpawn(predicate, classification, entity, weight, minGroupSize, maxGroupSize);
+        }
+    }
+
+    private static void addEntityToBiomes(EntityType<?> entity, List<Identifier> biomeIdentifiers, int minGroupSize, int maxGroupSize, SpawnGroup classification, int weight) {
+        for (Identifier biomeIdentifier : biomeIdentifiers) {
+            Predicate<BiomeSelectionContext> predicate = biomeSelectionContext -> Objects.equals(biomeSelectionContext.getBiomeKey().getValue(), biomeIdentifier);
+            BiomeModifications.addSpawn(predicate, classification, entity, weight, minGroupSize, maxGroupSize);
         }
     }
 
@@ -165,6 +165,7 @@ public final class BiomeSpawnHelper {
 
     @ApiStatus.Experimental
     public static void autoSpawn(EntityType<? extends Entity> entity, EntityType<? extends Entity> baseEntity) {
+
         BuiltinRegistries.BIOME.stream().forEach(biome -> {
             biome
                     .getSpawnSettings()
