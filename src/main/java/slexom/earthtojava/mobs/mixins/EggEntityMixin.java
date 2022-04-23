@@ -1,11 +1,11 @@
-package slexom.earthtojava.mobs.mixins;
+package slexom.earthtojava.mixins;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.projectile.thrown.EggEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
-import slexom.earthtojava.mobs.init.EntityTypesInit;
+import slexom.earthtojava.init.EntityTypesInit;
 
 import java.util.Random;
 

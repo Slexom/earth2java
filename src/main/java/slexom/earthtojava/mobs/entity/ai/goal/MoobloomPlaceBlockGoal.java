@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.entity.ai.goal;
+package slexom.earthtojava.entity.ai.goal;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -8,9 +8,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
-import slexom.earthtojava.mobs.entity.passive.MoobloomEntity;
-import slexom.earthtojava.mobs.init.BlockInit;
-import slexom.earthtojava.mobs.init.SoundEventsInit;
+import slexom.earthtojava.entity.passive.MoobloomEntity;
+import slexom.earthtojava.init.BlockInit;
+import slexom.earthtojava.init.SoundEventsInit;
 
 public class MoobloomPlaceBlockGoal extends Goal {
     private final MoobloomEntity moobloom;
@@ -32,7 +32,7 @@ public class MoobloomPlaceBlockGoal extends Goal {
         int i = MathHelper.floor(this.moobloom.getX());
         int j = MathHelper.floor(this.moobloom.getY());
         int k = MathHelper.floor(this.moobloom.getZ());
-        Block flower = Math.random() > 0.8 ? Blocks.SUNFLOWER : BlockInit.BUTTERCUP;
+        Block flower = Math.random() > 0.8 ? Blocks.SUNFLOWER : BlockInit.BUTTERCUP.get();
         BlockPos blockPos = new BlockPos(i, j, k);
         BlockState blockState = flower.getDefaultState();
         BlockPos blockDownPos = blockPos.down();

@@ -1,12 +1,12 @@
-package slexom.earthtojava.mobs.client.renderer.entity;
+package slexom.earthtojava.client.renderer.entity;
 
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
-import slexom.earthtojava.mobs.client.renderer.entity.model.JumboRabbitModel;
-import slexom.earthtojava.mobs.entity.passive.JumboRabbitEntity;
-import slexom.earthtojava.mobs.init.EntityModelLayersInit;
-import slexom.earthtojava.mobs.init.EntityTypesInit;
+import slexom.earthtojava.client.renderer.entity.model.JumboRabbitModel;
+import slexom.earthtojava.entity.passive.JumboRabbitEntity;
+import slexom.earthtojava.init.EntityModelLayersInit;
+import slexom.earthtojava.init.EntityTypesInit;
 
 import java.text.MessageFormat;
 

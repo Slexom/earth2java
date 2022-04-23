@@ -1,7 +1,7 @@
 {
     "required": true,
     "minVersion": "0.8",
-    "package": "slexom.earthtojava.mobs.mixins",
+    "package": "slexom.earthtojava.mixins",
     "compatibilityLevel": "JAVA_16",
     "mixins": [
         "CatEntityRendererMixin",

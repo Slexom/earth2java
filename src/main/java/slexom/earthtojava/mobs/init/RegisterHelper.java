@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.init;
+package slexom.earthtojava.init;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -31,8 +31,8 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.placementmodifier.PlacementModifier;
-import slexom.earthtojava.mobs.Earth2JavaMod;
-import slexom.earthtojava.mobs.utils.Utils;
+import slexom.earthtojava.Earth2JavaMod;
+import slexom.earthtojava.utils.Utils;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;

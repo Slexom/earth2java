@@ -1,10 +1,10 @@
-package slexom.earthtojava.mobs.init;
+package slexom.earthtojava.init;
 
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import slexom.earthtojava.mobs.Earth2JavaMod;
-import slexom.earthtojava.mobs.block.entity.RainbowBedBlockEntity;
+import slexom.earthtojava.Earth2JavaMod;
+import slexom.earthtojava.block.entity.RainbowBedBlockEntity;
 
 public class BlockEntityTypeInit {
 

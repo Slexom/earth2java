@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.item.crafting;
+package slexom.earthtojava.item.crafting;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -14,7 +14,7 @@ import net.minecraft.recipe.ShapelessRecipe;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
-import slexom.earthtojava.mobs.init.RecipesInit;
+import slexom.earthtojava.init.RecipesInit;
 
 public class MudBucketRecipe extends ShapelessRecipe {
     private final Identifier id;

@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.entity.monster;
+package slexom.earthtojava.entity.monster;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
@@ -7,8 +7,8 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.entity.ai.pathing.ClimberNavigation;
-import slexom.earthtojava.mobs.entity.base.E2JBaseZombieEntity;
+import slexom.earthtojava.entity.ai.pathing.ClimberNavigation;
+import slexom.earthtojava.entity.base.E2JBaseZombieEntity;
 
 public class BoulderingZombieEntity extends E2JBaseZombieEntity {
     private static final TrackedData<Byte> IS_CLIMBING = DataTracker.registerData(BoulderingZombieEntity.class, TrackedDataHandlerRegistry.BYTE);

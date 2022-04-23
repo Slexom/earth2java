@@ -1,9 +1,9 @@
-package slexom.earthtojava.mobs.init;
+package slexom.earthtojava.init;
 
 import net.minecraft.client.model.Dilation;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
-import slexom.earthtojava.mobs.client.renderer.block.entity.RainbowBedBlockEntityRenderer;
-import slexom.earthtojava.mobs.client.renderer.entity.model.*;
+import slexom.earthtojava.client.renderer.block.entity.RainbowBedBlockEntityRenderer;
+import slexom.earthtojava.client.renderer.entity.model.*;
 
 public class EntityModelLayersInit {
     public static EntityModelLayer BOULDERING_ZOMBIE_ENTITY_MODEL_LAYER;

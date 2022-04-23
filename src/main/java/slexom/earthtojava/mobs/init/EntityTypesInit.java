@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.init;
+package slexom.earthtojava.init;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.block.Blocks;
@@ -6,12 +6,12 @@ import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.item.ItemStack;
-import slexom.earthtojava.mobs.entity.base.*;
-import slexom.earthtojava.mobs.entity.monster.*;
-import slexom.earthtojava.mobs.entity.passive.*;
-import slexom.earthtojava.mobs.entity.projectile.BoneShardEntity;
-import slexom.earthtojava.mobs.entity.projectile.MelonSeedProjectileEntity;
-import slexom.earthtojava.mobs.entity.projectile.RottenFleshProjectileEntity;
+import slexom.earthtojava.entity.base.*;
+import slexom.earthtojava.entity.monster.*;
+import slexom.earthtojava.entity.passive.*;
+import slexom.earthtojava.entity.projectile.BoneShardEntity;
+import slexom.earthtojava.entity.projectile.MelonSeedProjectileEntity;
+import slexom.earthtojava.entity.projectile.RottenFleshProjectileEntity;
 
 public class EntityTypesInit {
 

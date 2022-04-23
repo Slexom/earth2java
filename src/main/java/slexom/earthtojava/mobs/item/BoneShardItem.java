@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.item;
+package slexom.earthtojava.item;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -9,7 +9,7 @@ import net.minecraft.stat.Stats;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.entity.projectile.BoneShardEntity;
+import slexom.earthtojava.entity.projectile.BoneShardEntity;
 
 public class BoneShardItem extends E2JItem {
     public BoneShardItem(Item.Settings builder) {

@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.mixins;
+package slexom.earthtojava.mixins;
 
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import slexom.earthtojava.mobs.init.RegisterHelper;
+import slexom.earthtojava.init.RegisterHelper;
 
 @Mixin(EntityModelLoader.class)
 public class EntityModelLoaderMixin {

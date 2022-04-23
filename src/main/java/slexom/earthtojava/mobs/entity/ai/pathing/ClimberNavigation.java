@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.entity.ai.pathing;
+package slexom.earthtojava.entity.ai.pathing;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ai.pathing.MobNavigation;

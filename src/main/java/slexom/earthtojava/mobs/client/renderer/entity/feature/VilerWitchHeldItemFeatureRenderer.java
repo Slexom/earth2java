@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.client.renderer.entity.feature;
+package slexom.earthtojava.client.renderer.entity.feature;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -9,8 +9,8 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.math.Vec3f;
-import slexom.earthtojava.mobs.client.renderer.entity.model.VilerWitchModel;
-import slexom.earthtojava.mobs.entity.monster.VilerWitchEntity;
+import slexom.earthtojava.client.renderer.entity.model.VilerWitchModel;
+import slexom.earthtojava.entity.monster.VilerWitchEntity;
 
 @Environment(EnvType.CLIENT)
 public class VilerWitchHeldItemFeatureRenderer<T extends VilerWitchEntity> extends VillagerHeldItemFeatureRenderer<T, VilerWitchModel<T>> {

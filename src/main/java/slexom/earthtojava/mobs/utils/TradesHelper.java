@@ -1,4 +1,4 @@
-//package slexom.earthtojava.mobs.utils;
+//package slexom.earthtojava.utils;
 //
 //import me.sargunvohra.mcmods.autoconfig1u.AutoConfig;
 //import net.fabricmc.fabric.api.tag.TagRegistry;
@@ -14,8 +14,8 @@
 //import net.minecraft.util.registry.Registry;
 //import net.minecraft.village.TradeOffer;
 //import net.minecraft.village.TradeOffers;
-//import slexom.earthtojava.mobs.config.ModConfig;
-//import slexom.earthtojava.mobs.init.ItemInit;
+//import slexom.earthtojava.config.ModConfig;
+//import slexom.earthtojava.init.ItemInit;
 //
 //import java.util.Random;
 //

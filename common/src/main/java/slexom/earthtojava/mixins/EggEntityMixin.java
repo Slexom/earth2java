@@ -20,20 +20,14 @@ public class EggEntityMixin {
     )
     public EntityType getChickenType() {
         int random = new Random().nextInt(20);
-        switch (random) {
-            case 2:
-                return EntityTypesInit.AMBER_CHICKEN_REGISTRY_OBJECT;
-            case 4:
-                return EntityTypesInit.SKEWBALD_CHICKEN_REGISTRY_OBJECT;
-            case 6:
-                return EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_OBJECT;
-            case 8:
-                return EntityTypesInit.STORMY_CHICKEN_REGISTRY_OBJECT;
-            case 10:
-                return EntityTypesInit.BRONZED_CHICKEN_REGISTRY_OBJECT;
-            default:
-                return EntityType.CHICKEN;
-        }
+        return switch (random) {
+            case 2 -> EntityTypesInit.AMBER_CHICKEN_REGISTRY_OBJECT.get();
+            case 4 -> EntityTypesInit.SKEWBALD_CHICKEN_REGISTRY_OBJECT.get();
+            case 6 -> EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_OBJECT.get();
+            case 8 -> EntityTypesInit.STORMY_CHICKEN_REGISTRY_OBJECT.get();
+            case 10 -> EntityTypesInit.BRONZED_CHICKEN_REGISTRY_OBJECT.get();
+            default -> EntityType.CHICKEN;
+        };
     }
 
 }

@@ -1,10 +1,10 @@
-package slexom.earthtojava.mobs.client.renderer.entity.model;
+package slexom.earthtojava.client.renderer.entity.model;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.ZombieEntityModel;
-import slexom.earthtojava.mobs.entity.monster.LobberZombieEntity;
+import slexom.earthtojava.entity.monster.LobberZombieEntity;
 
 @Environment(EnvType.CLIENT)
 public class LobberZombieModel<T extends LobberZombieEntity> extends ZombieEntityModel<T> {

@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.entity.passive;
+package slexom.earthtojava.entity.passive;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
@@ -14,9 +14,9 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.entity.ai.goal.MoobloomPlaceBlockGoal;
-import slexom.earthtojava.mobs.entity.base.E2JBaseCowEntity;
-import slexom.earthtojava.mobs.init.BlockInit;
+import slexom.earthtojava.entity.ai.goal.MoobloomPlaceBlockGoal;
+import slexom.earthtojava.entity.base.E2JBaseCowEntity;
+import slexom.earthtojava.init.BlockInit;
 
 public class MoobloomEntity extends E2JBaseCowEntity implements Shearable {
 
@@ -62,7 +62,7 @@ public class MoobloomEntity extends E2JBaseCowEntity implements Shearable {
             cowEntity.setInvulnerable(this.isInvulnerable());
             this.world.spawnEntity(cowEntity);
             for (int i = 0; i < 5; ++i) {
-                this.world.spawnEntity(new ItemEntity(this.world, this.getX(), this.getBodyY(1.0D), this.getZ(), new ItemStack(BlockInit.BUTTERCUP)));
+                this.world.spawnEntity(new ItemEntity(this.world, this.getX(), this.getBodyY(1.0D), this.getZ(), new ItemStack(BlockInit.BUTTERCUP.get())));
             }
         }
 

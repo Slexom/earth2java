@@ -1,10 +1,10 @@
-package slexom.earthtojava.mobs.entity.ai.goal;
+package slexom.earthtojava.entity.ai.goal;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.FleeEntityGoal;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.entity.passive.PigEntity;
-import slexom.earthtojava.mobs.init.SoundEventsInit;
+import slexom.earthtojava.init.SoundEventsInit;
 
 import java.util.function.Predicate;
 

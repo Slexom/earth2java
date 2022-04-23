@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.init;
+package slexom.earthtojava.init;
 
 import net.minecraft.sound.SoundEvent;
 

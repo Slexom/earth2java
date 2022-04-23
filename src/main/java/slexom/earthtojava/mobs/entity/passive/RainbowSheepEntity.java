@@ -1,12 +1,12 @@
-package slexom.earthtojava.mobs.entity.passive;
+package slexom.earthtojava.entity.passive;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.entity.base.E2JBaseMonoColorSheepEntity;
-import slexom.earthtojava.mobs.init.BlockInit;
-import slexom.earthtojava.mobs.init.SoundEventsInit;
+import slexom.earthtojava.entity.base.E2JBaseMonoColorSheepEntity;
+import slexom.earthtojava.init.BlockInit;
+import slexom.earthtojava.init.SoundEventsInit;
 
 public class RainbowSheepEntity extends E2JBaseMonoColorSheepEntity {
 

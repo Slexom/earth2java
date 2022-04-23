@@ -1,8 +1,8 @@
-package slexom.earthtojava.mobs.entity.ai.control;
+package slexom.earthtojava.entity.ai.control;
 
 import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.attribute.EntityAttributes;
-import slexom.earthtojava.mobs.entity.passive.MelonGolemEntity;
+import slexom.earthtojava.entity.passive.MelonGolemEntity;
 
 public class MelonGolemMoveControl extends MoveControl {
     private final MelonGolemEntity melonGolem;

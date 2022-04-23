@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.block;
+package slexom.earthtojava.block;
 
 import net.minecraft.block.*;
 import net.minecraft.util.DyeColor;

@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.entity.passive;
+package slexom.earthtojava.entity.passive;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -27,13 +27,13 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.entity.BlinkManager;
-import slexom.earthtojava.mobs.entity.ai.control.MelonGolemMoveControl;
-import slexom.earthtojava.mobs.entity.ai.goal.MelonGolemFaceRandomGoal;
-import slexom.earthtojava.mobs.entity.ai.goal.MelonGolemHopGoal;
-import slexom.earthtojava.mobs.entity.ai.goal.MelonGolemProjectileAttackGoal;
-import slexom.earthtojava.mobs.entity.projectile.MelonSeedProjectileEntity;
-import slexom.earthtojava.mobs.init.SoundEventsInit;
+import slexom.earthtojava.entity.BlinkManager;
+import slexom.earthtojava.entity.ai.control.MelonGolemMoveControl;
+import slexom.earthtojava.entity.ai.goal.MelonGolemFaceRandomGoal;
+import slexom.earthtojava.entity.ai.goal.MelonGolemHopGoal;
+import slexom.earthtojava.entity.ai.goal.MelonGolemProjectileAttackGoal;
+import slexom.earthtojava.entity.projectile.MelonSeedProjectileEntity;
+import slexom.earthtojava.init.SoundEventsInit;
 
 import javax.annotation.Nullable;
 

@@ -34,6 +34,9 @@ allprojects {
             name = "Jitpack"
             url 'https://jitpack.io/'
         }
+        maven {
+            url = "https://maven.shedaniel.me/"
+        }
     }
 
     tasks.withType(JavaCompile) {

@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.entity.base;
+package slexom.earthtojava.entity.base;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -8,8 +8,8 @@ import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.entity.BlinkManager;
-import slexom.earthtojava.mobs.entity.EntityVariantManager;
+import slexom.earthtojava.entity.BlinkManager;
+import slexom.earthtojava.entity.EntityVariantManager;
 
 public class E2JBaseSheepEntity extends SheepEntity {
 

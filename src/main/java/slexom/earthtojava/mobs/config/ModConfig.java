@@ -1,11 +1,11 @@
-package slexom.earthtojava.mobs.config;
+package slexom.earthtojava.config;
 
 
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
-import slexom.earthtojava.mobs.Earth2JavaMod;
-import slexom.earthtojava.mobs.utils.BiomeSpawnHelper;
+import slexom.earthtojava.Earth2JavaMod;
+import slexom.earthtojava.utils.BiomeSpawnHelper;
 
 import java.text.MessageFormat;
 import java.util.List;

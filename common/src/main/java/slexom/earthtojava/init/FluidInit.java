@@ -17,7 +17,7 @@ public class FluidInit {
 
     static {
         MUD_FLUID_FLOWING = FLUID_DEFERRED_REGISTER.register("mud_fluid_flowing", MudFluid.Flowing::new);
-        MUD_FLUID_STILL = FLUID_DEFERRED_REGISTER.register("mud_fluid_flowing", MudFluid.Source::new);
+        MUD_FLUID_STILL = FLUID_DEFERRED_REGISTER.register("mud_fluid", MudFluid.Source::new);
     }
 
     public static void init() {

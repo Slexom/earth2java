@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.mixins;
+package slexom.earthtojava.mixins;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.render.BackgroundRenderer;
@@ -17,7 +17,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import slexom.earthtojava.mobs.Earth2JavaMod;
+import slexom.earthtojava.Earth2JavaMod;
 
 @Mixin(BackgroundRenderer.class)
 public class MudFogMixin {

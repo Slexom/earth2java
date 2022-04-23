@@ -45,12 +45,13 @@ public class BlockInit {
     }
 
     public static void init() {
+        BLOCK_DEFERRED_REGISTER.register();
+
         flammableBlock(BUTTERCUP.get(), 60, 100);
         flammableBlock(PINK_DAISY.get(), 60, 100);
         flammableBlock(RAINBOW_CARPET.get(), 60, 20);
         flammableBlock(RAINBOW_WOOL.get(), 30, 60);
 
-        BLOCK_DEFERRED_REGISTER.register();
     }
 
 

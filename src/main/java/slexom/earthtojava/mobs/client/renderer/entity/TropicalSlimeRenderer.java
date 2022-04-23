@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.client.renderer.entity;
+package slexom.earthtojava.client.renderer.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -11,7 +11,7 @@ import net.minecraft.client.render.entity.model.SlimeEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
-import slexom.earthtojava.mobs.entity.passive.TropicalSlimeEntity;
+import slexom.earthtojava.entity.passive.TropicalSlimeEntity;
 
 import java.text.MessageFormat;
 

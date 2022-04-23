@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.entity.passive;
+package slexom.earthtojava.entity.passive;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -15,9 +15,9 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.entity.ai.goal.MuddyPigMoveToTargetGoal;
-import slexom.earthtojava.mobs.entity.base.E2JBasePigEntity;
-import slexom.earthtojava.mobs.init.BlockInit;
+import slexom.earthtojava.entity.ai.goal.MuddyPigMoveToTargetGoal;
+import slexom.earthtojava.entity.base.E2JBasePigEntity;
+import slexom.earthtojava.init.BlockInit;
 
 
 public class MuddyPigEntity extends E2JBasePigEntity {

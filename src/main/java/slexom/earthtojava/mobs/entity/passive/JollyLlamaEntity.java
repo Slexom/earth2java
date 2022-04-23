@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.entity.passive;
+package slexom.earthtojava.entity.passive;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -10,9 +10,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.entity.ai.goal.JollyLlamaEatFernGoal;
-import slexom.earthtojava.mobs.entity.base.E2JBaseLlamaEntity;
-import slexom.earthtojava.mobs.init.SoundEventsInit;
+import slexom.earthtojava.entity.ai.goal.JollyLlamaEatFernGoal;
+import slexom.earthtojava.entity.base.E2JBaseLlamaEntity;
+import slexom.earthtojava.init.SoundEventsInit;
 
 import javax.annotation.Nullable;
 

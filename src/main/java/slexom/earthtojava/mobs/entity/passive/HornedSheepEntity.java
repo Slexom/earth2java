@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.entity.passive;
+package slexom.earthtojava.entity.passive;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -22,10 +22,10 @@ import net.minecraft.util.TimeHelper;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.entity.ai.goal.HornedSheepActiveTargetGoal;
-import slexom.earthtojava.mobs.entity.ai.goal.HornedSheepMeleeAttackGoal;
-import slexom.earthtojava.mobs.entity.ai.goal.HornedSheepRevengeGoal;
-import slexom.earthtojava.mobs.entity.base.E2JBaseSheepEntity;
+import slexom.earthtojava.entity.ai.goal.HornedSheepActiveTargetGoal;
+import slexom.earthtojava.entity.ai.goal.HornedSheepMeleeAttackGoal;
+import slexom.earthtojava.entity.ai.goal.HornedSheepRevengeGoal;
+import slexom.earthtojava.entity.base.E2JBaseSheepEntity;
 
 import javax.annotation.Nullable;
 import java.util.UUID;

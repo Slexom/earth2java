@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.utils;
+package slexom.earthtojava.utils;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;

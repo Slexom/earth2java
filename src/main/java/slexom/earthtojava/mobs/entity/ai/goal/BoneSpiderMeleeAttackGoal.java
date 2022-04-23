@@ -1,8 +1,8 @@
-package slexom.earthtojava.mobs.entity.ai.goal;
+package slexom.earthtojava.entity.ai.goal;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
-import slexom.earthtojava.mobs.entity.monster.BoneSpiderEntity;
+import slexom.earthtojava.entity.monster.BoneSpiderEntity;
 
 public class BoneSpiderMeleeAttackGoal extends MeleeAttackGoal {
     public BoneSpiderMeleeAttackGoal(BoneSpiderEntity spider) {

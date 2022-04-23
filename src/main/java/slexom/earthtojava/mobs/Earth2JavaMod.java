@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs;
+package slexom.earthtojava;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
@@ -10,9 +10,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import slexom.earthtojava.mobs.config.ModConfig;
-import slexom.earthtojava.mobs.events.ModEvents;
-import slexom.earthtojava.mobs.init.*;
+import slexom.earthtojava.config.ModConfig;
+import slexom.earthtojava.events.ModEvents;
+import slexom.earthtojava.init.*;
 
 public class Earth2JavaMod implements ModInitializer {
 
@@ -38,8 +38,8 @@ public class Earth2JavaMod implements ModInitializer {
         EntitySpawnInit.init();
         ItemInit.init();
         RecipesInit.init();
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(BlockInit.BUTTERCUP.asItem(), 0.65F);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(BlockInit.PINK_DAISY.asItem(), 0.65F);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(BlockInit.BUTTERCUP.get().asItem(), 0.65F);
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(BlockInit.PINK_DAISY.get().asItem(), 0.65F);
         LOGGER.info("[Earth2Java] Mod loaded! Enjoy :D");
     }
 

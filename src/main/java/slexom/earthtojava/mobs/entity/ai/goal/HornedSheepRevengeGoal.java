@@ -1,9 +1,9 @@
-package slexom.earthtojava.mobs.entity.ai.goal;
+package slexom.earthtojava.entity.ai.goal;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.RevengeGoal;
 import net.minecraft.entity.mob.MobEntity;
-import slexom.earthtojava.mobs.entity.passive.HornedSheepEntity;
+import slexom.earthtojava.entity.passive.HornedSheepEntity;
 
 public class HornedSheepRevengeGoal extends RevengeGoal {
 

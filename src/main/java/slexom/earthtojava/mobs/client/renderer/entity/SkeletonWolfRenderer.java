@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.client.renderer.entity;
+package slexom.earthtojava.client.renderer.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -6,8 +6,8 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.util.Identifier;
-import slexom.earthtojava.mobs.client.renderer.entity.model.SkeletonWolfModel;
-import slexom.earthtojava.mobs.entity.monster.SkeletonWolfEntity;
+import slexom.earthtojava.client.renderer.entity.model.SkeletonWolfModel;
+import slexom.earthtojava.entity.monster.SkeletonWolfEntity;
 
 @Environment(EnvType.CLIENT)
 public class SkeletonWolfRenderer extends MobEntityRenderer<SkeletonWolfEntity, SkeletonWolfModel<SkeletonWolfEntity>> {

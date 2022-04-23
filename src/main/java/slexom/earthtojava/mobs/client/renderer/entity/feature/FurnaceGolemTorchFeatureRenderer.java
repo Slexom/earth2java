@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.client.renderer.entity.feature;
+package slexom.earthtojava.client.renderer.entity.feature;
 
 
 import net.fabricmc.api.EnvType;
@@ -13,7 +13,7 @@ import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.model.IronGolemEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.Vec3f;
-import slexom.earthtojava.mobs.entity.passive.FurnaceGolemEntity;
+import slexom.earthtojava.entity.passive.FurnaceGolemEntity;
 
 @Environment(EnvType.CLIENT)
 public class FurnaceGolemTorchFeatureRenderer extends FeatureRenderer<FurnaceGolemEntity, IronGolemEntityModel<FurnaceGolemEntity>> {

@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.client.renderer.entity.feature;
+package slexom.earthtojava.client.renderer.entity.feature;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -8,7 +8,7 @@ import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.model.IronGolemEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-import slexom.earthtojava.mobs.entity.passive.FurnaceGolemEntity;
+import slexom.earthtojava.entity.passive.FurnaceGolemEntity;
 
 import java.text.MessageFormat;
 

@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.client.renderer.entity;
+package slexom.earthtojava.client.renderer.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -7,9 +7,9 @@ import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
-import slexom.earthtojava.mobs.client.renderer.entity.feature.CluckshroomMushroomFeatureRenderer;
-import slexom.earthtojava.mobs.client.renderer.entity.model.CluckshroomModel;
-import slexom.earthtojava.mobs.entity.passive.CluckshroomEntity;
+import slexom.earthtojava.client.renderer.entity.feature.CluckshroomMushroomFeatureRenderer;
+import slexom.earthtojava.client.renderer.entity.model.CluckshroomModel;
+import slexom.earthtojava.entity.passive.CluckshroomEntity;
 
 @Environment(EnvType.CLIENT)
 public class CluckshroomRenderer extends MobEntityRenderer<CluckshroomEntity, CluckshroomModel<CluckshroomEntity>> {

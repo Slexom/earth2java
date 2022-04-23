@@ -1,10 +1,10 @@
-package slexom.earthtojava.mobs.client.renderer.entity.model;
+package slexom.earthtojava.client.renderer.entity.model;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.QuadrupedEntityModel;
-import slexom.earthtojava.mobs.entity.base.E2JBasePigEntity;
+import slexom.earthtojava.entity.base.E2JBasePigEntity;
 
 @Environment(EnvType.CLIENT)
 public class SootyPigModel extends QuadrupedEntityModel<E2JBasePigEntity> {

@@ -1,10 +1,6 @@
 package slexom.earthtojava.utils;
 
-import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectionContext;
-import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
-import net.minecraft.entity.Entity;
+import dev.architectury.registry.level.biome.BiomeModifications;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.mob.HostileEntity;
@@ -15,8 +11,9 @@ import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
-import org.jetbrains.annotations.ApiStatus;
+import net.minecraft.world.biome.SpawnSettings;
 
 import java.util.Arrays;
 import java.util.List;
@@ -124,22 +121,25 @@ public final class BiomeSpawnHelper {
 
     private static void addEntityToBiomeTagKeys(EntityType<?> entity, List<TagKey<Biome>> biomeTagKeys, int minGroupSize, int maxGroupSize, SpawnGroup classification, int weight) {
         for (TagKey<Biome> tagKey : biomeTagKeys) {
-            Predicate<BiomeSelectionContext> predicate = BiomeSelectors.tag(tagKey);
-            BiomeModifications.addSpawn(predicate, classification, entity, weight, minGroupSize, maxGroupSize);
+            Predicate<BiomeModifications.BiomeContext> predicate = (ctx) -> BuiltinRegistries.BIOME.entryOf(RegistryKey.of(Registry.BIOME_KEY, ctx.getKey())).isIn(tagKey);
+            SpawnSettings.SpawnEntry spawnEntry = new SpawnSettings.SpawnEntry(entity, weight, minGroupSize, maxGroupSize);
+            BiomeModifications.addProperties(predicate, (biomeContext, mutable) -> mutable.getSpawnProperties().addSpawn(classification, spawnEntry));
         }
     }
 
     private static void addEntityToBiomeCategories(EntityType<?> entity, List<Biome.Category> biomeCategories, int minGroupSize, int maxGroupSize, SpawnGroup classification, int weight) {
         for (Biome.Category category : biomeCategories) {
-            Predicate<BiomeSelectionContext> predicate = BiomeSelectors.categories(category);
-            BiomeModifications.addSpawn(predicate, classification, entity, weight, minGroupSize, maxGroupSize);
+            Predicate<BiomeModifications.BiomeContext> predicate = (ctx) -> Objects.equals(ctx.getProperties().getCategory(), category);
+            SpawnSettings.SpawnEntry spawnEntry = new SpawnSettings.SpawnEntry(entity, weight, minGroupSize, maxGroupSize);
+            BiomeModifications.addProperties(predicate, (biomeContext, mutable) -> mutable.getSpawnProperties().addSpawn(classification, spawnEntry));
         }
     }
 
     private static void addEntityToBiomes(EntityType<?> entity, List<Identifier> biomeIdentifiers, int minGroupSize, int maxGroupSize, SpawnGroup classification, int weight) {
         for (Identifier biomeIdentifier : biomeIdentifiers) {
-            Predicate<BiomeSelectionContext> predicate = biomeSelectionContext -> Objects.equals(biomeSelectionContext.getBiomeKey().getValue(), biomeIdentifier);
-            BiomeModifications.addSpawn(predicate, classification, entity, weight, minGroupSize, maxGroupSize);
+            Predicate<BiomeModifications.BiomeContext> predicate = (ctx) -> Objects.equals(ctx.getKey(), biomeIdentifier);
+            SpawnSettings.SpawnEntry spawnEntry = new SpawnSettings.SpawnEntry(entity, weight, minGroupSize, maxGroupSize);
+            BiomeModifications.addProperties(predicate, (biomeContext, mutable) -> mutable.getSpawnProperties().addSpawn(classification, spawnEntry));
         }
     }
 
@@ -162,7 +162,7 @@ public final class BiomeSpawnHelper {
     public static List<String> convertForConfig(String[] ary) {
         return Arrays.stream(ary).collect(Collectors.toList());
     }
-
+/*
     @ApiStatus.Experimental
     public static void autoSpawn(EntityType<? extends Entity> entity, EntityType<? extends Entity> baseEntity) {
 
@@ -185,5 +185,5 @@ public final class BiomeSpawnHelper {
 
         });
     }
-
+*/
 }

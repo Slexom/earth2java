@@ -49,7 +49,7 @@ public class SpawnFurnaceGolem {
                 }
             }
             BlockPos blockPos2 = furnaceGolemResult.translate(1, 2, 0).getBlockPos();
-            FurnaceGolemEntity furnaceGolemEntity = EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT.create(world);
+            FurnaceGolemEntity furnaceGolemEntity = EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT.get().create(world);
             furnaceGolemEntity.setPlayerCreated(true);
             furnaceGolemEntity.refreshPositionAndAngles((double) blockPos2.getX() + 0.5D, (double) blockPos2.getY() + 0.05D, (double) blockPos2.getZ() + 0.5D, 0.0F, 0.0F);
             world.spawnEntity(furnaceGolemEntity);

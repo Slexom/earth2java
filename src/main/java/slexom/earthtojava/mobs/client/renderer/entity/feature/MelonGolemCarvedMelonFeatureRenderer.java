@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.client.renderer.entity.feature;
+package slexom.earthtojava.client.renderer.entity.feature;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -12,8 +12,8 @@ import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Vec3f;
-import slexom.earthtojava.mobs.entity.passive.MelonGolemEntity;
-import slexom.earthtojava.mobs.init.BlockInit;
+import slexom.earthtojava.entity.passive.MelonGolemEntity;
+import slexom.earthtojava.init.BlockInit;
 
 @Environment(EnvType.CLIENT)
 public class MelonGolemCarvedMelonFeatureRenderer extends FeatureRenderer<MelonGolemEntity, SnowGolemEntityModel<MelonGolemEntity>> {

@@ -1,7 +1,7 @@
-package slexom.earthtojava.mobs.entity.ai.goal;
+package slexom.earthtojava.entity.ai.goal;
 
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
-import slexom.earthtojava.mobs.entity.passive.HornedSheepEntity;
+import slexom.earthtojava.entity.passive.HornedSheepEntity;
 
 public class HornedSheepMeleeAttackGoal extends MeleeAttackGoal {
 

@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.block.entity;
+package slexom.earthtojava.block.entity;
 
 
 import net.fabricmc.api.EnvType;
@@ -9,7 +9,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.math.BlockPos;
-import slexom.earthtojava.mobs.init.BlockEntityTypeInit;
+import slexom.earthtojava.init.BlockEntityTypeInit;
 
 public class RainbowBedBlockEntity extends BlockEntity {
     private DyeColor color;

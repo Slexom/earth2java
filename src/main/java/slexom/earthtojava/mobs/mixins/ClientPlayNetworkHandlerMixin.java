@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.mixins;
+package slexom.earthtojava.mixins;
 
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.world.ClientWorld;
@@ -10,10 +10,10 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import slexom.earthtojava.mobs.entity.projectile.BoneShardEntity;
-import slexom.earthtojava.mobs.entity.projectile.MelonSeedProjectileEntity;
-import slexom.earthtojava.mobs.entity.projectile.RottenFleshProjectileEntity;
-import slexom.earthtojava.mobs.init.EntityTypesInit;
+import slexom.earthtojava.entity.projectile.BoneShardEntity;
+import slexom.earthtojava.entity.projectile.MelonSeedProjectileEntity;
+import slexom.earthtojava.entity.projectile.RottenFleshProjectileEntity;
+import slexom.earthtojava.init.EntityTypesInit;
 
 @Mixin(ClientPlayNetworkHandler.class)
 public class ClientPlayNetworkHandlerMixin {

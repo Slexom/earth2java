@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.client.renderer.entity.model;
+package slexom.earthtojava.client.renderer.entity.model;
 
 import com.google.common.collect.ImmutableList;
 import net.fabricmc.api.EnvType;
@@ -8,7 +8,7 @@ import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.MathHelper;
-import slexom.earthtojava.mobs.entity.passive.JumboRabbitEntity;
+import slexom.earthtojava.entity.passive.JumboRabbitEntity;
 
 @Environment(EnvType.CLIENT)
 public class JumboRabbitModel<T extends JumboRabbitEntity> extends EntityModel<T> {

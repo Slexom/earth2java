@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.client.renderer.block.entity;
+package slexom.earthtojava.client.renderer.block.entity;
 
 import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 import net.fabricmc.api.EnvType;
@@ -21,10 +21,10 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3f;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.block.RainbowBedBlock;
-import slexom.earthtojava.mobs.block.entity.RainbowBedBlockEntity;
-import slexom.earthtojava.mobs.init.BlockEntityTypeInit;
-import slexom.earthtojava.mobs.init.EntityModelLayersInit;
+import slexom.earthtojava.block.RainbowBedBlock;
+import slexom.earthtojava.block.entity.RainbowBedBlockEntity;
+import slexom.earthtojava.init.BlockEntityTypeInit;
+import slexom.earthtojava.init.EntityModelLayersInit;
 
 @Environment(EnvType.CLIENT)
 public class RainbowBedBlockEntityRenderer implements BlockEntityRenderer<RainbowBedBlockEntity> {

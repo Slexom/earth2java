@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.block;
+package slexom.earthtojava.block;
 
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.*;
@@ -14,9 +14,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
-import slexom.earthtojava.mobs.entity.passive.MelonGolemEntity;
-import slexom.earthtojava.mobs.init.BlockInit;
-import slexom.earthtojava.mobs.init.EntityTypesInit;
+import slexom.earthtojava.entity.passive.MelonGolemEntity;
+import slexom.earthtojava.init.BlockInit;
+import slexom.earthtojava.init.EntityTypesInit;
 
 import javax.annotation.Nullable;
 import java.util.function.Predicate;

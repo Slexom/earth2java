@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.client.renderer.entity.model;
+package slexom.earthtojava.client.renderer.entity.model;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

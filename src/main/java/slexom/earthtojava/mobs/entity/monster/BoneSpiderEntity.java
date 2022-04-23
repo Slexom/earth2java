@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.entity.monster;
+package slexom.earthtojava.entity.monster;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityGroup;
@@ -14,11 +14,11 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.entity.ai.goal.BoneSpiderMeleeAttackGoal;
-import slexom.earthtojava.mobs.entity.ai.pathing.ClimberNavigation;
-import slexom.earthtojava.mobs.entity.base.E2JBaseSpiderEntity;
-import slexom.earthtojava.mobs.entity.projectile.BoneShardEntity;
-import slexom.earthtojava.mobs.init.SoundEventsInit;
+import slexom.earthtojava.entity.ai.goal.BoneSpiderMeleeAttackGoal;
+import slexom.earthtojava.entity.ai.pathing.ClimberNavigation;
+import slexom.earthtojava.entity.base.E2JBaseSpiderEntity;
+import slexom.earthtojava.entity.projectile.BoneShardEntity;
+import slexom.earthtojava.init.SoundEventsInit;
 
 public class BoneSpiderEntity extends E2JBaseSpiderEntity<BoneSpiderEntity> implements RangedAttackMob {
 

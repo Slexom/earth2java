@@ -1,11 +1,11 @@
-package slexom.earthtojava.mobs;
+package slexom.earthtojava;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.util.Identifier;
-import slexom.earthtojava.mobs.init.EntityModelLayersInit;
-import slexom.earthtojava.mobs.init.renderer.RendererInit;
+import slexom.earthtojava.init.EntityModelLayersInit;
+import slexom.earthtojava.init.renderer.RendererInit;
 
 public class Earth2JavaClientMod implements ClientModInitializer {
 

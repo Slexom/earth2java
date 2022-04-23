@@ -1,11 +1,11 @@
-package slexom.earthtojava.mobs.entity.passive;
+package slexom.earthtojava.entity.passive;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.AvoidSunlightGoal;
 import net.minecraft.entity.ai.goal.EscapeSunlightGoal;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.entity.ai.goal.CluckshroomPlaceBlockGoal;
-import slexom.earthtojava.mobs.entity.base.E2JBaseChickenEntity;
+import slexom.earthtojava.entity.ai.goal.CluckshroomPlaceBlockGoal;
+import slexom.earthtojava.entity.base.E2JBaseChickenEntity;
 
 
 public class CluckshroomEntity extends E2JBaseChickenEntity {

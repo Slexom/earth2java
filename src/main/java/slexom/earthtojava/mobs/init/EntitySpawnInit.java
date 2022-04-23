@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.init;
+package slexom.earthtojava.init;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.fabric.mixin.object.builder.SpawnRestrictionAccessor;
@@ -7,8 +7,8 @@ import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.world.Heightmap;
-import slexom.earthtojava.mobs.config.ModConfig;
-import slexom.earthtojava.mobs.utils.BiomeSpawnHelper;
+import slexom.earthtojava.config.ModConfig;
+import slexom.earthtojava.utils.BiomeSpawnHelper;
 
 public class EntitySpawnInit {
 

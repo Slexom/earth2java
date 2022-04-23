@@ -1,13 +1,13 @@
-package slexom.earthtojava.mobs.init;
+package slexom.earthtojava.init;
 
 import net.minecraft.block.*;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.DyeColor;
-import slexom.earthtojava.mobs.block.CarvedMelonBlock;
-import slexom.earthtojava.mobs.block.MudBlock;
-import slexom.earthtojava.mobs.block.RainbowBedBlock;
-import slexom.earthtojava.mobs.block.RainbowCarpetBlock;
+import slexom.earthtojava.block.CarvedMelonBlock;
+import slexom.earthtojava.block.MudBlock;
+import slexom.earthtojava.block.RainbowBedBlock;
+import slexom.earthtojava.block.RainbowCarpetBlock;
 
 public class BlockInit {
 

@@ -1,8 +1,8 @@
-package slexom.earthtojava.mobs.entity.ai.control;
+package slexom.earthtojava.entity.ai.control;
 
 import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.attribute.EntityAttributes;
-import slexom.earthtojava.mobs.entity.passive.TropicalSlimeEntity;
+import slexom.earthtojava.entity.passive.TropicalSlimeEntity;
 
 public class TropicalSlimeMoveController extends MoveControl {
     private final TropicalSlimeEntity slime;

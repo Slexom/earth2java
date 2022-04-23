@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.client.renderer.entity;
+package slexom.earthtojava.client.renderer.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -7,9 +7,9 @@ import net.minecraft.client.render.entity.ZombieBaseEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.util.Identifier;
-import slexom.earthtojava.mobs.client.renderer.entity.model.LobberZombieModel;
-import slexom.earthtojava.mobs.entity.monster.LobberZombieEntity;
-import slexom.earthtojava.mobs.init.EntityModelLayersInit;
+import slexom.earthtojava.client.renderer.entity.model.LobberZombieModel;
+import slexom.earthtojava.entity.monster.LobberZombieEntity;
+import slexom.earthtojava.init.EntityModelLayersInit;
 
 @Environment(EnvType.CLIENT)
 public class LobberZombieRenderer extends ZombieBaseEntityRenderer<LobberZombieEntity, LobberZombieModel<LobberZombieEntity>> {

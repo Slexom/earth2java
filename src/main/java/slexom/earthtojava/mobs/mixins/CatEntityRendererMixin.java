@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.mixins;
+package slexom.earthtojava.mixins;
 
 import net.minecraft.client.render.entity.CatEntityRenderer;
 import net.minecraft.entity.passive.CatEntity;

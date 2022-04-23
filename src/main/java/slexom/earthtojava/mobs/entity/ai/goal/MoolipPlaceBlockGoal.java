@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.entity.ai.goal;
+package slexom.earthtojava.entity.ai.goal;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -8,8 +8,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
-import slexom.earthtojava.mobs.entity.passive.MoolipEntity;
-import slexom.earthtojava.mobs.init.SoundEventsInit;
+import slexom.earthtojava.entity.passive.MoolipEntity;
+import slexom.earthtojava.init.SoundEventsInit;
 
 public class MoolipPlaceBlockGoal extends Goal {
     private final MoolipEntity moolip;

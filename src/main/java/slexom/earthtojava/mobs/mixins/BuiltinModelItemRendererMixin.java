@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.mixins;
+package slexom.earthtojava.mixins;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -18,8 +18,8 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import slexom.earthtojava.mobs.block.RainbowBedBlock;
-import slexom.earthtojava.mobs.init.BlockEntityTypeInit;
+import slexom.earthtojava.block.RainbowBedBlock;
+import slexom.earthtojava.init.BlockEntityTypeInit;
 
 @Mixin(BuiltinModelItemRenderer.class)
 public class BuiltinModelItemRendererMixin {

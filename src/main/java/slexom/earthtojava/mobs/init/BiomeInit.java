@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.init;
+package slexom.earthtojava.init;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -8,8 +8,8 @@ import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
-import slexom.earthtojava.mobs.Earth2JavaMod;
-import slexom.earthtojava.mobs.config.ModConfig;
+import slexom.earthtojava.Earth2JavaMod;
+import slexom.earthtojava.config.ModConfig;
 
 public class BiomeInit {
     private static final ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();

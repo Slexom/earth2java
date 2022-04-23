@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.fluid;
+package slexom.earthtojava.fluid;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -19,10 +19,10 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
-import slexom.earthtojava.mobs.Earth2JavaMod;
-import slexom.earthtojava.mobs.init.BlockInit;
-import slexom.earthtojava.mobs.init.FluidInit;
-import slexom.earthtojava.mobs.init.ItemInit;
+import slexom.earthtojava.Earth2JavaMod;
+import slexom.earthtojava.init.BlockInit;
+import slexom.earthtojava.init.FluidInit;
+import slexom.earthtojava.init.ItemInit;
 
 public class MudFluid extends FlowableFluid {
 

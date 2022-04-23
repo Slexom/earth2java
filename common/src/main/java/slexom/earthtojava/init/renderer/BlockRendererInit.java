@@ -1,13 +1,14 @@
 package slexom.earthtojava.init.renderer;
 
+import dev.architectury.registry.client.rendering.RenderTypeRegistry;
+import net.minecraft.client.render.RenderLayer;
+import slexom.earthtojava.init.BlockInit;
+
 public class BlockRendererInit {
     public static void init() {
-        /* todo
-        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.BUTTERCUP.get(), RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.POTTED_BUTTERCUP, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.PINK_DAISY.get(), RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(BlockInit.POTTED_PINK_DAISY, RenderLayer.getCutout());
-
-         */
+        RenderTypeRegistry.register(RenderLayer.getCutout(), BlockInit.BUTTERCUP.get());
+        RenderTypeRegistry.register(RenderLayer.getCutout(), BlockInit.POTTED_BUTTERCUP.get());
+        RenderTypeRegistry.register(RenderLayer.getCutout(), BlockInit.PINK_DAISY.get());
+        RenderTypeRegistry.register(RenderLayer.getCutout(), BlockInit.POTTED_PINK_DAISY.get());
     }
 }

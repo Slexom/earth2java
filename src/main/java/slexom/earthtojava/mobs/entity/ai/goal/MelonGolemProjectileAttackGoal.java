@@ -1,9 +1,9 @@
-package slexom.earthtojava.mobs.entity.ai.goal;
+package slexom.earthtojava.entity.ai.goal;
 
 import net.minecraft.entity.ai.goal.ProjectileAttackGoal;
-import slexom.earthtojava.mobs.entity.ai.control.MelonGolemMoveControl;
-import slexom.earthtojava.mobs.entity.passive.MelonGolemEntity;
-import slexom.earthtojava.mobs.init.SoundEventsInit;
+import slexom.earthtojava.entity.ai.control.MelonGolemMoveControl;
+import slexom.earthtojava.entity.passive.MelonGolemEntity;
+import slexom.earthtojava.init.SoundEventsInit;
 
 public class MelonGolemProjectileAttackGoal extends ProjectileAttackGoal {
     private final MelonGolemEntity melonGolemEntity;

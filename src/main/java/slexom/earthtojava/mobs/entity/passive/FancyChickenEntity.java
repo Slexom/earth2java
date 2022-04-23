@@ -1,13 +1,13 @@
-package slexom.earthtojava.mobs.entity.passive;
+package slexom.earthtojava.entity.passive;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.entity.ai.goal.FancyChickenFleeFromPigEntityGoal;
-import slexom.earthtojava.mobs.entity.base.E2JBaseChickenEntity;
-import slexom.earthtojava.mobs.init.SoundEventsInit;
+import slexom.earthtojava.entity.ai.goal.FancyChickenFleeFromPigEntityGoal;
+import slexom.earthtojava.entity.base.E2JBaseChickenEntity;
+import slexom.earthtojava.init.SoundEventsInit;
 
 public class FancyChickenEntity extends E2JBaseChickenEntity {
 

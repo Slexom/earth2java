@@ -1,11 +1,11 @@
-package slexom.earthtojava.mobs.client.renderer.entity.model;
+package slexom.earthtojava.client.renderer.entity.model;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.QuadrupedEntityModel;
 import net.minecraft.client.render.entity.model.SheepEntityModel;
-import slexom.earthtojava.mobs.entity.base.E2JBaseMonoColorSheepEntity;
+import slexom.earthtojava.entity.base.E2JBaseMonoColorSheepEntity;
 
 @Environment(EnvType.CLIENT)
 public class RainbowSheepModel<T extends E2JBaseMonoColorSheepEntity> extends SheepEntityModel<T> {

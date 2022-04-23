@@ -56,7 +56,7 @@ public class CarvedMelonBlock extends HorizontalFacingBlock {
                 world.syncWorldEvent(2001, cachedBlockPosition.getBlockPos(), Block.getRawIdFromState(cachedBlockPosition.getBlockState()));
             }
 
-            MelonGolemEntity melonGolemEntity = EntityTypesInit.MELON_GOLEM_REGISTRY_OBJECT.create(world);
+            MelonGolemEntity melonGolemEntity = EntityTypesInit.MELON_GOLEM_REGISTRY_OBJECT.get().create(world);
             BlockPos blockPos = result.translate(0, 2, 0).getBlockPos();
             melonGolemEntity.refreshPositionAndAngles((double) blockPos.getX() + 0.5D, (double) blockPos.getY() + 0.05D, (double) blockPos.getZ() + 0.5D, 0.0F, 0.0F);
             world.spawnEntity(melonGolemEntity);

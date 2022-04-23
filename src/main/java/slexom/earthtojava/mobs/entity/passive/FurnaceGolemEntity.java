@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.entity.passive;
+package slexom.earthtojava.entity.passive;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
@@ -17,10 +17,10 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.entity.BlinkManager;
-import slexom.earthtojava.mobs.entity.ai.goal.FurnaceGolemActiveTargetGoal;
-import slexom.earthtojava.mobs.entity.ai.goal.FurnaceGolemDefendVillageTargetGoal;
-import slexom.earthtojava.mobs.init.SoundEventsInit;
+import slexom.earthtojava.entity.BlinkManager;
+import slexom.earthtojava.entity.ai.goal.FurnaceGolemActiveTargetGoal;
+import slexom.earthtojava.entity.ai.goal.FurnaceGolemDefendVillageTargetGoal;
+import slexom.earthtojava.init.SoundEventsInit;
 
 import java.util.Random;
 

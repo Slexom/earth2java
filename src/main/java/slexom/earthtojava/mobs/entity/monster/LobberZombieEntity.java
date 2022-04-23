@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.entity.monster;
+package slexom.earthtojava.entity.monster;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -12,11 +12,11 @@ import net.minecraft.entity.passive.TurtleEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Hand;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.entity.base.E2JBaseZombieEntity;
-import slexom.earthtojava.mobs.entity.passive.FurnaceGolemEntity;
-import slexom.earthtojava.mobs.entity.passive.MelonGolemEntity;
-import slexom.earthtojava.mobs.entity.projectile.RottenFleshProjectileEntity;
-import slexom.earthtojava.mobs.init.SoundEventsInit;
+import slexom.earthtojava.entity.base.E2JBaseZombieEntity;
+import slexom.earthtojava.entity.passive.FurnaceGolemEntity;
+import slexom.earthtojava.entity.passive.MelonGolemEntity;
+import slexom.earthtojava.entity.projectile.RottenFleshProjectileEntity;
+import slexom.earthtojava.init.SoundEventsInit;
 
 public class LobberZombieEntity extends E2JBaseZombieEntity implements RangedAttackMob {
 

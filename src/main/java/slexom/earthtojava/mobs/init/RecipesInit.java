@@ -1,10 +1,10 @@
-package slexom.earthtojava.mobs.init;
+package slexom.earthtojava.init;
 
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import slexom.earthtojava.mobs.Earth2JavaMod;
-import slexom.earthtojava.mobs.item.crafting.MudBucketRecipe;
+import slexom.earthtojava.Earth2JavaMod;
+import slexom.earthtojava.item.crafting.MudBucketRecipe;
 
 public class RecipesInit {
     public static RecipeSerializer<MudBucketRecipe> MUD_BUCKET_RECIPE;

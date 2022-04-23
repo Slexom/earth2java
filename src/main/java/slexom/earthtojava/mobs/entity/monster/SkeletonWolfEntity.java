@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.entity.monster;
+package slexom.earthtojava.entity.monster;
 
 
 import net.fabricmc.api.EnvType;
@@ -27,7 +27,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.init.SoundEventsInit;
+import slexom.earthtojava.init.SoundEventsInit;
 
 import javax.annotation.Nullable;
 import java.util.UUID;

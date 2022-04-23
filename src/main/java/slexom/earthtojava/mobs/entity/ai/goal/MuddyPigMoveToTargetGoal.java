@@ -1,11 +1,11 @@
-package slexom.earthtojava.mobs.entity.ai.goal;
+package slexom.earthtojava.entity.ai.goal;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.ai.goal.MoveToTargetPosGoal;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldView;
-import slexom.earthtojava.mobs.entity.passive.MuddyPigEntity;
-import slexom.earthtojava.mobs.init.BlockInit;
+import slexom.earthtojava.entity.passive.MuddyPigEntity;
+import slexom.earthtojava.init.BlockInit;
 
 public class MuddyPigMoveToTargetGoal extends MoveToTargetPosGoal {
     private final MuddyPigEntity muddyPig;

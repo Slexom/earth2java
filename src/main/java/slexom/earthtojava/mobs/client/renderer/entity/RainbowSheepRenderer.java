@@ -1,14 +1,14 @@
-package slexom.earthtojava.mobs.client.renderer.entity;
+package slexom.earthtojava.client.renderer.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
-import slexom.earthtojava.mobs.client.renderer.entity.feature.RainbowSheepWoolFeatureRenderer;
-import slexom.earthtojava.mobs.client.renderer.entity.model.RainbowSheepModel;
-import slexom.earthtojava.mobs.entity.passive.RainbowSheepEntity;
-import slexom.earthtojava.mobs.init.EntityModelLayersInit;
+import slexom.earthtojava.client.renderer.entity.feature.RainbowSheepWoolFeatureRenderer;
+import slexom.earthtojava.client.renderer.entity.model.RainbowSheepModel;
+import slexom.earthtojava.entity.passive.RainbowSheepEntity;
+import slexom.earthtojava.init.EntityModelLayersInit;
 
 @Environment(EnvType.CLIENT)
 public class RainbowSheepRenderer extends MobEntityRenderer<RainbowSheepEntity, RainbowSheepModel<RainbowSheepEntity>> {

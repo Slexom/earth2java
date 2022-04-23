@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.entity.base;
+package slexom.earthtojava.entity.base;
 
 
 import net.minecraft.entity.EntityType;

@@ -1,11 +1,11 @@
-package slexom.earthtojava.mobs.entity.base;
+package slexom.earthtojava.entity.base;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.passive.LlamaEntity;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.entity.BlinkManager;
+import slexom.earthtojava.entity.BlinkManager;
 
 public class E2JBaseLlamaEntity extends LlamaEntity {
 

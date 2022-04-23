@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.entity.projectile;
+package slexom.earthtojava.entity.projectile;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -15,9 +15,9 @@ import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.init.EntityTypesInit;
-import slexom.earthtojava.mobs.init.ItemInit;
-import slexom.earthtojava.mobs.init.SoundEventsInit;
+import slexom.earthtojava.init.EntityTypesInit;
+import slexom.earthtojava.init.ItemInit;
+import slexom.earthtojava.init.SoundEventsInit;
 
 public class BoneShardEntity extends ThrownItemEntity {
 

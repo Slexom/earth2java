@@ -17,16 +17,16 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-            "slexom.earthtojava.mobs.Earth2JavaMod"
+            "slexom.earthtojava.Earth2JavaMod"
         ],
         "client": [
-            "slexom.earthtojava.mobs.Earth2JavaClientMod"
+            "slexom.earthtojava.Earth2JavaClientMod"
         ],
         "modmenu": [
-            "slexom.earthtojava.mobs.config.ModMenuIntegration"
+            "slexom.earthtojava.config.ModMenuIntegration"
         ],
         "mm:early_risers": [
-            "slexom.earthtojava.mobs.Earth2JavaEarlyRiser"
+            "slexom.earthtojava.Earth2JavaEarlyRiser"
         ]
     },
     "mixins": [

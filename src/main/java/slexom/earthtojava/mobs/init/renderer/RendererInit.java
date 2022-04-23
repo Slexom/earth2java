@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.init.renderer;
+package slexom.earthtojava.init.renderer;
 
 public class RendererInit {
     public static void init() {

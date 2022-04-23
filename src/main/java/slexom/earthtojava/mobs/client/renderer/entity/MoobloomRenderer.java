@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.client.renderer.entity;
+package slexom.earthtojava.client.renderer.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -7,8 +7,8 @@ import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.entity.model.CowEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.util.Identifier;
-import slexom.earthtojava.mobs.client.renderer.entity.feature.MoobloomButtercupFeatureRenderer;
-import slexom.earthtojava.mobs.entity.passive.MoobloomEntity;
+import slexom.earthtojava.client.renderer.entity.feature.MoobloomButtercupFeatureRenderer;
+import slexom.earthtojava.entity.passive.MoobloomEntity;
 
 @Environment(EnvType.CLIENT)
 public class MoobloomRenderer extends MobEntityRenderer<MoobloomEntity, CowEntityModel<MoobloomEntity>> {

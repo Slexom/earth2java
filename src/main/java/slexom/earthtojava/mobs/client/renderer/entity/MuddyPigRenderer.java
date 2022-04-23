@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.client.renderer.entity;
+package slexom.earthtojava.client.renderer.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -8,9 +8,9 @@ import net.minecraft.client.render.entity.feature.SaddleFeatureRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.render.entity.model.PigEntityModel;
 import net.minecraft.util.Identifier;
-import slexom.earthtojava.mobs.client.renderer.entity.model.MuddyPigModel;
-import slexom.earthtojava.mobs.entity.passive.MuddyPigEntity;
-import slexom.earthtojava.mobs.init.EntityModelLayersInit;
+import slexom.earthtojava.client.renderer.entity.model.MuddyPigModel;
+import slexom.earthtojava.entity.passive.MuddyPigEntity;
+import slexom.earthtojava.init.EntityModelLayersInit;
 
 @Environment(EnvType.CLIENT)
 public class MuddyPigRenderer extends MobEntityRenderer<MuddyPigEntity, MuddyPigModel<MuddyPigEntity>> {

@@ -1,14 +1,14 @@
-package slexom.earthtojava.mobs.init.renderer;
+package slexom.earthtojava.init.renderer;
 
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.entity.EntityType;
-import slexom.earthtojava.mobs.client.renderer.block.entity.RainbowBedBlockEntityRenderer;
-import slexom.earthtojava.mobs.client.renderer.entity.*;
-import slexom.earthtojava.mobs.entity.base.*;
-import slexom.earthtojava.mobs.init.BlockEntityTypeInit;
-import slexom.earthtojava.mobs.init.EntityTypesInit;
+import slexom.earthtojava.client.renderer.block.entity.RainbowBedBlockEntityRenderer;
+import slexom.earthtojava.client.renderer.entity.*;
+import slexom.earthtojava.entity.base.*;
+import slexom.earthtojava.init.BlockEntityTypeInit;
+import slexom.earthtojava.init.EntityTypesInit;
 
 public class EntityRendererInit {
 

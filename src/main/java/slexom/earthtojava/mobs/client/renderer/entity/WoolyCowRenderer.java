@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.client.renderer.entity;
+package slexom.earthtojava.client.renderer.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -7,7 +7,7 @@ import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.entity.model.CowEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.util.Identifier;
-import slexom.earthtojava.mobs.entity.passive.WoolyCowEntity;
+import slexom.earthtojava.entity.passive.WoolyCowEntity;
 
 @Environment(EnvType.CLIENT)
 public class WoolyCowRenderer extends MobEntityRenderer<WoolyCowEntity, CowEntityModel<WoolyCowEntity>> {

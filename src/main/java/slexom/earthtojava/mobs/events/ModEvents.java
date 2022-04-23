@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.events;
+package slexom.earthtojava.events;
 
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.block.Block;
@@ -13,8 +13,8 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import slexom.earthtojava.mobs.block.CarvedMelonBlock;
-import slexom.earthtojava.mobs.init.BlockInit;
+import slexom.earthtojava.block.CarvedMelonBlock;
+import slexom.earthtojava.init.BlockInit;
 
 public class ModEvents {
 

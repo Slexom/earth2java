@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.block;
+package slexom.earthtojava.block;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
@@ -15,7 +15,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
-import slexom.earthtojava.mobs.Earth2JavaMod;
+import slexom.earthtojava.Earth2JavaMod;
 
 public class MudBlock extends FluidBlock {
 

@@ -1,8 +1,8 @@
-package slexom.earthtojava.mobs.entity.ai.goal;
+package slexom.earthtojava.entity.ai.goal;
 
 import net.minecraft.entity.ai.goal.Goal;
-import slexom.earthtojava.mobs.entity.ai.control.TropicalSlimeMoveController;
-import slexom.earthtojava.mobs.entity.passive.TropicalSlimeEntity;
+import slexom.earthtojava.entity.ai.control.TropicalSlimeMoveController;
+import slexom.earthtojava.entity.passive.TropicalSlimeEntity;
 
 import java.util.EnumSet;
 

@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.entity.ai.goal;
+package slexom.earthtojava.entity.ai.goal;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -9,7 +9,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
-import slexom.earthtojava.mobs.init.SoundEventsInit;
+import slexom.earthtojava.init.SoundEventsInit;
 
 import java.util.EnumSet;
 import java.util.function.Predicate;

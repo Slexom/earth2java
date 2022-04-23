@@ -1,4 +1,4 @@
-//package slexom.earthtojava.mobs.client.renderer.entity;
+//package slexom.earthtojava.client.renderer.entity;
 //
 //import net.fabricmc.api.EnvType;
 //import net.fabricmc.api.Environment;
@@ -6,7 +6,7 @@
 //import net.minecraft.client.render.entity.ZombieBaseEntityRenderer;
 //import net.minecraft.client.render.entity.model.ZombieEntityModel;
 //import net.minecraft.util.Identifier;
-//import slexom.earthtojava.mobs.entity.base.E2JBaseZombieEntity;
+//import slexom.earthtojava.entity.base.E2JBaseZombieEntity;
 //
 //import java.text.MessageFormat;
 //

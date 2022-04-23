@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.client.renderer.entity.model;
+package slexom.earthtojava.client.renderer.entity.model;
 
 import com.google.common.collect.ImmutableList;
 import net.fabricmc.api.EnvType;
@@ -6,7 +6,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.TintableAnimalModel;
 import net.minecraft.util.math.MathHelper;
-import slexom.earthtojava.mobs.entity.monster.SkeletonWolfEntity;
+import slexom.earthtojava.entity.monster.SkeletonWolfEntity;
 
 @Environment(EnvType.CLIENT)
 public class SkeletonWolfModel<T extends SkeletonWolfEntity> extends TintableAnimalModel<T> {

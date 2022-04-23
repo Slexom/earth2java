@@ -1,14 +1,14 @@
-package slexom.earthtojava.mobs.client.renderer.entity;
+package slexom.earthtojava.client.renderer.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.util.Identifier;
-import slexom.earthtojava.mobs.client.renderer.entity.feature.HornedSheepWoolFeatureRenderer;
-import slexom.earthtojava.mobs.client.renderer.entity.model.HornedSheepModel;
-import slexom.earthtojava.mobs.entity.passive.HornedSheepEntity;
-import slexom.earthtojava.mobs.init.EntityModelLayersInit;
+import slexom.earthtojava.client.renderer.entity.feature.HornedSheepWoolFeatureRenderer;
+import slexom.earthtojava.client.renderer.entity.model.HornedSheepModel;
+import slexom.earthtojava.entity.passive.HornedSheepEntity;
+import slexom.earthtojava.init.EntityModelLayersInit;
 
 @Environment(EnvType.CLIENT)
 public class HornedSheepRenderer extends MobEntityRenderer<HornedSheepEntity, HornedSheepModel<HornedSheepEntity>> {

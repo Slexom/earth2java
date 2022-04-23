@@ -1,9 +1,9 @@
-package slexom.earthtojava.mobs.entity.ai.goal;
+package slexom.earthtojava.entity.ai.goal;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.ActiveTargetGoal;
-import slexom.earthtojava.mobs.entity.passive.FurnaceGolemEntity;
-import slexom.earthtojava.mobs.init.SoundEventsInit;
+import slexom.earthtojava.entity.passive.FurnaceGolemEntity;
+import slexom.earthtojava.init.SoundEventsInit;
 
 import javax.annotation.Nullable;
 import java.util.function.Predicate;

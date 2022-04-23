@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.init;
+package slexom.earthtojava.init;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -6,11 +6,11 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.WitchEntity;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.passive.SquidEntity;
-import slexom.earthtojava.mobs.entity.base.*;
-import slexom.earthtojava.mobs.entity.monster.BoneSpiderEntity;
-import slexom.earthtojava.mobs.entity.monster.SkeletonWolfEntity;
-import slexom.earthtojava.mobs.entity.passive.HornedSheepEntity;
-import slexom.earthtojava.mobs.entity.passive.MelonGolemEntity;
+import slexom.earthtojava.entity.base.*;
+import slexom.earthtojava.entity.monster.BoneSpiderEntity;
+import slexom.earthtojava.entity.monster.SkeletonWolfEntity;
+import slexom.earthtojava.entity.passive.HornedSheepEntity;
+import slexom.earthtojava.entity.passive.MelonGolemEntity;
 
 public class EntityAttributeInit {
 

@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.init.renderer;
+package slexom.earthtojava.init.renderer;
 
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandler;
@@ -18,8 +18,8 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockRenderView;
-import slexom.earthtojava.mobs.Earth2JavaMod;
-import slexom.earthtojava.mobs.init.FluidInit;
+import slexom.earthtojava.Earth2JavaMod;
+import slexom.earthtojava.init.FluidInit;
 
 import java.util.function.Function;
 

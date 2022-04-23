@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.entity.monster;
+package slexom.earthtojava.entity.monster;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -15,8 +15,8 @@ import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.entity.BlinkManager;
-import slexom.earthtojava.mobs.init.SoundEventsInit;
+import slexom.earthtojava.entity.BlinkManager;
+import slexom.earthtojava.init.SoundEventsInit;
 
 import java.util.Random;
 

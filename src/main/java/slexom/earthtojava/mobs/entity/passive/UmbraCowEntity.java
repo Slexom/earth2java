@@ -1,10 +1,10 @@
-package slexom.earthtojava.mobs.entity.passive;
+package slexom.earthtojava.entity.passive;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.entity.base.E2JBaseShearableCowEntity;
+import slexom.earthtojava.entity.base.E2JBaseShearableCowEntity;
 
 public class UmbraCowEntity extends E2JBaseShearableCowEntity<UmbraCowEntity> {
 

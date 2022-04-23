@@ -6,10 +6,10 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 import slexom.earthtojava.Earth2JavaMod;
 import slexom.earthtojava.config.ModConfig;
+import slexom.earthtojava.init.features.PlacedFeatureInit;
 
 import java.util.Objects;
 import java.util.function.Predicate;
@@ -20,14 +20,11 @@ public class BiomeInit {
 
     public static void init() {
         Predicate<BiomeModifications.BiomeContext> PLAINS = (ctx) -> Objects.equals(ctx.getProperties().getCategory(), Biome.Category.PLAINS);
-
-        BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.PLAINS), GenerationStep.Feature.VEGETAL_DECORATION, RegistryKey.of(BuiltinRegistries.PLACED_FEATURE.getKey(), new Identifier(Earth2JavaMod.MOD_ID, "e2j_flowers")));
-BiomeModifications.addProperties(PLAINS, (biomeContext, mutable) -> biomeContext);
-
-
+        BiomeModifications.addProperties(PLAINS, (biomeContext, mutable) -> mutable.getGenerationProperties().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, PlacedFeatureInit.E2J_FLOWERS_PLACED_FEATURES.get()));
 
         if (config.mudLakeConfig.canGenerate && config.mudLakeConfig.mudLakeFrequency > 0) {
-            BiomeModifications.addFeature(BiomeSelectors.categories(Biome.Category.FOREST), GenerationStep.Feature.LAKES, RegistryKey.of(BuiltinRegistries.PLACED_FEATURE.getKey(), new Identifier(Earth2JavaMod.MOD_ID, "lake_mud")));
+            Predicate<BiomeModifications.BiomeContext> FOREST = (ctx) -> Objects.equals(ctx.getProperties().getCategory(), Biome.Category.FOREST);
+            BiomeModifications.addProperties(PLAINS, (biomeContext, mutable) -> mutable.getGenerationProperties().addFeature(GenerationStep.Feature.LAKES, PlacedFeatureInit.MUD_LAKE_PLACED_FEATURES.get()));
         }
     }
 

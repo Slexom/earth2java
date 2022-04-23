@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.client.renderer.entity.feature;
+package slexom.earthtojava.client.renderer.entity.feature;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -11,7 +11,7 @@ import net.minecraft.client.render.entity.model.SheepEntityModel;
 import net.minecraft.client.render.entity.model.SheepWoolEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-import slexom.earthtojava.mobs.entity.base.E2JBaseMonoColorSheepEntity;
+import slexom.earthtojava.entity.base.E2JBaseMonoColorSheepEntity;
 
 @Environment(EnvType.CLIENT)
 public class E2JMonoColorSheepWoolFeatureRenderer extends FeatureRenderer<E2JBaseMonoColorSheepEntity, SheepEntityModel<E2JBaseMonoColorSheepEntity>> {

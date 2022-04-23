@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.entity;
+package slexom.earthtojava.entity;
 
 import java.util.Random;
 

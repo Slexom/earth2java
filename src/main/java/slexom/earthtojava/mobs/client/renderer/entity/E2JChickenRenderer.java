@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.client.renderer.entity;
+package slexom.earthtojava.client.renderer.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -8,7 +8,7 @@ import net.minecraft.client.render.entity.model.ChickenEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
-import slexom.earthtojava.mobs.entity.base.E2JBaseChickenEntity;
+import slexom.earthtojava.entity.base.E2JBaseChickenEntity;
 
 import java.text.MessageFormat;
 

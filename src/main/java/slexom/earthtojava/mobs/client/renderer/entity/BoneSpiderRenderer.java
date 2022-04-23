@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.client.renderer.entity;
+package slexom.earthtojava.client.renderer.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -13,7 +13,7 @@ import net.minecraft.client.render.entity.model.SpiderEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.mob.SpiderEntity;
 import net.minecraft.util.Identifier;
-import slexom.earthtojava.mobs.entity.base.E2JBaseSpiderEntity;
+import slexom.earthtojava.entity.base.E2JBaseSpiderEntity;
 
 @Environment(EnvType.CLIENT)
 public class BoneSpiderRenderer extends E2JSpiderRenderer {

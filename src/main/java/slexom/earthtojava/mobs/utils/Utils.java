@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.utils;
+package slexom.earthtojava.utils;
 
 import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.util.SpriteIdentifier;

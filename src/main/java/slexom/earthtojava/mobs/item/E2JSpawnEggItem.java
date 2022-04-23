@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.item;
+package slexom.earthtojava.item;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -13,7 +13,7 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.utils.Utils;
+import slexom.earthtojava.utils.Utils;
 
 import javax.annotation.Nullable;
 import java.util.List;

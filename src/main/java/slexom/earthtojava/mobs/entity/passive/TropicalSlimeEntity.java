@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.entity.passive;
+package slexom.earthtojava.entity.passive;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -22,11 +22,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import slexom.earthtojava.mobs.entity.ai.control.TropicalSlimeMoveController;
-import slexom.earthtojava.mobs.entity.ai.goal.TropicalSlimeAttackGoal;
-import slexom.earthtojava.mobs.entity.ai.goal.TropicalSlimeFaceRandomGoal;
-import slexom.earthtojava.mobs.entity.ai.goal.TropicalSlimeFloatGoal;
-import slexom.earthtojava.mobs.entity.ai.goal.TropicalSlimeHopGoal;
+import slexom.earthtojava.entity.ai.control.TropicalSlimeMoveController;
+import slexom.earthtojava.entity.ai.goal.TropicalSlimeAttackGoal;
+import slexom.earthtojava.entity.ai.goal.TropicalSlimeFaceRandomGoal;
+import slexom.earthtojava.entity.ai.goal.TropicalSlimeFloatGoal;
+import slexom.earthtojava.entity.ai.goal.TropicalSlimeHopGoal;
 
 public class TropicalSlimeEntity extends HostileEntity {
 

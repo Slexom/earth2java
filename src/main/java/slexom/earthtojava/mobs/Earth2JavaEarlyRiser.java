@@ -1,9 +1,9 @@
-package slexom.earthtojava.mobs;
+package slexom.earthtojava;
 
 import com.chocohead.mm.api.ClassTinkerers;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.MappingResolver;
-import slexom.earthtojava.mobs.init.EntityTypesInit;
+import slexom.earthtojava.init.EntityTypesInit;
 
 public class Earth2JavaEarlyRiser implements Runnable {
 

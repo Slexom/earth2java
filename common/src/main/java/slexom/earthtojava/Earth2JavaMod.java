@@ -12,8 +12,10 @@ import org.apache.logging.log4j.Logger;
 import slexom.earthtojava.config.ModConfig;
 import slexom.earthtojava.events.ModEvents;
 import slexom.earthtojava.init.*;
+import slexom.earthtojava.init.features.ConfiguredFeatureInit;
+import slexom.earthtojava.init.features.PlacedFeatureInit;
 
-public class Earth2JavaMod implements ModInitializer {
+public class Earth2JavaMod  {
 
     public static final String MOD_ID = "earthtojavamobs";
 
@@ -27,15 +29,15 @@ public class Earth2JavaMod implements ModInitializer {
 
     private static final Logger LOGGER = LogManager.getLogger("Earth2Java");
 
-    @Override
-    public void onInitialize() {
+     public static void initialize() {
         AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
         ModEvents.init();
         SoundEventsInit.init();
         FluidInit.init();
         BlockInit.init();
         BlockEntityTypeInit.init();
-        FeatureInit.init();
+        ConfiguredFeatureInit.init();
+        PlacedFeatureInit.init();
         BiomeInit.init();
         EntityTypesInit.init();
         EntityAttributeInit.init();

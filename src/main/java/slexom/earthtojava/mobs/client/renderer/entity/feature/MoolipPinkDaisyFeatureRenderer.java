@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.client.renderer.entity.feature;
+package slexom.earthtojava.client.renderer.entity.feature;
 
 
 import net.fabricmc.api.EnvType;
@@ -13,8 +13,8 @@ import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.model.CowEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.Vec3f;
-import slexom.earthtojava.mobs.entity.passive.MoolipEntity;
-import slexom.earthtojava.mobs.init.BlockInit;
+import slexom.earthtojava.entity.passive.MoolipEntity;
+import slexom.earthtojava.init.BlockInit;
 
 @Environment(EnvType.CLIENT)
 public class MoolipPinkDaisyFeatureRenderer<T extends MoolipEntity> extends FeatureRenderer<T, CowEntityModel<T>> {
@@ -26,7 +26,7 @@ public class MoolipPinkDaisyFeatureRenderer<T extends MoolipEntity> extends Feat
     public void render(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, T entity, float limbAngle, float limbDistance, float tickDelta, float animationProgress, float headYaw, float headPitch) {
         if (!entity.isBaby() && !entity.isInvisible()) {
             BlockRenderManager blockRenderManager = MinecraftClient.getInstance().getBlockRenderManager();
-            BlockState blockstate = BlockInit.PINK_DAISY.getDefaultState();
+            BlockState blockstate = BlockInit.PINK_DAISY.get().getDefaultState();
             int i = LivingEntityRenderer.getOverlay(entity, 0.0F);
             matrices.push();
             matrices.translate(0.2D, -0.2D, 0.5D);

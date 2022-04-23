@@ -1,4 +1,4 @@
-package slexom.earthtojava.mobs.mixins;
+package slexom.earthtojava.mixins;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import slexom.earthtojava.mobs.entity.base.E2JBaseMonoColorSheepEntity;
+import slexom.earthtojava.entity.base.E2JBaseMonoColorSheepEntity;
 
 @Mixin(DyeItem.class)
 public class DyeItemMixin {
