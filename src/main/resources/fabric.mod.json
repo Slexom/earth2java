@@ -24,6 +24,9 @@
         ],
         "modmenu": [
             "slexom.earthtojava.mobs.config.ModMenuIntegration"
+        ],
+        "mm:early_risers": [
+            "slexom.earthtojava.mobs.Earth2JavaEarlyRiser"
         ]
     },
     "mixins": [
