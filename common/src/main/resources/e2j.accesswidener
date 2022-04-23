@@ -1,0 +1,10 @@
+accessWidener v1 named
+
+accessible field net/minecraft/client/render/entity/model/ChickenEntityModel head Lnet/minecraft/client/model/ModelPart;
+
+accessible class net/minecraft/block/entity/BlockEntityType$BlockEntityFactory
+accessible class net/minecraft/world/biome/Biome$Category
+accessible class net/minecraft/village/raid/Raid$Member
+
+accessible method net/minecraft/block/FireBlock registerFlammableBlock (Lnet/minecraft/block/Block;II)V
+accessible method net/minecraft/world/biome/Biome getCategory (Lnet/minecraft/util/registry/RegistryEntry;)Lnet/minecraft/world/biome/Biome$Category;

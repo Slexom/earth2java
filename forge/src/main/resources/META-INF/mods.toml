@@ -1,0 +1,32 @@
+modLoader = "javafml"
+loaderVersion = "[40,)"
+license = "CC BY-NC-ND 4.0"
+
+[[mods]]
+modId = "earthtojavamobs"
+version = "${modVersion}"
+displayName = "Earth2Java"
+authors = "Slexom"
+description = "Bring mobs from Minecraft Earth to Minecraft Java Edition"
+logoFile = "icon.png"
+
+[[dependencies.earthtojavamobs]]
+modId = "forge"
+mandatory = true
+versionRange = "[40,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.earthtojavamobs]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.18.2,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.earthtojavamobs]]
+modId = "architectury"
+mandatory = true
+versionRange = "[4.0.30,)"
+ordering = "AFTER"
+side = "BOTH"
