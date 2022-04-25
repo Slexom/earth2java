@@ -12,7 +12,7 @@ loom {
     forge {
         convertAccessWideners = true
         extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
-        mixinConfig "earthtojava.mixins.json"
+        mixinConfig "earthtojava-common.mixins.json"
     }
 }
 

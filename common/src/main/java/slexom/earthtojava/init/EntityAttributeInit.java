@@ -12,7 +12,7 @@ import slexom.earthtojava.entity.monster.SkeletonWolfEntity;
 import slexom.earthtojava.entity.passive.HornedSheepEntity;
 import slexom.earthtojava.entity.passive.MelonGolemEntity;
 
-public class EntityAttributeInit {
+public final class EntityAttributeInit {
 
     public static void init() {
 
@@ -53,31 +53,22 @@ public class EntityAttributeInit {
 
         EntityAttributeRegistry.register(EntityTypesInit.HORNED_SHEEP_REGISTRY_OBJECT, HornedSheepEntity::createHornedSheepAttributes);
         EntityAttributeRegistry.register(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_OBJECT, E2JBaseSheepEntity::createSheepAttributes);
-
         EntityAttributeRegistry.register(EntityTypesInit.CLUCKSHROOM_REGISTRY_OBJECT, E2JBaseChickenEntity::createChickenAttributes);
         EntityAttributeRegistry.register(EntityTypesInit.FANCY_CHICKEN_REGISTRY_OBJECT, E2JBaseChickenEntity::createChickenAttributes);
         EntityAttributeRegistry.register(EntityTypesInit.MUDDY_PIG_REGISTRY_OBJECT, E2JBasePigEntity::createPigAttributes);
-
         EntityAttributeRegistry.register(EntityTypesInit.MOOBLOOM_REGISTRY_OBJECT, E2JBaseCowEntity::createCowAttributes);
         EntityAttributeRegistry.register(EntityTypesInit.MOOLIP_REGISTRY_OBJECT, E2JBaseCowEntity::createCowAttributes);
         EntityAttributeRegistry.register(EntityTypesInit.UMBRA_COW_REGISTRY_OBJECT, E2JBaseCowEntity::createCowAttributes);
         EntityAttributeRegistry.register(EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT, E2JBaseCowEntity::createCowAttributes);
-
         EntityAttributeRegistry.register(EntityTypesInit.JUMBO_RABBIT_REGISTRY_OBJECT, E2JBaseRabbitEntity::createRabbitAttributes);
-
         EntityAttributeRegistry.register(EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT, IronGolemEntity::createIronGolemAttributes);
         EntityAttributeRegistry.register(EntityTypesInit.MELON_GOLEM_REGISTRY_OBJECT, MelonGolemEntity::createMelonGolemAttributes);
         EntityAttributeRegistry.register(EntityTypesInit.TROPICAL_SLIME_REGISTRY_OBJECT, HostileEntity::createHostileAttributes);
-
         EntityAttributeRegistry.register(EntityTypesInit.BONE_SPIDER_REGISTRY_OBJECT, BoneSpiderEntity::createBoneSpiderAttributes);
-
         EntityAttributeRegistry.register(EntityTypesInit.SKELETON_WOLF_REGISTRY_OBJECT, SkeletonWolfEntity::createSkeletonWolfAttributes);
-
         EntityAttributeRegistry.register(EntityTypesInit.JOLLY_LLAMA_REGISTRY_OBJECT, E2JBaseLlamaEntity::createJollyLlamaAttributes);
-
         EntityAttributeRegistry.register(EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_OBJECT, E2JBaseZombieEntity::createZombieAttributes);
         EntityAttributeRegistry.register(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_OBJECT, E2JBaseZombieEntity::createZombieAttributes);
-
         EntityAttributeRegistry.register(EntityTypesInit.VILER_WITCH_REGISTRY_OBJECT, WitchEntity::createWitchAttributes);
     }
 

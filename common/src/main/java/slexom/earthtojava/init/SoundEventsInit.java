@@ -1,16 +1,13 @@
 package slexom.earthtojava.init;
 
-import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
 import slexom.earthtojava.Earth2JavaMod;
 
 import java.text.MessageFormat;
 
-public class SoundEventsInit {
-    private static final DeferredRegister<SoundEvent> SOUND_EVENT_DEFERRED_REGISTER = DeferredRegister.create(Earth2JavaMod.MOD_ID, Registry.SOUND_EVENT_KEY);
+public final class SoundEventsInit {
 
     public static final String BONE_SPIDER_AMBIENT_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.BONE_SPIDER_REGISTRY_NAME, "ambient");
     public static final String BONE_SPIDER_BONE_STAB_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.BONE_SPIDER_REGISTRY_NAME, "bone.stab");
@@ -52,45 +49,45 @@ public class SoundEventsInit {
     public static final String SKELETON_WOLF_WHINE_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.SKELETON_WOLF_REGISTRY_NAME, "whine");
     public static final String VILER_WITCH_CASTING_REGISTRY_NAME = getEntitySoundEventName(EntityTypesInit.VILER_WITCH_REGISTRY_NAME, "casting");
 
-    public static RegistrySupplier<SoundEvent> BONE_SPIDER_AMBIENT;
-    public static RegistrySupplier<SoundEvent> BONE_SPIDER_BONE_STAB;
-    public static RegistrySupplier<SoundEvent> BONE_SPIDER_DEATH;
-    public static RegistrySupplier<SoundEvent> BONE_SPIDER_SPIT;
-    public static RegistrySupplier<SoundEvent> BONE_SPIDER_WALK;
-    public static RegistrySupplier<SoundEvent> CLUCKSHROOM_LAY_MUSHROOM;
-    public static RegistrySupplier<SoundEvent> FANCY_CHICKEN_AMBIENT;
-    public static RegistrySupplier<SoundEvent> FANCY_CHICKEN_DEATH;
-    public static RegistrySupplier<SoundEvent> FANCY_CHICKEN_FLEE;
-    public static RegistrySupplier<SoundEvent> FANCY_CHICKEN_HURT;
-    public static RegistrySupplier<SoundEvent> FURNACE_GOLEM_AGGRO;
-    public static RegistrySupplier<SoundEvent> FURNACE_GOLEM_ATTACK;
-    public static RegistrySupplier<SoundEvent> JOLLY_LLAMA_BELL;
-    public static RegistrySupplier<SoundEvent> JOLLY_LLAMA_DETECT_FERN;
-    public static RegistrySupplier<SoundEvent> JOLLY_LLAMA_EAT;
-    public static RegistrySupplier<SoundEvent> JOLLY_LLAMA_PRANCE;
-    public static RegistrySupplier<SoundEvent> JUMBO_RABBIT_AMBIENT;
-    public static RegistrySupplier<SoundEvent> JUMBO_RABBIT_HURT;
-    public static RegistrySupplier<SoundEvent> JUMBO_RABBIT_JUMP;
-    public static RegistrySupplier<SoundEvent> LOBBER_ZOMBIE_ATTACK;
-    public static RegistrySupplier<SoundEvent> LOBBER_ZOMBIE_PROJECTILE_SOUND;
-    public static RegistrySupplier<SoundEvent> MELON_GOLEM_AGGRO;
-    public static RegistrySupplier<SoundEvent> MELON_GOLEM_ATTACK;
-    public static RegistrySupplier<SoundEvent> MELON_GOLEM_CHARGE;
-    public static RegistrySupplier<SoundEvent> MELON_GOLEM_SEED_HIT;
-    public static RegistrySupplier<SoundEvent> MOOBLOOM_PLANT;
-    public static RegistrySupplier<SoundEvent> MOOLIP_PLANT;
-    public static RegistrySupplier<SoundEvent> RAINBOW_SHEEP_AMBIENT;
-    public static RegistrySupplier<SoundEvent> RAINBOW_SHEEP_DEATH;
-    public static RegistrySupplier<SoundEvent> SKELETON_WOLF_AMBIENT;
-    public static RegistrySupplier<SoundEvent> SKELETON_WOLF_DEATH;
-    public static RegistrySupplier<SoundEvent> SKELETON_WOLF_GROWL;
-    public static RegistrySupplier<SoundEvent> SKELETON_WOLF_HOWL;
-    public static RegistrySupplier<SoundEvent> SKELETON_WOLF_HURT;
-    public static RegistrySupplier<SoundEvent> SKELETON_WOLF_PANT;
-    public static RegistrySupplier<SoundEvent> SKELETON_WOLF_SHAKE;
-    public static RegistrySupplier<SoundEvent> SKELETON_WOLF_STEP;
-    public static RegistrySupplier<SoundEvent> SKELETON_WOLF_WHINE;
-    public static RegistrySupplier<SoundEvent> VILER_WITCH_CASTING;
+    public static final RegistrySupplier<SoundEvent> BONE_SPIDER_AMBIENT;
+    public static final RegistrySupplier<SoundEvent> BONE_SPIDER_BONE_STAB;
+    public static final RegistrySupplier<SoundEvent> BONE_SPIDER_DEATH;
+    public static final RegistrySupplier<SoundEvent> BONE_SPIDER_SPIT;
+    public static final RegistrySupplier<SoundEvent> BONE_SPIDER_WALK;
+    public static final RegistrySupplier<SoundEvent> CLUCKSHROOM_LAY_MUSHROOM;
+    public static final RegistrySupplier<SoundEvent> FANCY_CHICKEN_AMBIENT;
+    public static final RegistrySupplier<SoundEvent> FANCY_CHICKEN_DEATH;
+    public static final RegistrySupplier<SoundEvent> FANCY_CHICKEN_FLEE;
+    public static final RegistrySupplier<SoundEvent> FANCY_CHICKEN_HURT;
+    public static final RegistrySupplier<SoundEvent> FURNACE_GOLEM_AGGRO;
+    public static final RegistrySupplier<SoundEvent> FURNACE_GOLEM_ATTACK;
+    public static final RegistrySupplier<SoundEvent> JOLLY_LLAMA_BELL;
+    public static final RegistrySupplier<SoundEvent> JOLLY_LLAMA_DETECT_FERN;
+    public static final RegistrySupplier<SoundEvent> JOLLY_LLAMA_EAT;
+    public static final RegistrySupplier<SoundEvent> JOLLY_LLAMA_PRANCE;
+    public static final RegistrySupplier<SoundEvent> JUMBO_RABBIT_AMBIENT;
+    public static final RegistrySupplier<SoundEvent> JUMBO_RABBIT_HURT;
+    public static final RegistrySupplier<SoundEvent> JUMBO_RABBIT_JUMP;
+    public static final RegistrySupplier<SoundEvent> LOBBER_ZOMBIE_ATTACK;
+    public static final RegistrySupplier<SoundEvent> LOBBER_ZOMBIE_PROJECTILE_SOUND;
+    public static final RegistrySupplier<SoundEvent> MELON_GOLEM_AGGRO;
+    public static final RegistrySupplier<SoundEvent> MELON_GOLEM_ATTACK;
+    public static final RegistrySupplier<SoundEvent> MELON_GOLEM_CHARGE;
+    public static final RegistrySupplier<SoundEvent> MELON_GOLEM_SEED_HIT;
+    public static final RegistrySupplier<SoundEvent> MOOBLOOM_PLANT;
+    public static final RegistrySupplier<SoundEvent> MOOLIP_PLANT;
+    public static final RegistrySupplier<SoundEvent> RAINBOW_SHEEP_AMBIENT;
+    public static final RegistrySupplier<SoundEvent> RAINBOW_SHEEP_DEATH;
+    public static final RegistrySupplier<SoundEvent> SKELETON_WOLF_AMBIENT;
+    public static final RegistrySupplier<SoundEvent> SKELETON_WOLF_DEATH;
+    public static final RegistrySupplier<SoundEvent> SKELETON_WOLF_GROWL;
+    public static final RegistrySupplier<SoundEvent> SKELETON_WOLF_HOWL;
+    public static final RegistrySupplier<SoundEvent> SKELETON_WOLF_HURT;
+    public static final RegistrySupplier<SoundEvent> SKELETON_WOLF_PANT;
+    public static final RegistrySupplier<SoundEvent> SKELETON_WOLF_SHAKE;
+    public static final RegistrySupplier<SoundEvent> SKELETON_WOLF_STEP;
+    public static final RegistrySupplier<SoundEvent> SKELETON_WOLF_WHINE;
+    public static final RegistrySupplier<SoundEvent> VILER_WITCH_CASTING;
 
     static {
         BONE_SPIDER_AMBIENT = registerSoundEvent(BONE_SPIDER_AMBIENT_REGISTRY_NAME);
@@ -135,12 +132,12 @@ public class SoundEventsInit {
     }
 
     public static void init() {
-        SOUND_EVENT_DEFERRED_REGISTER.register();
+
     }
 
     public static RegistrySupplier<SoundEvent> registerSoundEvent(String registryName) {
-        final Identifier identifier = new Identifier(Earth2JavaMod.MOD_ID, registryName);
-        return SOUND_EVENT_DEFERRED_REGISTER.register(registryName, () -> new SoundEvent(identifier));
+        final Identifier identifier = Earth2JavaMod.toIdentifier(registryName);
+        return Earth2JavaMod.SOUND_EVENT_REGISTRAR.register(identifier, () -> new SoundEvent(identifier));
     }
 
     private static String getEntitySoundEventName(String registryName, String type) {

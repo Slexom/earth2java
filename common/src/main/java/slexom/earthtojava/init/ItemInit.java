@@ -1,6 +1,5 @@
 package slexom.earthtojava.init;
 
-import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -14,7 +13,6 @@ import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import slexom.earthtojava.Earth2JavaMod;
 import slexom.earthtojava.item.*;
@@ -23,75 +21,72 @@ import slexom.earthtojava.utils.Utils;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ItemInit {
-    private static final DeferredRegister<Item> ITEM_DEFERRED_REGISTER = DeferredRegister.create(Earth2JavaMod.MOD_ID, Registry.ITEM_KEY);
+public final class ItemInit {
 
+    public static final RegistrySupplier<Item> ALBINO_COW_SPAWN_EGG;
+    public static final RegistrySupplier<Item> AMBER_CHICKEN_SPAWN_EGG;
+    public static final RegistrySupplier<Item> ASHEN_COW_SPAWN_EGG;
+    public static final RegistrySupplier<Item> BOLD_STRIPED_RABBIT_SPAWN_EGG;
+    public static final RegistrySupplier<Item> BONE_SPIDER_SPAWN_EGG;
+    public static final RegistrySupplier<Item> BOULDERING_ZOMBIE_SPAWN_EGG;
+    public static final RegistrySupplier<Item> BRONZED_CHICKEN_SPAWN_EGG;
+    public static final RegistrySupplier<Item> CLUCKSHROOM_SPAWN_EGG;
+    public static final RegistrySupplier<Item> COOKIE_COW_SPAWN_EGG;
+    public static final RegistrySupplier<Item> CREAM_COW_SPAWN_EGG;
+    public static final RegistrySupplier<Item> DAIRY_COW_SPAWN_EGG;
+    public static final RegistrySupplier<Item> FANCY_CHICKEN_SPAWN_EGG;
+    public static final RegistrySupplier<Item> FLECKED_SHEEP_SPAWN_EGG;
+    public static final RegistrySupplier<Item> FURNACE_GOLEM_SPAWN_EGG;
+    public static final RegistrySupplier<Item> GOLD_CRESTED_CHICKEN_SPAWN_EGG;
+    public static final RegistrySupplier<Item> HARELEQUIN_RABBIT_SPAWN_EGG;
+    public static final RegistrySupplier<Item> HORNED_SHEEP_SPAWN_EGG;
+    public static final RegistrySupplier<Item> INKY_SHEEP_SPAWN_EGG;
+    public static final RegistrySupplier<Item> JOLLY_LLAMA_SPAWN_EGG;
+    public static final RegistrySupplier<Item> JUMBO_RABBIT_SPAWN_EGG;
+    public static final RegistrySupplier<Item> LOBBER_ZOMBIE_SPAWN_EGG;
+    public static final RegistrySupplier<Item> MELON_GOLEM_SPAWN_EGG;
+    public static final RegistrySupplier<Item> MIDNIGHT_CHICKEN_SPAWN_EGG;
+    public static final RegistrySupplier<Item> MOOBLOOM_SPAWN_EGG;
+    public static final RegistrySupplier<Item> MOOLIP_SPAWN_EGG;
+    public static final RegistrySupplier<Item> MUDDY_FOOT_RABBIT_SPAWN_EGG;
+    public static final RegistrySupplier<Item> MUDDY_PIG_SPAWN_EGG;
+    public static final RegistrySupplier<Item> PALE_PIG_SPAWN_EGG;
+    public static final RegistrySupplier<Item> PATCHED_SHEEP_SPAWN_EGG;
+    public static final RegistrySupplier<Item> PIEBALD_PIG_SPAWN_EGG;
+    public static final RegistrySupplier<Item> PINK_FOOTED_PIG_SPAWN_EGG;
+    public static final RegistrySupplier<Item> PINTO_COW_SPAWN_EGG;
+    public static final RegistrySupplier<Item> RAINBOW_SHEEP_SPAWN_EGG;
+    public static final RegistrySupplier<Item> ROCKY_SHEEP_SPAWN_EGG;
+    public static final RegistrySupplier<Item> SKELETON_WOLF_SPAWN_EGG;
+    public static final RegistrySupplier<Item> SKEWBALD_CHICKEN_SPAWN_EGG;
+    public static final RegistrySupplier<Item> SPOTTED_PIG_SPAWN_EGG;
+    public static final RegistrySupplier<Item> STORMY_CHICKEN_SPAWN_EGG;
+    public static final RegistrySupplier<Item> SUNSET_COW_SPAWN_EGG;
+    public static final RegistrySupplier<Item> TROPICAL_SLIME_SPAWN_EGG;
+    public static final RegistrySupplier<Item> FUZZY_SHEEP_SPAWN_EGG;
+    public static final RegistrySupplier<Item> UMBRA_COW_SPAWN_EGG;
+    public static final RegistrySupplier<Item> VESTED_RABBIT_SPAWN_EGG;
+    public static final RegistrySupplier<Item> VILER_WITCH_SPAWN_EGG;
+    public static final RegistrySupplier<Item> WOOLY_COW_SPAWN_EGG;
+    public static final RegistrySupplier<Item> MOTTLED_PIG_SPAWN_EGG;
+    public static final RegistrySupplier<Item> SOOTY_PIG_SPAWN_EGG;
+    public static final RegistrySupplier<Item> FRECKLED_RABBIT_SPAWN_EGG;
+    public static final RegistrySupplier<Item> LONG_NOSED_SHEEP_SPAWN_EGG;
+    public static final RegistrySupplier<Item> BONE_SHARD;
+    public static final RegistrySupplier<Item> FANCY_FEATHER;
+    public static final RegistrySupplier<Item> HORN;
+    public static final RegistrySupplier<Item> MUD_BUCKET;
+    public static final RegistrySupplier<Item> RAINBOW_BED;
+    public static final RegistrySupplier<Item> BUTTERCUP;
+    public static final RegistrySupplier<Item> PINK_DAISY;
+    public static final RegistrySupplier<Item> CARVED_MELON;
+    public static final RegistrySupplier<Item> MELON_GOLEM_HEAD_BLINK;
+    public static final RegistrySupplier<Item> MELON_GOLEM_HEAD_SHOOT;
+    public static final RegistrySupplier<Item> MELON_LANTERN;
+    public static final RegistrySupplier<Item> RAINBOW_CARPET;
+    public static final RegistrySupplier<Item> RAINBOW_WOOL;
     private static final ItemGroup itemGroup = Earth2JavaMod.ITEM_GROUP;
     private static final Item.Settings spawnEggProps = new Item.Settings().group(itemGroup);
-    public static RegistrySupplier<Item> ALBINO_COW_SPAWN_EGG;
-    public static RegistrySupplier<Item> AMBER_CHICKEN_SPAWN_EGG;
-    public static RegistrySupplier<Item> ASHEN_COW_SPAWN_EGG;
-    public static RegistrySupplier<Item> BOLD_STRIPED_RABBIT_SPAWN_EGG;
-    public static RegistrySupplier<Item> BONE_SPIDER_SPAWN_EGG;
-    public static RegistrySupplier<Item> BOULDERING_ZOMBIE_SPAWN_EGG;
-    public static RegistrySupplier<Item> BRONZED_CHICKEN_SPAWN_EGG;
-    public static RegistrySupplier<Item> CLUCKSHROOM_SPAWN_EGG;
-    public static RegistrySupplier<Item> COOKIE_COW_SPAWN_EGG;
-    public static RegistrySupplier<Item> CREAM_COW_SPAWN_EGG;
-    public static RegistrySupplier<Item> DAIRY_COW_SPAWN_EGG;
-    public static RegistrySupplier<Item> FANCY_CHICKEN_SPAWN_EGG;
-    public static RegistrySupplier<Item> FLECKED_SHEEP_SPAWN_EGG;
-    public static RegistrySupplier<Item> FURNACE_GOLEM_SPAWN_EGG;
-    public static RegistrySupplier<Item> GOLD_CRESTED_CHICKEN_SPAWN_EGG;
-    public static RegistrySupplier<Item> HARELEQUIN_RABBIT_SPAWN_EGG;
-    public static RegistrySupplier<Item> HORNED_SHEEP_SPAWN_EGG;
-    public static RegistrySupplier<Item> INKY_SHEEP_SPAWN_EGG;
-    public static RegistrySupplier<Item> JOLLY_LLAMA_SPAWN_EGG;
-    public static RegistrySupplier<Item> JUMBO_RABBIT_SPAWN_EGG;
-    public static RegistrySupplier<Item> LOBBER_ZOMBIE_SPAWN_EGG;
-    public static RegistrySupplier<Item> MELON_GOLEM_SPAWN_EGG;
-    public static RegistrySupplier<Item> MIDNIGHT_CHICKEN_SPAWN_EGG;
-    public static RegistrySupplier<Item> MOOBLOOM_SPAWN_EGG;
-    public static RegistrySupplier<Item> MOOLIP_SPAWN_EGG;
-    public static RegistrySupplier<Item> MUDDY_FOOT_RABBIT_SPAWN_EGG;
-    public static RegistrySupplier<Item> MUDDY_PIG_SPAWN_EGG;
-    public static RegistrySupplier<Item> PALE_PIG_SPAWN_EGG;
-    public static RegistrySupplier<Item> PATCHED_SHEEP_SPAWN_EGG;
-    public static RegistrySupplier<Item> PIEBALD_PIG_SPAWN_EGG;
-    public static RegistrySupplier<Item> PINK_FOOTED_PIG_SPAWN_EGG;
-    public static RegistrySupplier<Item> PINTO_COW_SPAWN_EGG;
-    public static RegistrySupplier<Item> RAINBOW_SHEEP_SPAWN_EGG;
-    public static RegistrySupplier<Item> ROCKY_SHEEP_SPAWN_EGG;
-    public static RegistrySupplier<Item> SKELETON_WOLF_SPAWN_EGG;
-    public static RegistrySupplier<Item> SKEWBALD_CHICKEN_SPAWN_EGG;
-    public static RegistrySupplier<Item> SPOTTED_PIG_SPAWN_EGG;
-    public static RegistrySupplier<Item> STORMY_CHICKEN_SPAWN_EGG;
-    public static RegistrySupplier<Item> SUNSET_COW_SPAWN_EGG;
-    public static RegistrySupplier<Item> TROPICAL_SLIME_SPAWN_EGG;
-    public static RegistrySupplier<Item> FUZZY_SHEEP_SPAWN_EGG;
-    public static RegistrySupplier<Item> UMBRA_COW_SPAWN_EGG;
-    public static RegistrySupplier<Item> VESTED_RABBIT_SPAWN_EGG;
-    public static RegistrySupplier<Item> VILER_WITCH_SPAWN_EGG;
-    public static RegistrySupplier<Item> WOOLY_COW_SPAWN_EGG;
-    public static RegistrySupplier<Item> MOTTLED_PIG_SPAWN_EGG;
-    public static RegistrySupplier<Item> SOOTY_PIG_SPAWN_EGG;
-    public static RegistrySupplier<Item> FRECKLED_RABBIT_SPAWN_EGG;
-    public static RegistrySupplier<Item> LONG_NOSED_SHEEP_SPAWN_EGG;
-
-    public static RegistrySupplier<Item> BONE_SHARD;
-    public static RegistrySupplier<Item> FANCY_FEATHER;
-    public static RegistrySupplier<Item> HORN;
-    public static RegistrySupplier<Item> MUD_BUCKET;
-    public static RegistrySupplier<Item> RAINBOW_BED;
-    public static RegistrySupplier<Item> BUTTERCUP;
-    public static RegistrySupplier<Item> PINK_DAISY;
-    public static RegistrySupplier<Item> CARVED_MELON;
-    public static RegistrySupplier<Item> MELON_GOLEM_HEAD_BLINK;
-    public static RegistrySupplier<Item> MELON_GOLEM_HEAD_SHOOT;
-    public static RegistrySupplier<Item> MELON_LANTERN;
-    public static RegistrySupplier<Item> RAINBOW_CARPET;
-    public static RegistrySupplier<Item> RAINBOW_WOOL;
-
 
     static {
         ALBINO_COW_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.ALBINO_COW_REGISTRY_NAME, EntityTypesInit.ALBINO_COW_REGISTRY_OBJECT, 0xdecac3, 0xf0a590);
@@ -144,7 +139,6 @@ public class ItemInit {
         VILER_WITCH_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.VILER_WITCH_REGISTRY_NAME, EntityTypesInit.VILER_WITCH_REGISTRY_OBJECT, 0x0d0e19, 0xa09280);
         WOOLY_COW_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.WOOLY_COW_REGISTRY_NAME, EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT, 0xcc3300, 0xff9933);
 
-
         BUTTERCUP = registerBlockItem("buttercup", BlockInit.BUTTERCUP.get());
         PINK_DAISY = registerBlockItem("pink_daisy", BlockInit.PINK_DAISY.get());
         CARVED_MELON = registerBlockItem("carved_melon", BlockInit.CARVED_MELON.get());
@@ -154,25 +148,24 @@ public class ItemInit {
         RAINBOW_CARPET = registerBlockItem("rainbow_carpet", BlockInit.RAINBOW_CARPET.get());
         RAINBOW_WOOL = registerBlockItem("rainbow_wool", BlockInit.RAINBOW_WOOL.get());
 
-
-        HORN = ITEM_DEFERRED_REGISTER.register("horn", () -> new HornItem(new Item.Settings().group(itemGroup).maxCount(64)));
-        FANCY_FEATHER = ITEM_DEFERRED_REGISTER.register("fancy_feather", () -> new FancyFeatherItem(new Item.Settings().group(itemGroup).maxCount(64)));
-        MUD_BUCKET = ITEM_DEFERRED_REGISTER.register("mud_fluid_bucket", () -> new MudBucketItem(FluidInit.MUD_FLUID_STILL.get(), new Item.Settings().recipeRemainder(Items.BUCKET).maxCount(1).group(itemGroup)));
-        BONE_SHARD = ITEM_DEFERRED_REGISTER.register("bone_shard", () -> new BoneShardItem(new Item.Settings().group(null).maxCount(16)));
-        RAINBOW_BED = ITEM_DEFERRED_REGISTER.register("rainbow_bed", () -> new BedItem(BlockInit.RAINBOW_BED.get(), (new Item.Settings()).maxCount(1).group(ItemGroup.DECORATIONS)));
+        HORN = Earth2JavaMod.ITEM_REGISTRAR.register(Earth2JavaMod.toIdentifier("horn"), () -> new HornItem(new Item.Settings().group(itemGroup).maxCount(64)));
+        FANCY_FEATHER = Earth2JavaMod.ITEM_REGISTRAR.register(Earth2JavaMod.toIdentifier("fancy_feather"), () -> new FancyFeatherItem(new Item.Settings().group(itemGroup).maxCount(64)));
+        MUD_BUCKET = Earth2JavaMod.ITEM_REGISTRAR.register(Earth2JavaMod.toIdentifier("mud_fluid_bucket"), () -> new MudBucketItem(FluidInit.MUD_FLUID_STILL.get(), new Item.Settings().recipeRemainder(Items.BUCKET).maxCount(1).group(itemGroup)));
+        BONE_SHARD = Earth2JavaMod.ITEM_REGISTRAR.register(Earth2JavaMod.toIdentifier("bone_shard"), () -> new BoneShardItem(new Item.Settings().group(null).maxCount(16)));
+        RAINBOW_BED = Earth2JavaMod.ITEM_REGISTRAR.register(Earth2JavaMod.toIdentifier("rainbow_bed"), () -> new BedItem(BlockInit.RAINBOW_BED.get(), (new Item.Settings()).maxCount(1).group(ItemGroup.DECORATIONS)));
 
     }
 
     public static void init() {
-        ITEM_DEFERRED_REGISTER.register();
+
     }
 
     private static RegistrySupplier<Item> registerSpawnEgg(String registryName, RegistrySupplier<? extends EntityType<? extends MobEntity>> entityType, int primaryColor, int secondaryColor) {
-        return ITEM_DEFERRED_REGISTER.register(registryName + "_spawn_egg", () -> new E2JSpawnEggItem(entityType, primaryColor, secondaryColor, spawnEggProps));
+        return Earth2JavaMod.ITEM_REGISTRAR.register(Earth2JavaMod.toIdentifier(registryName + "_spawn_egg"), () -> new E2JSpawnEggItem(entityType, primaryColor, secondaryColor, spawnEggProps));
     }
 
     private static RegistrySupplier<Item> registerBlockItem(String registryName, Block block) {
-        return ITEM_DEFERRED_REGISTER.register(registryName, () -> new BlockItem(block, new Item.Settings().group(Earth2JavaMod.ITEM_GROUP)) {
+        return Earth2JavaMod.ITEM_REGISTRAR.register(Earth2JavaMod.toIdentifier(registryName), () -> new BlockItem(block, new Item.Settings().group(Earth2JavaMod.ITEM_GROUP)) {
             @Environment(EnvType.CLIENT)
             public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
                 String translationKey = this.getTranslationKey() + ".desc";

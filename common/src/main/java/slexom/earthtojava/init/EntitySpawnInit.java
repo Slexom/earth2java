@@ -10,7 +10,7 @@ import slexom.earthtojava.config.ModConfig;
 import slexom.earthtojava.mixins.SpawnRestrictionAccessor;
 import slexom.earthtojava.utils.BiomeSpawnHelper;
 
-public class EntitySpawnInit {
+public final class EntitySpawnInit {
 
     private static final ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 

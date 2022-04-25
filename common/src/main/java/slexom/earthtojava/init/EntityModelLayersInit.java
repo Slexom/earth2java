@@ -8,21 +8,22 @@ import slexom.earthtojava.Earth2JavaMod;
 import slexom.earthtojava.client.renderer.block.entity.RainbowBedBlockEntityRenderer;
 import slexom.earthtojava.client.renderer.entity.model.*;
 
-public class EntityModelLayersInit {
-    public static EntityModelLayer BOULDERING_ZOMBIE_ENTITY_MODEL_LAYER;
-    public static EntityModelLayer FANCY_CHICKEN_ENTITY_MODEL_LAYER;
-    public static EntityModelLayer HORNED_SHEEP_ENTITY_MODEL_LAYER;
-    public static EntityModelLayer JOLLY_LLAMA_ENTITY_MODEL_LAYER;
-    public static EntityModelLayer JUMBO_RABBIT_ENTITY_MODEL_LAYER;
-    public static EntityModelLayer LOBBER_ZOMBIE_ENTITY_MODEL_LAYER;
-    public static EntityModelLayer MUDDY_PIG_ENTITY_MODEL_LAYER;
-    public static EntityModelLayer RAINBOW_BED_FOOT_MODEL_LAYER;
-    public static EntityModelLayer RAINBOW_BED_HEAD_MODEL_LAYER;
-    public static EntityModelLayer RAINBOW_SHEEP_ENTITY_MODEL_LAYER;
-    public static EntityModelLayer RAINBOW_SHEEP_FUR_ENTITY_MODEL_LAYER;
-    public static EntityModelLayer SKELETON_WOLF_ENTITY_MODEL_LAYER;
-    public static EntityModelLayer SOOTY_PIG_ENTITY_MODEL_LAYER;
-    public static EntityModelLayer VILER_WITCH_ENTITY_MODEL_LAYER;
+public final class EntityModelLayersInit {
+
+    public static final EntityModelLayer BOULDERING_ZOMBIE_ENTITY_MODEL_LAYER;
+    public static final EntityModelLayer FANCY_CHICKEN_ENTITY_MODEL_LAYER;
+    public static final EntityModelLayer HORNED_SHEEP_ENTITY_MODEL_LAYER;
+    public static final EntityModelLayer JOLLY_LLAMA_ENTITY_MODEL_LAYER;
+    public static final EntityModelLayer JUMBO_RABBIT_ENTITY_MODEL_LAYER;
+    public static final EntityModelLayer LOBBER_ZOMBIE_ENTITY_MODEL_LAYER;
+    public static final EntityModelLayer MUDDY_PIG_ENTITY_MODEL_LAYER;
+    public static final EntityModelLayer RAINBOW_BED_FOOT_MODEL_LAYER;
+    public static final EntityModelLayer RAINBOW_BED_HEAD_MODEL_LAYER;
+    public static final EntityModelLayer RAINBOW_SHEEP_ENTITY_MODEL_LAYER;
+    public static final EntityModelLayer RAINBOW_SHEEP_FUR_ENTITY_MODEL_LAYER;
+    public static final EntityModelLayer SKELETON_WOLF_ENTITY_MODEL_LAYER;
+    public static final EntityModelLayer SOOTY_PIG_ENTITY_MODEL_LAYER;
+    public static final EntityModelLayer VILER_WITCH_ENTITY_MODEL_LAYER;
 
     static {
         FANCY_CHICKEN_ENTITY_MODEL_LAYER = registerEntityModelLayer(EntityTypesInit.FANCY_CHICKEN_REGISTRY_NAME, FancyChickenModel.getTexturedModelData());
