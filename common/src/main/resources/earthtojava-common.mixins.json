@@ -13,7 +13,6 @@
     "client": [
         "BuiltinModelItemRendererMixin",
         "ClientPlayNetworkHandlerMixin",
-        "EntityModelLoaderMixin",
         "MudFogMixin"
     ],
     "injectors": {

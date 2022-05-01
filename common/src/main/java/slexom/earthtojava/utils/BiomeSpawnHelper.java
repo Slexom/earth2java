@@ -1,8 +1,12 @@
 package slexom.earthtojava.utils;
 
+import dev.architectury.hooks.level.biome.BiomeProperties;
 import dev.architectury.registry.level.biome.BiomeModifications;
+import dev.architectury.registry.registries.RegistrySupplier;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.WaterCreatureEntity;
@@ -12,8 +16,10 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
+import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.SpawnSettings;
+import slexom.earthtojava.mixins.SpawnRestrictionAccessor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -78,17 +84,27 @@ public final class BiomeSpawnHelper {
     }
 
     public static String[] getBiomesListFromBiomes(String[]... biomes) {
-        return Stream.of(biomes).flatMap(Stream::of).toArray(String[]::new);
+        return Stream.of(biomes)
+                .flatMap(Stream::of)
+                .toArray(String[]::new);
     }
 
     public static String[] getBiomesListFromBiomeCategories(Biome.Category... types) {
-        return Stream.of(types).map(Biome.Category::getName).toArray(String[]::new);
+        return Stream.of(types)
+                .map(Biome.Category::getName)
+                .toArray(String[]::new);
     }
 
-    private static void setSpawnBiomes(EntityType<?> entity, String[] spawnBiomes, int weight, int minGroupSize, int maxGroupSize, SpawnGroup classification) {
-        List<String> biomeTagKeysIdentifiers = Arrays.stream(spawnBiomes).filter(BiomeSpawnHelper::isBiomeTag).collect(Collectors.toList());
-        List<String> biomeCategoryIdentifiers = Arrays.stream(spawnBiomes).filter(BiomeSpawnHelper::isBiomeCategory).collect(Collectors.toList());
-        List<String> biomeIdentifierString = Arrays.stream(spawnBiomes).filter(id -> !isBiomeTag(id) && !isBiomeCategory(id)).collect(Collectors.toList());
+    private static <T extends Entity> void setSpawnBiomes(RegistrySupplier<EntityType<T>> entity, String[] spawnBiomes, int weight, int minGroupSize, int maxGroupSize, SpawnGroup classification) {
+        List<String> biomeTagKeysIdentifiers = Arrays.stream(spawnBiomes)
+                .filter(BiomeSpawnHelper::isBiomeTag)
+                .collect(Collectors.toList());
+        List<String> biomeCategoryIdentifiers = Arrays.stream(spawnBiomes)
+                .filter(BiomeSpawnHelper::isBiomeCategory)
+                .collect(Collectors.toList());
+        List<String> biomeIdentifierString = Arrays.stream(spawnBiomes)
+                .filter(id -> !isBiomeTag(id) && !isBiomeCategory(id))
+                .collect(Collectors.toList());
 
         List<TagKey<Biome>> biomeTagKeys = getBiomeTagKeys(biomeTagKeysIdentifiers);
         List<Biome.Category> biomeCategories = getBiomeCategories(biomeCategoryIdentifiers);
@@ -100,15 +116,21 @@ public final class BiomeSpawnHelper {
     }
 
     private static List<Biome.Category> getBiomeCategories(List<String> categories) {
-        return categories.stream().map(Biome.Category::byName).toList();
+        return categories.stream()
+                .map(Biome.Category::byName)
+                .toList();
     }
 
     private static List<Identifier> getBiomeRegistryKeys(List<String> categories) {
-        return categories.stream().map(Identifier::new).toList();
+        return categories.stream()
+                .map(Identifier::new)
+                .toList();
     }
 
     private static List<TagKey<Biome>> getBiomeTagKeys(List<String> tagKeys) {
-        return tagKeys.stream().map(identifier -> TagKey.of(Registry.BIOME_KEY, new Identifier(identifier))).toList();
+        return tagKeys.stream()
+                .map(identifier -> TagKey.of(Registry.BIOME_KEY, new Identifier(identifier)))
+                .toList();
     }
 
     private static boolean isBiomeCategory(String identifier) {
@@ -119,48 +141,66 @@ public final class BiomeSpawnHelper {
         return identifier.contains("is_") || identifier.contains("has_");
     }
 
-    private static void addEntityToBiomeTagKeys(EntityType<?> entity, List<TagKey<Biome>> biomeTagKeys, int minGroupSize, int maxGroupSize, SpawnGroup classification, int weight) {
+    private static <T extends Entity> void modifier(BiomeModifications.BiomeContext context, BiomeProperties.Mutable mutable, RegistrySupplier<EntityType<T>> entity, int minGroupSize, int maxGroupSize, SpawnGroup classification, int weight) {
+        SpawnSettings.SpawnEntry spawnEntry = new SpawnSettings.SpawnEntry(entity.get(), weight, minGroupSize, maxGroupSize);
+        mutable.getSpawnProperties().addSpawn(classification, spawnEntry);
+        if (classification == SpawnGroup.CREATURE) {
+            SpawnRestrictionAccessor.callRegister((EntityType<AnimalEntity>) entity.get(), SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::isValidNaturalSpawn);
+        }
+        if (classification == SpawnGroup.MONSTER) {
+            SpawnRestrictionAccessor.callRegister((EntityType<HostileEntity>) entity.get(), SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HostileEntity::canSpawnInDark);
+        }
+    }
+
+    private static <T extends Entity> void addEntityToBiomeTagKeys(RegistrySupplier<EntityType<T>> entity, List<TagKey<Biome>> biomeTagKeys, int minGroupSize, int maxGroupSize, SpawnGroup classification, int weight) {
         for (TagKey<Biome> tagKey : biomeTagKeys) {
-            Predicate<BiomeModifications.BiomeContext> predicate = (ctx) -> BuiltinRegistries.BIOME.entryOf(RegistryKey.of(Registry.BIOME_KEY, ctx.getKey())).isIn(tagKey);
-            SpawnSettings.SpawnEntry spawnEntry = new SpawnSettings.SpawnEntry(entity, weight, minGroupSize, maxGroupSize);
-            BiomeModifications.addProperties(predicate, (biomeContext, mutable) -> mutable.getSpawnProperties().addSpawn(classification, spawnEntry));
+            Predicate<BiomeModifications.BiomeContext> predicate = (ctx) -> BuiltinRegistries.BIOME.entryOf(RegistryKey.of(Registry.BIOME_KEY, ctx.getKey()))
+                    .isIn(tagKey);
+            BiomeModifications.addProperties(predicate, (biomeContext, mutable) -> {
+                modifier(biomeContext, mutable, entity, minGroupSize, maxGroupSize, classification, weight);
+            });
         }
     }
 
-    private static void addEntityToBiomeCategories(EntityType<?> entity, List<Biome.Category> biomeCategories, int minGroupSize, int maxGroupSize, SpawnGroup classification, int weight) {
+    private static <T extends Entity> void addEntityToBiomeCategories(RegistrySupplier<EntityType<T>> entity, List<Biome.Category> biomeCategories, int minGroupSize, int maxGroupSize, SpawnGroup classification, int weight) {
         for (Biome.Category category : biomeCategories) {
-            Predicate<BiomeModifications.BiomeContext> predicate = (ctx) -> Objects.equals(ctx.getProperties().getCategory(), category);
-            SpawnSettings.SpawnEntry spawnEntry = new SpawnSettings.SpawnEntry(entity, weight, minGroupSize, maxGroupSize);
-            BiomeModifications.addProperties(predicate, (biomeContext, mutable) -> mutable.getSpawnProperties().addSpawn(classification, spawnEntry));
+            Predicate<BiomeModifications.BiomeContext> predicate = (ctx) -> Objects.equals(ctx.getProperties()
+                    .getCategory(), category);
+            BiomeModifications.addProperties(predicate, (biomeContext, mutable) -> {
+                modifier(biomeContext, mutable, entity, minGroupSize, maxGroupSize, classification, weight);
+            });
+
         }
     }
 
-    private static void addEntityToBiomes(EntityType<?> entity, List<Identifier> biomeIdentifiers, int minGroupSize, int maxGroupSize, SpawnGroup classification, int weight) {
+    private static <T extends Entity> void addEntityToBiomes(RegistrySupplier<EntityType<T>> entity, List<Identifier> biomeIdentifiers, int minGroupSize, int maxGroupSize, SpawnGroup classification, int weight) {
         for (Identifier biomeIdentifier : biomeIdentifiers) {
             Predicate<BiomeModifications.BiomeContext> predicate = (ctx) -> Objects.equals(ctx.getKey(), biomeIdentifier);
-            SpawnSettings.SpawnEntry spawnEntry = new SpawnSettings.SpawnEntry(entity, weight, minGroupSize, maxGroupSize);
-            BiomeModifications.addProperties(predicate, (biomeContext, mutable) -> mutable.getSpawnProperties().addSpawn(classification, spawnEntry));
+            BiomeModifications.addProperties(predicate, (biomeContext, mutable) -> {
+                modifier(biomeContext, mutable, entity, minGroupSize, maxGroupSize, classification, weight);
+            });
         }
     }
 
-    public static <T extends AnimalEntity> void setCreatureSpawnBiomes(EntityType<T> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
+    public static <T extends AnimalEntity> void setCreatureSpawnBiomes(RegistrySupplier<EntityType<T>> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
         setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.CREATURE);
     }
 
-    public static <T extends WaterCreatureEntity> void setWaterCreatureSpawnBiomes(EntityType<T> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
+    public static <T extends WaterCreatureEntity> void setWaterCreatureSpawnBiomes(RegistrySupplier<EntityType<T>> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
         setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.WATER_CREATURE);
     }
 
-    public static <T extends HostileEntity> void setMonsterSpawnBiomes(EntityType<T> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
+    public static <T extends HostileEntity> void setMonsterSpawnBiomes(RegistrySupplier<EntityType<T>> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
         setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.MONSTER);
     }
 
-    public static <T extends MobEntity> void setMobSpawnBiomes(EntityType<T> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
+    public static <T extends MobEntity> void setMobSpawnBiomes(RegistrySupplier<EntityType<T>> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
         setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.MISC);
     }
 
     public static List<String> convertForConfig(String[] ary) {
-        return Arrays.stream(ary).collect(Collectors.toList());
+        return Arrays.stream(ary)
+                .collect(Collectors.toList());
     }
 /*
     @ApiStatus.Experimental

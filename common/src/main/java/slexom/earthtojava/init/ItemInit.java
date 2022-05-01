@@ -139,14 +139,14 @@ public final class ItemInit {
         VILER_WITCH_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.VILER_WITCH_REGISTRY_NAME, EntityTypesInit.VILER_WITCH_REGISTRY_OBJECT, 0x0d0e19, 0xa09280);
         WOOLY_COW_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.WOOLY_COW_REGISTRY_NAME, EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT, 0xcc3300, 0xff9933);
 
-        BUTTERCUP = registerBlockItem("buttercup", BlockInit.BUTTERCUP.get());
-        PINK_DAISY = registerBlockItem("pink_daisy", BlockInit.PINK_DAISY.get());
-        CARVED_MELON = registerBlockItem("carved_melon", BlockInit.CARVED_MELON.get());
-        MELON_GOLEM_HEAD_BLINK = registerBlockItem("melon_golem_blink", BlockInit.MELON_GOLEM_HEAD_BLINK.get());
-        MELON_GOLEM_HEAD_SHOOT = registerBlockItem("melon_golem_shoot", BlockInit.MELON_GOLEM_HEAD_SHOOT.get());
-        MELON_LANTERN = registerBlockItem("melon_lantern", BlockInit.MELON_LANTERN.get());
-        RAINBOW_CARPET = registerBlockItem("rainbow_carpet", BlockInit.RAINBOW_CARPET.get());
-        RAINBOW_WOOL = registerBlockItem("rainbow_wool", BlockInit.RAINBOW_WOOL.get());
+        BUTTERCUP = registerBlockItem("buttercup", BlockInit.BUTTERCUP);
+        PINK_DAISY = registerBlockItem("pink_daisy", BlockInit.PINK_DAISY);
+        CARVED_MELON = registerBlockItem("carved_melon", BlockInit.CARVED_MELON);
+        MELON_GOLEM_HEAD_BLINK = registerBlockItem("melon_golem_blink", BlockInit.MELON_GOLEM_HEAD_BLINK);
+        MELON_GOLEM_HEAD_SHOOT = registerBlockItem("melon_golem_shoot", BlockInit.MELON_GOLEM_HEAD_SHOOT);
+        MELON_LANTERN = registerBlockItem("melon_lantern", BlockInit.MELON_LANTERN);
+        RAINBOW_CARPET = registerBlockItem("rainbow_carpet", BlockInit.RAINBOW_CARPET);
+        RAINBOW_WOOL = registerBlockItem("rainbow_wool", BlockInit.RAINBOW_WOOL);
 
         HORN = Earth2JavaMod.ITEM_REGISTRAR.register(Earth2JavaMod.toIdentifier("horn"), () -> new HornItem(new Item.Settings().group(itemGroup).maxCount(64)));
         FANCY_FEATHER = Earth2JavaMod.ITEM_REGISTRAR.register(Earth2JavaMod.toIdentifier("fancy_feather"), () -> new FancyFeatherItem(new Item.Settings().group(itemGroup).maxCount(64)));
@@ -164,8 +164,8 @@ public final class ItemInit {
         return Earth2JavaMod.ITEM_REGISTRAR.register(Earth2JavaMod.toIdentifier(registryName + "_spawn_egg"), () -> new E2JSpawnEggItem(entityType, primaryColor, secondaryColor, spawnEggProps));
     }
 
-    private static RegistrySupplier<Item> registerBlockItem(String registryName, Block block) {
-        return Earth2JavaMod.ITEM_REGISTRAR.register(Earth2JavaMod.toIdentifier(registryName), () -> new BlockItem(block, new Item.Settings().group(Earth2JavaMod.ITEM_GROUP)) {
+    private static RegistrySupplier<Item> registerBlockItem(String registryName, RegistrySupplier<Block> block) {
+        return Earth2JavaMod.ITEM_REGISTRAR.register(Earth2JavaMod.toIdentifier(registryName), () -> new BlockItem(block.get(), new Item.Settings().group(Earth2JavaMod.ITEM_GROUP)) {
             @Environment(EnvType.CLIENT)
             public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
                 String translationKey = this.getTranslationKey() + ".desc";

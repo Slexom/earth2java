@@ -1,5 +1,6 @@
 package slexom.earthtojava.init;
 
+import dev.architectury.registry.client.level.entity.EntityModelLayerRegistry;
 import net.minecraft.client.model.Dilation;
 import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
@@ -8,8 +9,10 @@ import slexom.earthtojava.Earth2JavaMod;
 import slexom.earthtojava.client.renderer.block.entity.RainbowBedBlockEntityRenderer;
 import slexom.earthtojava.client.renderer.entity.model.*;
 
-public final class EntityModelLayersInit {
+import java.util.HashMap;
+import java.util.Map;
 
+public final class EntityModelLayersInit {
     public static final EntityModelLayer BOULDERING_ZOMBIE_ENTITY_MODEL_LAYER;
     public static final EntityModelLayer FANCY_CHICKEN_ENTITY_MODEL_LAYER;
     public static final EntityModelLayer HORNED_SHEEP_ENTITY_MODEL_LAYER;
@@ -24,6 +27,7 @@ public final class EntityModelLayersInit {
     public static final EntityModelLayer SKELETON_WOLF_ENTITY_MODEL_LAYER;
     public static final EntityModelLayer SOOTY_PIG_ENTITY_MODEL_LAYER;
     public static final EntityModelLayer VILER_WITCH_ENTITY_MODEL_LAYER;
+    public static Map<EntityModelLayer, TexturedModelData> E2J_MODEL_LAYERS = new HashMap<>();
 
     static {
         FANCY_CHICKEN_ENTITY_MODEL_LAYER = registerEntityModelLayer(EntityTypesInit.FANCY_CHICKEN_REGISTRY_NAME, FancyChickenModel.getTexturedModelData());
@@ -47,6 +51,9 @@ public final class EntityModelLayersInit {
     }
 
     public static EntityModelLayer registerEntityModelLayer(String registryName, TexturedModelData modelPart) {
-        return new EntityModelLayer(new Identifier(Earth2JavaMod.MOD_ID, registryName), "main");
+        EntityModelLayer entityModelLayer = new EntityModelLayer(new Identifier(Earth2JavaMod.MOD_ID, registryName), "main");
+        // E2J_MODEL_LAYERS.put(entityModelLayer, modelPart);
+        EntityModelLayerRegistry.register(entityModelLayer, () -> modelPart);
+        return entityModelLayer;
     }
 }

@@ -96,7 +96,6 @@ public class RegisterHelper {
 
     public static PlacedFeature registerPlacedFeature(String registryName, ConfiguredFeature<?, ?> configuredFeature, PlacementModifier... placementModifiers) {
         return Registry.register(BuiltinRegistries.PLACED_FEATURE, new Identifier(Earth2JavaMod.MOD_ID, registryName), new PlacedFeature(RegistryEntry.of(configuredFeature), List.of(placementModifiers)));
-
     }
 
 }

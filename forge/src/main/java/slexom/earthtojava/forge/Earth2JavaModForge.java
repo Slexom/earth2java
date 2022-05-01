@@ -15,6 +15,8 @@ import slexom.earthtojava.Earth2JavaMod;
 @Mod(Earth2JavaMod.MOD_ID)
 @Mod.EventBusSubscriber(modid = Earth2JavaMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Earth2JavaModForge {
+    // private static final ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
+
     public Earth2JavaModForge() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         EventBuses.registerModEventBus(Earth2JavaMod.MOD_ID, eventBus);
@@ -29,5 +31,4 @@ public class Earth2JavaModForge {
     private void setupClient(final FMLClientSetupEvent event) {
         Earth2JavaClientMod.initializeClient();
     }
-
 }

@@ -156,56 +156,138 @@ public final class EntityTypesInit {
         PATCHED_SHEEP_REGISTRY_OBJECT = registerBaseMonoColorSheepEntity(PATCHED_SHEEP_REGISTRY_NAME, new ItemStack(Blocks.WHITE_WOOL));
         ROCKY_SHEEP_REGISTRY_OBJECT = registerBaseMonoColorSheepEntity(ROCKY_SHEEP_REGISTRY_NAME, new ItemStack(Blocks.GRAY_WOOL));
 
-        BONE_SHARD_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(BONE_SHARD_REGISTRY_NAME), () -> EntityType.Builder.<BoneShardEntity>create(BoneShardEntity::new, SpawnGroup.MISC).setDimensions(0.25F, 0.25F).maxTrackingRange(4).trackingTickInterval(10).build(BONE_SHARD_REGISTRY_NAME));
-        BONE_SPIDER_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(BONE_SPIDER_REGISTRY_NAME), () -> EntityType.Builder.create(BoneSpiderEntity::new, SpawnGroup.MONSTER).setDimensions(0.6F, 0.7F).maxTrackingRange(8).build(BONE_SPIDER_REGISTRY_NAME));
-        BOULDERING_ZOMBIE_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(BOULDERING_ZOMBIE_REGISTRY_NAME), () -> EntityType.Builder.create(BoulderingZombieEntity::new, SpawnGroup.MONSTER).setDimensions(EntityType.ZOMBIE.getWidth(), EntityType.ZOMBIE.getHeight()).maxTrackingRange(8).build(BOULDERING_ZOMBIE_REGISTRY_NAME));
-        CLUCKSHROOM_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(CLUCKSHROOM_REGISTRY_NAME), () -> EntityType.Builder.create(CluckshroomEntity::new, SpawnGroup.CREATURE).setDimensions(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight()).maxTrackingRange(10).build(CLUCKSHROOM_REGISTRY_NAME));
-        FANCY_CHICKEN_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(FANCY_CHICKEN_REGISTRY_NAME), () -> EntityType.Builder.create(FancyChickenEntity::new, SpawnGroup.CREATURE).setDimensions(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight()).maxTrackingRange(10).build(FANCY_CHICKEN_REGISTRY_NAME));
-        FURNACE_GOLEM_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(FURNACE_GOLEM_REGISTRY_NAME), () -> EntityType.Builder.create(FurnaceGolemEntity::new, SpawnGroup.MISC).setDimensions(EntityType.IRON_GOLEM.getWidth(), EntityType.IRON_GOLEM.getHeight()).makeFireImmune().maxTrackingRange(10).build(FURNACE_GOLEM_REGISTRY_NAME));
-        HORNED_SHEEP_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(HORNED_SHEEP_REGISTRY_NAME), () -> EntityType.Builder.create(HornedSheepEntity::new, SpawnGroup.CREATURE).setDimensions(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight()).maxTrackingRange(10).build(HORNED_SHEEP_REGISTRY_NAME));
-        JOLLY_LLAMA_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(JOLLY_LLAMA_REGISTRY_NAME), () -> EntityType.Builder.create(JollyLlamaEntity::new, SpawnGroup.CREATURE).setDimensions(EntityType.LLAMA.getWidth(), EntityType.LLAMA.getHeight()).maxTrackingRange(10).build(JOLLY_LLAMA_REGISTRY_NAME));
-        JUMBO_RABBIT_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(JUMBO_RABBIT_REGISTRY_NAME), () -> EntityType.Builder.create(JumboRabbitEntity::new, SpawnGroup.CREATURE).setDimensions(0.8F, 1.0F).maxTrackingRange(8).build(JUMBO_RABBIT_REGISTRY_NAME));
-        LOBBER_ZOMBIE_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(LOBBER_ZOMBIE_REGISTRY_NAME), () -> EntityType.Builder.create(LobberZombieEntity::new, SpawnGroup.MONSTER).setDimensions(EntityType.ZOMBIE.getWidth(), EntityType.ZOMBIE.getHeight()).maxTrackingRange(8).build(LOBBER_ZOMBIE_REGISTRY_NAME));
-        MELON_GOLEM_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(MELON_GOLEM_REGISTRY_NAME), () -> EntityType.Builder.create(MelonGolemEntity::new, SpawnGroup.MISC).setDimensions(EntityType.SNOW_GOLEM.getWidth(), EntityType.SNOW_GOLEM.getHeight()).allowSpawningInside(Blocks.POWDER_SNOW).maxTrackingRange(8).build(MELON_GOLEM_REGISTRY_NAME));
-        MELON_SEED_PROJECTILE_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(MELON_SEED_PROJECTILE_REGISTRY_NAME), () -> EntityType.Builder.<MelonSeedProjectileEntity>create(MelonSeedProjectileEntity::new, SpawnGroup.MISC).setDimensions(0.25F, 0.25F).maxTrackingRange(4).trackingTickInterval(10).build(MELON_SEED_PROJECTILE_REGISTRY_NAME));
-        MOOBLOOM_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(MOOBLOOM_REGISTRY_NAME), () -> EntityType.Builder.create(MoobloomEntity::new, SpawnGroup.CREATURE).setDimensions(EntityType.COW.getWidth(), EntityType.COW.getHeight()).maxTrackingRange(10).build(MOOBLOOM_REGISTRY_NAME));
-        MOOLIP_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(MOOLIP_REGISTRY_NAME), () -> EntityType.Builder.create(MoolipEntity::new, SpawnGroup.CREATURE).setDimensions(EntityType.COW.getWidth(), EntityType.COW.getHeight()).maxTrackingRange(10).build(MOOLIP_REGISTRY_NAME));
-        MUDDY_PIG_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(MUDDY_PIG_REGISTRY_NAME), () -> EntityType.Builder.create(MuddyPigEntity::new, SpawnGroup.CREATURE).setDimensions(EntityType.PIG.getWidth(), EntityType.PIG.getHeight()).maxTrackingRange(10).build(MUDDY_PIG_REGISTRY_NAME));
-        RAINBOW_SHEEP_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(RAINBOW_SHEEP_REGISTRY_NAME), () -> EntityType.Builder.create(RainbowSheepEntity::new, SpawnGroup.CREATURE).setDimensions(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight()).maxTrackingRange(10).build(RAINBOW_SHEEP_REGISTRY_NAME));
-        ROTTEN_FLESH_PROJECTILE_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(ROTTEN_FLESH_PROJECTILE_REGISTRY_NAME), () -> EntityType.Builder.<RottenFleshProjectileEntity>create(RottenFleshProjectileEntity::new, SpawnGroup.MISC).setDimensions(0.25F, 0.25F).maxTrackingRange(4).trackingTickInterval(10).build(ROTTEN_FLESH_PROJECTILE_REGISTRY_NAME));
-        SKELETON_WOLF_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(SKELETON_WOLF_REGISTRY_NAME), () -> EntityType.Builder.create(SkeletonWolfEntity::new, SpawnGroup.MONSTER).setDimensions(EntityType.WOLF.getWidth(), EntityType.WOLF.getHeight()).maxTrackingRange(10).build(SKELETON_WOLF_REGISTRY_NAME));
-        TROPICAL_SLIME_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(TROPICAL_SLIME_REGISTRY_NAME), () -> EntityType.Builder.create(TropicalSlimeEntity::new, SpawnGroup.CREATURE).setDimensions(2.04F, 2.04F).makeFireImmune().maxTrackingRange(10).build(TROPICAL_SLIME_REGISTRY_NAME));
-        UMBRA_COW_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(UMBRA_COW_REGISTRY_NAME), () -> EntityType.Builder.create(UmbraCowEntity::new, SpawnGroup.CREATURE).setDimensions(EntityType.COW.getWidth(), EntityType.COW.getHeight()).maxTrackingRange(10).build(UMBRA_COW_REGISTRY_NAME));
-        VILER_WITCH_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(VILER_WITCH_REGISTRY_NAME), () -> EntityType.Builder.create(VilerWitchEntity::new, SpawnGroup.MONSTER).setDimensions(EntityType.WITCH.getWidth(), EntityType.WITCH.getHeight()).maxTrackingRange(8).build(VILER_WITCH_REGISTRY_NAME));
-        WOOLY_COW_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(WOOLY_COW_REGISTRY_NAME), () -> EntityType.Builder.create(WoolyCowEntity::new, SpawnGroup.CREATURE).setDimensions(EntityType.COW.getWidth(), EntityType.COW.getHeight()).maxTrackingRange(10).build(WOOLY_COW_REGISTRY_NAME));
+        BONE_SHARD_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(BONE_SHARD_REGISTRY_NAME), () -> EntityType.Builder.<BoneShardEntity>create(BoneShardEntity::new, SpawnGroup.MISC)
+                .setDimensions(0.25F, 0.25F)
+                .maxTrackingRange(4)
+                .trackingTickInterval(10)
+                .build(BONE_SHARD_REGISTRY_NAME));
+        BONE_SPIDER_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(BONE_SPIDER_REGISTRY_NAME), () -> EntityType.Builder.create(BoneSpiderEntity::new, SpawnGroup.MONSTER)
+                .setDimensions(0.6F, 0.7F)
+                .maxTrackingRange(8)
+                .build(BONE_SPIDER_REGISTRY_NAME));
+        BOULDERING_ZOMBIE_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(BOULDERING_ZOMBIE_REGISTRY_NAME), () -> EntityType.Builder.create(BoulderingZombieEntity::new, SpawnGroup.MONSTER)
+                .setDimensions(EntityType.ZOMBIE.getWidth(), EntityType.ZOMBIE.getHeight())
+                .maxTrackingRange(8)
+                .build(BOULDERING_ZOMBIE_REGISTRY_NAME));
+        CLUCKSHROOM_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(CLUCKSHROOM_REGISTRY_NAME), () -> EntityType.Builder.create(CluckshroomEntity::new, SpawnGroup.CREATURE)
+                .setDimensions(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight())
+                .maxTrackingRange(10)
+                .build(CLUCKSHROOM_REGISTRY_NAME));
+        FANCY_CHICKEN_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(FANCY_CHICKEN_REGISTRY_NAME), () -> EntityType.Builder.create(FancyChickenEntity::new, SpawnGroup.CREATURE)
+                .setDimensions(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight())
+                .maxTrackingRange(10)
+                .build(FANCY_CHICKEN_REGISTRY_NAME));
+        FURNACE_GOLEM_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(FURNACE_GOLEM_REGISTRY_NAME), () -> EntityType.Builder.create(FurnaceGolemEntity::new, SpawnGroup.MISC)
+                .setDimensions(EntityType.IRON_GOLEM.getWidth(), EntityType.IRON_GOLEM.getHeight())
+                .makeFireImmune()
+                .maxTrackingRange(10)
+                .build(FURNACE_GOLEM_REGISTRY_NAME));
+        HORNED_SHEEP_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(HORNED_SHEEP_REGISTRY_NAME), () -> EntityType.Builder.create(HornedSheepEntity::new, SpawnGroup.CREATURE)
+                .setDimensions(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight())
+                .maxTrackingRange(10)
+                .build(HORNED_SHEEP_REGISTRY_NAME));
+        JOLLY_LLAMA_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(JOLLY_LLAMA_REGISTRY_NAME), () -> EntityType.Builder.create(JollyLlamaEntity::new, SpawnGroup.CREATURE)
+                .setDimensions(EntityType.LLAMA.getWidth(), EntityType.LLAMA.getHeight())
+                .maxTrackingRange(10)
+                .build(JOLLY_LLAMA_REGISTRY_NAME));
+        JUMBO_RABBIT_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(JUMBO_RABBIT_REGISTRY_NAME), () -> EntityType.Builder.create(JumboRabbitEntity::new, SpawnGroup.CREATURE)
+                .setDimensions(0.8F, 1.0F)
+                .maxTrackingRange(8)
+                .build(JUMBO_RABBIT_REGISTRY_NAME));
+        LOBBER_ZOMBIE_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(LOBBER_ZOMBIE_REGISTRY_NAME), () -> EntityType.Builder.create(LobberZombieEntity::new, SpawnGroup.MONSTER)
+                .setDimensions(EntityType.ZOMBIE.getWidth(), EntityType.ZOMBIE.getHeight())
+                .maxTrackingRange(8)
+                .build(LOBBER_ZOMBIE_REGISTRY_NAME));
+        MELON_GOLEM_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(MELON_GOLEM_REGISTRY_NAME), () -> EntityType.Builder.create(MelonGolemEntity::new, SpawnGroup.MISC)
+                .setDimensions(EntityType.SNOW_GOLEM.getWidth(), EntityType.SNOW_GOLEM.getHeight())
+                .allowSpawningInside(Blocks.POWDER_SNOW)
+                .maxTrackingRange(8)
+                .build(MELON_GOLEM_REGISTRY_NAME));
+        MELON_SEED_PROJECTILE_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(MELON_SEED_PROJECTILE_REGISTRY_NAME), () -> EntityType.Builder.<MelonSeedProjectileEntity>create(MelonSeedProjectileEntity::new, SpawnGroup.MISC)
+                .setDimensions(0.25F, 0.25F)
+                .maxTrackingRange(4)
+                .trackingTickInterval(10)
+                .build(MELON_SEED_PROJECTILE_REGISTRY_NAME));
+        MOOBLOOM_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(MOOBLOOM_REGISTRY_NAME), () -> EntityType.Builder.create(MoobloomEntity::new, SpawnGroup.CREATURE)
+                .setDimensions(EntityType.COW.getWidth(), EntityType.COW.getHeight())
+                .maxTrackingRange(10)
+                .build(MOOBLOOM_REGISTRY_NAME));
+        MOOLIP_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(MOOLIP_REGISTRY_NAME), () -> EntityType.Builder.create(MoolipEntity::new, SpawnGroup.CREATURE)
+                .setDimensions(EntityType.COW.getWidth(), EntityType.COW.getHeight())
+                .maxTrackingRange(10)
+                .build(MOOLIP_REGISTRY_NAME));
+        MUDDY_PIG_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(MUDDY_PIG_REGISTRY_NAME), () -> EntityType.Builder.create(MuddyPigEntity::new, SpawnGroup.CREATURE)
+                .setDimensions(EntityType.PIG.getWidth(), EntityType.PIG.getHeight())
+                .maxTrackingRange(10)
+                .build(MUDDY_PIG_REGISTRY_NAME));
+        RAINBOW_SHEEP_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(RAINBOW_SHEEP_REGISTRY_NAME), () -> EntityType.Builder.create(RainbowSheepEntity::new, SpawnGroup.CREATURE)
+                .setDimensions(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight())
+                .maxTrackingRange(10)
+                .build(RAINBOW_SHEEP_REGISTRY_NAME));
+        ROTTEN_FLESH_PROJECTILE_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(ROTTEN_FLESH_PROJECTILE_REGISTRY_NAME), () -> EntityType.Builder.<RottenFleshProjectileEntity>create(RottenFleshProjectileEntity::new, SpawnGroup.MISC)
+                .setDimensions(0.25F, 0.25F)
+                .maxTrackingRange(4)
+                .trackingTickInterval(10)
+                .build(ROTTEN_FLESH_PROJECTILE_REGISTRY_NAME));
+        SKELETON_WOLF_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(SKELETON_WOLF_REGISTRY_NAME), () -> EntityType.Builder.create(SkeletonWolfEntity::new, SpawnGroup.MONSTER)
+                .setDimensions(EntityType.WOLF.getWidth(), EntityType.WOLF.getHeight())
+                .maxTrackingRange(10)
+                .build(SKELETON_WOLF_REGISTRY_NAME));
+        TROPICAL_SLIME_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(TROPICAL_SLIME_REGISTRY_NAME), () -> EntityType.Builder.create(TropicalSlimeEntity::new, SpawnGroup.CREATURE)
+                .setDimensions(2.04F, 2.04F)
+                .makeFireImmune()
+                .maxTrackingRange(10)
+                .build(TROPICAL_SLIME_REGISTRY_NAME));
+        UMBRA_COW_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(UMBRA_COW_REGISTRY_NAME), () -> EntityType.Builder.create(UmbraCowEntity::new, SpawnGroup.CREATURE)
+                .setDimensions(EntityType.COW.getWidth(), EntityType.COW.getHeight())
+                .maxTrackingRange(10)
+                .build(UMBRA_COW_REGISTRY_NAME));
+        VILER_WITCH_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(VILER_WITCH_REGISTRY_NAME), () -> EntityType.Builder.create(VilerWitchEntity::new, SpawnGroup.MONSTER)
+                .setDimensions(EntityType.WITCH.getWidth(), EntityType.WITCH.getHeight())
+                .maxTrackingRange(8)
+                .build(VILER_WITCH_REGISTRY_NAME));
+        WOOLY_COW_REGISTRY_OBJECT = Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(WOOLY_COW_REGISTRY_NAME), () -> EntityType.Builder.create(WoolyCowEntity::new, SpawnGroup.CREATURE)
+                .setDimensions(EntityType.COW.getWidth(), EntityType.COW.getHeight())
+                .maxTrackingRange(10)
+                .build(WOOLY_COW_REGISTRY_NAME));
     }
 
     public static void init() {
     }
 
     private static RegistrySupplier<EntityType<E2JBaseChickenEntity>> registerBaseChickenEntity(String registryName) {
-        EntityType<E2JBaseChickenEntity> entityType = EntityType.Builder.create(E2JBaseChickenEntity::new, SpawnGroup.CREATURE).setDimensions(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight()).maxTrackingRange(10).build(registryName);
-        return Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(registryName), () -> entityType);
+        EntityType.Builder<E2JBaseChickenEntity> entityType = EntityType.Builder.create(E2JBaseChickenEntity::new, SpawnGroup.CREATURE)
+                .setDimensions(EntityType.CHICKEN.getWidth(), EntityType.CHICKEN.getHeight())
+                .maxTrackingRange(10);
+        return Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(registryName), () -> entityType.build(registryName));
     }
 
     private static RegistrySupplier<EntityType<E2JBaseCowEntity>> registerBaseCowEntity(String registryName) {
-        EntityType<E2JBaseCowEntity> entityType = EntityType.Builder.create(E2JBaseCowEntity::new, SpawnGroup.CREATURE).setDimensions(EntityType.COW.getWidth(), EntityType.COW.getHeight()).maxTrackingRange(10).build(registryName);
-        return Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(registryName), () -> entityType);
+        EntityType.Builder<E2JBaseCowEntity> entityType = EntityType.Builder.create(E2JBaseCowEntity::new, SpawnGroup.CREATURE)
+                .setDimensions(EntityType.COW.getWidth(), EntityType.COW.getHeight())
+                .maxTrackingRange(10);
+        return Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(registryName), () -> entityType.build(registryName));
     }
 
     private static RegistrySupplier<EntityType<E2JBasePigEntity>> registerBasePigEntity(String registryName) {
-        EntityType<E2JBasePigEntity> entityType = EntityType.Builder.create(E2JBasePigEntity::new, SpawnGroup.CREATURE).setDimensions(EntityType.PIG.getWidth(), EntityType.PIG.getHeight()).maxTrackingRange(10).build(registryName);
-        return Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(registryName), () -> entityType);
+        EntityType.Builder<E2JBasePigEntity> entityType = EntityType.Builder.create(E2JBasePigEntity::new, SpawnGroup.CREATURE)
+                .setDimensions(EntityType.PIG.getWidth(), EntityType.PIG.getHeight())
+                .maxTrackingRange(10);
+        return Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(registryName), () -> entityType.build(registryName));
     }
 
     private static RegistrySupplier<EntityType<E2JBaseRabbitEntity>> registerBaseRabbitEntity(String registryName) {
-        EntityType<E2JBaseRabbitEntity> entityType = EntityType.Builder.create(E2JBaseRabbitEntity::new, SpawnGroup.CREATURE).setDimensions(EntityType.RABBIT.getWidth(), EntityType.RABBIT.getHeight()).maxTrackingRange(8).build(registryName);
-        return Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(registryName), () -> entityType);
+        EntityType.Builder<E2JBaseRabbitEntity> entityType = EntityType.Builder.create(E2JBaseRabbitEntity::new, SpawnGroup.CREATURE)
+                .setDimensions(EntityType.RABBIT.getWidth(), EntityType.RABBIT.getHeight())
+                .maxTrackingRange(8);
+        return Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(registryName), () -> entityType.build(registryName));
     }
 
     private static RegistrySupplier<EntityType<E2JBaseMonoColorSheepEntity>> registerBaseMonoColorSheepEntity(String registryName, ItemStack wool) {
-        EntityType<E2JBaseMonoColorSheepEntity> entityType = EntityType.Builder.<E2JBaseMonoColorSheepEntity>create((type, world) -> new E2JBaseMonoColorSheepEntity(type, world, wool), SpawnGroup.CREATURE).setDimensions(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight()).maxTrackingRange(10).build(registryName);
-        return Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(registryName), () -> entityType);
+        EntityType.Builder<E2JBaseMonoColorSheepEntity> entityType = EntityType.Builder.<E2JBaseMonoColorSheepEntity>create((type, world) -> new E2JBaseMonoColorSheepEntity(type, world, wool), SpawnGroup.CREATURE)
+                .setDimensions(EntityType.SHEEP.getWidth(), EntityType.SHEEP.getHeight())
+                .maxTrackingRange(10);
+        return Earth2JavaMod.ENTITY_TYPE_REGISTRAR.register(Earth2JavaMod.toIdentifier(registryName), () -> entityType.build(registryName));
     }
 
 

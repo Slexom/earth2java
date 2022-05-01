@@ -24,21 +24,21 @@ public class FluidRendererInit {
     }
 
     public static void setupFluidRendering(final Fluid still, final Fluid flowing, final int color) {
-        final Identifier stillSpriteId = new Identifier(Earth2JavaMod.MOD_ID, "fluids/mud_still");
-        final Identifier flowingSpriteId = new Identifier(Earth2JavaMod.MOD_ID, "fluids/mud_flow");
+    //   final Identifier stillSpriteId = new Identifier(Earth2JavaMod.MOD_ID, "fluids/mud_still");
+    //   final Identifier flowingSpriteId = new Identifier(Earth2JavaMod.MOD_ID, "fluids/mud_flow");
     /*    ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> {
             registry.register(stillSpriteId);
             registry.register(flowingSpriteId);
         });*/
-        final Identifier fluidId = Registry.FLUID.getId(still);
-        final Identifier listenerId = new Identifier(fluidId.getNamespace(), fluidId.getPath() + "_reload_listener");
-        final Sprite[] fluidSprites = {null, null};
+     //   final Identifier fluidId = Registry.FLUID.getId(still);
+     //   final Identifier listenerId = new Identifier(fluidId.getNamespace(), fluidId.getPath() + "_reload_listener");
+     //   final Sprite[] fluidSprites = {null, null};
 
-        ReloadListenerRegistry.register(ResourceType.CLIENT_RESOURCES, (SynchronousResourceReloader) manager -> {
-            final Function<Identifier, Sprite> atlas = MinecraftClient.getInstance().getSpriteAtlas(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE);
-            fluidSprites[0] = atlas.apply(stillSpriteId);
-            fluidSprites[1] = atlas.apply(flowingSpriteId);
-        });
+     //  ReloadListenerRegistry.register(ResourceType.CLIENT_RESOURCES, (SynchronousResourceReloader) manager -> {
+     //      final Function<Identifier, Sprite> atlas = MinecraftClient.getInstance().getSpriteAtlas(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE);
+     //      fluidSprites[0] = atlas.apply(stillSpriteId);
+     //      fluidSprites[1] = atlas.apply(flowingSpriteId);
+     //  });
       /*
         final FluidRenderHandler renderHandler = new FluidRenderHandler() {
             @Override
