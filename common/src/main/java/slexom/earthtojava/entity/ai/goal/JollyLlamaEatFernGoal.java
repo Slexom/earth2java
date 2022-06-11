@@ -1,5 +1,6 @@
 package slexom.earthtojava.entity.ai.goal;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.ai.goal.Goal;
@@ -8,7 +9,6 @@ import net.minecraft.predicate.block.BlockStatePredicate;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
-import net.minecraft.world.event.GameEvent;
 import slexom.earthtojava.init.SoundEventsInit;
 
 import java.util.EnumSet;
@@ -29,7 +29,11 @@ public class JollyLlamaEatFernGoal extends Goal {
     public boolean canStart() {
         if (this.mob.getRandom().nextInt(this.mob.isBaby() ? 150 : 1500) == 0) {
             BlockPos blockPos = this.mob.getBlockPos();
-            return FERN_PREDICATE.test(this.world.getBlockState(blockPos));
+            if (FERN_PREDICATE.test(this.world.getBlockState(blockPos))) {
+                return true;
+            } else {
+                return this.world.getBlockState(blockPos.down()).isOf(Blocks.FERN);
+            }
         }
         return false;
     }
@@ -54,7 +58,7 @@ public class JollyLlamaEatFernGoal extends Goal {
 
     public void tick() {
         this.timer = Math.max(0, this.timer - 1);
-        if (this.timer == 4) {
+        if (this.timer == this.getTickCount(4)) {
             BlockPos blockPos = this.mob.getBlockPos();
             if (FERN_PREDICATE.test(this.world.getBlockState(blockPos))) {
                 this.mob.playSound(SoundEventsInit.JOLLY_LLAMA_DETECT_FERN.get(), 1.0f, 1.0f);
@@ -62,7 +66,16 @@ public class JollyLlamaEatFernGoal extends Goal {
                     this.world.breakBlock(blockPos, false);
                 }
                 this.mob.onEatingGrass();
-                this.mob.emitGameEvent(GameEvent.EAT, this.mob.getCameraBlockPos());
+            } else {
+                BlockPos blockPos2 = blockPos.down();
+                if (this.world.getBlockState(blockPos2).isOf(Blocks.FERN)) {
+                    if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
+                        this.world.syncWorldEvent(2001, blockPos2, Block.getRawIdFromState(Blocks.FERN.getDefaultState()));
+                        this.world.setBlockState(blockPos2, Blocks.DIRT.getDefaultState(), 2);
+                    }
+
+                    this.mob.onEatingGrass();
+                }
             }
         }
     }

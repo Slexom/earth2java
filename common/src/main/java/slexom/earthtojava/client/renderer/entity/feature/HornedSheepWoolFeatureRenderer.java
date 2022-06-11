@@ -29,7 +29,7 @@ public class HornedSheepWoolFeatureRenderer extends FeatureRenderer<HornedSheepE
             float f;
             float f1;
             float f2;
-            if (entitylivingbaseIn.hasCustomName() && "jeb_".equals(entitylivingbaseIn.getName().asString())) {
+            if (entitylivingbaseIn.hasCustomName() && "jeb_".equals(entitylivingbaseIn.getName().getString())) {
                 int i = entitylivingbaseIn.age / 25 + entitylivingbaseIn.getId();
                 int j = DyeColor.values().length;
                 int k = i % j;

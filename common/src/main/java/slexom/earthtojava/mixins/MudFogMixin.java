@@ -3,6 +3,7 @@ package slexom.earthtojava.mixins;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.render.BackgroundRenderer;
 import net.minecraft.client.render.Camera;
+import net.minecraft.client.render.FogShape;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.Entity;
 import net.minecraft.fluid.Fluid;
@@ -46,7 +47,7 @@ public class MudFogMixin {
 
 
     @Inject(at = @At("HEAD"), method = "applyFog", cancellable = true)
-    private static void mudFogDensity(Camera camera, BackgroundRenderer.FogType fogType, float viewDistance, boolean thickFog, CallbackInfo ci) {
+    private static void mudFogDensity(Camera camera, BackgroundRenderer.FogType fogType, float viewDistance, boolean thickFog, float tickDelta, CallbackInfo ci) {
         Identifier mudTag = new Identifier(Earth2JavaMod.MOD_ID, "mud");
         TagKey<Fluid> mudTagKey = TagKey.of(Registry.FLUID_KEY, mudTag);
         Entity entity = camera.getFocusedEntity();
@@ -54,10 +55,9 @@ public class MudFogMixin {
         BlockPos blockPos = camera.getBlockPos();
         FluidState fluidState = world.getFluidState(blockPos);
         if (fluidState.isIn(mudTagKey)) {
-            RenderSystem.setShaderFogStart(0.0F);
+            RenderSystem.setShaderFogStart(0.25F);
             RenderSystem.setShaderFogEnd(1.0F);
-            // RenderSystem.fogMode(GlStateManager.FogMode.LINEAR);
-            // RenderSystem.setupNvFogDistance();
+            RenderSystem.setShaderFogShape(FogShape.CYLINDER);
             ci.cancel();
         }
     }

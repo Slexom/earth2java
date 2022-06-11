@@ -22,7 +22,7 @@ public class VilerWitchRenderer extends MobEntityRenderer<VilerWitchEntity, Vile
 
     public VilerWitchRenderer(EntityRendererFactory.Context context) {
         super(context, new VilerWitchModel<>(context.getPart(EntityModelLayersInit.VILER_WITCH_ENTITY_MODEL_LAYER)), 0.5F);
-        this.addFeature(new VilerWitchHeldItemFeatureRenderer<>(this));
+        this.addFeature(new VilerWitchHeldItemFeatureRenderer<>(this, context.getHeldItemRenderer()));
         this.registryName = EntityTypesInit.VILER_WITCH_REGISTRY_NAME;
     }
 

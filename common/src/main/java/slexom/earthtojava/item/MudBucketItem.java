@@ -7,9 +7,8 @@ import net.minecraft.client.resource.language.I18n;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.item.BucketItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.text.LiteralText;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import slexom.earthtojava.utils.Utils;
@@ -26,9 +25,9 @@ public class MudBucketItem extends BucketItem {
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         String translationKey = this.getTranslationKey() + ".desc";
         if (I18n.hasTranslation(translationKey)) {
-            TranslatableText description = new TranslatableText(translationKey);
+            MutableText description = Text.translatable(translationKey);
             List<String> strings = Utils.breakLine(description.getString(), 40);
-            strings.forEach(string -> tooltip.add(new LiteralText(string).formatted(Formatting.GRAY)));
+            strings.forEach(string -> tooltip.add(Text.translatable(string).formatted(Formatting.GRAY)));
         }
     }
 }

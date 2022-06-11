@@ -41,8 +41,8 @@ public class Earth2JavaMod {
     public static final Registrar<Item> ITEM_REGISTRAR = REGISTRIES.get().get(Registry.ITEM_KEY);
     public static final Registrar<RecipeSerializer<?>> RECIPE_SERIALIZER_REGISTRAR = REGISTRIES.get().get(Registry.RECIPE_SERIALIZER_KEY);
     public static final Registrar<SoundEvent> SOUND_EVENT_REGISTRAR = REGISTRIES.get().get(Registry.SOUND_EVENT_KEY);
-     public static final Registrar<ConfiguredFeature<?,?>> CONFIGURED_FEATURE_REGISTRAR = REGISTRIES.get().get(Registry.CONFIGURED_FEATURE_KEY);
-     public static final Registrar<PlacedFeature> PLACED_FEATURE_REGISTRAR = REGISTRIES.get().get(Registry.PLACED_FEATURE_KEY);
+    public static final Registrar<ConfiguredFeature<?, ?>> CONFIGURED_FEATURE_REGISTRAR = REGISTRIES.get().get(Registry.CONFIGURED_FEATURE_KEY);
+    public static final Registrar<PlacedFeature> PLACED_FEATURE_REGISTRAR = REGISTRIES.get().get(Registry.PLACED_FEATURE_KEY);
 
     public static final Identifier ITEM_GROUP_IDENTIFIER = new Identifier(MOD_ID, "group");
     public static final ItemGroup ITEM_GROUP = new ItemGroup(ItemGroup.GROUPS.length - 1, String.format("%s.%s", ITEM_GROUP_IDENTIFIER.getNamespace(), ITEM_GROUP_IDENTIFIER.getPath())) {
