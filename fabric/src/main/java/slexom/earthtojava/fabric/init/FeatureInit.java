@@ -17,6 +17,7 @@ import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import slexom.earthtojava.Earth2JavaMod;
 import slexom.earthtojava.config.ModConfig;
 import slexom.earthtojava.init.BlockInit;
+import slexom.earthtojava.init.FluidInit;
 
 import java.util.List;
 

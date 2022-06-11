@@ -18,6 +18,7 @@ import net.minecraft.world.World;
 import slexom.earthtojava.entity.ai.goal.MuddyPigMoveToTargetGoal;
 import slexom.earthtojava.entity.base.E2JBasePigEntity;
 import slexom.earthtojava.init.BlockInit;
+import slexom.earthtojava.init.FluidInit;
 
 
 public class MuddyPigEntity extends E2JBasePigEntity {
@@ -55,7 +56,7 @@ public class MuddyPigEntity extends E2JBasePigEntity {
         int j = MathHelper.floor(this.getY());
         int k = MathHelper.floor(this.getZ());
         BlockPos blockPos = new BlockPos(i, j, k);
-        boolean condition = this.world.getFluidState(blockPos).getBlockState().getBlock().equals(BlockInit.MUD_BLOCK);
+        boolean condition = this.world.getFluidState(blockPos).getBlockState().getBlock().equals(BlockInit.MUD_BLOCK.get());
         if (condition) {
             if (!isInMuddyState()) {
                 if (!isShaking) {

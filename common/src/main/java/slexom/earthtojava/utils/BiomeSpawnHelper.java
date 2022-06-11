@@ -1,5 +1,6 @@
 package slexom.earthtojava.utils;
 
+import com.google.common.collect.ImmutableList;
 import dev.architectury.hooks.level.biome.BiomeProperties;
 import dev.architectury.registry.level.biome.BiomeModifications;
 import dev.architectury.registry.registries.RegistrySupplier;
@@ -11,135 +12,70 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.WaterCreatureEntity;
 import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.tag.TagKey;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.BuiltinRegistries;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.SpawnSettings;
 import slexom.earthtojava.mixins.SpawnRestrictionAccessor;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 public final class BiomeSpawnHelper {
 
-    public static final String[] ALBINO_COW_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS);
-    public static final String[] AMBER_CHICKEN_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.DESERT, Biome.Category.SAVANNA);
-    public static final String[] ASHEN_COW_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.EXTREME_HILLS);
-    public static final String[] BOLD_STRIPED_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.FOREST, Biome.Category.EXTREME_HILLS);
-    public static final String[] BONE_SPIDER_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.MESA);
-    public static final String[] BOULDERING_ZOMBIE_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.EXTREME_HILLS);
-    public static final String[] BRONZED_CHICKEN_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS);
-    public static final String[] CLUCKSHROOM_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.MUSHROOM);
-    public static final String[] COOKIE_COW_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.TAIGA, Biome.Category.EXTREME_HILLS);
-    public static final String[] CREAM_COW_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.FOREST, Biome.Category.JUNGLE, Biome.Category.SAVANNA);
-    public static final String[] DAIRY_COW_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.FOREST, Biome.Category.JUNGLE, Biome.Category.EXTREME_HILLS);
-    public static final String[] FANCY_CHICKEN_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.FOREST);
-    public static final String[] FLECKED_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS, Biome.Category.TAIGA, Biome.Category.FOREST);
-    public static final String[] FRECKLED_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.SAVANNA, Biome.Category.PLAINS, Biome.Category.FOREST, Biome.Category.JUNGLE);
-    public static final String[] FUZZY_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.SAVANNA, Biome.Category.PLAINS, Biome.Category.FOREST, Biome.Category.JUNGLE, Biome.Category.FOREST);
-    public static final String[] GOLD_CRESTED_CHICKEN_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS, Biome.Category.FOREST, Biome.Category.SAVANNA);
-    public static final String[] HARELEQUIN_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS);
-    public static final String[] HORNED_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS);
-    public static final String[] INKY_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS);
-    public static final String[] JOLLY_LLAMA_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.TAIGA, Biome.Category.ICY);
-    public static final String[] JUMBO_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS);
-    public static final String[] LOBBER_ZOMBIE_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.SWAMP);
-    public static final String[] LONG_NOSED_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.SAVANNA, Biome.Category.DESERT);
-    public static final String[] MIDNIGHT_CHICKEN_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.FOREST, Biome.Category.JUNGLE);
-    public static final String[] MOOBLOOM_SPAWN_BIOMES = getBiomesListFromBiomes(new String[]{"minecraft:flower_forest"});
-    public static final String[] MOOLIP_SPAWN_BIOMES = getBiomesListFromBiomes(new String[]{"minecraft:flower_forest"});
-    public static final String[] MOTTLED_PIG_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS, Biome.Category.FOREST);
-    public static final String[] MUDDY_FOOT_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS);
-    public static final String[] MUDDY_PIG_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS, Biome.Category.RIVER);
-    public static final String[] PALE_PIG_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.TAIGA, Biome.Category.ICY);
-    public static final String[] PATCHED_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS);
-    public static final String[] PIEBALD_PIG_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.FOREST, Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS, Biome.Category.TAIGA, Biome.Category.SAVANNA);
-    public static final String[] PINK_FOOTED_PIG_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.FOREST);
-    public static final String[] PINTO_COW_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.TAIGA, Biome.Category.EXTREME_HILLS);
-    public static final String[] RAINBOW_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.FOREST);
-    public static final String[] ROCKY_SHEEP_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS);
-    public static final String[] SKELETON_WOLF_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.FOREST, Biome.Category.TAIGA, Biome.Category.MESA);
-    public static final String[] SKEWBALD_CHICKEN_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.FOREST, Biome.Category.JUNGLE);
-    public static final String[] SOOTY_PIG_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.JUNGLE, Biome.Category.SAVANNA);
-    public static final String[] SPOTTED_PIG_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.SWAMP);
-    public static final String[] STORMY_CHICKEN_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS, Biome.Category.TAIGA);
-    public static final String[] SUNSET_COW_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.SAVANNA);
-    public static final String[] TROPICAL_SLIME_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.BEACH);
-    public static final String[] UMBRA_COW_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.TAIGA, Biome.Category.ICY, Biome.Category.EXTREME_HILLS);
-    public static final String[] VESTED_RABBIT_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.PLAINS);
-    public static final String[] VILER_WITCH_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.SWAMP);
-    public static final String[] WOOLY_COW_SPAWN_BIOMES = getBiomesListFromBiomeCategories(Biome.Category.TAIGA);
+    public static final List<Biome.Category> ALBINO_COW_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS);
+    public static final List<Biome.Category> AMBER_CHICKEN_SPAWN_BIOMES = ImmutableList.of(Biome.Category.DESERT, Biome.Category.SAVANNA);
+    public static final List<Biome.Category> ASHEN_COW_SPAWN_BIOMES = ImmutableList.of(Biome.Category.EXTREME_HILLS);
+    public static final List<Biome.Category> BOLD_STRIPED_RABBIT_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS, Biome.Category.FOREST, Biome.Category.EXTREME_HILLS);
+    public static final List<Biome.Category> BONE_SPIDER_SPAWN_BIOMES = ImmutableList.of(Biome.Category.MESA);
+    public static final List<Biome.Category> BOULDERING_ZOMBIE_SPAWN_BIOMES = ImmutableList.of(Biome.Category.EXTREME_HILLS);
+    public static final List<Biome.Category> BRONZED_CHICKEN_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS);
+    public static final List<Biome.Category> CLUCKSHROOM_SPAWN_BIOMES = ImmutableList.of(Biome.Category.MUSHROOM);
+    public static final List<Biome.Category> COOKIE_COW_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS, Biome.Category.TAIGA, Biome.Category.EXTREME_HILLS);
+    public static final List<Biome.Category> CREAM_COW_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS, Biome.Category.FOREST, Biome.Category.JUNGLE, Biome.Category.SAVANNA);
+    public static final List<Biome.Category> DAIRY_COW_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS, Biome.Category.FOREST, Biome.Category.JUNGLE, Biome.Category.EXTREME_HILLS);
+    public static final List<Biome.Category> FANCY_CHICKEN_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS, Biome.Category.FOREST);
+    public static final List<Biome.Category> FLECKED_SHEEP_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS, Biome.Category.TAIGA, Biome.Category.FOREST);
+    public static final List<Biome.Category> FRECKLED_RABBIT_SPAWN_BIOMES = ImmutableList.of(Biome.Category.SAVANNA, Biome.Category.PLAINS, Biome.Category.FOREST, Biome.Category.JUNGLE);
+    public static final List<Biome.Category> FUZZY_SHEEP_SPAWN_BIOMES = ImmutableList.of(Biome.Category.SAVANNA, Biome.Category.PLAINS, Biome.Category.FOREST, Biome.Category.JUNGLE, Biome.Category.FOREST);
+    public static final List<Biome.Category> GOLD_CRESTED_CHICKEN_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS, Biome.Category.FOREST, Biome.Category.SAVANNA);
+    public static final List<Biome.Category> HARELEQUIN_RABBIT_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS);
+    public static final List<Biome.Category> HORNED_SHEEP_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS);
+    public static final List<Biome.Category> INKY_SHEEP_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS);
+    public static final List<Biome.Category> JOLLY_LLAMA_SPAWN_BIOMES = ImmutableList.of(Biome.Category.TAIGA, Biome.Category.ICY);
+    public static final List<Biome.Category> JUMBO_RABBIT_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS);
+    public static final List<Biome.Category> LOBBER_ZOMBIE_SPAWN_BIOMES = ImmutableList.of(Biome.Category.SWAMP);
+    public static final List<Biome.Category> LONG_NOSED_SHEEP_SPAWN_BIOMES = ImmutableList.of(Biome.Category.SAVANNA, Biome.Category.DESERT);
+    public static final List<Biome.Category> MIDNIGHT_CHICKEN_SPAWN_BIOMES = ImmutableList.of(Biome.Category.FOREST, Biome.Category.JUNGLE);
+    // public static final  List<Biome.Category> MOOBLOOM_SPAWN_BIOMES = getBiomesListFromBiomes(new String[]{"minecraft:flower_forest"});
+    // public static final  List<Biome.Category> MOOLIP_SPAWN_BIOMES = getBiomesListFromBiomes(new String[]{"minecraft:flower_forest"});
+    public static final List<Biome.Category> MOTTLED_PIG_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS, Biome.Category.FOREST);
+    public static final List<Biome.Category> MUDDY_FOOT_RABBIT_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS);
+    public static final List<Biome.Category> MUDDY_PIG_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS, Biome.Category.RIVER);
+    public static final List<Biome.Category> PALE_PIG_SPAWN_BIOMES = ImmutableList.of(Biome.Category.TAIGA, Biome.Category.ICY);
+    public static final List<Biome.Category> PATCHED_SHEEP_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS);
+    public static final List<Biome.Category> PIEBALD_PIG_SPAWN_BIOMES = ImmutableList.of(Biome.Category.FOREST, Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS, Biome.Category.TAIGA, Biome.Category.SAVANNA);
+    public static final List<Biome.Category> PINK_FOOTED_PIG_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS, Biome.Category.FOREST);
+    public static final List<Biome.Category> PINTO_COW_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS, Biome.Category.TAIGA, Biome.Category.EXTREME_HILLS);
+    public static final List<Biome.Category> RAINBOW_SHEEP_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS, Biome.Category.FOREST);
+    public static final List<Biome.Category> ROCKY_SHEEP_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS);
+    public static final List<Biome.Category> SKELETON_WOLF_SPAWN_BIOMES = ImmutableList.of(Biome.Category.FOREST, Biome.Category.TAIGA, Biome.Category.MESA);
+    public static final List<Biome.Category> SKEWBALD_CHICKEN_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS, Biome.Category.FOREST, Biome.Category.JUNGLE);
+    public static final List<Biome.Category> SOOTY_PIG_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS, Biome.Category.JUNGLE, Biome.Category.SAVANNA);
+    public static final List<Biome.Category> SPOTTED_PIG_SPAWN_BIOMES = ImmutableList.of(Biome.Category.SWAMP);
+    public static final List<Biome.Category> STORMY_CHICKEN_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS, Biome.Category.EXTREME_HILLS, Biome.Category.TAIGA);
+    public static final List<Biome.Category> SUNSET_COW_SPAWN_BIOMES = ImmutableList.of(Biome.Category.SAVANNA);
+    public static final List<Biome.Category> TROPICAL_SLIME_SPAWN_BIOMES = ImmutableList.of(Biome.Category.BEACH);
+    public static final List<Biome.Category> UMBRA_COW_SPAWN_BIOMES = ImmutableList.of(Biome.Category.TAIGA, Biome.Category.ICY, Biome.Category.EXTREME_HILLS);
+    public static final List<Biome.Category> VESTED_RABBIT_SPAWN_BIOMES = ImmutableList.of(Biome.Category.PLAINS);
+    public static final List<Biome.Category> VILER_WITCH_SPAWN_BIOMES = ImmutableList.of(Biome.Category.SWAMP);
+    public static final List<Biome.Category> WOOLY_COW_SPAWN_BIOMES = ImmutableList.of(Biome.Category.TAIGA);
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private BiomeSpawnHelper() {
     }
 
-    public static String[] getBiomesListFromBiomes(String[]... biomes) {
-        return Stream.of(biomes)
-                .flatMap(Stream::of)
-                .toArray(String[]::new);
-    }
-
-    public static String[] getBiomesListFromBiomeCategories(Biome.Category... types) {
-        return Stream.of(types)
-                .map(Biome.Category::getName)
-                .toArray(String[]::new);
-    }
-
-    private static <T extends Entity> void setSpawnBiomes(RegistrySupplier<EntityType<T>> entity, String[] spawnBiomes, int weight, int minGroupSize, int maxGroupSize, SpawnGroup classification) {
-        List<String> biomeTagKeysIdentifiers = Arrays.stream(spawnBiomes)
-                .filter(BiomeSpawnHelper::isBiomeTag)
-                .collect(Collectors.toList());
-        List<String> biomeCategoryIdentifiers = Arrays.stream(spawnBiomes)
-                .filter(BiomeSpawnHelper::isBiomeCategory)
-                .collect(Collectors.toList());
-        List<String> biomeIdentifierString = Arrays.stream(spawnBiomes)
-                .filter(id -> !isBiomeTag(id) && !isBiomeCategory(id))
-                .collect(Collectors.toList());
-
-        List<TagKey<Biome>> biomeTagKeys = getBiomeTagKeys(biomeTagKeysIdentifiers);
-        List<Biome.Category> biomeCategories = getBiomeCategories(biomeCategoryIdentifiers);
-        List<Identifier> biomeIdentifiers = getBiomeRegistryKeys(biomeIdentifierString);
-
-        addEntityToBiomeCategories(entity, biomeCategories, minGroupSize, maxGroupSize, classification, weight);
-        addEntityToBiomeTagKeys(entity, biomeTagKeys, minGroupSize, maxGroupSize, classification, weight);
-        addEntityToBiomes(entity, biomeIdentifiers, minGroupSize, maxGroupSize, classification, weight);
-    }
-
-    private static List<Biome.Category> getBiomeCategories(List<String> categories) {
-        return categories.stream()
-                .map(Biome.Category::byName)
-                .toList();
-    }
-
-    private static List<Identifier> getBiomeRegistryKeys(List<String> categories) {
-        return categories.stream()
-                .map(Identifier::new)
-                .toList();
-    }
-
-    private static List<TagKey<Biome>> getBiomeTagKeys(List<String> tagKeys) {
-        return tagKeys.stream()
-                .map(identifier -> TagKey.of(Registry.BIOME_KEY, new Identifier(identifier)))
-                .toList();
-    }
-
-    private static boolean isBiomeCategory(String identifier) {
-        return identifier.split(":").length == 1;
-    }
-
-    private static boolean isBiomeTag(String identifier) {
-        return identifier.contains("is_") || identifier.contains("has_");
-    }
 
     private static <T extends Entity> void modifier(BiomeModifications.BiomeContext context, BiomeProperties.Mutable mutable, RegistrySupplier<EntityType<T>> entity, int minGroupSize, int maxGroupSize, SpawnGroup classification, int weight) {
         SpawnSettings.SpawnEntry spawnEntry = new SpawnSettings.SpawnEntry(entity.get(), weight, minGroupSize, maxGroupSize);
@@ -152,17 +88,7 @@ public final class BiomeSpawnHelper {
         }
     }
 
-    private static <T extends Entity> void addEntityToBiomeTagKeys(RegistrySupplier<EntityType<T>> entity, List<TagKey<Biome>> biomeTagKeys, int minGroupSize, int maxGroupSize, SpawnGroup classification, int weight) {
-        for (TagKey<Biome> tagKey : biomeTagKeys) {
-            Predicate<BiomeModifications.BiomeContext> predicate = (ctx) -> BuiltinRegistries.BIOME.entryOf(RegistryKey.of(Registry.BIOME_KEY, ctx.getKey()))
-                    .isIn(tagKey);
-            BiomeModifications.addProperties(predicate, (biomeContext, mutable) -> {
-                modifier(biomeContext, mutable, entity, minGroupSize, maxGroupSize, classification, weight);
-            });
-        }
-    }
-
-    private static <T extends Entity> void addEntityToBiomeCategories(RegistrySupplier<EntityType<T>> entity, List<Biome.Category> biomeCategories, int minGroupSize, int maxGroupSize, SpawnGroup classification, int weight) {
+    private static <T extends Entity> void addEntityToBiomeCategories(RegistrySupplier<EntityType<T>> entity, List<Biome.Category> biomeCategories, int weight, int minGroupSize, int maxGroupSize, SpawnGroup classification) {
         for (Biome.Category category : biomeCategories) {
             Predicate<BiomeModifications.BiomeContext> predicate = (ctx) -> Objects.equals(ctx.getProperties()
                     .getCategory(), category);
@@ -173,57 +99,30 @@ public final class BiomeSpawnHelper {
         }
     }
 
-    private static <T extends Entity> void addEntityToBiomes(RegistrySupplier<EntityType<T>> entity, List<Identifier> biomeIdentifiers, int minGroupSize, int maxGroupSize, SpawnGroup classification, int weight) {
-        for (Identifier biomeIdentifier : biomeIdentifiers) {
-            Predicate<BiomeModifications.BiomeContext> predicate = (ctx) -> Objects.equals(ctx.getKey(), biomeIdentifier);
-            BiomeModifications.addProperties(predicate, (biomeContext, mutable) -> {
-                modifier(biomeContext, mutable, entity, minGroupSize, maxGroupSize, classification, weight);
-            });
-        }
+    public static <T extends AnimalEntity> void setCreatureSpawnBiomes(RegistrySupplier<EntityType<T>> entity, List<Biome.Category> biomeCategories, int weight, int minGroupCountIn, int maxGroupCountIn) {
+        addEntityToBiomeCategories(entity, biomeCategories, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.CREATURE);
     }
 
-    public static <T extends AnimalEntity> void setCreatureSpawnBiomes(RegistrySupplier<EntityType<T>> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
-        setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.CREATURE);
+    public static <T extends WaterCreatureEntity> void setWaterCreatureSpawnBiomes(RegistrySupplier<EntityType<T>> entity, List<Biome.Category> biomeCategories, int weight, int minGroupCountIn, int maxGroupCountIn) {
+        addEntityToBiomeCategories(entity, biomeCategories, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.WATER_CREATURE);
     }
 
-    public static <T extends WaterCreatureEntity> void setWaterCreatureSpawnBiomes(RegistrySupplier<EntityType<T>> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
-        setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.WATER_CREATURE);
+    public static <T extends HostileEntity> void setMonsterSpawnBiomes(RegistrySupplier<EntityType<T>> entity, List<Biome.Category> biomeCategories, int weight, int minGroupCountIn, int maxGroupCountIn) {
+        addEntityToBiomeCategories(entity, biomeCategories, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.MONSTER);
     }
 
-    public static <T extends HostileEntity> void setMonsterSpawnBiomes(RegistrySupplier<EntityType<T>> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
-        setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.MONSTER);
+    public static <T extends MobEntity> void setMobSpawnBiomes(RegistrySupplier<EntityType<T>> entity, List<Biome.Category> biomeCategories, int weight, int minGroupCountIn, int maxGroupCountIn) {
+        addEntityToBiomeCategories(entity, biomeCategories, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.MISC);
     }
 
-    public static <T extends MobEntity> void setMobSpawnBiomes(RegistrySupplier<EntityType<T>> entity, String[] spawnBiomes, int weight, int minGroupCountIn, int maxGroupCountIn) {
-        setSpawnBiomes(entity, spawnBiomes, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.MISC);
+    public static List<Biome.Category> getBiomeCategoriesFromConfig(List<String> categories) {
+        return categories.stream()
+                .map(Biome.Category::byName)
+                .toList();
     }
 
-    public static List<String> convertForConfig(String[] ary) {
-        return Arrays.stream(ary)
-                .collect(Collectors.toList());
+    public static List<String> convertForConfig(List<Biome.Category> categories) {
+        return categories.stream().map(Biome.Category::getName).toList();
     }
-/*
-    @ApiStatus.Experimental
-    public static void autoSpawn(EntityType<? extends Entity> entity, EntityType<? extends Entity> baseEntity) {
 
-        BuiltinRegistries.BIOME.stream().forEach(biome -> {
-            biome
-                    .getSpawnSettings()
-                    .getSpawnEntries(SpawnGroup.MONSTER)
-                    .getEntries()
-                    .stream()
-                    .filter(spawnEntry -> spawnEntry.type.equals(baseEntity))
-                    .findFirst()
-                    .ifPresent(spawnEntry -> {
-                        Predicate<BiomeSelectionContext> predicate = BiomeSelectors.includeByKey(BuiltinRegistries.BIOME.getKey(biome).get());
-                        BiomeModifications.addSpawn(predicate, SpawnGroup.MONSTER, entity, 10, spawnEntry.minGroupSize, spawnEntry.maxGroupSize);
-                    });
-        });
-        RegistryEntryAddedCallback.event(BuiltinRegistries.BIOME).register((i, registryName, biome) -> {
-            System.out.println(registryName);
-            System.out.println(biome.getSpawnSettings().getSpawnDensity(baseEntity));
-
-        });
-    }
-*/
 }

@@ -17,11 +17,15 @@ import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.PlacedFeature;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import slexom.earthtojava.config.ModConfig;
 import slexom.earthtojava.events.ModEvents;
 import slexom.earthtojava.init.*;
+import slexom.earthtojava.init.features.ConfiguredFeatureInit;
+import slexom.earthtojava.init.features.PlacedFeatureInit;
 
 import java.util.function.Supplier;
 
@@ -37,8 +41,8 @@ public class Earth2JavaMod {
     public static final Registrar<Item> ITEM_REGISTRAR = REGISTRIES.get().get(Registry.ITEM_KEY);
     public static final Registrar<RecipeSerializer<?>> RECIPE_SERIALIZER_REGISTRAR = REGISTRIES.get().get(Registry.RECIPE_SERIALIZER_KEY);
     public static final Registrar<SoundEvent> SOUND_EVENT_REGISTRAR = REGISTRIES.get().get(Registry.SOUND_EVENT_KEY);
-    //  public static final Registrar<ConfiguredFeature<?,?>> CONFIGURED_FEATURE_REGISTRAR = REGISTRIES.get().get(Registry.CONFIGURED_FEATURE_KEY);
-    //  public static final Registrar<PlacedFeature> PLACED_FEATURE_REGISTRAR = REGISTRIES.get().get(Registry.PLACED_FEATURE_KEY);
+     public static final Registrar<ConfiguredFeature<?,?>> CONFIGURED_FEATURE_REGISTRAR = REGISTRIES.get().get(Registry.CONFIGURED_FEATURE_KEY);
+     public static final Registrar<PlacedFeature> PLACED_FEATURE_REGISTRAR = REGISTRIES.get().get(Registry.PLACED_FEATURE_KEY);
 
     public static final Identifier ITEM_GROUP_IDENTIFIER = new Identifier(MOD_ID, "group");
     public static final ItemGroup ITEM_GROUP = new ItemGroup(ItemGroup.GROUPS.length - 1, String.format("%s.%s", ITEM_GROUP_IDENTIFIER.getNamespace(), ITEM_GROUP_IDENTIFIER.getPath())) {
@@ -56,14 +60,14 @@ public class Earth2JavaMod {
         SoundEventsInit.init();
         FluidInit.init();
         BlockInit.init();
-        BlockEntityTypeInit.init();
-        // ConfiguredFeatureInit.init();
-        // PlacedFeatureInit.init();
-        // BiomeInit.init();
+        ConfiguredFeatureInit.init();
+        PlacedFeatureInit.init();
+        BiomeInit.init();
         EntityTypesInit.init();
         EntityAttributeInit.init();
         EntitySpawnInit.init();
         ItemInit.init();
+        BlockEntityTypeInit.init();
         RecipesInit.init();
         postRegister();
         LOGGER.info("[Earth2Java] Mod loaded! Enjoy :D");
@@ -77,6 +81,7 @@ public class Earth2JavaMod {
         LifecycleEvent.SETUP.register(() -> {
             BlockInit.registerCompostable();
             BlockInit.registerFlammable();
+            EntitySpawnInit.initSpawnRestriction();
         });
     }
 }

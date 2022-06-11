@@ -37,27 +37,28 @@ public final class BlockInit {
         POTTED_BUTTERCUP = Earth2JavaMod.BLOCK_REGISTRAR.register(Earth2JavaMod.toIdentifier("potted_buttercup"), () -> new FlowerPotBlock(BUTTERCUP.get(), AbstractBlock.Settings.of(Material.DECORATION).breakInstantly().nonOpaque()));
         POTTED_PINK_DAISY = Earth2JavaMod.BLOCK_REGISTRAR.register(Earth2JavaMod.toIdentifier("potted_pink_daisy"), () -> new FlowerPotBlock(PINK_DAISY.get(), AbstractBlock.Settings.of(Material.DECORATION).breakInstantly().nonOpaque()));
         RAINBOW_BED = Earth2JavaMod.BLOCK_REGISTRAR.register(Earth2JavaMod.toIdentifier("rainbow_bed"), () -> new RainbowBedBlock(DyeColor.WHITE, AbstractBlock.Settings.of(Material.WOOL).sounds(BlockSoundGroup.WOOD).strength(0.2F).nonOpaque()));
-        RAINBOW_CARPET = Earth2JavaMod.BLOCK_REGISTRAR.register(Earth2JavaMod.toIdentifier("rainbow_carpet"), () -> new RainbowCarpetBlock(DyeColor.WHITE, AbstractBlock.Settings.of(Material.CARPET, MapColor.WHITE).strength(0.1F).sounds(BlockSoundGroup.WOOL)));
+        RAINBOW_CARPET = Earth2JavaMod.BLOCK_REGISTRAR.register(Earth2JavaMod.toIdentifier("rainbow_carpet"), () -> new RainbowCarpetBlock(AbstractBlock.Settings.of(Material.CARPET, MapColor.WHITE).strength(0.1F).sounds(BlockSoundGroup.WOOL)));
         RAINBOW_WOOL = Earth2JavaMod.BLOCK_REGISTRAR.register(Earth2JavaMod.toIdentifier("rainbow_wool"), () -> new Block(AbstractBlock.Settings.of(Material.WOOL, MapColor.WHITE).strength(0.8F).sounds(BlockSoundGroup.WOOL)));
     }
 
     public static void init() {
+
     }
 
 
-    public static void registerCompostable(){
+    public static void registerCompostable() {
         ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(BUTTERCUP.get().asItem(), 0.65F);
         ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(PINK_DAISY.get().asItem(), 0.65F);
     }
 
-    public static void registerFlammable(){
+    public static void registerFlammable() {
         flammableBlock(BUTTERCUP.get(), 60, 100);
         flammableBlock(PINK_DAISY.get(), 60, 100);
         flammableBlock(RAINBOW_CARPET.get(), 60, 20);
         flammableBlock(RAINBOW_WOOL.get(), 30, 60);
     }
 
-    public static void flammableBlock(Block block, int encouragement, int flammability) {
+    private static void flammableBlock(Block block, int encouragement, int flammability) {
         FireBlock fire = (FireBlock) Blocks.FIRE;
         fire.registerFlammableBlock(block, encouragement, flammability);
     }

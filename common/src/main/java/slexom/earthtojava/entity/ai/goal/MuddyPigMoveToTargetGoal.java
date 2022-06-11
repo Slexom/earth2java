@@ -6,6 +6,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldView;
 import slexom.earthtojava.entity.passive.MuddyPigEntity;
 import slexom.earthtojava.init.BlockInit;
+import slexom.earthtojava.init.FluidInit;
 
 public class MuddyPigMoveToTargetGoal extends MoveToTargetPosGoal {
     private final MuddyPigEntity muddyPig;
@@ -31,6 +32,6 @@ public class MuddyPigMoveToTargetGoal extends MoveToTargetPosGoal {
     @Override
     protected boolean isTargetPos(WorldView worldIn, BlockPos pos) {
         Block block = worldIn.getBlockState(pos).getBlock();
-        return block == BlockInit.MUD_BLOCK;
+        return block == BlockInit.MUD_BLOCK.get();
     }
 }
