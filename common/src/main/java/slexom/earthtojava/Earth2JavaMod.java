@@ -2,6 +2,7 @@ package slexom.earthtojava;
 
 import com.google.common.base.Suppliers;
 import dev.architectury.event.events.common.LifecycleEvent;
+import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.Registrar;
 import dev.architectury.registry.registries.Registries;
 import me.shedaniel.autoconfig.AutoConfig;
@@ -45,12 +46,8 @@ public class Earth2JavaMod {
     public static final Registrar<PlacedFeature> PLACED_FEATURE_REGISTRAR = REGISTRIES.get().get(Registry.PLACED_FEATURE_KEY);
 
     public static final Identifier ITEM_GROUP_IDENTIFIER = new Identifier(MOD_ID, "group");
-    public static final ItemGroup ITEM_GROUP = new ItemGroup(ItemGroup.GROUPS.length - 1, String.format("%s.%s", ITEM_GROUP_IDENTIFIER.getNamespace(), ITEM_GROUP_IDENTIFIER.getPath())) {
-        @Override
-        public ItemStack createIcon() {
-            return new ItemStack(ItemInit.HORN.get());
-        }
-    };
+
+    public static final ItemGroup ITEM_GROUP = CreativeTabRegistry.create(ITEM_GROUP_IDENTIFIER, () -> new ItemStack(ItemInit.HORN.get()));
 
     private static final Logger LOGGER = LogManager.getLogger("Earth2Java");
 
