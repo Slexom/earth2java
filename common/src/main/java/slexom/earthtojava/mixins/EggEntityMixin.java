@@ -26,6 +26,7 @@ public class EggEntityMixin {
             case 6 -> EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_OBJECT.get();
             case 8 -> EntityTypesInit.STORMY_CHICKEN_REGISTRY_OBJECT.get();
             case 10 -> EntityTypesInit.BRONZED_CHICKEN_REGISTRY_OBJECT.get();
+            case 12 -> EntityTypesInit.GOLD_CRESTED_CHICKEN_REGISTRY_OBJECT.get();
             default -> EntityType.CHICKEN;
         };
     }

@@ -15,7 +15,7 @@ public class Earth2JavaEarlyRiser implements Runnable {
 
         ClassTinkerers
                 .enumBuilder(Raid, EntityType, int[].class)
-                .addEnum("VILER_WITCH", () -> new Object[]{EntityTypesInit.VILER_WITCH_REGISTRY_OBJECT, new int[]{0, 0, 0, 0, 0, 0, 1, 1}})
+                .addEnum("VILER_WITCH", () -> new Object[]{EntityTypesInit.VILER_WITCH_REGISTRY_OBJECT.get(), new int[]{0, 0, 0, 0, 0, 0, 1, 1}})
                 .build();
     }
 
