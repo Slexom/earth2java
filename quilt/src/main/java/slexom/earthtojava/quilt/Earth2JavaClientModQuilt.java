@@ -1,13 +1,14 @@
-package slexom.earthtojava.init.renderer;
+package slexom.earthtojava.quilt;
 
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandler;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.event.client.ClientSpriteRegistryCallback;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.texture.Sprite;
 import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.fluid.Fluid;
@@ -18,19 +19,25 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockRenderView;
+import org.quiltmc.loader.api.ModContainer;
+import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer;
+import slexom.earthtojava.Earth2JavaClientMod;
 import slexom.earthtojava.Earth2JavaMod;
 import slexom.earthtojava.init.FluidInit;
 
 import java.util.function.Function;
 
-public class FluidRendererInit {
+public class Earth2JavaClientModQuilt implements ClientModInitializer {
 
-    public static void init() {
-        BlockRenderLayerMap.INSTANCE.putFluids(RenderLayer.getSolid(), FluidInit.MUD_FLUID_FLOWING, FluidInit.MUD_FLUID_STILL);
-        setupFluidRendering(FluidInit.MUD_FLUID_STILL, FluidInit.MUD_FLUID_FLOWING, 0x472804);
+    @Override
+    @Environment(EnvType.CLIENT)
+    public void onInitializeClient(ModContainer mod) {
+        addBedTextureToAtlas();
+        setupFluidRendering(FluidInit.MUD_FLUID_STILL.get(), FluidInit.MUD_FLUID_FLOWING.get(), 0x472804);
+        Earth2JavaClientMod.initializeClient();
     }
 
-    public static void setupFluidRendering(final Fluid still, final Fluid flowing, final int color) {
+    private void setupFluidRendering(final Fluid still, final Fluid flowing, final int color) {
         final Identifier stillSpriteId = new Identifier(Earth2JavaMod.MOD_ID, "fluids/mud_still");
         final Identifier flowingSpriteId = new Identifier(Earth2JavaMod.MOD_ID, "fluids/mud_flow");
         ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> {
@@ -69,4 +76,8 @@ public class FluidRendererInit {
         FluidRenderHandlerRegistry.INSTANCE.register(flowing, renderHandler);
     }
 
+    private void addBedTextureToAtlas() {
+        Identifier sprite = new Identifier("earthtojavamobs:entity/bed/rainbow");
+        ClientSpriteRegistryCallback.event(TexturedRenderLayers.BEDS_ATLAS_TEXTURE).register((atlasTexture, registry) -> registry.register(sprite));
+    }
 }

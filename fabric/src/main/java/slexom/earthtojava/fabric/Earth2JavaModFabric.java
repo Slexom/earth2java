@@ -35,22 +35,9 @@ import java.util.function.Function;
 
 public class Earth2JavaModFabric implements ModInitializer {
 
-    private static void setupBiomes() {
-        final ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
-        BiomeModifications.addFeature(BiomeSelectors.tag(ConventionalBiomeTags.PLAINS), GenerationStep.Feature.VEGETAL_DECORATION, RegistryKey.of(BuiltinRegistries.PLACED_FEATURE.getKey(), new Identifier(Earth2JavaMod.MOD_ID, "e2j_flowers")));
-
-        if (config.mudLakeConfig.canGenerate && config.mudLakeConfig.mudLakeFrequency > 0) {
-            BiomeModifications.addFeature(BiomeSelectors.tag(BiomeTags.IS_FOREST), GenerationStep.Feature.LAKES, RegistryKey.of(BuiltinRegistries.PLACED_FEATURE.getKey(), new Identifier(Earth2JavaMod.MOD_ID, "lake_mud")));
-        }
-    }
-
     @Override
     public void onInitialize() {
         Earth2JavaMod.initialize();
-
-     //   FeatureInit.init();
-     //
-     //   setupBiomes();
     }
 
 }
