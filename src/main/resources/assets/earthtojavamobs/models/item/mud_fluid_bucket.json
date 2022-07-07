@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "earthtojavamobs:item/mud_fluid_bucket"
-  }
-}
