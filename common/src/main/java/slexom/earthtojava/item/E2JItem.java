@@ -25,7 +25,7 @@ public class E2JItem extends Item {
         String translationKey = this.getTranslationKey() + ".desc";
         if (I18n.hasTranslation(translationKey)) {
             MutableText description = Text.translatable(translationKey);
-            List<String> strings = Utils.breakLine(description.getString(), 40);
+            List<String> strings = Utils.breakItemTooltip(description.getString());
             strings.forEach(string -> tooltip.add(Text.translatable(string).formatted(Formatting.GRAY)));
         }
     }
