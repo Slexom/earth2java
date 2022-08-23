@@ -1,12 +1,12 @@
 package slexom.earthtojava.utils;
 
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.util.SpriteIdentifier;
+import org.jetbrains.annotations.ApiStatus;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.text.BreakIterator;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -49,12 +49,35 @@ public class Utils {
         return output.toString();
     }
 
+    public static List<String> breakItemTooltip(String input) {
+        List<String> cjkLocales = Arrays.asList("ja_jp", "ko_kr", "zh_cn", "zh_tw");
+        String currentLocale = MinecraftClient.getInstance().getLanguageManager().getLanguage().getCode();
+        if (cjkLocales.contains(currentLocale)) {
+            return breakLine(input, 30);
+        }
+        return breakLine(input, 40);
+    }
+
     public static List<String> breakLine(String input, int maxLineLength) {
         List<String> res = new ArrayList<>();
-        Pattern pattern = Pattern.compile("\\b.{1," + (maxLineLength - 1) + "}\\b\\W?");
+        Pattern pattern = Pattern.compile("\\b.{1," + (maxLineLength - 1) + "}\\b\\W?", Pattern.UNICODE_CHARACTER_CLASS);
         Matcher matcher = pattern.matcher(input);
         while (matcher.find()) {
             res.add(matcher.group());
+        }
+        return res;
+    }
+
+    @ApiStatus.Experimental
+    public static List<String> breakCJKLine(String input, Locale locale) {
+        List<String> res = new ArrayList<>();
+        BreakIterator boundary = BreakIterator.getSentenceInstance(locale);
+        boundary.setText(input);
+        int start = boundary.first();
+        for (int end = boundary.next();
+             end != BreakIterator.DONE;
+             start = end, end = boundary.next()) {
+            res.add(input.substring(start, end));
         }
         return res;
     }
