@@ -3,6 +3,7 @@ package slexom.earthtojava.utils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.util.SpriteIdentifier;
+import org.jetbrains.annotations.ApiStatus;
 
 import java.text.BreakIterator;
 import java.util.*;
@@ -52,14 +53,14 @@ public class Utils {
         List<String> cjkLocales = Arrays.asList("ja_jp", "ko_kr", "zh_cn", "zh_tw");
         String currentLocale = MinecraftClient.getInstance().getLanguageManager().getLanguage().getCode();
         if (cjkLocales.contains(currentLocale)) {
-            return breakCJKLine(input, Locale.forLanguageTag(currentLocale));
+            return breakLine(input, 30);
         }
         return breakLine(input, 40);
     }
 
     public static List<String> breakLine(String input, int maxLineLength) {
         List<String> res = new ArrayList<>();
-        Pattern pattern = Pattern.compile("\\b.{1," + (maxLineLength - 1) + "}\\b\\W?");
+        Pattern pattern = Pattern.compile("\\b.{1," + (maxLineLength - 1) + "}\\b\\W?", Pattern.UNICODE_CHARACTER_CLASS);
         Matcher matcher = pattern.matcher(input);
         while (matcher.find()) {
             res.add(matcher.group());
@@ -67,6 +68,7 @@ public class Utils {
         return res;
     }
 
+    @ApiStatus.Experimental
     public static List<String> breakCJKLine(String input, Locale locale) {
         List<String> res = new ArrayList<>();
         BreakIterator boundary = BreakIterator.getSentenceInstance(locale);
