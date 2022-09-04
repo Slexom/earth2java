@@ -1,7 +1,7 @@
 ## Earth2Java
 
 ![Version 1.9.3](https://img.shields.io/badge/Version-1.9.3-brightgreen)
-![MC 1.19](https://img.shields.io/badge/MC-1.19-blue)
+![MC 1.19.2](https://img.shields.io/badge/MC-1.19.2-blue)
 
 ![License MIT](https://img.shields.io/badge/License-MIT-blue)
 
