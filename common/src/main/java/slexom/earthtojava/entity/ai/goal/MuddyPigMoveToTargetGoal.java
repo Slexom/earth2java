@@ -1,6 +1,7 @@
 package slexom.earthtojava.entity.ai.goal;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.ai.goal.MoveToTargetPosGoal;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldView;
@@ -32,6 +33,7 @@ public class MuddyPigMoveToTargetGoal extends MoveToTargetPosGoal {
     @Override
     protected boolean isTargetPos(WorldView worldIn, BlockPos pos) {
         Block block = worldIn.getBlockState(pos).getBlock();
-        return block == BlockInit.MUD_BLOCK.get();
+        return block.equals(BlockInit.MUD_BLOCK.get()) || block.equals(Blocks.MUD);
+
     }
 }

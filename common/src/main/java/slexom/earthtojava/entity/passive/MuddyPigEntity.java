@@ -2,6 +2,7 @@ package slexom.earthtojava.entity.passive;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.damage.DamageSource;
@@ -18,7 +19,6 @@ import net.minecraft.world.World;
 import slexom.earthtojava.entity.ai.goal.MuddyPigMoveToTargetGoal;
 import slexom.earthtojava.entity.base.E2JBasePigEntity;
 import slexom.earthtojava.init.BlockInit;
-import slexom.earthtojava.init.FluidInit;
 
 
 public class MuddyPigEntity extends E2JBasePigEntity {
@@ -49,14 +49,26 @@ public class MuddyPigEntity extends E2JBasePigEntity {
         this.goalSelector.add(8, new WanderAroundGoal(this, 1.0D, 100));
     }
 
-    @Override
-    public void tickMovement() {
-        super.tickMovement();
+    private boolean isInMudFluid() {
         int i = MathHelper.floor(this.getX());
         int j = MathHelper.floor(this.getY());
         int k = MathHelper.floor(this.getZ());
         BlockPos blockPos = new BlockPos(i, j, k);
-        boolean condition = this.world.getFluidState(blockPos).getBlockState().getBlock().equals(BlockInit.MUD_BLOCK.get());
+        return this.world.getFluidState(blockPos).getBlockState().getBlock().equals(BlockInit.MUD_BLOCK.get());
+    }
+
+    private boolean isOverMudBlock() {
+        int i = MathHelper.floor(this.getX());
+        int j = MathHelper.floor(this.getY());
+        int k = MathHelper.floor(this.getZ());
+        BlockPos blockPos = new BlockPos(i, j - 1, k);
+        return this.world.getBlockState(blockPos).getBlock().equals(Blocks.MUD);
+    }
+
+    @Override
+    public void tickMovement() {
+        super.tickMovement();
+        boolean condition =  this.isOverMudBlock() || this.isInMudFluid();
         if (condition) {
             if (!isInMuddyState()) {
                 if (!isShaking) {
