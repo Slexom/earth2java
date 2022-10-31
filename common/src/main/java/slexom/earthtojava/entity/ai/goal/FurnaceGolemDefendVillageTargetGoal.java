@@ -9,7 +9,7 @@ import java.util.EnumSet;
 
 public class FurnaceGolemDefendVillageTargetGoal extends TrackIronGolemTargetGoal {
     private final FurnaceGolemEntity golem;
-    private LivingEntity villageAgressorTarget;
+    private LivingEntity target;
 
     public FurnaceGolemDefendVillageTargetGoal(FurnaceGolemEntity ironGolemIn) {
         super(ironGolemIn);
@@ -21,7 +21,7 @@ public class FurnaceGolemDefendVillageTargetGoal extends TrackIronGolemTargetGoa
     public void start() {
         this.golem.playSound(SoundEventsInit.FURNACE_GOLEM_AGGRO.get(), 1.0F, 1.0F);
         this.golem.setAngry(true);
-        this.golem.setTarget(this.villageAgressorTarget);
+        this.golem.setTarget(this.target);
         super.start();
     }
 

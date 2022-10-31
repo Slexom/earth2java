@@ -11,6 +11,7 @@ import slexom.earthtojava.client.renderer.entity.model.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Supplier;
 
 public final class EntityModelLayersInit {
     public static final EntityModelLayer BOULDERING_ZOMBIE_ENTITY_MODEL_LAYER;
@@ -27,7 +28,7 @@ public final class EntityModelLayersInit {
     public static final EntityModelLayer SKELETON_WOLF_ENTITY_MODEL_LAYER;
     public static final EntityModelLayer SOOTY_PIG_ENTITY_MODEL_LAYER;
     public static final EntityModelLayer VILER_WITCH_ENTITY_MODEL_LAYER;
-    public static Map<EntityModelLayer, TexturedModelData> E2J_MODEL_LAYERS = new HashMap<>();
+    public static final Map<EntityModelLayer, Supplier<TexturedModelData>> E2J_MODEL_LAYERS = new HashMap<>();
 
     static {
         FANCY_CHICKEN_ENTITY_MODEL_LAYER = registerEntityModelLayer(EntityTypesInit.FANCY_CHICKEN_REGISTRY_NAME, FancyChickenModel.getTexturedModelData());
@@ -46,13 +47,17 @@ public final class EntityModelLayersInit {
         RAINBOW_BED_FOOT_MODEL_LAYER = registerEntityModelLayer("rainbow_bed_foot", RainbowBedBlockEntityRenderer.getFootTexturedModelData());
     }
 
+    private EntityModelLayersInit() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static void init() {
 
     }
 
     public static EntityModelLayer registerEntityModelLayer(String registryName, TexturedModelData modelPart) {
         EntityModelLayer entityModelLayer = new EntityModelLayer(new Identifier(Earth2JavaMod.MOD_ID, registryName), "main");
-        // E2J_MODEL_LAYERS.put(entityModelLayer, modelPart);
+        E2J_MODEL_LAYERS.put(entityModelLayer, ()-> modelPart);
         EntityModelLayerRegistry.register(entityModelLayer, () -> modelPart);
         return entityModelLayer;
     }

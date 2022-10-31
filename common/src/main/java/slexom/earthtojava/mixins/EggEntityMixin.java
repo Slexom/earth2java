@@ -11,16 +11,16 @@ import java.util.Random;
 
 @Mixin(EggEntity.class)
 public class EggEntityMixin {
-
+    private Random random = new Random();
     @Redirect(
             method = "onCollision",
             at = @At(
                     value = "FIELD",
                     target = "Lnet/minecraft/entity/EntityType;CHICKEN:Lnet/minecraft/entity/EntityType;")
     )
-    public EntityType getChickenType() {
-        int random = new Random().nextInt(20);
-        return switch (random) {
+    public EntityType<?> getChickenType() {
+        int r = random.nextInt(20);
+        return switch (r) {
             case 2 -> EntityTypesInit.AMBER_CHICKEN_REGISTRY_OBJECT.get();
             case 4 -> EntityTypesInit.SKEWBALD_CHICKEN_REGISTRY_OBJECT.get();
             case 6 -> EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_OBJECT.get();

@@ -23,7 +23,7 @@ import java.util.Random;
 public class VilerWitchEntity extends WitchEntity {
 
 
-    public BlinkManager blinkManager;
+    public final BlinkManager blinkManager;
 
     private int castingTicks = 0;
 

@@ -14,7 +14,7 @@ import slexom.earthtojava.entity.passive.MoobloomEntity;
 public class MoobloomRenderer extends MobEntityRenderer<MoobloomEntity, CowEntityModel<MoobloomEntity>> {
 
     public MoobloomRenderer(EntityRendererFactory.Context context) {
-        super(context, new CowEntityModel(context.getPart(EntityModelLayers.MOOSHROOM)), 0.7F);
+        super(context, new CowEntityModel<>(context.getPart(EntityModelLayers.MOOSHROOM)), 0.7F);
         this.addFeature(new MoobloomButtercupFeatureRenderer<>(this));
     }
 

@@ -9,7 +9,7 @@ import slexom.earthtojava.entity.BlinkManager;
 
 public class E2JBaseLlamaEntity extends LlamaEntity {
 
-    public BlinkManager blinkManager;
+    public final BlinkManager blinkManager;
 
     public E2JBaseLlamaEntity(EntityType<? extends LlamaEntity> type, World worldIn) {
         super(type, worldIn);

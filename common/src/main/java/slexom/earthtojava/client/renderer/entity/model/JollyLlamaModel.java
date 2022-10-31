@@ -60,7 +60,7 @@ public class JollyLlamaModel extends EntityModel<JollyLlamaEntity> {
         if (this.child) {
             matrices.push();
             matrices.scale(0.71428573F, 0.64935064F, 0.7936508F);
-            matrices.translate(0.0D, 1.3125D, (double) 0.22F);
+            matrices.translate(0.0D, 1.3125D, 0.22D);
             this.head.render(matrices, vertices, light, overlay, red, green, blue, alpha);
             matrices.pop();
             matrices.push();
@@ -71,14 +71,10 @@ public class JollyLlamaModel extends EntityModel<JollyLlamaEntity> {
             matrices.push();
             matrices.scale(0.45454544F, 0.41322312F, 0.45454544F);
             matrices.translate(0.0D, 2.0625D, 0.0D);
-            ImmutableList.of(this.backRightLeg, this.backLeftLeg, this.frontRightLeg, this.frontLeftLeg).forEach((p_228280_8_) -> {
-                p_228280_8_.render(matrices, vertices, light, overlay, red, green, blue, alpha);
-            });
+            ImmutableList.of(this.backRightLeg, this.backLeftLeg, this.frontRightLeg, this.frontLeftLeg).forEach((modelPart) -> modelPart.render(matrices, vertices, light, overlay, red, green, blue, alpha));
             matrices.pop();
         } else {
-            ImmutableList.of(this.head, this.body, this.backRightLeg, this.backLeftLeg, this.frontRightLeg, this.frontLeftLeg).forEach((p_228279_8_) -> {
-                p_228279_8_.render(matrices, vertices, light, overlay, red, green, blue, alpha);
-            });
+            ImmutableList.of(this.head, this.body, this.backRightLeg, this.backLeftLeg, this.frontRightLeg, this.frontLeftLeg).forEach((modelPart) -> modelPart.render(matrices, vertices, light, overlay, red, green, blue, alpha));
         }
     }
 

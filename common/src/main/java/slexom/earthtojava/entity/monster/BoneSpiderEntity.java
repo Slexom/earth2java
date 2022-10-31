@@ -10,24 +10,35 @@ import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.mob.SpiderEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import slexom.earthtojava.entity.BlinkManager;
 import slexom.earthtojava.entity.ai.goal.BoneSpiderMeleeAttackGoal;
 import slexom.earthtojava.entity.ai.pathing.ClimberNavigation;
-import slexom.earthtojava.entity.base.E2JBaseSpiderEntity;
 import slexom.earthtojava.entity.projectile.BoneShardEntity;
 import slexom.earthtojava.init.SoundEventsInit;
 
-public class BoneSpiderEntity extends E2JBaseSpiderEntity<BoneSpiderEntity> implements RangedAttackMob {
+public class BoneSpiderEntity extends SpiderEntity implements RangedAttackMob {
+    public final BlinkManager blinkManager;
 
     public BoneSpiderEntity(EntityType<BoneSpiderEntity> type, World worldIn) {
         super(type, worldIn);
+        blinkManager = new BlinkManager();
+        experiencePoints = 3;
+        setAiDisabled(false);
     }
 
     public static DefaultAttributeContainer.Builder createBoneSpiderAttributes() {
         return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 32.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3D);
+    }
+
+    @Override
+    public void tickMovement() {
+        super.tickMovement();
+        blinkManager.tickBlink();
     }
 
     protected EntityNavigation createNavigation(World world) {
@@ -44,7 +55,7 @@ public class BoneSpiderEntity extends E2JBaseSpiderEntity<BoneSpiderEntity> impl
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(6, new LookAroundGoal(this));
         this.targetSelector.add(1, new RevengeGoal(this));
-        this.targetSelector.add(2, new ActiveTargetGoal(this, PlayerEntity.class, true));
+        this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
     }
 
     @Override

@@ -11,151 +11,147 @@ import java.text.MessageFormat;
 @Config(name = Earth2JavaMod.MOD_ID)
 public class ModConfig implements ConfigData {
 
-    @ConfigEntry.Category("generation")
-    @ConfigEntry.Gui.CollapsibleObject
-    public MudLakeConfig mudLakeConfig = new MudLakeConfig(true, 25);
-
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig albinoCow = new EntityConfig(8);
+    public final EntityConfig albinoCow = new EntityConfig(8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig amberChicken = new EntityConfig(10);
+    public final EntityConfig amberChicken = new EntityConfig(10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig ashenCow = new EntityConfig(8);
+    public final EntityConfig ashenCow = new EntityConfig(8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig boneSpider = new EntityConfig(10);
+    public final EntityConfig boneSpider = new EntityConfig(10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig boldStripedRabbit = new EntityConfig(8);
+    public final EntityConfig boldStripedRabbit = new EntityConfig(8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig boulderingZombie = new EntityConfig(15);
+    public final EntityConfig boulderingZombie = new EntityConfig(15);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig bronzedChicken = new EntityConfig(10);
+    public final EntityConfig bronzedChicken = new EntityConfig(10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig cluckshroom = new EntityConfig(10);
+    public final EntityConfig cluckshroom = new EntityConfig(10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig cookieCow = new EntityConfig(8);
+    public final EntityConfig cookieCow = new EntityConfig(8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig creamCow = new EntityConfig(8);
+    public final EntityConfig creamCow = new EntityConfig(8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig dairyCow = new EntityConfig(8);
+    public final EntityConfig dairyCow = new EntityConfig(8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig fancyChicken = new EntityConfig(10);
+    public final EntityConfig fancyChicken = new EntityConfig(10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig fleckedSheep = new EntityConfig(12);
+    public final EntityConfig fleckedSheep = new EntityConfig(12);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig freckledRabbit = new EntityConfig(4);
+    public final EntityConfig freckledRabbit = new EntityConfig(4);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig fuzzySheep = new EntityConfig(12);
+    public final EntityConfig fuzzySheep = new EntityConfig(12);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig goldCrestedChicken = new EntityConfig(10);
+    public final EntityConfig goldCrestedChicken = new EntityConfig(10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig harelequinRabbit = new EntityConfig(4);
+    public final EntityConfig harelequinRabbit = new EntityConfig(4);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig hornedSheep = new EntityConfig(12);
+    public final EntityConfig hornedSheep = new EntityConfig(12);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig inkySheep = new EntityConfig(12);
+    public final EntityConfig inkySheep = new EntityConfig(12);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig jollyLlama = new EntityConfig(10);
+    public final EntityConfig jollyLlama = new EntityConfig(10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig jumboRabbit = new EntityConfig(4);
+    public final EntityConfig jumboRabbit = new EntityConfig(4);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig lobberZombie = new EntityConfig(15);
+    public final EntityConfig lobberZombie = new EntityConfig(15);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig longNosedSheep = new EntityConfig(12);
+    public final EntityConfig longNosedSheep = new EntityConfig(12);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig midnightChicken = new EntityConfig(10);
+    public final EntityConfig midnightChicken = new EntityConfig(10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig moobloom = new EntityConfig(8);
+    public final EntityConfig moobloom = new EntityConfig(8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig moolip = new EntityConfig(8);
+    public final EntityConfig moolip = new EntityConfig(8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig mottledPig = new EntityConfig(10);
+    public final EntityConfig mottledPig = new EntityConfig(10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig muddyPig = new EntityConfig(10);
+    public final EntityConfig muddyPig = new EntityConfig(10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig muddyFootRabbit = new EntityConfig(4);
+    public final EntityConfig muddyFootRabbit = new EntityConfig(4);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig palePig = new EntityConfig(10);
+    public final EntityConfig palePig = new EntityConfig(10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig patchedSheep = new EntityConfig(12);
+    public final EntityConfig patchedSheep = new EntityConfig(12);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig piebaldPig = new EntityConfig(10);
+    public final EntityConfig piebaldPig = new EntityConfig(10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig pinkFootedPig = new EntityConfig(10);
+    public final EntityConfig pinkFootedPig = new EntityConfig(10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig pintoCow = new EntityConfig(8);
+    public final EntityConfig pintoCow = new EntityConfig(8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig rainbowSheep = new EntityConfig(12);
+    public final EntityConfig rainbowSheep = new EntityConfig(12);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig rockySheep = new EntityConfig(12);
+    public final EntityConfig rockySheep = new EntityConfig(12);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig skeletonWolf = new EntityConfig(8);
+    public final EntityConfig skeletonWolf = new EntityConfig(8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig skewbaldChicken = new EntityConfig(10);
+    public final EntityConfig skewbaldChicken = new EntityConfig(10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig sootyPig = new EntityConfig(10);
+    public final EntityConfig sootyPig = new EntityConfig(10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig spottedPig = new EntityConfig(10);
+    public final EntityConfig spottedPig = new EntityConfig(10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig stormyChicken = new EntityConfig(10);
+    public final EntityConfig stormyChicken = new EntityConfig(10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig sunsetCow = new EntityConfig(8);
+    public final EntityConfig sunsetCow = new EntityConfig(8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig tropicalSlime = new EntityConfig(10);
+    public final EntityConfig tropicalSlime = new EntityConfig(10);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig umbraCow = new EntityConfig(8);
+    public final EntityConfig umbraCow = new EntityConfig(8);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig vestedRabbit = new EntityConfig(4);
+    public final EntityConfig vestedRabbit = new EntityConfig(4);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig vilerWitch = new EntityConfig(1, 1, 1);
+    public final EntityConfig vilerWitch = new EntityConfig(1, 1, 1);
     @ConfigEntry.Category("entities")
     @ConfigEntry.Gui.CollapsibleObject
-    public EntityConfig woolyCow = new EntityConfig(8);
+    public final EntityConfig woolyCow = new EntityConfig(8);
 
     @Override
     public void validatePostLoad() throws ValidationException {
@@ -167,13 +163,13 @@ public class ModConfig implements ConfigData {
     }
 
     public static class EntityConfig {
-        public boolean spawn;
+        public final boolean spawn;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
-        public int weight;
+        public final int weight;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
-        public int groupMin;
+        public final int groupMin;
         @ConfigEntry.BoundedDiscrete(min = 1, max = 10)
-        public int groupMax;
+        public final int groupMax;
 
         EntityConfig(int weight, int groupMin, int groupMax) {
             this.spawn = true;
@@ -184,17 +180,6 @@ public class ModConfig implements ConfigData {
 
         EntityConfig(int weight) {
             this(weight, 2, 4);
-        }
-    }
-
-    public static class MudLakeConfig {
-        public boolean canGenerate;
-        @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
-        public int mudLakeFrequency;
-
-        MudLakeConfig(boolean canGenerate, int mudLakeFrequency) {
-            this.canGenerate = canGenerate;
-            this.mudLakeFrequency = mudLakeFrequency;
         }
     }
 

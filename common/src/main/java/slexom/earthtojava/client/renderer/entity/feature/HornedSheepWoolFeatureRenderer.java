@@ -21,7 +21,7 @@ public class HornedSheepWoolFeatureRenderer extends FeatureRenderer<HornedSheepE
 
     public HornedSheepWoolFeatureRenderer(FeatureRendererContext<HornedSheepEntity, HornedSheepModel<HornedSheepEntity>> featureRendererContext, EntityModelLoader entityModelLoader) {
         super(featureRendererContext);
-        this.woolEntityModel = new SheepWoolEntityModel(entityModelLoader.getModelPart(EntityModelLayers.SHEEP_FUR));
+        this.woolEntityModel = new SheepWoolEntityModel<>(entityModelLoader.getModelPart(EntityModelLayers.SHEEP_FUR));
     }
 
     public void render(MatrixStack matrixStackIn, VertexConsumerProvider bufferIn, int packedLightIn, HornedSheepEntity entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {

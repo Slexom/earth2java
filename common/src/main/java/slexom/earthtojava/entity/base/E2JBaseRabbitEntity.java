@@ -13,7 +13,7 @@ import slexom.earthtojava.entity.EntityVariantManager;
 
 public class E2JBaseRabbitEntity extends RabbitEntity {
 
-    public BlinkManager blinkManager;
+    public final BlinkManager blinkManager;
     private final EntityVariantManager<E2JBaseRabbitEntity> variantManager;
 
     public E2JBaseRabbitEntity(EntityType<? extends RabbitEntity> type, World worldIn) {

@@ -4,6 +4,7 @@ import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 import slexom.earthtojava.Earth2JavaMod;
+import slexom.earthtojava.utils.Utils;
 
 import java.text.MessageFormat;
 
@@ -131,12 +132,16 @@ public final class SoundEventsInit {
         VILER_WITCH_CASTING = registerSoundEvent(VILER_WITCH_CASTING_REGISTRY_NAME);
     }
 
+    private SoundEventsInit() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static void init() {
 
     }
 
     public static RegistrySupplier<SoundEvent> registerSoundEvent(String registryName) {
-        final Identifier identifier = Earth2JavaMod.toIdentifier(registryName);
+        final Identifier identifier = Utils.modIdentifierOf(registryName);
         return Earth2JavaMod.SOUND_EVENT_REGISTRAR.register(identifier, () -> new SoundEvent(identifier));
     }
 

@@ -41,7 +41,7 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob {
     private static final TrackedData<Byte> MELON_EQUIPPED = DataTracker.registerData(MelonGolemEntity.class, TrackedDataHandlerRegistry.BYTE);
     private static final TrackedData<Integer> SHOOTING_TICKS = DataTracker.registerData(MelonGolemEntity.class, TrackedDataHandlerRegistry.INTEGER);
 
-    public BlinkManager blinkManager;
+    public final BlinkManager blinkManager;
 
     public MelonGolemEntity(EntityType<? extends MelonGolemEntity> type, World worldIn) {
         super(type, worldIn);

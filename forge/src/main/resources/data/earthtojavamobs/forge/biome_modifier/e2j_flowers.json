@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:plains",
+  "features": "earthtojavamobs:e2j_flowers",
+  "step": "vegetal_decoration"
+}

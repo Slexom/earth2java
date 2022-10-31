@@ -16,6 +16,10 @@ public final class EntitySpawnInit {
 
     private static final ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
+    private EntitySpawnInit() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static void init() {
         manageAnimalEntities();
         manageMonsterEntities();

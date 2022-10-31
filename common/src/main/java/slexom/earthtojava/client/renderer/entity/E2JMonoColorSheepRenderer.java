@@ -18,10 +18,10 @@ public class E2JMonoColorSheepRenderer extends MobEntityRenderer<E2JBaseMonoColo
     private final String registryName;
 
     public E2JMonoColorSheepRenderer(Context context, String registryName) {
-        super(context, new SheepEntityModel(context.getPart(EntityModelLayers.SHEEP)), 0.7F);
+        super(context, new SheepEntityModel<>(context.getPart(EntityModelLayers.SHEEP)), 0.7F);
         this.registryName = registryName;
         String woolTexture = MessageFormat.format("earthtojavamobs:textures/mobs/sheep/{0}/{0}_fur.png", this.registryName, this.registryName);
-        this.addFeature(new E2JMonoColorSheepWoolFeatureRenderer(this, context.getModelLoader(), woolTexture));
+        this.addFeature(new E2JMonoColorSheepWoolFeatureRenderer<>(this, context.getModelLoader(), woolTexture));
     }
 
     public Identifier getTexture(E2JBaseMonoColorSheepEntity entity) {

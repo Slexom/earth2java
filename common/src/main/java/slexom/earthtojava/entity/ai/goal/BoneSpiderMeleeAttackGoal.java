@@ -16,7 +16,7 @@ public class BoneSpiderMeleeAttackGoal extends MeleeAttackGoal {
     public boolean shouldContinue() {
         float f = this.mob.getBrightnessAtEyes();
         if (f >= 0.5F && this.mob.getRandom().nextInt(100) == 0) {
-            this.mob.setTarget((LivingEntity) null);
+            this.mob.setTarget(null);
             return false;
         } else {
             return super.shouldContinue();

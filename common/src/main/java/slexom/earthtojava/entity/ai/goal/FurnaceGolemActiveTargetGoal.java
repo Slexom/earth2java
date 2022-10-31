@@ -9,7 +9,7 @@ import javax.annotation.Nullable;
 import java.util.function.Predicate;
 
 public final class FurnaceGolemActiveTargetGoal extends ActiveTargetGoal<LivingEntity> {
-    FurnaceGolemEntity golem;
+    final FurnaceGolemEntity golem;
 
     public FurnaceGolemActiveTargetGoal(FurnaceGolemEntity entity, Class targetClassIn, int targetChanceIn, boolean checkSight, boolean nearbyOnlyIn, @Nullable Predicate targetPredicate) {
         super(entity, targetClassIn, targetChanceIn, checkSight, nearbyOnlyIn, targetPredicate);

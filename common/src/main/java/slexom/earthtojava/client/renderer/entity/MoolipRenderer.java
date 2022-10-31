@@ -14,7 +14,7 @@ import slexom.earthtojava.entity.passive.MoolipEntity;
 public class MoolipRenderer extends MobEntityRenderer<MoolipEntity, CowEntityModel<MoolipEntity>> {
 
     public MoolipRenderer(EntityRendererFactory.Context context) {
-        super(context, new CowEntityModel(context.getPart(EntityModelLayers.MOOSHROOM)), 0.7F);
+        super(context, new CowEntityModel<>(context.getPart(EntityModelLayers.MOOSHROOM)), 0.7F);
         this.addFeature(new MoolipPinkDaisyFeatureRenderer<>(this));
     }
 

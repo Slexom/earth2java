@@ -13,7 +13,7 @@ import slexom.earthtojava.entity.EntityVariantManager;
 
 public class E2JBaseCowEntity extends CowEntity {
 
-    public BlinkManager blinkManager;
+    public final BlinkManager blinkManager;
     private final EntityVariantManager<E2JBaseCowEntity> variantManager;
 
     public E2JBaseCowEntity(EntityType<? extends CowEntity> type, World worldIn) {

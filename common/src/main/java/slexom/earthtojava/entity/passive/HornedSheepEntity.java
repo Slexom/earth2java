@@ -144,41 +144,24 @@ public class HornedSheepEntity extends E2JBaseSheepEntity implements Angerable, 
         if (this.isSheared()) {
             return this.getType().getLootTableId();
         } else {
-            switch (this.getColor()) {
-                case WHITE:
-                default:
-                    return new Identifier("earthtojavamobs", "entities/horned_sheep/white");
-                case ORANGE:
-                    return new Identifier("earthtojavamobs", "entities/horned_sheep/orange");
-                case MAGENTA:
-                    return new Identifier("earthtojavamobs", "entities/horned_sheep/magenta");
-                case LIGHT_BLUE:
-                    return new Identifier("earthtojavamobs", "entities/horned_sheep/light_blue");
-                case YELLOW:
-                    return new Identifier("earthtojavamobs", "entities/horned_sheep/yellow");
-                case LIME:
-                    return new Identifier("earthtojavamobs", "entities/horned_sheep/lime");
-                case PINK:
-                    return new Identifier("earthtojavamobs", "entities/horned_sheep/pink");
-                case GRAY:
-                    return new Identifier("earthtojavamobs", "entities/horned_sheep/gray");
-                case LIGHT_GRAY:
-                    return new Identifier("earthtojavamobs", "entities/horned_sheep/light_gray");
-                case CYAN:
-                    return new Identifier("earthtojavamobs", "entities/horned_sheep/cyan");
-                case PURPLE:
-                    return new Identifier("earthtojavamobs", "entities/horned_sheep/purple");
-                case BLUE:
-                    return new Identifier("earthtojavamobs", "entities/horned_sheep/blue");
-                case BROWN:
-                    return new Identifier("earthtojavamobs", "entities/horned_sheep/brown");
-                case GREEN:
-                    return new Identifier("earthtojavamobs", "entities/horned_sheep/green");
-                case RED:
-                    return new Identifier("earthtojavamobs", "entities/horned_sheep/red");
-                case BLACK:
-                    return new Identifier("earthtojavamobs", "entities/horned_sheep/black");
-            }
+            return switch (this.getColor()) {
+                case WHITE -> new Identifier("earthtojavamobs", "entities/horned_sheep/white");
+                case ORANGE -> new Identifier("earthtojavamobs", "entities/horned_sheep/orange");
+                case MAGENTA -> new Identifier("earthtojavamobs", "entities/horned_sheep/magenta");
+                case LIGHT_BLUE -> new Identifier("earthtojavamobs", "entities/horned_sheep/light_blue");
+                case YELLOW -> new Identifier("earthtojavamobs", "entities/horned_sheep/yellow");
+                case LIME -> new Identifier("earthtojavamobs", "entities/horned_sheep/lime");
+                case PINK -> new Identifier("earthtojavamobs", "entities/horned_sheep/pink");
+                case GRAY -> new Identifier("earthtojavamobs", "entities/horned_sheep/gray");
+                case LIGHT_GRAY -> new Identifier("earthtojavamobs", "entities/horned_sheep/light_gray");
+                case CYAN -> new Identifier("earthtojavamobs", "entities/horned_sheep/cyan");
+                case PURPLE -> new Identifier("earthtojavamobs", "entities/horned_sheep/purple");
+                case BLUE -> new Identifier("earthtojavamobs", "entities/horned_sheep/blue");
+                case BROWN -> new Identifier("earthtojavamobs", "entities/horned_sheep/brown");
+                case GREEN -> new Identifier("earthtojavamobs", "entities/horned_sheep/green");
+                case RED -> new Identifier("earthtojavamobs", "entities/horned_sheep/red");
+                case BLACK -> new Identifier("earthtojavamobs", "entities/horned_sheep/black");
+            };
         }
     }
 

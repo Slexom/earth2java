@@ -1,7 +1,6 @@
 package slexom.earthtojava.block;
 
 import net.minecraft.block.*;
-import net.minecraft.util.DyeColor;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -12,7 +11,7 @@ import net.minecraft.world.WorldView;
 public class RainbowCarpetBlock extends CarpetBlock {
     protected static final VoxelShape SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 1.0D, 16.0D);
 
-    public RainbowCarpetBlock(  Settings settings) {
+    public RainbowCarpetBlock(Settings settings) {
         super(settings);
     }
 

@@ -51,7 +51,7 @@ public class SpawnFurnaceGolem {
             BlockPos blockPos2 = furnaceGolemResult.translate(1, 2, 0).getBlockPos();
             FurnaceGolemEntity furnaceGolemEntity = EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT.get().create(world);
             furnaceGolemEntity.setPlayerCreated(true);
-            furnaceGolemEntity.refreshPositionAndAngles((double) blockPos2.getX() + 0.5D, (double) blockPos2.getY() + 0.05D, (double) blockPos2.getZ() + 0.5D, 0.0F, 0.0F);
+            furnaceGolemEntity.refreshPositionAndAngles(blockPos2.getX() + 0.5D, blockPos2.getY() + 0.05D, blockPos2.getZ() + 0.5D, 0.0F, 0.0F);
             world.spawnEntity(furnaceGolemEntity);
             for (ServerPlayerEntity serverPE : world.getNonSpectatingEntities(ServerPlayerEntity.class, furnaceGolemEntity.getBoundingBox().expand(5.0D))) {
                 Criteria.SUMMONED_ENTITY.trigger(serverPE, furnaceGolemEntity);

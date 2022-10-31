@@ -13,20 +13,20 @@ logoFile = "icon.png"
 [[dependencies.earthtojavamobs]]
 modId = "forge"
 mandatory = true
-versionRange = "[40,)"
+versionRange = "[43,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.earthtojavamobs]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.18.2,)"
+versionRange = "[1.19.2,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.earthtojavamobs]]
 modId = "architectury"
 mandatory = true
-versionRange = "[4.0.30,)"
+versionRange = "[6.2.43,)"
 ordering = "AFTER"
 side = "BOTH"

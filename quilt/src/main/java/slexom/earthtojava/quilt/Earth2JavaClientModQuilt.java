@@ -23,7 +23,6 @@ import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.client.ClientModInitializer;
 import slexom.earthtojava.Earth2JavaClientMod;
 import slexom.earthtojava.Earth2JavaMod;
-import slexom.earthtojava.init.FluidInit;
 
 import java.util.function.Function;
 
@@ -33,47 +32,7 @@ public class Earth2JavaClientModQuilt implements ClientModInitializer {
     @Environment(EnvType.CLIENT)
     public void onInitializeClient(ModContainer mod) {
         addBedTextureToAtlas();
-        setupFluidRendering(FluidInit.MUD_FLUID_STILL.get(), FluidInit.MUD_FLUID_FLOWING.get(), 0x472804);
         Earth2JavaClientMod.initializeClient();
-    }
-
-    private void setupFluidRendering(final Fluid still, final Fluid flowing, final int color) {
-        final Identifier stillSpriteId = new Identifier(Earth2JavaMod.MOD_ID, "fluids/mud_still");
-        final Identifier flowingSpriteId = new Identifier(Earth2JavaMod.MOD_ID, "fluids/mud_flow");
-        ClientSpriteRegistryCallback.event(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE).register((atlasTexture, registry) -> {
-            registry.register(stillSpriteId);
-            registry.register(flowingSpriteId);
-        });
-        final Identifier fluidId = Registry.FLUID.getId(still);
-        final Identifier listenerId = new Identifier(fluidId.getNamespace(), fluidId.getPath() + "_reload_listener");
-        final Sprite[] fluidSprites = {null, null};
-        ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(new SimpleSynchronousResourceReloadListener() {
-            @Override
-            public void reload(ResourceManager manager) {
-                final Function<Identifier, Sprite> atlas = MinecraftClient.getInstance().getSpriteAtlas(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE);
-                fluidSprites[0] = atlas.apply(stillSpriteId);
-                fluidSprites[1] = atlas.apply(flowingSpriteId);
-            }
-
-            @Override
-            public Identifier getFabricId() {
-                return listenerId;
-            }
-        });
-
-        final FluidRenderHandler renderHandler = new FluidRenderHandler() {
-            @Override
-            public Sprite[] getFluidSprites(BlockRenderView view, BlockPos pos, FluidState state) {
-                return fluidSprites;
-            }
-
-            @Override
-            public int getFluidColor(BlockRenderView view, BlockPos pos, FluidState state) {
-                return color;
-            }
-        };
-        FluidRenderHandlerRegistry.INSTANCE.register(still, renderHandler);
-        FluidRenderHandlerRegistry.INSTANCE.register(flowing, renderHandler);
     }
 
     private void addBedTextureToAtlas() {

@@ -5,6 +5,10 @@ import net.minecraft.client.render.RenderLayer;
 import slexom.earthtojava.init.BlockInit;
 
 public class BlockRendererInit {
+    private BlockRendererInit() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static void init() {
         RenderTypeRegistry.register(RenderLayer.getCutout(), BlockInit.BUTTERCUP.get());
         RenderTypeRegistry.register(RenderLayer.getCutout(), BlockInit.POTTED_BUTTERCUP.get());

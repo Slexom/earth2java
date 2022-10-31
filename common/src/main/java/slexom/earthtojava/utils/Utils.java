@@ -1,52 +1,25 @@
 package slexom.earthtojava.utils;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.TexturedRenderLayers;
-import net.minecraft.client.util.SpriteIdentifier;
-import org.jetbrains.annotations.ApiStatus;
+import net.minecraft.client.resource.language.I18n;
+import net.minecraft.text.MutableText;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
+import net.minecraft.util.Identifier;
+import slexom.earthtojava.Earth2JavaMod;
 
-import java.text.BreakIterator;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Utils {
 
-
-    public static SpriteIdentifier[] addToSpriteArray(SpriteIdentifier[] ary, SpriteIdentifier bed) {
-
-        List<SpriteIdentifier> beds = new ArrayList<>(Arrays.asList(ary));
-        beds.add(bed);
-        ary = beds.toArray(ary);
-        return ary;
-
-    }
-
-    public static SpriteIdentifier[] addBed(SpriteIdentifier bed) {
-
-        SpriteIdentifier[] vanillaBeds = TexturedRenderLayers.BED_TEXTURES;
-        List<SpriteIdentifier> beds = new ArrayList<>(Arrays.asList(vanillaBeds));
-        beds.add(bed);
-        vanillaBeds = beds.toArray(vanillaBeds);
-        return vanillaBeds;
-
-    }
-
-    public static String addLinebreaks(String input, int maxLineLength) {
-        StringTokenizer tok = new StringTokenizer(input, " ");
-        StringBuilder output = new StringBuilder(input.length());
-        int lineLen = 0;
-        while (tok.hasMoreTokens()) {
-            String word = tok.nextToken();
-
-            if (lineLen + word.length() > maxLineLength) {
-                output.append("\n");
-                lineLen = 0;
-            }
-            output.append(word);
-            lineLen += word.length();
-        }
-        return output.toString();
+    private Utils() {
+        throw new IllegalStateException("Utility class");
     }
 
     public static List<String> breakItemTooltip(String input) {
@@ -68,18 +41,16 @@ public class Utils {
         return res;
     }
 
-    @ApiStatus.Experimental
-    public static List<String> breakCJKLine(String input, Locale locale) {
-        List<String> res = new ArrayList<>();
-        BreakIterator boundary = BreakIterator.getSentenceInstance(locale);
-        boundary.setText(input);
-        int start = boundary.first();
-        for (int end = boundary.next();
-             end != BreakIterator.DONE;
-             start = end, end = boundary.next()) {
-            res.add(input.substring(start, end));
-        }
-        return res;
+    @Environment(EnvType.CLIENT)
+    public static void appendE2JTooltip(String translationKey, List<Text> tooltip) {
+        if (!I18n.hasTranslation(translationKey)) return;
+
+        MutableText description = Text.translatable(translationKey);
+        List<String> strings = Utils.breakItemTooltip(description.getString());
+        strings.forEach(string -> tooltip.add(Text.translatable(string).formatted(Formatting.GRAY)));
     }
 
+    public static Identifier modIdentifierOf(String registryName) {
+        return new Identifier(Earth2JavaMod.MOD_ID, registryName);
+    }
 }

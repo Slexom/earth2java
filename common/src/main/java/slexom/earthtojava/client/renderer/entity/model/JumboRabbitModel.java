@@ -152,24 +152,18 @@ public class JumboRabbitModel<T extends JumboRabbitEntity> extends EntityModel<T
             matrixStackIn.push();
             matrixStackIn.scale(0.56666666F, 0.56666666F, 0.56666666F);
             matrixStackIn.translate(0.0D, 1.375D, 0.125D);
-            ImmutableList.of(this.head, this.leftEar, this.rightEar, this.nose).forEach((p_228292_8_) -> {
-                p_228292_8_.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
-            });
+            ImmutableList.of(this.head, this.leftEar, this.rightEar, this.nose).forEach((modelPart) -> modelPart.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha));
             matrixStackIn.pop();
             matrixStackIn.push();
             matrixStackIn.scale(0.4F, 0.4F, 0.4F);
             matrixStackIn.translate(0.0D, 2.25D, 0.0D);
-            ImmutableList.of(this.leftHindLeg, this.rightHindLeg, this.leftHaunch, this.rightHaunch, this.body, this.leftFrontLeg, this.rightFrontLeg, this.tail).forEach((p_228291_8_) -> {
-                p_228291_8_.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
-            });
+            ImmutableList.of(this.leftHindLeg, this.rightHindLeg, this.leftHaunch, this.rightHaunch, this.body, this.leftFrontLeg, this.rightFrontLeg, this.tail).forEach((modelPart) -> modelPart.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha));
             matrixStackIn.pop();
         } else {
             matrixStackIn.push();
             matrixStackIn.scale(0.6F, 0.6F, 0.6F);
             matrixStackIn.translate(0.0D, 1.0D, 0.0D);
-            ImmutableList.of(this.leftHindLeg, this.rightHindLeg, this.leftHaunch, this.rightHaunch, this.body, this.leftFrontLeg, this.rightFrontLeg, this.head, this.rightEar, this.leftEar, this.tail, this.nose).forEach((p_228290_8_) -> {
-                p_228290_8_.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
-            });
+            ImmutableList.of(this.leftHindLeg, this.rightHindLeg, this.leftHaunch, this.rightHaunch, this.body, this.leftFrontLeg, this.rightFrontLeg, this.head, this.rightEar, this.leftEar, this.tail, this.nose).forEach((modelPart) -> modelPart.render(matrixStackIn, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha));
             matrixStackIn.pop();
         }
 

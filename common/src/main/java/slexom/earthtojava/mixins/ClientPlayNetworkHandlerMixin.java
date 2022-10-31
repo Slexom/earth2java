@@ -28,20 +28,20 @@ public class ClientPlayNetworkHandlerMixin {
         double z = packet.getZ();
         EntityType<?> entityType = packet.getEntityTypeId();
         Entity entity = null;
-        if (entityType == EntityTypesInit.BONE_SHARD_REGISTRY_OBJECT) {
+        if (entityType == EntityTypesInit.BONE_SHARD_REGISTRY_OBJECT.get()) {
             entity = new BoneShardEntity(this.world, x, y, z);
         }
-        if (entityType == EntityTypesInit.MELON_SEED_PROJECTILE_REGISTRY_OBJECT) {
+        if (entityType == EntityTypesInit.MELON_SEED_PROJECTILE_REGISTRY_OBJECT.get()) {
             entity = new MelonSeedProjectileEntity(this.world, x, y, z);
         }
-        if (entityType == EntityTypesInit.ROTTEN_FLESH_PROJECTILE_REGISTRY_OBJECT) {
+        if (entityType == EntityTypesInit.ROTTEN_FLESH_PROJECTILE_REGISTRY_OBJECT.get()) {
             entity = new RottenFleshProjectileEntity(this.world, x, y, z);
         }
         if (entity != null) {
             entity.updateTrackedPosition(x, y, z);
             entity.refreshPositionAfterTeleport(x, y, z);
-            entity.setPitch((float) (packet.getPitch() * 360) / 256.0F);
-            entity.setYaw((float) (packet.getYaw() * 360) / 256.0F);
+            entity.setPitch((packet.getPitch() * 360) / 256.0F);
+            entity.setYaw((packet.getYaw() * 360) / 256.0F);
             entity.setId(id);
             entity.setUuid(packet.getUuid());
             this.world.addEntity(id, entity);

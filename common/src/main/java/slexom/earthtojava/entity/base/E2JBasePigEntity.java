@@ -13,7 +13,7 @@ import slexom.earthtojava.entity.EntityVariantManager;
 
 public class E2JBasePigEntity extends PigEntity {
 
-    public BlinkManager blinkManager;
+    public final BlinkManager blinkManager;
     private final EntityVariantManager<E2JBasePigEntity> variantManager;
 
     public E2JBasePigEntity(EntityType<? extends PigEntity> type, World worldIn) {

@@ -5,13 +5,10 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.Block;
 import net.minecraft.client.item.TooltipContext;
-import net.minecraft.client.resource.language.I18n;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.*;
-import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import slexom.earthtojava.Earth2JavaMod;
 import slexom.earthtojava.item.*;
@@ -74,7 +71,6 @@ public final class ItemInit {
     public static final RegistrySupplier<Item> BONE_SHARD;
     public static final RegistrySupplier<Item> FANCY_FEATHER;
     public static final RegistrySupplier<Item> HORN;
-    public static final RegistrySupplier<Item> MUD_BUCKET;
     public static final RegistrySupplier<Item> RAINBOW_BED;
     public static final RegistrySupplier<Item> BUTTERCUP;
     public static final RegistrySupplier<Item> PINK_DAISY;
@@ -147,12 +143,15 @@ public final class ItemInit {
         RAINBOW_CARPET = registerBlockItem("rainbow_carpet", BlockInit.RAINBOW_CARPET);
         RAINBOW_WOOL = registerBlockItem("rainbow_wool", BlockInit.RAINBOW_WOOL);
 
-        HORN = Earth2JavaMod.ITEM_REGISTRAR.register(Earth2JavaMod.toIdentifier("horn"), () -> new HornItem(new Item.Settings().group(itemGroup).maxCount(64)));
-        FANCY_FEATHER = Earth2JavaMod.ITEM_REGISTRAR.register(Earth2JavaMod.toIdentifier("fancy_feather"), () -> new FancyFeatherItem(new Item.Settings().group(itemGroup).maxCount(64)));
-        MUD_BUCKET = Earth2JavaMod.ITEM_REGISTRAR.register(Earth2JavaMod.toIdentifier("mud_fluid_bucket"), () -> new MudBucketItem(FluidInit.MUD_FLUID_STILL.get(), new Item.Settings().recipeRemainder(Items.BUCKET).maxCount(1).group(itemGroup)));
-        BONE_SHARD = Earth2JavaMod.ITEM_REGISTRAR.register(Earth2JavaMod.toIdentifier("bone_shard"), () -> new BoneShardItem(new Item.Settings().group(null).maxCount(16)));
-        RAINBOW_BED = Earth2JavaMod.ITEM_REGISTRAR.register(Earth2JavaMod.toIdentifier("rainbow_bed"), () -> new BedItem(BlockInit.RAINBOW_BED.get(), (new Item.Settings()).maxCount(1).group(ItemGroup.DECORATIONS)));
+        HORN = Earth2JavaMod.ITEM_REGISTRAR.register(Utils.modIdentifierOf("horn"), () -> new HornItem(new Item.Settings().group(itemGroup).maxCount(64)));
+        FANCY_FEATHER = Earth2JavaMod.ITEM_REGISTRAR.register(Utils.modIdentifierOf("fancy_feather"), () -> new FancyFeatherItem(new Item.Settings().group(itemGroup).maxCount(64)));
+        BONE_SHARD = Earth2JavaMod.ITEM_REGISTRAR.register(Utils.modIdentifierOf("bone_shard"), () -> new BoneShardItem(new Item.Settings().group(null).maxCount(16)));
+        RAINBOW_BED = Earth2JavaMod.ITEM_REGISTRAR.register(Utils.modIdentifierOf("rainbow_bed"), () -> new BedItem(BlockInit.RAINBOW_BED.get(), (new Item.Settings()).maxCount(1).group(ItemGroup.DECORATIONS)));
 
+    }
+
+    private ItemInit() {
+        throw new IllegalStateException("Utility class");
     }
 
     public static void init() {
@@ -160,19 +159,15 @@ public final class ItemInit {
     }
 
     private static RegistrySupplier<Item> registerSpawnEgg(String registryName, RegistrySupplier<? extends EntityType<? extends MobEntity>> entityType, int primaryColor, int secondaryColor) {
-        return Earth2JavaMod.ITEM_REGISTRAR.register(Earth2JavaMod.toIdentifier(registryName + "_spawn_egg"), () -> new E2JSpawnEggItem(entityType, primaryColor, secondaryColor, spawnEggProps));
+        return Earth2JavaMod.ITEM_REGISTRAR.register(Utils.modIdentifierOf(registryName + "_spawn_egg"), () -> new E2JSpawnEggItem(entityType, primaryColor, secondaryColor, spawnEggProps));
     }
 
     private static RegistrySupplier<Item> registerBlockItem(String registryName, RegistrySupplier<Block> block) {
-        return Earth2JavaMod.ITEM_REGISTRAR.register(Earth2JavaMod.toIdentifier(registryName), () -> new BlockItem(block.get(), new Item.Settings().group(Earth2JavaMod.ITEM_GROUP)) {
+        return Earth2JavaMod.ITEM_REGISTRAR.register(Utils.modIdentifierOf(registryName), () -> new BlockItem(block.get(), new Item.Settings().group(Earth2JavaMod.ITEM_GROUP)) {
             @Environment(EnvType.CLIENT)
             public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
                 String translationKey = this.getTranslationKey() + ".desc";
-                if (I18n.hasTranslation(translationKey)) {
-                    MutableText description = Text.translatable(translationKey);
-                    List<String> strings = Utils.breakItemTooltip(description.getString());
-                    strings.forEach(string -> tooltip.add(Text.translatable(string).formatted(Formatting.GRAY)));
-                }
+                Utils.appendE2JTooltip(translationKey,tooltip);
             }
         });
     }

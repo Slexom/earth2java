@@ -19,7 +19,7 @@ public class E2JPigRenderer extends MobEntityRenderer<E2JBasePigEntity, PigEntit
 
     public E2JPigRenderer(Context context, String registryName) {
         super(context, new PigEntityModel<>(context.getPart(EntityModelLayers.PIG)), 0.7F);
-        this.addFeature(new SaddleFeatureRenderer(this, new PigEntityModel(context.getPart(EntityModelLayers.PIG_SADDLE)), new Identifier("textures/entity/pig/pig_saddle.png")));
+        this.addFeature(new SaddleFeatureRenderer<>(this, new PigEntityModel<>(context.getPart(EntityModelLayers.PIG_SADDLE)), new Identifier("textures/entity/pig/pig_saddle.png")));
         this.registryName = registryName;
     }
 

@@ -34,7 +34,7 @@ import java.util.UUID;
 
 public class SkeletonWolfEntity extends HostileEntity implements Angerable {
 
-    protected static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(WolfEntity.class, TrackedDataHandlerRegistry.INTEGER);
+    protected static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(SkeletonWolfEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private static final UniformIntProvider ANGER_TIME_RANGE = TimeHelper.betweenSeconds(20, 39);
 
     private float headRotationCourse;
@@ -60,7 +60,7 @@ public class SkeletonWolfEntity extends HostileEntity implements Angerable {
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(6, new LookAroundGoal(this));
         this.targetSelector.add(1, new RevengeGoal(this));
-        this.targetSelector.add(2, new ActiveTargetGoal(this, PlayerEntity.class, true));
+        this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
     }
 
     public EntityGroup getGroup() {

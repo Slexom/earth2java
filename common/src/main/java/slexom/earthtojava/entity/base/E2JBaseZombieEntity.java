@@ -10,7 +10,7 @@ import slexom.earthtojava.entity.BlinkManager;
 
 public class E2JBaseZombieEntity extends ZombieEntity {
 
-    public BlinkManager blinkManager;
+    public final BlinkManager blinkManager;
 
     public E2JBaseZombieEntity(EntityType<? extends ZombieEntity> entityType, World world) {
         super(entityType, world);

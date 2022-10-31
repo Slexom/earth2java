@@ -19,7 +19,7 @@ public class BoulderingZombieRenderer extends ZombieBaseEntityRenderer<Boulderin
     }
 
     public BoulderingZombieRenderer(EntityRendererFactory.Context ctx, EntityModelLayer layer, EntityModelLayer legsArmorLayer, EntityModelLayer bodyArmorLayer) {
-        super(ctx, new BoulderingZombieModel(ctx.getPart(layer)), new BoulderingZombieModel(ctx.getPart(legsArmorLayer)), new BoulderingZombieModel(ctx.getPart(bodyArmorLayer)));
+        super(ctx, new BoulderingZombieModel<>(ctx.getPart(layer)), new BoulderingZombieModel<>(ctx.getPart(legsArmorLayer)), new BoulderingZombieModel<>(ctx.getPart(bodyArmorLayer)));
     }
 
     public Identifier getTexture(BoulderingZombieEntity entity) {

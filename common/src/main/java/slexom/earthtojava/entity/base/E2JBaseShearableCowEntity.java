@@ -22,7 +22,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-public class E2JBaseShearableCowEntity<T extends E2JBaseCowEntity> extends E2JBaseCowEntity implements Shearable {
+public class E2JBaseShearableCowEntity extends E2JBaseCowEntity implements Shearable {
 
     private static final TrackedData<Byte> isSheared = DataTracker.registerData(E2JBaseShearableCowEntity.class, TrackedDataHandlerRegistry.BYTE);
     private final ItemStack wool;

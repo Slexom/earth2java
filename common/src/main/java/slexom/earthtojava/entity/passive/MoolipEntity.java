@@ -44,11 +44,11 @@ public class MoolipEntity extends E2JBaseCowEntity implements Shearable {
     }
 
     public void sheared(SoundCategory shearedSoundCategory) {
-        this.world.playSoundFromEntity((PlayerEntity) null, this, SoundEvents.ENTITY_MOOSHROOM_SHEAR, shearedSoundCategory, 1.0F, 1.0F);
+        this.world.playSoundFromEntity(null, this, SoundEvents.ENTITY_MOOSHROOM_SHEAR, shearedSoundCategory, 1.0F, 1.0F);
         if (!this.world.isClient()) {
             ((ServerWorld) this.world).spawnParticles(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
             this.remove(RemovalReason.KILLED);
-            CowEntity cowEntity = (CowEntity) EntityType.COW.create(this.world);
+            CowEntity cowEntity = EntityType.COW.create(this.world);
             cowEntity.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch());
             cowEntity.setHealth(this.getHealth());
             cowEntity.bodyYaw = this.bodyYaw;

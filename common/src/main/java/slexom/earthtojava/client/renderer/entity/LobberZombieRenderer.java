@@ -19,7 +19,7 @@ public class LobberZombieRenderer extends ZombieBaseEntityRenderer<LobberZombieE
     }
 
     public LobberZombieRenderer(EntityRendererFactory.Context ctx, EntityModelLayer layer, EntityModelLayer legsArmorLayer, EntityModelLayer bodyArmorLayer) {
-        super(ctx, new LobberZombieModel(ctx.getPart(layer)), new LobberZombieModel(ctx.getPart(legsArmorLayer)), new LobberZombieModel(ctx.getPart(bodyArmorLayer)));
+        super(ctx, new LobberZombieModel<>(ctx.getPart(layer)), new LobberZombieModel<>(ctx.getPart(legsArmorLayer)), new LobberZombieModel<>(ctx.getPart(bodyArmorLayer)));
     }
 
     public Identifier getTexture(LobberZombieEntity entity) {

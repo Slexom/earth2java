@@ -13,6 +13,9 @@ import slexom.earthtojava.entity.passive.HornedSheepEntity;
 import slexom.earthtojava.entity.passive.MelonGolemEntity;
 
 public final class EntityAttributeInit {
+    private EntityAttributeInit() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static void init() {
 

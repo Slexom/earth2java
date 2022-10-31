@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import slexom.earthtojava.entity.base.E2JBaseShearableCowEntity;
 
-public class WoolyCowEntity extends E2JBaseShearableCowEntity<WoolyCowEntity> {
+public class WoolyCowEntity extends E2JBaseShearableCowEntity {
 
     public WoolyCowEntity(EntityType<WoolyCowEntity> type, World world) {
         super(type, world, new ItemStack(Blocks.BROWN_WOOL));

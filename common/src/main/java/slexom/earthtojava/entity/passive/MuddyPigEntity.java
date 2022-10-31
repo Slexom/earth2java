@@ -18,7 +18,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import slexom.earthtojava.entity.ai.goal.MuddyPigMoveToTargetGoal;
 import slexom.earthtojava.entity.base.E2JBasePigEntity;
-import slexom.earthtojava.init.BlockInit;
 
 
 public class MuddyPigEntity extends E2JBasePigEntity {
@@ -49,48 +48,41 @@ public class MuddyPigEntity extends E2JBasePigEntity {
         this.goalSelector.add(8, new WanderAroundGoal(this, 1.0D, 100));
     }
 
-    private boolean isInMudFluid() {
-        int i = MathHelper.floor(this.getX());
-        int j = MathHelper.floor(this.getY());
-        int k = MathHelper.floor(this.getZ());
-        BlockPos blockPos = new BlockPos(i, j, k);
-        return this.world.getFluidState(blockPos).getBlockState().getBlock().equals(BlockInit.MUD_BLOCK.get());
-    }
-
     private boolean isOverMudBlock() {
-        int i = MathHelper.floor(this.getX());
-        int j = MathHelper.floor(this.getY());
-        int k = MathHelper.floor(this.getZ());
-        BlockPos blockPos = new BlockPos(i, j - 1, k);
+        int x = MathHelper.floor(this.getX());
+        int y = MathHelper.floor(this.getY());
+        int z = MathHelper.floor(this.getZ());
+        BlockPos blockPos = new BlockPos(x, y, z).down();
         return this.world.getBlockState(blockPos).getBlock().equals(Blocks.MUD);
     }
 
     @Override
     public void tickMovement() {
         super.tickMovement();
-        boolean condition =  this.isOverMudBlock() || this.isInMudFluid();
-        if (condition) {
-            if (!isInMuddyState()) {
-                if (!isShaking) {
-                    this.isShaking = true;
-                    this.timeWolfIsShaking = 0.0F;
-                    this.prevTimeWolfIsShaking = 0.0F;
-                    this.world.sendEntityStatus(this, (byte) 8);
-                }
-                if (++finallyInMud > 60) {
-                    setMuddyState(true);
-                    finallyInMud = 0;
-                    resetShake();
-                }
+
+        if (this.isOverMudBlock()) {
+            if (isInMuddyState()) return;
+
+            if (!isShaking) {
+                this.isShaking = true;
+                this.timeWolfIsShaking = 0.0F;
+                this.prevTimeWolfIsShaking = 0.0F;
+                this.world.sendEntityStatus(this, (byte) 8);
+            }
+            if (++finallyInMud > 60) {
+                setMuddyState(true);
+                finallyInMud = 0;
+                resetShake();
             }
         } else {
-            if (isInMuddyState()) {
-                outOfMud++;
-                if (outOfMud > 60) {
-                    setMuddyState(false);
-                    outOfMud = 0;
-                }
+            if (!isInMuddyState()) return;
+
+            outOfMud++;
+            if (outOfMud > 60) {
+                setMuddyState(false);
+                outOfMud = 0;
             }
+
         }
     }
 
@@ -102,15 +94,15 @@ public class MuddyPigEntity extends E2JBasePigEntity {
 
     public void tick() {
         super.tick();
-        if (this.isAlive()) {
-            if (isShaking) {
-                this.prevTimeWolfIsShaking = this.timeWolfIsShaking;
-                this.timeWolfIsShaking += 0.033F;
-                if (this.prevTimeWolfIsShaking >= 2.0F) {
-                    this.resetShake();
-                }
-            }
+        if (!this.isAlive()) return;
+        if (!isShaking) return;
+
+        this.prevTimeWolfIsShaking = this.timeWolfIsShaking;
+        this.timeWolfIsShaking += 0.033F;
+        if (this.prevTimeWolfIsShaking >= 2.0F) {
+            this.resetShake();
         }
+
     }
 
     public void onDeath(DamageSource cause) {

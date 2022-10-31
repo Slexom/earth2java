@@ -60,15 +60,15 @@ public class RainbowBedBlockEntityRenderer implements BlockEntityRenderer<Rainbo
         if (world != null) {
             BlockState blockState = bedBlockEntity.getCachedState();
             DoubleBlockProperties.PropertySource<RainbowBedBlockEntity> propertySource = DoubleBlockProperties.toPropertySource(BlockEntityTypeInit.RAINBOW_BED.get(), RainbowBedBlock::getBedPart, RainbowBedBlock::getOppositePartDirection, ChestBlock.FACING, blockState, world, bedBlockEntity.getPos(), (worldAccess, blockPos) -> false);
-            int k = ((Int2IntFunction) propertySource.apply(new LightmapCoordinatesRetriever())).get(light);
-            this.method_3558(matrixStack, vertexConsumerProvider, blockState.get(RainbowBedBlock.PART) == BedPart.HEAD ? this.head : this.foot, blockState.get(RainbowBedBlock.FACING), spriteIdentifier, k, overlay, false);
+            int k = propertySource.apply(new LightmapCoordinatesRetriever<>()).get(light);
+            this.renderPart(matrixStack, vertexConsumerProvider, blockState.get(RainbowBedBlock.PART) == BedPart.HEAD ? this.head : this.foot, blockState.get(RainbowBedBlock.FACING), spriteIdentifier, k, overlay, false);
         } else {
-            this.method_3558(matrixStack, vertexConsumerProvider, this.head, Direction.SOUTH, spriteIdentifier, light, overlay, false);
-            this.method_3558(matrixStack, vertexConsumerProvider, this.foot, Direction.SOUTH, spriteIdentifier, light, overlay, true);
+            this.renderPart(matrixStack, vertexConsumerProvider, this.head, Direction.SOUTH, spriteIdentifier, light, overlay, false);
+            this.renderPart(matrixStack, vertexConsumerProvider, this.foot, Direction.SOUTH, spriteIdentifier, light, overlay, true);
         }
     }
 
-    private void method_3558(MatrixStack matrix, VertexConsumerProvider vertexConsumerProvider, ModelPart modelPart, Direction direction, SpriteIdentifier spriteIdentifier, int light, int overlay, boolean bl) {
+    private void renderPart(MatrixStack matrix, VertexConsumerProvider vertexConsumerProvider, ModelPart modelPart, Direction direction, SpriteIdentifier spriteIdentifier, int light, int overlay, boolean bl) {
         matrix.push();
         matrix.translate(0.0D, 0.5625D, bl ? -1.0D : 0.0D);
         matrix.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(90.0F));

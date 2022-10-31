@@ -26,13 +26,11 @@ public class MuddyPigRenderer extends MobEntityRenderer<MuddyPigEntity, MuddyPig
         Identifier textureDried = new Identifier("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_dried.png");
         Identifier textureDriedBlink = new Identifier("earthtojavamobs:textures/mobs/pig/muddy_pig/muddy_pig_dried_blink.png");
         boolean blink = entity.blinkManager.getBlinkRemainingTicks() > 0;
-        return entity.isInMuddyState() ?
-                blink ?
-                        textureBlink :
-                        texture :
-                blink ?
-                        textureDriedBlink :
-                        textureDried;
+        if (entity.isInMuddyState()) {
+            return blink ? textureBlink : texture;
+        }
+
+        return blink ? textureDriedBlink : textureDried;
     }
 
 //    public static class SaddleLayer extends FeatureRenderer<MuddyPigEntity, MuddyPigModel<MuddyPigEntity>> {

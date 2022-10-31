@@ -66,9 +66,7 @@ public class E2JBaseMonoColorSheepEntity extends E2JBaseSheepEntity implements S
         if (itemStack.getItem() instanceof ShearsItem) {
             if (!this.world.isClient && this.isShearable()) {
                 this.sheared(SoundCategory.PLAYERS);
-                itemStack.damage(1, player, (playerEntity) -> {
-                    playerEntity.sendToolBreakStatus(hand);
-                });
+                itemStack.damage(1, player, (playerEntity) -> playerEntity.sendToolBreakStatus(hand));
                 return ActionResult.SUCCESS;
             } else {
                 return ActionResult.CONSUME;

@@ -28,7 +28,7 @@ public class FurnaceGolemEntity extends IronGolemEntity {
     public static final TrackedData<Boolean> IS_ANGRY = DataTracker.registerData(FurnaceGolemEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private int attackTimer;
 
-    public BlinkManager blinkManager;
+    public final BlinkManager blinkManager;
 
     public FurnaceGolemEntity(EntityType<? extends IronGolemEntity> type, World worldIn) {
         super(type, worldIn);

@@ -2,44 +2,35 @@ package slexom.earthtojava.client.renderer.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.render.OverlayTexture;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.render.entity.feature.EyesFeatureRenderer;
-import net.minecraft.client.render.entity.feature.FeatureRendererContext;
+import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.render.entity.model.SpiderEntityModel;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.mob.SpiderEntity;
 import net.minecraft.util.Identifier;
-import slexom.earthtojava.entity.base.E2JBaseSpiderEntity;
+import slexom.earthtojava.client.renderer.entity.feature.BoneSpiderEyesFeatureRenderer;
+import slexom.earthtojava.entity.monster.BoneSpiderEntity;
+
+import java.text.MessageFormat;
 
 @Environment(EnvType.CLIENT)
-public class BoneSpiderRenderer extends E2JSpiderRenderer {
+public class BoneSpiderRenderer extends MobEntityRenderer<BoneSpiderEntity, SpiderEntityModel<BoneSpiderEntity>> {
+
     public BoneSpiderRenderer(EntityRendererFactory.Context context) {
-        super(context, "bone_spider");
-        this.addFeature(new BoneSpiderEyesLayer<>(this));
+        super(context, new SpiderEntityModel<>(context.getPart(EntityModelLayers.SPIDER)), 0.8F);
+        this.addFeature(new BoneSpiderEyesFeatureRenderer<>(this));
     }
 
-    @Environment(EnvType.CLIENT)
-    static class BoneSpiderEyesLayer<T extends E2JBaseSpiderEntity<? extends SpiderEntity>, M extends SpiderEntityModel<T>> extends EyesFeatureRenderer<T, M> {
-        private static final RenderLayer RENDER_TYPE = RenderLayer.getEyes(new Identifier("earthtojavamobs:textures/mobs/spider/bone_spider/bone_spider_eyes.png"));
+    protected float getLyingAngle(BoneSpiderEntity spiderEntity) {
+        return 180.0F;
+    }
 
-        public BoneSpiderEyesLayer(FeatureRendererContext<T, M> featureRendererContext) {
-            super(featureRendererContext);
-        }
-
-        public void render(MatrixStack matrixStackIn, VertexConsumerProvider bufferIn, int packedLightIn, T entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-            float alpha = entitylivingbaseIn.blinkManager.getBlinkRemainingTicks() == 0 ? 1.0F : 0.0F;
-            VertexConsumer ivertexbuilder = bufferIn.getBuffer(this.getEyesTexture());
-            this.getContextModel().render(matrixStackIn, ivertexbuilder, 15728640, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, alpha);
-        }
-
-        public RenderLayer getEyesTexture() {
-            return RENDER_TYPE;
-        }
-
+    @Override
+    public Identifier getTexture(BoneSpiderEntity entity) {
+        String resourceTexture = MessageFormat.format("earthtojavamobs:textures/mobs/spider/{0}/{0}.png", "bone_spider");
+        String resourceTextureBlink = MessageFormat.format("earthtojavamobs:textures/mobs/spider/{0}/{0}_blink.png", "bone_spider");
+        Identifier texture = new Identifier(resourceTexture);
+        Identifier textureBlink = new Identifier(resourceTextureBlink);
+        return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
     }
 
 }

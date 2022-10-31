@@ -11,18 +11,26 @@ import net.minecraft.world.gen.feature.PlacedFeatures;
 import net.minecraft.world.gen.placementmodifier.*;
 import slexom.earthtojava.Earth2JavaMod;
 import slexom.earthtojava.config.ModConfig;
+import slexom.earthtojava.utils.Utils;
 
 import java.util.List;
 
 public final class PlacedFeatureInit {
 
     public static final RegistrySupplier<PlacedFeature> E2J_FLOWERS_PLACED_FEATURES;
-    public static final RegistrySupplier<PlacedFeature> MUD_LAKE_PLACED_FEATURES;
     private static final ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
     static {
-        E2J_FLOWERS_PLACED_FEATURES = registerPlacedFeature("e2j_flowers", ConfiguredFeatureInit.E2J_FLOWERS_CONFIGURED_FEATURE.get(), RarityFilterPlacementModifier.of(7), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, CountPlacementModifier.of(ClampedIntProvider.create(UniformIntProvider.create(-3, 1), 0, 1)), BiomePlacementModifier.of());
-        MUD_LAKE_PLACED_FEATURES = registerPlacedFeature("lake_mud", ConfiguredFeatureInit.MUD_LAKE_CONFIGURED_FEATURE.get(), RarityFilterPlacementModifier.of(config.mudLakeConfig.mudLakeFrequency), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
+        E2J_FLOWERS_PLACED_FEATURES = registerPlacedFeature("e2j_flowers", ConfiguredFeatureInit.E2J_FLOWERS_CONFIGURED_FEATURE.get(),
+                RarityFilterPlacementModifier.of(7),
+                SquarePlacementModifier.of(),
+                PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP,
+                CountPlacementModifier.of(ClampedIntProvider.create(UniformIntProvider.create(-3, 1), 0, 1)),
+                BiomePlacementModifier.of());
+    }
+
+    private PlacedFeatureInit() {
+        throw new IllegalStateException("Utility class");
     }
 
     public static void init() {
@@ -30,7 +38,7 @@ public final class PlacedFeatureInit {
 
 
     public static RegistrySupplier<PlacedFeature> registerPlacedFeature(String registryName, ConfiguredFeature<?, ?> configuredFeature, PlacementModifier... placementModifiers) {
-        return Earth2JavaMod.PLACED_FEATURE_REGISTRAR.register(Earth2JavaMod.toIdentifier(registryName), () -> new PlacedFeature(RegistryEntry.of(configuredFeature), List.of(placementModifiers)));
+        return Earth2JavaMod.PLACED_FEATURE_REGISTRAR.register(Utils.modIdentifierOf(registryName), () -> new PlacedFeature(RegistryEntry.of(configuredFeature), List.of(placementModifiers)));
     }
 
 

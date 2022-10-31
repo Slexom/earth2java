@@ -29,10 +29,10 @@ public class BuiltinModelItemRendererMixin {
     private BlockEntityRenderDispatcher blockEntityRenderDispatcher;
 
     @Inject(at = @At("HEAD"), method = "render", cancellable = true)
-    private void rainbowBed(ItemStack stack, ModelTransformation.Mode mode, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, CallbackInfo ci) {
+    private void e2jRenderRainbowBed(ItemStack stack, ModelTransformation.Mode mode, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, CallbackInfo ci) {
         Item item = stack.getItem();
-        if (item instanceof BlockItem) {
-            Block block = ((BlockItem) item).getBlock();
+        if (item instanceof BlockItem blockItem) {
+            Block block = blockItem.getBlock();
             if (block instanceof RainbowBedBlock) {
                 BlockState blockState = block.getDefaultState();
                 this.blockEntityRenderDispatcher.renderEntity((BlockEntity) BlockEntityTypeInit.RAINBOW_BED.get().instantiate(BlockPos.ORIGIN, blockState), matrices, vertexConsumers, light, overlay);
