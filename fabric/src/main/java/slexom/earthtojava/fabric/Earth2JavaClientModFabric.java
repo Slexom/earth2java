@@ -32,6 +32,7 @@ public class Earth2JavaClientModFabric implements ClientModInitializer {
     public void onInitializeClient() {
         addBedTextureToAtlas();
         Earth2JavaClientMod.initializeClient();
+        Earth2JavaClientMod.onPostInit();
     }
 
     private void addBedTextureToAtlas() {

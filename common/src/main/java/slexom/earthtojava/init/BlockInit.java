@@ -19,8 +19,8 @@ public final class BlockInit {
     public static final RegistrySupplier<Block> MELON_GOLEM_HEAD_SHOOT;
     public static final RegistrySupplier<Block> MELON_LANTERN;
     public static final RegistrySupplier<Block> PINK_DAISY;
-    public static final RegistrySupplier<Block> POTTED_BUTTERCUP;
-    public static final RegistrySupplier<Block> POTTED_PINK_DAISY;
+    public static final RegistrySupplier<FlowerPotBlock> POTTED_BUTTERCUP;
+    public static final RegistrySupplier<FlowerPotBlock> POTTED_PINK_DAISY;
     public static final RegistrySupplier<Block> RAINBOW_BED;
     public static final RegistrySupplier<Block> RAINBOW_CARPET;
     public static final RegistrySupplier<Block> RAINBOW_WOOL;

@@ -3,7 +3,8 @@ package slexom.earthtojava.forge;
 import dev.architectury.platform.forge.EventBuses;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
-import net.minecraft.SharedConstants;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.FlowerPotBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
@@ -18,14 +19,10 @@ import slexom.earthtojava.init.*;
 @Mod(Earth2JavaMod.MOD_ID)
 @Mod.EventBusSubscriber(modid = Earth2JavaMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Earth2JavaModForge {
-    // private static final ModConfig config = AutoConfig.getConfigHolder(ModConfig.class).getConfig();
 
     public Earth2JavaModForge() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         EventBuses.registerModEventBus(Earth2JavaMod.MOD_ID, eventBus);
-        ///    DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> (DistExecutor.SafeRunnable) () -> eventBus.addListener(this::setupClient));
-
-
         AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
         ModEvents.init();
         SoundEventsInit.init();
@@ -41,7 +38,11 @@ public class Earth2JavaModForge {
     }
 
     private static void setup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(Earth2JavaMod::onPostInit);
+        event.enqueueWork(() -> {
+            Earth2JavaMod.onPostInit();
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(BlockInit.BUTTERCUP.getId(), BlockInit.POTTED_BUTTERCUP);
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(BlockInit.PINK_DAISY.getId(), BlockInit.POTTED_PINK_DAISY);
+        });
     }
 
 }
