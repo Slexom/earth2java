@@ -3,7 +3,7 @@ plugins {
 }
 
 allprojects {
-    archivesBaseName = "${rootProject.mod_id}-fabric"
+    archivesBaseName = "earth2java-fabric"
 }
 
 architectury {
