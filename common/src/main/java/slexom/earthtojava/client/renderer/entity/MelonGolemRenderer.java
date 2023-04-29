@@ -16,7 +16,7 @@ public class MelonGolemRenderer extends MobEntityRenderer<MelonGolemEntity, Snow
 
     public MelonGolemRenderer(EntityRendererFactory.Context context) {
         super(context, new SnowGolemEntityModel<>(context.getPart(EntityModelLayers.SNOW_GOLEM)), 0.5F);
-        this.addFeature(new MelonGolemCarvedMelonFeatureRenderer(this));
+        this.addFeature(new MelonGolemCarvedMelonFeatureRenderer(this, context.getBlockRenderManager(), context.getItemRenderer()));
     }
 
     public Identifier getTexture(MelonGolemEntity entity) {

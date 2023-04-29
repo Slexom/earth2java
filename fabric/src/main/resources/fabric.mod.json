@@ -1,49 +1,52 @@
 {
-    "schemaVersion": 1,
-    "id": "earthtojavamobs",
-    "version": "${modVersion}",
-    "name": "Earth2Java",
-    "description": "Bring mobs from Minecraft Earth to Minecraft Java Edition.",
-    "authors": [
-        "Slexom"
+  "schemaVersion": 1,
+  "id": "earthtojavamobs",
+  "version": "${modVersion}",
+  "name": "Earth2Java",
+  "description": "Bring mobs from Minecraft Earth to Minecraft Java Edition.",
+  "authors": [
+    "Slexom"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/earth2java-fabric",
+    "sources": "https://github.com/Slexom/earth2java",
+    "issues": "https://github.com/Slexom/earth2java/issues"
+  },
+  "license": "MIT License",
+  "icon": "assets/earthtojavamobs/logo.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "slexom.earthtojava.fabric.Earth2JavaModFabric"
     ],
-    "contact": {
-        "homepage": "https://www.curseforge.com/minecraft/mc-mods/earth2java-fabric",
-        "sources": "https://github.com/Slexom/earth2java",
-        "issues": "https://github.com/Slexom/earth2java/issues"
-    },
-    "license": "MIT License",
-    "icon": "assets/earthtojavamobs/logo.png",
-    "environment": "*",
-    "entrypoints": {
-        "main": [
-            "slexom.earthtojava.fabric.Earth2JavaModFabric"
-        ],
-        "client": [
-            "slexom.earthtojava.fabric.Earth2JavaClientModFabric"
-        ],
-        "modmenu": [
-            "slexom.earthtojava.fabric.config.ModMenuIntegration"
-        ],
-        "mm:early_risers": [
-            "slexom.earthtojava.fabric.Earth2JavaEarlyRiser"
-        ]
-    },
-    "mixins": [
-        "earthtojava-common.mixins.json"
+    "client": [
+      "slexom.earthtojava.fabric.Earth2JavaClientModFabric"
     ],
-    "depends": {
-        "fabricloader": ">=0.14.7",
-        "fabric": "*",
-        "minecraft": ">=1.19.2",
-        "architectury": ">=6.0.0",
-        "cloth-config": ">=8.0",
-        "java": ">=17"
-    },
-    "custom": {
-        "modupdater": {
-            "strategy": "curseforge",
-            "projectID": 398022
-        }
+    "modmenu": [
+      "slexom.earthtojava.fabric.config.ModMenuIntegration"
+    ],
+    "mm:early_risers": [
+      "slexom.earthtojava.fabric.Earth2JavaEarlyRiser"
+    ],
+    "fabric-datagen": [
+      "slexom.earthtojava.fabric.Earth2JavaDataGen"
+    ]
+  },
+  "mixins": [
+    "earthtojava-common.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.7",
+    "fabric": "*",
+    "minecraft": ">=1.19.2",
+    "architectury": ">=6.0.0",
+    "cloth-config": ">=8.0",
+    "java": ">=17"
+  },
+  "custom": {
+    "modupdater": {
+      "strategy": "curseforge",
+      "projectID": 398022
     }
+  }
 }

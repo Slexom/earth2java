@@ -9,7 +9,8 @@ import net.minecraft.client.render.item.HeldItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.util.math.Vec3f;
+
+import net.minecraft.util.math.RotationAxis;
 import slexom.earthtojava.client.renderer.entity.model.VilerWitchModel;
 import slexom.earthtojava.entity.monster.VilerWitchEntity;
 
@@ -19,17 +20,18 @@ public class VilerWitchHeldItemFeatureRenderer<T extends VilerWitchEntity> exten
         super(featureRendererContext, heldItemRenderer);
     }
 
+    @Override
     public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, T livingEntity, float f, float g, float h, float j, float k, float l) {
         ItemStack itemStack = livingEntity.getMainHandStack();
         matrixStack.push();
-        if (itemStack.getItem() == Items.POTION) {
+        if (itemStack.isOf(Items.POTION)) {
             this.getContextModel().getHead().rotate(matrixStack);
             this.getContextModel().getNose().rotate(matrixStack);
-            matrixStack.translate(0.0625D, 0.25D, 0.0D);
-            matrixStack.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(180.0F));
-            matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(140.0F));
-            matrixStack.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(10.0F));
-            matrixStack.translate(0.0D, -0.4000000059604645D, 0.4000000059604645D);
+            matrixStack.translate(0.0625f, 0.25f, 0.0f);
+            matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(180.0f));
+            matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(140.0f));
+            matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(10.0f));
+            matrixStack.translate(0.0f, -0.4f, 0.4f);
         }
         super.render(matrixStack, vertexConsumerProvider, i, livingEntity, f, g, h, j, k, l);
         matrixStack.pop();

@@ -2,23 +2,24 @@ package slexom.earthtojava.mixins;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.projectile.thrown.EggEntity;
+import net.minecraft.util.math.random.Random;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import slexom.earthtojava.init.EntityTypesInit;
 
-import java.util.Random;
 
 @Mixin(EggEntity.class)
 public class EggEntityMixin {
-    private Random random = new Random();
+    private final Random random = Random.create();
+
     @Redirect(
             method = "onCollision",
             at = @At(
                     value = "FIELD",
                     target = "Lnet/minecraft/entity/EntityType;CHICKEN:Lnet/minecraft/entity/EntityType;")
     )
-    public EntityType<?> getChickenType() {
+    public EntityType<?> e2jGetChickenType() {
         int r = random.nextInt(20);
         return switch (r) {
             case 2 -> EntityTypesInit.AMBER_CHICKEN_REGISTRY_OBJECT.get();

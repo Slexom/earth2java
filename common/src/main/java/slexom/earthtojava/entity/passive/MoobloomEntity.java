@@ -45,25 +45,27 @@ public class MoobloomEntity extends E2JBaseCowEntity implements Shearable {
 
     public void sheared(SoundCategory shearedSoundCategory) {
         this.world.playSoundFromEntity(null, this, SoundEvents.ENTITY_MOOSHROOM_SHEAR, shearedSoundCategory, 1.0F, 1.0F);
-        if (!this.world.isClient()) {
-            ((ServerWorld) this.world).spawnParticles(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
-            this.remove(RemovalReason.KILLED);
-            CowEntity cowEntity = EntityType.COW.create(this.world);
-            cowEntity.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch());
-            cowEntity.setHealth(this.getHealth());
-            cowEntity.bodyYaw = this.bodyYaw;
-            if (this.hasCustomName()) {
-                cowEntity.setCustomName(this.getCustomName());
-                cowEntity.setCustomNameVisible(this.isCustomNameVisible());
-            }
-            if (this.isPersistent()) {
-                cowEntity.setPersistent();
-            }
-            cowEntity.setInvulnerable(this.isInvulnerable());
-            this.world.spawnEntity(cowEntity);
-            for (int i = 0; i < 5; ++i) {
-                this.world.spawnEntity(new ItemEntity(this.world, this.getX(), this.getBodyY(1.0D), this.getZ(), new ItemStack(BlockInit.BUTTERCUP.get())));
-            }
+        if (this.world.isClient()) return;
+
+        CowEntity cowEntity = EntityType.COW.create(this.world);
+        if (cowEntity == null) return;
+
+        ((ServerWorld) this.world).spawnParticles(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
+        this.discard();
+        cowEntity.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch());
+        cowEntity.setHealth(this.getHealth());
+        cowEntity.bodyYaw = this.bodyYaw;
+        if (this.hasCustomName()) {
+            cowEntity.setCustomName(this.getCustomName());
+            cowEntity.setCustomNameVisible(this.isCustomNameVisible());
+        }
+        if (this.isPersistent()) {
+            cowEntity.setPersistent();
+        }
+        cowEntity.setInvulnerable(this.isInvulnerable());
+        this.world.spawnEntity(cowEntity);
+        for (int i = 0; i < 5; ++i) {
+            this.world.spawnEntity(new ItemEntity(this.world, this.getX(), this.getBodyY(1.0D), this.getZ(), new ItemStack(BlockInit.BUTTERCUP.get())));
         }
 
     }

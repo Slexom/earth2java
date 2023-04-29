@@ -12,7 +12,7 @@ import net.minecraft.text.Text;
 import net.minecraft.world.World;
 import slexom.earthtojava.utils.Utils;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class E2JSpawnEggItem extends ArchitecturySpawnEggItem {

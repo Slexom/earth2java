@@ -3,6 +3,7 @@ package slexom.earthtojava.entity.passive;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityStatuses;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.damage.DamageSource;
@@ -28,8 +29,8 @@ public class MuddyPigEntity extends E2JBasePigEntity {
     private int finallyInMud = 0;
 
     private boolean isShaking;
-    private float timeWolfIsShaking;
-    private float prevTimeWolfIsShaking;
+    private float timeMuddyPigIsShaking;
+    private float prevTimeMuddyPigIsShaking;
 
     public MuddyPigEntity(EntityType<MuddyPigEntity> type, World world) {
         super(type, world);
@@ -65,8 +66,8 @@ public class MuddyPigEntity extends E2JBasePigEntity {
 
             if (!isShaking) {
                 this.isShaking = true;
-                this.timeWolfIsShaking = 0.0F;
-                this.prevTimeWolfIsShaking = 0.0F;
+                this.timeMuddyPigIsShaking = 0.0F;
+                this.prevTimeMuddyPigIsShaking = 0.0F;
                 this.world.sendEntityStatus(this, (byte) 8);
             }
             if (++finallyInMud > 60) {
@@ -88,8 +89,8 @@ public class MuddyPigEntity extends E2JBasePigEntity {
 
     private void resetShake() {
         this.isShaking = false;
-        this.prevTimeWolfIsShaking = 0.0F;
-        this.timeWolfIsShaking = 0.0F;
+        this.prevTimeMuddyPigIsShaking = 0.0F;
+        this.timeMuddyPigIsShaking = 0.0F;
     }
 
     public void tick() {
@@ -97,9 +98,9 @@ public class MuddyPigEntity extends E2JBasePigEntity {
         if (!this.isAlive()) return;
         if (!isShaking) return;
 
-        this.prevTimeWolfIsShaking = this.timeWolfIsShaking;
-        this.timeWolfIsShaking += 0.033F;
-        if (this.prevTimeWolfIsShaking >= 2.0F) {
+        this.prevTimeMuddyPigIsShaking = this.timeMuddyPigIsShaking;
+        this.timeMuddyPigIsShaking += 0.033F;
+        if (this.prevTimeMuddyPigIsShaking >= 2.0F) {
             this.resetShake();
         }
 
@@ -134,19 +135,19 @@ public class MuddyPigEntity extends E2JBasePigEntity {
     }
 
     @Environment(EnvType.CLIENT)
-    public void handleStatus(byte id) {
-        if (id == 8) {
+    public void handleStatus(byte status) {
+        if (status == EntityStatuses.SHAKE_OFF_WATER) {
             this.isShaking = true;
-            this.timeWolfIsShaking = 0.0F;
-            this.prevTimeWolfIsShaking = 0.0F;
+            this.timeMuddyPigIsShaking = 0.0F;
+            this.prevTimeMuddyPigIsShaking = 0.0F;
         } else {
-            super.handleStatus(id);
+            super.handleStatus(status);
         }
     }
 
     @Environment(EnvType.CLIENT)
-    public float getShakeAngle(float p_70923_1_, float p_70923_2_) {
-        float f = (MathHelper.lerp(p_70923_1_, this.prevTimeWolfIsShaking, this.timeWolfIsShaking) + p_70923_2_) / 1.8F;
+    public float getShakeAngle(float tickDelta, float d) {
+        float f = (MathHelper.lerp(tickDelta, this.prevTimeMuddyPigIsShaking, this.timeMuddyPigIsShaking) + d) / 1.8F;
         if (f < 0.0F) {
             f = 0.0F;
         } else if (f > 1.0F) {

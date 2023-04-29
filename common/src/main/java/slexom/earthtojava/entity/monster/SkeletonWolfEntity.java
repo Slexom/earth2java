@@ -4,7 +4,6 @@ package slexom.earthtojava.entity.monster;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
@@ -24,12 +23,11 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.TimeHelper;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 import slexom.earthtojava.init.SoundEventsInit;
 
-import javax.annotation.Nullable;
 import java.util.UUID;
 
 public class SkeletonWolfEntity extends HostileEntity implements Angerable {
@@ -51,6 +49,7 @@ public class SkeletonWolfEntity extends HostileEntity implements Angerable {
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3D).add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.0D);
     }
 
+    @Override
     protected void initGoals() {
         this.goalSelector.add(2, new AvoidSunlightGoal(this));
         this.goalSelector.add(3, new EscapeSunlightGoal(this, 1.0D));
@@ -63,10 +62,12 @@ public class SkeletonWolfEntity extends HostileEntity implements Angerable {
         this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
     }
 
+    @Override
     public EntityGroup getGroup() {
         return EntityGroup.UNDEAD;
     }
 
+    @Override
     protected SoundEvent getAmbientSound() {
         if (this.hasAngerTime()) {
             return SoundEventsInit.SKELETON_WOLF_GROWL.get();
@@ -77,28 +78,34 @@ public class SkeletonWolfEntity extends HostileEntity implements Angerable {
         }
     }
 
+    @Override
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
         return SoundEventsInit.SKELETON_WOLF_HURT.get();
     }
 
+    @Override
     protected SoundEvent getDeathSound() {
         return SoundEventsInit.SKELETON_WOLF_DEATH.get();
     }
 
+    @Override
     protected void playStepSound(BlockPos pos, BlockState blockIn) {
         this.playSound(SoundEventsInit.SKELETON_WOLF_STEP.get(), 0.35F, 1.0F);
     }
 
+    @Override
     protected void initDataTracker() {
         super.initDataTracker();
         this.dataTracker.startTracking(ANGER_TIME, 0);
     }
 
+    @Override
     public void writeCustomDataToNbt(NbtCompound compound) {
         super.writeCustomDataToNbt(compound);
         this.writeAngerToNbt(compound);
     }
 
+    @Override
     public void readCustomDataFromNbt(NbtCompound compound) {
         super.readCustomDataFromNbt(compound);
         this.readAngerFromNbt(this.world, compound);
@@ -138,6 +145,7 @@ public class SkeletonWolfEntity extends HostileEntity implements Angerable {
         this.targetUuid = uuid;
     }
 
+    @Override
     public void tickMovement() {
         super.tickMovement();
         if (this.isAlive() && this.isAffectedByDaylight()) {
@@ -148,6 +156,7 @@ public class SkeletonWolfEntity extends HostileEntity implements Angerable {
         }
     }
 
+    @Override
     public void tick() {
         super.tick();
         if (this.isAlive()) {
@@ -155,15 +164,6 @@ public class SkeletonWolfEntity extends HostileEntity implements Angerable {
             this.headRotationCourse += (0.0F - this.headRotationCourse) * 0.4F;
         }
     }
-
-    public float getInterestedAngle(float p_70917_1_) {
-        return MathHelper.lerp(p_70917_1_, this.headRotationCourseOld, this.headRotationCourse) * 0.15F * (float) Math.PI;
-    }
-
-    public boolean tryAttack(Entity entityIn) {
-        return super.tryAttack(entityIn);
-    }
-
 
 }
  

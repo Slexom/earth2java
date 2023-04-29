@@ -17,11 +17,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
+import org.jetbrains.annotations.Nullable;
 import slexom.earthtojava.entity.passive.MelonGolemEntity;
 import slexom.earthtojava.init.BlockInit;
 import slexom.earthtojava.init.EntityTypesInit;
 
-import javax.annotation.Nullable;
 import java.util.function.Predicate;
 
 public class CarvedMelonBlock extends HorizontalFacingBlock {
@@ -73,7 +73,7 @@ public class CarvedMelonBlock extends HorizontalFacingBlock {
     }
 
     public BlockState getPlacementState(ItemPlacementContext context) {
-        return this.getDefaultState().with(FACING, context.getPlayerFacing().getOpposite());
+        return this.getDefaultState().with(FACING, context.getPlayerLookDirection().getOpposite());
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {

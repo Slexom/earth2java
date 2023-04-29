@@ -1,5 +1,6 @@
 package slexom.earthtojava.init;
 
+import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -10,11 +11,14 @@ import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.*;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 import slexom.earthtojava.Earth2JavaMod;
-import slexom.earthtojava.item.*;
+import slexom.earthtojava.item.BoneShardItem;
+import slexom.earthtojava.item.E2JSpawnEggItem;
+import slexom.earthtojava.item.FancyFeatherItem;
+import slexom.earthtojava.item.HornItem;
 import slexom.earthtojava.utils.Utils;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 public final class ItemInit {
@@ -80,8 +84,8 @@ public final class ItemInit {
     public static final RegistrySupplier<Item> MELON_LANTERN;
     public static final RegistrySupplier<Item> RAINBOW_CARPET;
     public static final RegistrySupplier<Item> RAINBOW_WOOL;
-    private static final ItemGroup itemGroup = Earth2JavaMod.ITEM_GROUP;
-    private static final Item.Settings spawnEggProps = new Item.Settings().group(itemGroup);
+    private static final CreativeTabRegistry.TabSupplier CREATIVE_TAB_SUPPLIER = Earth2JavaMod.CREATIVE_TAB_SUPPLIER;
+    private static final Item.Settings spawnEggProps = new Item.Settings().arch$tab(Earth2JavaMod.CREATIVE_TAB_SUPPLIER);
 
     static {
         ALBINO_COW_SPAWN_EGG = registerSpawnEgg(EntityTypesInit.ALBINO_COW_REGISTRY_NAME, EntityTypesInit.ALBINO_COW_REGISTRY_OBJECT, 0xdecac3, 0xf0a590);
@@ -143,10 +147,10 @@ public final class ItemInit {
         RAINBOW_CARPET = registerBlockItem("rainbow_carpet", BlockInit.RAINBOW_CARPET);
         RAINBOW_WOOL = registerBlockItem("rainbow_wool", BlockInit.RAINBOW_WOOL);
 
-        HORN = Earth2JavaMod.ITEM_REGISTRAR.register(Utils.modIdentifierOf("horn"), () -> new HornItem(new Item.Settings().group(itemGroup).maxCount(64)));
-        FANCY_FEATHER = Earth2JavaMod.ITEM_REGISTRAR.register(Utils.modIdentifierOf("fancy_feather"), () -> new FancyFeatherItem(new Item.Settings().group(itemGroup).maxCount(64)));
-        BONE_SHARD = Earth2JavaMod.ITEM_REGISTRAR.register(Utils.modIdentifierOf("bone_shard"), () -> new BoneShardItem(new Item.Settings().group(null).maxCount(16)));
-        RAINBOW_BED = Earth2JavaMod.ITEM_REGISTRAR.register(Utils.modIdentifierOf("rainbow_bed"), () -> new BedItem(BlockInit.RAINBOW_BED.get(), (new Item.Settings()).maxCount(1).group(ItemGroup.DECORATIONS)));
+        HORN = Earth2JavaMod.ITEM_REGISTRAR.register(Utils.modIdentifierOf("horn"), () -> new HornItem(new Item.Settings().arch$tab(Earth2JavaMod.CREATIVE_TAB_SUPPLIER).maxCount(64)));
+        FANCY_FEATHER = Earth2JavaMod.ITEM_REGISTRAR.register(Utils.modIdentifierOf("fancy_feather"), () -> new FancyFeatherItem(new Item.Settings().arch$tab(Earth2JavaMod.CREATIVE_TAB_SUPPLIER).maxCount(64)));
+        BONE_SHARD = Earth2JavaMod.ITEM_REGISTRAR.register(Utils.modIdentifierOf("bone_shard"), () -> new BoneShardItem(new Item.Settings().arch$tab(Earth2JavaMod.CREATIVE_TAB_SUPPLIER).maxCount(16)));
+        RAINBOW_BED = Earth2JavaMod.ITEM_REGISTRAR.register(Utils.modIdentifierOf("rainbow_bed"), () -> new BedItem(BlockInit.RAINBOW_BED.get(), (new Item.Settings()).maxCount(1).arch$tab(ItemGroups.BUILDING_BLOCKS)));
 
     }
 
@@ -163,11 +167,10 @@ public final class ItemInit {
     }
 
     private static RegistrySupplier<Item> registerBlockItem(String registryName, RegistrySupplier<Block> block) {
-        return Earth2JavaMod.ITEM_REGISTRAR.register(Utils.modIdentifierOf(registryName), () -> new BlockItem(block.get(), new Item.Settings().group(Earth2JavaMod.ITEM_GROUP)) {
+        return Earth2JavaMod.ITEM_REGISTRAR.register(Utils.modIdentifierOf(registryName), () -> new BlockItem(block.get(), new Item.Settings().arch$tab(Earth2JavaMod.CREATIVE_TAB_SUPPLIER)) {
             @Environment(EnvType.CLIENT)
             public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-                String translationKey = this.getTranslationKey() + ".desc";
-                Utils.appendE2JTooltip(translationKey,tooltip);
+                Utils.appendE2JTooltip(this.getTranslationKey() + ".desc", tooltip);
             }
         });
     }

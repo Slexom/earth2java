@@ -27,8 +27,8 @@ public class FurnaceGolemFlamesFeatureRenderer extends FeatureRenderer<FurnaceGo
         if (!entity.isInvisible() && entity.isAngry()) {
             this.currentFrame = (int) (Math.floor(entity.age / ANIMATION_TIME) % ANIMATION_FRAMES);
             String frameLocation = MessageFormat.format("earthtojavamobs:textures/mobs/iron_golem/furnace_golem/furnace_golem_flames_layer_anim_{0}.png", (this.currentFrame + 1));
-            Identifier resourcelocation = new Identifier(frameLocation);
-            renderModel(this.getContextModel(), resourcelocation, matrices, vertexConsumers, light, entity, 1.0F, 1.0F, 1.0F);
+            Identifier identifier = new Identifier(frameLocation);
+            renderModel(this.getContextModel(), identifier, matrices, vertexConsumers, light, entity, 1.0F, 1.0F, 1.0F);
         }
     }
 }

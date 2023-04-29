@@ -20,6 +20,7 @@ import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.passive.GolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -27,6 +28,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
+import org.jetbrains.annotations.Nullable;
 import slexom.earthtojava.entity.BlinkManager;
 import slexom.earthtojava.entity.ai.control.MelonGolemMoveControl;
 import slexom.earthtojava.entity.ai.goal.MelonGolemFaceRandomGoal;
@@ -34,8 +37,6 @@ import slexom.earthtojava.entity.ai.goal.MelonGolemHopGoal;
 import slexom.earthtojava.entity.ai.goal.MelonGolemProjectileAttackGoal;
 import slexom.earthtojava.entity.projectile.MelonSeedProjectileEntity;
 import slexom.earthtojava.init.SoundEventsInit;
-
-import javax.annotation.Nullable;
 
 public class MelonGolemEntity extends GolemEntity implements RangedAttackMob {
     private static final TrackedData<Byte> MELON_EQUIPPED = DataTracker.registerData(MelonGolemEntity.class, TrackedDataHandlerRegistry.BYTE);
@@ -53,6 +54,7 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob {
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 4.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2D);
     }
 
+    @Override
     protected void initGoals() {
         this.goalSelector.add(1, new MelonGolemProjectileAttackGoal(this, 1.25D, 20, 10.0F));
         this.goalSelector.add(2, new MelonGolemFaceRandomGoal(this));
@@ -62,17 +64,20 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob {
         this.targetSelector.add(1, new ActiveTargetGoal<>(this, MobEntity.class, 10, true, false, (entity) -> entity instanceof Monster && !(entity instanceof TropicalSlimeEntity)));
     }
 
+    @Override
     protected void initDataTracker() {
         super.initDataTracker();
         this.dataTracker.startTracking(MELON_EQUIPPED, (byte) 16);
         this.dataTracker.startTracking(SHOOTING_TICKS, 0);
     }
 
+    @Override
     public void writeCustomDataToNbt(NbtCompound compound) {
         super.writeCustomDataToNbt(compound);
         compound.putBoolean("Pumpkin", this.isMelonEquipped());
     }
 
+    @Override
     public void readCustomDataFromNbt(NbtCompound compound) {
         super.readCustomDataFromNbt(compound);
         if (compound.contains("Pumpkin")) {
@@ -81,34 +86,29 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob {
 
     }
 
+    @Override
     public void tickMovement() {
         super.tickMovement();
         if (!this.world.isClient) {
-            int i = MathHelper.floor(this.getX());
-            int j = MathHelper.floor(this.getY());
-            int k = MathHelper.floor(this.getZ());
-            BlockPos position = new BlockPos(i, j, k);
 
-            if (this.isInsideWaterOrBubbleColumn()) {
-                this.damage(DamageSource.DROWN, 1.0F);
+            if (this.world.getBiome(this.getBlockPos()).isIn(BiomeTags.SNOW_GOLEM_MELTS)) {
+                this.damage(this.getDamageSources().onFire(), 1.0f);
             }
-
-            if (this.world.getBiome(position).value().isHot(position)) {
-                this.damage(DamageSource.ON_FIRE, 1.0F);
+            if (!this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
+                return;
             }
-
-            if (this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
-                BlockState blockState = Blocks.SNOW.getDefaultState();
-                for (int l = 0; l < 4; ++l) {
-                    i = MathHelper.floor(this.getX() + (double) ((float) (l % 2 * 2 - 1) * 0.25F));
-                    j = MathHelper.floor(this.getY());
-                    k = MathHelper.floor(this.getZ() + (double) ((float) (l / 2 % 2 * 2 - 1) * 0.25F));
-                    BlockPos blockPos = new BlockPos(i, j, k);
-                    if (this.world.getBlockState(blockPos).isAir() && blockState.canPlaceAt(this.world, blockPos)) {
-                        this.world.setBlockState(blockPos, blockState);
-                    }
+            BlockState blockState = Blocks.SNOW.getDefaultState();
+            for (int l = 0; l < 4; ++l) {
+                int posX = MathHelper.floor(this.getX() + (l % 2 * 2 - 1) * 0.25F);
+                int posY = MathHelper.floor(this.getY());
+                int posZ = MathHelper.floor(this.getZ() + (l / 2D % 2 * 2 - 1) * 0.25F);
+                BlockPos blockPos = new BlockPos(posX, posY, posZ);
+                if (this.world.getBlockState(blockPos).isAir() && blockState.canPlaceAt(this.world, blockPos)) {
+                    this.world.setBlockState(blockPos, blockState);
+                    this.world.emitGameEvent(GameEvent.BLOCK_PLACE, blockPos, GameEvent.Emitter.of(this, blockState));
                 }
             }
+
         }
         int currentShootingTicks = this.dataTracker.get(SHOOTING_TICKS);
         if (currentShootingTicks > 0) {
@@ -138,6 +138,7 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob {
         this.world.spawnEntity(melonSeedEntity);
     }
 
+    @Override
     public float getEyeHeight(EntityPose poseIn) {
         return 1.7F;
     }
@@ -155,28 +156,35 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob {
         }
     }
 
+    @Override
     @Nullable
     protected SoundEvent getAmbientSound() {
         return SoundEvents.ENTITY_SNOW_GOLEM_AMBIENT;
     }
 
+    @Override
     @Nullable
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
         return SoundEvents.ENTITY_SNOW_GOLEM_HURT;
     }
 
+
+    @Override
     @Nullable
     protected SoundEvent getDeathSound() {
         return SoundEvents.ENTITY_SNOW_GOLEM_DEATH;
     }
 
+
     public int getJumpDelay() {
         return this.random.nextInt(20) + 5;
     }
 
+
+    @Override
     protected void jump() {
         Vec3d vec3d = this.getVelocity();
-        this.setVelocity(vec3d.x, (double) this.getJumpVelocity() * 0.1D, vec3d.z);
+        this.setVelocity(vec3d.x, this.getJumpVelocity() * 0.1D, vec3d.z);
         this.velocityDirty = true;
     }
 

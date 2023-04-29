@@ -11,8 +11,8 @@ import net.minecraft.world.World;
 import slexom.earthtojava.entity.projectile.BoneShardEntity;
 
 public class BoneShardItem extends E2JItem {
-    public BoneShardItem(Settings builder) {
-        super(builder);
+    public BoneShardItem(Settings settings) {
+        super(settings);
     }
 
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {

@@ -11,7 +11,7 @@ import net.minecraft.client.render.entity.LivingEntityRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 import slexom.earthtojava.client.renderer.entity.model.CluckshroomModel;
 import slexom.earthtojava.entity.passive.CluckshroomEntity;
 
@@ -21,26 +21,26 @@ public class CluckshroomMushroomFeatureRenderer<T extends CluckshroomEntity> ext
         super(rendererIn);
     }
 
-    public void render(MatrixStack matrixStackIn, VertexConsumerProvider bufferIn, int packedLightIn, T entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-        if (!entitylivingbaseIn.isBaby() && !entitylivingbaseIn.isInvisible()) {
+    public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int light, T entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
+        if (!entity.isBaby() && !entity.isInvisible()) {
             BlockRenderManager blockRenderManager = MinecraftClient.getInstance().getBlockRenderManager();
             BlockState blockstate = Blocks.RED_MUSHROOM.getDefaultState();
-            int i = LivingEntityRenderer.getOverlay(entitylivingbaseIn, 0.0F);
-            matrixStackIn.push();
-            matrixStackIn.translate((double) -0.1F, (double) 0.6F, 0.05D);
-            matrixStackIn.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-48.0F));
-            matrixStackIn.scale(-0.5F, -0.5F, 0.5F);
-            matrixStackIn.translate(-0.5D, -0.5D, -0.5D);
-            blockRenderManager.renderBlockAsEntity(blockstate, matrixStackIn, bufferIn, packedLightIn, i);
-            matrixStackIn.pop();
-            matrixStackIn.push();
-            this.getContextModel().getHead().rotate(matrixStackIn);
-            matrixStackIn.translate((double) 0.05F, (double) -0.6F, 0.0D);
-            matrixStackIn.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(-78.0F));
-            matrixStackIn.scale(-0.5F, -0.5F, 0.5F);
-            matrixStackIn.translate(-0.5D, -0.5D, -0.5D);
-            blockRenderManager.renderBlockAsEntity(blockstate, matrixStackIn, bufferIn, packedLightIn, i);
-            matrixStackIn.pop();
+            int i = LivingEntityRenderer.getOverlay(entity, 0.0F);
+            matrixStack.push();
+            matrixStack.translate((double) -0.1F, (double) 0.6F, 0.05D);
+            matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-48.0F));
+            matrixStack.scale(-0.5F, -0.5F, 0.5F);
+            matrixStack.translate(-0.5D, -0.5D, -0.5D);
+            blockRenderManager.renderBlockAsEntity(blockstate, matrixStack, vertexConsumerProvider, light, i);
+            matrixStack.pop();
+            matrixStack.push();
+            this.getContextModel().getHead().rotate(matrixStack);
+            matrixStack.translate(0.05F, -0.6F, 0.0D);
+            matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-78.0F));
+            matrixStack.scale(-0.5F, -0.5F, 0.5F);
+            matrixStack.translate(-0.5D, -0.5D, -0.5D);
+            blockRenderManager.renderBlockAsEntity(blockstate, matrixStack, vertexConsumerProvider, light, i);
+            matrixStack.pop();
         }
     }
 }

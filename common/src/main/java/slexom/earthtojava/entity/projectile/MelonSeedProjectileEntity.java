@@ -3,6 +3,7 @@ package slexom.earthtojava.entity.projectile;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityStatuses;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -44,9 +45,10 @@ public class MelonSeedProjectileEntity extends ThrownItemEntity {
         return itemStack.isEmpty() ? ParticleTypes.ITEM_SNOWBALL : new ItemStackParticleEffect(ParticleTypes.ITEM, itemStack);
     }
 
+    @Override
     @Environment(EnvType.CLIENT)
-    public void handleStatus(byte id) {
-        if (id == 3) {
+    public void handleStatus(byte status) {
+        if (status == EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES) {
             ParticleEffect particleEffect = this.getParticleParameters();
             for (int i = 0; i < 8; ++i) {
                 this.world.addParticle(particleEffect, this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
@@ -54,13 +56,15 @@ public class MelonSeedProjectileEntity extends ThrownItemEntity {
         }
     }
 
+    @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
         this.playSound(SoundEventsInit.MELON_GOLEM_SEED_HIT.get(), 1.0F, 1.0F);
         Entity entity = entityHitResult.getEntity();
-        entity.damage(DamageSource.thrownProjectile(this, this.getOwner()), 10.0F);
+        entity.damage(entity.getDamageSources().thrown(this, this.getOwner()), 10.0F);
     }
 
+    @Override
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
         if (!this.world.isClient) {

@@ -36,7 +36,7 @@ public class TropicalSlimeRenderer extends MobEntityRenderer<TropicalSlimeEntity
         matrices.scale(0.999F, 0.999F, 0.999F);
         matrices.translate(0.0D, 0.001D, 0.0D);
         float f1 = 4.0F;
-        float f2 = MathHelper.lerp(amount, slimeEntity.prevSquishFactor, slimeEntity.squishFactor) / (f1 * 0.5F + 1.0F);
+        float f2 = MathHelper.lerp(amount, slimeEntity.lastStretch, slimeEntity.stretch) / (f1 * 0.5F + 1.0F);
         float f3 = 1.0F / (f2 + 1.0F);
         matrices.scale(f3 * f1, 1.0F / f3 * f1, f3 * f1);
     }

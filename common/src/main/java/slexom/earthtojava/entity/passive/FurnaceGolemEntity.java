@@ -1,11 +1,12 @@
 package slexom.earthtojava.entity.passive;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityStatuses;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -19,10 +20,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import slexom.earthtojava.entity.BlinkManager;
 import slexom.earthtojava.entity.ai.goal.FurnaceGolemActiveTargetGoal;
-import slexom.earthtojava.entity.ai.goal.FurnaceGolemDefendVillageTargetGoal;
+import slexom.earthtojava.entity.ai.goal.TrackFurnaceGolemTargetGoal;
 import slexom.earthtojava.init.SoundEventsInit;
-
-import java.util.Random;
 
 public class FurnaceGolemEntity extends IronGolemEntity {
     public static final TrackedData<Boolean> IS_ANGRY = DataTracker.registerData(FurnaceGolemEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
@@ -46,46 +45,50 @@ public class FurnaceGolemEntity extends IronGolemEntity {
         this.goalSelector.add(5, new IronGolemLookGoal(this));
         this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(8, new LookAroundGoal(this));
-        this.targetSelector.add(1, new FurnaceGolemDefendVillageTargetGoal(this));
+        this.targetSelector.add(1, new TrackFurnaceGolemTargetGoal(this));
         this.targetSelector.add(2, new RevengeGoal(this));
-        this.targetSelector.add(3, new FurnaceGolemActiveTargetGoal(this, MobEntity.class, 5, false, false, (p_213619_0_) -> p_213619_0_ instanceof Monster && !(p_213619_0_ instanceof CreeperEntity) && !(p_213619_0_ instanceof TropicalSlimeEntity)));
+        this.targetSelector.add(3, new FurnaceGolemActiveTargetGoal(this, MobEntity.class, 5, false, false, entity -> entity instanceof Monster && !(entity instanceof CreeperEntity) && !(entity instanceof TropicalSlimeEntity)));
     }
 
-    public boolean tryAttack(Entity entityIn) {
+    @Override
+    public boolean tryAttack(Entity target) {
         this.attackTimer = 10;
-        this.world.sendEntityStatus(this, (byte) 4);
-        float f = (float) this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-        float f1 = f > 0.0F ? f / 2.0F + (float) this.random.nextInt((int) f) : 0.0F;
-        boolean flag = entityIn.damage(DamageSource.ON_FIRE, f1);
+        this.world.sendEntityStatus(this, EntityStatuses.PLAY_ATTACK_SOUND);
+        float attackDamage = (float) this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+        float f1 = attackDamage > 0.0F ? attackDamage / 2.0F + this.random.nextInt((int) attackDamage) : 0.0F;
+        boolean flag = target.damage(target.getDamageSources().onFire(), f1);
         if (flag) {
-            entityIn.setVelocity(entityIn.getVelocity().add(0.0D, 0.4D, 0.0D));
-            this.applyDamageEffects(this, entityIn);
+            target.setVelocity(target.getVelocity().add(0.0D, 0.4D, 0.0D));
+            this.applyDamageEffects(this, target);
         }
         this.playSound(SoundEventsInit.FURNACE_GOLEM_ATTACK.get(), 1.0F, 1.0F);
         return flag;
     }
 
+    @Override
     public void tickMovement() {
         super.tickMovement();
         if (this.isAngry()) {
-            float rand = new Random().nextFloat();
+            float rand = this.random.nextFloat();
             if (rand > 0.80F && rand <= 0.83F) {
                 int x = MathHelper.floor(this.getX());
                 int y = MathHelper.floor(this.getY());
                 int z = MathHelper.floor(this.getZ());
-                BlockPos pos = new BlockPos(x, y - 0.2D, z);
-                BlockPos posRandom = pos.add(new Random().nextInt(3) - 1, 0, new Random().nextInt(3) - 1);
+                BlockPos pos = new BlockPos(x, y, z);
+                BlockPos posRandom = pos.add(this.random.nextInt(3) - 1, 0, this.random.nextInt(3) - 1);
                 if (!this.world.isAir(posRandom) && this.world.isAir(posRandom.up())) {
-                    this.world.setBlockState(posRandom.up(), Blocks.FIRE.getDefaultState(), 3);
+
+                    this.world.setBlockState(posRandom.up(), Blocks.FIRE.getDefaultState(), Block.NOTIFY_ALL);
                 }
             }
         }
         if (this.isInsideWaterOrBubbleColumn()) {
-            this.damage(DamageSource.DROWN, 5.0F);
+            this.damage(this.getDamageSources().drown(), 5.0F);
         }
         blinkManager.tickBlink();
     }
 
+    @Override
     protected void initDataTracker() {
         super.initDataTracker();
         this.dataTracker.startTracking(IS_ANGRY, false);

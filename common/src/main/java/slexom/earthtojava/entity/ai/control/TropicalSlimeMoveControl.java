@@ -4,13 +4,13 @@ import net.minecraft.entity.ai.control.MoveControl;
 import net.minecraft.entity.attribute.EntityAttributes;
 import slexom.earthtojava.entity.passive.TropicalSlimeEntity;
 
-public class TropicalSlimeMoveController extends MoveControl {
+public class TropicalSlimeMoveControl extends MoveControl {
     private final TropicalSlimeEntity slime;
     private float yRot;
     private int jumpDelay;
     private boolean isAggressive;
 
-    public TropicalSlimeMoveController(TropicalSlimeEntity slimeIn) {
+    public TropicalSlimeMoveControl(TropicalSlimeEntity slimeIn) {
         super(slimeIn);
         this.slime = slimeIn;
         this.yRot = 180.0F * slimeIn.getYaw() / (float) Math.PI;
@@ -37,7 +37,7 @@ public class TropicalSlimeMoveController extends MoveControl {
             if (this.entity.isOnGround()) {
                 this.entity.setMovementSpeed((float) (this.speed * this.entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).getValue()));
                 if (this.jumpDelay-- <= 0) {
-                    this.jumpDelay = this.slime.getJumpDelay();
+                    this.jumpDelay = this.slime.getTicksUntilNextJump();
                     if (this.isAggressive) {
                         this.jumpDelay /= 3;
                     }

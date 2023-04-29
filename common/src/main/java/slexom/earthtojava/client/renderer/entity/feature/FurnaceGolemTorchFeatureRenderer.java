@@ -12,7 +12,7 @@ import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.model.IronGolemEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 import slexom.earthtojava.entity.passive.FurnaceGolemEntity;
 
 @Environment(EnvType.CLIENT)
@@ -30,7 +30,7 @@ public class FurnaceGolemTorchFeatureRenderer extends FeatureRenderer<FurnaceGol
             matrices.translate(-1.1875D, 1.0625D, -0.9375D);
             matrices.translate(0.5D, 0.5D, 0.5D);
             matrices.scale(0.5F, 0.5F, 0.5F);
-            matrices.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(-90.0F));
+            matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(-90.0F));
             matrices.translate(-0.5D, -0.5D, -0.5D);
             MinecraftClient.getInstance().getBlockRenderManager().renderBlockAsEntity(Blocks.TORCH.getDefaultState(), matrices, vertexConsumers, light, OverlayTexture.DEFAULT_UV);
             matrices.pop();

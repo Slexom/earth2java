@@ -11,8 +11,23 @@ architectury {
     fabric()
 }
 
+
 loom {
     accessWidenerPath = project(":common").loom.accessWidenerPath
+    runs {
+        //
+        // This adds a new gradle task that runs the datagen API: "gradlew runDatagenClient"
+        //
+        datagenClient {
+            inherit client
+            name "Data Generation"
+            vmArg "-Dfabric-api.datagen"
+            vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
+            vmArg "-Dfabric-api.datagen.modid=earth2javamobs"
+
+            runDir "build/datagen"
+        }
+    }
 }
 
 configurations {
@@ -51,11 +66,11 @@ processResources {
 
     filesMatching("fabric.mod.json") {
         expand([
-                'modId': rootProject.mod_id,
-                'modName': rootProject.mod_name,
+                'modId'         : rootProject.mod_id,
+                'modName'       : rootProject.mod_name,
                 'modDescription': rootProject.mod_description,
-                'modVersion': rootProject.mod_version,
-                'modAuthor': rootProject.mod_author
+                'modVersion'    : rootProject.mod_version,
+                'modAuthor'     : rootProject.mod_author
         ])
     }
 }

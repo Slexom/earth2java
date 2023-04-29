@@ -9,12 +9,12 @@ import net.minecraft.text.Text;
 import net.minecraft.world.World;
 import slexom.earthtojava.utils.Utils;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class E2JItem extends Item {
-    public E2JItem(Settings properties) {
-        super(properties);
+    public E2JItem(Settings settings) {
+        super(settings);
     }
 
     @Override

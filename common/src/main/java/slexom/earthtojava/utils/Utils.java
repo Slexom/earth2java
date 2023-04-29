@@ -24,7 +24,7 @@ public class Utils {
 
     public static List<String> breakItemTooltip(String input) {
         List<String> cjkLocales = Arrays.asList("ja_jp", "ko_kr", "zh_cn", "zh_tw");
-        String currentLocale = MinecraftClient.getInstance().getLanguageManager().getLanguage().getCode();
+        String currentLocale = MinecraftClient.getInstance().getLanguageManager().getLanguage();
         if (cjkLocales.contains(currentLocale)) {
             return breakLine(input, 30);
         }

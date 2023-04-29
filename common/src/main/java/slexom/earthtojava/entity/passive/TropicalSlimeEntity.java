@@ -4,10 +4,10 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.RevengeGoal;
-import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -22,33 +22,30 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import slexom.earthtojava.entity.ai.control.TropicalSlimeMoveController;
-import slexom.earthtojava.entity.ai.goal.TropicalSlimeAttackGoal;
-import slexom.earthtojava.entity.ai.goal.TropicalSlimeFaceRandomGoal;
-import slexom.earthtojava.entity.ai.goal.TropicalSlimeFloatGoal;
-import slexom.earthtojava.entity.ai.goal.TropicalSlimeHopGoal;
+import slexom.earthtojava.entity.ai.control.TropicalSlimeMoveControl;
+import slexom.earthtojava.entity.ai.goal.*;
 
-public class TropicalSlimeEntity extends HostileEntity {
+public class TropicalSlimeEntity extends HostileEntity implements Monster {
 
     private final int size;
-    public float squishAmount;
-    public float squishFactor;
-    public float prevSquishFactor;
-    private boolean wasOnGround;
+    public float targetStretch;
+    public float stretch;
+    public float lastStretch;
+    private boolean onGroundLastTick;
 
     public TropicalSlimeEntity(EntityType<TropicalSlimeEntity> type, World world) {
         super(type, world);
         this.size = 4;
         this.experiencePoints = this.size;
         setAiDisabled(false);
-        this.moveControl = new TropicalSlimeMoveController(this);
+        this.moveControl = new TropicalSlimeMoveControl(this);
         this.setAttributes();
     }
 
     @Override
     protected void initGoals() {
         super.initGoals();
-        this.goalSelector.add(1, new SwimGoal(this));
+        this.goalSelector.add(1, new TropicalSlimeSwimGoal(this));
         this.goalSelector.add(1, new TropicalSlimeFloatGoal(this));
         this.goalSelector.add(2, new TropicalSlimeAttackGoal(this));
         this.goalSelector.add(3, new TropicalSlimeFaceRandomGoal(this));
@@ -62,26 +59,27 @@ public class TropicalSlimeEntity extends HostileEntity {
         this.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).setBaseValue(4.0D);
     }
 
+    @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
-        ItemStack itemstack = player.getStackInHand(hand);
-        if (itemstack.getItem() == Items.BUCKET && !player.getAbilities().creativeMode && !this.isBaby()) {
-            if (!this.world.isClient) {
-                this.remove(RemovalReason.KILLED);
-                this.world.addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 0.0D, 0.0D, 0.0D);
-                player.playSound(SoundEvents.ENTITY_SLIME_SQUISH, 1.0F, 1.0F);
-                spawnWater();
-                giveTropicalFishBucket(player, hand, itemstack);
-                return ActionResult.success(this.world.isClient);
-            } else {
-                return super.interactMob(player, hand);
-            }
 
-        } else {
-            return super.interactMob(player, hand);
-        }
+
+        if (this.isBaby()) return super.interactMob(player, hand);
+        if (player.getAbilities().creativeMode) return super.interactMob(player, hand);
+
+        ItemStack itemstack = player.getStackInHand(hand);
+        if (itemstack.getItem() != Items.BUCKET) return super.interactMob(player, hand);
+
+        if (this.world.isClient) return super.interactMob(player, hand);
+
+        this.remove(RemovalReason.KILLED);
+        this.world.addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 0.0D, 0.0D, 0.0D);
+        player.playSound(SoundEvents.ENTITY_SLIME_SQUISH, 1.0F, 1.0F);
+        spawnWater();
+        giveTropicalFishBucket(player, itemstack);
+        return ActionResult.success(this.world.isClient);
     }
 
-    private void giveTropicalFishBucket(PlayerEntity player, Hand hand, ItemStack itemstack) {
+    private void giveTropicalFishBucket(PlayerEntity player, ItemStack itemstack) {
         itemstack.decrement(1);
         if (!player.getInventory().insertStack(new ItemStack(Items.TROPICAL_FISH_BUCKET))) {
             player.dropItem(new ItemStack(Items.TROPICAL_FISH_BUCKET), false);
@@ -102,82 +100,85 @@ public class TropicalSlimeEntity extends HostileEntity {
         return ParticleTypes.DRIPPING_WATER;
     }
 
+    @Override
     public void tick() {
-        this.squishFactor += (this.squishAmount - this.squishFactor) * 0.5F;
-        this.prevSquishFactor = this.squishFactor;
+        this.stretch += (this.targetStretch - this.stretch) * 0.5F;
+        this.lastStretch = this.stretch;
         super.tick();
-        if (this.onGround && !this.wasOnGround) {
+
+        if (this.onGround && !this.onGroundLastTick) {
             int i = this.size;
             if (spawnCustomParticles()) i = 0; // don't spawn particles if it's handled by the implementation itself
             for (int j = 0; j < i * 8; ++j) {
                 float f = this.random.nextFloat() * ((float) Math.PI * 2F);
                 float f1 = this.random.nextFloat() * 0.5F + 0.5F;
-                float f2 = MathHelper.sin(f) * (float) i * 0.5F * f1;
-                float f3 = MathHelper.cos(f) * (float) i * 0.5F * f1;
-                this.world.addParticle(this.getSquishParticle(), this.getX() + (double) f2, this.getY(), this.getZ() + (double) f3, 0.0D, 0.0D, 0.0D);
+                float f2 = MathHelper.sin(f) * i * 0.5F * f1;
+                float f3 = MathHelper.cos(f) * i * 0.5F * f1;
+                this.world.addParticle(this.getSquishParticle(), this.getX() + f2, this.getY(), this.getZ() + f3, 0.0D, 0.0D, 0.0D);
             }
             this.playSound(this.getSquishSound(), this.getSoundVolume(), ((this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F) / 0.8F);
-            this.squishAmount = -0.5F;
-        } else if (!this.onGround && this.wasOnGround) {
-            this.squishAmount = 1.0F;
+            this.targetStretch = -0.5F;
+        } else if (!this.onGround && this.onGroundLastTick) {
+            this.targetStretch = 1.0F;
         }
-        this.wasOnGround = this.onGround;
-        this.alterSquishAmount();
+        this.onGroundLastTick = this.onGround;
+        this.updateStretch();
     }
 
-    protected void alterSquishAmount() {
-        this.squishAmount *= 0.6F;
+    protected void updateStretch() {
+        this.targetStretch *= 0.6F;
     }
 
-    public int getJumpDelay() {
+    public int getTicksUntilNextJump() {
         return this.random.nextInt(20) + 10;
     }
 
-    public EntityType<? extends TropicalSlimeEntity> getType() {
-        return (EntityType<? extends TropicalSlimeEntity>) super.getType();
-    }
-
+    @Override
     public void pushAwayFrom(Entity entityIn) {
         super.pushAwayFrom(entityIn);
-        if (entityIn instanceof IronGolemEntity && this.canDamagePlayer()) {
-            this.dealDamage((LivingEntity) entityIn);
+        if (entityIn instanceof IronGolemEntity && this.canAttack()) {
+            this.damage((LivingEntity) entityIn);
         }
     }
 
-    public void onPlayerCollision(PlayerEntity entityIn) {
-        if (this.canDamagePlayer()) {
-            this.dealDamage(entityIn);
+    @Override
+    public void onPlayerCollision(PlayerEntity player) {
+        if (this.canAttack()) {
+            this.damage(player);
         }
 
     }
 
-    protected void dealDamage(LivingEntity entityIn) {
+    protected void damage(LivingEntity livingEntity) {
         if (this.isAlive()) {
             int i = this.size;
-            if (this.squaredDistanceTo(entityIn) < 0.6D * (double) i * 0.6D * (double) i && this.canSee(entityIn) && entityIn.damage(DamageSource.mob(this), this.func_225512_er_())) {
+            if (this.squaredDistanceTo(livingEntity) < 0.6D * i * 0.6D * i && this.canSee(livingEntity) && livingEntity.damage(livingEntity.getDamageSources().mobAttack(this), this.getDamageAmount())) {
                 this.playSound(SoundEvents.ENTITY_SLIME_ATTACK, 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
-                this.applyDamageEffects(this, entityIn);
+                this.applyDamageEffects(this, livingEntity);
             }
         }
 
     }
 
-    protected float getActiveEyeHeight(EntityPose poseIn, EntityDimensions sizeIn) {
-        return 0.625F * sizeIn.height;
+    @Override
+    protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) {
+        return 0.625F * dimensions.height;
     }
 
-    public boolean canDamagePlayer() {
+    public boolean canAttack() {
         return this.canMoveVoluntarily();
     }
 
-    protected float func_225512_er_() {
+    protected float getDamageAmount() {
         return (float) this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
     }
 
+    @Override
     protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
         return SoundEvents.ENTITY_SLIME_HURT;
     }
 
+    @Override
     protected SoundEvent getDeathSound() {
         return SoundEvents.ENTITY_SLIME_DEATH;
     }
@@ -194,9 +195,10 @@ public class TropicalSlimeEntity extends HostileEntity {
         return true;
     }
 
+    @Override
     protected void jump() {
         Vec3d vec3d = this.getVelocity();
-        this.setVelocity(vec3d.x, (double) this.getJumpVelocity(), vec3d.z);
+        this.setVelocity(vec3d.x, this.getJumpVelocity(), vec3d.z);
         this.velocityDirty = true;
     }
 

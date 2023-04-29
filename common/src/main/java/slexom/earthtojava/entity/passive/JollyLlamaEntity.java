@@ -14,7 +14,7 @@ import slexom.earthtojava.entity.ai.goal.JollyLlamaEatFernGoal;
 import slexom.earthtojava.entity.base.E2JBaseLlamaEntity;
 import slexom.earthtojava.init.SoundEventsInit;
 
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.Nullable;
 
 public class JollyLlamaEntity extends E2JBaseLlamaEntity {
 

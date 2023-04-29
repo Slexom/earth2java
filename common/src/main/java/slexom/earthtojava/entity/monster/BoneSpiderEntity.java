@@ -1,7 +1,6 @@
 package slexom.earthtojava.entity.monster;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.RangedAttackMob;
@@ -41,6 +40,7 @@ public class BoneSpiderEntity extends SpiderEntity implements RangedAttackMob {
         blinkManager.tickBlink();
     }
 
+    @Override
     protected EntityNavigation createNavigation(World world) {
         return new ClimberNavigation(this, world);
     }
@@ -59,11 +59,6 @@ public class BoneSpiderEntity extends SpiderEntity implements RangedAttackMob {
     }
 
     @Override
-    public EntityGroup getGroup() {
-        return EntityGroup.ARTHROPOD;
-    }
-
-    @Override
     public void attack(LivingEntity target, float distanceFactor) {
         BoneShardEntity boneShard = new BoneShardEntity(this.world, this);
         double d0 = target.getEyeY() - 1.1D;
@@ -76,14 +71,17 @@ public class BoneSpiderEntity extends SpiderEntity implements RangedAttackMob {
         this.world.spawnEntity(boneShard);
     }
 
+    @Override
     protected SoundEvent getAmbientSound() {
         return SoundEventsInit.BONE_SPIDER_AMBIENT.get();
     }
 
+    @Override
     protected SoundEvent getDeathSound() {
         return SoundEventsInit.BONE_SPIDER_DEATH.get();
     }
 
+    @Override
     protected void playStepSound(BlockPos pos, BlockState state) {
         this.playSound(SoundEventsInit.BONE_SPIDER_WALK.get(), 0.15F, 1.0F);
     }

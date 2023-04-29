@@ -19,7 +19,7 @@ import net.minecraft.client.util.SpriteIdentifier;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3f;
+import net.minecraft.util.math.RotationAxis;
 import net.minecraft.world.World;
 import slexom.earthtojava.block.RainbowBedBlock;
 import slexom.earthtojava.block.entity.RainbowBedBlockEntity;
@@ -68,16 +68,16 @@ public class RainbowBedBlockEntityRenderer implements BlockEntityRenderer<Rainbo
         }
     }
 
-    private void renderPart(MatrixStack matrix, VertexConsumerProvider vertexConsumerProvider, ModelPart modelPart, Direction direction, SpriteIdentifier spriteIdentifier, int light, int overlay, boolean bl) {
-        matrix.push();
-        matrix.translate(0.0D, 0.5625D, bl ? -1.0D : 0.0D);
-        matrix.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(90.0F));
-        matrix.translate(0.5D, 0.5D, 0.5D);
-        matrix.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(180.0F + direction.asRotation()));
-        matrix.translate(-0.5D, -0.5D, -0.5D);
-        VertexConsumer vertexConsumer = spriteIdentifier.getVertexConsumer(vertexConsumerProvider, RenderLayer::getEntitySolid);
-        modelPart.render(matrix, vertexConsumer, light, overlay);
-        matrix.pop();
+    private void renderPart(MatrixStack matrices, VertexConsumerProvider vertexConsumers, ModelPart part, Direction direction, SpriteIdentifier sprite, int light, int overlay, boolean isFoot) {
+        matrices.push();
+        matrices.translate(0.0f, 0.5625f, isFoot ? -1.0f : 0.0f);
+        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90.0f));
+        matrices.translate(0.5f, 0.5f, 0.5f);
+        matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(180.0f + direction.asRotation()));
+        matrices.translate(-0.5f, -0.5f, -0.5f);
+        VertexConsumer vertexConsumer = sprite.getVertexConsumer(vertexConsumers, RenderLayer::getEntitySolid);
+        part.render(matrices, vertexConsumer, light, overlay);
+        matrices.pop();
     }
 
 }

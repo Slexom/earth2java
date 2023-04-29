@@ -3,7 +3,7 @@ package slexom.earthtojava.entity.ai.goal;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.player.PlayerEntity;
-import slexom.earthtojava.entity.ai.control.TropicalSlimeMoveController;
+import slexom.earthtojava.entity.ai.control.TropicalSlimeMoveControl;
 import slexom.earthtojava.entity.passive.TropicalSlimeEntity;
 
 import java.util.EnumSet;
@@ -24,7 +24,7 @@ public class TropicalSlimeAttackGoal extends Goal {
         } else if (!livingentity.isAlive()) {
             return false;
         } else {
-            return (!(livingentity instanceof PlayerEntity) || !((PlayerEntity) livingentity).getAbilities().invulnerable) && this.slime.getMoveControl() instanceof TropicalSlimeMoveController;
+            return (!(livingentity instanceof PlayerEntity) || !((PlayerEntity) livingentity).getAbilities().invulnerable) && this.slime.getMoveControl() instanceof TropicalSlimeMoveControl;
         }
     }
 
@@ -48,6 +48,6 @@ public class TropicalSlimeAttackGoal extends Goal {
 
     public void tick() {
         this.slime.lookAtEntity(this.slime.getTarget(), 10.0F, 10.0F);
-        ((TropicalSlimeMoveController) this.slime.getMoveControl()).look(this.slime.getYaw(), this.slime.canDamagePlayer());
+        ((TropicalSlimeMoveControl) this.slime.getMoveControl()).look(this.slime.getYaw(), this.slime.canAttack());
     }
 }

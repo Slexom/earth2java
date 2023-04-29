@@ -9,17 +9,8 @@ import net.minecraft.entity.EntityType;
 import slexom.earthtojava.client.renderer.block.entity.RainbowBedBlockEntityRenderer;
 import slexom.earthtojava.client.renderer.entity.*;
 import slexom.earthtojava.entity.base.*;
-import slexom.earthtojava.entity.monster.*;
-import slexom.earthtojava.entity.passive.*;
-import slexom.earthtojava.entity.projectile.BoneShardEntity;
-import slexom.earthtojava.entity.projectile.MelonSeedProjectileEntity;
-import slexom.earthtojava.entity.projectile.RottenFleshProjectileEntity;
 import slexom.earthtojava.init.BlockEntityTypeInit;
 import slexom.earthtojava.init.EntityTypesInit;
-
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Supplier;
 
 public class EntityRendererInit {
 
@@ -108,36 +99,36 @@ public class EntityRendererInit {
         EntityRendererRegistry.register(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_OBJECT, LobberZombieRenderer::new);
         EntityRendererRegistry.register(EntityTypesInit.VILER_WITCH_REGISTRY_OBJECT, VilerWitchRenderer::new);
 
-      }
+    }
 
     private static void registerChickenEntityRenderer(RegistrySupplier<EntityType<E2JBaseChickenEntity>> entity, String identifier) {
         EntityRendererFactory<E2JBaseChickenEntity> factory = context -> new E2JChickenRenderer(context, identifier);
-         EntityRendererRegistry.register(entity, factory);
+        EntityRendererRegistry.register(entity, factory);
     }
 
     private static void registerCowEntityRenderer(RegistrySupplier<EntityType<E2JBaseCowEntity>> entity, String identifier) {
         EntityRendererFactory<E2JBaseCowEntity> factory = context -> new E2JCowRenderer(context, identifier);
-         EntityRendererRegistry.register(entity, factory);
+        EntityRendererRegistry.register(entity, factory);
     }
 
     private static <E extends E2JBaseShearableCowEntity> void registerShearableCowEntityRenderer(RegistrySupplier<EntityType<E>> entity, String identifier) {
         EntityRendererFactory<E2JBaseShearableCowEntity> factory = context -> new E2JShearableCowRenderer(context, identifier);
-         EntityRendererRegistry.register(entity, factory);
+        EntityRendererRegistry.register(entity, factory);
     }
 
     private static void registerMonoColorSheepEntityRenderer(RegistrySupplier<EntityType<E2JBaseMonoColorSheepEntity>> entity, String identifier) {
         EntityRendererFactory<E2JBaseMonoColorSheepEntity> factory = context -> new E2JMonoColorSheepRenderer(context, identifier);
-         EntityRendererRegistry.register(entity, factory);
+        EntityRendererRegistry.register(entity, factory);
     }
 
     private static void registerPigEntityRenderer(RegistrySupplier<EntityType<E2JBasePigEntity>> entity, String identifier) {
         EntityRendererFactory<E2JBasePigEntity> factory = context -> new E2JPigRenderer(context, identifier);
-         EntityRendererRegistry.register(entity, factory);
+        EntityRendererRegistry.register(entity, factory);
     }
 
     private static void registerRabbitEntityRenderer(RegistrySupplier<EntityType<E2JBaseRabbitEntity>> entity, String identifier) {
         EntityRendererFactory<E2JBaseRabbitEntity> factory = context -> new E2JRabbitRenderer(context, identifier);
-         EntityRendererRegistry.register(entity, factory);
+        EntityRendererRegistry.register(entity, factory);
     }
 
 }

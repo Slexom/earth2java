@@ -1,11 +1,13 @@
 package slexom.earthtojava.entity;
 
-import java.util.Random;
+
+import net.minecraft.util.math.random.Random;
 
 public class BlinkManager {
+    private final net.minecraft.util.math.random.Random random = Random.create();
 
     private int lastBlink = 0;
-    private int nextBlinkInterval = new Random().nextInt(300) + 60;
+    private int nextBlinkInterval =this.random.nextInt(300) + 60;
     private int remainingTick = 0;
     private int internalBlinkTick = 0;
 
@@ -15,7 +17,7 @@ public class BlinkManager {
         }
         if (this.internalBlinkTick == (this.lastBlink + this.nextBlinkInterval)) {
             this.lastBlink = this.internalBlinkTick;
-            this.nextBlinkInterval = new Random().nextInt(740) + 60;
+            this.nextBlinkInterval = this.random.nextInt(740) + 60;
             this.remainingTick = 4;
         }
         ++this.internalBlinkTick;

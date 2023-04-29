@@ -2,9 +2,9 @@ package slexom.earthtojava.init.features;
 
 import dev.architectury.registry.registries.RegistrySupplier;
 import me.shedaniel.autoconfig.AutoConfig;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.intprovider.ClampedIntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.PlacedFeature;
 import net.minecraft.world.gen.feature.PlacedFeatures;

@@ -19,15 +19,14 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.TimeHelper;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 import slexom.earthtojava.entity.ai.goal.HornedSheepActiveTargetGoal;
 import slexom.earthtojava.entity.ai.goal.HornedSheepMeleeAttackGoal;
 import slexom.earthtojava.entity.ai.goal.HornedSheepRevengeGoal;
 import slexom.earthtojava.entity.base.E2JBaseSheepEntity;
 
-import javax.annotation.Nullable;
 import java.util.UUID;
 
 
@@ -83,7 +82,7 @@ public class HornedSheepEntity extends E2JBaseSheepEntity implements Angerable, 
     }
 
     public boolean tryAttack(Entity entityIn) {
-        boolean flag = entityIn.damage(DamageSource.mob(this), (float) ((int) this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE)));
+        boolean flag = entityIn.damage(entityIn.getDamageSources().mobAttack(this), (float) ((int) this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE)));
         if (flag) {
             this.applyDamageEffects(this, entityIn);
         }
@@ -185,9 +184,6 @@ public class HornedSheepEntity extends E2JBaseSheepEntity implements Angerable, 
         }
     }
 
-    private boolean isWithinDistance(BlockPos pos) {
-        return pos.isWithinDistance(new BlockPos(this.getPos()), (double) 48);
-    }
 
     @Override
     public int getAngerTime() {
