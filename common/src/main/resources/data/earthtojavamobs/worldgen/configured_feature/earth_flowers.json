@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:flower",
+  "config": {
+    "tries": 64,
+    "xz_spread": 7,
+    "y_spread": 3,
+    "feature": "earthtojavamobs:earth_flowers"
+  }
+}

@@ -11,17 +11,14 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.world.gen.feature.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import slexom.earthtojava.config.ModConfig;
 import slexom.earthtojava.events.ModEvents;
 import slexom.earthtojava.init.*;
-import slexom.earthtojava.init.features.ConfiguredFeatureInit;
-import slexom.earthtojava.init.features.PlacedFeatureInit;
 
 import java.util.function.Supplier;
 
@@ -35,8 +32,6 @@ public class Earth2JavaMod {
     public static final Registrar<EntityType<?>> ENTITY_TYPE_REGISTRAR = REGISTRIES.get().get(RegistryKeys.ENTITY_TYPE);
     public static final Registrar<Item> ITEM_REGISTRAR = REGISTRIES.get().get(RegistryKeys.ITEM);
     public static final Registrar<SoundEvent> SOUND_EVENT_REGISTRAR = REGISTRIES.get().get(RegistryKeys.SOUND_EVENT);
-    public static final Registrar<ConfiguredFeature<?, ?>> CONFIGURED_FEATURE_REGISTRAR = REGISTRIES.get().get(RegistryKeys.CONFIGURED_FEATURE);
-    public static final Registrar<PlacedFeature> PLACED_FEATURE_REGISTRAR = REGISTRIES.get().get(RegistryKeys.PLACED_FEATURE);
 
     public static final Identifier ITEM_GROUP_IDENTIFIER = new Identifier(MOD_ID, "group");
 
@@ -49,8 +44,6 @@ public class Earth2JavaMod {
         ModEvents.init();
         SoundEventsInit.init();
         BlockInit.init();
-        ConfiguredFeatureInit.init();
-        PlacedFeatureInit.init();
         BiomeInit.init();
         EntityTypesInit.init();
         EntityAttributeInit.init();
