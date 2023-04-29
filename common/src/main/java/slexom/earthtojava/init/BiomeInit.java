@@ -19,7 +19,7 @@ public final class BiomeInit {
 
     public static void init() {
         Predicate<BiomeModifications.BiomeContext> plainsPredicate = ctx -> Objects.equals(ctx.getKey().get(), BiomeKeys.PLAINS.getValue());
-        BiomeModifications.addProperties(plainsPredicate, (biomeContext, mutable) -> mutable.getGenerationProperties().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(Earth2JavaMod.MOD_ID, "earth_flowers"))));
+        BiomeModifications.addProperties(plainsPredicate, (biomeContext, mutable) -> mutable.getGenerationProperties().addFeature(GenerationStep.Feature.VEGETAL_DECORATION, RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(Earth2JavaMod.MOD_ID + ":earth_flowers"))));
     }
 
 }
