@@ -72,8 +72,9 @@ public class CarvedMelonBlock extends HorizontalFacingBlock {
         }
     }
 
+    @Override
     public BlockState getPlacementState(ItemPlacementContext context) {
-        return this.getDefaultState().with(FACING, context.getPlayerLookDirection().getOpposite());
+        return this.getDefaultState().with(FACING, context.getHorizontalPlayerFacing().getOpposite());
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
