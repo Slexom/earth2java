@@ -2,8 +2,8 @@ plugins {
     id "com.github.johnrengelman.shadow" version "7.1.2"
 }
 
-allprojects {
-    archivesBaseName = "earth2java-quilt"
+repositories {
+    maven { url "https://maven.quiltmc.org/repository/release/" }
 }
 
 architectury {
@@ -23,9 +23,10 @@ configurations {
     developmentQuilt.extendsFrom common
 }
 
-repositories {
-    maven { url "https://maven.quiltmc.org/repository/release/" }
+allprojects {
+    archivesBaseName = "earth2java-quilt"
 }
+
 
 dependencies {
 

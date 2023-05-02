@@ -7,7 +7,7 @@
     "group": "${group}",
     "id": "earthtojavamobs",
     "version": "${version}",
-    "name": "Earth2Java",
+    "name": "earth2java",
     "description": "Bring mobs from Minecraft Earth to Minecraft Java Edition.",
     "authors": [
       "Slexom"
@@ -43,11 +43,11 @@
       },
       {
         "id": "minecraft",
-        "version": ">=1.19.x"
+        "version": "1.19.4"
       },
       {
         "id": "architectury",
-        "version": ">=5.7.27"
+        "version": ">=8.0.0"
       }
     ]
   }
