@@ -8,7 +8,6 @@ import net.minecraft.util.DyeColor;
 import slexom.earthtojava.Earth2JavaMod;
 import slexom.earthtojava.block.CarvedMelonBlock;
 import slexom.earthtojava.block.RainbowBedBlock;
-import slexom.earthtojava.block.RainbowCarpetBlock;
 import slexom.earthtojava.utils.Utils;
 
 public final class BlockInit {
@@ -35,7 +34,7 @@ public final class BlockInit {
         POTTED_BUTTERCUP = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("potted_buttercup"), () -> new FlowerPotBlock(BUTTERCUP.get(), AbstractBlock.Settings.of(Material.DECORATION).breakInstantly().nonOpaque()));
         POTTED_PINK_DAISY = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("potted_pink_daisy"), () -> new FlowerPotBlock(PINK_DAISY.get(), AbstractBlock.Settings.of(Material.DECORATION).breakInstantly().nonOpaque()));
         RAINBOW_BED = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("rainbow_bed"), () -> new RainbowBedBlock(DyeColor.WHITE, AbstractBlock.Settings.of(Material.WOOL).sounds(BlockSoundGroup.WOOD).strength(0.2F).nonOpaque()));
-        RAINBOW_CARPET = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("rainbow_carpet"), () -> new RainbowCarpetBlock(AbstractBlock.Settings.of(Material.CARPET, MapColor.WHITE).strength(0.1F).sounds(BlockSoundGroup.WOOL)));
+        RAINBOW_CARPET = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("rainbow_carpet"), () -> new CarpetBlock(AbstractBlock.Settings.of(Material.CARPET, MapColor.WHITE).strength(0.1F).sounds(BlockSoundGroup.WOOL)));
         RAINBOW_WOOL = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("rainbow_wool"), () -> new Block(AbstractBlock.Settings.of(Material.WOOL, MapColor.WHITE).strength(0.8F).sounds(BlockSoundGroup.WOOL)));
     }
 
@@ -47,9 +46,9 @@ public final class BlockInit {
 
     }
 
-    public static void onPostInit(){
-       registerCompostable();
-       registerFlammable();
+    public static void onPostInit() {
+        registerCompostable();
+        registerFlammable();
     }
 
     public static void registerCompostable() {

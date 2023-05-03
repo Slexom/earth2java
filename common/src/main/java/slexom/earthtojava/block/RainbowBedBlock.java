@@ -12,6 +12,7 @@ public class RainbowBedBlock extends BedBlock {
         super(colorIn, properties);
     }
 
+    @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return BlockEntityTypeInit.RAINBOW_BED.get().instantiate(pos, state);
     }

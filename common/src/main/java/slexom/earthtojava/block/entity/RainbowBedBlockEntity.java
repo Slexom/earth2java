@@ -23,6 +23,7 @@ public class RainbowBedBlockEntity extends BlockEntity {
         this.setColor(dyeColor);
     }
 
+    @Override
     public BlockEntityUpdateS2CPacket toUpdatePacket() {
         return BlockEntityUpdateS2CPacket.create(this);
     }
