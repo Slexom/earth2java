@@ -62,7 +62,6 @@ public class EntityRendererInit {
         registerPigEntityRenderer(EntityTypesInit.PALE_PIG_REGISTRY_OBJECT, EntityTypesInit.PALE_PIG_REGISTRY_NAME);
         registerPigEntityRenderer(EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT, EntityTypesInit.PIEBALD_PIG_REGISTRY_NAME);
         registerPigEntityRenderer(EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_OBJECT, EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_NAME);
-        registerPigEntityRenderer(EntityTypesInit.SOOTY_PIG_REGISTRY_OBJECT, EntityTypesInit.SOOTY_PIG_REGISTRY_NAME);
         registerPigEntityRenderer(EntityTypesInit.SPOTTED_PIG_REGISTRY_OBJECT, EntityTypesInit.SPOTTED_PIG_REGISTRY_NAME);
 
         registerMonoColorSheepEntityRenderer(EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT, EntityTypesInit.FLECKED_SHEEP_REGISTRY_NAME);
@@ -86,6 +85,7 @@ public class EntityRendererInit {
         EntityRendererRegistry.register(EntityTypesInit.MOOBLOOM_REGISTRY_OBJECT, MoobloomRenderer::new);
         EntityRendererRegistry.register(EntityTypesInit.MOOLIP_REGISTRY_OBJECT, MoolipRenderer::new);
         EntityRendererRegistry.register(EntityTypesInit.MUDDY_PIG_REGISTRY_OBJECT, MuddyPigRenderer::new);
+        EntityRendererRegistry.register(EntityTypesInit.SOOTY_PIG_REGISTRY_OBJECT, SootyPigRenderer::new);
         EntityRendererRegistry.register(EntityTypesInit.SKELETON_WOLF_REGISTRY_OBJECT, SkeletonWolfRenderer::new);
         EntityRendererRegistry.register(EntityTypesInit.TROPICAL_SLIME_REGISTRY_OBJECT, TropicalSlimeRenderer::new);
         EntityRendererRegistry.register(EntityTypesInit.FURNACE_GOLEM_REGISTRY_OBJECT, FurnaceGolemRenderer::new);
