@@ -34,23 +34,23 @@ public class MoolipEntity extends E2JBaseCowEntity implements Shearable {
         ItemStack itemStack = player.getStackInHand(hand);
         if (itemStack.getItem() instanceof ShearsItem && this.isShearable()) {
             this.sheared(SoundCategory.PLAYERS);
-            if (!this.world.isClient) {
+            if (!this.getWorld().isClient) {
                 itemStack.damage(1, player, ((playerEntity) -> playerEntity.sendToolBreakStatus(hand)));
             }
-            return ActionResult.success(this.world.isClient);
+            return ActionResult.success(this.getWorld().isClient);
         } else {
             return super.interactMob(player, hand);
         }
     }
 
     public void sheared(SoundCategory shearedSoundCategory) {
-        this.world.playSoundFromEntity(null, this, SoundEvents.ENTITY_MOOSHROOM_SHEAR, shearedSoundCategory, 1.0F, 1.0F);
-        if (this.world.isClient()) return;
+        this.getWorld().playSoundFromEntity(null, this, SoundEvents.ENTITY_MOOSHROOM_SHEAR, shearedSoundCategory, 1.0F, 1.0F);
+        if (this.getWorld().isClient()) return;
 
-        CowEntity cowEntity = EntityType.COW.create(this.world);
+        CowEntity cowEntity = EntityType.COW.create(this.getWorld());
         if (cowEntity == null) return;
 
-        ((ServerWorld) this.world).spawnParticles(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
+        ((ServerWorld) this.getWorld()).spawnParticles(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
         this.discard();
         cowEntity.refreshPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch());
         cowEntity.setHealth(this.getHealth());
@@ -63,9 +63,9 @@ public class MoolipEntity extends E2JBaseCowEntity implements Shearable {
             cowEntity.setPersistent();
         }
         cowEntity.setInvulnerable(this.isInvulnerable());
-        this.world.spawnEntity(cowEntity);
+        this.getWorld().spawnEntity(cowEntity);
         for (int i = 0; i < 5; ++i) {
-            this.world.spawnEntity(new ItemEntity(this.world, this.getX(), this.getBodyY(1.0D), this.getZ(), new ItemStack(BlockInit.PINK_DAISY.get())));
+            this.getWorld().spawnEntity(new ItemEntity(this.getWorld(), this.getX(), this.getBodyY(1.0D), this.getZ(), new ItemStack(BlockInit.PINK_DAISY.get())));
         }
     }
 

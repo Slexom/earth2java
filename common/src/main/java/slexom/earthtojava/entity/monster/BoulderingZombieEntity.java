@@ -46,7 +46,7 @@ public class BoulderingZombieEntity extends E2JBaseZombieEntity {
 
     public void tick() {
         super.tick();
-        if (!this.world.isClient) {
+        if (!this.getWorld().isClient) {
             this.setClimbingWall(this.horizontalCollision);
         }
     }

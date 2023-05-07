@@ -1,6 +1,5 @@
 package slexom.earthtojava.init;
 
-import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -84,7 +83,6 @@ public final class ItemInit {
     public static final RegistrySupplier<Item> MELON_LANTERN;
     public static final RegistrySupplier<Item> RAINBOW_CARPET;
     public static final RegistrySupplier<Item> RAINBOW_WOOL;
-    private static final CreativeTabRegistry.TabSupplier CREATIVE_TAB_SUPPLIER = Earth2JavaMod.CREATIVE_TAB_SUPPLIER;
     private static final Item.Settings spawnEggProps = new Item.Settings().arch$tab(Earth2JavaMod.CREATIVE_TAB_SUPPLIER);
 
     static {

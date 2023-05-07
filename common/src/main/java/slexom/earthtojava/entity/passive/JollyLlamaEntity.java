@@ -10,11 +10,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 import slexom.earthtojava.entity.ai.goal.JollyLlamaEatFernGoal;
 import slexom.earthtojava.entity.base.E2JBaseLlamaEntity;
 import slexom.earthtojava.init.SoundEventsInit;
-
-import org.jetbrains.annotations.Nullable;
 
 public class JollyLlamaEntity extends E2JBaseLlamaEntity {
 
@@ -45,7 +44,7 @@ public class JollyLlamaEntity extends E2JBaseLlamaEntity {
     }
 
     public void tickMovement() {
-        if (this.world.isClient) {
+        if (this.getWorld().isClient) {
             this.eatFernTimer = Math.max(0, this.eatFernTimer - 1);
         }
         super.tickMovement();

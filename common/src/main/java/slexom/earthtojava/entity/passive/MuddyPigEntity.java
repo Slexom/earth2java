@@ -54,7 +54,7 @@ public class MuddyPigEntity extends E2JBasePigEntity {
         int y = MathHelper.floor(this.getY());
         int z = MathHelper.floor(this.getZ());
         BlockPos blockPos = new BlockPos(x, y, z).down();
-        return this.world.getBlockState(blockPos).getBlock().equals(Blocks.MUD);
+        return this.getWorld().getBlockState(blockPos).getBlock().equals(Blocks.MUD);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class MuddyPigEntity extends E2JBasePigEntity {
                 this.isShaking = true;
                 this.timeMuddyPigIsShaking = 0.0F;
                 this.prevTimeMuddyPigIsShaking = 0.0F;
-                this.world.sendEntityStatus(this, (byte) 8);
+                this.getWorld().sendEntityStatus(this, (byte) 8);
             }
             if (++finallyInMud > 60) {
                 setMuddyState(true);

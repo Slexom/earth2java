@@ -27,7 +27,7 @@ public class CluckshroomPlaceBlockGoal extends Goal {
     }
 
     public void tick() {
-        WorldAccess world = this.cluckshroom.world;
+        WorldAccess world = this.cluckshroom.getWorld();
         int i = MathHelper.floor(this.cluckshroom.getX());
         int j = MathHelper.floor(this.cluckshroom.getY());
         int k = MathHelper.floor(this.cluckshroom.getZ());

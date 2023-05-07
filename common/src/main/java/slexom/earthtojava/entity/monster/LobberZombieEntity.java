@@ -40,7 +40,7 @@ public class LobberZombieEntity extends E2JBaseZombieEntity implements RangedAtt
 
     @Override
     public void attack(LivingEntity target, float pullProgress) {
-        RottenFleshProjectileEntity rottenFleshProjectileEntity = new RottenFleshProjectileEntity(this.world, this);
+        RottenFleshProjectileEntity rottenFleshProjectileEntity = new RottenFleshProjectileEntity(this.getWorld(), this);
         double d0 = target.getEyeY() - 1.1D;
         double d1 = target.getX() - this.getX();
         double d2 = d0 - rottenFleshProjectileEntity.getY();
@@ -49,6 +49,6 @@ public class LobberZombieEntity extends E2JBaseZombieEntity implements RangedAtt
         rottenFleshProjectileEntity.setVelocity(d1, d2 + f, d3, 1.6F, 12.0F);
         this.swingHand(Hand.MAIN_HAND);
         this.playSound(SoundEventsInit.LOBBER_ZOMBIE_ATTACK.get(), 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
-        this.world.spawnEntity(rottenFleshProjectileEntity);
+        this.getWorld().spawnEntity(rottenFleshProjectileEntity);
     }
 }

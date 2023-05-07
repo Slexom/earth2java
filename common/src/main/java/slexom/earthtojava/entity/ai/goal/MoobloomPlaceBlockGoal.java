@@ -28,7 +28,7 @@ public class MoobloomPlaceBlockGoal extends Goal {
     }
 
     public void tick() {
-        WorldAccess world = this.moobloom.world;
+        WorldAccess world = this.moobloom.getWorld();
         int i = MathHelper.floor(this.moobloom.getX());
         int j = MathHelper.floor(this.moobloom.getY());
         int k = MathHelper.floor(this.moobloom.getZ());

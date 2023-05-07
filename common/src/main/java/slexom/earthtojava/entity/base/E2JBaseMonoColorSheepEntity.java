@@ -64,7 +64,7 @@ public class E2JBaseMonoColorSheepEntity extends E2JBaseSheepEntity implements S
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemStack = player.getStackInHand(hand);
         if (itemStack.getItem() instanceof ShearsItem) {
-            if (!this.world.isClient && this.isShearable()) {
+            if (!this.getWorld().isClient && this.isShearable()) {
                 this.sheared(SoundCategory.PLAYERS);
                 itemStack.damage(1, player, (playerEntity) -> playerEntity.sendToolBreakStatus(hand));
                 return ActionResult.SUCCESS;
@@ -77,13 +77,13 @@ public class E2JBaseMonoColorSheepEntity extends E2JBaseSheepEntity implements S
     }
 
     public void sheared(SoundCategory shearedSoundCategory) {
-        this.world.playSoundFromEntity(null, this, SoundEvents.ENTITY_SHEEP_SHEAR, shearedSoundCategory, 1.0F, 1.0F);
+        this.getWorld().playSoundFromEntity(null, this, SoundEvents.ENTITY_SHEEP_SHEAR, shearedSoundCategory, 1.0F, 1.0F);
         this.setSheared(true);
         int i = 1 + this.random.nextInt(3);
         for (int j = 0; j < i; ++j) {
             ItemEntity itemEntity = this.dropItem(this.wool.getItem(), 1);
             if (itemEntity != null) {
-                itemEntity.setVelocity(itemEntity.getVelocity().add((double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F), (double) (this.random.nextFloat() * 0.05F), (double) ((this.random.nextFloat() - this.random.nextFloat()) * 0.1F)));
+                itemEntity.setVelocity(itemEntity.getVelocity().add((this.random.nextFloat() - this.random.nextFloat()) * 0.1F, this.random.nextFloat() * 0.05F, (this.random.nextFloat() - this.random.nextFloat()) * 0.1F));
             }
         }
     }

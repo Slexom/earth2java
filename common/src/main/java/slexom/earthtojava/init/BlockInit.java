@@ -2,6 +2,8 @@ package slexom.earthtojava.init;
 
 import dev.architectury.registry.registries.RegistrySupplier;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.Instrument;
+import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.DyeColor;
@@ -23,19 +25,23 @@ public final class BlockInit {
     public static final RegistrySupplier<Block> RAINBOW_BED;
     public static final RegistrySupplier<Block> RAINBOW_CARPET;
     public static final RegistrySupplier<Block> RAINBOW_WOOL;
+    private static final AbstractBlock.Settings FLOWERS_SETTINGS = AbstractBlock.Settings.create().mapColor(MapColor.DARK_GREEN).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).offset(AbstractBlock.OffsetType.XZ).pistonBehavior(PistonBehavior.DESTROY);
+    private static final AbstractBlock.Settings CARVED_MELON_SETTINGS = AbstractBlock.Settings.create().mapColor(MapColor.LIME).strength(1.0F).sounds(BlockSoundGroup.WOOD).allowsSpawning((state, world, pos, type) -> true).pistonBehavior(PistonBehavior.DESTROY);
+    private static final AbstractBlock.Settings POTTED_FLOWER_SETTINGS = AbstractBlock.Settings.create().breakInstantly().nonOpaque().pistonBehavior(PistonBehavior.DESTROY);
+
 
     static {
-        BUTTERCUP = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("buttercup"), () -> new FlowerBlock(StatusEffects.JUMP_BOOST, 5, AbstractBlock.Settings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS)));
-        PINK_DAISY = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("pink_daisy"), () -> new FlowerBlock(StatusEffects.JUMP_BOOST, 5, AbstractBlock.Settings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS)));
-        CARVED_MELON = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("carved_melon"), () -> new CarvedMelonBlock(AbstractBlock.Settings.of(Material.GOURD, MapColor.LIME).strength(1.0F).sounds(BlockSoundGroup.WOOD)));
-        MELON_GOLEM_HEAD_BLINK = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("melon_golem_blink"), () -> new CarvedMelonBlock(AbstractBlock.Settings.of(Material.GOURD, MapColor.LIME).strength(1.0F).sounds(BlockSoundGroup.WOOD)));
-        MELON_GOLEM_HEAD_SHOOT = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("melon_golem_shoot"), () -> new CarvedMelonBlock(AbstractBlock.Settings.of(Material.GOURD, MapColor.LIME).strength(1.0F).sounds(BlockSoundGroup.WOOD)));
-        MELON_LANTERN = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("melon_lantern"), () -> new CarvedMelonBlock(AbstractBlock.Settings.of(Material.GOURD, MapColor.LIME).strength(1.0F).sounds(BlockSoundGroup.WOOD).luminance(state -> 15)));
-        POTTED_BUTTERCUP = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("potted_buttercup"), () -> new FlowerPotBlock(BUTTERCUP.get(), AbstractBlock.Settings.of(Material.DECORATION).breakInstantly().nonOpaque()));
-        POTTED_PINK_DAISY = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("potted_pink_daisy"), () -> new FlowerPotBlock(PINK_DAISY.get(), AbstractBlock.Settings.of(Material.DECORATION).breakInstantly().nonOpaque()));
-        RAINBOW_BED = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("rainbow_bed"), () -> new RainbowBedBlock(DyeColor.WHITE, AbstractBlock.Settings.of(Material.WOOL).sounds(BlockSoundGroup.WOOD).strength(0.2F).nonOpaque()));
-        RAINBOW_CARPET = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("rainbow_carpet"), () -> new CarpetBlock(AbstractBlock.Settings.of(Material.CARPET, MapColor.WHITE).strength(0.1F).sounds(BlockSoundGroup.WOOL)));
-        RAINBOW_WOOL = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("rainbow_wool"), () -> new Block(AbstractBlock.Settings.of(Material.WOOL, MapColor.WHITE).strength(0.8F).sounds(BlockSoundGroup.WOOL)));
+        BUTTERCUP = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("buttercup"), () -> new FlowerBlock(StatusEffects.JUMP_BOOST, 5, FLOWERS_SETTINGS));
+        PINK_DAISY = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("pink_daisy"), () -> new FlowerBlock(StatusEffects.JUMP_BOOST, 5, FLOWERS_SETTINGS));
+        CARVED_MELON = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("carved_melon"), () -> new CarvedMelonBlock(CARVED_MELON_SETTINGS));
+        MELON_GOLEM_HEAD_BLINK = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("melon_golem_blink"), () -> new CarvedMelonBlock(CARVED_MELON_SETTINGS));
+        MELON_GOLEM_HEAD_SHOOT = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("melon_golem_shoot"), () -> new CarvedMelonBlock(CARVED_MELON_SETTINGS));
+        MELON_LANTERN = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("melon_lantern"), () -> new CarvedMelonBlock(CARVED_MELON_SETTINGS.luminance(state -> 15)));
+        POTTED_BUTTERCUP = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("potted_buttercup"), () -> new FlowerPotBlock(BUTTERCUP.get(), POTTED_FLOWER_SETTINGS));
+        POTTED_PINK_DAISY = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("potted_pink_daisy"), () -> new FlowerPotBlock(PINK_DAISY.get(), POTTED_FLOWER_SETTINGS));
+        RAINBOW_BED = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("rainbow_bed"), () -> new RainbowBedBlock(DyeColor.WHITE, AbstractBlock.Settings.create().mapColor(MapColor.WHITE_GRAY).sounds(BlockSoundGroup.WOOD).strength(0.2F).nonOpaque().burnable().pistonBehavior(PistonBehavior.DESTROY)));
+        RAINBOW_CARPET = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("rainbow_carpet"), () -> new CarpetBlock(AbstractBlock.Settings.create().mapColor(MapColor.WHITE).strength(0.1F).sounds(BlockSoundGroup.WOOL).burnable()));
+        RAINBOW_WOOL = Earth2JavaMod.BLOCK_REGISTRAR.register(Utils.modIdentifierOf("rainbow_wool"), () -> new Block(AbstractBlock.Settings.create().mapColor(MapColor.WHITE).instrument(Instrument.GUITAR).strength(0.8F).sounds(BlockSoundGroup.WOOL).burnable()));
     }
 
     private BlockInit() {
@@ -67,5 +73,6 @@ public final class BlockInit {
         FireBlock fire = (FireBlock) Blocks.FIRE;
         fire.registerFlammableBlock(block, encouragement, flammability);
     }
+
 
 }

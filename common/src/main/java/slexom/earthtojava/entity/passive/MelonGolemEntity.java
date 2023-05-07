@@ -89,12 +89,12 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob {
     @Override
     public void tickMovement() {
         super.tickMovement();
-        if (!this.world.isClient) {
+        if (!this.getWorld().isClient) {
 
-            if (this.world.getBiome(this.getBlockPos()).isIn(BiomeTags.SNOW_GOLEM_MELTS)) {
+            if (this.getWorld().getBiome(this.getBlockPos()).isIn(BiomeTags.SNOW_GOLEM_MELTS)) {
                 this.damage(this.getDamageSources().onFire(), 1.0f);
             }
-            if (!this.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
+            if (!this.getWorld().getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
                 return;
             }
             BlockState blockState = Blocks.SNOW.getDefaultState();
@@ -103,9 +103,9 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob {
                 int posY = MathHelper.floor(this.getY());
                 int posZ = MathHelper.floor(this.getZ() + (l / 2D % 2 * 2 - 1) * 0.25F);
                 BlockPos blockPos = new BlockPos(posX, posY, posZ);
-                if (this.world.getBlockState(blockPos).isAir() && blockState.canPlaceAt(this.world, blockPos)) {
-                    this.world.setBlockState(blockPos, blockState);
-                    this.world.emitGameEvent(GameEvent.BLOCK_PLACE, blockPos, GameEvent.Emitter.of(this, blockState));
+                if (this.getWorld().getBlockState(blockPos).isAir() && blockState.canPlaceAt(this.getWorld(), blockPos)) {
+                    this.getWorld().setBlockState(blockPos, blockState);
+                    this.getWorld().emitGameEvent(GameEvent.BLOCK_PLACE, blockPos, GameEvent.Emitter.of(this, blockState));
                 }
             }
 
@@ -127,7 +127,7 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob {
 
     public void attack(LivingEntity target, float distanceFactor) {
         this.setShootingTicks();
-        MelonSeedProjectileEntity melonSeedEntity = new MelonSeedProjectileEntity(this.world, this);
+        MelonSeedProjectileEntity melonSeedEntity = new MelonSeedProjectileEntity(this.getWorld(), this);
         double d0 = target.getEyeY() - 1.1D;
         double d1 = target.getX() - this.getX();
         double d2 = d0 - melonSeedEntity.getY();
@@ -135,7 +135,7 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob {
         double f = Math.sqrt(d1 * d1 + d3 * d3) * 0.2D;
         melonSeedEntity.setVelocity(d1, d2 + f, d3, 1.6F, 12.0F);
         this.playSound(SoundEventsInit.MELON_GOLEM_ATTACK.get(), 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
-        this.world.spawnEntity(melonSeedEntity);
+        this.getWorld().spawnEntity(melonSeedEntity);
     }
 
     @Override

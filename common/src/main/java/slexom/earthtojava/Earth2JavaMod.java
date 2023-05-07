@@ -4,15 +4,18 @@ import com.google.common.base.Suppliers;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.Registrar;
 import dev.architectury.registry.registries.RegistrarManager;
+import dev.architectury.registry.registries.RegistrySupplier;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.minecraft.block.Block;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,10 +35,18 @@ public class Earth2JavaMod {
     public static final Registrar<EntityType<?>> ENTITY_TYPE_REGISTRAR = REGISTRIES.get().get(RegistryKeys.ENTITY_TYPE);
     public static final Registrar<Item> ITEM_REGISTRAR = REGISTRIES.get().get(RegistryKeys.ITEM);
     public static final Registrar<SoundEvent> SOUND_EVENT_REGISTRAR = REGISTRIES.get().get(RegistryKeys.SOUND_EVENT);
+    public static final Registrar<ItemGroup> TABS = REGISTRIES.get().get(RegistryKeys.ITEM_GROUP);
 
     public static final Identifier ITEM_GROUP_IDENTIFIER = new Identifier(MOD_ID, "group");
 
-    public static final CreativeTabRegistry.TabSupplier CREATIVE_TAB_SUPPLIER = CreativeTabRegistry.create(ITEM_GROUP_IDENTIFIER, () -> new ItemStack(ItemInit.HORN.get()));
+
+    public static final RegistrySupplier<ItemGroup> CREATIVE_TAB_SUPPLIER = TABS.register(
+            ITEM_GROUP_IDENTIFIER, // Tab ID
+            () -> CreativeTabRegistry.create(
+                    Text.translatable("itemGroup.earthtojavamobs.group"), // Tab Name
+                    () -> new ItemStack(ItemInit.HORN.get()) // Icon
+            )
+    );
 
     private static final Logger LOGGER = LogManager.getLogger("Earth2Java");
 

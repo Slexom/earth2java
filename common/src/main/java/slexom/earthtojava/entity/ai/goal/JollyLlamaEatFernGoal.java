@@ -22,7 +22,7 @@ public class JollyLlamaEatFernGoal extends Goal {
 
     public JollyLlamaEatFernGoal(MobEntity mob) {
         this.mob = mob;
-        this.world = mob.world;
+        this.world = mob.getWorld();
         this.setControls(EnumSet.of(Control.MOVE, Control.LOOK, Control.JUMP));
     }
 

@@ -25,9 +25,8 @@ import slexom.earthtojava.init.SoundEventsInit;
 
 public class FurnaceGolemEntity extends IronGolemEntity {
     public static final TrackedData<Boolean> IS_ANGRY = DataTracker.registerData(FurnaceGolemEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
-    private int attackTimer;
-
     public final BlinkManager blinkManager;
+    private int attackTimer;
 
     public FurnaceGolemEntity(EntityType<? extends IronGolemEntity> type, World worldIn) {
         super(type, worldIn);
@@ -53,7 +52,7 @@ public class FurnaceGolemEntity extends IronGolemEntity {
     @Override
     public boolean tryAttack(Entity target) {
         this.attackTimer = 10;
-        this.world.sendEntityStatus(this, EntityStatuses.PLAY_ATTACK_SOUND);
+        this.getWorld().sendEntityStatus(this, EntityStatuses.PLAY_ATTACK_SOUND);
         float attackDamage = (float) this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
         float f1 = attackDamage > 0.0F ? attackDamage / 2.0F + this.random.nextInt((int) attackDamage) : 0.0F;
         boolean flag = target.damage(target.getDamageSources().onFire(), f1);
@@ -76,9 +75,9 @@ public class FurnaceGolemEntity extends IronGolemEntity {
                 int z = MathHelper.floor(this.getZ());
                 BlockPos pos = new BlockPos(x, y, z);
                 BlockPos posRandom = pos.add(this.random.nextInt(3) - 1, 0, this.random.nextInt(3) - 1);
-                if (!this.world.isAir(posRandom) && this.world.isAir(posRandom.up())) {
+                if (!this.getWorld().isAir(posRandom) && this.getWorld().isAir(posRandom.up())) {
 
-                    this.world.setBlockState(posRandom.up(), Blocks.FIRE.getDefaultState(), Block.NOTIFY_ALL);
+                    this.getWorld().setBlockState(posRandom.up(), Blocks.FIRE.getDefaultState(), Block.NOTIFY_ALL);
                 }
             }
         }

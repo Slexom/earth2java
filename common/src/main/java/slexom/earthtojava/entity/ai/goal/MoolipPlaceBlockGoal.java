@@ -27,7 +27,7 @@ public class MoolipPlaceBlockGoal extends Goal {
     }
 
     public void tick() {
-        WorldAccess world = this.moolip.world;
+        WorldAccess world = this.moolip.getWorld();
         int i = MathHelper.floor(this.moolip.getX());
         int j = MathHelper.floor(this.moolip.getY());
         int k = MathHelper.floor(this.moolip.getZ());

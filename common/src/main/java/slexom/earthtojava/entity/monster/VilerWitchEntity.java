@@ -71,7 +71,7 @@ public class VilerWitchEntity extends WitchEntity {
         } else if (distance <= 3.0D && !target.hasStatusEffect(StatusEffects.WEAKNESS) && this.random.nextFloat() < 0.25F) {
             potion = Potions.WEAKNESS;
         }
-        PotionEntity potionEntity = new PotionEntity(this.world, this);
+        PotionEntity potionEntity = new PotionEntity(this.getWorld(), this);
         if (potion == Potions.HARMING || potion == Potions.POISON) {
             potionEntity.setItem(PotionUtil.setPotion(new ItemStack(Items.LINGERING_POTION), potion));
         } else {
@@ -80,9 +80,9 @@ public class VilerWitchEntity extends WitchEntity {
         potionEntity.setPitch(potionEntity.getPitch() - -20.0F);
         potionEntity.setVelocity(dX, dY + (distance * 0.2D), dZ, 0.75F, 8.0F);
         if (!this.isSilent()) {
-            this.world.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEventsInit.VILER_WITCH_CASTING.get(), this.getSoundCategory(), 1.0F, 0.8F + this.random.nextFloat() * 0.4F);
+            this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEventsInit.VILER_WITCH_CASTING.get(), this.getSoundCategory(), 1.0F, 0.8F + this.random.nextFloat() * 0.4F);
         }
-        this.world.spawnEntity(potionEntity);
+        this.getWorld().spawnEntity(potionEntity);
 
     }
 

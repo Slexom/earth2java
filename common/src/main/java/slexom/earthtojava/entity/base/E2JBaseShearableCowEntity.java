@@ -49,7 +49,7 @@ public class E2JBaseShearableCowEntity extends E2JBaseCowEntity implements Shear
     }
 
     public void tickMovement() {
-        if (this.world.isClient) {
+        if (this.getWorld().isClient) {
             this.eatGrassTimer = Math.max(0, this.eatGrassTimer - 1);
         }
         super.tickMovement();
@@ -92,7 +92,7 @@ public class E2JBaseShearableCowEntity extends E2JBaseCowEntity implements Shear
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemStack = player.getStackInHand(hand);
         if (itemStack.getItem() instanceof ShearsItem) {
-            if (!this.world.isClient && this.isShearable()) {
+            if (!this.getWorld().isClient && this.isShearable()) {
                 this.sheared(SoundCategory.PLAYERS);
                 itemStack.damage(1, (LivingEntity) player, playerEntity -> playerEntity.sendToolBreakStatus(hand));
                 return ActionResult.SUCCESS;
@@ -105,7 +105,7 @@ public class E2JBaseShearableCowEntity extends E2JBaseCowEntity implements Shear
     }
 
     public void sheared(SoundCategory shearedSoundCategory) {
-        this.world.playSoundFromEntity(null, this, SoundEvents.ENTITY_SHEEP_SHEAR, shearedSoundCategory, 1.0F, 1.0F);
+        this.getWorld().playSoundFromEntity(null, this, SoundEvents.ENTITY_SHEEP_SHEAR, shearedSoundCategory, 1.0F, 1.0F);
         this.setSheared(true);
         int i = 1 + this.random.nextInt(3);
         for (int j = 0; j < i; ++j) {

@@ -60,7 +60,7 @@ public class BoneSpiderEntity extends SpiderEntity implements RangedAttackMob {
 
     @Override
     public void attack(LivingEntity target, float distanceFactor) {
-        BoneShardEntity boneShard = new BoneShardEntity(this.world, this);
+        BoneShardEntity boneShard = new BoneShardEntity(this.getWorld(), this);
         double d0 = target.getEyeY() - 1.1D;
         double d1 = target.getX() - this.getX();
         double d2 = d0 - boneShard.getY();
@@ -68,7 +68,7 @@ public class BoneSpiderEntity extends SpiderEntity implements RangedAttackMob {
         double f = Math.sqrt(d1 * d1 + d3 * d3) * 0.2D;
         boneShard.setVelocity(d1, d2 + f, d3, 1.6F, 8.0F);
         this.playSound(SoundEventsInit.BONE_SPIDER_SPIT.get(), 1.0F, 1.2F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
-        this.world.spawnEntity(boneShard);
+        this.getWorld().spawnEntity(boneShard);
     }
 
     @Override

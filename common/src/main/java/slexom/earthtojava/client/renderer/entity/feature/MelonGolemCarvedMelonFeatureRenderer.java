@@ -66,7 +66,7 @@ public class MelonGolemCarvedMelonFeatureRenderer extends FeatureRenderer<MelonG
             matrixStack.translate(-0.5f, -0.5f, -0.5f);
             this.blockRenderManager.getModelRenderer().render(matrixStack.peek(), vertexConsumerProvider.getBuffer(RenderLayer.getOutline(SpriteAtlasTexture.BLOCK_ATLAS_TEXTURE)), blockState, bakedModel, 0.0f, 0.0f, 0.0f, light, n);
         } else {
-            this.itemRenderer.renderItem(entity, itemStack, ModelTransformationMode.HEAD, false, matrixStack, vertexConsumerProvider, entity.world, light, LivingEntityRenderer.getOverlay(entity, 0.0f), entity.getId());
+            this.itemRenderer.renderItem(entity, itemStack, ModelTransformationMode.HEAD, false, matrixStack, vertexConsumerProvider, entity.getWorld(), light, LivingEntityRenderer.getOverlay(entity, 0.0f), entity.getId());
         }
 
         matrixStack.pop();

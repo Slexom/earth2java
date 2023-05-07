@@ -23,7 +23,7 @@ public class MuddyPigMoveToTargetGoal extends MoveToTargetPosGoal {
     public boolean shouldContinue() {
         if (this.muddyPig.isInMuddyState()) return false;
         if (this.tryingTime > 600) return false;
-        return this.isTargetPos(this.muddyPig.world, this.targetPos.down());
+        return this.isTargetPos(this.muddyPig.getWorld(), this.targetPos.down());
     }
 
     public boolean shouldResetPath() {

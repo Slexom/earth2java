@@ -69,14 +69,14 @@ public class TropicalSlimeEntity extends HostileEntity implements Monster {
         ItemStack itemstack = player.getStackInHand(hand);
         if (itemstack.getItem() != Items.BUCKET) return super.interactMob(player, hand);
 
-        if (this.world.isClient) return super.interactMob(player, hand);
+        if (this.getWorld().isClient) return super.interactMob(player, hand);
 
         this.remove(RemovalReason.KILLED);
-        this.world.addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 0.0D, 0.0D, 0.0D);
+        this.getWorld().addParticle(ParticleTypes.EXPLOSION, this.getX(), this.getBodyY(0.5D), this.getZ(), 0.0D, 0.0D, 0.0D);
         player.playSound(SoundEvents.ENTITY_SLIME_SQUISH, 1.0F, 1.0F);
         spawnWater();
         giveTropicalFishBucket(player, itemstack);
-        return ActionResult.success(this.world.isClient);
+        return ActionResult.success(this.getWorld().isClient);
     }
 
     private void giveTropicalFishBucket(PlayerEntity player, ItemStack itemstack) {
@@ -92,8 +92,8 @@ public class TropicalSlimeEntity extends HostileEntity implements Monster {
         int z = MathHelper.floor(this.getZ());
         BlockPos blockPos = new BlockPos(x, y, z);
         BlockState waterState = Blocks.WATER.getDefaultState();
-        this.world.removeBlock(blockPos, false);
-        this.world.setBlockState(blockPos, waterState, 3);
+        this.getWorld().removeBlock(blockPos, false);
+        this.getWorld().setBlockState(blockPos, waterState, 3);
     }
 
     protected ParticleEffect getSquishParticle() {
@@ -106,7 +106,7 @@ public class TropicalSlimeEntity extends HostileEntity implements Monster {
         this.lastStretch = this.stretch;
         super.tick();
 
-        if (this.onGround && !this.onGroundLastTick) {
+        if (this.isOnGround() && !this.onGroundLastTick) {
             int i = this.size;
             if (spawnCustomParticles()) i = 0; // don't spawn particles if it's handled by the implementation itself
             for (int j = 0; j < i * 8; ++j) {
@@ -114,14 +114,14 @@ public class TropicalSlimeEntity extends HostileEntity implements Monster {
                 float f1 = this.random.nextFloat() * 0.5F + 0.5F;
                 float f2 = MathHelper.sin(f) * i * 0.5F * f1;
                 float f3 = MathHelper.cos(f) * i * 0.5F * f1;
-                this.world.addParticle(this.getSquishParticle(), this.getX() + f2, this.getY(), this.getZ() + f3, 0.0D, 0.0D, 0.0D);
+                this.getWorld().addParticle(this.getSquishParticle(), this.getX() + f2, this.getY(), this.getZ() + f3, 0.0D, 0.0D, 0.0D);
             }
             this.playSound(this.getSquishSound(), this.getSoundVolume(), ((this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F) / 0.8F);
             this.targetStretch = -0.5F;
-        } else if (!this.onGround && this.onGroundLastTick) {
+        } else if (!this.isOnGround() && this.onGroundLastTick) {
             this.targetStretch = 1.0F;
         }
-        this.onGroundLastTick = this.onGround;
+        this.onGroundLastTick = this.isOnGround();
         this.updateStretch();
     }
 

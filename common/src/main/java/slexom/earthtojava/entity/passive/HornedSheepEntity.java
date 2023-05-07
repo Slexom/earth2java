@@ -78,7 +78,7 @@ public class HornedSheepEntity extends E2JBaseSheepEntity implements Angerable, 
 
     public void readCustomDataFromNbt(NbtCompound compound) {
         super.readCustomDataFromNbt(compound);
-        this.readAngerFromNbt(this.world, compound);
+        this.readAngerFromNbt(this.getWorld(), compound);
     }
 
     public boolean tryAttack(Entity entityIn) {
@@ -121,7 +121,7 @@ public class HornedSheepEntity extends E2JBaseSheepEntity implements Angerable, 
 
     public void tickMovement() {
         super.tickMovement();
-        if (!this.world.isClient) {
+        if (!this.getWorld().isClient) {
             boolean flag = this.isAngry() && this.getTarget() != null && this.getTarget().squaredDistanceTo(this) < 4.0D;
             this.setNearTarget(flag);
         }
@@ -177,7 +177,7 @@ public class HornedSheepEntity extends E2JBaseSheepEntity implements Angerable, 
             return false;
         } else {
             Entity entity = source.getAttacker();
-            if (!this.world.isClient && entity instanceof PlayerEntity && !((PlayerEntity) entity).isCreative() && this.canSee(entity) && !this.isAiDisabled()) {
+            if (!this.getWorld().isClient && entity instanceof PlayerEntity && !((PlayerEntity) entity).isCreative() && this.canSee(entity) && !this.isAiDisabled()) {
                 this.setSheepAttacker(entity);
             }
             return super.damage(source, amount);

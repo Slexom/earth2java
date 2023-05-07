@@ -108,7 +108,7 @@ public class SkeletonWolfEntity extends HostileEntity implements Angerable {
     @Override
     public void readCustomDataFromNbt(NbtCompound compound) {
         super.readCustomDataFromNbt(compound);
-        this.readAngerFromNbt(this.world, compound);
+        this.readAngerFromNbt(this.getWorld(), compound);
     }
 
     @Environment(EnvType.CLIENT)
@@ -151,8 +151,8 @@ public class SkeletonWolfEntity extends HostileEntity implements Angerable {
         if (this.isAlive() && this.isAffectedByDaylight()) {
             this.setOnFireFor(8);
         }
-        if (!this.world.isClient) {
-            this.tickAngerLogic((ServerWorld) this.world, true);
+        if (!this.getWorld().isClient) {
+            this.tickAngerLogic((ServerWorld) this.getWorld(), true);
         }
     }
 
