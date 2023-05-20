@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:has_structure/village_snowy",
+    "#minecraft:is_taiga",
+    {
+      "id": "#c:taiga",
+      "required": false
+    }
+  ]
+}

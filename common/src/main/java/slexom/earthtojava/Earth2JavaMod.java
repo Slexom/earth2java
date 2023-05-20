@@ -40,6 +40,7 @@ public class Earth2JavaMod {
     private static final Logger LOGGER = LogManager.getLogger("Earth2Java");
 
     public static void initialize() {
+        ModTags.init();
         AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
         ModEvents.init();
         SoundEventsInit.init();

@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:is_forest",
+    "#minecraft:is_jungle",
+    "#minecraft:is_savanna",
+    "minecraft:plains",
+    {
+      "id": "#c:plains",
+      "required": false
+    },
+    {
+      "id": "#c:forest",
+      "required": false
+    },
+    {
+      "id": "#c:jungle",
+      "required": false
+    },
+    {
+      "id": "#c:savanna",
+      "required": false
+    }
+  ]
+}
