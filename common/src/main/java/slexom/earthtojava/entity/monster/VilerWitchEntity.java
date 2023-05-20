@@ -85,5 +85,5 @@ public class VilerWitchEntity extends WitchEntity {
             this.world.spawnEntity(potionEntity);
         }
     }
-
+    
 }

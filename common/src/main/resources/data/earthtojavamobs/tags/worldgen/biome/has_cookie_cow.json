@@ -1,0 +1,24 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:is_mountain",
+    "#minecraft:is_taiga",
+    "minecraft:plains",
+    {
+      "id": "#c:plains",
+      "required": false
+    },
+    {
+      "id": "#c:mountain",
+      "required": false
+    },
+    {
+      "id": "#c:taiga",
+      "required": false
+    },
+    {
+      "id": "#forge:is_mountain",
+      "required": false
+    }
+  ]
+}

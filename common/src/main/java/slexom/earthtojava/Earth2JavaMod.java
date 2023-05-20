@@ -14,16 +14,9 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.intprovider.ClampedIntProvider;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.RegistryEntry;
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.placementmodifier.BiomePlacementModifier;
-import net.minecraft.world.gen.placementmodifier.CountPlacementModifier;
-import net.minecraft.world.gen.placementmodifier.RarityFilterPlacementModifier;
-import net.minecraft.world.gen.placementmodifier.SquarePlacementModifier;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.PlacedFeature;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import slexom.earthtojava.config.ModConfig;
@@ -32,7 +25,6 @@ import slexom.earthtojava.init.*;
 import slexom.earthtojava.init.features.ConfiguredFeatureInit;
 import slexom.earthtojava.init.features.PlacedFeatureInit;
 
-import java.util.List;
 import java.util.function.Supplier;
 
 public class Earth2JavaMod {
@@ -55,6 +47,7 @@ public class Earth2JavaMod {
     private static final Logger LOGGER = LogManager.getLogger("Earth2Java");
 
     public static void initialize() {
+        ModTags.init();
         AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
         ModEvents.init();
         SoundEventsInit.init();
@@ -71,6 +64,7 @@ public class Earth2JavaMod {
     }
 
     public static void initializeForge() {
+        ModTags.init();
         AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
         ModEvents.init();
         SoundEventsInit.init();

@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:is_forest",
+    "minecraft:mangrove_swamp",
+    {
+      "id": "#c:swamp",
+      "required": false
+    },
+    {
+      "id": "#c:forest",
+      "required": false
+    },
+    {
+      "id": "#forge:is_swamp",
+      "required": false
+    }
+  ]
+}

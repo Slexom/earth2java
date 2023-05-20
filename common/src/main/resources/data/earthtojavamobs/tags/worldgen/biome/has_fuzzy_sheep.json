@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:is_hill",
+    {
+      "id": "#c:extreme_hills",
+      "required": false
+    }
+  ]
+}
