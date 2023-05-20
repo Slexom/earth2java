@@ -44,10 +44,6 @@ dependencies {
     //  common(project(path: ":fabric-like", configuration: "namedElements")) { transitive false }
     //  shadowCommon(project(path: ":fabric-like", configuration: "transformProductionQuilt")) { transitive false }
 
-    // Fabric ASM
-    modImplementation "com.github.Chocohead:Fabric-ASM:${rootProject.fabric_asm_version}"
-    include "com.github.Chocohead:Fabric-ASM:${rootProject.fabric_asm_version}"
-
     modApi("me.shedaniel.cloth:cloth-config-fabric:${rootProject.cloth_config_version}")
 }
 
