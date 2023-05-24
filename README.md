@@ -1,11 +1,12 @@
 ## Earth2Java
 
-![Version 1.9.5](https://img.shields.io/badge/Version-1.9.5-brightgreen)
+![Version 1.10.0](https://img.shields.io/badge/Version-1.10.0-brightgreen)
 ![MC 1.19.4](https://img.shields.io/badge/MC-1.19.4-blue)
-
 ![License MIT](https://img.shields.io/badge/License-MIT-blue)
 
-[![CurseForge Downloads](https://img.shields.io/badge/CurseForge-2.3M%20Downloads-f16436?logo=curseforge)](https://www.curseforge.com/minecraft/mc-mods/earth2java-fabric)
+[![Available for](https://cf.way2muchnoise.eu/versions/earth2java.svg)](https://www.curseforge.com/minecraft/mc-mods/earth2java-fabric)
+
+[![CurseForge Downloads](https://cf.way2muchnoise.eu/short_earth2java_Downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/earth2java-fabric)
 [![Modrinth Downloads](https://img.shields.io/badge/dynamic/json?color=1bd96a&label=Modrinth&query=downloads&suffix=%20Downloads&url=https://api.modrinth.com/v2/project/D2Q91keW)](https://modrinth.com/mod/earth2java)
 
 ### Description
