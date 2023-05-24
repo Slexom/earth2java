@@ -2,19 +2,8 @@
   "replace": false,
   "values": [
     "minecraft:dark_forest",
-    "minecraft:lush_caves",
-    "minecraft:dripstone_caves",
-    "minecraft:deep_dark",
     {
-      "id": "#c:caves",
-      "required": false
-    },
-    {
-      "id": "#c:underground",
-      "required": false
-    },
-    {
-      "id": "#forge:is_cave",
+      "id": "#forge:is_pooky",
       "required": false
     }
   ]
