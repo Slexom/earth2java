@@ -12,7 +12,6 @@ import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.model.CowEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
-
 import net.minecraft.util.math.RotationAxis;
 import slexom.earthtojava.entity.passive.MoolipEntity;
 import slexom.earthtojava.init.BlockInit;

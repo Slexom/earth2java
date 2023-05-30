@@ -142,7 +142,7 @@ public final class SoundEventsInit {
 
     public static RegistrySupplier<SoundEvent> registerSoundEvent(String registryName) {
         final Identifier identifier = Utils.modIdentifierOf(registryName);
-        return Earth2JavaMod.SOUND_EVENT_REGISTRAR.register(identifier, () ->   SoundEvent.of(identifier));
+        return Earth2JavaMod.SOUND_EVENT_REGISTRAR.register(identifier, () -> SoundEvent.of(identifier));
     }
 
     private static String getEntitySoundEventName(String registryName, String type) {

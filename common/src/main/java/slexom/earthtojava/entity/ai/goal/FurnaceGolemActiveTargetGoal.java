@@ -2,10 +2,10 @@ package slexom.earthtojava.entity.ai.goal;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.ActiveTargetGoal;
+import org.jetbrains.annotations.Nullable;
 import slexom.earthtojava.entity.passive.FurnaceGolemEntity;
 import slexom.earthtojava.init.SoundEventsInit;
 
-import org.jetbrains.annotations.Nullable;
 import java.util.function.Predicate;
 
 public final class FurnaceGolemActiveTargetGoal extends ActiveTargetGoal<LivingEntity> {

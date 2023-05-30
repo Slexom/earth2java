@@ -27,7 +27,7 @@ public class CluckshroomMushroomFeatureRenderer<T extends CluckshroomEntity> ext
             BlockState blockstate = Blocks.RED_MUSHROOM.getDefaultState();
             int i = LivingEntityRenderer.getOverlay(entity, 0.0F);
             matrixStack.push();
-            matrixStack.translate((double) -0.1F, (double) 0.6F, 0.05D);
+            matrixStack.translate(-0.1F, 0.6F, 0.05D);
             matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-48.0F));
             matrixStack.scale(-0.5F, -0.5F, 0.5F);
             matrixStack.translate(-0.5D, -0.5D, -0.5D);

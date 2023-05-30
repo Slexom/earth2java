@@ -9,7 +9,6 @@ import net.minecraft.client.render.item.HeldItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-
 import net.minecraft.util.math.RotationAxis;
 import slexom.earthtojava.client.renderer.entity.model.VilerWitchModel;
 import slexom.earthtojava.entity.monster.VilerWitchEntity;

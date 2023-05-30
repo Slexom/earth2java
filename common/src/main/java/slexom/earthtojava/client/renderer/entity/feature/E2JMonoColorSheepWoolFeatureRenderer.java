@@ -10,7 +10,6 @@ import net.minecraft.client.render.entity.model.EntityModelLoader;
 import net.minecraft.client.render.entity.model.SheepEntityModel;
 import net.minecraft.client.render.entity.model.SheepWoolEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.util.Identifier;
 import slexom.earthtojava.entity.base.E2JBaseMonoColorSheepEntity;
 

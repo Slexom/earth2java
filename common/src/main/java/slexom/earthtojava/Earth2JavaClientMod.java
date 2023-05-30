@@ -3,7 +3,6 @@ package slexom.earthtojava;
 import slexom.earthtojava.init.EntityModelLayersInit;
 import slexom.earthtojava.init.renderer.BlockRendererInit;
 import slexom.earthtojava.init.renderer.EntityRendererInit;
-import slexom.earthtojava.init.renderer.RendererInit;
 
 public class Earth2JavaClientMod {
 

@@ -7,9 +7,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 import slexom.earthtojava.utils.Utils;
 
-import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class E2JItem extends Item {

@@ -1,6 +1,5 @@
 package slexom.earthtojava.client.renderer.block.entity;
 
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;

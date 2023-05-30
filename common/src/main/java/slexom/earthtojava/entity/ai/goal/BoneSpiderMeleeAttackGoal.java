@@ -24,6 +24,6 @@ public class BoneSpiderMeleeAttackGoal extends MeleeAttackGoal {
     }
 
     protected double getSquaredMaxAttackDistance(LivingEntity entity) {
-        return (double) (4.0F + entity.getWidth());
+        return 4.0F + entity.getWidth();
     }
 }

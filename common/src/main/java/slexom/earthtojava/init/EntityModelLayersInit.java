@@ -57,7 +57,7 @@ public final class EntityModelLayersInit {
 
     public static EntityModelLayer registerEntityModelLayer(String registryName, TexturedModelData modelPart) {
         EntityModelLayer entityModelLayer = new EntityModelLayer(new Identifier(Earth2JavaMod.MOD_ID, registryName), "main");
-        E2J_MODEL_LAYERS.put(entityModelLayer, ()-> modelPart);
+        E2J_MODEL_LAYERS.put(entityModelLayer, () -> modelPart);
         EntityModelLayerRegistry.register(entityModelLayer, () -> modelPart);
         return entityModelLayer;
     }
