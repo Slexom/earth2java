@@ -6,8 +6,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.mob.HostileEntity;
-import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.mob.WaterCreatureEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.world.biome.SpawnSettings;
 import slexom.earthtojava.init.ModTags;
@@ -79,16 +77,9 @@ public final class BiomeSpawnHelper {
 		addEntityToBiomes(entity, predicate, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.CREATURE);
 	}
 
-	public static <T extends WaterCreatureEntity> void setWaterCreatureSpawnBiomes(RegistrySupplier<EntityType<T>> entity, Predicate<BiomeModifications.BiomeContext> predicate, int weight, int minGroupCountIn, int maxGroupCountIn) {
-		addEntityToBiomes(entity, predicate, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.WATER_CREATURE);
-	}
-
 	public static <T extends HostileEntity> void setMonsterSpawnBiomes(RegistrySupplier<EntityType<T>> entity, Predicate<BiomeModifications.BiomeContext> predicate, int weight, int minGroupCountIn, int maxGroupCountIn) {
 		addEntityToBiomes(entity, predicate, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.MONSTER);
 	}
 
-	public static <T extends MobEntity> void setMobSpawnBiomes(RegistrySupplier<EntityType<T>> entity, Predicate<BiomeModifications.BiomeContext> predicate, int weight, int minGroupCountIn, int maxGroupCountIn) {
-		addEntityToBiomes(entity, predicate, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.MISC);
-	}
 
 }

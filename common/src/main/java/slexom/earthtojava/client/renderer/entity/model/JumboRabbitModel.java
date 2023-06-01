@@ -6,6 +6,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModel;
+import net.minecraft.client.render.entity.model.EntityModelPartNames;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.MathHelper;
 import slexom.earthtojava.entity.passive.JumboRabbitEntity;
@@ -13,6 +14,8 @@ import slexom.earthtojava.entity.passive.JumboRabbitEntity;
 @Environment(EnvType.CLIENT)
 public class JumboRabbitModel<T extends JumboRabbitEntity> extends EntityModel<T> {
 
+	private static final String LEFT_HAUNCH = "left_haunch";
+	private static final String RIGHT_HAUNCH = "right_haunch";
 	private final ModelPart leftHindLeg;
 	private final ModelPart rightHindLeg;
 	private final ModelPart leftHaunch;
@@ -28,18 +31,18 @@ public class JumboRabbitModel<T extends JumboRabbitEntity> extends EntityModel<T
 	private float jumpProgress;
 
 	public JumboRabbitModel(ModelPart root) {
-		leftHindLeg = root.getChild("left_hind_foot");
-		rightHindLeg = root.getChild("right_hind_foot");
-		leftHaunch = root.getChild("left_haunch");
-		rightHaunch = root.getChild("right_haunch");
-		body = root.getChild("body");
-		leftFrontLeg = root.getChild("left_front_leg");
-		rightFrontLeg = root.getChild("right_front_leg");
-		head = root.getChild("head");
-		rightEar = root.getChild("right_ear");
-		leftEar = root.getChild("left_ear");
-		tail = root.getChild("tail");
-		nose = root.getChild("nose");
+		leftHindLeg = root.getChild(EntityModelPartNames.LEFT_HIND_FOOT);
+		rightHindLeg = root.getChild(EntityModelPartNames.RIGHT_HIND_FOOT);
+		leftHaunch = root.getChild(LEFT_HAUNCH);
+		rightHaunch = root.getChild(RIGHT_HAUNCH);
+		body = root.getChild(EntityModelPartNames.BODY);
+		leftFrontLeg = root.getChild(EntityModelPartNames.LEFT_FRONT_LEG);
+		rightFrontLeg = root.getChild(EntityModelPartNames.RIGHT_FRONT_LEG);
+		head = root.getChild(EntityModelPartNames.HEAD);
+		rightEar = root.getChild(EntityModelPartNames.RIGHT_EAR);
+		leftEar = root.getChild(EntityModelPartNames.LEFT_EAR);
+		tail = root.getChild(EntityModelPartNames.TAIL);
+		nose = root.getChild(EntityModelPartNames.NOSE);
 	}
 
 	public static TexturedModelData getTexturedModelData() {
@@ -51,18 +54,18 @@ public class JumboRabbitModel<T extends JumboRabbitEntity> extends EntityModel<T
 		float headZ = -5.0F;
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
-		modelPartData.addChild("left_hind_foot", ModelPartBuilder.create().uv(24, 47).cuboid(0.0F, 5.5F, -2.7F, 3.0F, 2.0F, 9.0F).mirrored(), ModelTransform.pivot(3.0F, 17.5F, 3.7F));
-		modelPartData.addChild("right_hind_foot", ModelPartBuilder.create().uv(0, 47).cuboid(-2.0F, 5.5F, -2.7F, 3.0F, 2.0F, 9.0F), ModelTransform.pivot(-3.0F, 17.5F, 3.7F));
-		modelPartData.addChild("left_haunch", ModelPartBuilder.create().uv(42, 14).cuboid(0.0F, -4.0F, 0.0F, 3.0F, 7.0F, 8.0F).mirrored(), ModelTransform.of(3.0F, 17.5F, 3.7F, -0.34906584F, 0.0F, 0.0F));
-		modelPartData.addChild("right_haunch", ModelPartBuilder.create().uv(42, 29).cuboid(-2.0F, -4.0F, 0.0F, 3.0F, 7.0F, 8.0F), ModelTransform.of(-3.0F, 17.5F, 3.7F, -0.34906584F, 0.0F, 0.0F));
-		modelPartData.addChild("body", ModelPartBuilder.create().uv(0, 0).cuboid(bodyX, bodyY, bodyZ, 8.0F, 8.0F, 14.0F), ModelTransform.of(0.0F, 19.0F, 8.0F, -0.34906584F, 0.0F, 0.0F));
-		modelPartData.addChild("left_front_leg", ModelPartBuilder.create().uv(8, 33).cuboid(0.0F, -3.0F, -2.7F, 2.0F, 11.0F, 3.0F), ModelTransform.of(3.0F, 17.0F, -1.0F, -0.17453292F, 0.0F, 0.0F));
-		modelPartData.addChild("right_front_leg", ModelPartBuilder.create().uv(0, 33).cuboid(-1.0F, -3.0F, -2.7F, 2.0F, 11.0F, 3.0F), ModelTransform.of(-3.0F, 17.0F, -1.0F, -0.17453292F, 0.0F, 0.0F));
-		modelPartData.addChild("head", ModelPartBuilder.create().uv(0, 22).cuboid(headX, headY, headZ, 5.0F, 5.0F, 6.0F), ModelTransform.pivot(0.0F, 16.0F, -1.0F));
-		modelPartData.addChild("right_ear", ModelPartBuilder.create().uv(48, 0).cuboid(headX - 1.0F, headY - 12.0F, headZ + 4.0F, 3.0F, 10.0F, 1.0F).uv(48, 11).cuboid(headX, headY - 2.0F, headZ + 4.0F, 2.0F, 2.0F, 1.0F), ModelTransform.of(0.0F, 16.0F, -1.0F, 0.0F, -0.2617994F, 0.0F));
-		modelPartData.addChild("left_ear", ModelPartBuilder.create().uv(56, 0).cuboid(headX + 3.0F, headY - 12.0F, headZ + 4.0F, 3.0F, 10.0F, 1.0F).uv(54, 11).cuboid(headX + 3, headY - 2.0F, headZ + 4.0F, 2.0F, 2.0F, 1.0F), ModelTransform.of(0.0F, 16.0F, -1.0F, 0.0F, 0.2617994F, 0.0F));
-		modelPartData.addChild("tail", ModelPartBuilder.create().uv(22, 22).cuboid(bodyX + 2.5F, bodyY + 1.0F, bodyZ + 14.0F, 3.0F, 3.0F, 2.0F), ModelTransform.of(0.0F, 20.0F, 7.0F, -0.3490659F, 0.0F, 0.0F));
-		modelPartData.addChild("nose", ModelPartBuilder.create().uv(22, 27).cuboid(headX + 2.0F, headY + 2.0F, headZ - 1.0F, 1.0F, 1.0F, 1.0F), ModelTransform.pivot(0.0F, 16.0F, -1.0F));
+		modelPartData.addChild(EntityModelPartNames.LEFT_HIND_FOOT, ModelPartBuilder.create().uv(24, 47).cuboid(0.0F, 5.5F, -2.7F, 3.0F, 2.0F, 9.0F).mirrored(), ModelTransform.pivot(3.0F, 17.5F, 3.7F));
+		modelPartData.addChild(EntityModelPartNames.LEFT_HIND_FOOT, ModelPartBuilder.create().uv(0, 47).cuboid(-2.0F, 5.5F, -2.7F, 3.0F, 2.0F, 9.0F), ModelTransform.pivot(-3.0F, 17.5F, 3.7F));
+		modelPartData.addChild(LEFT_HAUNCH, ModelPartBuilder.create().uv(42, 14).cuboid(0.0F, -4.0F, 0.0F, 3.0F, 7.0F, 8.0F).mirrored(), ModelTransform.of(3.0F, 17.5F, 3.7F, -0.34906584F, 0.0F, 0.0F));
+		modelPartData.addChild(RIGHT_HAUNCH, ModelPartBuilder.create().uv(42, 29).cuboid(-2.0F, -4.0F, 0.0F, 3.0F, 7.0F, 8.0F), ModelTransform.of(-3.0F, 17.5F, 3.7F, -0.34906584F, 0.0F, 0.0F));
+		modelPartData.addChild(EntityModelPartNames.BODY, ModelPartBuilder.create().uv(0, 0).cuboid(bodyX, bodyY, bodyZ, 8.0F, 8.0F, 14.0F), ModelTransform.of(0.0F, 19.0F, 8.0F, -0.34906584F, 0.0F, 0.0F));
+		modelPartData.addChild(EntityModelPartNames.LEFT_FRONT_LEG, ModelPartBuilder.create().uv(8, 33).cuboid(0.0F, -3.0F, -2.7F, 2.0F, 11.0F, 3.0F), ModelTransform.of(3.0F, 17.0F, -1.0F, -0.17453292F, 0.0F, 0.0F));
+		modelPartData.addChild(EntityModelPartNames.RIGHT_FRONT_LEG, ModelPartBuilder.create().uv(0, 33).cuboid(-1.0F, -3.0F, -2.7F, 2.0F, 11.0F, 3.0F), ModelTransform.of(-3.0F, 17.0F, -1.0F, -0.17453292F, 0.0F, 0.0F));
+		modelPartData.addChild(EntityModelPartNames.HEAD, ModelPartBuilder.create().uv(0, 22).cuboid(headX, headY, headZ, 5.0F, 5.0F, 6.0F), ModelTransform.pivot(0.0F, 16.0F, -1.0F));
+		modelPartData.addChild(EntityModelPartNames.RIGHT_EAR, ModelPartBuilder.create().uv(48, 0).cuboid(headX - 1.0F, headY - 12.0F, headZ + 4.0F, 3.0F, 10.0F, 1.0F).uv(48, 11).cuboid(headX, headY - 2.0F, headZ + 4.0F, 2.0F, 2.0F, 1.0F), ModelTransform.of(0.0F, 16.0F, -1.0F, 0.0F, -0.2617994F, 0.0F));
+		modelPartData.addChild(EntityModelPartNames.LEFT_EAR, ModelPartBuilder.create().uv(56, 0).cuboid(headX + 3.0F, headY - 12.0F, headZ + 4.0F, 3.0F, 10.0F, 1.0F).uv(54, 11).cuboid(headX + 3, headY - 2.0F, headZ + 4.0F, 2.0F, 2.0F, 1.0F), ModelTransform.of(0.0F, 16.0F, -1.0F, 0.0F, 0.2617994F, 0.0F));
+		modelPartData.addChild(EntityModelPartNames.TAIL, ModelPartBuilder.create().uv(22, 22).cuboid(bodyX + 2.5F, bodyY + 1.0F, bodyZ + 14.0F, 3.0F, 3.0F, 2.0F), ModelTransform.of(0.0F, 20.0F, 7.0F, -0.3490659F, 0.0F, 0.0F));
+		modelPartData.addChild(EntityModelPartNames.NOSE, ModelPartBuilder.create().uv(22, 27).cuboid(headX + 2.0F, headY + 2.0F, headZ - 1.0F, 1.0F, 1.0F, 1.0F), ModelTransform.pivot(0.0F, 16.0F, -1.0F));
 		return TexturedModelData.of(modelData, 64, 64);
 	}
 

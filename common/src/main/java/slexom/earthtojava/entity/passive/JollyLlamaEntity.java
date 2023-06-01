@@ -92,11 +92,6 @@ public class JollyLlamaEntity extends E2JBaseLlamaEntity {
 	}
 
 	@Override
-	public boolean canBeSaddled() {
-		return false;
-	}
-
-	@Override
 	public boolean canEquip(ItemStack stack) {
 		return false;
 	}

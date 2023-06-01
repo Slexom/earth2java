@@ -64,21 +64,6 @@ public class Earth2JavaMod {
 		LOGGER.info("[Earth2Java] Mod loaded! Enjoy :D");
 	}
 
-	public static void initializeForge() {
-		AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
-		ModEvents.init();
-		SoundEventsInit.init();
-		BlockInit.init();
-
-		BiomeInit.init();
-		EntityTypesInit.init();
-		EntityAttributeInit.init();
-		ItemInit.init();
-		BlockEntityTypeInit.init();
-		//  postRegister();
-		LOGGER.info("[Earth2Java] Mod loaded! Enjoy :D");
-	}
-
 	public static void onPostInit() {
 		BlockInit.onPostInit();
 		EntitySpawnInit.initSpawnRestriction();

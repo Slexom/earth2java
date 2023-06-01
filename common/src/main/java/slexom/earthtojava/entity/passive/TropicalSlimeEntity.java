@@ -187,10 +187,6 @@ public class TropicalSlimeEntity extends HostileEntity implements Monster {
 		return SoundEvents.ENTITY_SLIME_SQUISH;
 	}
 
-	public int getLookPitchSpeed() {
-		return 0;
-	}
-
 	public boolean makesJumpSound() {
 		return true;
 	}

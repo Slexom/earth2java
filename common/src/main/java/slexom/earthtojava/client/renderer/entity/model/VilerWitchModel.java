@@ -3,6 +3,7 @@ package slexom.earthtojava.client.renderer.entity.model;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
+import net.minecraft.client.render.entity.model.EntityModelPartNames;
 import net.minecraft.client.render.entity.model.VillagerResemblingModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
@@ -67,17 +68,17 @@ public class VilerWitchModel<T extends Entity> extends VillagerResemblingModel<T
 	public static TexturedModelData getTexturedModelData() {
 		ModelData modelData = VillagerResemblingModel.getModelData();
 		ModelPartData modelPartData = modelData.getRoot();
-		ModelPartData head = modelPartData.addChild("head", ModelPartBuilder.create().uv(0, 0).cuboid(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), ModelTransform.NONE);
-		ModelPartData hat = head.addChild("hat", ModelPartBuilder.create().uv(0, 64).cuboid(0.0F, 0.0F, 0.0F, 20.0F, 3.0F, 20.0F), ModelTransform.pivot(-10.0F, -11.03125F, -10.0F));
+		ModelPartData head = modelPartData.addChild(EntityModelPartNames.HEAD, ModelPartBuilder.create().uv(0, 0).cuboid(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), ModelTransform.NONE);
+		ModelPartData hat = head.addChild(EntityModelPartNames.HAT, ModelPartBuilder.create().uv(0, 64).cuboid(0.0F, 0.0F, 0.0F, 20.0F, 3.0F, 20.0F), ModelTransform.pivot(-10.0F, -11.03125F, -10.0F));
 		ModelPartData hat2 = hat.addChild("hat2", ModelPartBuilder.create().uv(0, 87).cuboid(0.0F, 0.0F, 0.0F, 7.0F, 4.0F, 7.0F), ModelTransform.of(6.75F, -4.0F, 7.0F, -0.05235988F, 0.0F, 0.02617994F));
 		ModelPartData hat3 = hat2.addChild("hat3", ModelPartBuilder.create().uv(0, 98).cuboid(0.0F, 0.0F, 0.0F, 4.0F, 4.0F, 4.0F), ModelTransform.of(1.75F, -4.0F, 2.0F, -0.10471976F, 0.0F, 0.05235988F));
 		hat3.addChild("hat4", ModelPartBuilder.create().uv(16, 103).cuboid(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F, new Dilation(0.25F)), ModelTransform.of(1.75F, -2.0F, 2.0F, -0.20943952F, 0.0F, 0.10471976F));
-		hat.addChild("hat_rim", ModelPartBuilder.create().uv(20, 103).cuboid(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), ModelTransform.NONE);
-		ModelPartData nose = head.getChild("nose");
+		hat.addChild(EntityModelPartNames.HAT_RIM, ModelPartBuilder.create().uv(20, 103).cuboid(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), ModelTransform.NONE);
+		ModelPartData nose = head.getChild(EntityModelPartNames.NOSE);
 		nose.addChild("mole", ModelPartBuilder.create().uv(0, 0).cuboid(0.0F, 3.0F, -6.75F, 1.0F, 1.0F, 1.0F, new Dilation(-0.25F)), ModelTransform.pivot(0.0F, -2.0F, 0.0F));
-		ModelPartData body = modelPartData.addChild("body", ModelPartBuilder.create().uv(16, 20).cuboid(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F), ModelTransform.NONE);
-		body.addChild("jacket", ModelPartBuilder.create().uv(0, 38).cuboid(-5.0F, 0.0F, -3.0F, 10.0F, 19.0F, 7.0F, new Dilation(0.5F)), ModelTransform.NONE);
-		modelPartData.addChild("arms", ModelPartBuilder.create()
+		ModelPartData body = modelPartData.addChild(EntityModelPartNames.BODY, ModelPartBuilder.create().uv(16, 20).cuboid(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F), ModelTransform.NONE);
+		body.addChild(EntityModelPartNames.JACKET, ModelPartBuilder.create().uv(0, 38).cuboid(-5.0F, 0.0F, -3.0F, 10.0F, 19.0F, 7.0F, new Dilation(0.5F)), ModelTransform.NONE);
+		modelPartData.addChild(EntityModelPartNames.ARMS, ModelPartBuilder.create()
 						.uv(44, 22).cuboid(-8.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F)
 						.uv(44, 22).cuboid(4.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F, true)
 						.uv(40, 38).cuboid(-4.0F, 2.0F, -2.0F, 8.0F, 4.0F, 4.0F)

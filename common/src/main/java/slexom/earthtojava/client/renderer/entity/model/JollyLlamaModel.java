@@ -6,6 +6,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModel;
+import net.minecraft.client.render.entity.model.EntityModelPartNames;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.math.MathHelper;
 import slexom.earthtojava.entity.passive.JollyLlamaEntity;
@@ -14,41 +15,41 @@ import slexom.earthtojava.entity.passive.JollyLlamaEntity;
 public class JollyLlamaModel extends EntityModel<JollyLlamaEntity> {
 	private final ModelPart head;
 	private final ModelPart body;
-	private final ModelPart backRightLeg;
-	private final ModelPart backLeftLeg;
-	private final ModelPart frontRightLeg;
-	private final ModelPart frontLeftLeg;
+	private final ModelPart rightHindLeg;
+	private final ModelPart leftHindLeg;
+	private final ModelPart rightFrontLeg;
+	private final ModelPart leftFrontLeg;
 	private float headPitchModifier;
 
 	public JollyLlamaModel(ModelPart root) {
-		head = root.getChild("head");
-		body = root.getChild("body");
-		backRightLeg = root.getChild("right_back_leg");
-		backLeftLeg = root.getChild("left_back_leg");
-		frontRightLeg = root.getChild("right_front_leg");
-		frontLeftLeg = root.getChild("left_front_leg");
+		head = root.getChild(EntityModelPartNames.HEAD);
+		body = root.getChild(EntityModelPartNames.BODY);
+		rightHindLeg = root.getChild(EntityModelPartNames.RIGHT_HIND_LEG);
+		leftHindLeg = root.getChild(EntityModelPartNames.LEFT_HIND_LEG);
+		rightFrontLeg = root.getChild(EntityModelPartNames.RIGHT_FRONT_LEG);
+		leftFrontLeg = root.getChild(EntityModelPartNames.LEFT_FRONT_LEG);
 	}
 
 	public static TexturedModelData getTexturedModelData(Dilation dilation) {
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
-		modelPartData.addChild("head", ModelPartBuilder.create().uv(0, 0).cuboid(-2.0F, -14.0F, -10.0F, 4.0F, 4.0F, 9.0F, dilation).uv(0, 14).cuboid("neck", -4.0F, -16.0F, -6.0F, 8.0F, 18.0F, 6.0F, dilation).uv(17, 0).cuboid("ear", -4.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, dilation).uv(17, 0).cuboid("ear", 1.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, dilation).uv(96, 16).cuboid("bells", -4.5F, -16.0F, -6.5F, 9.0F, 18.0F, 7.0F, dilation).uv(96, 0).cuboid("berries", -2.5F, -14.05F, -10.5F, 5.0F, 5.0F, 10.0F, dilation).uv(0, 47).cuboid("horn_left", 4.5F, -30.0F, -2.0F, 8.0F, 16.0F, 1.0F, dilation).uv(0, 47).mirrored().cuboid("horn_right", -12.5F, -30.0F, -2.0F, 8.0F, 16.0F, 1.0F, dilation), ModelTransform.pivot(0.0F, 7.0F, -6.0F));
-		modelPartData.addChild("body", ModelPartBuilder.create().uv(29, 0).cuboid(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F, dilation), ModelTransform.of(0.0F, 5.0F, 2.0F, 1.5707964F, 0.0F, 0.0F));
+		modelPartData.addChild(EntityModelPartNames.HEAD, ModelPartBuilder.create().uv(0, 0).cuboid(-2.0F, -14.0F, -10.0F, 4.0F, 4.0F, 9.0F, dilation).uv(0, 14).cuboid("neck", -4.0F, -16.0F, -6.0F, 8.0F, 18.0F, 6.0F, dilation).uv(17, 0).cuboid("ear", -4.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, dilation).uv(17, 0).cuboid("ear", 1.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, dilation).uv(96, 16).cuboid("bells", -4.5F, -16.0F, -6.5F, 9.0F, 18.0F, 7.0F, dilation).uv(96, 0).cuboid("berries", -2.5F, -14.05F, -10.5F, 5.0F, 5.0F, 10.0F, dilation).uv(0, 47).cuboid("horn_left", 4.5F, -30.0F, -2.0F, 8.0F, 16.0F, 1.0F, dilation).uv(0, 47).mirrored().cuboid("horn_right", -12.5F, -30.0F, -2.0F, 8.0F, 16.0F, 1.0F, dilation), ModelTransform.pivot(0.0F, 7.0F, -6.0F));
+		modelPartData.addChild(EntityModelPartNames.BODY, ModelPartBuilder.create().uv(29, 0).cuboid(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F, dilation), ModelTransform.of(0.0F, 5.0F, 2.0F, 1.5707964F, 0.0F, 0.0F));
 		ModelPartBuilder modelPartBuilder = ModelPartBuilder.create().uv(29, 29).cuboid(-2.0F, 0.0F, -2.0F, 4.0F, 14.0F, 4.0F, dilation);
-		modelPartData.addChild("right_back_leg", modelPartBuilder, ModelTransform.pivot(-3.5F, 10.0F, 6.0F));
-		modelPartData.addChild("left_back_leg", modelPartBuilder, ModelTransform.pivot(3.5F, 10.0F, 6.0F));
-		modelPartData.addChild("right_front_leg", modelPartBuilder, ModelTransform.pivot(-3.5F, 10.0F, -5.0F));
-		modelPartData.addChild("left_front_leg", modelPartBuilder, ModelTransform.pivot(3.5F, 10.0F, -5.0F));
+		modelPartData.addChild(EntityModelPartNames.RIGHT_HIND_LEG, modelPartBuilder, ModelTransform.pivot(-3.5F, 10.0F, 6.0F));
+		modelPartData.addChild(EntityModelPartNames.LEFT_HIND_LEG, modelPartBuilder, ModelTransform.pivot(3.5F, 10.0F, 6.0F));
+		modelPartData.addChild(EntityModelPartNames.RIGHT_FRONT_LEG, modelPartBuilder, ModelTransform.pivot(-3.5F, 10.0F, -5.0F));
+		modelPartData.addChild(EntityModelPartNames.LEFT_FRONT_LEG, modelPartBuilder, ModelTransform.pivot(3.5F, 10.0F, -5.0F));
 		return TexturedModelData.of(modelData, 128, 64);
 	}
 
 	public void setAngles(JollyLlamaEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
 		head.pitch = headPitch * ((float) Math.PI / 180F);
 		head.yaw = headYaw * ((float) Math.PI / 180F);
-		backRightLeg.pitch = MathHelper.cos(limbAngle * 0.6662F) * 1.4F * limbDistance;
-		backLeftLeg.pitch = MathHelper.cos(limbAngle * 0.6662F + (float) Math.PI) * 1.4F * limbDistance;
-		frontRightLeg.pitch = MathHelper.cos(limbAngle * 0.6662F + (float) Math.PI) * 1.4F * limbDistance;
-		frontLeftLeg.pitch = MathHelper.cos(limbAngle * 0.6662F) * 1.4F * limbDistance;
+		rightHindLeg.pitch = MathHelper.cos(limbAngle * 0.6662F) * 1.4F * limbDistance;
+		leftHindLeg.pitch = MathHelper.cos(limbAngle * 0.6662F + (float) Math.PI) * 1.4F * limbDistance;
+		rightFrontLeg.pitch = MathHelper.cos(limbAngle * 0.6662F + (float) Math.PI) * 1.4F * limbDistance;
+		leftFrontLeg.pitch = MathHelper.cos(limbAngle * 0.6662F) * 1.4F * limbDistance;
 	}
 
 	public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, float red, float green, float blue, float alpha) {
@@ -66,10 +67,10 @@ public class JollyLlamaModel extends EntityModel<JollyLlamaEntity> {
 			matrices.push();
 			matrices.scale(0.45454544F, 0.41322312F, 0.45454544F);
 			matrices.translate(0.0D, 2.0625D, 0.0D);
-			ImmutableList.of(backRightLeg, backLeftLeg, frontRightLeg, frontLeftLeg).forEach((modelPart) -> modelPart.render(matrices, vertices, light, overlay, red, green, blue, alpha));
+			ImmutableList.of(rightHindLeg, leftHindLeg, rightFrontLeg, leftFrontLeg).forEach((modelPart) -> modelPart.render(matrices, vertices, light, overlay, red, green, blue, alpha));
 			matrices.pop();
 		} else {
-			ImmutableList.of(head, body, backRightLeg, backLeftLeg, frontRightLeg, frontLeftLeg).forEach((modelPart) -> modelPart.render(matrices, vertices, light, overlay, red, green, blue, alpha));
+			ImmutableList.of(head, body, rightHindLeg, leftHindLeg, rightFrontLeg, leftFrontLeg).forEach((modelPart) -> modelPart.render(matrices, vertices, light, overlay, red, green, blue, alpha));
 		}
 	}
 

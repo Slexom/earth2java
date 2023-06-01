@@ -11,8 +11,7 @@
     "SpawnRestrictionAccessor"
   ],
   "client": [
-    "BuiltinModelItemRendererMixin",
-    "ClientPlayNetworkHandlerMixin"
+    "BuiltinModelItemRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
