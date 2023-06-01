@@ -7,22 +7,23 @@ import slexom.earthtojava.entity.passive.TropicalSlimeEntity;
 import java.util.EnumSet;
 
 public class TropicalSlimeFloatGoal extends Goal {
-    private final TropicalSlimeEntity slime;
+	private final TropicalSlimeEntity slime;
 
-    public TropicalSlimeFloatGoal(TropicalSlimeEntity slimeIn) {
-        this.slime = slimeIn;
-        this.setControls(EnumSet.of(Control.JUMP, Control.MOVE));
-        slime.getNavigation().setCanSwim(true);
-    }
+	public TropicalSlimeFloatGoal(TropicalSlimeEntity slime) {
+		this.slime = slime;
+		setControls(EnumSet.of(Control.JUMP, Control.MOVE));
+		this.slime.getNavigation().setCanSwim(true);
+	}
 
-    public boolean canStart() {
-        return (this.slime.isTouchingWater() || this.slime.isInLava()) && this.slime.getMoveControl() instanceof TropicalSlimeMoveControl;
-    }
+	public boolean canStart() {
+		return (slime.isTouchingWater() || slime.isInLava()) && slime.getMoveControl() instanceof TropicalSlimeMoveControl;
+	}
 
-    public void tick() {
-        if (this.slime.getRandom().nextFloat() < 0.8F) {
-            this.slime.getJumpControl().setActive();
-        }
-        ((TropicalSlimeMoveControl) this.slime.getMoveControl()).move(1.2D);
-    }
+	@Override
+	public void tick() {
+		if (slime.getRandom().nextFloat() < 0.8F) {
+			slime.getJumpControl().setActive();
+		}
+		((TropicalSlimeMoveControl) slime.getMoveControl()).move(1.2D);
+	}
 }

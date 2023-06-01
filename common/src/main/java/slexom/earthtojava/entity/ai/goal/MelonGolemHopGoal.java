@@ -7,18 +7,19 @@ import slexom.earthtojava.entity.passive.MelonGolemEntity;
 import java.util.EnumSet;
 
 public class MelonGolemHopGoal extends Goal {
-    private final MelonGolemEntity melonGolem;
+	private final MelonGolemEntity melonGolem;
 
-    public MelonGolemHopGoal(MelonGolemEntity entity) {
-        this.melonGolem = entity;
-        this.setControls(EnumSet.of(Control.JUMP, Control.MOVE));
-    }
+	public MelonGolemHopGoal(MelonGolemEntity entity) {
+		melonGolem = entity;
+		setControls(EnumSet.of(Control.JUMP, Control.MOVE));
+	}
 
-    public boolean canStart() {
-        return !this.melonGolem.hasVehicle();
-    }
+	public boolean canStart() {
+		return !melonGolem.hasVehicle();
+	}
 
-    public void tick() {
-        ((MelonGolemMoveControl) this.melonGolem.getMoveControl()).move(1.0D);
-    }
+	@Override
+	public void tick() {
+		((MelonGolemMoveControl) melonGolem.getMoveControl()).move(1.0D);
+	}
 }

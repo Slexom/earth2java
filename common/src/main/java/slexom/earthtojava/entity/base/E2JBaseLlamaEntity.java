@@ -9,23 +9,23 @@ import slexom.earthtojava.entity.BlinkManager;
 
 public class E2JBaseLlamaEntity extends LlamaEntity {
 
-    public final BlinkManager blinkManager;
+	public final BlinkManager blinkManager;
 
-    public E2JBaseLlamaEntity(EntityType<? extends LlamaEntity> type, World worldIn) {
-        super(type, worldIn);
-        blinkManager = new BlinkManager();
-        experiencePoints = 3;
-        setAiDisabled(false);
-    }
+	public E2JBaseLlamaEntity(EntityType<? extends LlamaEntity> type, World worldIn) {
+		super(type, worldIn);
+		blinkManager = new BlinkManager();
+		experiencePoints = 3;
+		setAiDisabled(false);
+	}
 
-    public static DefaultAttributeContainer.Builder createJollyLlamaAttributes() {
-        return createAbstractDonkeyAttributes().add(EntityAttributes.GENERIC_FOLLOW_RANGE, 40.0D);
-    }
+	public static DefaultAttributeContainer.Builder createJollyLlamaAttributes() {
+		return createAbstractDonkeyAttributes().add(EntityAttributes.GENERIC_FOLLOW_RANGE, 40.0D);
+	}
 
-    @Override
-    public void tickMovement() {
-        super.tickMovement();
-        blinkManager.tickBlink();
-    }
+	@Override
+	public void tickMovement() {
+		super.tickMovement();
+		blinkManager.tickBlink();
+	}
 
 }

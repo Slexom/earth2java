@@ -11,14 +11,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(CatEntityRenderer.class)
 public class CatEntityRendererMixin {
-    final Identifier PEANUT_BUTTER_TEXTURE = new Identifier("earthtojavamobs:textures/mobs/cat/peanut_butter/peanut_butter_jellie.png");
+	final Identifier PEANUT_BUTTER_TEXTURE = new Identifier("earthtojavamobs:textures/mobs/cat/peanut_butter/peanut_butter_jellie.png");
 
-    @Inject(at = @At("HEAD"), method = "getTexture", cancellable = true)
-    public void e2jGetTexture(CatEntity catEntity, CallbackInfoReturnable<Identifier> cir) {
-        String catName = Formatting.strip(catEntity.getName().getString());
-        if ("Peanut Butter".equals(catName)) {
-            cir.setReturnValue(PEANUT_BUTTER_TEXTURE);
-        }
-    }
+	@Inject(at = @At("HEAD"), method = "getTexture", cancellable = true)
+	public void e2jGetTexture(CatEntity catEntity, CallbackInfoReturnable<Identifier> cir) {
+		String catName = Formatting.strip(catEntity.getName().getString());
+		if ("Peanut Butter".equals(catName)) {
+			cir.setReturnValue(PEANUT_BUTTER_TEXTURE);
+		}
+	}
 
 }

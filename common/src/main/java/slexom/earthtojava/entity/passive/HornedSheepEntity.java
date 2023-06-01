@@ -32,184 +32,182 @@ import java.util.UUID;
 
 public class HornedSheepEntity extends E2JBaseSheepEntity implements Angerable, Shearable {
 
-    private static final TrackedData<Byte> DATA_FLAGS_ID = DataTracker.registerData(HornedSheepEntity.class, TrackedDataHandlerRegistry.BYTE);
-    private static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(HornedSheepEntity.class, TrackedDataHandlerRegistry.INTEGER);
-    private static final UniformIntProvider ANGER_TIME_RANGE = TimeHelper.betweenSeconds(20, 39);
-    private EatGrassGoal eatGrassGoal;
-    private UUID lastHurtBy;
+	private static final TrackedData<Byte> DATA_FLAGS_ID = DataTracker.registerData(HornedSheepEntity.class, TrackedDataHandlerRegistry.BYTE);
+	private static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(HornedSheepEntity.class, TrackedDataHandlerRegistry.INTEGER);
+	private static final UniformIntProvider ANGER_TIME_RANGE = TimeHelper.betweenSeconds(20, 39);
+	private EatGrassGoal eatGrassGoal;
+	private UUID lastHurtBy;
 
-    public HornedSheepEntity(EntityType<? extends HornedSheepEntity> type, World world) {
-        super(type, world);
-    }
+	public HornedSheepEntity(EntityType<? extends HornedSheepEntity> type, World world) {
+		super(type, world);
+	}
 
-    public static DefaultAttributeContainer.Builder createHornedSheepAttributes() {
-        return MobEntity.createMobAttributes()
-                .add(EntityAttributes.GENERIC_MAX_HEALTH, 8.0D)
-                .add(EntityAttributes.GENERIC_FOLLOW_RANGE, 48.0D)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.23D)
-                .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2.0D);
-    }
+	public static DefaultAttributeContainer.Builder createHornedSheepAttributes() {
+		return MobEntity.createMobAttributes()
+				.add(EntityAttributes.GENERIC_MAX_HEALTH, 8.0D)
+				.add(EntityAttributes.GENERIC_FOLLOW_RANGE, 48.0D)
+				.add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.23D)
+				.add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 2.0D);
+	}
 
-    protected void initDataTracker() {
-        super.initDataTracker();
-        this.dataTracker.startTracking(DATA_FLAGS_ID, (byte) 0);
-        this.dataTracker.startTracking(ANGER_TIME, 0);
-    }
+	protected void initDataTracker() {
+		super.initDataTracker();
+		dataTracker.startTracking(DATA_FLAGS_ID, (byte) 0);
+		dataTracker.startTracking(ANGER_TIME, 0);
+	}
 
-    protected void initGoals() {
-        this.eatGrassGoal = new EatGrassGoal(this);
-        this.goalSelector.add(0, new SwimGoal(this));
-        this.goalSelector.add(1, new AnimalMateGoal(this, 1.0D));
-        this.goalSelector.add(3, new TemptGoal(this, 1.1D, Ingredient.ofItems(Items.WHEAT), false));
-        this.goalSelector.add(4, new FollowParentGoal(this, 1.25D));
-        this.goalSelector.add(4, this.eatGrassGoal);
-        this.goalSelector.add(5, new HornedSheepMeleeAttackGoal(this, 1.4D, true));
-        this.goalSelector.add(6, new WanderAroundFarGoal(this, 1.0D));
-        this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
-        this.goalSelector.add(8, new LookAroundGoal(this));
-        this.targetSelector.add(1, (new HornedSheepRevengeGoal(this)).setGroupRevenge());
-        this.targetSelector.add(2, new HornedSheepActiveTargetGoal(this));
-    }
+	protected void initGoals() {
+		eatGrassGoal = new EatGrassGoal(this);
+		goalSelector.add(0, new SwimGoal(this));
+		goalSelector.add(1, new AnimalMateGoal(this, 1.0D));
+		goalSelector.add(3, new TemptGoal(this, 1.1D, Ingredient.ofItems(Items.WHEAT), false));
+		goalSelector.add(4, new FollowParentGoal(this, 1.25D));
+		goalSelector.add(4, eatGrassGoal);
+		goalSelector.add(5, new HornedSheepMeleeAttackGoal(this, 1.4D, true));
+		goalSelector.add(6, new WanderAroundFarGoal(this, 1.0D));
+		goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
+		goalSelector.add(8, new LookAroundGoal(this));
+		targetSelector.add(1, (new HornedSheepRevengeGoal(this)).setGroupRevenge());
+		targetSelector.add(2, new HornedSheepActiveTargetGoal(this));
+	}
 
-    public void writeCustomDataToNbt(NbtCompound compound) {
-        super.writeCustomDataToNbt(compound);
-        this.writeAngerToNbt(compound);
-    }
+	public void writeCustomDataToNbt(NbtCompound compound) {
+		super.writeCustomDataToNbt(compound);
+		writeAngerToNbt(compound);
+	}
 
-    public void readCustomDataFromNbt(NbtCompound compound) {
-        super.readCustomDataFromNbt(compound);
-        this.readAngerFromNbt(this.getWorld(), compound);
-    }
+	public void readCustomDataFromNbt(NbtCompound compound) {
+		super.readCustomDataFromNbt(compound);
+		readAngerFromNbt(getWorld(), compound);
+	}
 
-    public boolean tryAttack(Entity entityIn) {
-        boolean flag = entityIn.damage(entityIn.getDamageSources().mobAttack(this), (float) ((int) this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE)));
-        if (flag) {
-            this.applyDamageEffects(this, entityIn);
-        }
-        return flag;
-    }
+	public boolean tryAttack(Entity entityIn) {
+		boolean flag = entityIn.damage(entityIn.getDamageSources().mobAttack(this), (float) ((int) getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE)));
+		if (flag) {
+			applyDamageEffects(this, entityIn);
+		}
+		return flag;
+	}
 
-    public void setAttacker(@Nullable LivingEntity livingBase) {
-        super.setAttacker(livingBase);
-        if (livingBase != null) {
-            this.lastHurtBy = livingBase.getUuid();
-        }
-    }
+	public void setAttacker(@Nullable LivingEntity livingBase) {
+		super.setAttacker(livingBase);
+		if (livingBase != null) {
+			lastHurtBy = livingBase.getUuid();
+		}
+	}
 
-    protected void mobTick() {
-        if (this.isAngry()) {
-            int i = this.getAnger();
-            this.setAnger(i - 1);
-            LivingEntity livingentity = this.getTarget();
-            if (i == 0 && livingentity != null) {
-                this.setSheepAttacker(livingentity);
-            }
-        }
-    }
+	protected void mobTick() {
+		if (isAngry()) {
+			int i = getAnger();
+			setAnger(i - 1);
+			LivingEntity livingentity = getTarget();
+			if (i == 0 && livingentity != null) {
+				setSheepAttacker(livingentity);
+			}
+		}
+	}
 
-    public boolean isAngry() {
-        return this.getAnger() > 0;
-    }
+	public boolean isAngry() {
+		return getAnger() > 0;
+	}
 
-    private int getAnger() {
-        return this.dataTracker.get(ANGER_TIME);
-    }
+	private int getAnger() {
+		return dataTracker.get(ANGER_TIME);
+	}
 
-    private void setAnger(int angerTime) {
-        this.dataTracker.set(ANGER_TIME, angerTime);
-    }
+	private void setAnger(int angerTime) {
+		dataTracker.set(ANGER_TIME, angerTime);
+	}
 
-    public void tickMovement() {
-        super.tickMovement();
-        if (!this.getWorld().isClient) {
-            boolean flag = this.isAngry() && this.getTarget() != null && this.getTarget().squaredDistanceTo(this) < 4.0D;
-            this.setNearTarget(flag);
-        }
-    }
+	public void tickMovement() {
+		super.tickMovement();
+		if (!getWorld().isClient) {
+			boolean flag = isAngry() && getTarget() != null && getTarget().squaredDistanceTo(this) < 4.0D;
+			setNearTarget(flag);
+		}
+	}
 
-    private void setNearTarget(boolean p_226452_1_) {
-        this.setSheepFlag(p_226452_1_);
-    }
+	private void setNearTarget(boolean p_226452_1_) {
+		setSheepFlag(p_226452_1_);
+	}
 
-    private void setSheepFlag(boolean p_226404_2_) {
-        if (p_226404_2_) {
-            this.dataTracker.set(DATA_FLAGS_ID, (byte) (this.dataTracker.get(DATA_FLAGS_ID) | 2));
-        } else {
-            this.dataTracker.set(DATA_FLAGS_ID, (byte) (this.dataTracker.get(DATA_FLAGS_ID) & ~2));
-        }
-    }
+	private void setSheepFlag(boolean p_226404_2_) {
+		if (p_226404_2_) {
+			dataTracker.set(DATA_FLAGS_ID, (byte) (dataTracker.get(DATA_FLAGS_ID) | 2));
+		} else {
+			dataTracker.set(DATA_FLAGS_ID, (byte) (dataTracker.get(DATA_FLAGS_ID) & ~2));
+		}
+	}
 
-    public Identifier getLootTableId() {
-        if (this.isSheared()) {
-            return this.getType().getLootTableId();
-        } else {
-            return switch (this.getColor()) {
-                case WHITE -> new Identifier("earthtojavamobs", "entities/horned_sheep/white");
-                case ORANGE -> new Identifier("earthtojavamobs", "entities/horned_sheep/orange");
-                case MAGENTA -> new Identifier("earthtojavamobs", "entities/horned_sheep/magenta");
-                case LIGHT_BLUE -> new Identifier("earthtojavamobs", "entities/horned_sheep/light_blue");
-                case YELLOW -> new Identifier("earthtojavamobs", "entities/horned_sheep/yellow");
-                case LIME -> new Identifier("earthtojavamobs", "entities/horned_sheep/lime");
-                case PINK -> new Identifier("earthtojavamobs", "entities/horned_sheep/pink");
-                case GRAY -> new Identifier("earthtojavamobs", "entities/horned_sheep/gray");
-                case LIGHT_GRAY -> new Identifier("earthtojavamobs", "entities/horned_sheep/light_gray");
-                case CYAN -> new Identifier("earthtojavamobs", "entities/horned_sheep/cyan");
-                case PURPLE -> new Identifier("earthtojavamobs", "entities/horned_sheep/purple");
-                case BLUE -> new Identifier("earthtojavamobs", "entities/horned_sheep/blue");
-                case BROWN -> new Identifier("earthtojavamobs", "entities/horned_sheep/brown");
-                case GREEN -> new Identifier("earthtojavamobs", "entities/horned_sheep/green");
-                case RED -> new Identifier("earthtojavamobs", "entities/horned_sheep/red");
-                case BLACK -> new Identifier("earthtojavamobs", "entities/horned_sheep/black");
-            };
-        }
-    }
+	public Identifier getLootTableId() {
+		if (isSheared()) {
+			return getType().getLootTableId();
+		}
+		return switch (getColor()) {
+			case WHITE -> new Identifier("earthtojavamobs", "entities/horned_sheep/white");
+			case ORANGE -> new Identifier("earthtojavamobs", "entities/horned_sheep/orange");
+			case MAGENTA -> new Identifier("earthtojavamobs", "entities/horned_sheep/magenta");
+			case LIGHT_BLUE -> new Identifier("earthtojavamobs", "entities/horned_sheep/light_blue");
+			case YELLOW -> new Identifier("earthtojavamobs", "entities/horned_sheep/yellow");
+			case LIME -> new Identifier("earthtojavamobs", "entities/horned_sheep/lime");
+			case PINK -> new Identifier("earthtojavamobs", "entities/horned_sheep/pink");
+			case GRAY -> new Identifier("earthtojavamobs", "entities/horned_sheep/gray");
+			case LIGHT_GRAY -> new Identifier("earthtojavamobs", "entities/horned_sheep/light_gray");
+			case CYAN -> new Identifier("earthtojavamobs", "entities/horned_sheep/cyan");
+			case PURPLE -> new Identifier("earthtojavamobs", "entities/horned_sheep/purple");
+			case BLUE -> new Identifier("earthtojavamobs", "entities/horned_sheep/blue");
+			case BROWN -> new Identifier("earthtojavamobs", "entities/horned_sheep/brown");
+			case GREEN -> new Identifier("earthtojavamobs", "entities/horned_sheep/green");
+			case RED -> new Identifier("earthtojavamobs", "entities/horned_sheep/red");
+			case BLACK -> new Identifier("earthtojavamobs", "entities/horned_sheep/black");
+		};
+	}
 
-    public boolean setSheepAttacker(Entity attacker) {
-        this.setAnger(400 + this.random.nextInt(400));
-        if (attacker instanceof LivingEntity) {
-            this.setAttacker((LivingEntity) attacker);
-        }
-        return true;
-    }
+	public boolean setSheepAttacker(Entity attacker) {
+		setAnger(400 + random.nextInt(400));
+		if (attacker instanceof LivingEntity) {
+			setAttacker((LivingEntity) attacker);
+		}
+		return true;
+	}
 
-    public boolean damage(DamageSource source, float amount) {
-        if (this.isInvulnerableTo(source)) {
-            return false;
-        } else {
-            Entity entity = source.getAttacker();
-            if (!this.getWorld().isClient && entity instanceof PlayerEntity && !((PlayerEntity) entity).isCreative() && this.canSee(entity) && !this.isAiDisabled()) {
-                this.setSheepAttacker(entity);
-            }
-            return super.damage(source, amount);
-        }
-    }
+	public boolean damage(DamageSource source, float amount) {
+		if (isInvulnerableTo(source)) {
+			return false;
+		}
+		Entity entity = source.getAttacker();
+		if (!getWorld().isClient && entity instanceof PlayerEntity && !((PlayerEntity) entity).isCreative() && canSee(entity) && !isAiDisabled()) {
+			setSheepAttacker(entity);
+		}
+		return super.damage(source, amount);
+	}
 
 
-    @Override
-    public int getAngerTime() {
-        return this.dataTracker.get(ANGER_TIME);
-    }
+	@Override
+	public int getAngerTime() {
+		return dataTracker.get(ANGER_TIME);
+	}
 
-    @Override
-    public void setAngerTime(int ticks) {
-        this.dataTracker.set(ANGER_TIME, ticks);
-    }
+	@Override
+	public void setAngerTime(int ticks) {
+		dataTracker.set(ANGER_TIME, ticks);
+	}
 
-    @Nullable
-    @Override
-    public UUID getAngryAt() {
-        return this.lastHurtBy;
-    }
+	@Nullable
+	@Override
+	public UUID getAngryAt() {
+		return lastHurtBy;
+	}
 
-    @Override
-    public void setAngryAt(@Nullable UUID uuid) {
-        this.lastHurtBy = uuid;
-    }
+	@Override
+	public void setAngryAt(@Nullable UUID uuid) {
+		lastHurtBy = uuid;
+	}
 
-    @Override
-    public void chooseRandomAngerTime() {
-        this.setAngerTime(ANGER_TIME_RANGE.get(this.random));
-    }
+	@Override
+	public void chooseRandomAngerTime() {
+		setAngerTime(ANGER_TIME_RANGE.get(random));
+	}
 
 
 }

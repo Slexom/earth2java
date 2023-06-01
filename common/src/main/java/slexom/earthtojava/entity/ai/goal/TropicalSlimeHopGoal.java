@@ -7,19 +7,19 @@ import slexom.earthtojava.entity.passive.TropicalSlimeEntity;
 import java.util.EnumSet;
 
 public class TropicalSlimeHopGoal extends Goal {
-    private final TropicalSlimeEntity slime;
+	private final TropicalSlimeEntity slime;
 
-    public TropicalSlimeHopGoal(TropicalSlimeEntity slimeIn) {
-        this.slime = slimeIn;
-        this.setControls(EnumSet.of(Control.JUMP, Control.MOVE));
-    }
+	public TropicalSlimeHopGoal(TropicalSlimeEntity slime) {
+		this.slime = slime;
+		setControls(EnumSet.of(Control.JUMP, Control.MOVE));
+	}
 
-    public boolean canStart() {
-        return !this.slime.hasVehicle();
-    }
+	public boolean canStart() {
+		return !slime.hasVehicle();
+	}
 
-    @Override
-    public void tick() {
-        ((TropicalSlimeMoveControl) this.slime.getMoveControl()).move(1.0D);
-    }
+	@Override
+	public void tick() {
+		((TropicalSlimeMoveControl) slime.getMoveControl()).move(1.0D);
+	}
 }

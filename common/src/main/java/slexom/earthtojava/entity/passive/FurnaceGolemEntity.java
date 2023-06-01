@@ -24,81 +24,81 @@ import slexom.earthtojava.entity.ai.goal.TrackFurnaceGolemTargetGoal;
 import slexom.earthtojava.init.SoundEventsInit;
 
 public class FurnaceGolemEntity extends IronGolemEntity {
-    public static final TrackedData<Boolean> IS_ANGRY = DataTracker.registerData(FurnaceGolemEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
-    public final BlinkManager blinkManager;
-    private int attackTimer;
+	public static final TrackedData<Boolean> IS_ANGRY = DataTracker.registerData(FurnaceGolemEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+	public final BlinkManager blinkManager;
+	private int attackTimer;
 
-    public FurnaceGolemEntity(EntityType<? extends IronGolemEntity> type, World worldIn) {
-        super(type, worldIn);
-        blinkManager = new BlinkManager();
-        experiencePoints = 5;
-        setAiDisabled(false);
-    }
+	public FurnaceGolemEntity(EntityType<? extends IronGolemEntity> type, World worldIn) {
+		super(type, worldIn);
+		blinkManager = new BlinkManager();
+		experiencePoints = 5;
+		setAiDisabled(false);
+	}
 
-    @Override
-    protected void initGoals() {
-        this.goalSelector.add(1, new MeleeAttackGoal(this, 1.0D, true));
-        this.goalSelector.add(2, new WanderNearTargetGoal(this, 0.9D, 32.0F));
-        this.goalSelector.add(2, new WanderAroundPointOfInterestGoal(this, 0.6D, false));
-        this.goalSelector.add(4, new IronGolemWanderAroundGoal(this, 0.6D));
-        this.goalSelector.add(5, new IronGolemLookGoal(this));
-        this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
-        this.goalSelector.add(8, new LookAroundGoal(this));
-        this.targetSelector.add(1, new TrackFurnaceGolemTargetGoal(this));
-        this.targetSelector.add(2, new RevengeGoal(this));
-        this.targetSelector.add(3, new FurnaceGolemActiveTargetGoal(this, MobEntity.class, 5, false, false, entity -> entity instanceof Monster && !(entity instanceof CreeperEntity) && !(entity instanceof TropicalSlimeEntity)));
-    }
+	@Override
+	protected void initGoals() {
+		goalSelector.add(1, new MeleeAttackGoal(this, 1.0D, true));
+		goalSelector.add(2, new WanderNearTargetGoal(this, 0.9D, 32.0F));
+		goalSelector.add(2, new WanderAroundPointOfInterestGoal(this, 0.6D, false));
+		goalSelector.add(4, new IronGolemWanderAroundGoal(this, 0.6D));
+		goalSelector.add(5, new IronGolemLookGoal(this));
+		goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
+		goalSelector.add(8, new LookAroundGoal(this));
+		targetSelector.add(1, new TrackFurnaceGolemTargetGoal(this));
+		targetSelector.add(2, new RevengeGoal(this));
+		targetSelector.add(3, new FurnaceGolemActiveTargetGoal(this, MobEntity.class, 5, false, false, entity -> entity instanceof Monster && !(entity instanceof CreeperEntity) && !(entity instanceof TropicalSlimeEntity)));
+	}
 
-    @Override
-    public boolean tryAttack(Entity target) {
-        this.attackTimer = 10;
-        this.getWorld().sendEntityStatus(this, EntityStatuses.PLAY_ATTACK_SOUND);
-        float attackDamage = (float) this.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-        float f1 = attackDamage > 0.0F ? attackDamage / 2.0F + this.random.nextInt((int) attackDamage) : 0.0F;
-        boolean flag = target.damage(target.getDamageSources().onFire(), f1);
-        if (flag) {
-            target.setVelocity(target.getVelocity().add(0.0D, 0.4D, 0.0D));
-            this.applyDamageEffects(this, target);
-        }
-        this.playSound(SoundEventsInit.FURNACE_GOLEM_ATTACK.get(), 1.0F, 1.0F);
-        return flag;
-    }
+	@Override
+	public boolean tryAttack(Entity target) {
+		attackTimer = 10;
+		getWorld().sendEntityStatus(this, EntityStatuses.PLAY_ATTACK_SOUND);
+		float attackDamage = (float) getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
+		float f1 = attackDamage > 0.0F ? attackDamage / 2.0F + random.nextInt((int) attackDamage) : 0.0F;
+		boolean flag = target.damage(target.getDamageSources().onFire(), f1);
+		if (flag) {
+			target.setVelocity(target.getVelocity().add(0.0D, 0.4D, 0.0D));
+			applyDamageEffects(this, target);
+		}
+		playSound(SoundEventsInit.FURNACE_GOLEM_ATTACK.get(), 1.0F, 1.0F);
+		return flag;
+	}
 
-    @Override
-    public void tickMovement() {
-        super.tickMovement();
-        if (this.isAngry()) {
-            float rand = this.random.nextFloat();
-            if (rand > 0.80F && rand <= 0.83F) {
-                int x = MathHelper.floor(this.getX());
-                int y = MathHelper.floor(this.getY());
-                int z = MathHelper.floor(this.getZ());
-                BlockPos pos = new BlockPos(x, y, z);
-                BlockPos posRandom = pos.add(this.random.nextInt(3) - 1, 0, this.random.nextInt(3) - 1);
-                if (!this.getWorld().isAir(posRandom) && this.getWorld().isAir(posRandom.up())) {
+	@Override
+	public void tickMovement() {
+		super.tickMovement();
+		if (isAngry()) {
+			float rand = random.nextFloat();
+			if (rand > 0.80F && rand <= 0.83F) {
+				int x = MathHelper.floor(getX());
+				int y = MathHelper.floor(getY());
+				int z = MathHelper.floor(getZ());
+				BlockPos pos = new BlockPos(x, y, z);
+				BlockPos posRandom = pos.add(random.nextInt(3) - 1, 0, random.nextInt(3) - 1);
+				if (!getWorld().isAir(posRandom) && getWorld().isAir(posRandom.up())) {
 
-                    this.getWorld().setBlockState(posRandom.up(), Blocks.FIRE.getDefaultState(), Block.NOTIFY_ALL);
-                }
-            }
-        }
-        if (this.isInsideWaterOrBubbleColumn()) {
-            this.damage(this.getDamageSources().drown(), 5.0F);
-        }
-        blinkManager.tickBlink();
-    }
+					getWorld().setBlockState(posRandom.up(), Blocks.FIRE.getDefaultState(), Block.NOTIFY_ALL);
+				}
+			}
+		}
+		if (isInsideWaterOrBubbleColumn()) {
+			damage(getDamageSources().drown(), 5.0F);
+		}
+		blinkManager.tickBlink();
+	}
 
-    @Override
-    protected void initDataTracker() {
-        super.initDataTracker();
-        this.dataTracker.startTracking(IS_ANGRY, false);
-    }
+	@Override
+	protected void initDataTracker() {
+		super.initDataTracker();
+		dataTracker.startTracking(IS_ANGRY, false);
+	}
 
-    public boolean isAngry() {
-        return this.dataTracker.get(IS_ANGRY);
-    }
+	public boolean isAngry() {
+		return dataTracker.get(IS_ANGRY);
+	}
 
-    public void setAngry(boolean angry) {
-        this.dataTracker.set(IS_ANGRY, angry);
-    }
+	public void setAngry(boolean angry) {
+		dataTracker.set(IS_ANGRY, angry);
+	}
 
 }

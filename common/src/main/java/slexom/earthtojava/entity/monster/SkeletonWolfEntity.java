@@ -32,138 +32,137 @@ import java.util.UUID;
 
 public class SkeletonWolfEntity extends HostileEntity implements Angerable {
 
-    protected static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(SkeletonWolfEntity.class, TrackedDataHandlerRegistry.INTEGER);
-    private static final UniformIntProvider ANGER_TIME_RANGE = TimeHelper.betweenSeconds(20, 39);
+	protected static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(SkeletonWolfEntity.class, TrackedDataHandlerRegistry.INTEGER);
+	private static final UniformIntProvider ANGER_TIME_RANGE = TimeHelper.betweenSeconds(20, 39);
 
-    private float headRotationCourse;
-    private float headRotationCourseOld;
-    private UUID targetUuid;
+	private float headRotationCourse;
+	private float headRotationCourseOld;
+	private UUID targetUuid;
 
-    public SkeletonWolfEntity(EntityType<SkeletonWolfEntity> type, World world) {
-        super(type, world);
-        experiencePoints = 5;
-        setAiDisabled(false);
-    }
+	public SkeletonWolfEntity(EntityType<SkeletonWolfEntity> type, World world) {
+		super(type, world);
+		experiencePoints = 5;
+		setAiDisabled(false);
+	}
 
-    public static DefaultAttributeContainer.Builder createSkeletonWolfAttributes() {
-        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3D).add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.0D);
-    }
+	public static DefaultAttributeContainer.Builder createSkeletonWolfAttributes() {
+		return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3D).add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 4.0D);
+	}
 
-    @Override
-    protected void initGoals() {
-        this.goalSelector.add(2, new AvoidSunlightGoal(this));
-        this.goalSelector.add(3, new EscapeSunlightGoal(this, 1.0D));
-        this.goalSelector.add(3, new FleeEntityGoal<>(this, WolfEntity.class, 6.0F, 1.0D, 1.2D));
-        this.goalSelector.add(4, new MeleeAttackGoal(this, 1.2D, false));
-        this.goalSelector.add(5, new WanderAroundFarGoal(this, 1.0D));
-        this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-        this.goalSelector.add(6, new LookAroundGoal(this));
-        this.targetSelector.add(1, new RevengeGoal(this));
-        this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
-    }
+	@Override
+	protected void initGoals() {
+		goalSelector.add(2, new AvoidSunlightGoal(this));
+		goalSelector.add(3, new EscapeSunlightGoal(this, 1.0D));
+		goalSelector.add(3, new FleeEntityGoal<>(this, WolfEntity.class, 6.0F, 1.0D, 1.2D));
+		goalSelector.add(4, new MeleeAttackGoal(this, 1.2D, false));
+		goalSelector.add(5, new WanderAroundFarGoal(this, 1.0D));
+		goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
+		goalSelector.add(6, new LookAroundGoal(this));
+		targetSelector.add(1, new RevengeGoal(this));
+		targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
+	}
 
-    @Override
-    public EntityGroup getGroup() {
-        return EntityGroup.UNDEAD;
-    }
+	@Override
+	public EntityGroup getGroup() {
+		return EntityGroup.UNDEAD;
+	}
 
-    @Override
-    protected SoundEvent getAmbientSound() {
-        if (this.hasAngerTime()) {
-            return SoundEventsInit.SKELETON_WOLF_GROWL.get();
-        } else if (this.random.nextInt(3) == 0 && this.getHealth() < 10.0F) {
-            return SoundEventsInit.SKELETON_WOLF_WHINE.get();
-        } else {
-            return SoundEventsInit.SKELETON_WOLF_AMBIENT.get();
-        }
-    }
+	@Override
+	protected SoundEvent getAmbientSound() {
+		if (hasAngerTime()) {
+			return SoundEventsInit.SKELETON_WOLF_GROWL.get();
+		}
+		if (random.nextInt(3) == 0 && getHealth() < 10.0F) {
+			return SoundEventsInit.SKELETON_WOLF_WHINE.get();
+		}
+		return SoundEventsInit.SKELETON_WOLF_AMBIENT.get();
+	}
 
-    @Override
-    protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-        return SoundEventsInit.SKELETON_WOLF_HURT.get();
-    }
+	@Override
+	protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
+		return SoundEventsInit.SKELETON_WOLF_HURT.get();
+	}
 
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEventsInit.SKELETON_WOLF_DEATH.get();
-    }
+	@Override
+	protected SoundEvent getDeathSound() {
+		return SoundEventsInit.SKELETON_WOLF_DEATH.get();
+	}
 
-    @Override
-    protected void playStepSound(BlockPos pos, BlockState blockIn) {
-        this.playSound(SoundEventsInit.SKELETON_WOLF_STEP.get(), 0.35F, 1.0F);
-    }
+	@Override
+	protected void playStepSound(BlockPos pos, BlockState blockIn) {
+		playSound(SoundEventsInit.SKELETON_WOLF_STEP.get(), 0.35F, 1.0F);
+	}
 
-    @Override
-    protected void initDataTracker() {
-        super.initDataTracker();
-        this.dataTracker.startTracking(ANGER_TIME, 0);
-    }
+	@Override
+	protected void initDataTracker() {
+		super.initDataTracker();
+		dataTracker.startTracking(ANGER_TIME, 0);
+	}
 
-    @Override
-    public void writeCustomDataToNbt(NbtCompound compound) {
-        super.writeCustomDataToNbt(compound);
-        this.writeAngerToNbt(compound);
-    }
+	@Override
+	public void writeCustomDataToNbt(NbtCompound compound) {
+		super.writeCustomDataToNbt(compound);
+		writeAngerToNbt(compound);
+	}
 
-    @Override
-    public void readCustomDataFromNbt(NbtCompound compound) {
-        super.readCustomDataFromNbt(compound);
-        this.readAngerFromNbt(this.getWorld(), compound);
-    }
+	@Override
+	public void readCustomDataFromNbt(NbtCompound compound) {
+		super.readCustomDataFromNbt(compound);
+		readAngerFromNbt(getWorld(), compound);
+	}
 
-    @Environment(EnvType.CLIENT)
-    public float getTailAngle() {
-        if (this.isAngry()) {
-            return 1.5393804F;
-        } else {
-            return ((float) Math.PI / 5F);
-        }
-    }
+	@Environment(EnvType.CLIENT)
+	public float getTailAngle() {
+		if (isAngry()) {
+			return 1.5393804F;
+		}
+		return ((float) Math.PI / 5F);
+	}
 
-    public boolean isAngry() {
-        return this.getAngerTime() > 0;
-    }
+	public boolean isAngry() {
+		return getAngerTime() > 0;
+	}
 
-    public int getAngerTime() {
-        return this.dataTracker.get(ANGER_TIME);
-    }
+	public int getAngerTime() {
+		return dataTracker.get(ANGER_TIME);
+	}
 
-    public void setAngerTime(int ticks) {
-        this.dataTracker.set(ANGER_TIME, ticks);
-    }
+	public void setAngerTime(int ticks) {
+		dataTracker.set(ANGER_TIME, ticks);
+	}
 
-    public void chooseRandomAngerTime() {
-        this.setAngerTime(ANGER_TIME_RANGE.get(this.random));
-    }
+	public void chooseRandomAngerTime() {
+		setAngerTime(ANGER_TIME_RANGE.get(random));
+	}
 
-    @Nullable
-    public UUID getAngryAt() {
-        return this.targetUuid;
-    }
+	@Nullable
+	public UUID getAngryAt() {
+		return targetUuid;
+	}
 
-    public void setAngryAt(@Nullable UUID uuid) {
-        this.targetUuid = uuid;
-    }
+	public void setAngryAt(@Nullable UUID uuid) {
+		targetUuid = uuid;
+	}
 
-    @Override
-    public void tickMovement() {
-        super.tickMovement();
-        if (this.isAlive() && this.isAffectedByDaylight()) {
-            this.setOnFireFor(8);
-        }
-        if (!this.getWorld().isClient) {
-            this.tickAngerLogic((ServerWorld) this.getWorld(), true);
-        }
-    }
+	@Override
+	public void tickMovement() {
+		super.tickMovement();
+		if (isAlive() && isAffectedByDaylight()) {
+			setOnFireFor(8);
+		}
+		if (!getWorld().isClient) {
+			tickAngerLogic((ServerWorld) getWorld(), true);
+		}
+	}
 
-    @Override
-    public void tick() {
-        super.tick();
-        if (this.isAlive()) {
-            this.headRotationCourseOld = this.headRotationCourse;
-            this.headRotationCourse += (0.0F - this.headRotationCourse) * 0.4F;
-        }
-    }
+	@Override
+	public void tick() {
+		super.tick();
+		if (isAlive()) {
+			headRotationCourseOld = headRotationCourse;
+			headRotationCourse += (0.0F - headRotationCourse) * 0.4F;
+		}
+	}
 
 }
  

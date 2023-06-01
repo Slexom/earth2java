@@ -10,16 +10,16 @@ import slexom.earthtojava.init.SoundEventsInit;
 
 public class RainbowSheepEntity extends E2JBaseMonoColorSheepEntity {
 
-    public RainbowSheepEntity(EntityType<? extends RainbowSheepEntity> type, World world) {
-        super(type, world, new ItemStack(BlockInit.RAINBOW_WOOL.get()));
-    }
+	public RainbowSheepEntity(EntityType<? extends RainbowSheepEntity> type, World world) {
+		super(type, world, new ItemStack(BlockInit.RAINBOW_WOOL.get()));
+	}
 
-    protected SoundEvent getAmbientSound() {
-        return SoundEventsInit.RAINBOW_SHEEP_AMBIENT.get();
-    }
+	protected SoundEvent getAmbientSound() {
+		return SoundEventsInit.RAINBOW_SHEEP_AMBIENT.get();
+	}
 
-    protected SoundEvent getDeathSound() {
-        return SoundEventsInit.RAINBOW_SHEEP_DEATH.get();
-    }
+	protected SoundEvent getDeathSound() {
+		return SoundEventsInit.RAINBOW_SHEEP_DEATH.get();
+	}
 
 }

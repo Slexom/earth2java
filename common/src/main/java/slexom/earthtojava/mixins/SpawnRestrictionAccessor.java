@@ -9,8 +9,8 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 
 @Mixin(SpawnRestriction.class)
 public interface SpawnRestrictionAccessor {
-    @Invoker
-    static <T extends MobEntity> void callRegister(EntityType<T> type, SpawnRestriction.Location location, Heightmap.Type heightmap, SpawnRestriction.SpawnPredicate<T> spawnPredicate) {
-        throw new AssertionError("This should not occur!");
-    }
+	@Invoker
+	static <T extends MobEntity> void callRegister(EntityType<T> type, SpawnRestriction.Location location, Heightmap.Type heightmap, SpawnRestriction.SpawnPredicate<T> spawnPredicate) {
+		throw new AssertionError("This should not occur!");
+	}
 }

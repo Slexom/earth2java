@@ -7,11 +7,11 @@ import slexom.earthtojava.Earth2JavaClientMod;
 
 public class Earth2JavaClientModFabric implements ClientModInitializer {
 
-    @Override
-    @Environment(EnvType.CLIENT)
-    public void onInitializeClient() {
-        Earth2JavaClientMod.initializeClient();
-        Earth2JavaClientMod.onPostInit();
-    }
+	@Override
+	@Environment(EnvType.CLIENT)
+	public void onInitializeClient() {
+		Earth2JavaClientMod.initializeClient();
+		Earth2JavaClientMod.onPostInit();
+	}
 
 }

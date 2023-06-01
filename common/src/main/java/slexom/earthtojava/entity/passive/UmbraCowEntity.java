@@ -8,8 +8,8 @@ import slexom.earthtojava.entity.base.E2JBaseShearableCowEntity;
 
 public class UmbraCowEntity extends E2JBaseShearableCowEntity {
 
-    public UmbraCowEntity(EntityType<UmbraCowEntity> type, World world) {
-        super(type, world, new ItemStack(Blocks.BLACK_WOOL));
-    }
+	public UmbraCowEntity(EntityType<UmbraCowEntity> type, World world) {
+		super(type, world, new ItemStack(Blocks.BLACK_WOOL));
+	}
 
 }

@@ -20,29 +20,29 @@ import slexom.earthtojava.init.*;
 @Mod.EventBusSubscriber(modid = Earth2JavaMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class Earth2JavaModForge {
 
-    public Earth2JavaModForge() {
-        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        EventBuses.registerModEventBus(Earth2JavaMod.MOD_ID, eventBus);
-        AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
-        ModEvents.init();
-        SoundEventsInit.init();
-        BlockInit.init();
-        EntityTypesInit.init();
-        EntityAttributeInit.init();
-        ItemInit.init();
-        BlockEntityTypeInit.init();
+	public Earth2JavaModForge() {
+		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+		EventBuses.registerModEventBus(Earth2JavaMod.MOD_ID, eventBus);
+		AutoConfig.register(ModConfig.class, GsonConfigSerializer::new);
+		ModEvents.init();
+		SoundEventsInit.init();
+		BlockInit.init();
+		EntityTypesInit.init();
+		EntityAttributeInit.init();
+		ItemInit.init();
+		BlockEntityTypeInit.init();
 
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> eventBus.addListener(Earth2JavaModClientForge::clientInit));
+		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> eventBus.addListener(Earth2JavaModClientForge::clientInit));
 
-        eventBus.addListener(Earth2JavaModForge::setup);
-    }
+		eventBus.addListener(Earth2JavaModForge::setup);
+	}
 
-    private static void setup(final FMLCommonSetupEvent event) {
-        event.enqueueWork(() -> {
-            Earth2JavaMod.onPostInit();
-            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(BlockInit.BUTTERCUP.getId(), BlockInit.POTTED_BUTTERCUP);
-            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(BlockInit.PINK_DAISY.getId(), BlockInit.POTTED_PINK_DAISY);
-        });
-    }
+	private static void setup(final FMLCommonSetupEvent event) {
+		event.enqueueWork(() -> {
+			Earth2JavaMod.onPostInit();
+			((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(BlockInit.BUTTERCUP.getId(), BlockInit.POTTED_BUTTERCUP);
+			((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(BlockInit.PINK_DAISY.getId(), BlockInit.POTTED_PINK_DAISY);
+		});
+	}
 
 }

@@ -9,11 +9,11 @@ import slexom.earthtojava.entity.passive.CluckshroomEntity;
 @Environment(EnvType.CLIENT)
 public class CluckshroomModel<T extends CluckshroomEntity> extends ChickenEntityModel<T> {
 
-    public CluckshroomModel(ModelPart root) {
-        super(root);
-    }
+	public CluckshroomModel(ModelPart root) {
+		super(root);
+	}
 
-    public ModelPart getHead() {
-        return this.head;
-    }
+	public ModelPart getHead() {
+		return head;
+	}
 }

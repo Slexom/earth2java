@@ -9,45 +9,49 @@ import slexom.earthtojava.entity.passive.TropicalSlimeEntity;
 import java.util.EnumSet;
 
 public class TropicalSlimeAttackGoal extends Goal {
-    private final TropicalSlimeEntity slime;
-    private int growTieredTimer;
+	private final TropicalSlimeEntity slime;
+	private int growTieredTimer;
 
-    public TropicalSlimeAttackGoal(TropicalSlimeEntity slimeIn) {
-        this.slime = slimeIn;
-        this.setControls(EnumSet.of(Control.LOOK));
-    }
+	public TropicalSlimeAttackGoal(TropicalSlimeEntity slime) {
+		this.slime = slime;
+		setControls(EnumSet.of(Control.LOOK));
+	}
 
-    public boolean canStart() {
-        LivingEntity livingentity = this.slime.getTarget();
-        if (livingentity == null) {
-            return false;
-        } else if (!livingentity.isAlive()) {
-            return false;
-        } else {
-            return (!(livingentity instanceof PlayerEntity) || !((PlayerEntity) livingentity).getAbilities().invulnerable) && this.slime.getMoveControl() instanceof TropicalSlimeMoveControl;
-        }
-    }
+	public boolean canStart() {
+		LivingEntity livingentity = slime.getTarget();
+		if (livingentity == null) {
+			return false;
+		}
+		if (!livingentity.isAlive()) {
+			return false;
+		}
+		return (!(livingentity instanceof PlayerEntity) || !((PlayerEntity) livingentity).getAbilities().invulnerable) && slime.getMoveControl() instanceof TropicalSlimeMoveControl;
+	}
 
-    public void start() {
-        this.growTieredTimer = 300;
-        super.start();
-    }
+	@Override
+	public void start() {
+		growTieredTimer = 300;
+		super.start();
+	}
 
-    public boolean shouldContinue() {
-        LivingEntity livingentity = this.slime.getTarget();
-        if (livingentity == null) {
-            return false;
-        } else if (!livingentity.isAlive()) {
-            return false;
-        } else if (livingentity instanceof PlayerEntity && ((PlayerEntity) livingentity).getAbilities().invulnerable) {
-            return false;
-        } else {
-            return --this.growTieredTimer > 0;
-        }
-    }
+	@Override
+	public boolean shouldContinue() {
+		LivingEntity livingentity = slime.getTarget();
+		if (livingentity == null) {
+			return false;
+		}
+		if (!livingentity.isAlive()) {
+			return false;
+		}
+		if (livingentity instanceof PlayerEntity && ((PlayerEntity) livingentity).getAbilities().invulnerable) {
+			return false;
+		}
+		return --growTieredTimer > 0;
+	}
 
-    public void tick() {
-        this.slime.lookAtEntity(this.slime.getTarget(), 10.0F, 10.0F);
-        ((TropicalSlimeMoveControl) this.slime.getMoveControl()).look(this.slime.getYaw(), this.slime.canAttack());
-    }
+	@Override
+	public void tick() {
+		slime.lookAtEntity(slime.getTarget(), 10.0F, 10.0F);
+		((TropicalSlimeMoveControl) slime.getMoveControl()).look(slime.getYaw(), slime.canAttack());
+	}
 }

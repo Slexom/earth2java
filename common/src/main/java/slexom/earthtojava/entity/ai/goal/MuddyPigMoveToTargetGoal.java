@@ -8,32 +8,35 @@ import net.minecraft.world.WorldView;
 import slexom.earthtojava.entity.passive.MuddyPigEntity;
 
 public class MuddyPigMoveToTargetGoal extends MoveToTargetPosGoal {
-    private final MuddyPigEntity muddyPig;
+	private final MuddyPigEntity muddyPig;
 
-    public MuddyPigMoveToTargetGoal(MuddyPigEntity entity, double speedIn) {
-        super(entity, speedIn, 16, 3);
-        this.muddyPig = entity;
-        this.lowestY = -1;
-    }
+	public MuddyPigMoveToTargetGoal(MuddyPigEntity entity, double speed) {
+		super(entity, speed, 16, 3);
+		muddyPig = entity;
+		lowestY = -1;
+	}
 
-    public boolean canStart() {
-        return !this.muddyPig.isInMuddyState() && super.canStart();
-    }
+	@Override
+	public boolean canStart() {
+		return !muddyPig.isInMuddyState() && super.canStart();
+	}
 
-    public boolean shouldContinue() {
-        if (this.muddyPig.isInMuddyState()) return false;
-        if (this.tryingTime > 600) return false;
-        return this.isTargetPos(this.muddyPig.getWorld(), this.targetPos.down());
-    }
+	@Override
+	public boolean shouldContinue() {
+		if (muddyPig.isInMuddyState()) return false;
+		if (tryingTime > 600) return false;
+		return isTargetPos(muddyPig.getWorld(), targetPos.down());
+	}
 
-    public boolean shouldResetPath() {
-        return this.tryingTime % 100 == 0;
-    }
+	@Override
+	public boolean shouldResetPath() {
+		return tryingTime % 100 == 0;
+	}
 
-    @Override
-    protected boolean isTargetPos(WorldView worldIn, BlockPos pos) {
-        Block block = worldIn.getBlockState(pos).getBlock();
-        return block.equals(Blocks.MUD);
+	@Override
+	protected boolean isTargetPos(WorldView worldIn, BlockPos pos) {
+		Block block = worldIn.getBlockState(pos).getBlock();
+		return block.equals(Blocks.MUD);
 
-    }
+	}
 }

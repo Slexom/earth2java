@@ -21,68 +21,68 @@ import slexom.earthtojava.entity.projectile.BoneShardEntity;
 import slexom.earthtojava.init.SoundEventsInit;
 
 public class BoneSpiderEntity extends SpiderEntity implements RangedAttackMob {
-    public final BlinkManager blinkManager;
+	public final BlinkManager blinkManager;
 
-    public BoneSpiderEntity(EntityType<BoneSpiderEntity> type, World worldIn) {
-        super(type, worldIn);
-        blinkManager = new BlinkManager();
-        experiencePoints = 3;
-        setAiDisabled(false);
-    }
+	public BoneSpiderEntity(EntityType<BoneSpiderEntity> type, World worldIn) {
+		super(type, worldIn);
+		blinkManager = new BlinkManager();
+		experiencePoints = 3;
+		setAiDisabled(false);
+	}
 
-    public static DefaultAttributeContainer.Builder createBoneSpiderAttributes() {
-        return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 32.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3D);
-    }
+	public static DefaultAttributeContainer.Builder createBoneSpiderAttributes() {
+		return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 32.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3D);
+	}
 
-    @Override
-    public void tickMovement() {
-        super.tickMovement();
-        blinkManager.tickBlink();
-    }
+	@Override
+	public void tickMovement() {
+		super.tickMovement();
+		blinkManager.tickBlink();
+	}
 
-    @Override
-    protected EntityNavigation createNavigation(World world) {
-        return new ClimberNavigation(this, world);
-    }
+	@Override
+	protected EntityNavigation createNavigation(World world) {
+		return new ClimberNavigation(this, world);
+	}
 
-    @Override
-    protected void initGoals() {
-        this.goalSelector.add(1, new SwimGoal(this));
-        this.goalSelector.add(3, new ProjectileAttackGoal(this, 1.0D, 40, 12.0F));
-        this.goalSelector.add(4, new PounceAtTargetGoal(this, 0.4F));
-        this.goalSelector.add(4, new BoneSpiderMeleeAttackGoal(this));
-        this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.8D));
-        this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-        this.goalSelector.add(6, new LookAroundGoal(this));
-        this.targetSelector.add(1, new RevengeGoal(this));
-        this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
-    }
+	@Override
+	protected void initGoals() {
+		goalSelector.add(1, new SwimGoal(this));
+		goalSelector.add(3, new ProjectileAttackGoal(this, 1.0D, 40, 12.0F));
+		goalSelector.add(4, new PounceAtTargetGoal(this, 0.4F));
+		goalSelector.add(4, new BoneSpiderMeleeAttackGoal(this));
+		goalSelector.add(5, new WanderAroundFarGoal(this, 0.8D));
+		goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
+		goalSelector.add(6, new LookAroundGoal(this));
+		targetSelector.add(1, new RevengeGoal(this));
+		targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, true));
+	}
 
-    @Override
-    public void attack(LivingEntity target, float distanceFactor) {
-        BoneShardEntity boneShard = new BoneShardEntity(this.getWorld(), this);
-        double d0 = target.getEyeY() - 1.1D;
-        double d1 = target.getX() - this.getX();
-        double d2 = d0 - boneShard.getY();
-        double d3 = target.getZ() - this.getZ();
-        double f = Math.sqrt(d1 * d1 + d3 * d3) * 0.2D;
-        boneShard.setVelocity(d1, d2 + f, d3, 1.6F, 8.0F);
-        this.playSound(SoundEventsInit.BONE_SPIDER_SPIT.get(), 1.0F, 1.2F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
-        this.getWorld().spawnEntity(boneShard);
-    }
+	@Override
+	public void attack(LivingEntity target, float distanceFactor) {
+		BoneShardEntity boneShard = new BoneShardEntity(getWorld(), this);
+		double d0 = target.getEyeY() - 1.1D;
+		double d1 = target.getX() - getX();
+		double d2 = d0 - boneShard.getY();
+		double d3 = target.getZ() - getZ();
+		double f = Math.sqrt(d1 * d1 + d3 * d3) * 0.2D;
+		boneShard.setVelocity(d1, d2 + f, d3, 1.6F, 8.0F);
+		playSound(SoundEventsInit.BONE_SPIDER_SPIT.get(), 1.0F, 1.2F / (getRandom().nextFloat() * 0.4F + 0.8F));
+		getWorld().spawnEntity(boneShard);
+	}
 
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return SoundEventsInit.BONE_SPIDER_AMBIENT.get();
-    }
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return SoundEventsInit.BONE_SPIDER_AMBIENT.get();
+	}
 
-    @Override
-    protected SoundEvent getDeathSound() {
-        return SoundEventsInit.BONE_SPIDER_DEATH.get();
-    }
+	@Override
+	protected SoundEvent getDeathSound() {
+		return SoundEventsInit.BONE_SPIDER_DEATH.get();
+	}
 
-    @Override
-    protected void playStepSound(BlockPos pos, BlockState state) {
-        this.playSound(SoundEventsInit.BONE_SPIDER_WALK.get(), 0.15F, 1.0F);
-    }
+	@Override
+	protected void playStepSound(BlockPos pos, BlockState state) {
+		playSound(SoundEventsInit.BONE_SPIDER_WALK.get(), 0.15F, 1.0F);
+	}
 }

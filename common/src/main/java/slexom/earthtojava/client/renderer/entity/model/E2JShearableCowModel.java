@@ -8,20 +8,22 @@ import slexom.earthtojava.entity.base.E2JBaseShearableCowEntity;
 
 @Environment(EnvType.CLIENT)
 public class E2JShearableCowModel<T extends E2JBaseShearableCowEntity> extends CowEntityModel<T> {
-    private float headPitchModifier;
+	private float headPitchModifier;
 
-    public E2JShearableCowModel(ModelPart root) {
-        super(root);
-    }
+	public E2JShearableCowModel(ModelPart root) {
+		super(root);
+	}
 
-    public void animateModel(T sheepEntity, float limbAngle, float limbDistance, float tickDelta) {
-        super.animateModel(sheepEntity, limbAngle, limbDistance, tickDelta);
-        this.head.pivotY = 4.0F + sheepEntity.getNeckAngle(tickDelta) * 7.0F;
-        this.headPitchModifier = sheepEntity.getHeadAngle(tickDelta);
-    }
+	@Override
+	public void animateModel(T sheepEntity, float limbAngle, float limbDistance, float tickDelta) {
+		super.animateModel(sheepEntity, limbAngle, limbDistance, tickDelta);
+		head.pivotY = 4.0F + sheepEntity.getNeckAngle(tickDelta) * 7.0F;
+		headPitchModifier = sheepEntity.getHeadAngle(tickDelta);
+	}
 
-    public void setAngles(T sheepEntity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
-        super.setAngles(sheepEntity, limbAngle, limbDistance, animationProgress, headYaw, headPitch);
-        this.head.pitch = this.headPitchModifier;
-    }
+	@Override
+	public void setAngles(T sheepEntity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
+		super.setAngles(sheepEntity, limbAngle, limbDistance, animationProgress, headYaw, headPitch);
+		head.pitch = headPitchModifier;
+	}
 }

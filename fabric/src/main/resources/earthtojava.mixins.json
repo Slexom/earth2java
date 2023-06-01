@@ -1,13 +1,13 @@
 {
-    "required": true,
-    "minVersion": "0.8",
-    "package": "slexom.earthtojava.mixins",
-    "compatibilityLevel": "JAVA_16",
-    "mixins": [
-    ],
-    "client": [
-    ],
-    "injectors": {
-        "defaultRequire": 1
-    }
+  "required": true,
+  "minVersion": "0.8",
+  "package": "slexom.earthtojava.mixins",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
 }

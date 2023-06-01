@@ -18,37 +18,36 @@ import slexom.earthtojava.init.BlockInit;
 
 public class ModEvents {
 
-    public static void init() {
-        melonBlockShearEvent();
-    }
+	public static void init() {
+		melonBlockShearEvent();
+	}
 
-    private static void melonBlockShearEvent() {
-        InteractionEvent.RIGHT_CLICK_BLOCK.register((player, hand, pos, face) -> {
-            World world = player.getEntityWorld();
-            if (world.isClient()) {
-                return EventResult.pass();
-            }
-            BlockState blockState = world.getBlockState(pos);
-            Block block = blockState.getBlock();
-            if (block == Blocks.MELON) {
-                ItemStack itemStack = player.getStackInHand(hand);
-                if (itemStack.getItem() instanceof ShearsItem) {
-                    Direction direction = face.getAxis() == Direction.Axis.Y ? player.getHorizontalFacing().getOpposite() : face;
-                    world.playSound(null, pos, SoundEvents.BLOCK_PUMPKIN_CARVE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                    world.setBlockState(pos, BlockInit.CARVED_MELON.get().getDefaultState().with(CarvedMelonBlock.FACING, direction), 11);
-                    ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5D + direction.getOffsetX() * 0.65D, pos.getY() + 0.1D, pos.getZ() + 0.5D + direction.getOffsetZ() * 0.65D, new ItemStack(Items.MELON_SEEDS, 4));
-                    itemEntity.setVelocity(0.05D * direction.getOffsetX() + world.random.nextDouble() * 0.02D, 0.05D, 0.05D * direction.getOffsetZ() + world.random.nextDouble() * 0.02D);
-                    world.spawnEntity(itemEntity);
-                    itemStack.damage(1, player, playerEntity -> playerEntity.sendToolBreakStatus(hand));
-                    return EventResult.interrupt(world.isClient);
-                } else {
-                    return EventResult.pass();
-                }
-            }
-            return EventResult.pass();
-        });
+	private static void melonBlockShearEvent() {
+		InteractionEvent.RIGHT_CLICK_BLOCK.register((player, hand, pos, face) -> {
+			World world = player.getEntityWorld();
+			if (world.isClient()) {
+				return EventResult.pass();
+			}
+			BlockState blockState = world.getBlockState(pos);
+			Block block = blockState.getBlock();
+			if (block == Blocks.MELON) {
+				ItemStack itemStack = player.getStackInHand(hand);
+				if (itemStack.getItem() instanceof ShearsItem) {
+					Direction direction = face.getAxis() == Direction.Axis.Y ? player.getHorizontalFacing().getOpposite() : face;
+					world.playSound(null, pos, SoundEvents.BLOCK_PUMPKIN_CARVE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+					world.setBlockState(pos, BlockInit.CARVED_MELON.get().getDefaultState().with(CarvedMelonBlock.FACING, direction), 11);
+					ItemEntity itemEntity = new ItemEntity(world, pos.getX() + 0.5D + direction.getOffsetX() * 0.65D, pos.getY() + 0.1D, pos.getZ() + 0.5D + direction.getOffsetZ() * 0.65D, new ItemStack(Items.MELON_SEEDS, 4));
+					itemEntity.setVelocity(0.05D * direction.getOffsetX() + world.random.nextDouble() * 0.02D, 0.05D, 0.05D * direction.getOffsetZ() + world.random.nextDouble() * 0.02D);
+					world.spawnEntity(itemEntity);
+					itemStack.damage(1, player, playerEntity -> playerEntity.sendToolBreakStatus(hand));
+					return EventResult.interrupt(world.isClient);
+				}
+				return EventResult.pass();
+			}
+			return EventResult.pass();
+		});
 
 
-    }
+	}
 
 }

@@ -9,19 +9,20 @@ import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.util.Identifier;
 import slexom.earthtojava.client.renderer.entity.feature.MoobloomButtercupFeatureRenderer;
 import slexom.earthtojava.entity.passive.MoobloomEntity;
+import slexom.earthtojava.init.EntityTypesInit;
 
 @Environment(EnvType.CLIENT)
 public class MoobloomRenderer extends MobEntityRenderer<MoobloomEntity, CowEntityModel<MoobloomEntity>> {
 
-    public MoobloomRenderer(EntityRendererFactory.Context context) {
-        super(context, new CowEntityModel<>(context.getPart(EntityModelLayers.MOOSHROOM)), 0.7F);
-        this.addFeature(new MoobloomButtercupFeatureRenderer<>(this));
-    }
+	public MoobloomRenderer(EntityRendererFactory.Context context) {
+		super(context, new CowEntityModel<>(context.getPart(EntityModelLayers.MOOSHROOM)), 0.7F);
+		addFeature(new MoobloomButtercupFeatureRenderer<>(this));
+	}
 
-    public Identifier getTexture(MoobloomEntity entity) {
-        Identifier texture = new Identifier("earthtojavamobs:textures/mobs/cow/moobloom/moobloom.png");
-        Identifier textureBlink = new Identifier("earthtojavamobs:textures/mobs/cow/moobloom/moobloom_blink.png");
-        return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
-    }
+	public Identifier getTexture(MoobloomEntity entity) {
+		Identifier texture = TextureUtils.getTextureIdentifier("cow", EntityTypesInit.MOOBLOOM_REGISTRY_NAME);
+		Identifier textureBlink = TextureUtils.getTextureIdentifier("cow", EntityTypesInit.MOOBLOOM_REGISTRY_NAME, "blink");
+		return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
+	}
 
 }

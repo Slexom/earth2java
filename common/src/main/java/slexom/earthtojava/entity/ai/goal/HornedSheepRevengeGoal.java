@@ -7,14 +7,15 @@ import slexom.earthtojava.entity.passive.HornedSheepEntity;
 
 public class HornedSheepRevengeGoal extends RevengeGoal {
 
-    public HornedSheepRevengeGoal(HornedSheepEntity sheepIn) {
-        super(sheepIn);
-    }
+	public HornedSheepRevengeGoal(HornedSheepEntity mob) {
+		super(mob);
+	}
 
-    protected void setMobEntityTarget(MobEntity mobIn, LivingEntity targetIn) {
-        if (mobIn instanceof HornedSheepEntity && this.mob.canSee(targetIn) && ((HornedSheepEntity) mobIn).setSheepAttacker(targetIn)) {
-            mobIn.setTarget(targetIn);
-        }
-    }
+	@Override
+	protected void setMobEntityTarget(MobEntity mob, LivingEntity target) {
+		if (mob instanceof HornedSheepEntity && this.mob.canSee(target) && ((HornedSheepEntity) mob).setSheepAttacker(target)) {
+			mob.setTarget(target);
+		}
+	}
 
 }

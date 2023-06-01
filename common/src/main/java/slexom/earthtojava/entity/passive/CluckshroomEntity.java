@@ -10,16 +10,16 @@ import slexom.earthtojava.entity.base.E2JBaseChickenEntity;
 
 public class CluckshroomEntity extends E2JBaseChickenEntity {
 
-    public CluckshroomEntity(EntityType<CluckshroomEntity> type, World world) {
-        super(type, world);
-    }
+	public CluckshroomEntity(EntityType<CluckshroomEntity> type, World world) {
+		super(type, world);
+	}
 
-    @Override
-    protected void initGoals() {
-        super.initGoals();
-        this.goalSelector.add(2, new AvoidSunlightGoal(this));
-        this.goalSelector.add(3, new EscapeSunlightGoal(this, 1.0D));
-        this.goalSelector.add(3, new CluckshroomPlaceBlockGoal(this));
-    }
+	@Override
+	protected void initGoals() {
+		super.initGoals();
+		goalSelector.add(2, new AvoidSunlightGoal(this));
+		goalSelector.add(3, new EscapeSunlightGoal(this, 1.0D));
+		goalSelector.add(3, new CluckshroomPlaceBlockGoal(this));
+	}
 
 }

@@ -10,25 +10,26 @@ import net.minecraft.util.math.MathHelper;
 import slexom.earthtojava.client.renderer.entity.feature.CluckshroomMushroomFeatureRenderer;
 import slexom.earthtojava.client.renderer.entity.model.CluckshroomModel;
 import slexom.earthtojava.entity.passive.CluckshroomEntity;
+import slexom.earthtojava.init.EntityTypesInit;
 
 @Environment(EnvType.CLIENT)
 public class CluckshroomRenderer extends MobEntityRenderer<CluckshroomEntity, CluckshroomModel<CluckshroomEntity>> {
 
-    public CluckshroomRenderer(Context context) {
-        super(context, new CluckshroomModel<>(context.getPart(EntityModelLayers.CHICKEN)), 0.3F);
-        this.addFeature(new CluckshroomMushroomFeatureRenderer<>(this));
-    }
+	public CluckshroomRenderer(Context context) {
+		super(context, new CluckshroomModel<>(context.getPart(EntityModelLayers.CHICKEN)), 0.3F);
+		addFeature(new CluckshroomMushroomFeatureRenderer<>(this));
+	}
 
-    protected float getAnimationProgress(CluckshroomEntity chickenEntity, float f) {
-        float g = MathHelper.lerp(f, chickenEntity.prevFlapProgress, chickenEntity.flapProgress);
-        float h = MathHelper.lerp(f, chickenEntity.prevMaxWingDeviation, chickenEntity.maxWingDeviation);
-        return (MathHelper.sin(g) + 1.0F) * h;
-    }
+	protected float getAnimationProgress(CluckshroomEntity chickenEntity, float f) {
+		float g = MathHelper.lerp(f, chickenEntity.prevFlapProgress, chickenEntity.flapProgress);
+		float h = MathHelper.lerp(f, chickenEntity.prevMaxWingDeviation, chickenEntity.maxWingDeviation);
+		return (MathHelper.sin(g) + 1.0F) * h;
+	}
 
-    @Override
-    public Identifier getTexture(CluckshroomEntity entity) {
-        Identifier texture = new Identifier("earthtojavamobs:textures/mobs/chicken/cluck_shroom/cluck_shroom.png");
-        Identifier textureBlink = new Identifier("earthtojavamobs:textures/mobs/chicken/cluck_shroom/cluck_shroom_blink.png");
-        return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
-    }
+	@Override
+	public Identifier getTexture(CluckshroomEntity entity) {
+		Identifier texture = TextureUtils.getTextureIdentifier("chicken", EntityTypesInit.CLUCKSHROOM_REGISTRY_NAME);
+		Identifier textureBlink = TextureUtils.getTextureIdentifier("chicken", EntityTypesInit.CLUCKSHROOM_REGISTRY_NAME, "blink");
+		return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
+	}
 }

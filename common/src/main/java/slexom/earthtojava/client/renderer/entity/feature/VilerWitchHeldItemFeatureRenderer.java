@@ -15,24 +15,24 @@ import slexom.earthtojava.entity.monster.VilerWitchEntity;
 
 @Environment(EnvType.CLIENT)
 public class VilerWitchHeldItemFeatureRenderer<T extends VilerWitchEntity> extends VillagerHeldItemFeatureRenderer<T, VilerWitchModel<T>> {
-    public VilerWitchHeldItemFeatureRenderer(FeatureRendererContext<T, VilerWitchModel<T>> featureRendererContext, HeldItemRenderer heldItemRenderer) {
-        super(featureRendererContext, heldItemRenderer);
-    }
+	public VilerWitchHeldItemFeatureRenderer(FeatureRendererContext<T, VilerWitchModel<T>> featureRendererContext, HeldItemRenderer heldItemRenderer) {
+		super(featureRendererContext, heldItemRenderer);
+	}
 
-    @Override
-    public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, T livingEntity, float f, float g, float h, float j, float k, float l) {
-        ItemStack itemStack = livingEntity.getMainHandStack();
-        matrixStack.push();
-        if (itemStack.isOf(Items.POTION)) {
-            this.getContextModel().getHead().rotate(matrixStack);
-            this.getContextModel().getNose().rotate(matrixStack);
-            matrixStack.translate(0.0625f, 0.25f, 0.0f);
-            matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(180.0f));
-            matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(140.0f));
-            matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(10.0f));
-            matrixStack.translate(0.0f, -0.4f, 0.4f);
-        }
-        super.render(matrixStack, vertexConsumerProvider, i, livingEntity, f, g, h, j, k, l);
-        matrixStack.pop();
-    }
+	@Override
+	public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, T livingEntity, float f, float g, float h, float j, float k, float l) {
+		ItemStack itemStack = livingEntity.getMainHandStack();
+		matrixStack.push();
+		if (itemStack.isOf(Items.POTION)) {
+			getContextModel().getHead().rotate(matrixStack);
+			getContextModel().getNose().rotate(matrixStack);
+			matrixStack.translate(0.0625f, 0.25f, 0.0f);
+			matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(180.0f));
+			matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(140.0f));
+			matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(10.0f));
+			matrixStack.translate(0.0f, -0.4f, 0.4f);
+		}
+		super.render(matrixStack, vertexConsumerProvider, i, livingEntity, f, g, h, j, k, l);
+		matrixStack.pop();
+	}
 }

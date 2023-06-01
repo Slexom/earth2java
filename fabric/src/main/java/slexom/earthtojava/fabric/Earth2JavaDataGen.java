@@ -10,23 +10,23 @@ import slexom.earthtojava.init.ItemInit;
 public class Earth2JavaDataGen implements DataGeneratorEntrypoint {
 
 
-    @Override
-    public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
-        FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
+	@Override
+	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
+		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 
-        pack.addProvider(Earth2JavaLootTables::new);
-    }
+		pack.addProvider(Earth2JavaLootTables::new);
+	}
 
-    private static class Earth2JavaLootTables extends FabricBlockLootTableProvider {
+	private static class Earth2JavaLootTables extends FabricBlockLootTableProvider {
 
 
-        protected Earth2JavaLootTables(FabricDataOutput dataOutput) {
-            super(dataOutput);
-        }
+		protected Earth2JavaLootTables(FabricDataOutput dataOutput) {
+			super(dataOutput);
+		}
 
-        @Override
-        public void generate() {
-            drops(ItemInit.RAINBOW_CARPET.get(), ConstantLootNumberProvider.create(1.0F));
-        }
-    }
+		@Override
+		public void generate() {
+			drops(ItemInit.RAINBOW_CARPET.get(), ConstantLootNumberProvider.create(1.0F));
+		}
+	}
 }

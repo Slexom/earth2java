@@ -5,55 +5,57 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import slexom.earthtojava.entity.passive.TropicalSlimeEntity;
 
 public class TropicalSlimeMoveControl extends MoveControl {
-    private final TropicalSlimeEntity slime;
-    private float yRot;
-    private int jumpDelay;
-    private boolean isAggressive;
+	private final TropicalSlimeEntity slime;
+	private float targetYaw;
+	private int ticksUntilJump;
+	private boolean jumpOften;
 
-    public TropicalSlimeMoveControl(TropicalSlimeEntity slimeIn) {
-        super(slimeIn);
-        this.slime = slimeIn;
-        this.yRot = 180.0F * slimeIn.getYaw() / (float) Math.PI;
-    }
+	public TropicalSlimeMoveControl(TropicalSlimeEntity slime) {
+		super(slime);
+		this.slime = slime;
+		targetYaw = 180.0F * slime.getYaw() / (float) Math.PI;
+	}
 
-    public void look(float yRotIn, boolean aggressive) {
-        this.yRot = yRotIn;
-        this.isAggressive = aggressive;
-    }
+	public void look(float targetYaw, boolean jumpOften) {
+		this.targetYaw = targetYaw;
+		this.jumpOften = jumpOften;
+	}
 
-    public void move(double speedIn) {
-        this.speed = speedIn;
-        this.state = State.MOVE_TO;
-    }
+	public void move(double speed) {
+		this.speed = speed;
+		state = State.MOVE_TO;
+	}
 
-    public void tick() {
-        this.entity.setYaw(this.wrapDegrees(this.entity.getYaw(), this.yRot, 90.0F));
-        this.entity.headYaw = this.entity.getYaw();
-        this.entity.bodyYaw = this.entity.getYaw();
-        if (this.state != State.MOVE_TO) {
-            this.entity.setForwardSpeed(0.0F);
-        } else {
-            this.state = State.WAIT;
-            if (this.entity.isOnGround()) {
-                this.entity.setMovementSpeed((float) (this.speed * this.entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).getValue()));
-                if (this.jumpDelay-- <= 0) {
-                    this.jumpDelay = this.slime.getTicksUntilNextJump();
-                    if (this.isAggressive) {
-                        this.jumpDelay /= 3;
-                    }
-                    this.slime.getJumpControl().setActive();
-                    if (this.slime.makesSoundOnJump()) {
-                        this.slime.playSound(this.slime.getJumpSound(), 1.0F, ((this.slime.getRandom().nextFloat() - this.slime.getRandom().nextFloat()) * 0.2F + 1.0F) * 0.8F);
-                    }
-                } else {
-                    this.slime.sidewaysSpeed = 0.0F;
-                    this.slime.forwardSpeed = 0.0F;
-                    this.entity.setMovementSpeed(0.0F);
-                }
-            } else {
-                this.entity.setMovementSpeed((float) (this.speed * this.entity.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).getValue()));
-            }
-        }
-    }
+	@Override
+	public void tick() {
+		entity.setYaw(wrapDegrees(entity.getYaw(), targetYaw, 90.0F));
+		entity.headYaw = entity.getYaw();
+		entity.bodyYaw = entity.getYaw();
+		if (state != State.MOVE_TO) {
+			entity.setForwardSpeed(0.0F);
+			return;
+		}
+		state = State.WAIT;
+		if (entity.isOnGround()) {
+			entity.setMovementSpeed((float) (speed * entity.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED)));
+			if (ticksUntilJump-- <= 0) {
+				ticksUntilJump = slime.getTicksUntilNextJump();
+				if (jumpOften) {
+					ticksUntilJump /= 3;
+				}
+				slime.getJumpControl().setActive();
+				if (slime.makesJumpSound()) {
+					slime.playSound(slime.getJumpSound(), 1.0F, slime.getJumpSoundPitch());
+				}
+			} else {
+				slime.sidewaysSpeed = 0.0F;
+				slime.forwardSpeed = 0.0F;
+				entity.setMovementSpeed(0.0F);
+			}
+		} else {
+			entity.setMovementSpeed((float) (speed * entity.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED)));
+		}
+
+	}
 
 }

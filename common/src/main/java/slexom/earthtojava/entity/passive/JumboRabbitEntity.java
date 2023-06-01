@@ -9,23 +9,23 @@ import slexom.earthtojava.init.SoundEventsInit;
 
 public class JumboRabbitEntity extends E2JBaseRabbitEntity {
 
-    public JumboRabbitEntity(EntityType<JumboRabbitEntity> type, World world) {
-        super(type, world);
-    }
+	public JumboRabbitEntity(EntityType<JumboRabbitEntity> type, World world) {
+		super(type, world);
+	}
 
-    @Override
-    protected SoundEvent getJumpSound() {
-        return SoundEventsInit.JUMBO_RABBIT_JUMP.get();
-    }
+	@Override
+	protected SoundEvent getJumpSound() {
+		return SoundEventsInit.JUMBO_RABBIT_JUMP.get();
+	}
 
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return SoundEventsInit.JUMBO_RABBIT_AMBIENT.get();
-    }
+	@Override
+	protected SoundEvent getAmbientSound() {
+		return SoundEventsInit.JUMBO_RABBIT_AMBIENT.get();
+	}
 
-    @Override
-    protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundEventsInit.JUMBO_RABBIT_HURT.get();
-    }
+	@Override
+	protected SoundEvent getHurtSound(DamageSource source) {
+		return SoundEventsInit.JUMBO_RABBIT_HURT.get();
+	}
 
 }

@@ -5,18 +5,20 @@ import slexom.earthtojava.entity.passive.HornedSheepEntity;
 
 public class HornedSheepMeleeAttackGoal extends MeleeAttackGoal {
 
-    final HornedSheepEntity attacker;
+	final HornedSheepEntity attacker;
 
-    public HornedSheepMeleeAttackGoal(HornedSheepEntity creatureIn, double speedIn, boolean useLongMemory) {
-        super(creatureIn, speedIn, useLongMemory);
-        this.attacker = creatureIn;
-    }
+	public HornedSheepMeleeAttackGoal(HornedSheepEntity attacker, double speed, boolean pauseWhenMobIdle) {
+		super(attacker, speed, pauseWhenMobIdle);
+		this.attacker = attacker;
+	}
 
-    public boolean canStart() {
-        return super.canStart() && this.attacker.isAngry();
-    }
+	@Override
+	public boolean canStart() {
+		return super.canStart() && attacker.isAngry();
+	}
 
-    public boolean shouldContinue() {
-        return super.shouldContinue() && this.attacker.isAngry();
-    }
+	@Override
+	public boolean shouldContinue() {
+		return super.shouldContinue() && attacker.isAngry();
+	}
 }

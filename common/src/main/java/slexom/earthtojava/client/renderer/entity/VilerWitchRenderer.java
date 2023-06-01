@@ -13,33 +13,27 @@ import slexom.earthtojava.entity.monster.VilerWitchEntity;
 import slexom.earthtojava.init.EntityModelLayersInit;
 import slexom.earthtojava.init.EntityTypesInit;
 
-import java.text.MessageFormat;
-
 @Environment(EnvType.CLIENT)
 public class VilerWitchRenderer extends MobEntityRenderer<VilerWitchEntity, VilerWitchModel<VilerWitchEntity>> {
 
-    private final String registryName;
 
-    public VilerWitchRenderer(EntityRendererFactory.Context context) {
-        super(context, new VilerWitchModel<>(context.getPart(EntityModelLayersInit.VILER_WITCH_ENTITY_MODEL_LAYER)), 0.5F);
-        this.addFeature(new VilerWitchHeldItemFeatureRenderer<>(this, context.getHeldItemRenderer()));
-        this.registryName = EntityTypesInit.VILER_WITCH_REGISTRY_NAME;
-    }
+	public VilerWitchRenderer(EntityRendererFactory.Context context) {
+		super(context, new VilerWitchModel<>(context.getPart(EntityModelLayersInit.VILER_WITCH_ENTITY_MODEL_LAYER)), 0.5F);
+		addFeature(new VilerWitchHeldItemFeatureRenderer<>(this, context.getHeldItemRenderer()));
+	}
 
-    public void render(VilerWitchEntity witchEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
-        this.model.setLiftingNose(!witchEntity.getMainHandStack().isEmpty());
-        super.render(witchEntity, f, g, matrixStack, vertexConsumerProvider, i);
-    }
+	public void render(VilerWitchEntity witchEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
+		model.setLiftingNose(!witchEntity.getMainHandStack().isEmpty());
+		super.render(witchEntity, f, g, matrixStack, vertexConsumerProvider, i);
+	}
 
-    public Identifier getTexture(VilerWitchEntity entity) {
-        String resourceTexture = MessageFormat.format("earthtojavamobs:textures/mobs/witch/{0}/{0}.png", this.registryName);
-        String resourceTextureBlink = MessageFormat.format("earthtojavamobs:textures/mobs/witch/{0}/{0}_blink.png", this.registryName);
-        Identifier texture = new Identifier(resourceTexture);
-        Identifier textureBlink = new Identifier(resourceTextureBlink);
-        return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
-    }
+	public Identifier getTexture(VilerWitchEntity entity) {
+		Identifier texture = TextureUtils.getTextureIdentifier("witch", EntityTypesInit.VILER_WITCH_REGISTRY_NAME);
+		Identifier textureBlink = TextureUtils.getTextureIdentifier("witch", EntityTypesInit.VILER_WITCH_REGISTRY_NAME, "blink");
+		return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
+	}
 
-    protected void scale(VilerWitchEntity witchEntity, MatrixStack matrixStack, float f) {
-        matrixStack.scale(0.9375F, 0.9375F, 0.9375F);
-    }
+	protected void scale(VilerWitchEntity witchEntity, MatrixStack matrixStack, float f) {
+		matrixStack.scale(0.9375F, 0.9375F, 0.9375F);
+	}
 }

@@ -6,13 +6,13 @@ import slexom.earthtojava.config.ModConfig;
 import java.util.function.Predicate;
 
 public record EntitySpawnConfigHolder(
-        Predicate<BiomeModifications.BiomeContext> predicate,
-        boolean canSpawn,
-        int weight,
-        int groupMin,
-        int groupMax) {
+		Predicate<BiomeModifications.BiomeContext> predicate,
+		boolean canSpawn,
+		int weight,
+		int groupMin,
+		int groupMax) {
 
-    public EntitySpawnConfigHolder(Predicate<BiomeModifications.BiomeContext> predicate, ModConfig.EntityConfig config) {
-        this(predicate, config.spawn, config.weight, config.groupMin, config.groupMax);
-    }
+	public EntitySpawnConfigHolder(Predicate<BiomeModifications.BiomeContext> predicate, ModConfig.EntityConfig config) {
+		this(predicate, config.spawn, config.weight, config.groupMin, config.groupMax);
+	}
 }

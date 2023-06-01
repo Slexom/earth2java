@@ -17,15 +17,15 @@ import java.util.List;
 
 public class E2JSpawnEggItem extends ArchitecturySpawnEggItem {
 
-    public E2JSpawnEggItem(RegistrySupplier<? extends EntityType<? extends MobEntity>> entityType, int primaryColor, int secondaryColor, Settings settings) {
-        super(entityType, primaryColor, secondaryColor, settings);
-    }
+	public E2JSpawnEggItem(RegistrySupplier<? extends EntityType<? extends MobEntity>> entityType, int primaryColor, int secondaryColor, Settings settings) {
+		super(entityType, primaryColor, secondaryColor, settings);
+	}
 
-    @Override
-    @Environment(EnvType.CLIENT)
-    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        String translationKey = this.getTranslationKey() + ".desc";
-        Utils.appendE2JTooltip(translationKey, tooltip);
-    }
+	@Override
+	@Environment(EnvType.CLIENT)
+	public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+		String translationKey = getTranslationKey() + ".desc";
+		Utils.appendE2JTooltip(translationKey, tooltip);
+	}
 
 }

@@ -10,21 +10,21 @@ import slexom.earthtojava.entity.BlinkManager;
 
 public class E2JBaseZombieEntity extends ZombieEntity {
 
-    public final BlinkManager blinkManager;
+	public final BlinkManager blinkManager;
 
-    public E2JBaseZombieEntity(EntityType<? extends ZombieEntity> entityType, World world) {
-        super(entityType, world);
-        blinkManager = new BlinkManager();
-    }
+	public E2JBaseZombieEntity(EntityType<? extends ZombieEntity> entityType, World world) {
+		super(entityType, world);
+		blinkManager = new BlinkManager();
+	}
 
-    public static DefaultAttributeContainer.Builder createZombieAttributes() {
-        return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_FOLLOW_RANGE, 35.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.23D).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0D).add(EntityAttributes.GENERIC_ARMOR, 2.0D).add(EntityAttributes.ZOMBIE_SPAWN_REINFORCEMENTS);
-    }
+	public static DefaultAttributeContainer.Builder createZombieAttributes() {
+		return HostileEntity.createHostileAttributes().add(EntityAttributes.GENERIC_FOLLOW_RANGE, 35.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.23D).add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0D).add(EntityAttributes.GENERIC_ARMOR, 2.0D).add(EntityAttributes.ZOMBIE_SPAWN_REINFORCEMENTS);
+	}
 
-    @Override
-    public void tickMovement() {
-        super.tickMovement();
-        blinkManager.tickBlink();
-    }
+	@Override
+	public void tickMovement() {
+		super.tickMovement();
+		blinkManager.tickBlink();
+	}
 
 }

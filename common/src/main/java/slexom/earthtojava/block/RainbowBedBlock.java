@@ -8,13 +8,13 @@ import net.minecraft.util.math.BlockPos;
 import slexom.earthtojava.init.BlockEntityTypeInit;
 
 public class RainbowBedBlock extends BedBlock {
-    public RainbowBedBlock(DyeColor colorIn, Settings properties) {
-        super(colorIn, properties);
-    }
+	public RainbowBedBlock(DyeColor colorIn, Settings properties) {
+		super(colorIn, properties);
+	}
 
-    @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return BlockEntityTypeInit.RAINBOW_BED.get().instantiate(pos, state);
-    }
+	@Override
+	public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+		return BlockEntityTypeInit.RAINBOW_BED.get().instantiate(pos, state);
+	}
 
 }
