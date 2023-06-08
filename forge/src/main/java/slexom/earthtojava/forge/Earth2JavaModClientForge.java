@@ -1,6 +1,5 @@
 package slexom.earthtojava.forge;
 
-import dev.architectury.registry.client.rendering.BlockEntityRendererRegistry;
 import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
@@ -71,6 +70,7 @@ public class Earth2JavaModClientForge {
 		event.registerEntityRenderer(EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_OBJECT.get(), BoulderingZombieRenderer::new);
 		event.registerEntityRenderer(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_OBJECT.get(), LobberZombieRenderer::new);
 		event.registerEntityRenderer(EntityTypesInit.VILER_WITCH_REGISTRY_OBJECT.get(), VilerWitchRenderer::new);
+		event.registerEntityRenderer(EntityTypesInit.SOOTY_PIG_REGISTRY_OBJECT.get(), SootyPigRenderer::new);
 
 		event.registerEntityRenderer(EntityTypesInit.AMBER_CHICKEN_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.chickenRendererFactory(EntityTypesInit.AMBER_CHICKEN_REGISTRY_NAME));
 		event.registerEntityRenderer(EntityTypesInit.BRONZED_CHICKEN_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.chickenRendererFactory(EntityTypesInit.BRONZED_CHICKEN_REGISTRY_NAME));
@@ -94,7 +94,6 @@ public class Earth2JavaModClientForge {
 		event.registerEntityRenderer(EntityTypesInit.PALE_PIG_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.pigRendererFactory(EntityTypesInit.PALE_PIG_REGISTRY_NAME));
 		event.registerEntityRenderer(EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.pigRendererFactory(EntityTypesInit.PIEBALD_PIG_REGISTRY_NAME));
 		event.registerEntityRenderer(EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.pigRendererFactory(EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.SOOTY_PIG_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.pigRendererFactory(EntityTypesInit.SOOTY_PIG_REGISTRY_NAME));
 		event.registerEntityRenderer(EntityTypesInit.SPOTTED_PIG_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.pigRendererFactory(EntityTypesInit.SPOTTED_PIG_REGISTRY_NAME));
 
 		event.registerEntityRenderer(EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.monoColorSheepRendererFactory(EntityTypesInit.FLECKED_SHEEP_REGISTRY_NAME));

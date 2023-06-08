@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[40,)"
+loaderVersion = "[46,)"
 license = "CC BY-NC-ND 4.0"
 
 [[mods]]
@@ -13,20 +13,20 @@ logoFile = "icon.png"
 [[dependencies.earthtojavamobs]]
 modId = "forge"
 mandatory = true
-versionRange = "[43,)"
+versionRange = "[46,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.earthtojavamobs]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19.2,)"
+versionRange = "[1.20,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.earthtojavamobs]]
 modId = "architectury"
 mandatory = true
-versionRange = "[6.2.43,)"
+versionRange = "[9,)"
 ordering = "AFTER"
 side = "BOTH"
