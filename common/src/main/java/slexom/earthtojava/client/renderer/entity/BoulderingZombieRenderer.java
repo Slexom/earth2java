@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 import slexom.earthtojava.client.renderer.entity.model.BoulderingZombieModel;
 import slexom.earthtojava.entity.monster.BoulderingZombieEntity;
 import slexom.earthtojava.init.EntityModelLayersInit;
-import slexom.earthtojava.init.EntityTypesInit;
+import slexom.earthtojava.init.RegistryNames;
 
 @Environment(EnvType.CLIENT)
 public class BoulderingZombieRenderer extends ZombieBaseEntityRenderer<BoulderingZombieEntity, BoulderingZombieModel<BoulderingZombieEntity>> {
@@ -24,8 +24,8 @@ public class BoulderingZombieRenderer extends ZombieBaseEntityRenderer<Boulderin
 	}
 
 	public Identifier getTexture(BoulderingZombieEntity entity) {
-		Identifier texture = TextureUtils.getTextureIdentifier("zombie", EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_NAME);
-		Identifier textureBlink = TextureUtils.getTextureIdentifier("zombie", EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_NAME, "blink");
+		Identifier texture = TextureUtils.getTextureIdentifier("zombie", RegistryNames.BOULDERING_ZOMBIE_REGISTRY_NAME);
+		Identifier textureBlink = TextureUtils.getTextureIdentifier("zombie", RegistryNames.BOULDERING_ZOMBIE_REGISTRY_NAME, "blink");
 		return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
 	}
 

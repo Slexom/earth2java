@@ -6,7 +6,7 @@ import net.minecraft.util.Identifier;
 import slexom.earthtojava.client.renderer.entity.model.JumboRabbitModel;
 import slexom.earthtojava.entity.passive.JumboRabbitEntity;
 import slexom.earthtojava.init.EntityModelLayersInit;
-import slexom.earthtojava.init.EntityTypesInit;
+import slexom.earthtojava.init.RegistryNames;
 
 public class JumboRabbitRenderer extends MobEntityRenderer<JumboRabbitEntity, JumboRabbitModel<JumboRabbitEntity>> {
 
@@ -17,8 +17,8 @@ public class JumboRabbitRenderer extends MobEntityRenderer<JumboRabbitEntity, Ju
 
 	@Override
 	public Identifier getTexture(JumboRabbitEntity entity) {
-		Identifier texture = TextureUtils.getTextureIdentifier("rabbit", EntityTypesInit.JUMBO_RABBIT_REGISTRY_NAME);
-		Identifier textureBlink = TextureUtils.getTextureIdentifier("rabbit", EntityTypesInit.JUMBO_RABBIT_REGISTRY_NAME, "blink");
+		Identifier texture = TextureUtils.getTextureIdentifier("rabbit", RegistryNames.JUMBO_RABBIT_REGISTRY_NAME);
+		Identifier textureBlink = TextureUtils.getTextureIdentifier("rabbit", RegistryNames.JUMBO_RABBIT_REGISTRY_NAME, "blink");
 		return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
 	}
 

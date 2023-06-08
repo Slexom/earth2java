@@ -11,7 +11,7 @@ import slexom.earthtojava.client.renderer.entity.feature.VilerWitchHeldItemFeatu
 import slexom.earthtojava.client.renderer.entity.model.VilerWitchModel;
 import slexom.earthtojava.entity.monster.VilerWitchEntity;
 import slexom.earthtojava.init.EntityModelLayersInit;
-import slexom.earthtojava.init.EntityTypesInit;
+import slexom.earthtojava.init.RegistryNames;
 
 @Environment(EnvType.CLIENT)
 public class VilerWitchRenderer extends MobEntityRenderer<VilerWitchEntity, VilerWitchModel<VilerWitchEntity>> {
@@ -28,8 +28,8 @@ public class VilerWitchRenderer extends MobEntityRenderer<VilerWitchEntity, Vile
 	}
 
 	public Identifier getTexture(VilerWitchEntity entity) {
-		Identifier texture = TextureUtils.getTextureIdentifier("witch", EntityTypesInit.VILER_WITCH_REGISTRY_NAME);
-		Identifier textureBlink = TextureUtils.getTextureIdentifier("witch", EntityTypesInit.VILER_WITCH_REGISTRY_NAME, "blink");
+		Identifier texture = TextureUtils.getTextureIdentifier("witch", RegistryNames.VILER_WITCH_REGISTRY_NAME);
+		Identifier textureBlink = TextureUtils.getTextureIdentifier("witch", RegistryNames.VILER_WITCH_REGISTRY_NAME, "blink");
 		return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
 	}
 

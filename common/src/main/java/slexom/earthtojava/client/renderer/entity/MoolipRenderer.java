@@ -9,7 +9,7 @@ import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.util.Identifier;
 import slexom.earthtojava.client.renderer.entity.feature.MoolipPinkDaisyFeatureRenderer;
 import slexom.earthtojava.entity.passive.MoolipEntity;
-import slexom.earthtojava.init.EntityTypesInit;
+import slexom.earthtojava.init.RegistryNames;
 
 @Environment(EnvType.CLIENT)
 public class MoolipRenderer extends MobEntityRenderer<MoolipEntity, CowEntityModel<MoolipEntity>> {
@@ -20,8 +20,8 @@ public class MoolipRenderer extends MobEntityRenderer<MoolipEntity, CowEntityMod
 	}
 
 	public Identifier getTexture(MoolipEntity entity) {
-		Identifier texture = TextureUtils.getTextureIdentifier("cow", EntityTypesInit.MOOLIP_REGISTRY_NAME);
-		Identifier textureBlink = TextureUtils.getTextureIdentifier("cow", EntityTypesInit.MOOLIP_REGISTRY_NAME, "blink");
+		Identifier texture = TextureUtils.getTextureIdentifier("cow", RegistryNames.MOOLIP_REGISTRY_NAME);
+		Identifier textureBlink = TextureUtils.getTextureIdentifier("cow", RegistryNames.MOOLIP_REGISTRY_NAME, "blink");
 		return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
 	}
 }

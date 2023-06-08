@@ -1,20 +1,11 @@
-package slexom.earthtojava.utils;
+package slexom.earthtojava.world.biome;
 
 import dev.architectury.registry.level.biome.BiomeModifications;
-import dev.architectury.registry.registries.RegistrySupplier;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnGroup;
-import net.minecraft.entity.mob.HostileEntity;
-import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.world.biome.SpawnSettings;
 import slexom.earthtojava.init.ModTags;
 
 import java.util.function.Predicate;
 
-
-public final class BiomeSpawnHelper {
-
+public class SpawnPredicates  {
 	public static final Predicate<BiomeModifications.BiomeContext> ALBINO_COW_SPAWN_BIOMES_PREDICATE = ctx -> ctx.hasTag(ModTags.HAS_ALBINO_COW);
 	public static final Predicate<BiomeModifications.BiomeContext> AMBER_CHICKEN_SPAWN_BIOMES_PREDICATE = ctx -> ctx.hasTag(ModTags.HAS_AMBER_CHICKEN);
 	public static final Predicate<BiomeModifications.BiomeContext> ASHEN_COW_SPAWN_BIOMES_PREDICATE = ctx -> ctx.hasTag(ModTags.HAS_ASHEN_COW);
@@ -62,24 +53,4 @@ public final class BiomeSpawnHelper {
 	public static final Predicate<BiomeModifications.BiomeContext> VESTED_RABBIT_SPAWN_BIOMES_PREDICATE = ctx -> ctx.hasTag(ModTags.HAS_VESTED_RABBIT);
 	public static final Predicate<BiomeModifications.BiomeContext> VILER_WITCH_SPAWN_BIOMES_PREDICATE = ctx -> ctx.hasTag(ModTags.HAS_VILER_WITCH);
 	public static final Predicate<BiomeModifications.BiomeContext> WOOLY_COW_SPAWN_BIOMES_PREDICATE = ctx -> ctx.hasTag(ModTags.HAS_WOOLY_COW);
-
-	private BiomeSpawnHelper() {
-	}
-
-	private static <T extends Entity> void addEntityToBiomes(RegistrySupplier<EntityType<T>> entity, Predicate<BiomeModifications.BiomeContext> predicate, int weight, int minGroupSize, int maxGroupSize, SpawnGroup classification) {
-		BiomeModifications.addProperties(predicate, (biomeContext, mutable) -> {
-			SpawnSettings.SpawnEntry spawnEntry = new SpawnSettings.SpawnEntry(entity.get(), weight, minGroupSize, maxGroupSize);
-			mutable.getSpawnProperties().addSpawn(classification, spawnEntry);
-		});
-	}
-
-	public static <T extends AnimalEntity> void setCreatureSpawnBiomes(RegistrySupplier<EntityType<T>> entity, Predicate<BiomeModifications.BiomeContext> predicate, int weight, int minGroupCountIn, int maxGroupCountIn) {
-		addEntityToBiomes(entity, predicate, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.CREATURE);
-	}
-
-	public static <T extends HostileEntity> void setMonsterSpawnBiomes(RegistrySupplier<EntityType<T>> entity, Predicate<BiomeModifications.BiomeContext> predicate, int weight, int minGroupCountIn, int maxGroupCountIn) {
-		addEntityToBiomes(entity, predicate, weight, minGroupCountIn, maxGroupCountIn, SpawnGroup.MONSTER);
-	}
-
-
 }

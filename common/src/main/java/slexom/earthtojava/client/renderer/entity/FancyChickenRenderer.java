@@ -9,7 +9,7 @@ import net.minecraft.util.math.MathHelper;
 import slexom.earthtojava.client.renderer.entity.model.FancyChickenModel;
 import slexom.earthtojava.entity.passive.FancyChickenEntity;
 import slexom.earthtojava.init.EntityModelLayersInit;
-import slexom.earthtojava.init.EntityTypesInit;
+import slexom.earthtojava.init.RegistryNames;
 
 @Environment(EnvType.CLIENT)
 public class FancyChickenRenderer extends MobEntityRenderer<FancyChickenEntity, FancyChickenModel<FancyChickenEntity>> {
@@ -25,8 +25,8 @@ public class FancyChickenRenderer extends MobEntityRenderer<FancyChickenEntity, 
 	}
 
 	public Identifier getTexture(FancyChickenEntity entity) {
-		Identifier texture = TextureUtils.getTextureIdentifier("chicken", EntityTypesInit.FANCY_CHICKEN_REGISTRY_NAME);
-		Identifier textureBlink = TextureUtils.getTextureIdentifier("chicken", EntityTypesInit.FANCY_CHICKEN_REGISTRY_NAME, "blink");
+		Identifier texture = TextureUtils.getTextureIdentifier("chicken", RegistryNames.FANCY_CHICKEN_REGISTRY_NAME);
+		Identifier textureBlink = TextureUtils.getTextureIdentifier("chicken", RegistryNames.FANCY_CHICKEN_REGISTRY_NAME, "blink");
 		return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
 	}
 

@@ -12,7 +12,7 @@ import net.minecraft.util.math.RotationAxis;
 import slexom.earthtojava.client.renderer.entity.feature.FurnaceGolemFlamesFeatureRenderer;
 import slexom.earthtojava.client.renderer.entity.feature.FurnaceGolemTorchFeatureRenderer;
 import slexom.earthtojava.entity.passive.FurnaceGolemEntity;
-import slexom.earthtojava.init.EntityTypesInit;
+import slexom.earthtojava.init.RegistryNames;
 
 @Environment(EnvType.CLIENT)
 public class FurnaceGolemRenderer extends MobEntityRenderer<FurnaceGolemEntity, IronGolemEntityModel<FurnaceGolemEntity>> {
@@ -35,9 +35,9 @@ public class FurnaceGolemRenderer extends MobEntityRenderer<FurnaceGolemEntity, 
 	}
 
 	public Identifier getTexture(FurnaceGolemEntity entity) {
-		Identifier texture = TextureUtils.getTextureIdentifier("iron_golem", EntityTypesInit.FURNACE_GOLEM_REGISTRY_NAME);
-		Identifier textureBlink = TextureUtils.getTextureIdentifier("iron_golem", EntityTypesInit.FURNACE_GOLEM_REGISTRY_NAME, "blink");
-		Identifier textureAngry = TextureUtils.getTextureIdentifier("iron_golem", EntityTypesInit.FURNACE_GOLEM_REGISTRY_NAME, "angry");
+		Identifier texture = TextureUtils.getTextureIdentifier("iron_golem", RegistryNames.FURNACE_GOLEM_REGISTRY_NAME);
+		Identifier textureBlink = TextureUtils.getTextureIdentifier("iron_golem", RegistryNames.FURNACE_GOLEM_REGISTRY_NAME, "blink");
+		Identifier textureAngry = TextureUtils.getTextureIdentifier("iron_golem", RegistryNames.FURNACE_GOLEM_REGISTRY_NAME, "angry");
 		if (entity.isAngry()) {
 			return textureAngry;
 		}

@@ -8,7 +8,7 @@ import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.util.Identifier;
 import slexom.earthtojava.client.renderer.entity.model.SkeletonWolfModel;
 import slexom.earthtojava.entity.monster.SkeletonWolfEntity;
-import slexom.earthtojava.init.EntityTypesInit;
+import slexom.earthtojava.init.RegistryNames;
 
 @Environment(EnvType.CLIENT)
 public class SkeletonWolfRenderer extends MobEntityRenderer<SkeletonWolfEntity, SkeletonWolfModel<SkeletonWolfEntity>> {
@@ -22,8 +22,8 @@ public class SkeletonWolfRenderer extends MobEntityRenderer<SkeletonWolfEntity, 
 	}
 
 	public Identifier getTexture(SkeletonWolfEntity entity) {
-		Identifier texture = TextureUtils.getTextureIdentifier("wolf", EntityTypesInit.SKELETON_WOLF_REGISTRY_NAME);
-		Identifier textureAngry = TextureUtils.getTextureIdentifier("wolf", EntityTypesInit.SKELETON_WOLF_REGISTRY_NAME, "angry");
+		Identifier texture = TextureUtils.getTextureIdentifier("wolf", RegistryNames.SKELETON_WOLF_REGISTRY_NAME);
+		Identifier textureAngry = TextureUtils.getTextureIdentifier("wolf", RegistryNames.SKELETON_WOLF_REGISTRY_NAME, "angry");
 		return entity.isAngry() ? textureAngry : texture;
 	}
 

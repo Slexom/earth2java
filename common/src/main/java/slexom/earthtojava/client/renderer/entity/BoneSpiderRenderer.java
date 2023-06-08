@@ -9,7 +9,7 @@ import net.minecraft.client.render.entity.model.SpiderEntityModel;
 import net.minecraft.util.Identifier;
 import slexom.earthtojava.client.renderer.entity.feature.BoneSpiderEyesFeatureRenderer;
 import slexom.earthtojava.entity.monster.BoneSpiderEntity;
-import slexom.earthtojava.init.EntityTypesInit;
+import slexom.earthtojava.init.RegistryNames;
 
 @Environment(EnvType.CLIENT)
 public class BoneSpiderRenderer extends MobEntityRenderer<BoneSpiderEntity, SpiderEntityModel<BoneSpiderEntity>> {
@@ -25,8 +25,8 @@ public class BoneSpiderRenderer extends MobEntityRenderer<BoneSpiderEntity, Spid
 
 	@Override
 	public Identifier getTexture(BoneSpiderEntity entity) {
-		Identifier texture = TextureUtils.getTextureIdentifier("spider", EntityTypesInit.BONE_SPIDER_REGISTRY_NAME);
-		Identifier textureBlink = TextureUtils.getTextureIdentifier("spider", EntityTypesInit.BONE_SPIDER_REGISTRY_NAME, "blink");
+		Identifier texture = TextureUtils.getTextureIdentifier("spider", RegistryNames.BONE_SPIDER_REGISTRY_NAME);
+		Identifier textureBlink = TextureUtils.getTextureIdentifier("spider", RegistryNames.BONE_SPIDER_REGISTRY_NAME, "blink");
 		return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
 	}
 

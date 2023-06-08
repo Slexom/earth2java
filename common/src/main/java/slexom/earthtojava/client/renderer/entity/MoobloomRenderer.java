@@ -9,7 +9,7 @@ import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.util.Identifier;
 import slexom.earthtojava.client.renderer.entity.feature.MoobloomButtercupFeatureRenderer;
 import slexom.earthtojava.entity.passive.MoobloomEntity;
-import slexom.earthtojava.init.EntityTypesInit;
+import slexom.earthtojava.init.RegistryNames;
 
 @Environment(EnvType.CLIENT)
 public class MoobloomRenderer extends MobEntityRenderer<MoobloomEntity, CowEntityModel<MoobloomEntity>> {
@@ -20,8 +20,8 @@ public class MoobloomRenderer extends MobEntityRenderer<MoobloomEntity, CowEntit
 	}
 
 	public Identifier getTexture(MoobloomEntity entity) {
-		Identifier texture = TextureUtils.getTextureIdentifier("cow", EntityTypesInit.MOOBLOOM_REGISTRY_NAME);
-		Identifier textureBlink = TextureUtils.getTextureIdentifier("cow", EntityTypesInit.MOOBLOOM_REGISTRY_NAME, "blink");
+		Identifier texture = TextureUtils.getTextureIdentifier("cow", RegistryNames.MOOBLOOM_REGISTRY_NAME);
+		Identifier textureBlink = TextureUtils.getTextureIdentifier("cow", RegistryNames.MOOBLOOM_REGISTRY_NAME, "blink");
 		return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
 	}
 

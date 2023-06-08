@@ -9,7 +9,7 @@ import slexom.earthtojava.client.renderer.entity.feature.HornedSheepWoolFeatureR
 import slexom.earthtojava.client.renderer.entity.model.HornedSheepModel;
 import slexom.earthtojava.entity.passive.HornedSheepEntity;
 import slexom.earthtojava.init.EntityModelLayersInit;
-import slexom.earthtojava.init.EntityTypesInit;
+import slexom.earthtojava.init.RegistryNames;
 
 @Environment(EnvType.CLIENT)
 public class HornedSheepRenderer extends MobEntityRenderer<HornedSheepEntity, HornedSheepModel<HornedSheepEntity>> {
@@ -20,8 +20,8 @@ public class HornedSheepRenderer extends MobEntityRenderer<HornedSheepEntity, Ho
 	}
 
 	public Identifier getTexture(HornedSheepEntity entity) {
-		Identifier texture = TextureUtils.getTextureIdentifier("sheep", EntityTypesInit.HORNED_SHEEP_REGISTRY_NAME);
-		Identifier textureBlink = TextureUtils.getTextureIdentifier("sheep", EntityTypesInit.HORNED_SHEEP_REGISTRY_NAME, "blink");
+		Identifier texture = TextureUtils.getTextureIdentifier("sheep", RegistryNames.HORNED_SHEEP_REGISTRY_NAME);
+		Identifier textureBlink = TextureUtils.getTextureIdentifier("sheep", RegistryNames.HORNED_SHEEP_REGISTRY_NAME, "blink");
 		return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
 	}
 }

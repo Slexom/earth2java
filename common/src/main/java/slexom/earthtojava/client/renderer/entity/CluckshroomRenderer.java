@@ -10,7 +10,7 @@ import net.minecraft.util.math.MathHelper;
 import slexom.earthtojava.client.renderer.entity.feature.CluckshroomMushroomFeatureRenderer;
 import slexom.earthtojava.client.renderer.entity.model.CluckshroomModel;
 import slexom.earthtojava.entity.passive.CluckshroomEntity;
-import slexom.earthtojava.init.EntityTypesInit;
+import slexom.earthtojava.init.RegistryNames;
 
 @Environment(EnvType.CLIENT)
 public class CluckshroomRenderer extends MobEntityRenderer<CluckshroomEntity, CluckshroomModel<CluckshroomEntity>> {
@@ -28,8 +28,8 @@ public class CluckshroomRenderer extends MobEntityRenderer<CluckshroomEntity, Cl
 
 	@Override
 	public Identifier getTexture(CluckshroomEntity entity) {
-		Identifier texture = TextureUtils.getTextureIdentifier("chicken", EntityTypesInit.CLUCKSHROOM_REGISTRY_NAME);
-		Identifier textureBlink = TextureUtils.getTextureIdentifier("chicken", EntityTypesInit.CLUCKSHROOM_REGISTRY_NAME, "blink");
+		Identifier texture = TextureUtils.getTextureIdentifier("chicken", RegistryNames.CLUCKSHROOM_REGISTRY_NAME);
+		Identifier textureBlink = TextureUtils.getTextureIdentifier("chicken", RegistryNames.CLUCKSHROOM_REGISTRY_NAME, "blink");
 		return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
 	}
 }

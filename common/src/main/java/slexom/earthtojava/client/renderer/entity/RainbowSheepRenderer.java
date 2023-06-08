@@ -9,7 +9,7 @@ import slexom.earthtojava.client.renderer.entity.feature.RainbowSheepWoolFeature
 import slexom.earthtojava.client.renderer.entity.model.RainbowSheepModel;
 import slexom.earthtojava.entity.passive.RainbowSheepEntity;
 import slexom.earthtojava.init.EntityModelLayersInit;
-import slexom.earthtojava.init.EntityTypesInit;
+import slexom.earthtojava.init.RegistryNames;
 
 @Environment(EnvType.CLIENT)
 public class RainbowSheepRenderer extends MobEntityRenderer<RainbowSheepEntity, RainbowSheepModel<RainbowSheepEntity>> {
@@ -20,8 +20,8 @@ public class RainbowSheepRenderer extends MobEntityRenderer<RainbowSheepEntity, 
 
 	@Override
 	public Identifier getTexture(RainbowSheepEntity entity) {
-		Identifier texture = TextureUtils.getTextureIdentifier("sheep", EntityTypesInit.RAINBOW_SHEEP_REGISTRY_NAME);
-		Identifier textureBlink = TextureUtils.getTextureIdentifier("sheep", EntityTypesInit.RAINBOW_SHEEP_REGISTRY_NAME, "blink");
+		Identifier texture = TextureUtils.getTextureIdentifier("sheep", RegistryNames.RAINBOW_SHEEP_REGISTRY_NAME);
+		Identifier textureBlink = TextureUtils.getTextureIdentifier("sheep", RegistryNames.RAINBOW_SHEEP_REGISTRY_NAME, "blink");
 		return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
 	}
 }

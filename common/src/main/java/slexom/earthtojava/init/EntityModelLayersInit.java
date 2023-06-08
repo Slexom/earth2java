@@ -31,18 +31,18 @@ public final class EntityModelLayersInit {
 	public static final Map<EntityModelLayer, Supplier<TexturedModelData>> E2J_MODEL_LAYERS = new HashMap<>();
 
 	static {
-		FANCY_CHICKEN_ENTITY_MODEL_LAYER = registerEntityModelLayer(EntityTypesInit.FANCY_CHICKEN_REGISTRY_NAME, FancyChickenModel.getTexturedModelData());
-		HORNED_SHEEP_ENTITY_MODEL_LAYER = registerEntityModelLayer(EntityTypesInit.HORNED_SHEEP_REGISTRY_NAME, HornedSheepModel.getTexturedModelData());
-		JOLLY_LLAMA_ENTITY_MODEL_LAYER = registerEntityModelLayer(EntityTypesInit.JOLLY_LLAMA_REGISTRY_NAME, JollyLlamaModel.getTexturedModelData(Dilation.NONE));
-		JUMBO_RABBIT_ENTITY_MODEL_LAYER = registerEntityModelLayer(EntityTypesInit.JUMBO_RABBIT_REGISTRY_NAME, JumboRabbitModel.getTexturedModelData());
-		MUDDY_PIG_ENTITY_MODEL_LAYER = registerEntityModelLayer(EntityTypesInit.MUDDY_PIG_REGISTRY_NAME, MuddyPigModel.getTexturedModelData(Dilation.NONE));
-		RAINBOW_SHEEP_ENTITY_MODEL_LAYER = registerEntityModelLayer(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_NAME, RainbowSheepModel.getTexturedModelData());
-		RAINBOW_SHEEP_FUR_ENTITY_MODEL_LAYER = registerEntityModelLayer(EntityTypesInit.RAINBOW_SHEEP_REGISTRY_NAME + "_fur", RainbowSheepWoolModel.getTexturedModelData());
-		SKELETON_WOLF_ENTITY_MODEL_LAYER = registerEntityModelLayer(EntityTypesInit.SKELETON_WOLF_REGISTRY_NAME, SkeletonWolfModel.getTexturedModelData());
-		BOULDERING_ZOMBIE_ENTITY_MODEL_LAYER = registerEntityModelLayer(EntityTypesInit.BOULDERING_ZOMBIE_REGISTRY_NAME, BoulderingZombieModel.getTexturedModelData());
-		LOBBER_ZOMBIE_ENTITY_MODEL_LAYER = registerEntityModelLayer(EntityTypesInit.LOBBER_ZOMBIE_REGISTRY_NAME, LobberZombieModel.getTexturedModelData());
-		VILER_WITCH_ENTITY_MODEL_LAYER = registerEntityModelLayer(EntityTypesInit.VILER_WITCH_REGISTRY_NAME, VilerWitchModel.getTexturedModelData());
-		SOOTY_PIG_ENTITY_MODEL_LAYER = registerEntityModelLayer(EntityTypesInit.SOOTY_PIG_REGISTRY_NAME, SootyPigModel.getTexturedModelData(Dilation.NONE));
+		FANCY_CHICKEN_ENTITY_MODEL_LAYER = registerEntityModelLayer(RegistryNames.FANCY_CHICKEN_REGISTRY_NAME, FancyChickenModel.getTexturedModelData());
+		HORNED_SHEEP_ENTITY_MODEL_LAYER = registerEntityModelLayer(RegistryNames.HORNED_SHEEP_REGISTRY_NAME, HornedSheepModel.getTexturedModelData());
+		JOLLY_LLAMA_ENTITY_MODEL_LAYER = registerEntityModelLayer(RegistryNames.JOLLY_LLAMA_REGISTRY_NAME, JollyLlamaModel.getTexturedModelData(Dilation.NONE));
+		JUMBO_RABBIT_ENTITY_MODEL_LAYER = registerEntityModelLayer(RegistryNames.JUMBO_RABBIT_REGISTRY_NAME, JumboRabbitModel.getTexturedModelData());
+		MUDDY_PIG_ENTITY_MODEL_LAYER = registerEntityModelLayer(RegistryNames.MUDDY_PIG_REGISTRY_NAME, MuddyPigModel.getTexturedModelData(Dilation.NONE));
+		RAINBOW_SHEEP_ENTITY_MODEL_LAYER = registerEntityModelLayer(RegistryNames.RAINBOW_SHEEP_REGISTRY_NAME, RainbowSheepModel.getTexturedModelData());
+		RAINBOW_SHEEP_FUR_ENTITY_MODEL_LAYER = registerEntityModelLayer(RegistryNames.RAINBOW_SHEEP_REGISTRY_NAME + "_fur", RainbowSheepWoolModel.getTexturedModelData());
+		SKELETON_WOLF_ENTITY_MODEL_LAYER = registerEntityModelLayer(RegistryNames.SKELETON_WOLF_REGISTRY_NAME, SkeletonWolfModel.getTexturedModelData());
+		BOULDERING_ZOMBIE_ENTITY_MODEL_LAYER = registerEntityModelLayer(RegistryNames.BOULDERING_ZOMBIE_REGISTRY_NAME, BoulderingZombieModel.getTexturedModelData());
+		LOBBER_ZOMBIE_ENTITY_MODEL_LAYER = registerEntityModelLayer(RegistryNames.LOBBER_ZOMBIE_REGISTRY_NAME, LobberZombieModel.getTexturedModelData());
+		VILER_WITCH_ENTITY_MODEL_LAYER = registerEntityModelLayer(RegistryNames.VILER_WITCH_REGISTRY_NAME, VilerWitchModel.getTexturedModelData());
+		SOOTY_PIG_ENTITY_MODEL_LAYER = registerEntityModelLayer(RegistryNames.SOOTY_PIG_REGISTRY_NAME, SootyPigModel.getTexturedModelData(Dilation.NONE));
 		RAINBOW_BED_HEAD_MODEL_LAYER = registerEntityModelLayer("rainbow_bed_head", RainbowBedBlockEntityRenderer.getHeadTexturedModelData());
 		RAINBOW_BED_FOOT_MODEL_LAYER = registerEntityModelLayer("rainbow_bed_foot", RainbowBedBlockEntityRenderer.getFootTexturedModelData());
 	}

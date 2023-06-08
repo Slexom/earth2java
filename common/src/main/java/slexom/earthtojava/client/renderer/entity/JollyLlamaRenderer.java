@@ -8,7 +8,7 @@ import net.minecraft.util.Identifier;
 import slexom.earthtojava.client.renderer.entity.model.JollyLlamaModel;
 import slexom.earthtojava.entity.passive.JollyLlamaEntity;
 import slexom.earthtojava.init.EntityModelLayersInit;
-import slexom.earthtojava.init.EntityTypesInit;
+import slexom.earthtojava.init.RegistryNames;
 
 @Environment(EnvType.CLIENT)
 public class JollyLlamaRenderer extends MobEntityRenderer<JollyLlamaEntity, JollyLlamaModel> {
@@ -19,8 +19,8 @@ public class JollyLlamaRenderer extends MobEntityRenderer<JollyLlamaEntity, Joll
 
 	@Override
 	public Identifier getTexture(JollyLlamaEntity entity) {
-		Identifier texture = TextureUtils.getTextureIdentifier("llama", EntityTypesInit.JOLLY_LLAMA_REGISTRY_NAME);
-		Identifier textureBlink = TextureUtils.getTextureIdentifier("llama", EntityTypesInit.JOLLY_LLAMA_REGISTRY_NAME, "blink");
+		Identifier texture = TextureUtils.getTextureIdentifier("llama", RegistryNames.JOLLY_LLAMA_REGISTRY_NAME);
+		Identifier textureBlink = TextureUtils.getTextureIdentifier("llama", RegistryNames.JOLLY_LLAMA_REGISTRY_NAME, "blink");
 		return entity.blinkManager.getBlinkRemainingTicks() > 0 ? textureBlink : texture;
 	}
 

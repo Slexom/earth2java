@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 import slexom.earthtojava.client.renderer.entity.model.MuddyPigModel;
 import slexom.earthtojava.entity.passive.MuddyPigEntity;
 import slexom.earthtojava.init.EntityModelLayersInit;
-import slexom.earthtojava.init.EntityTypesInit;
+import slexom.earthtojava.init.RegistryNames;
 
 @Environment(EnvType.CLIENT)
 public class MuddyPigRenderer extends MobEntityRenderer<MuddyPigEntity, MuddyPigModel<MuddyPigEntity>> {
@@ -21,10 +21,10 @@ public class MuddyPigRenderer extends MobEntityRenderer<MuddyPigEntity, MuddyPig
 	}
 
 	public Identifier getTexture(MuddyPigEntity entity) {
-		Identifier texture = TextureUtils.getTextureIdentifier("pig", EntityTypesInit.MUDDY_PIG_REGISTRY_NAME);
-		Identifier textureBlink = TextureUtils.getTextureIdentifier("pig", EntityTypesInit.MUDDY_PIG_REGISTRY_NAME, "blink");
-		Identifier textureDried = TextureUtils.getTextureIdentifier("pig", EntityTypesInit.MUDDY_PIG_REGISTRY_NAME, "dried");
-		Identifier textureDriedBlink = TextureUtils.getTextureIdentifier("pig", EntityTypesInit.MUDDY_PIG_REGISTRY_NAME, "dried_blink");
+		Identifier texture = TextureUtils.getTextureIdentifier("pig", RegistryNames.MUDDY_PIG_REGISTRY_NAME);
+		Identifier textureBlink = TextureUtils.getTextureIdentifier("pig", RegistryNames.MUDDY_PIG_REGISTRY_NAME, "blink");
+		Identifier textureDried = TextureUtils.getTextureIdentifier("pig", RegistryNames.MUDDY_PIG_REGISTRY_NAME, "dried");
+		Identifier textureDriedBlink = TextureUtils.getTextureIdentifier("pig", RegistryNames.MUDDY_PIG_REGISTRY_NAME, "dried_blink");
 		boolean blink = entity.blinkManager.getBlinkRemainingTicks() > 0;
 		if (entity.isInMuddyState()) {
 			return blink ? textureBlink : texture;
