@@ -72,43 +72,43 @@ public class Earth2JavaModClientForge {
 		event.registerEntityRenderer(EntityTypesInit.VILER_WITCH_REGISTRY_OBJECT.get(), VilerWitchRenderer::new);
 		event.registerEntityRenderer(EntityTypesInit.SOOTY_PIG_REGISTRY_OBJECT.get(), SootyPigRenderer::new);
 
-		event.registerEntityRenderer(EntityTypesInit.AMBER_CHICKEN_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.chickenRendererFactory(RegistryNames.AMBER_CHICKEN_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.BRONZED_CHICKEN_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.chickenRendererFactory(RegistryNames.BRONZED_CHICKEN_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.chickenRendererFactory(RegistryNames.MIDNIGHT_CHICKEN_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.STORMY_CHICKEN_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.chickenRendererFactory(RegistryNames.STORMY_CHICKEN_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.SKEWBALD_CHICKEN_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.chickenRendererFactory(RegistryNames.SKEWBALD_CHICKEN_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.GOLD_CRESTED_CHICKEN_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.chickenRendererFactory(RegistryNames.GOLD_CRESTED_CHICKEN_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.AMBER_CHICKEN_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.chickenRendererFactory(RegistryNames.AMBER_CHICKEN_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.BRONZED_CHICKEN_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.chickenRendererFactory(RegistryNames.BRONZED_CHICKEN_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.MIDNIGHT_CHICKEN_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.chickenRendererFactory(RegistryNames.MIDNIGHT_CHICKEN_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.STORMY_CHICKEN_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.chickenRendererFactory(RegistryNames.STORMY_CHICKEN_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.SKEWBALD_CHICKEN_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.chickenRendererFactory(RegistryNames.SKEWBALD_CHICKEN_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.GOLD_CRESTED_CHICKEN_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.chickenRendererFactory(RegistryNames.GOLD_CRESTED_CHICKEN_REGISTRY_NAME));
 
-		event.registerEntityRenderer(EntityTypesInit.ALBINO_COW_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.cowRendererFactory(RegistryNames.ALBINO_COW_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.ASHEN_COW_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.cowRendererFactory(RegistryNames.ASHEN_COW_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.COOKIE_COW_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.cowRendererFactory(RegistryNames.COOKIE_COW_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.CREAM_COW_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.cowRendererFactory(RegistryNames.CREAM_COW_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.DAIRY_COW_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.cowRendererFactory(RegistryNames.DAIRY_COW_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.PINTO_COW_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.cowRendererFactory(RegistryNames.PINTO_COW_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.SUNSET_COW_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.cowRendererFactory(RegistryNames.SUNSET_COW_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.ALBINO_COW_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.cowRendererFactory(RegistryNames.ALBINO_COW_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.ASHEN_COW_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.cowRendererFactory(RegistryNames.ASHEN_COW_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.COOKIE_COW_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.cowRendererFactory(RegistryNames.COOKIE_COW_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.CREAM_COW_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.cowRendererFactory(RegistryNames.CREAM_COW_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.DAIRY_COW_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.cowRendererFactory(RegistryNames.DAIRY_COW_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.PINTO_COW_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.cowRendererFactory(RegistryNames.PINTO_COW_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.SUNSET_COW_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.cowRendererFactory(RegistryNames.SUNSET_COW_REGISTRY_NAME));
 
-		event.registerEntityRenderer(EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.shearableCowRendererFactory(RegistryNames.WOOLY_COW_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.UMBRA_COW_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.shearableCowRendererFactory(RegistryNames.UMBRA_COW_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.WOOLY_COW_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.shearableCowRendererFactory(RegistryNames.WOOLY_COW_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.UMBRA_COW_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.shearableCowRendererFactory(RegistryNames.UMBRA_COW_REGISTRY_NAME));
 
-		event.registerEntityRenderer(EntityTypesInit.MOTTLED_PIG_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.pigRendererFactory(RegistryNames.MOTTLED_PIG_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.PALE_PIG_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.pigRendererFactory(RegistryNames.PALE_PIG_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.pigRendererFactory(RegistryNames.PIEBALD_PIG_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.pigRendererFactory(RegistryNames.PINK_FOOTED_PIG_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.SPOTTED_PIG_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.pigRendererFactory(RegistryNames.SPOTTED_PIG_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.MOTTLED_PIG_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.pigRendererFactory(RegistryNames.MOTTLED_PIG_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.PALE_PIG_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.pigRendererFactory(RegistryNames.PALE_PIG_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.PIEBALD_PIG_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.pigRendererFactory(RegistryNames.PIEBALD_PIG_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.PINK_FOOTED_PIG_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.pigRendererFactory(RegistryNames.PINK_FOOTED_PIG_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.SPOTTED_PIG_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.pigRendererFactory(RegistryNames.SPOTTED_PIG_REGISTRY_NAME));
 
-		event.registerEntityRenderer(EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.monoColorSheepRendererFactory(RegistryNames.FLECKED_SHEEP_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.FUZZY_SHEEP_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.monoColorSheepRendererFactory(RegistryNames.FUZZY_SHEEP_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.INKY_SHEEP_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.monoColorSheepRendererFactory(RegistryNames.INKY_SHEEP_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.LONG_NOSED_SHEEP_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.monoColorSheepRendererFactory(RegistryNames.LONG_NOSED_SHEEP_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.PATCHED_SHEEP_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.monoColorSheepRendererFactory(RegistryNames.PATCHED_SHEEP_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.ROCKY_SHEEP_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.monoColorSheepRendererFactory(RegistryNames.ROCKY_SHEEP_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.FLECKED_SHEEP_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.monoColorSheepRendererFactory(RegistryNames.FLECKED_SHEEP_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.FUZZY_SHEEP_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.monoColorSheepRendererFactory(RegistryNames.FUZZY_SHEEP_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.INKY_SHEEP_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.monoColorSheepRendererFactory(RegistryNames.INKY_SHEEP_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.LONG_NOSED_SHEEP_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.monoColorSheepRendererFactory(RegistryNames.LONG_NOSED_SHEEP_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.PATCHED_SHEEP_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.monoColorSheepRendererFactory(RegistryNames.PATCHED_SHEEP_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.ROCKY_SHEEP_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.monoColorSheepRendererFactory(RegistryNames.ROCKY_SHEEP_REGISTRY_NAME));
 
-		event.registerEntityRenderer(EntityTypesInit.BOLD_STRIPED_RABBIT_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.rabbitRendererFactory(RegistryNames.BOLD_STRIPED_RABBIT_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.FRECKLED_RABBIT_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.rabbitRendererFactory(RegistryNames.FRECKLED_RABBIT_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.HARELEQUIN_RABBIT_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.rabbitRendererFactory(RegistryNames.HARELEQUIN_RABBIT_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.MUDDY_FOOT_RABBIT_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.rabbitRendererFactory(RegistryNames.MUDDY_FOOT_RABBIT_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.VESTED_RABBIT_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.rabbitRendererFactory(RegistryNames.VESTED_RABBIT_REGISTRY_NAME));
-		event.registerEntityRenderer(EntityTypesInit.BOLD_STRIPED_RABBIT_REGISTRY_OBJECT.get(), E2JEntityRendererFactory.rabbitRendererFactory(RegistryNames.BOLD_STRIPED_RABBIT_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.BOLD_STRIPED_RABBIT_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.rabbitRendererFactory(RegistryNames.BOLD_STRIPED_RABBIT_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.FRECKLED_RABBIT_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.rabbitRendererFactory(RegistryNames.FRECKLED_RABBIT_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.HARELEQUIN_RABBIT_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.rabbitRendererFactory(RegistryNames.HARELEQUIN_RABBIT_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.MUDDY_FOOT_RABBIT_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.rabbitRendererFactory(RegistryNames.MUDDY_FOOT_RABBIT_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.VESTED_RABBIT_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.rabbitRendererFactory(RegistryNames.VESTED_RABBIT_REGISTRY_NAME));
+		event.registerEntityRenderer(EntityTypesInit.BOLD_STRIPED_RABBIT_REGISTRY_OBJECT.get(), E2JEntityRendererFactories.rabbitRendererFactory(RegistryNames.BOLD_STRIPED_RABBIT_REGISTRY_NAME));
 
 		event.registerBlockEntityRenderer(BlockEntityTypeInit.RAINBOW_BED.get(), RainbowBedBlockEntityRenderer::new);
 	}

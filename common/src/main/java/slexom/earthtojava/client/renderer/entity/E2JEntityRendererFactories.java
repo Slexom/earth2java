@@ -3,9 +3,9 @@ package slexom.earthtojava.client.renderer.entity;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import slexom.earthtojava.entity.base.*;
 
-public class E2JEntityRendererFactory {
+public class E2JEntityRendererFactories {
 
-	private E2JEntityRendererFactory() {
+	private E2JEntityRendererFactories() {
 	}
 
 	public static EntityRendererFactory<E2JBaseChickenEntity> chickenRendererFactory(String identifier) {
