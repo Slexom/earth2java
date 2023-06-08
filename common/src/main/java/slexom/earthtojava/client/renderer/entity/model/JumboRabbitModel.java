@@ -55,7 +55,7 @@ public class JumboRabbitModel<T extends JumboRabbitEntity> extends EntityModel<T
 		ModelData modelData = new ModelData();
 		ModelPartData modelPartData = modelData.getRoot();
 		modelPartData.addChild(EntityModelPartNames.LEFT_HIND_FOOT, ModelPartBuilder.create().uv(24, 47).cuboid(0.0F, 5.5F, -2.7F, 3.0F, 2.0F, 9.0F).mirrored(), ModelTransform.pivot(3.0F, 17.5F, 3.7F));
-		modelPartData.addChild(EntityModelPartNames.LEFT_HIND_FOOT, ModelPartBuilder.create().uv(0, 47).cuboid(-2.0F, 5.5F, -2.7F, 3.0F, 2.0F, 9.0F), ModelTransform.pivot(-3.0F, 17.5F, 3.7F));
+		modelPartData.addChild(EntityModelPartNames.RIGHT_HIND_FOOT, ModelPartBuilder.create().uv(0, 47).cuboid(-2.0F, 5.5F, -2.7F, 3.0F, 2.0F, 9.0F), ModelTransform.pivot(-3.0F, 17.5F, 3.7F));
 		modelPartData.addChild(LEFT_HAUNCH, ModelPartBuilder.create().uv(42, 14).cuboid(0.0F, -4.0F, 0.0F, 3.0F, 7.0F, 8.0F).mirrored(), ModelTransform.of(3.0F, 17.5F, 3.7F, -0.34906584F, 0.0F, 0.0F));
 		modelPartData.addChild(RIGHT_HAUNCH, ModelPartBuilder.create().uv(42, 29).cuboid(-2.0F, -4.0F, 0.0F, 3.0F, 7.0F, 8.0F), ModelTransform.of(-3.0F, 17.5F, 3.7F, -0.34906584F, 0.0F, 0.0F));
 		modelPartData.addChild(EntityModelPartNames.BODY, ModelPartBuilder.create().uv(0, 0).cuboid(bodyX, bodyY, bodyZ, 8.0F, 8.0F, 14.0F), ModelTransform.of(0.0F, 19.0F, 8.0F, -0.34906584F, 0.0F, 0.0F));
