@@ -1,0 +1,125 @@
+plugins {
+    id "com.github.johnrengelman.shadow" version "8.1.1"
+}
+
+allprojects {
+    archivesBaseName = "earth2java-fabric"
+}
+
+architectury {
+    platformSetupLoomIde()
+    fabric()
+}
+
+
+loom {
+    accessWidenerPath = project(":common").loom.accessWidenerPath
+    runs {
+        //
+        // This adds a new gradle task that runs the datagen API: "gradlew runDatagenClient"
+        //
+        datagenClient {
+            inherit client
+            name "Data Generation"
+            vmArg "-Dfabric-api.datagen"
+            vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
+            vmArg "-Dfabric-api.datagen.modid=earth2javamobs"
+
+            runDir "build/datagen"
+        }
+    }
+}
+
+configurations {
+    common
+    shadowCommon
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentFabric.extendsFrom common
+}
+
+repositories {
+    maven { url "https://maven.terraformersmc.com/releases/" }
+}
+
+dependencies {
+    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
+    modApi "dev.architectury:architectury-fabric:${rootProject.architectury_version}"
+
+    common(project(path: ":common", configuration: "namedElements")) { transitive false }
+    shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
+
+    modCompileOnly("com.terraformersmc:modmenu:${rootProject.mod_menu_version}") { transitive false }
+    modApi("me.shedaniel.cloth:cloth-config-fabric:${rootProject.cloth_config_version}") {
+        exclude(group: "net.fabricmc.fabric-api")
+    }
+}
+
+processResources {
+    inputs.property 'modId', rootProject.mod_id
+    inputs.property 'modName', rootProject.mod_name
+    inputs.property 'modDescription', rootProject.mod_description
+    inputs.property 'modVersion', rootProject.mod_version
+    inputs.property 'modAuthor', rootProject.mod_author
+
+    filesMatching("fabric.mod.json") {
+        expand([
+                'modId'         : rootProject.mod_id,
+                'modName'       : rootProject.mod_name,
+                'modDescription': rootProject.mod_description,
+                'modVersion'    : rootProject.mod_version,
+                'modAuthor'     : rootProject.mod_author
+        ])
+    }
+}
+
+shadowJar {
+    exclude "architectury.common.json"
+
+    configurations = [project.configurations.shadowCommon]
+    archiveClassifier.set("dev-shadow")
+}
+
+remapJar {
+    injectAccessWidener = true
+    inputFile.set shadowJar.archiveFile
+    dependsOn shadowJar
+    archiveClassifier.set(null)
+}
+
+jar {
+    archiveClassifier.set("dev")
+}
+
+sourcesJar {
+    def commonSources = project(":common").sourcesJar
+    dependsOn commonSources
+    from commonSources.archiveFile.map { zipTree(it) }
+}
+
+components.java {
+    withVariantsFromConfiguration(project.configurations.shadowRuntimeElements) {
+        skip()
+    }
+}
+
+repositories {
+    maven {
+        name = 'Fabric'
+        url = 'https://maven.fabricmc.net/'
+    }
+}
+/*
+publishing {
+    publications {
+        mavenFabric(MavenPublication) {
+            artifactId = rootProject.mod_id + "-" + project.name
+            from components.java
+        }
+    }
+
+    repositories {
+    }
+}
+*/

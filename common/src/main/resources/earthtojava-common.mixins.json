@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "slexom.earthtojava.mixins",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+    "CatEntityRendererMixin",
+    "DyeItemMixin",
+    "EggEntityMixin",
+    "SpawnFurnaceGolem",
+    "SpawnRestrictionAccessor"
+  ],
+  "client": [
+    "BuiltinModelItemRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "group": "pink_dye",
+    "ingredients": [
+        {
+            "item": "earthtojavamobs:pink_daisy"
+        }
+    ],
+    "result": {
+        "item": "minecraft:pink_dye"
+    }
+}

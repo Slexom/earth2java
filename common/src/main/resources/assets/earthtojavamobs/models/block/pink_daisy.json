@@ -1,0 +1,7 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "earthtojavamobs:block/pink_daisy",
+        "particle": "earthtojavamobs:block/pink_daisy"
+    }
+}

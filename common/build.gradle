@@ -1,0 +1,14 @@
+dependencies {
+    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    modApi "dev.architectury:architectury:${rootProject.architectury_version}"
+
+    modImplementation("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}")
+}
+
+architectury {
+    common(rootProject.enabled_platforms.split(","))
+}
+
+loom {
+    accessWidenerPath = file("src/main/resources/e2j.accesswidener")
+}

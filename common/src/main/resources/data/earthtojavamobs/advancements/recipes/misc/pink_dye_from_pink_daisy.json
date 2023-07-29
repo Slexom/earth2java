@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "earthtojavamobs:pink_dye_from_pink_daisy"
+    ]
+  },
+  "criteria": {
+    "has_pink_flower": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "earthtojavamobs:pink_daisy"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "earthtojavamobs:pink_dye_from_pink_daisy"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_pink_flower",
+      "has_the_recipe"
+    ]
+  ]
+}

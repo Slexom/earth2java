@@ -1,0 +1,7 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "earthtojavamobs:block/buttercup",
+        "particle": "earthtojavamobs:block/buttercup"
+    }
+}

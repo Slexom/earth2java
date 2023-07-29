@@ -1,0 +1,291 @@
+{
+    "entity.bone_spider.ambient": {
+        "sounds": [
+            "earthtojavamobs:mob/bone_spider/say_01",
+            "earthtojavamobs:mob/bone_spider/say_02",
+            "earthtojavamobs:mob/bone_spider/say_03"
+        ]
+    },
+    "entity.bone_spider.bone.stab": {
+        "sounds": [
+            "earthtojavamobs:mob/bone_spider/bone/stab"
+        ]
+    },
+    "entity.bone_spider.death": {
+        "sounds": [
+            "earthtojavamobs:mob/bone_spider/death_01",
+            "earthtojavamobs:mob/bone_spider/death_02"
+        ]
+    },
+    "entity.bone_spider.spit": {
+        "sounds": [
+            "earthtojavamobs:mob/bone_spider/spit_01",
+            "earthtojavamobs:mob/bone_spider/spit_02",
+            "earthtojavamobs:mob/bone_spider/spit_03"
+        ]
+    },
+    "entity.bone_spider.walk": {
+        "sounds": [
+            "earthtojavamobs:mob/bone_spider/walk_01",
+            "earthtojavamobs:mob/bone_spider/walk_02",
+            "earthtojavamobs:mob/bone_spider/walk_03"
+        ]
+    },
+    "entity.cluckshroom.lay_mushroom": {
+        "sounds": [
+            "earthtojavamobs:mob/cluckshroom/lay_mushroom"
+        ]
+    },
+    "entity.fancy_chicken.ambient": {
+        "sounds": [
+            "earthtojavamobs:mob/fancy_chicken/say_01",
+            "earthtojavamobs:mob/fancy_chicken/say_02",
+            "earthtojavamobs:mob/fancy_chicken/say_03",
+            "earthtojavamobs:mob/fancy_chicken/say_04"
+        ]
+    },
+    "entity.fancy_chicken.death": {
+        "sounds": [
+            "earthtojavamobs:mob/fancy_chicken/death_01",
+            "earthtojavamobs:mob/fancy_chicken/death_02"
+        ]
+    },
+    "entity.fancy_chicken.flee": {
+        "sounds": [
+            "earthtojavamobs:mob/fancy_chicken/flee_01",
+            "earthtojavamobs:mob/fancy_chicken/flee_02"
+        ]
+    },
+    "entity.fancy_chicken.hurt": {
+        "sounds": [
+            "earthtojavamobs:mob/fancy_chicken/hurt_01",
+            "earthtojavamobs:mob/fancy_chicken/hurt_02"
+        ]
+    },
+    "entity.furnace_golem.aggro": {
+        "sounds": [
+            "earthtojavamobs:mob/furnace_golem/aggro_01",
+            "earthtojavamobs:mob/furnace_golem/aggro_02",
+            "earthtojavamobs:mob/furnace_golem/aggro_03",
+            "earthtojavamobs:mob/furnace_golem/aggro_04",
+            "earthtojavamobs:mob/furnace_golem/aggro_05",
+            "earthtojavamobs:mob/furnace_golem/aggro_06"
+        ]
+    },
+    "entity.furnace_golem.attack": {
+        "sounds": [
+            "earthtojavamobs:mob/furnace_golem/attack_01"
+        ]
+    },
+    "entity.jolly_llama.bell": {
+        "sounds": [
+            "earthtojavamobs:mob/jolly_llama/bell_01",
+            "earthtojavamobs:mob/jolly_llama/bell_02"
+        ]
+    },
+    "entity.jolly_llama.detect_fern": {
+        "sounds": [
+            "earthtojavamobs:mob/jolly_llama/detect_fern_01",
+            "earthtojavamobs:mob/jolly_llama/detect_fern_02",
+            "earthtojavamobs:mob/jolly_llama/detect_fern_03"
+        ]
+    },
+    "entity.jolly_llama.eat": {
+        "sounds": [
+            "earthtojavamobs:mob/jolly_llama/eat_01",
+            "earthtojavamobs:mob/jolly_llama/eat_02",
+            "earthtojavamobs:mob/jolly_llama/eat_03"
+        ]
+    },
+    "entity.jolly_llama.prance": {
+        "sounds": [
+            "earthtojavamobs:mob/jolly_llama/prance_01"
+        ]
+    },
+    "entity.jumbo_rabbit.ambient": {
+        "sounds": [
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/ambient_01",
+                "volume": 0.4
+            },
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/ambient_02",
+                "volume": 0.4
+            },
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/ambient_03",
+                "volume": 0.4
+            },
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/ambient_04",
+                "volume": 0.4
+            }
+        ]
+    },
+    "entity.jumbo_rabbit.hurt": {
+        "sounds": [
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/hurt_01",
+                "volume": 0.5
+            },
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/hurt_02",
+                "volume": 0.5
+            },
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/hurt_03",
+                "volume": 0.5
+            },
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/hurt_04",
+                "volume": 0.5
+            }
+        ]
+    },
+    "entity.jumbo_rabbit.jump": {
+        "sounds": [
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/jump_01",
+                "volume": 0.2
+            },
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/jump_02",
+                "volume": 0.2
+            },
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/jump_03",
+                "volume": 0.2
+            },
+            {
+                "name": "earthtojavamobs:mob/jumbo_rabbit/jump_04",
+                "volume": 0.2
+            }
+        ]
+    },
+    "entity.lobber_zombie.attack": {
+        "sounds": [
+            "earthtojavamobs:mob/lobber_zombie/throw_01",
+            "earthtojavamobs:mob/lobber_zombie/throw_02",
+            "earthtojavamobs:mob/lobber_zombie/throw_03",
+            "earthtojavamobs:mob/lobber_zombie/throw_04",
+            "earthtojavamobs:mob/lobber_zombie/throw_05",
+            "earthtojavamobs:mob/lobber_zombie/throw_06"
+        ]
+    },
+    "entity.lobber_zombie.rotten_flesh.hit": {
+        "sounds": [
+            "earthtojavamobs:mob/lobber_zombie/rotten_flesh/sound_01",
+            "earthtojavamobs:mob/lobber_zombie/rotten_flesh/sound_02",
+            "earthtojavamobs:mob/lobber_zombie/rotten_flesh/sound_03"
+        ]
+    },
+    "entity.melon_golem.aggro": {
+        "sounds": [
+            "earthtojavamobs:mob/melon_golem/aggro_01"
+        ]
+    },
+    "entity.melon_golem.attack": {
+        "sounds": [
+            "earthtojavamobs:mob/melon_golem/spit_01"
+        ]
+    },
+    "entity.melon_golem.charge": {
+        "sounds": [
+            "earthtojavamobs:mob/melon_golem/charge_01",
+            "earthtojavamobs:mob/melon_golem/charge_02"
+        ]
+    },
+    "entity.melon_golem.seed.hit": {
+        "sounds": [
+            "earthtojavamobs:mob/melon_golem/seed/seed_01",
+            "earthtojavamobs:mob/melon_golem/seed/seed_02",
+            "earthtojavamobs:mob/melon_golem/seed/seed_03"
+        ]
+    },
+    "entity.moobloom.plant": {
+        "sounds": [
+            "earthtojavamobs:mob/moobloom/plant"
+        ]
+    },
+    "entity.moolip.plant": {
+        "sounds": [
+            "earthtojavamobs:mob/moolip/plant"
+        ]
+    },
+    "entity.rainbow_sheep.ambient": {
+        "sounds": [
+            "earthtojavamobs:mob/rainbow_sheep/say_01",
+            "earthtojavamobs:mob/rainbow_sheep/say_02",
+            "earthtojavamobs:mob/rainbow_sheep/say_03"
+        ]
+    },
+    "entity.rainbow_sheep.death": {
+        "sounds": [
+            "earthtojavamobs:mob/rainbow_sheep/death_01",
+            "earthtojavamobs:mob/rainbow_sheep/death_02"
+        ]
+    },
+    "entity.skeleton_wolf.ambient": {
+        "sounds": [
+            "earthtojavamobs:mob/skeleton_wolf/bark_01",
+            "earthtojavamobs:mob/skeleton_wolf/bark_02",
+            "earthtojavamobs:mob/skeleton_wolf/bark_03"
+        ]
+    },
+    "entity.skeleton_wolf.death": {
+        "sounds": [
+            "earthtojavamobs:mob/skeleton_wolf/death_01"
+        ]
+    },
+    "entity.skeleton_wolf.growl": {
+        "sounds": [
+            "earthtojavamobs:mob/skeleton_wolf/growl_01",
+            "earthtojavamobs:mob/skeleton_wolf/growl_02",
+            "earthtojavamobs:mob/skeleton_wolf/growl_03"
+        ]
+    },
+    "entity.skeleton_wolf.howl": {
+        "sounds": [
+            "earthtojavamobs:mob/skeleton_wolf/howl_01",
+            "earthtojavamobs:mob/skeleton_wolf/howl_02"
+        ]
+    },
+    "entity.skeleton_wolf.hurt": {
+        "sounds": [
+            "earthtojavamobs:mob/skeleton_wolf/hurt_01",
+            "earthtojavamobs:mob/skeleton_wolf/hurt_02",
+            "earthtojavamobs:mob/skeleton_wolf/hurt_03"
+        ]
+    },
+    "entity.skeleton_wolf.pant": {
+        "sounds": [
+            "earthtojavamobs:mob/skeleton_wolf/panting_01"
+        ]
+    },
+    "entity.skeleton_wolf.shake": {
+        "sounds": [
+            "earthtojavamobs:mob/skeleton_wolf/shake_01"
+        ]
+    },
+    "entity.skeleton_wolf.step": {
+        "sounds": [
+            "earthtojavamobs:mob/skeleton_wolf/step_01",
+            "earthtojavamobs:mob/skeleton_wolf/step_02",
+            "earthtojavamobs:mob/skeleton_wolf/step_03",
+            "earthtojavamobs:mob/skeleton_wolf/step_04",
+            "earthtojavamobs:mob/skeleton_wolf/step_05"
+        ]
+    },
+    "entity.skeleton_wolf.whine": {
+        "sounds": [
+            "earthtojavamobs:mob/skeleton_wolf/whine_01"
+        ]
+    },
+    "entity.viler_witch.casting": {
+        "sounds": [
+            "earthtojavamobs:mob/viler_witch/casting_01",
+            "earthtojavamobs:mob/viler_witch/casting_02",
+            "earthtojavamobs:mob/viler_witch/casting_03"
+        ]
+    }
+}
