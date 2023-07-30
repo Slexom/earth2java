@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "quilt_loader": {
+    "group": "${group}",
+    "id": "earthtojavamobs",
+    "version": "${version}",
+    "metadata": {
+      "name": "earth2java",
+      "description": "Bring mobs from Minecraft Earth to Minecraft Java Edition.",
+      "contributors": {
+        "Slexom": "Owner"
+      },
+      "contact": {
+        "homepage": "https://www.curseforge.com/minecraft/mc-mods/earth2java-fabric",
+        "sources": "https://github.com/Slexom/earth2java",
+        "issues": "https://github.com/Slexom/earth2java/issues"
+      },
+      "icon": "assets/earthtojavamobs/logo.png"
+    },
+    "intermediate_mappings": "net.fabricmc:intermediary",
+    "entrypoints": {
+      "init": "slexom.earthtojava.fabric.Earth2JavaModQuilt",
+      "client_init": "slexom.earthtojava.quilt.Earth2JavaClientModQuilt"
+    },
+    "depends": [
+      {
+        "id": "quilt_loader",
+        "versions": ">=0.19.1"
+      },
+      {
+        "id": "quilted_fabric_api",
+        "versions": ">=7.0.2"
+      },
+      {
+        "id": "minecraft",
+        "versions": ">=1.20"
+      },
+      {
+        "id": "architectury",
+        "version": ">=9.0.0"
+      }
+    ]
+  },
+  "mixin": "earthtojava-common.mixins.json"
+}
