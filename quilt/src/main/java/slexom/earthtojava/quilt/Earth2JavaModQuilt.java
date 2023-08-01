@@ -8,6 +8,7 @@ public class Earth2JavaModQuilt implements ModInitializer {
 	@Override
 	public void onInitialize(ModContainer mod) {
 		Earth2JavaMod.initialize();
+		Earth2JavaMod.onPostInit();
 	}
 
 }
