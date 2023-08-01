@@ -5,9 +5,9 @@ import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 import slexom.earthtojava.Earth2JavaMod;
 
 public class Earth2JavaModQuilt implements ModInitializer {
-    @Override
-    public void onInitialize(ModContainer mod) {
-        Earth2JavaMod.initialize();
-    }
+	@Override
+	public void onInitialize(ModContainer mod) {
+		Earth2JavaMod.initialize();
+	}
 
 }

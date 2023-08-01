@@ -19,8 +19,12 @@
     },
     "intermediate_mappings": "net.fabricmc:intermediary",
     "entrypoints": {
-      "init": "slexom.earthtojava.fabric.Earth2JavaModQuilt",
-      "client_init": "slexom.earthtojava.quilt.Earth2JavaClientModQuilt"
+      "init": [
+        "slexom.earthtojava.quilt.Earth2JavaModQuilt"
+      ],
+      "client_init": [
+        "slexom.earthtojava.quilt.Earth2JavaClientModQuilt"
+      ]
     },
     "depends": [
       {
@@ -37,7 +41,7 @@
       },
       {
         "id": "architectury",
-        "version": ">=9.0.0"
+        "version": ">=9.0.8"
       }
     ]
   },

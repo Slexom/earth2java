@@ -44,12 +44,13 @@ dependencies {
 }
 
 processResources {
+    from(project(":common").sourceSets.main.resources)
     inputs.property "group", rootProject.maven_group
-    inputs.property "version", project.version
+    inputs.property "version", rootProject.mod_version
 
     filesMatching("quilt.mod.json") {
         expand "group": rootProject.maven_group,
-                "version": project.version
+                "version": rootProject.mod_version
     }
 }
 
