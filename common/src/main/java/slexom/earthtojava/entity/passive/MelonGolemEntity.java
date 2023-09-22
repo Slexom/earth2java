@@ -125,7 +125,7 @@ public class MelonGolemEntity extends GolemEntity implements RangedAttackMob {
 		dataTracker.set(SHOOTING_TICKS, 8);
 	}
 
-	public void attack(LivingEntity target, float distanceFactor) {
+	public void shootAt(LivingEntity target, float distanceFactor) {
 		setShootingTicks();
 		MelonSeedProjectileEntity melonSeedEntity = new MelonSeedProjectileEntity(getWorld(), this);
 		double d0 = target.getEyeY() - 1.1D;

@@ -59,7 +59,7 @@ public class BoneSpiderEntity extends SpiderEntity implements RangedAttackMob {
 	}
 
 	@Override
-	public void attack(LivingEntity target, float distanceFactor) {
+	public void shootAt(LivingEntity target, float pullProgress) {
 		BoneShardEntity boneShard = new BoneShardEntity(getWorld(), this);
 		double d0 = target.getEyeY() - 1.1D;
 		double d1 = target.getX() - getX();

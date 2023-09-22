@@ -1,6 +1,5 @@
 package slexom.earthtojava.entity.ai.goal;
 
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import slexom.earthtojava.entity.monster.BoneSpiderEntity;
 
@@ -26,8 +25,4 @@ public class BoneSpiderMeleeAttackGoal extends MeleeAttackGoal {
 		return super.shouldContinue();
 	}
 
-	@Override
-	protected double getSquaredMaxAttackDistance(LivingEntity entity) {
-		return 4.0F + entity.getWidth();
-	}
 }

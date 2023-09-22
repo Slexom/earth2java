@@ -46,7 +46,7 @@ public class VilerWitchEntity extends WitchEntity {
 	}
 
 	@Override
-	public void attack(LivingEntity target, float pullProgress) {
+	public void shootAt(LivingEntity target, float pullProgress) {
 		if (isDrinking()) return;
 
 

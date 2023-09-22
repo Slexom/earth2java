@@ -39,7 +39,7 @@ public class LobberZombieEntity extends E2JBaseZombieEntity implements RangedAtt
 
 
 	@Override
-	public void attack(LivingEntity target, float pullProgress) {
+	public void shootAt(LivingEntity target, float pullProgress) {
 		RottenFleshProjectileEntity rottenFleshProjectileEntity = new RottenFleshProjectileEntity(getWorld(), this);
 		double d0 = target.getEyeY() - 1.1D;
 		double d1 = target.getX() - getX();
