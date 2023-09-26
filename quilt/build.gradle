@@ -45,6 +45,8 @@ dependencies {
         exclude group: "net.fabricmc"
         exclude group: "net.fabricmc.fabric-api"
     }
+
+    include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:${rootProject.mixin_extras}")))
 }
 
 processResources {

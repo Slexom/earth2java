@@ -24,6 +24,9 @@ dependencies {
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
 
     modImplementation("me.shedaniel.cloth:cloth-config-forge:${rootProject.cloth_config_version}")
+
+    implementation(annotationProcessor("io.github.llamalad7:mixinextras-common:${rootProject.mixin_extras}"))
+    implementation(include("io.github.llamalad7:mixinextras-forge:${rootProject.mixin_extras}"))
 }
 
 processResources {

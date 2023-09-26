@@ -8,7 +8,8 @@
     "DyeItemMixin",
     "EggEntityMixin",
     "SpawnFurnaceGolem",
-    "SpawnRestrictionAccessor"
+    "SpawnRestrictionAccessor",
+    "WolfEntityMixin"
   ],
   "client": [
     "BuiltinModelItemRendererMixin"
