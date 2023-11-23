@@ -1,10 +1,13 @@
 package slexom.earthtojava.forge;
 
 import net.minecraft.client.model.TexturedModelData;
+import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
+import net.minecraft.util.Identifier;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -36,6 +39,14 @@ public class Earth2JavaModClientForge {
 			//     );
 			// }
 		});
+	}
+
+	@SubscribeEvent
+	public static void bedAtlas(TextureStitchEvent.Pre event) {
+		Identifier rainbowBedTexture = new Identifier(Earth2JavaMod.MOD_ID, "entity/bed/rainbow");
+		if (event.getAtlas().getId() == TexturedRenderLayers.BEDS_ATLAS_TEXTURE) {
+			event.addSprite(rainbowBedTexture);
+		}
 	}
 
 	@SubscribeEvent
