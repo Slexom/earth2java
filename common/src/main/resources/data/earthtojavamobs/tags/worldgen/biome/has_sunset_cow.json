@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "#minecraft:is_beach",
+    "#minecraft:is_savanna",
     {
-      "id": "#c:beach",
+      "id": "#c:savanna",
       "required": false
     }
   ]
